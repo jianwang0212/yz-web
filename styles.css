@@ -1154,8 +1154,17 @@ section {
     text-align: right;
 }
 
-.distribution-bar {
+.distribution-bar-container {
+    flex: 1;
+    position: relative;
+    background: var(--bg-secondary);
+    border-radius: 8px;
     height: 60px;
+    overflow: hidden;
+}
+
+.distribution-bar {
+    height: 100%;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -1164,10 +1173,10 @@ section {
     color: white;
     font-weight: 700;
     font-size: 1.3rem;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     position: relative;
-    flex: 1;
+    min-width: 80px;
 }
 
 .distribution-bar span {
@@ -1175,10 +1184,11 @@ section {
     letter-spacing: 1px;
     z-index: 1;
     font-size: 1.3rem;
+    white-space: nowrap;
 }
 
 .distribution-bar:hover {
-    transform: scale(1.02);
+    filter: brightness(1.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -1195,9 +1205,8 @@ section {
         font-size: 1rem;
     }
     
-    .distribution-bar {
-        width: 100% !important;
-        min-width: auto !important;
+    .distribution-bar-container {
+        width: 100%;
     }
 }
 
