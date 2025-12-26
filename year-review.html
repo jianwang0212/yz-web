@@ -774,6 +774,56 @@
             });
         });
 
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all clickable distribution bars
+            const clickableBars = document.querySelectorAll('.clickable-distribution-bar');
+            
+            clickableBars.forEach(bar => {
+                bar.addEventListener('click', function() {
+                    const modalTarget = this.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalTarget);
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }
+                });
+            });
+
+            // Close modal functionality
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                const closeBtn = modal.querySelector('.modal-close');
+                const overlay = modal.querySelector('.modal-overlay');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = ''; // Restore scrolling
+                    });
+                }
+                
+                if (overlay) {
+                    overlay.addEventListener('click', () => {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = ''; // Restore scrolling
+                    });
+                }
+            });
+
+            // Close modal on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.classList.contains('active')) {
+                            modal.classList.remove('active');
+                            document.body.style.overflow = ''; // Restore scrolling
+                        }
+                    });
+                }
+            });
+        });
+
         // Financial Charts
         document.addEventListener('DOMContentLoaded', () => {
             // Register ChartDataLabels plugin
