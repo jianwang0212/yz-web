@@ -752,6 +752,9 @@
 
         // Financial Charts
         document.addEventListener('DOMContentLoaded', () => {
+            // Register ChartDataLabels plugin
+            Chart.register(ChartDataLabels);
+
             // Expense Pie Chart
             const expenseCtx = document.getElementById('expensePieChart');
             if (expenseCtx) {
@@ -804,8 +807,7 @@
                                 }
                             }
                         }
-                    },
-                    plugins: [ChartDataLabels]
+                    }
                 });
             }
 
@@ -861,8 +863,7 @@
                                 }
                             }
                         }
-                    },
-                    plugins: [ChartDataLabels]
+                    }
                 });
             }
         });
