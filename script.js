@@ -127,6 +127,43 @@ function initFinancialChart() {
         financialChart.destroy();
     }
     
+    // Update financial data from content if available
+    if (contentData && contentData.financial) {
+        const financialItems = contentData.financial;
+        const years = [];
+        const investmentData = [];
+        const fundData = [];
+        
+        financialItems.forEach(item => {
+            const year = new Date(item.date).getFullYear();
+            if (!years.includes(year)) {
+                years.push(year);
+                
+                // Extract percentages from content
+                const percentMatches = item.content.match(/(\d+)%/g);
+                if (percentMatches) {
+                    const percentages = percentMatches.map(m => parseInt(m));
+                    if (item.title.toLowerCase().includes('fund') || item.title.includes('基金')) {
+                        fundData.push(Math.max(...percentages));
+                        investmentData.push(0);
+                    } else {
+                        investmentData.push(Math.max(...percentages));
+                        fundData.push(0);
+                    }
+                } else {
+                    investmentData.push(0);
+                    fundData.push(0);
+                }
+            }
+        });
+        
+        // Sort by year
+        const sortedIndices = years.map((_, i) => i).sort((a, b) => years[a] - years[b]);
+        financialData.years = sortedIndices.map(i => years[i]);
+        financialData.data.investment = sortedIndices.map(i => investmentData[i] || 0);
+        financialData.data.fund = sortedIndices.map(i => fundData[i] || 0);
+    }
+    
     financialChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -137,14 +174,16 @@ function initFinancialChart() {
                     data: financialData.data.investment,
                     borderColor: 'rgb(99, 102, 241)',
                     backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                    tension: 0.4
+                    tension: 0.4,
+                    fill: true
                 },
                 {
                     label: 'Fund Growth (%)',
                     data: financialData.data.fund,
                     borderColor: 'rgb(139, 92, 246)',
                     backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                    tension: 0.4
+                    tension: 0.4,
+                    fill: true
                 }
             ]
         },
@@ -157,6 +196,10 @@ function initFinancialChart() {
                 },
                 title: {
                     display: false
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
                 }
             },
             scales: {
@@ -168,6 +211,11 @@ function initFinancialChart() {
                         }
                     }
                 }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
             }
         }
     });
@@ -180,23 +228,53 @@ function populateFinancialTable() {
     // Clear existing rows
     tableBody.innerHTML = '';
     
-    // Add sample data rows
-    const tableData = [
-        { year: '2020-2023', category: 'Citadel Securities', performance: 'Quantitative Trading' },
-        { year: '2023', category: 'A47G Fund', performance: 'Ongoing Growth' },
-        { year: '2016-2018', category: 'Alfie Trading', performance: 'Crypto Market Making' },
-        { year: '2023-2024', category: 'Investment', performance: '120%+ Annualized Return' }
-    ];
-    
-    tableData.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${row.year}</td>
-            <td>${row.category}</td>
-            <td>${row.performance}</td>
-        `;
-        tableBody.appendChild(tr);
-    });
+    // Use actual financial data if available
+    if (contentData && contentData.financial) {
+        contentData.financial.slice(0, 10).forEach(item => {
+            const date = new Date(item.date);
+            const year = date.getFullYear();
+            
+            // Extract category from title
+            let category = 'General';
+            if (item.title.toLowerCase().includes('fund') || item.title.includes('基金')) {
+                category = 'Fund';
+            } else if (item.title.toLowerCase().includes('investment') || item.title.includes('投资')) {
+                category = 'Investment';
+            } else if (item.title.toLowerCase().includes('trading') || item.title.includes('交易')) {
+                category = 'Trading';
+            }
+            
+            // Extract performance metrics (percentages)
+            const percentMatch = item.content.match(/(\d+)%/);
+            const performance = percentMatch ? `${percentMatch[1]}%` : 'Ongoing';
+            
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${year}</td>
+                <td>${category}</td>
+                <td>${performance}</td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    } else {
+        // Fallback to sample data
+        const tableData = [
+            { year: '2020-2023', category: 'Citadel Securities', performance: 'Quantitative Trading' },
+            { year: '2023', category: 'A47G Fund', performance: 'Ongoing Growth' },
+            { year: '2016-2018', category: 'Alfie Trading', performance: 'Crypto Market Making' },
+            { year: '2023-2024', category: 'Investment', performance: '120%+ Annualized Return' }
+        ];
+        
+        tableData.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.year}</td>
+                <td>${row.category}</td>
+                <td>${row.performance}</td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    }
 }
 
 // Music Player
@@ -368,8 +446,187 @@ function getDownloadIcon(type) {
     return icons[type] || '📦';
 }
 
+// Load content data
+let contentData = null;
+
+async function loadContentData() {
+    try {
+        const response = await fetch('data/content.json');
+        contentData = await response.json();
+        populateContent();
+    } catch (error) {
+        console.error('Failed to load content data:', error);
+    }
+}
+
+function populateContent() {
+    if (!contentData) return;
+    
+    // Populate highlights
+    populateHighlights();
+    
+    // Populate timeline
+    populateTimeline();
+    
+    // Populate financial data
+    populateFinancialData();
+    
+    // Populate music works
+    populateMusicWorks();
+    
+    // Populate projects
+    populateProjects();
+}
+
+function populateHighlights() {
+    // Highlights are already in HTML, but we can enhance them with actual data
+    // This can be done later if needed
+}
+
+function populateTimeline() {
+    const timelineContainer = document.querySelector('#timeline-view .timeline');
+    if (!timelineContainer || !contentData.timeline) return;
+    
+    // Clear existing timeline items (keep the structure)
+    const existingItems = timelineContainer.querySelectorAll('.timeline-item');
+    existingItems.forEach(item => item.remove());
+    
+    // Sort years
+    const years = Object.keys(contentData.timeline).sort((a, b) => parseInt(b) - parseInt(a));
+    
+    years.forEach(year => {
+        const events = contentData.timeline[year];
+        if (events.length === 0) return;
+        
+        // Group events by year
+        const yearEvents = events.slice(0, 10); // Limit to 10 events per year
+        
+        yearEvents.forEach((event, index) => {
+            const timelineItem = document.createElement('div');
+            timelineItem.className = 'timeline-item';
+            timelineItem.setAttribute('data-event', JSON.stringify(event));
+            
+            const date = new Date(event.date);
+            const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            timelineItem.innerHTML = `
+                <div class="timeline-year">${dateStr}</div>
+                <div class="timeline-content">
+                    <h3>${event.title}</h3>
+                    <p>${event.description || event.title}</p>
+                </div>
+            `;
+            
+            // Add hover tooltip
+            timelineItem.addEventListener('mouseenter', (e) => {
+                showTimelineTooltip(e, event);
+            });
+            
+            timelineItem.addEventListener('mouseleave', () => {
+                hideTimelineTooltip();
+            });
+            
+            timelineContainer.appendChild(timelineItem);
+        });
+    });
+}
+
+let tooltipElement = null;
+
+function showTimelineTooltip(e, event) {
+    // Remove existing tooltip
+    if (tooltipElement) {
+        tooltipElement.remove();
+    }
+    
+    // Create tooltip
+    tooltipElement = document.createElement('div');
+    tooltipElement.className = 'timeline-tooltip';
+    tooltipElement.innerHTML = `
+        <div class="tooltip-header">
+            <h4>${event.title}</h4>
+            <span class="tooltip-date">${new Date(event.date).toLocaleDateString('zh-CN')}</span>
+        </div>
+        <div class="tooltip-content">
+            <p>${event.description || '详细信息'}</p>
+            ${event.type ? `<span class="tooltip-type">${event.type}</span>` : ''}
+        </div>
+    `;
+    
+    document.body.appendChild(tooltipElement);
+    
+    // Position tooltip
+    const rect = e.currentTarget.getBoundingClientRect();
+    tooltipElement.style.left = rect.right + 20 + 'px';
+    tooltipElement.style.top = rect.top + 'px';
+    
+    // Adjust if tooltip goes off screen
+    setTimeout(() => {
+        const tooltipRect = tooltipElement.getBoundingClientRect();
+        if (tooltipRect.right > window.innerWidth) {
+            tooltipElement.style.left = (rect.left - tooltipRect.width - 20) + 'px';
+        }
+        if (tooltipRect.bottom > window.innerHeight) {
+            tooltipElement.style.top = (window.innerHeight - tooltipRect.height - 20) + 'px';
+        }
+    }, 0);
+}
+
+function hideTimelineTooltip() {
+    if (tooltipElement) {
+        tooltipElement.remove();
+        tooltipElement = null;
+    }
+}
+
+function populateFinancialData() {
+    if (!contentData.financial) return;
+    
+    // Update financial chart data
+    const financialItems = contentData.financial;
+    
+    // Extract years and create chart data
+    const years = [];
+    const performance = [];
+    
+    financialItems.forEach((item, index) => {
+        const year = new Date(item.date).getFullYear();
+        if (!years.includes(year)) {
+            years.push(year);
+            // Extract percentage from content if available
+            const percentMatch = item.content.match(/(\d+)%/);
+            performance.push(percentMatch ? parseInt(percentMatch[1]) : 0);
+        }
+    });
+    
+    // Update financialData
+    financialData.years = years.sort();
+    financialData.data.investment = performance;
+    
+    // Update table
+    populateFinancialTable();
+}
+
+function populateMusicWorks() {
+    if (!contentData.music_works) return;
+    
+    // Update playlist with actual music works
+    const musicWorks = contentData.music_works.slice(0, 10);
+    
+    // This will be used when music player is initialized
+    window.musicWorksData = musicWorks;
+}
+
+function populateProjects() {
+    if (!contentData.projects) return;
+    
+    // Store projects data for potential use
+    window.projectsData = contentData.projects;
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    loadContentData();
     initMusicPlayer();
     initDownloadSection();
     

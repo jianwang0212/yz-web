@@ -815,6 +815,84 @@ section {
     line-height: 1.6;
 }
 
+/* Timeline Tooltip */
+.timeline-tooltip {
+    position: fixed;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-xl);
+    max-width: 400px;
+    z-index: 10000;
+    pointer-events: none;
+    animation: fadeInTooltip 0.3s ease-out;
+    border: 1px solid var(--border-color);
+}
+
+@keyframes fadeInTooltip {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-tooltip .tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.timeline-tooltip .tooltip-header h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.timeline-tooltip .tooltip-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+
+.timeline-tooltip .tooltip-content {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.timeline-tooltip .tooltip-content p {
+    margin: 0 0 0.5rem 0;
+}
+
+.timeline-tooltip .tooltip-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.timeline-item {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+}
+
 /* Theme View */
 .theme-grid {
     display: grid;
