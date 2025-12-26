@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/year-review",
-      "destination": "/year-review.html"
-    }
-  ],
+        "rewrites": [
+          {
+            "source": "/year-review",
+            "destination": "/year-review.html"
+          },
+          {
+            "source": "/financial-dashboard",
+            "destination": "/financial-dashboard.html"
+          }
+        ],
   "redirects": [
     {
       "source": "/(.*)",
