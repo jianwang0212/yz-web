@@ -1276,6 +1276,306 @@ section {
     gap: 2rem;
 }
 
+/* Year-over-Year Comparison */
+.year-comparison-summary {
+    margin-bottom: 2rem;
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.comparison-table thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.comparison-table th {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.comparison-table td {
+    color: var(--text-primary);
+}
+
+.comparison-table td strong {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.negative-change {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.income-structure-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.structure-year {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.structure-year-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.structure-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.structure-category {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-icon {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.category-name {
+    flex: 1;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.category-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.category-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.detail-name {
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.detail-amount {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.detail-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+}
+
+.year-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border-top: 3px solid var(--primary-color);
+}
+
+.total-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.total-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.comparison-conclusions {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.conclusions-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.conclusions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.conclusion-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.conclusion-badge {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.conclusion-text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.risk-curve-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.risk-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.risk-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.risk-year {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+.risk-year-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.risk-characteristics {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.risk-characteristics li {
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 2rem;
+}
+
+.risk-characteristics li::before {
+    content: "•";
+    position: absolute;
+    left: 0.75rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .income-structure-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .risk-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-table-wrapper {
+        padding: 0.5rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
 .financial-summary-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
