@@ -506,7 +506,132 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+        }
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Financial Charts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Expense Pie Chart
+            const expenseCtx = document.getElementById('expensePieChart');
+            if (expenseCtx) {
+                new Chart(expenseCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['资产性支出', '消费性支出'],
+                        datasets: [{
+                            data: [150, 90],
+                            backgroundColor: [
+                                '#10b981',
+                                '#f59e0b'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.parsed + ' 万';
+                                        const percentage = ((context.parsed / 240) * 100).toFixed(1);
+                                        label += ' (' + percentage + '%)';
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Income Pie Chart
+            const incomeCtx = document.getElementById('incomePieChart');
+            if (incomeCtx) {
+                new Chart(incomeCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['主动/项目收入', '投资收入'],
+                        datasets: [{
+                            data: [135, 57],
+                            backgroundColor: [
+                                '#6366f1',
+                                '#8b5cf6'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.parsed + ' 万';
+                                        const percentage = ((context.parsed / 192) * 100).toFixed(1);
+                                        label += ' (' + percentage + '%)';
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
     <script src="year-review-data.js"></script>
 </body>
 </html>
