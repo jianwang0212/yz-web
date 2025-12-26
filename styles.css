@@ -1287,6 +1287,21 @@ section {
     background: var(--bg-secondary);
     border-radius: 12px;
     border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.clickable-work-item {
+    cursor: pointer;
+}
+
+.clickable-work-item:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-lg);
 }
 
 .work-item h4 {
@@ -2432,6 +2447,18 @@ section {
     overflow-y: auto;
     z-index: 10001;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content.modal-large {
+    max-width: 95vw;
+    width: 1200px;
+}
+
+.chart-modal-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin: 1.5rem 0;
 }
 
 .modal-close {
