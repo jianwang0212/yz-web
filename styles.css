@@ -1163,6 +1163,19 @@ section {
     overflow: hidden;
 }
 
+.clickable-distribution-bar {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.clickable-distribution-bar:hover {
+    opacity: 0.85;
+}
+
+.clickable-distribution-bar .distribution-bar {
+    cursor: pointer;
+}
+
 .distribution-bar {
     height: 100%;
     border-radius: 8px;
