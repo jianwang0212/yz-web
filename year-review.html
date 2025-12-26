@@ -751,6 +751,22 @@
         </div>
     </div>
 
+    <!-- Docking Tech Modal -->
+    <div id="docking-tech-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">入坞科技 财务数据</h3>
+            <div class="modal-body">
+                <p class="modal-description">入坞科技在时间线上的收入、支出和股东分红情况。图表显示了累积收入和分红强度的变化趋势。</p>
+                <div class="chart-modal-container">
+                    <canvas id="dockingTechChart"></canvas>
+                </div>
+                <p class="modal-note">注：数据来源自财务记录，包含收入、支出和股东分红等详细信息。</p>
+            </div>
+        </div>
+    </div>
+
     <!-- GPA Modal -->
     <div id="gpa-modal" class="modal">
         <div class="modal-overlay"></div>
@@ -808,8 +824,8 @@
 
         // Modal functionality
         document.addEventListener('DOMContentLoaded', () => {
-            // Get all clickable distribution bars and achievement items
-            const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement');
+            // Get all clickable distribution bars, achievement items, and work items
+            const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item');
             
             clickableElements.forEach(element => {
                 element.addEventListener('click', function() {
