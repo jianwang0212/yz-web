@@ -2170,13 +2170,13 @@ section {
 .ai-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
 .ai-stat-item {
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem;
     background: var(--bg-secondary);
     border-radius: 12px;
 }
@@ -2190,7 +2190,102 @@ section {
 
 .stat-label {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+}
+
+/* AI Conversation Statistics */
+.ai-conversation-stats {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+}
+
+.ai-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.conversation-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.conversation-stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+}
+
+.conversation-stat-card .stat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.conversation-stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.conversation-stat-card .stat-label-small {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* AI Peak Usage Info */
+.ai-peak-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    border-radius: 12px;
+}
+
+.peak-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+}
+
+.peak-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.peak-content {
+    flex: 1;
+}
+
+.peak-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.peak-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* AI Tools Section */
+.ai-tools-section {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-color);
 }
 
 .ai-tools {
@@ -2207,6 +2302,16 @@ section {
     color: var(--primary-color);
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .conversation-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ai-peak-info {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Final Message */
