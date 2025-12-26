@@ -65,44 +65,49 @@ function parseCSVLine(line) {
 function processDockingTechData(data) {
     if (!data || data.length === 0) return null;
     
+    // Sort data by date
+    const sortedData = [...data].sort((a, b) => {
+        const dateA = new Date(a.date || a['\ufeffdate'] || '');
+        const dateB = new Date(b.date || b['\ufeffdate'] || '');
+        return dateA - dateB;
+    });
+    
     const dates = [];
-    const income = [];
-    const expense = [];
-    const dividend = [];
+    const income = []; // 所有收入（分红+工资，金额为正）
+    const expense = []; // 支出（入股等，金额为负的转为正数）
+    const dividend = []; // 分红（包含项目收入分红、分红、分红/工资）
     const cumulativeIncome = [];
     let cumulative = 0;
     
-    // Identify column names (flexible matching)
-    let dateCol = null;
-    let incomeCol = null;
-    let expenseCol = null;
-    let dividendCol = null;
-    
-    const headers = Object.keys(data[0]);
-    headers.forEach(header => {
-        const headerLower = header.toLowerCase();
-        if (!dateCol && (headerLower.includes('date') || header.includes('日期') || header.includes('时间'))) {
-            dateCol = header;
-        }
-        if (!incomeCol && (headerLower.includes('income') || header.includes('收入') || headerLower.includes('revenue'))) {
-            incomeCol = header;
-        }
-        if (!expenseCol && (headerLower.includes('expense') || header.includes('支出') || headerLower.includes('cost'))) {
-            expenseCol = header;
-        }
-        if (!dividendCol && (headerLower.includes('dividend') || header.includes('分红') || header.includes('分红'))) {
-            dividendCol = header;
-        }
-    });
-    
-    // Process each row
-    data.forEach(row => {
-        if (dateCol && row[dateCol]) {
-            dates.push(row[dateCol]);
+    sortedData.forEach(row => {
+        const dateKey = row.date || row['\ufeffdate'] || '';
+        const amount = parseFloat(row.amount || '0');
+        const type = row.type || '';
+        
+        if (dateKey && !isNaN(amount)) {
+            dates.push(dateKey);
             
-            const inc = parseFloat(row[incomeCol] || '0') || 0;
-            const exp = parseFloat(row[expenseCol] || '0') || 0;
-            const div = parseFloat(row[dividendCol] || '0') || 0;
+            // 分类处理
+            let inc = 0;
+            let exp = 0;
+            let div = 0;
+            
+            if (amount > 0) {
+                // 正数：收入或分红
+                if (type.includes('分红') || type.includes('工资') || type === '分红/工资') {
+                    inc = amount / 10000; // 转换为万
+                    
+                    // 分红
+                    if (type.includes('分红') || type === '分红/工资') {
+                        div = amount / 10000;
+                    }
+                } else {
+                    inc = amount / 10000;
+                }
+            } else if (amount < 0) {
+                // 负数：支出（如入股）
+                exp = Math.abs(amount) / 10000; // 转为正数并转换为万
+            }
             
             income.push(inc);
             expense.push(exp);
