@@ -751,6 +751,32 @@
         </div>
     </div>
 
+    <!-- Weekly Review Modal -->
+    <div id="weekly-review-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">每周回顾记录</h3>
+            <div class="modal-body">
+                <p class="modal-description">我每周会花五分钟时间回顾这一周的工作，检查：</p>
+                <ul class="modal-list" style="margin: 1rem 0; padding-left: 2rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li>这周做的事情是否符合我的阅读目标？</li>
+                    <li>我的阅读目标是否符合我的年度目标？</li>
+                    <li>我在各个项目上的进展如何？</li>
+                    <li>给出简短但精确的评论</li>
+                </ul>
+                <p class="modal-description" style="margin-top: 1rem;">通过查看最近三个月的每周回顾，我可以判断：</p>
+                <ul class="modal-list" style="margin: 1rem 0; padding-left: 2rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li>我的状态如何</li>
+                    <li>我的情绪如何</li>
+                    <li>我是否能够接受更有挑战性的任务</li>
+                </ul>
+                <img src="images/weekly-record-example.png" alt="每周回顾记录示例" class="modal-image" />
+                <p class="modal-note">注：这些记录帮助我持续跟踪自己的成长轨迹，及时调整方向和策略。</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Docking Tech Modal -->
     <div id="docking-tech-modal" class="modal">
         <div class="modal-overlay"></div>
@@ -824,8 +850,8 @@
 
         // Modal functionality
         document.addEventListener('DOMContentLoaded', () => {
-            // Get all clickable distribution bars, achievement items, and work items
-            const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item');
+            // Get all clickable distribution bars, achievement items, work items, and timeline links
+            const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item, .clickable-timeline-link');
             
             clickableElements.forEach(element => {
                 element.addEventListener('click', function() {

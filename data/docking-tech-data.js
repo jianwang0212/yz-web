@@ -10,6 +10,11 @@ const dockingTechData = {
 async function loadDockingTechData() {
     try {
         const response = await fetch('financial-data/DockingTech_cashflow.csv');
+        if (!response.ok) {
+            console.error('Failed to fetch CSV file:', response.status);
+            return null;
+        }
+        
         const csvText = await response.text();
         const lines = csvText.split('\n').filter(line => line.trim());
         
@@ -18,8 +23,9 @@ async function loadDockingTechData() {
             return null;
         }
         
-        // Parse CSV
-        const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+        // Parse CSV - handle BOM if present
+        const firstLine = lines[0];
+        const headers = parseCSVLine(firstLine).map(h => h.trim().replace(/"/g, '').replace(/^\ufeff/, ''));
         const data = [];
         
         for (let i = 1; i < lines.length; i++) {
