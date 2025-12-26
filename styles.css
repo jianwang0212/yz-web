@@ -1147,11 +1147,21 @@ section {
 }
 
 .distribution-label {
-    min-width: 100px;
+    min-width: 140px;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.distribution-hours {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
 }
 
 .distribution-bar-container {
