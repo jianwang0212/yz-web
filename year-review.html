@@ -990,6 +990,154 @@
             }
         });
     </script>
+    <script src="data/docking-tech-data.js"></script>
+    <script>
+        // Docking Tech Chart
+        document.addEventListener('DOMContentLoaded', async () => {
+            const modal = document.getElementById('docking-tech-modal');
+            const chartCanvas = document.getElementById('dockingTechChart');
+            let chart = null;
+            
+            // Load data when modal is opened
+            if (modal && chartCanvas) {
+                const observer = new MutationObserver(async (mutations) => {
+                    if (modal.classList.contains('active') && !chart) {
+                        const processedData = await loadDockingTechData();
+                        
+                        if (processedData && processedData.dates.length > 0) {
+                            chart = new Chart(chartCanvas, {
+                                type: 'line',
+                                data: {
+                                    labels: processedData.dates,
+                                    datasets: [
+                                        {
+                                            label: '累积收入',
+                                            data: processedData.cumulativeIncome,
+                                            borderColor: '#2563eb',
+                                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                                            fill: true,
+                                            yAxisID: 'y',
+                                            tension: 0.4,
+                                            borderWidth: 3
+                                        },
+                                        {
+                                            label: '收入',
+                                            data: processedData.income,
+                                            borderColor: '#10b981',
+                                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                                            fill: false,
+                                            yAxisID: 'y',
+                                            tension: 0.4,
+                                            borderWidth: 2
+                                        },
+                                        {
+                                            label: '支出',
+                                            data: processedData.expense,
+                                            borderColor: '#ef4444',
+                                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                            fill: false,
+                                            yAxisID: 'y',
+                                            tension: 0.4,
+                                            borderWidth: 2
+                                        },
+                                        {
+                                            label: '股东分红',
+                                            data: processedData.dividend,
+                                            borderColor: '#f59e0b',
+                                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                                            fill: false,
+                                            yAxisID: 'y',
+                                            tension: 0.4,
+                                            borderWidth: 2,
+                                            pointRadius: 4
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    interaction: {
+                                        mode: 'index',
+                                        intersect: false,
+                                    },
+                                    plugins: {
+                                        legend: {
+                                            position: 'top',
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: '入坞科技财务时间序列',
+                                            font: {
+                                                size: 18
+                                            }
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    let label = context.dataset.label || '';
+                                                    if (label) {
+                                                        label += ': ';
+                                                    }
+                                                    label += context.parsed.y.toLocaleString('zh-CN', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2
+                                                    });
+                                                    label += ' 万';
+                                                    return label;
+                                                }
+                                            }
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            display: true,
+                                            title: {
+                                                display: true,
+                                                text: '时间'
+                                            }
+                                        },
+                                        y: {
+                                            type: 'linear',
+                                            display: true,
+                                            position: 'left',
+                                            title: {
+                                                display: true,
+                                                text: '金额 (万)'
+                                            },
+                                            ticks: {
+                                                callback: function(value) {
+                                                    return value.toLocaleString('zh-CN', {
+                                                        minimumFractionDigits: 0,
+                                                        maximumFractionDigits: 2
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+                
+                observer.observe(modal, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+                
+                // Clean up chart when modal closes
+                const closeBtns = modal.querySelectorAll('.modal-close, .modal-overlay');
+                closeBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (chart) {
+                            chart.destroy();
+                            chart = null;
+                        }
+                    });
+                });
+            }
+        });
+    </script>
     <script src="year-review-data.js"></script>
 </body>
 </html>
