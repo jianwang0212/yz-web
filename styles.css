@@ -1243,6 +1243,15 @@ section {
     box-shadow: var(--shadow-md);
 }
 
+.clickable-achievement {
+    cursor: pointer;
+}
+
+.clickable-achievement:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
 .achievement-number {
     font-size: 2.5rem;
     font-weight: 700;
@@ -2458,6 +2467,24 @@ section {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
+}
+
+.modal-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-images-grid .modal-image {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .modal-images-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
 .modal-note {
