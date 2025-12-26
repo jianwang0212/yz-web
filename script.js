@@ -44,10 +44,11 @@ if (navbar) {
     });
 }
 
-// Timeline/Theme View Toggle
+// Timeline/Theme/Articles View Toggle
 const toggleButtons = document.querySelectorAll('.toggle-btn');
 const timelineView = document.getElementById('timeline-view');
 const themeView = document.getElementById('theme-view');
+const articlesView = document.getElementById('articles-view');
 
 if (toggleButtons.length > 0) {
     toggleButtons.forEach(btn => {
@@ -59,12 +60,21 @@ if (toggleButtons.length > 0) {
             btn.classList.add('active');
             
             // Show/hide views
+            [timelineView, themeView, articlesView].forEach(v => {
+                if (v) v.classList.remove('active');
+            });
+            
             if (view === 'timeline') {
-                timelineView.classList.add('active');
-                themeView.classList.remove('active');
-            } else {
-                timelineView.classList.remove('active');
-                themeView.classList.add('active');
+                if (timelineView) timelineView.classList.add('active');
+            } else if (view === 'theme') {
+                if (themeView) themeView.classList.add('active');
+            } else if (view === 'articles') {
+                if (articlesView) articlesView.classList.add('active');
+                // Populate articles if not already done
+                if (cleanedContentData && cleanedContentData.articles && 
+                    document.getElementById('articles-list').children.length === 0) {
+                    populateArticles();
+                }
             }
         });
     });
@@ -448,8 +458,21 @@ function getDownloadIcon(type) {
 
 // Load content data
 let contentData = null;
+let cleanedContentData = null;
 
 async function loadContentData() {
+    try {
+        // Try to load cleaned data first
+        const cleanedResponse = await fetch('data/cleaned_content.json');
+        if (cleanedResponse.ok) {
+            cleanedContentData = await cleanedResponse.json();
+            populateContent();
+            return;
+        }
+    } catch (error) {
+        console.log('Cleaned data not available, trying original data...');
+    }
+    
     try {
         const response = await fetch('data/content.json');
         contentData = await response.json();
@@ -460,12 +483,14 @@ async function loadContentData() {
 }
 
 function populateContent() {
-    if (!contentData) return;
+    // Use cleaned data if available, otherwise use original data
+    const dataToUse = cleanedContentData || contentData;
+    if (!dataToUse) return;
     
     // Populate highlights
     populateHighlights();
     
-    // Populate timeline
+    // Populate timeline (use cleaned timeline if available)
     populateTimeline();
     
     // Populate financial data
@@ -476,6 +501,11 @@ function populateContent() {
     
     // Populate projects
     populateProjects();
+    
+    // Populate articles
+    if (cleanedContentData && cleanedContentData.articles) {
+        populateArticles();
+    }
 }
 
 function populateHighlights() {
@@ -485,35 +515,47 @@ function populateHighlights() {
 
 function populateTimeline() {
     const timelineContainer = document.querySelector('#timeline-view .timeline');
-    if (!timelineContainer || !contentData.timeline) return;
+    if (!timelineContainer) return;
     
-    // Clear existing timeline items (keep the structure)
+    // Use cleaned timeline if available
+    const timelineData = cleanedContentData?.timeline || contentData?.timeline;
+    if (!timelineData) return;
+    
+    // Clear existing timeline items
     const existingItems = timelineContainer.querySelectorAll('.timeline-item');
     existingItems.forEach(item => item.remove());
     
-    // Sort years
-    const years = Object.keys(contentData.timeline).sort((a, b) => parseInt(b) - parseInt(a));
+    // Sort years (descending order)
+    const years = Object.keys(timelineData).sort((a, b) => parseInt(b) - parseInt(a));
     
     years.forEach(year => {
-        const events = contentData.timeline[year];
-        if (events.length === 0) return;
+        const events = timelineData[year];
+        if (!events || events.length === 0) return;
         
-        // Group events by year
-        const yearEvents = events.slice(0, 10); // Limit to 10 events per year
-        
-        yearEvents.forEach((event, index) => {
+        events.forEach((event) => {
             const timelineItem = document.createElement('div');
             timelineItem.className = 'timeline-item';
             timelineItem.setAttribute('data-event', JSON.stringify(event));
             
             const date = new Date(event.date);
-            const dateStr = date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+            const dateStr = date.toLocaleDateString('zh-CN', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Clean description (remove HTML tags if any)
+            let description = event.description || event.title;
+            description = description.replace(/<[^>]+>/g, '').trim();
+            if (description.length > 150) {
+                description = description.substring(0, 150) + '...';
+            }
             
             timelineItem.innerHTML = `
                 <div class="timeline-year">${dateStr}</div>
                 <div class="timeline-content">
                     <h3>${event.title}</h3>
-                    <p>${event.description || event.title}</p>
+                    <p>${description}</p>
                 </div>
             `;
             
@@ -529,6 +571,81 @@ function populateTimeline() {
             timelineContainer.appendChild(timelineItem);
         });
     });
+}
+
+function populateArticles() {
+    if (!cleanedContentData || !cleanedContentData.articles) return;
+    
+    const articlesList = document.getElementById('articles-list');
+    const articleDetail = document.getElementById('article-detail');
+    
+    if (!articlesList || !articleDetail) return;
+    
+    // Clear existing content
+    articlesList.innerHTML = '';
+    
+    // Create article list items
+    cleanedContentData.articles.forEach((article, index) => {
+        const articleItem = document.createElement('div');
+        articleItem.className = 'article-item';
+        articleItem.setAttribute('data-index', index);
+        
+        const date = new Date(article.date);
+        const dateStr = date.toLocaleDateString('zh-CN', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        
+        articleItem.innerHTML = `
+            <div class="article-item-header">
+                <h4>${article.title}</h4>
+                <span class="article-date">${dateStr}</span>
+            </div>
+            <div class="article-preview">${article.preview}</div>
+        `;
+        
+        articleItem.addEventListener('click', () => {
+            showArticleDetail(article, index);
+            // Update active state
+            articlesList.querySelectorAll('.article-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            articleItem.classList.add('active');
+        });
+        
+        articlesList.appendChild(articleItem);
+    });
+}
+
+function showArticleDetail(article, index) {
+    const articleDetail = document.getElementById('article-detail');
+    if (!articleDetail) return;
+    
+    const date = new Date(article.date);
+    const dateStr = date.toLocaleDateString('zh-CN', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    
+    // Format content (preserve line breaks)
+    const formattedContent = article.content
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+    
+    articleDetail.innerHTML = `
+        <div class="article-detail-header">
+            <h2>${article.title}</h2>
+            <span class="article-detail-date">${dateStr}</span>
+        </div>
+        <div class="article-detail-content">
+            <p>${formattedContent}</p>
+        </div>
+    `;
+    
+    // Scroll to top of detail
+    articleDetail.scrollTop = 0;
 }
 
 let tooltipElement = null;
