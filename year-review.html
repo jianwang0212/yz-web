@@ -545,7 +545,10 @@
                 <div class="review-card category-card timeline-card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <h3>📅 月度大事件</h3>
-                        <div class="timeline-actions" style="display: flex; gap: 1rem;">
+                        <div class="timeline-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="clickable-timeline-link" data-modal-target="daily-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                📝 查看每日计划
+                            </button>
                             <button class="clickable-timeline-link" data-modal-target="monthly-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
                                 📋 查看月度计划
                             </button>
@@ -755,6 +758,29 @@
                 <p class="modal-description">以下是我每日日历时间安排的示例，通过统计所有音乐相关活动（钢琴练习、作曲、混音等）的时间，计算出今年在音乐上投入的时间占比为44%。</p>
                 <img src="images/music-calendar-example.png" alt="音乐时间统计日历" class="modal-image" />
                 <p class="modal-note">注：每一天都有详细的日历安排，记录当天的时间分配情况。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Plan Modal -->
+    <div id="daily-plan-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">每日计划</h3>
+            <div class="modal-body">
+                <p class="modal-description">我每天晚上都会写第二天需要做的事情，这是我最小时间刻度、最精确的计划表。</p>
+                <p class="modal-description" style="margin-top: 1rem;">通过每日计划，我可以：</p>
+                <ul class="modal-list" style="margin: 1rem 0; padding-left: 2rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li>第二天不需要花很长时间去决策应该做什么</li>
+                    <li>不需要思考等会儿要干什么</li>
+                    <li>只要按照前一天给自己的安排执行即可</li>
+                    <li>明确知道明天需要完成的任务</li>
+                    <li>避免为明天而焦虑，安心入睡</li>
+                </ul>
+                <p class="modal-description" style="margin-top: 1rem; font-style: italic; color: var(--text-secondary);">一般晚上总是需要写完这个计划表，我才能睡觉，因为这样我才能知道我明天需要干什么，我才不会为明天而焦虑。</p>
+                <img src="images/daily-gtd.png" alt="每日计划示例" class="modal-image" />
+                <p class="modal-note">注：每日计划是最小时间尺度的精确规划，帮助我将月度目标分解为具体可执行的每日任务。</p>
             </div>
         </div>
     </div>
