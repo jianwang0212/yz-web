@@ -44,3 +44,19 @@ build/
 .pip/
 
 .vercel
+
+# Data files (large content files - should be loaded from external source or deployed separately)
+data/*.json
+# Keep data directory structure but ignore content
+!data/.gitkeep
+
+# Large media files
+images/*
+!images/.gitkeep
+!images/README.md
+
+# Music and media files
+music/*
+!music/.gitkeep
+works/*
+!works/.gitkeep
