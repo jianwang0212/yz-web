@@ -545,8 +545,13 @@ function populateTimeline() {
             });
             
             // Clean description (remove HTML tags if any)
-            let description = event.description || event.title;
-            description = description.replace(/<[^>]+>/g, '').trim();
+            let description = event.description || event.title || '';
+            // Remove HTML tags and decode HTML entities
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = description;
+            description = tempDiv.textContent || tempDiv.innerText || '';
+            description = description.trim();
+            // Limit length for timeline view
             if (description.length > 150) {
                 description = description.substring(0, 150) + '...';
             }
@@ -656,16 +661,26 @@ function showTimelineTooltip(e, event) {
         tooltipElement.remove();
     }
     
+    // Clean description text
+    let description = event.description || '详细信息';
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = description;
+    description = tempDiv.textContent || tempDiv.innerText || '详细信息';
+    // Limit tooltip description length
+    if (description.length > 300) {
+        description = description.substring(0, 300) + '...';
+    }
+    
     // Create tooltip
     tooltipElement = document.createElement('div');
     tooltipElement.className = 'timeline-tooltip';
     tooltipElement.innerHTML = `
         <div class="tooltip-header">
-            <h4>${event.title}</h4>
+            <h4>${event.title || '事件'}</h4>
             <span class="tooltip-date">${new Date(event.date).toLocaleDateString('zh-CN')}</span>
         </div>
         <div class="tooltip-content">
-            <p>${event.description || '详细信息'}</p>
+            <p>${description}</p>
             ${event.type ? `<span class="tooltip-type">${event.type}</span>` : ''}
         </div>
     `;
