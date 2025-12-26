@@ -1133,7 +1133,9 @@
                                                     if (label) {
                                                         label += ': ';
                                                     }
-                                                    label += context.parsed.y.toLocaleString('zh-CN', {
+                                                    // 确保数值四舍五入到1位小数
+                                                    const roundedValue = Math.round(context.parsed.y * 10) / 10;
+                                                    label += roundedValue.toLocaleString('zh-CN', {
                                                         minimumFractionDigits: 1,
                                                         maximumFractionDigits: 1
                                                     });
@@ -1161,7 +1163,9 @@
                                             },
                                             ticks: {
                                                 callback: function(value) {
-                                                    return value.toLocaleString('zh-CN', {
+                                                    // 确保数值四舍五入到1位小数
+                                                    const roundedValue = Math.round(value * 10) / 10;
+                                                    return roundedValue.toLocaleString('zh-CN', {
                                                         minimumFractionDigits: 1,
                                                         maximumFractionDigits: 1
                                                     });

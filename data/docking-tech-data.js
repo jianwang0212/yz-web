@@ -115,12 +115,13 @@ function processDockingTechData(data) {
                 exp = Math.abs(amount) / 10000; // 转为正数并转换为万
             }
             
-            income.push(inc);
-            expense.push(exp);
-            dividend.push(div);
+            // 四舍五入到1位小数
+            income.push(Math.round(inc * 10) / 10);
+            expense.push(Math.round(exp * 10) / 10);
+            dividend.push(Math.round(div * 10) / 10);
             
             cumulative += inc;
-            cumulativeIncome.push(cumulative);
+            cumulativeIncome.push(Math.round(cumulative * 10) / 10);
         }
     });
     
