@@ -151,23 +151,61 @@
                         <h3>💰 财务概览</h3>
                     </div>
                     
-                    <!-- Overall Summary -->
-                    <div class="financial-overview-summary">
-                        <div class="summary-item">
-                            <div class="summary-label">总收入</div>
-                            <div class="summary-value positive">192 万</div>
+                    <!-- Overall Summary with Charts -->
+                    <div class="financial-charts-container">
+                        <div class="financial-summary-cards">
+                            <div class="summary-card-large income-card">
+                                <div class="summary-label">总收入</div>
+                                <div class="summary-value-large positive">192 万</div>
+                            </div>
+                            <div class="summary-card-large expense-card">
+                                <div class="summary-label">总支出</div>
+                                <div class="summary-value-large negative">240 万</div>
+                            </div>
                         </div>
-                        <div class="summary-item">
-                            <div class="summary-label">总支出</div>
-                            <div class="summary-value negative">240 万</div>
+
+                        <!-- Expense Breakdown Chart -->
+                        <div class="chart-section">
+                            <h4 class="chart-title">支出结构分析</h4>
+                            <div class="chart-container-wrapper">
+                                <div class="chart-wrapper">
+                                    <canvas id="expensePieChart"></canvas>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background: #10b981;"></span>
+                                        <span class="legend-label">资产性支出</span>
+                                        <span class="legend-value">150 万 (62.5%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background: #f59e0b;"></span>
+                                        <span class="legend-label">消费性支出</span>
+                                        <span class="legend-value">90 万 (37.5%)</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="summary-item">
-                            <div class="summary-label">资产性支出</div>
-                            <div class="summary-value">150 万</div>
-                        </div>
-                        <div class="summary-item">
-                            <div class="summary-label">消费性支出</div>
-                            <div class="summary-value">90 万</div>
+
+                        <!-- Income Breakdown Chart -->
+                        <div class="chart-section">
+                            <h4 class="chart-title">收入结构分析</h4>
+                            <div class="chart-container-wrapper">
+                                <div class="chart-wrapper">
+                                    <canvas id="incomePieChart"></canvas>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background: #6366f1;"></span>
+                                        <span class="legend-label">主动/项目收入</span>
+                                        <span class="legend-value">135 万 (70.3%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background: #8b5cf6;"></span>
+                                        <span class="legend-label">投资收入</span>
+                                        <span class="legend-value">57 万 (29.7%)</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
