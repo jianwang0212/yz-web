@@ -1105,8 +1105,8 @@
                                                         label += ': ';
                                                     }
                                                     label += context.parsed.y.toLocaleString('zh-CN', {
-                                                        minimumFractionDigits: 2,
-                                                        maximumFractionDigits: 2
+                                                        minimumFractionDigits: 1,
+                                                        maximumFractionDigits: 1
                                                     });
                                                     label += ' 万';
                                                     return label;
@@ -1133,8 +1133,8 @@
                                             ticks: {
                                                 callback: function(value) {
                                                     return value.toLocaleString('zh-CN', {
-                                                        minimumFractionDigits: 0,
-                                                        maximumFractionDigits: 2
+                                                        minimumFractionDigits: 1,
+                                                        maximumFractionDigits: 1
                                                     });
                                                 }
                                             }
