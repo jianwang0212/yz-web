@@ -1623,6 +1623,18 @@ section {
     margin-bottom: 2rem;
 }
 
+.charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chart-section-inline {
+    display: flex;
+    flex-direction: column;
+}
+
 .chart-title {
     font-size: 1.3rem;
     font-weight: 600;
@@ -1630,6 +1642,7 @@ section {
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
     border-bottom: 2px solid var(--border-color);
+    text-align: center;
 }
 
 .chart-container-wrapper {
@@ -1644,6 +1657,14 @@ section {
     height: 300px;
     max-width: 300px;
     margin: 0 auto;
+}
+
+.chart-wrapper-inline {
+    position: relative;
+    height: 350px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
 }
 
 .chart-legend {
@@ -1686,6 +1707,11 @@ section {
         grid-template-columns: 1fr;
     }
     
+    .charts-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
     .chart-container-wrapper {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1693,6 +1719,10 @@ section {
     
     .chart-wrapper {
         height: 250px;
+    }
+    
+    .chart-wrapper-inline {
+        height: 300px;
     }
     
     .summary-value-large {

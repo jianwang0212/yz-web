@@ -168,46 +168,21 @@
                             </div>
                         </div>
 
-                        <!-- Expense Breakdown Chart -->
-                        <div class="chart-section">
-                            <h4 class="chart-title">支出结构分析</h4>
-                            <div class="chart-container-wrapper">
-                                <div class="chart-wrapper">
+                        <!-- Charts Side by Side -->
+                        <div class="charts-row">
+                            <!-- Expense Breakdown Chart -->
+                            <div class="chart-section-inline">
+                                <h4 class="chart-title">支出结构分析</h4>
+                                <div class="chart-wrapper-inline">
                                     <canvas id="expensePieChart"></canvas>
                                 </div>
-                                <div class="chart-legend">
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #10b981;"></span>
-                                        <span class="legend-label">资产性支出</span>
-                                        <span class="legend-value">150 万 (62.5%)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #f59e0b;"></span>
-                                        <span class="legend-label">消费性支出</span>
-                                        <span class="legend-value">90 万 (37.5%)</span>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
 
-                        <!-- Income Breakdown Chart -->
-                        <div class="chart-section">
-                            <h4 class="chart-title">收入结构分析</h4>
-                            <div class="chart-container-wrapper">
-                                <div class="chart-wrapper">
+                            <!-- Income Breakdown Chart -->
+                            <div class="chart-section-inline">
+                                <h4 class="chart-title">收入结构分析</h4>
+                                <div class="chart-wrapper-inline">
                                     <canvas id="incomePieChart"></canvas>
-                                </div>
-                                <div class="chart-legend">
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #6366f1;"></span>
-                                        <span class="legend-label">主动/项目收入</span>
-                                        <span class="legend-value">135 万 (70.3%)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #8b5cf6;"></span>
-                                        <span class="legend-label">投资收入</span>
-                                        <span class="legend-value">57 万 (29.7%)</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -738,6 +713,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script>
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
@@ -800,6 +776,19 @@
                             legend: {
                                 display: false
                             },
+                            datalabels: {
+                                display: true,
+                                color: '#fff',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                formatter: (value, ctx) => {
+                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return percentage + '%';
+                                }
+                            },
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
@@ -815,7 +804,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    plugins: [ChartDataLabels]
                 });
             }
 
@@ -829,8 +819,8 @@
                         datasets: [{
                             data: [135, 57],
                             backgroundColor: [
-                                '#6366f1',
-                                '#8b5cf6'
+                                '#2563eb',
+                                '#f59e0b'
                             ],
                             borderWidth: 2,
                             borderColor: '#fff'
@@ -842,6 +832,19 @@
                         plugins: {
                             legend: {
                                 display: false
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#fff',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                formatter: (value, ctx) => {
+                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return percentage + '%';
+                                }
                             },
                             tooltip: {
                                 callbacks: {
@@ -858,7 +861,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    plugins: [ChartDataLabels]
                 });
             }
         });
