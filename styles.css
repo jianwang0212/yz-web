@@ -1123,6 +1123,27 @@ section {
     font-size: 1.8rem;
 }
 
+.timeline-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.clickable-timeline-link {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.clickable-timeline-link:hover {
+    opacity: 0.7;
+}
+
 .category-percentage {
     font-size: 1rem;
     font-weight: 600;
