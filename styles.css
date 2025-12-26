@@ -1390,26 +1390,53 @@ section {
     border-bottom: none;
 }
 
-/* Relationship Items */
-.relationship-items {
+/* Relationship Structure */
+.relationship-structure {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.relationship-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.relationship-section .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.relationship-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .relationship-item {
     padding: 1.5rem;
     background: var(--bg-secondary);
     border-radius: 12px;
+    border-left: 4px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.relationship-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
 }
 
 .relationship-item.highlight-item {
     background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(219, 39, 119, 0.1));
-    border: 2px solid rgba(236, 72, 153, 0.3);
+    border-left-color: #ec4899;
 }
 
-.relationship-item h4 {
-    font-size: 1.2rem;
+.relationship-item h5 {
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
@@ -1419,6 +1446,46 @@ section {
     color: var(--text-secondary);
     margin: 0;
     line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Relationship Result */
+.relationship-result {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.result-item {
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-left: 4px solid;
+}
+
+.result-item.positive {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+    border-left-color: #10b981;
+    color: #059669;
+}
+
+.result-item.negative {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+    border-left-color: #ef4444;
+    color: #dc2626;
+}
+
+.result-label {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .relationship-structure {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 /* Projects Section */
