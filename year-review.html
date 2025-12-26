@@ -776,11 +776,11 @@
 
         // Modal functionality
         document.addEventListener('DOMContentLoaded', () => {
-            // Get all clickable distribution bars
-            const clickableBars = document.querySelectorAll('.clickable-distribution-bar');
+            // Get all clickable distribution bars and achievement items
+            const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement');
             
-            clickableBars.forEach(bar => {
-                bar.addEventListener('click', function() {
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function() {
                     const modalTarget = this.getAttribute('data-modal-target');
                     const modal = document.getElementById(modalTarget);
                     if (modal) {
