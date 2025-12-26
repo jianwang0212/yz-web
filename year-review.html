@@ -543,8 +543,16 @@
 
                 <!-- Monthly Timeline -->
                 <div class="review-card category-card timeline-card">
-                    <div class="card-header">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <h3>📅 月度大事件</h3>
+                        <div class="timeline-actions" style="display: flex; gap: 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="monthly-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                📋 查看月度计划
+                            </button>
+                            <button class="clickable-timeline-link" data-modal-target="weekly-review-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                📊 查看每周回顾记录
+                            </button>
+                        </div>
                     </div>
                     <div class="monthly-timeline" id="monthly-timeline">
                         <!-- Will be populated by JavaScript -->
