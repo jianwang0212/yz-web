@@ -149,32 +149,186 @@
                     <div class="card-header">
                         <h3>💰 财务概览</h3>
                     </div>
-                    <div class="financial-summary">
-                        <div class="financial-item income">
-                            <h4>收入</h4>
-                            <div class="amount">192w</div>
-                            <div class="breakdown">
-                                <span>游戏公司: 95w</span>
-                                <span>音乐: 15w</span>
-                                <span>私募基金: 13w (工资3w + 分润10w)</span>
-                                <span>入坞: 12w</span>
-                                <span>投资: 57w (家庭基金17w + 个人投资40w)</span>
+                    
+                    <!-- Overall Summary -->
+                    <div class="financial-overview-summary">
+                        <div class="summary-item">
+                            <div class="summary-label">总收入</div>
+                            <div class="summary-value positive">192 万</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">总支出</div>
+                            <div class="summary-value negative">240 万</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">资产性支出</div>
+                            <div class="summary-value">150 万</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">消费性支出</div>
+                            <div class="summary-value">90 万</div>
+                        </div>
+                        <div class="summary-item highlight-item">
+                            <div class="summary-label">净现金流</div>
+                            <div class="summary-value negative">-48 万</div>
+                        </div>
+                    </div>
+
+                    <!-- Income Details -->
+                    <div class="financial-section">
+                        <h4 class="section-title">收入明细</h4>
+                        <div class="financial-details-grid">
+                            <div class="detail-category">
+                                <h5>主动/项目收入</h5>
+                                <div class="detail-total">135 万</div>
+                                <div class="detail-items">
+                                    <div class="detail-item">
+                                        <span class="item-name">游戏公司</span>
+                                        <span class="item-amount">95 万</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="item-name">音乐</span>
+                                        <span class="item-amount">15 万</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="item-name">私募基金</span>
+                                        <span class="item-amount">13 万</span>
+                                        <span class="item-note">(工资3w + 分润10w)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="item-name">入坞科技</span>
+                                        <span class="item-amount">12 万</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail-category">
+                                <h5>投资收入</h5>
+                                <div class="detail-total">57 万</div>
+                                <div class="detail-items">
+                                    <div class="detail-item">
+                                        <span class="item-name">家庭基金</span>
+                                        <span class="item-amount">17 万</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="item-name">个人投资</span>
+                                        <span class="item-amount">40 万</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail-category">
+                                <h5>投资表现</h5>
+                                <div class="detail-total highlight">年化 17%</div>
+                                <p class="detail-note">综合投资回报</p>
                             </div>
                         </div>
-                        <div class="financial-item investment">
-                            <h4>投资表现</h4>
-                            <div class="amount highlight">年化 17%</div>
-                            <p>综合投资回报</p>
+                    </div>
+
+                    <!-- Expense Details -->
+                    <div class="financial-section">
+                        <h4 class="section-title">支出明细</h4>
+                        
+                        <!-- Intimate Relationships (Largest) -->
+                        <div class="expense-category highlight-expense">
+                            <div class="expense-header">
+                                <h5>① 亲密关系 (最大支出项)</h5>
+                                <div class="expense-total">170 万</div>
+                                <div class="expense-percentage">≈ 总支出的 70.8%</div>
+                            </div>
+                            <div class="expense-breakdown">
+                                <div class="expense-item asset-item">
+                                    <div class="expense-item-header">
+                                        <span class="item-name">买房</span>
+                                        <span class="item-amount">150 万</span>
+                                    </div>
+                                    <span class="item-tag asset-tag">资产</span>
+                                </div>
+                                <div class="expense-item">
+                                    <span class="item-name">孝敬基金</span>
+                                    <span class="item-amount">8.4 万</span>
+                                </div>
+                                <div class="expense-item special-item">
+                                    <div class="expense-item-header">
+                                        <span class="item-name">小荷包</span>
+                                        <span class="item-amount">7.5 万</span>
+                                    </div>
+                                    <div class="sub-items">
+                                        <div class="sub-item">
+                                            <span class="sub-name">LV包</span>
+                                            <span class="sub-amount">2 万</span>
+                                        </div>
+                                        <div class="sub-item">
+                                            <span class="sub-name">美国飞机票</span>
+                                            <span class="sub-amount">1.3 万</span>
+                                        </div>
+                                        <div class="sub-item">
+                                            <span class="sub-name">3D 打印机+2个手机</span>
+                                            <span class="sub-amount">2 万</span>
+                                        </div>
+                                        <div class="sub-item">
+                                            <span class="sub-name">三亚旅游</span>
+                                            <span class="sub-amount">1 万</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="expense-item">
+                                    <span class="item-name">租房</span>
+                                    <span class="item-amount">3 万</span>
+                                </div>
+                                <div class="expense-item">
+                                    <span class="item-name">春节红包</span>
+                                    <span class="item-amount">6.2 万</span>
+                                </div>
+                                <div class="expense-item">
+                                    <span class="item-name">哈尔滨旅游</span>
+                                    <span class="item-amount">1.5 万</span>
+                                </div>
+                            </div>
+                            <div class="expense-note">
+                                <strong>性质判断：</strong>买房为资产，其余为情感/家庭/关系维持型消费
+                            </div>
                         </div>
-                        <div class="financial-item expenses">
-                            <h4>主要支出</h4>
-                            <div class="amount">240w</div>
-                            <div class="breakdown">
-                                <span>买房: 150w</span>
-                                <span>亲密关系: 170w</span>
-                                <span>音乐梦想: 40w (学费35w + 设备5w)</span>
-                                <span>生活支出: 30w (住房20w + 美国生活10w)</span>
-                                <span>租房: 3w</span>
+
+                        <!-- Music Dream (Second) -->
+                        <div class="expense-category">
+                            <div class="expense-header">
+                                <h5>② 音乐梦想 (第二大支出)</h5>
+                                <div class="expense-total">40 万</div>
+                                <div class="expense-percentage">≈ 总支出的 16.7%</div>
+                            </div>
+                            <div class="expense-breakdown">
+                                <div class="expense-item">
+                                    <span class="item-name">学费</span>
+                                    <span class="item-amount">35 万</span>
+                                </div>
+                                <div class="expense-item">
+                                    <span class="item-name">设备/软件</span>
+                                    <span class="item-amount">5 万</span>
+                                </div>
+                            </div>
+                            <div class="expense-note">
+                                <strong>性质判断：</strong>人力资本投资
+                            </div>
+                        </div>
+
+                        <!-- Living Expenses (Third) -->
+                        <div class="expense-category">
+                            <div class="expense-header">
+                                <h5>③ 生活支出 (第三大支出)</h5>
+                                <div class="expense-total">30 万</div>
+                                <div class="expense-percentage">≈ 总支出的 12.5%</div>
+                            </div>
+                            <div class="expense-breakdown">
+                                <div class="expense-item">
+                                    <span class="item-name">住房</span>
+                                    <span class="item-amount">20 万</span>
+                                </div>
+                                <div class="expense-item">
+                                    <span class="item-name">美国生活</span>
+                                    <span class="item-amount">10 万</span>
+                                </div>
+                            </div>
+                            <div class="expense-note">
+                                <strong>性质判断：</strong>维持型刚性支出
                             </div>
                         </div>
                     </div>
