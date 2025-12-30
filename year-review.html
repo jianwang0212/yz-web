@@ -795,6 +795,102 @@
         </div>
     </section>
 
+    <!-- Interactive Feedback Section -->
+    <section id="feedback" class="feedback-section" style="padding: 80px 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="review-card" style="max-width: 800px; margin: 0 auto;">
+                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; text-align: center;">给我一点你的 2025</h3>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;">如果你愿意，也很期待了解你过去一年的轨迹与感受。</p>
+                
+                <form id="year-review-form" class="feedback-form">
+                    <!-- 基本信息 -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">1️⃣ 基本信息</h4>
+                        <div class="form-group">
+                            <label for="name">姓名 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">微信 / 其他备注</label>
+                            <input type="text" id="contact" name="contact">
+                        </div>
+                    </div>
+
+                    <!-- 回顾 2025 -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">2️⃣ 回顾 2025</h4>
+                        <div class="form-group">
+                            <label for="impressive-event">你在过去一年里 <strong>最印象深刻的一件事</strong> 是什么？</label>
+                            <textarea id="impressive-event" name="impressive-event" rows="4" placeholder="请分享你最印象深刻的一件事..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="interesting-people">有没有 <strong>遇到有趣的人 / 发生新鲜的事情</strong>？</label>
+                            <textarea id="interesting-people" name="interesting-people" rows="4" placeholder="请分享你遇到的有趣的人或新鲜事..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 年度关键词 -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">3️⃣ 你的 2025 年度关键词</h4>
+                        <div class="form-group">
+                            <label for="keywords">请写下 1–5 个关键词（如：转型 / 学习 / 疲惫 / 勇气 / 重启）</label>
+                            <input type="text" id="keywords" name="keywords" placeholder="用 / 分隔多个关键词">
+                        </div>
+                        <div class="form-group">
+                            <label for="keyword-importance">哪个关键词对你来说最重要？为什么？（可选）</label>
+                            <textarea id="keyword-importance" name="keyword-importance" rows="3" placeholder="请说明最重要的关键词及其原因..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 时间与选择 -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">4️⃣ 时间与选择</h4>
+                        <div class="form-group">
+                            <label>2025 年你 <strong>花时间最多的三件事</strong> 是什么？</label>
+                            <input type="text" name="time-spent-1" placeholder="①" style="margin-bottom: 0.5rem;">
+                            <input type="text" name="time-spent-2" placeholder="②" style="margin-bottom: 0.5rem;">
+                            <input type="text" name="time-spent-3" placeholder="③">
+                        </div>
+                        <div class="form-group">
+                            <label>2025 年你 <strong>最满意的三笔消费 / 投入</strong> 是什么？</label>
+                            <input type="text" name="satisfaction-1" placeholder="①" style="margin-bottom: 0.5rem;">
+                            <input type="text" name="satisfaction-2" placeholder="②" style="margin-bottom: 0.5rem;">
+                            <input type="text" name="satisfaction-3" placeholder="③">
+                        </div>
+                    </div>
+
+                    <!-- 向未来 -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">5️⃣ 向未来</h4>
+                        <div class="form-group">
+                            <label for="future-try">如果展望 2026，你现在最想尝试的一件事是？（可选）</label>
+                            <textarea id="future-try" name="future-try" rows="3" placeholder="请分享你最想尝试的事情..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="collaboration">有没有什么 <strong>我们未来可以一起做的事情</strong>？（可选）</label>
+                            <textarea id="collaboration" name="collaboration" rows="3" placeholder="请分享你的想法..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="submit-btn">提交 · 发送给银子</button>
+                    </div>
+                </form>
+
+                <div id="form-success" class="form-success" style="display: none;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; color: var(--text-primary);">
+                        谢谢你的分享，我会认真阅读。<br>
+                        也欢迎你随时来和我聊聊。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1428,6 +1524,73 @@
         });
     </script>
     <script src="year-review-data.js"></script>
+    
+    <!-- Feedback Form Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('year-review-form');
+            const successMessage = document.getElementById('form-success');
+            const submitBtn = form.querySelector('.submit-btn');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // 禁用提交按钮
+                submitBtn.disabled = true;
+                submitBtn.textContent = '提交中...';
+
+                // 收集表单数据
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    contact: document.getElementById('contact').value.trim(),
+                    'impressive-event': document.getElementById('impressive-event').value.trim(),
+                    'interesting-people': document.getElementById('interesting-people').value.trim(),
+                    keywords: document.getElementById('keywords').value.trim(),
+                    'keyword-importance': document.getElementById('keyword-importance').value.trim(),
+                    'time-spent-1': form.querySelector('[name="time-spent-1"]').value.trim(),
+                    'time-spent-2': form.querySelector('[name="time-spent-2"]').value.trim(),
+                    'time-spent-3': form.querySelector('[name="time-spent-3"]').value.trim(),
+                    'satisfaction-1': form.querySelector('[name="satisfaction-1"]').value.trim(),
+                    'satisfaction-2': form.querySelector('[name="satisfaction-2"]').value.trim(),
+                    'satisfaction-3': form.querySelector('[name="satisfaction-3"]').value.trim(),
+                    'future-try': document.getElementById('future-try').value.trim(),
+                    collaboration: document.getElementById('collaboration').value.trim()
+                };
+
+                try {
+                    const response = await fetch('/api/submit-feedback', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        // 显示成功消息
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        
+                        // 滚动到成功消息
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        // 显示错误消息
+                        alert(result.error || '提交失败，请稍后重试');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = '提交 · 发送给银子';
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('网络错误，请检查网络连接后重试');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '提交 · 发送给银子';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 
