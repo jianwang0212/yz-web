@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zi Yin (银子) - 兴趣爱好">
+    <title>兴趣爱好 - Zi Yin (银子)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Zi Yin</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="highlights.html" data-i18n="nav.highlights">主要亮点</a></li>
+                <li><a href="resume.html" data-i18n="nav.experience">经历</a></li>
+                <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="financial-dashboard.html">财务仪表盘</a></li>
+                <li><a href="interests.html" data-i18n="nav.interests" style="color: var(--primary-color);">兴趣爱好</a></li>
+                <li><a href="works.html" data-i18n="nav.works">作品</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active">中文</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Interests Section -->
+    <section id="interests" class="interests" style="padding-top: 100px;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="interests.title">兴趣爱好</h2>
+            
+            <div class="interests-grid">
+                <div class="interest-category">
+                    <h3 data-i18n="interests.music.title">音乐</h3>
+                    <ul>
+                        <li data-i18n="interests.music.piano">钢琴：三岁起学习古典钢琴，12岁考取钢琴十级</li>
+                        <li data-i18n="interests.music.guitar">吉他：自高中起练习木吉他弹唱，曾组建/加入多个乐队</li>
+                        <li data-i18n="interests.music.drums">架子鼓：2018年开始自学架子鼓</li>
+                        <li data-i18n="interests.music.other">其他：略懂小提琴，热爱唱歌，擅长词曲创作</li>
+                    </ul>
+                </div>
+                <div class="interest-category">
+                    <h3 data-i18n="interests.sports.title">运动</h3>
+                    <ul>
+                        <li data-i18n="interests.sports.fitness">健身：自2014年开始坚持力量训练（2021年体脂率9%）</li>
+                        <li data-i18n="interests.sports.tennis">网球：2016年起开始练习网球</li>
+                        <li data-i18n="interests.sports.other">其他：游泳、滑冰、滑雪、骑行</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/ziyin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

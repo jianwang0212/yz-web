@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zi Yin (银子) - 音乐与作品">
+    <title>音乐与作品 - Zi Yin (银子)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Zi Yin</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="highlights.html" data-i18n="nav.highlights">主要亮点</a></li>
+                <li><a href="resume.html" data-i18n="nav.experience">经历</a></li>
+                <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="financial-dashboard.html">财务仪表盘</a></li>
+                <li><a href="interests.html" data-i18n="nav.interests">兴趣爱好</a></li>
+                <li><a href="works.html" data-i18n="nav.works" style="color: var(--primary-color);">作品</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active">中文</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Works Section -->
+    <section id="works" class="works" style="padding-top: 100px;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="works.title">作品与社交媒体</h2>
+            
+            <!-- Music Player -->
+            <div class="music-player-section">
+                <h3 data-i18n="works.music.title">音乐作品</h3>
+                <div class="music-player">
+                    <div class="player-controls">
+                        <button class="play-btn" id="play-btn">▶</button>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <span class="time" id="current-time">0:00</span>
+                        <span class="time" id="total-time">0:00</span>
+                    </div>
+                    <div class="playlist" id="playlist">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Works Links -->
+            <div class="works-grid">
+                <a href="https://zhuanlan.zhihu.com/p/411636643" target="_blank" class="work-link">
+                    <div class="work-icon">📝</div>
+                    <h4 data-i18n="works.zhihu.title">知乎专栏</h4>
+                    <p data-i18n="works.zhihu.desc">《为什么当一名交易员会累》</p>
+                </a>
+                <a href="#" target="_blank" class="work-link" id="netease-link">
+                    <div class="work-icon">🎵</div>
+                    <h4 data-i18n="works.netease.title">网易云音乐</h4>
+                    <p data-i18n="works.netease.desc">原创歌曲及电台节目</p>
+                </a>
+                <a href="#" target="_blank" class="work-link" id="youtube-link">
+                    <div class="work-icon">📺</div>
+                    <h4 data-i18n="works.youtube.title">YouTube</h4>
+                    <p data-i18n="works.youtube.desc">个人频道/视频</p>
+                </a>
+                <a href="https://www.linkedin.com/in/ziyin" target="_blank" class="work-link" id="linkedin-link">
+                    <div class="work-icon">💼</div>
+                    <h4 data-i18n="works.linkedin.title">LinkedIn</h4>
+                    <p data-i18n="works.linkedin.desc">职业档案</p>
+                </a>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <h3 data-i18n="works.download.title">作品下载</h3>
+                <div class="download-grid" id="download-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/ziyin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

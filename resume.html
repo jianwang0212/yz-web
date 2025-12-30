@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zi Yin (银子) - 人生经历">
+    <title>经历 - Zi Yin (银子)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Zi Yin</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="highlights.html" data-i18n="nav.highlights">主要亮点</a></li>
+                <li><a href="resume.html" data-i18n="nav.experience" style="color: var(--primary-color);">经历</a></li>
+                <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="financial-dashboard.html">财务仪表盘</a></li>
+                <li><a href="interests.html" data-i18n="nav.interests">兴趣爱好</a></li>
+                <li><a href="works.html" data-i18n="nav.works">作品</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active">中文</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Experience Section with Toggle -->
+    <section id="experience" class="experience" style="padding-top: 100px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="experience.title">人生时间线</h2>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="timeline" data-i18n="experience.timeline">时间线</button>
+                    <button class="toggle-btn" data-view="theme" data-i18n="experience.theme">按主题</button>
+                    <button class="toggle-btn" data-view="articles" data-i18n="experience.articles">文章</button>
+                </div>
+            </div>
+
+            <!-- Timeline View -->
+            <div id="timeline-view" class="view-content active">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2009-2012</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2009.title">高中</h3>
+                            <p data-i18n="timeline.2009.desc">就读于长沙长郡中学（本部理科班）</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012-2016</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2012.title">大学</h3>
+                            <p data-i18n="timeline.2012.desc">就读山东大学，与澳大利亚昆士兰大学2+2联合培养，获得计量经济学学士学位</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016-2018</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2016.title">博士研究 & 创业</h3>
+                            <p data-i18n="timeline.2016.desc">获昆士兰大学计量经济学全额奖学金攻读博士（研二辍学）。联合创办 Alfie Trading，担任 CTO 兼策略开发主管</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018-2020</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2018.title">深造（学术硕士）</h3>
+                            <p data-i18n="timeline.2018.desc">就读英国牛津大学，攻读经济学哲学硕士学位。参与牛津大学新冠病毒大数据研究项目。2018年以最优成绩从昆士兰大学毕业（学术奖章）</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020-2023</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2020.title">对冲基金量化交易</h3>
+                            <p data-i18n="timeline.2020.desc">就职于 Citadel Securities（城堡证券），担任量化股票分析师和期货交易员</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023-至今</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2023.title">创业与音乐并行</h3>
+                            <p data-i18n="timeline.2023.desc">联合创始成都入坞科技；创建 A47G 私募基金；赴伯克利音乐学院攻读音乐制作与工程、当代写作与制作以及爵士作曲方向硕士，GPA 4.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme View -->
+            <div id="theme-view" class="view-content">
+                <div class="theme-grid">
+                    <div class="theme-category">
+                        <h3 data-i18n="theme.academic.title">学术</h3>
+                        <ul>
+                            <li data-i18n="theme.academic.1">昆士兰大学经济系研究助理和助教</li>
+                            <li data-i18n="theme.academic.2">牛津大学疫情大数据研究项目研究员</li>
+                            <li data-i18n="theme.academic.3">本科优秀毕业生，获得学术奖章</li>
+                            <li data-i18n="theme.academic.4">牛津大学经济学哲学硕士学位</li>
+                        </ul>
+                    </div>
+                    <div class="theme-category">
+                        <h3 data-i18n="theme.professional.title">职业</h3>
+                        <ul>
+                            <li data-i18n="theme.professional.1">Citadel Securities 量化交易员</li>
+                            <li data-i18n="theme.professional.2">Alfie Trading 联合创始人、CTO</li>
+                            <li data-i18n="theme.professional.3">入坞科技联合创始人</li>
+                            <li data-i18n="theme.professional.4">A47G 私募基金创始人</li>
+                        </ul>
+                    </div>
+                    <div class="theme-category">
+                        <h3 data-i18n="theme.music.title">音乐</h3>
+                        <ul>
+                            <li data-i18n="theme.music.1">三岁起学习钢琴，通过最高等级考试</li>
+                            <li data-i18n="theme.music.2">多年坚持原创音乐创作</li>
+                            <li data-i18n="theme.music.3">伯克利音乐学院音乐制作与工程硕士，GPA 4.0</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles View -->
+            <div id="articles-view" class="view-content">
+                <div class="articles-container">
+                    <div class="articles-list" id="articles-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="article-detail" id="article-detail">
+                        <div class="article-placeholder">
+                            <p>请选择一篇文章查看完整内容</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/ziyin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
