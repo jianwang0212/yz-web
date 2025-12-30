@@ -13,8 +13,14 @@ const translations = {
         // Hero
         'hero.name': 'Zi Yin（银子）',
         'hero.tagline': '一本正经的胡说八道',
-        'hero.subtitle': '计量经济学出身的量化研究员、创业者和音乐人',
-        'hero.value': '在量化交易、创业和音乐创作之间寻找平衡，用数据驱动决策，用音乐表达情感。',
+        'hero.title': '量化研究员 · 创业者 · 音乐人',
+        'hero.subtitle': '市场训练直觉，数据塑造纪律，音乐完善判断。',
+        'hero.metric1': '管理过 $5M+ 量化资产 ｜最高年化 120%+',
+        'hero.metric2': 'Citadel Securities 前量化交易员',
+        'hero.metric3': '伯克利音乐学院（Berklee College of Music） — GPA 4.0（音乐人中极少见）',
+        'hero.cta': '合作 · 咨询 · 项目共创 → Email',
+        'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
+        'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
         // Info
         'info.origin': '籍贯：',
@@ -149,8 +155,14 @@ const translations = {
         // Hero
         'hero.name': 'Zi Yin',
         'hero.tagline': 'Seriously talking nonsense',
-        'hero.subtitle': 'Quantitative Researcher, Entrepreneur, and Musician with Econometrics background',
-        'hero.value': 'Finding balance between quantitative trading, entrepreneurship, and music creation, using data to drive decisions and music to express emotions.',
+        'hero.title': 'Quant Researcher · Founder · Musician',
+        'hero.subtitle': 'Trained by markets, disciplined by data, educated by music.',
+        'hero.metric1': 'Managed <strong>$5M+</strong> quantitative assets ｜Peak annualized return <strong>120%+</strong>',
+        'hero.metric2': 'Former Quantitative Trader at <strong>Citadel Securities</strong>',
+        'hero.metric3': '<strong>Berklee College of Music</strong> — GPA <strong>4.0</strong> (rare among musicians)',
+        'hero.cta': 'Collaboration · Consulting · Co-creation → Email',
+        'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
+        'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
         // Info
         'info.origin': 'Origin:',
@@ -288,7 +300,13 @@ function setLanguage(lang) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translations[lang][key];
             } else {
-                element.textContent = translations[lang][key];
+                // Check if translation contains HTML tags
+                const translation = translations[lang][key];
+                if (translation.includes('<') && translation.includes('>')) {
+                    element.innerHTML = translation;
+                } else {
+                    element.textContent = translation;
+                }
             }
         }
     });

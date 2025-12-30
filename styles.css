@@ -117,14 +117,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 0;
+    padding: 80px 0;
     background: #ffffff;
-    color: #1a1a1a;
+    color: #000000;
     position: relative;
 }
 
 .hero .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
     width: 100%;
@@ -140,75 +140,92 @@ body {
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-    color: #1a1a1a;
-    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: #000000;
+    letter-spacing: -0.01em;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    color: #4a4a4a;
-    line-height: 1.5;
-}
-
-.hero-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-    padding: 0 1rem;
-}
-
-.metric-item {
-    text-align: center;
-}
-
-.metric-value {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 3.5rem;
     color: #1a1a1a;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.02em;
-}
-
-.metric-label {
-    font-size: 0.95rem;
-    color: #666666;
     line-height: 1.6;
 }
 
+.hero-metrics {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.metric-item {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #1a1a1a;
+}
+
+.metric-text {
+    display: block;
+}
+
+.metric-text strong {
+    font-weight: 700;
+    color: #000000;
+    font-size: 1.3em;
+}
+
 .hero-cta {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
 }
 
 .cta-email {
     display: inline-block;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
     text-decoration: none;
-    padding: 0.75rem 2rem;
-    border: 2px solid #1a1a1a;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    padding: 1rem 2.5rem;
+    border: 3px solid #000000;
+    border-radius: 0;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
 }
 
 .cta-email:hover {
-    background: #1a1a1a;
+    background: #000000;
     color: #ffffff;
 }
 
 .hero-value {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #4a4a4a;
-    max-width: 700px;
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #1a1a1a;
+    max-width: 750px;
     margin: 0 auto;
+    text-align: left;
+}
+
+.value-zh {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.value-en {
+    display: block;
+    font-size: 0.85em;
+    color: #666666;
+    font-style: italic;
 }
 
 .hero-description {
@@ -617,19 +634,30 @@ section {
     }
 
     .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 3rem;
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
     }
 
     .hero-metrics {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
-        padding: 0;
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .metric-item {
+        font-size: 1.1rem;
+    }
+
+    .cta-email {
+        font-size: 1.25rem;
+        padding: 0.875rem 2rem;
     }
 
     .hero-value {
         font-size: 1rem;
+    }
+
+    .value-en {
+        font-size: 0.8em;
     }
 
     .about-stats {
@@ -651,31 +679,35 @@ section {
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         margin-bottom: 2rem;
     }
 
     .hero-metrics {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
         margin-bottom: 2rem;
     }
 
-    .metric-value {
-        font-size: 1.25rem;
+    .metric-item {
+        font-size: 1rem;
     }
 
-    .metric-label {
-        font-size: 0.9rem;
+    .metric-text strong {
+        font-size: 1.2em;
     }
 
     .cta-email {
         font-size: 1.1rem;
-        padding: 0.6rem 1.5rem;
+        padding: 0.75rem 1.5rem;
     }
 
     .hero-value {
         font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .value-en {
+        font-size: 0.75em;
     }
 
     .projects-grid {
