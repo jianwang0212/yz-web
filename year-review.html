@@ -48,7 +48,12 @@
             <div class="review-content" id="review-content">
                 <!-- Overview Card -->
                 <div class="review-card overview-card">
-                    <h3>总体概览</h3>
+                    <h3>
+                        总体概览
+                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" style="font-size: 0.7rem; font-weight: 400; color: var(--text-secondary); margin-left: 0.5rem; cursor: pointer; text-decoration: underline; vertical-align: middle;">
+                            💡 为什么要记小时数？
+                        </span>
+                    </h3>
                     <div class="time-distribution">
                         <div class="distribution-item">
                             <div class="distribution-label">
@@ -888,6 +893,29 @@
                     <img src="images/berklee-gpa2.jpg" alt="伯克利GPA成绩记录2" class="modal-image" />
                 </div>
                 <p class="modal-note">注：所有学期均保持GPA 4.0的完美成绩。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hours Theory Modal -->
+    <div id="hours-theory-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">为什么要记小时数？</h3>
+            <div class="modal-body">
+                <div style="margin-top: 1.5rem;">
+                    <h4 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">10,000 小时理论是什么？</h4>
+                    <div style="line-height: 1.8; color: var(--text-secondary);">
+                        <p style="margin-bottom: 1rem;">
+                            <strong style="color: var(--text-primary);">• 10,000-hour rule（万小时定律）</strong><br>
+                            通俗说法：在一个领域投入约 10,000 小时，更可能达到专家级。
+                        </p>
+                        <p>
+                            <strong style="color: var(--text-primary);">• 来源：</strong>对高水平表现者的回顾性统计，不是因果定律。
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
