@@ -48,6 +48,11 @@
             <div class="review-content" id="review-content">
                 <!-- Overview Card -->
                 <div class="review-card overview-card">
+                    <div style="margin-bottom: 1rem;">
+                        <a href="https://www.bilibili.com/video/BV1RCv2BGEfy/?share_source=copy_web&vd_source=d88d67c2553e1b5d83b3f734b0b40834" target="_blank" rel="noopener noreferrer" style="display: inline-block; font-size: 0.9rem; color: var(--primary-color); text-decoration: none; margin-bottom: 0.5rem; transition: opacity 0.3s ease;">
+                            🎵 查看音乐作品 →
+                        </a>
+                    </div>
                     <h3>
                         总体概览
                         <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" style="font-size: 0.7rem; font-weight: 400; color: var(--text-secondary); margin-left: 0.5rem; cursor: pointer; text-decoration: underline; vertical-align: middle;">
@@ -55,17 +60,17 @@
                         </span>
                     </h3>
                     <div class="time-distribution">
-                        <a href="https://www.bilibili.com/video/BV1RCv2BGEfy/?share_source=copy_web&vd_source=d88d67c2553e1b5d83b3f734b0b40834" target="_blank" rel="noopener noreferrer" class="distribution-item" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+                        <div class="distribution-item">
                             <div class="distribution-label">
                                 <span>音乐</span>
                                 <span class="distribution-hours">2,570 小时</span>
                             </div>
-                            <div class="distribution-bar-container">
-                                <div class="distribution-bar" style="width: 44%; background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                            <div class="distribution-bar-container clickable-distribution-bar" data-modal-target="music-calendar-modal">
+                                <div class="distribution-bar" style="width: 44%; background: linear-gradient(135deg, #6366f1, #8b5cf6); cursor: pointer;">
                                     <span>44%</span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <div class="distribution-item">
                             <div class="distribution-label">
                                 <span>工作</span>
