@@ -14,6 +14,7 @@ const translations = {
         'hero.name': 'Zi Yin（银子）',
         'hero.tagline': '一本正经的胡说八道',
         'hero.subtitle': '计量经济学出身的量化研究员、创业者和音乐人',
+        'hero.value': '在量化交易、创业和音乐创作之间寻找平衡，用数据驱动决策，用音乐表达情感。',
         
         // Info
         'info.origin': '籍贯：',
@@ -149,6 +150,7 @@ const translations = {
         'hero.name': 'Zi Yin',
         'hero.tagline': 'Seriously talking nonsense',
         'hero.subtitle': 'Quantitative Researcher, Entrepreneur, and Musician with Econometrics background',
+        'hero.value': 'Finding balance between quantitative trading, entrepreneurship, and music creation, using data to drive decisions and music to express emotions.',
         
         // Info
         'info.origin': 'Origin:',
