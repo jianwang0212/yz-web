@@ -722,6 +722,19 @@ section {
     border-bottom: none;
 }
 
+.highlight-card li a {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.highlight-card li a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
 /* Experience Section */
 .experience {
     padding: 80px 0;
