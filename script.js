@@ -790,15 +790,3 @@ fadeElements.forEach(element => {
     fadeObserver.observe(element);
 });
 
-// Language toggle visibility on scroll
-const langToggle = document.querySelector('.lang-toggle');
-if (langToggle) {
-    window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset;
-        if (scrollY > 200) {
-            langToggle.classList.add('scrolled');
-        } else {
-            langToggle.classList.remove('scrolled');
-        }
-    });
-}

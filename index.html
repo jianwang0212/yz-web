@@ -12,12 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="lang-toggle">
-        <button id="lang-zh" class="lang-btn active">中文</button>
-        <button id="lang-en" class="lang-btn">English</button>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -32,6 +26,10 @@
                 <li><a href="#works" data-i18n="nav.works">作品</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
             </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active">中文</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -77,8 +75,37 @@
         </div>
     </section>
 
+    <!-- Entry Section -->
+    <section id="entry" class="entry">
+        <div class="container">
+            <h2 class="entry-title" data-i18n="entry.title">探索不同维度的长期记录</h2>
+            <div class="entry-grid">
+                <a href="timeline.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.timeline.title">人生时间线</h3>
+                    <p class="entry-card-desc" data-i18n="entry.timeline.desc">长期决策与阶段反思记录</p>
+                    <span class="entry-card-link" data-i18n="entry.timeline.link">→ 查看时间线</span>
+                </a>
+                <a href="financial-dashboard.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.financial.title">财务仪表盘</h3>
+                    <p class="entry-card-desc" data-i18n="entry.financial.desc">资本表现与风险控制（脱敏）</p>
+                    <span class="entry-card-link" data-i18n="entry.financial.link">→ 查看仪表盘</span>
+                </a>
+                <a href="works.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.works.title">音乐与作品</h3>
+                    <p class="entry-card-desc" data-i18n="entry.works.desc">创作、演出与训练记录</p>
+                    <span class="entry-card-link" data-i18n="entry.works.link">→ 查看作品</span>
+                </a>
+                <a href="year-review.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.review.title">年度总结</h3>
+                    <p class="entry-card-desc" data-i18n="entry.review.desc">目标、复盘与偏差校正</p>
+                    <span class="entry-card-link" data-i18n="entry.review.link">→ 阅读年度总结</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Key Highlights -->
-    <section id="highlights" class="highlights">
+    <section id="highlights" class="highlights" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-i18n="highlights.title">主要亮点</h2>
             <div class="highlights-grid">
@@ -119,7 +146,7 @@
     </section>
 
     <!-- Experience Section with Toggle -->
-    <section id="experience" class="experience">
+    <section id="experience" class="experience" style="display: none;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="experience.title">人生时间线</h2>
@@ -227,7 +254,7 @@
     </section>
 
     <!-- Financial Data Visualization -->
-    <section id="financial" class="financial">
+    <section id="financial" class="financial" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-i18n="financial.title">财务概览</h2>
             <p class="section-subtitle" data-i18n="financial.subtitle">近10年财务数据可视化（数据已脱敏处理）</p>
@@ -277,7 +304,7 @@
     </section>
 
     <!-- Interests & Hobbies -->
-    <section id="interests" class="interests">
+    <section id="interests" class="interests" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-i18n="interests.title">兴趣爱好</h2>
             
@@ -304,7 +331,7 @@
     </section>
 
     <!-- Works & Media -->
-    <section id="works" class="works">
+    <section id="works" class="works" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-i18n="works.title">作品与社交媒体</h2>
             
@@ -361,7 +388,7 @@
     </section>
 
     <!-- Future Plans -->
-    <section id="future" class="future">
+    <section id="future" class="future" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-i18n="future.title">未来展望</h2>
             <div class="future-content">
@@ -382,7 +409,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" style="display: none;">
         <div class="container">
             <h2 class="section-title" data-i18n="contact.title">联系方式</h2>
             <div class="contact-content">
@@ -402,8 +429,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p data-i18n="footer.text">&copy; 2024 Zi Yin. All rights reserved.</p>
-            <p class="footer-quote" data-i18n="footer.quote">本是后山人，偶做前堂客。醉舞经阁半卷书，坐井说天阔。大志戏功名，海斗量福祸。论到囊中羞涩时，怒指乾坤错。</p>
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/ziyin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
         </div>
     </footer>
 

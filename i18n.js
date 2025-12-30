@@ -22,6 +22,21 @@ const translations = {
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
+        // Entry
+        'entry.title': '探索不同维度的长期记录',
+        'entry.timeline.title': '人生时间线',
+        'entry.timeline.desc': '长期决策与阶段反思记录',
+        'entry.timeline.link': '→ 查看时间线',
+        'entry.financial.title': '财务仪表盘',
+        'entry.financial.desc': '资本表现与风险控制（脱敏）',
+        'entry.financial.link': '→ 查看仪表盘',
+        'entry.works.title': '音乐与作品',
+        'entry.works.desc': '创作、演出与训练记录',
+        'entry.works.link': '→ 查看作品',
+        'entry.review.title': '年度总结',
+        'entry.review.desc': '目标、复盘与偏差校正',
+        'entry.review.link': '→ 阅读年度总结',
+        
         // Info
         'info.origin': '籍贯：',
         'info.originValue': '湖南长沙',
@@ -163,6 +178,21 @@ const translations = {
         'hero.cta': 'Project Inquiry → Email',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
+        
+        // Entry
+        'entry.title': 'Explore Long-term Records Across Dimensions',
+        'entry.timeline.title': 'Life Timeline',
+        'entry.timeline.desc': 'Long-term decisions and stage reflections',
+        'entry.timeline.link': '→ View Timeline',
+        'entry.financial.title': 'Financial Dashboard',
+        'entry.financial.desc': 'Capital performance and risk control (anonymized)',
+        'entry.financial.link': '→ View Dashboard',
+        'entry.works.title': 'Music & Works',
+        'entry.works.desc': 'Creative works, performances, and training records',
+        'entry.works.link': '→ View Works',
+        'entry.review.title': 'Year Review',
+        'entry.review.desc': 'Goals, retrospectives, and course corrections',
+        'entry.review.link': '→ Read Year Review',
         
         // Info
         'info.origin': 'Origin:',
