@@ -175,8 +175,18 @@
                         <h3>💰 财务概览</h3>
                     </div>
                     
+                    <!-- Password Protection -->
+                    <div id="financial-password-form" style="padding: 2rem; text-align: center;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;">此内容需要密码验证</p>
+                            <input type="password" id="financial-password-input" placeholder="请输入密码" style="padding: 0.8rem 1.2rem; font-size: 1rem; border: 2px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 300px; outline: none; transition: border-color 0.3s ease;" />
+                            <p id="financial-password-error" style="color: #ef4444; font-size: 0.9rem; margin-top: 0.5rem; display: none;">密码错误，请重试</p>
+                        </div>
+                        <button id="financial-password-submit" style="padding: 0.8rem 2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s ease;">确认</button>
+                    </div>
+                    
                     <!-- Overall Summary with Charts -->
-                    <div class="financial-charts-container">
+                    <div id="financial-content" class="financial-charts-container" style="display: none;">
                         <div class="financial-summary-cards">
                             <div class="summary-card-large income-card">
                                 <div class="summary-label">总收入</div>
@@ -543,6 +553,7 @@
                                 <strong>性质判断：</strong>维持型刚性支出
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
 
@@ -1050,6 +1061,42 @@
 
         // Modal functionality
         document.addEventListener('DOMContentLoaded', () => {
+            // Financial password protection
+            const financialPasswordForm = document.getElementById('financial-password-form');
+            const financialContent = document.getElementById('financial-content');
+            const financialPasswordInput = document.getElementById('financial-password-input');
+            const financialPasswordSubmit = document.getElementById('financial-password-submit');
+            const financialPasswordError = document.getElementById('financial-password-error');
+            const FINANCIAL_PASSWORD = '106106';
+            
+            // Check if already authenticated
+            if (localStorage.getItem('financial-authenticated') === 'true') {
+                financialPasswordForm.style.display = 'none';
+                financialContent.style.display = 'block';
+            }
+            
+            // Password submit handler
+            function handlePasswordSubmit() {
+                const inputPassword = financialPasswordInput.value.trim();
+                if (inputPassword === FINANCIAL_PASSWORD) {
+                    localStorage.setItem('financial-authenticated', 'true');
+                    financialPasswordForm.style.display = 'none';
+                    financialContent.style.display = 'block';
+                    financialPasswordError.style.display = 'none';
+                } else {
+                    financialPasswordError.style.display = 'block';
+                    financialPasswordInput.value = '';
+                    financialPasswordInput.focus();
+                }
+            }
+            
+            financialPasswordSubmit.addEventListener('click', handlePasswordSubmit);
+            financialPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handlePasswordSubmit();
+                }
+            });
+            
             // Get all clickable distribution bars, achievement items, work items, and timeline links
             const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item, .clickable-timeline-link');
             
