@@ -49,7 +49,7 @@ const translations = {
         'highlights.academic.title': '学术',
         'highlights.academic.1': '昆士兰大学经济系研究助理和助教',
         'highlights.academic.2': '牛津大学疫情大数据研究项目研究员',
-        'highlights.academic.3': '本科优秀毕业生，获得学术奖章',
+        'highlights.academic.3': '昆士兰大学本科大学奖章获得者',
         'highlights.professional.title': '职业',
         'highlights.professional.1': 'Citadel Securities 量化交易员',
         'highlights.professional.2': '入坞科技联合创始人',
