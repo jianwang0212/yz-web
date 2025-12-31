@@ -3,12 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zi Yin (银子) - 人生经历">
-    <title>经历 - Zi Yin (银子)</title>
+    <meta name="description" content="Zi Yin (银子) - 简历 Resume">
+    <title>简历 Resume - Zi Yin (银子)</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .resume-section {
+            margin-bottom: 4rem;
+        }
+        .resume-section:last-child {
+            margin-bottom: 2rem;
+        }
+        .resume-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .resume-item:last-child {
+            border-bottom: none;
+        }
+        .resume-item-header {
+            margin-bottom: 1rem;
+        }
+        .resume-item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .resume-item-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .resume-item-meta a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .resume-item-meta a:hover {
+            text-decoration: underline;
+        }
+        .resume-item-bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+        .resume-item-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+        .resume-item-bullets li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .resume-hero {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+        }
+        .resume-hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .key-metrics {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .key-metrics ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .key-metrics li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .term-explanation {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -18,12 +105,13 @@
             <ul class="nav-menu">
                 <li><a href="index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="highlights.html" data-i18n="nav.highlights">主要亮点</a></li>
-                <li><a href="timeline.html" data-i18n="nav.timeline" style="color: var(--primary-color);">时间线</a></li>
+                <li><a href="timeline.html" data-i18n="nav.timeline">时间线</a></li>
                 <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
                 <li><a href="financial-dashboard.html">财务仪表盘</a></li>
                 <li><a href="interests.html" data-i18n="nav.interests">兴趣爱好</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
                 <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+                <li><a href="resume.html" style="color: var(--primary-color);">简历</a></li>
             </ul>
             <div class="nav-lang-toggle">
                 <button id="lang-zh" class="lang-btn active">中文</button>
@@ -37,115 +125,233 @@
         </div>
     </nav>
 
-    <!-- Experience Section with Toggle -->
-    <section id="experience" class="experience" style="padding-top: 100px;">
+    <!-- Resume Hero -->
+    <section id="resume-hero" class="resume-hero" style="padding-top: 120px;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="experience.title">人生时间线</h2>
-                <div class="view-toggle">
-                    <button class="toggle-btn active" data-view="timeline" data-i18n="experience.timeline">时间线</button>
-                    <button class="toggle-btn" data-view="theme" data-i18n="experience.theme">按主题</button>
-                    <button class="toggle-btn" data-view="articles" data-i18n="experience.articles">文章</button>
-                </div>
+            <h1 class="section-title" style="margin-bottom: 1.5rem;">简历 Resume</h1>
+            <p>
+                量化交易与研究（Quant Trading & Research）背景，兼具工程实现（Engineering）与宏观/计量训练（Macro & Econometrics）；当前在 Berklee 深造作曲与制作，把"系统化思维"带到音乐创作与产品化。
+            </p>
+            <div class="key-metrics">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--text-primary);">关键指标 Key Metrics</h3>
+                <ul>
+                    <li><strong>Citadel Securities</strong>：系统化交易员（Systematic Trader），伦敦（London），2020–2023</li>
+                    <li><strong>加密量化</strong>：管理规模峰值（Peak AUM）≈ $5M（自有+受托）</li>
+                    <li><strong>策略侧</strong>：高频/统计套利（HFT / Stat Arb）、协整（Cointegration）、配对交易（Pair Trading）、NLP 情绪信号（Sentiment Signals）</li>
+                    <li><strong>工程侧</strong>：Python / C++ / JS，全链路：研究—回测—部署—监控（Research→Backtest→Deploy→Monitor）</li>
+                    <li><strong>教育</strong>：Oxford MPhil（Economics & Philosophy），UQ First Class Honours（Class rank 0.5%），Berklee（Jazz Composition，GPA 4.0）</li>
+                </ul>
             </div>
+        </div>
+    </section>
 
-            <!-- Timeline View -->
-            <div id="timeline-view" class="view-content active">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2009-2012</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="timeline.2009.title">高中</h3>
-                            <p data-i18n="timeline.2009.desc">就读于长沙长郡中学（本部理科班）</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2012-2016</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="timeline.2012.title">大学</h3>
-                            <p data-i18n="timeline.2012.desc">就读山东大学，与澳大利亚昆士兰大学2+2联合培养，获得计量经济学学士学位</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2016-2018</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="timeline.2016.title">博士研究 & 创业</h3>
-                            <p data-i18n="timeline.2016.desc">获昆士兰大学计量经济学全额奖学金攻读博士（研二辍学）。联合创办 Alfie Trading，担任 CTO 兼策略开发主管</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2018-2020</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="timeline.2018.title">深造（学术硕士）</h3>
-                            <p data-i18n="timeline.2018.desc">就读英国牛津大学，攻读经济学哲学硕士学位。参与牛津大学新冠病毒大数据研究项目。2018年以最优成绩从昆士兰大学毕业（学术奖章）</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020-2023</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="timeline.2020.title">对冲基金量化交易</h3>
-                            <p data-i18n="timeline.2020.desc">就职于 Citadel Securities（城堡证券），担任量化股票分析师和期货交易员</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2023-至今</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="timeline.2023.title">创业与音乐并行</h3>
-                            <p data-i18n="timeline.2023.desc">联合创始成都入坞科技；创建 A47G 私募基金；赴伯克利音乐学院攻读音乐制作与工程、当代写作与制作以及爵士作曲方向硕士，GPA 4.0</p>
-                        </div>
+    <!-- Experience Section -->
+    <section id="resume-experience" class="resume-section" style="padding-top: 40px;">
+        <div class="container">
+            <h2 class="section-title">工作经历 Work Experience</h2>
+            
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">系统化交易员 Systematic Trader</div>
+                    <div class="resume-item-meta">
+                        <a href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer">Citadel Securities</a> | 伦敦 London | 2020.07–2023.07
                     </div>
                 </div>
-            </div>
+                <ul class="resume-item-bullets">
+                    <li>在高频信息环境下做实时决策：市场微观结构（Market Microstructure）、交易流（Order Flow）、新闻事件（Event Risk）</li>
+                    <li>与研究/工程/分析团队协作，把统计洞察转成可执行流程（Research-to-Production）</li>
+                    <li>侧重：风险管理（Risk Management）、组合暴露（Portfolio Exposure）、执行与监控（Execution & Monitoring）</li>
+                </ul>
+            </article>
 
-            <!-- Theme View -->
-            <div id="theme-view" class="view-content">
-                <div class="theme-grid">
-                    <div class="theme-category">
-                        <h3 data-i18n="theme.academic.title">学术</h3>
-                        <ul>
-                            <li>
-                                <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener noreferrer">University of Oxford</a><br>
-                                MPhil in Economics & Philosophy<br>
-                                <span style="color: var(--text-secondary); font-size: 0.9em;">经济学与哲学硕士</span>
-                            </li>
-                            <li data-i18n="theme.academic.1">昆士兰大学经济系研究助理和助教</li>
-                            <li data-i18n="theme.academic.2">牛津大学疫情大数据研究项目研究员</li>
-                            <li data-i18n="theme.academic.3">本科优秀毕业生，获得学术奖章</li>
-                        </ul>
-                    </div>
-                    <div class="theme-category">
-                        <h3 data-i18n="theme.professional.title">职业</h3>
-                        <ul>
-                            <li data-i18n="theme.professional.1">Citadel Securities 量化交易员</li>
-                            <li data-i18n="theme.professional.2">Alfie Trading 联合创始人、CTO</li>
-                            <li data-i18n="theme.professional.3">入坞科技联合创始人</li>
-                            <li data-i18n="theme.professional.4">A47G 私募基金创始人</li>
-                        </ul>
-                    </div>
-                    <div class="theme-category">
-                        <h3 data-i18n="theme.music.title">音乐</h3>
-                        <ul>
-                            <li data-i18n="theme.music.1">三岁起学习钢琴，通过最高等级考试</li>
-                            <li data-i18n="theme.music.2">多年坚持原创音乐创作</li>
-                            <li data-i18n="theme.music.3">伯克利音乐学院音乐制作与工程硕士，GPA 4.0</li>
-                        </ul>
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">加密货币量化研究员 Cryptocurrency Quant</div>
+                    <div class="resume-item-meta">
+                        Alfie Bitcoin | 澳大利亚 Australia | 2017.11–2020.07
                     </div>
                 </div>
-            </div>
+                <ul class="resume-item-bullets">
+                    <li>构建与迭代统计策略：协整/配对/均值回归（Cointegration / Pair / Mean Reversion）、情绪信号（NLP Sentiment）</li>
+                    <li>研发栈：Python / JavaScript；输出：策略报告、监控与复盘（Reporting & Post-mortem）</li>
+                    <li>构建高频策略：配对交易（Pair Trading）、协整（Cointegration）、基于 NLP 情绪（Sentiment）信号等</li>
+                    <li>撰写月度业绩报告并迭代策略</li>
+                </ul>
+            </article>
 
-            <!-- Articles View -->
-            <div id="articles-view" class="view-content">
-                <div class="articles-container">
-                    <div class="articles-list" id="articles-list">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                    <div class="article-detail" id="article-detail">
-                        <div class="article-placeholder">
-                            <p>请选择一篇文章查看完整内容</p>
-                        </div>
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">数据分析师 Data Analyst</div>
+                    <div class="resume-item-meta">
+                        <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener noreferrer">University of Oxford</a> | 2020.07–2020.09
                     </div>
                 </div>
-            </div>
+                <ul class="resume-item-bullets">
+                    <li>搭建 TB 级数据检索 Web 应用并部署服务器（Web App + Deployment）</li>
+                    <li>参与 NLP 相关 ML 模型：设计、训练、评估（Design / Train / Evaluate）</li>
+                </ul>
+            </article>
+
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">项目经理 Project Manager</div>
+                    <div class="resume-item-meta">
+                        Hemu 私募股权 | 上海 Shanghai | 2019.08–2019.11
+                    </div>
+                </div>
+                <ul class="resume-item-bullets">
+                    <li>强化学习做市（Reinforcement Learning Market Making）与回测评估（Backtesting）</li>
+                    <li>开发强化学习（Reinforcement Learning）做市系统（Market Making），回测夏普比率（Sharpe Ratio）>3（C++）</li>
+                    <li>输出研究文章（中文公开平台）与策略框架文档</li>
+                    <li>在知乎发布高频交易相关中文文章</li>
+                </ul>
+                <div class="term-explanation">
+                    夏普比率（Sharpe Ratio）：单位风险带来的超额收益；越高越好。
+                </div>
+            </article>
+
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">研究助理 Research Assistant</div>
+                    <div class="resume-item-meta">
+                        <a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">University of Queensland</a> 经济学院 | 2016.08–2017.09
+                    </div>
+                </div>
+                <ul class="resume-item-bullets">
+                    <li>数据收集/清洗与计量分析（STATA）</li>
+                </ul>
+            </article>
+
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">课程助教/导师 Academic Tutor</div>
+                    <div class="resume-item-meta">
+                        <a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">University of Queensland</a> 经济学院 | 2016.02–2017.11
+                    </div>
+                </div>
+                <ul class="resume-item-bullets">
+                    <li>Applied Econometrics（宏观时间序列/微观）等课程辅导</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="resume-education" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">教育 Education</h2>
+            
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">
+                        <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener noreferrer">University of Oxford</a>
+                    </div>
+                    <div class="resume-item-meta">
+                        经济学、计量经济学与相关方向硕士（MPhil in Economics / Econometrics）| 2018–2020
+                    </div>
+                </div>
+                <ul class="resume-item-bullets">
+                    <li>论文：加密货币市场中的动量效应（Momentum effect）与线上会议强度（Online meeting intensity）</li>
+                </ul>
+                <div class="term-explanation">
+                    动量效应（Momentum effect）：过去涨得多的资产短期更可能继续涨（反之亦然）。
+                </div>
+            </article>
+
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">
+                        <a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">University of Queensland</a>
+                    </div>
+                    <div class="resume-item-meta">
+                        经济学学士（荣誉一等，First Class Honours）| 计量经济学（Econometrics）| 2017
+                    </div>
+                </div>
+                <ul class="resume-item-bullets">
+                    <li>班级排名：前 0.5%（Class rank 0.5%）</li>
+                    <li>毕业致辞代表（Valedictorian）</li>
+                </ul>
+                <div class="term-explanation">
+                    计量经济学（Econometrics）：用统计方法把经济问题变成可检验的模型。
+                </div>
+            </article>
+
+            <article class="resume-item">
+                <div class="resume-item-header">
+                    <div class="resume-item-title">
+                        <a href="https://www.berklee.edu/" target="_blank" rel="noopener noreferrer">Berklee College of Music</a>
+                    </div>
+                    <div class="resume-item-meta">
+                        音乐学士（Bachelor of Music，在读/Current）| 爵士作曲（Jazz Composition）| 2024–2028
+                    </div>
+                </div>
+                <ul class="resume-item-bullets">
+                    <li>GPA：4.0/4.0</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="resume-awards" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">荣誉与奖项 Honours & Awards</h2>
+            
+            <article class="resume-item">
+                <ul class="resume-item-bullets">
+                    <li><strong>University of Queensland</strong>：大学学术奖章（University Medal）（全校毕业生前 0.5%）</li>
+                    <li>Matthew McLennan & Richard Howles Honours Collaboration Scholarship（$5,625）</li>
+                    <li><strong>University of Queensland</strong>：杰出教学奖（Distinguished Teaching Awards）</li>
+                    <li>院长荣誉榜（Dean's Honour Roll）</li>
+                    <li>冬季研究奖学金（Winter Research Scholarship）</li>
+                    <li><strong>山东大学</strong>：优秀学业奖学金</li>
+                    <li>中国大学生数学奥林匹克：金牌</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Conferences Section -->
+    <section id="resume-conferences" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">会议 Conferences</h2>
+            
+            <article class="resume-item">
+                <ul class="resume-item-bullets">
+                    <li>Wadham State of the Nation Conference（2019.03）</li>
+                    <li>Nuffield College Centre for Applied Macro Policy Annual Conference（2018.12）</li>
+                    <li>CEPA International Conference on Performance Analysis（2017.11）</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="resume-skills" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">技能 Skills</h2>
+            
+            <article class="resume-item">
+                <ul class="resume-item-bullets">
+                    <li><strong>语言</strong>：中文（母语）、英文（熟练）</li>
+                    <li><strong>编程</strong>：R / Python / JavaScript / C++</li>
+                    <li><strong>研究工具</strong>：STATA / Econometrics / Statistical Analysis</li>
+                    <li><strong>音乐制作</strong>：音乐制作与工程（MPE）、当代写作与制作（CWP）、爵士作曲（Jazz Composition）</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Appendix Section -->
+    <section id="resume-appendix" class="resume-section">
+        <div class="container">
+            <h2 class="section-title">附录 Appendix</h2>
+            
+            <article class="resume-item">
+                <ul class="resume-item-bullets">
+                    <li><strong>钢琴</strong>：演奏 10 级（2006）</li>
+                </ul>
+            </article>
         </div>
     </section>
 
@@ -164,4 +370,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
