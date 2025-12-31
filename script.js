@@ -1,3 +1,35 @@
+// Dropdown Menu Toggle
+const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+const dropdowns = document.querySelectorAll('.nav-dropdown');
+
+dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dropdown = toggle.nextElementSibling;
+        
+        // Close all other dropdowns
+        dropdowns.forEach(d => {
+            if (d !== dropdown) {
+                d.classList.remove('active');
+            }
+        });
+        
+        // Toggle current dropdown
+        if (dropdown) {
+            dropdown.classList.toggle('active');
+        }
+    });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-menu-item')) {
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+});
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -8,11 +40,22 @@ if (hamburger && navMenu) {
         hamburger.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-menu a').forEach(link => {
+    // Close mobile menu when clicking on a link (but not dropdown toggle)
+    document.querySelectorAll('.nav-menu > li > a:not(.nav-dropdown-toggle)').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
+        });
+    });
+    
+    // Handle dropdown links in mobile menu
+    document.querySelectorAll('.nav-dropdown a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
         });
     });
 }
