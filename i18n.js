@@ -650,6 +650,12 @@ function setLanguage(lang) {
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
     
+    // Update html lang attribute
+    const htmlElement = document.getElementById('html-lang');
+    if (htmlElement) {
+        htmlElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    }
+    
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
@@ -659,10 +665,10 @@ function setLanguage(lang) {
             } else {
                 // Check if translation contains HTML tags
                 const translation = translations[lang][key];
-                if (translation.includes('<') && translation.includes('>')) {
+                if (translation && translation.includes && translation.includes('<') && translation.includes('>')) {
                     element.innerHTML = translation;
                 } else {
-                    element.textContent = translation;
+                    element.textContent = translation || '';
                 }
             }
         }
