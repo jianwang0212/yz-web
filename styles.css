@@ -3555,4 +3555,32 @@ section {
     }
 }
 
+/* Site title with bilingual display */
+.site-title {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.name-en {
+    font-size: 32px;
+    font-weight: 600;
+    color: #6a63ff;
+}
+
+.name-sep {
+    font-size: 22px;
+    font-weight: 400;
+    color: #999;
+    margin: 0 2px;
+}
+
+.name-zh {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 0.08em;
+}
+
 
