@@ -1333,12 +1333,22 @@ section {
     gap: 10px;
 }
 
+.timeline-gallery .tl-fig {
+    margin: 0;
+}
+
 .timeline-gallery img {
     width: 100%;
     height: 160px;
     object-fit: cover;
     border-radius: 12px;
     display: block;
+    margin: 0;
+}
+
+.timeline-gallery .tl-cap {
+    margin-top: 4px;
+    font-size: 12px;
 }
 
 .tl-img {
