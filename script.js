@@ -463,30 +463,21 @@ function initDownloadSection() {
     const downloadGrid = document.getElementById('download-grid');
     if (!downloadGrid) return;
     
-    // Sample download items (will be replaced with actual data)
-    const downloadItems = [
-        { title: 'Music Album', file: 'works/album.zip', type: 'music' },
-        { title: 'Research Paper', file: 'works/paper.pdf', type: 'document' },
-        { title: 'Code Repository', file: 'works/code.zip', type: 'code' }
-    ];
+    // Research Papers download links
+    const papersDiv = document.createElement('div');
+    papersDiv.style.cssText = 'display:flex; gap:10px; flex-wrap:wrap;';
+    papersDiv.innerHTML = `
+        <a href="papers/2020-oxford-mphil-crypto-momentum.pdf" download
+           style="padding:10px 12px; border-radius:10px; border:1px solid rgba(0,0,0,0.18); text-decoration:none; color:var(--text-primary);">
+            Download (Oxford MPhil 2020)
+        </a>
+        <a href="papers/2017-uq-honours-scale-efficiency.pdf" download
+           style="padding:10px 12px; border-radius:10px; border:1px solid rgba(0,0,0,0.18); text-decoration:none; color:var(--text-primary);">
+            Download (UQ Honours 2017)
+        </a>
+    `;
     
-    downloadItems.forEach(item => {
-        const downloadItem = document.createElement('div');
-        downloadItem.className = 'download-item';
-        downloadItem.innerHTML = `
-            <div class="download-icon">${getDownloadIcon(item.type)}</div>
-            <h4>${item.title}</h4>
-            <button class="download-btn" data-file="${item.file}">Download</button>
-        `;
-        
-        const downloadBtn = downloadItem.querySelector('.download-btn');
-        downloadBtn.addEventListener('click', () => {
-            // In a real implementation, trigger download
-            window.location.href = item.file;
-        });
-        
-        downloadGrid.appendChild(downloadItem);
-    });
+    downloadGrid.appendChild(papersDiv);
 }
 
 function getDownloadIcon(type) {
