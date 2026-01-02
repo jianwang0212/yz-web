@@ -3520,4 +3520,39 @@ section {
     }
 }
 
+/* Hero background */
+.hero--bg {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    background-image: url("images/hero-bg.jpg");
+    background-size: cover;
+    background-position: 35% 35%;
+    background-repeat: no-repeat;
+    filter: saturate(0.9) contrast(1.05);
+}
+
+/* Dark overlay to improve text contrast */
+.hero--bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* Ensure hero content sits above overlay */
+.hero--bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: improve readability on small screens */
+@media (max-width: 768px) {
+    .hero--bg {
+        min-height: 72vh;
+        background-position: 50% 30%;
+    }
+}
+
 
