@@ -3,140 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zi Yin (银子) - 内观（Vipassana）：我的 10 天游记">
-    <title>内观（Vipassana）：我的 10 天游记 - Zi Yin (银子)</title>
+    <meta name="description" content="一次10天静默内观课程：我做了哪些挑战、获得了什么变化，以及我对"觉察与平等心"的理解。">
+    <title>我如何接触到 Vipassana（内观）｜10天静默体验与收获 - Zi Yin (银子)</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .article-container {
-            max-width: 780px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 2rem;
         }
         
-        .prose {
-            line-height: 1.8;
+        .post {
+            line-height: 1.85;
             color: var(--text-primary);
         }
         
-        .prose header {
+        .post-header {
             margin-bottom: 3rem;
         }
         
-        .prose h1 {
-            font-size: 2.5rem;
+        .post h1 {
+            font-size: 2.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
             color: var(--text-primary);
         }
         
-        .prose .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-        
-        .prose .meta {
-            font-size: 0.9rem;
+        .post-meta {
+            font-size: 0.95rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             opacity: 0.8;
         }
         
-        .prose .callout {
-            background: rgba(0, 0, 0, 0.04);
-            border-left: 4px solid var(--primary-color);
-            padding: 1.25rem 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
+        .intensity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(106, 99, 255, 0.1);
+            border: 1px solid rgba(106, 99, 255, 0.2);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
         }
         
-        .prose .callout strong {
+        .intensity-badge span {
+            font-weight: 500;
+        }
+        
+        .tldr-card {
+            background: rgba(0, 0, 0, 0.03);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 6px;
+        }
+        
+        .tldr-card strong {
             display: block;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            margin-bottom: 1rem;
             color: var(--text-primary);
         }
         
-        .prose .callout ul {
+        .tldr-card ul {
             margin: 0;
             padding-left: 1.5rem;
         }
         
-        .prose .callout li {
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
+        .tldr-card li {
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
         }
         
-        .prose section {
-            margin-top: 36px;
+        .post section {
+            margin-top: 2.5rem;
         }
         
-        .prose h2 {
-            font-size: 1.75rem;
+        .post h2 {
+            font-size: 1.5rem;
             font-weight: 600;
             margin-top: 2.5rem;
             margin-bottom: 1.25rem;
             color: var(--text-primary);
         }
         
-        .prose h3 {
-            font-size: 1.4rem;
+        .post h3 {
+            font-size: 1.25rem;
             font-weight: 600;
             margin-top: 2rem;
             margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
         
-        .prose p {
-            margin-bottom: 1.25rem;
+        .post p {
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
         }
         
-        .prose ul {
+        .post ul {
             margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+            padding-left: 1.75rem;
         }
         
-        .prose li {
+        .post li {
             margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
         
-        .prose li strong {
+        .post li strong {
             font-weight: 600;
             color: var(--text-primary);
         }
         
-        .prose details {
+        .callout {
+            padding: 1.25rem 1.5rem;
             margin: 1.5rem 0;
-            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+        
+        .callout-note {
+            background: rgba(59, 130, 246, 0.08);
+            border-left-color: #3b82f6;
+        }
+        
+        .callout-note strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+        
+        .callout-warning {
+            background: rgba(239, 68, 68, 0.08);
+            border-left-color: #ef4444;
+        }
+        
+        .callout-warning strong {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #dc2626;
+        }
+        
+        .callout-warning ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .callout-warning li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .post details {
+            margin: 1.5rem 0;
+            padding: 1.25rem;
             background: rgba(0, 0, 0, 0.02);
             border-radius: 6px;
             border: 1px solid rgba(0, 0, 0, 0.08);
         }
         
-        .prose summary {
+        .post summary {
             font-weight: 500;
             cursor: pointer;
             color: var(--primary-color);
             padding: 0.5rem 0;
             user-select: none;
+            font-size: 1.05rem;
         }
         
-        .prose summary:hover {
+        .post summary:hover {
             color: var(--secondary-color);
         }
         
-        .prose details[open] summary {
+        .post details[open] summary {
             margin-bottom: 1rem;
         }
         
-        .prose details ul {
+        .post details ul {
             margin-top: 0.75rem;
         }
         
@@ -157,18 +210,19 @@
         @media (max-width: 768px) {
             .article-container {
                 padding: 1.5rem;
+                max-width: 100%;
             }
             
-            .prose h1 {
-                font-size: 2rem;
+            .post h1 {
+                font-size: 1.75rem;
             }
             
-            .prose h2 {
-                font-size: 1.5rem;
+            .post h2 {
+                font-size: 1.35rem;
             }
             
-            .prose h3 {
-                font-size: 1.25rem;
+            .post h3 {
+                font-size: 1.15rem;
             }
         }
     </style>
@@ -216,105 +270,120 @@
         <div class="article-container">
             <a href="../../projects.html" class="back-link" data-i18n="projects.back">← 返回项目</a>
             
-            <article class="prose">
-                <header>
-                    <h1>内观（Vipassana）：我的 10 天游记</h1>
-                    <p class="subtitle">不是"神奇体验"，而是一场关于注意力（attention）与平等心（equanimity）的训练。</p>
-                    <p class="meta">Nov 6, 2022 · Hong Kong</p>
-
-                    <div class="callout">
-                        <strong>免责声明（Disclaimer）</strong>
+            <article class="post">
+                <header class="post-header">
+                    <h1>我如何接触到 Vipassana（内观）｜10天静默体验与收获</h1>
+                    <p class="post-meta">2022-11-06 · 约 7 分钟阅读</p>
+                    
+                    <div class="intensity-badge">
+                        <span>课程强度：</span>
+                        <span>10天</span> <span>·</span>
+                        <span>静默</span> <span>·</span>
+                        <span>每日≈10小时</span> <span>·</span>
+                        <span>无手机</span>
+                    </div>
+                    
+                    <div class="tldr-card">
+                        <strong>TL;DR</strong>
                         <ul>
-                            <li>本文是个人体验（personal experience），不代表他人会有相同结果。</li>
-                            <li>涉及身心状态的描述不构成医疗建议（not medical advice）。如有症状请咨询专业医生。</li>
+                            <li>我参加了一次 10 天静默内观（Vipassana）课程：无手机、无交流、每天长时间静坐。</li>
+                            <li>最大收获不是"神秘体验"，而是对 <strong>觉察（awareness）</strong> 与 <strong>平等心（equanimity）</strong> 的训练更可感了。</li>
+                            <li>我主观感到：专注更稳定、对身体与情绪的"早期信号"更敏感；睡眠与一些身体不适在课程中阶段性缓解。</li>
+                            <li><strong>重要：</strong>这只是个人体验；不构成医疗建议；不同人反应差异很大。</li>
                         </ul>
                     </div>
                 </header>
 
                 <section>
-                    <h2>我如何接触到内观</h2>
+                    <h2>1) 我为什么去</h2>
+                    <p>我第一次听说 Vipassana（内观）是在 2021 年 11 月：一位朋友辞职后写复盘，提到静坐对他影响很大。我当时在香港报名，结果排期等了一年，终于在 2022-10-26 参加。</p>
+                    <p>我想验证的不是"灵性结果"，而是一个更现实的问题：在高强度约束下，我能否观察并管理自己的注意力与反应？</p>
+                </section>
+
+                <section>
+                    <h2>2) 我做了哪些挑战</h2>
+                    <p>这次课程对我来说像"极限版的注意力训练营"：</p>
                     <ul>
-                        <li>2021 年 11 月：读到一位朋友的静坐反思，第一次知道 Vipassana（内观）。</li>
-                        <li>在香港报名后等待近一年：终于在 2022-10-26 参加 10 天游。</li>
-                        <li>我的动机很朴素：想验证自己能否在极简规则下稳定专注，并不期待"神奇效果"。</li>
+                        <li><strong>10 天静默：</strong>不说话、不交流</li>
+                        <li><strong>无电子设备：</strong>手机/电脑/手表/网络都没有</li>
+                        <li><strong>饮食约束：</strong>以素食为主（具体安排以课程为准）</li>
+                        <li><strong>作息固定：</strong>早起、睡眠压缩（不同中心可能不同）</li>
+                        <li><strong>长时间静坐：</strong>每天大量时间在坐禅与行禅之间切换</li>
+                        <li><strong>生活极简：</strong>大部分时间只剩 睡觉/吃饭/练习/必要活动</li>
+                    </ul>
+                    <p>我没有期待"神奇效果"，更多是想把自己放进一个可控的实验环境里。</p>
+                </section>
+
+                <section>
+                    <h2>3) 参加完后，最大的收获是什么</h2>
+                    
+                    <h3>3.1 心（mind）：更早觉察到"反应的起点"</h3>
+                    <p>我最明显的变化是：情绪或冲动还没长成"剧情"，我更早就能察觉到它的身体信号。</p>
+                    <ul>
+                        <li><strong>以前：</strong>刺激 → 自动反应 → 事后才意识到</li>
+                        <li><strong>现在（更接近）：</strong>刺激 → 感受到身体/心理的起势 → 选择是否继续反应</li>
+                    </ul>
+                    <p>对我来说，这种"提前量"很关键：它让自控更像技术问题，而不是道德自责。</p>
+                    
+                    <h3>3.2 身（body）：部分状态在课程中阶段性改善</h3>
+                    <p>我主观感到睡眠质量上升、起床更清醒；一些身体不适在课程中有缓解（包括疼痛与不适感的处理方式变化）。</p>
+                    <p>但我不把它当作稳定结论：离开课程环境后能否保持，需要长期观察与复盘。</p>
+                </section>
+
+                <section>
+                    <h2>4) 我理解的核心机制：觉察 + 平等心</h2>
+                    
+                    <div class="callout callout-note">
+                        <strong>Note：术语解释</strong>
+                        <p><strong>觉察（awareness）：</strong>更清楚地"看到正在发生什么"（呼吸、触感、情绪起势）。</p>
+                        <p><strong>平等心（equanimity）：</strong>看到之后，不立刻追加"喜欢/讨厌/必须马上改变"的自动反应。</p>
+                    </div>
+                    
+                    <p>这两者结合起来，带来一个实际效果：</p>
+                    <p>情绪还在，但我更少给它"添柴"。它升起、变化、减弱、消失的过程更可见；我更像在观察一个过程，而不是被它拖走。</p>
+                </section>
+
+                <section>
+                    <h2>5) 我如何在日常复用（3 个短例子）</h2>
+                    <ul>
+                        <li><strong>吃饭：</strong>发现"还想继续吃"的冲动升起时，先停一拍，观察它；冲动往往会自己变弱。</li>
+                        <li><strong>愤怒：</strong>外在保持礼貌离开，同时在内心观察愤怒的身体感（热、紧、冲）；不急着用脑内辩论把它扩大。</li>
+                        <li><strong>分心：</strong>注意力被吸走时，不用羞耻感加罚自己；把"走神 → 拉回"的动作当成训练次数。</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>10 天里我做了什么（规则与作息）</h2>
-                    <ul>
-                        <li>禁语（Noble Silence）：不交谈、不手势沟通，减少社交刺激。</li>
-                        <li>无电子设备：手机/电脑/手表/网络全部暂停。</li>
-                        <li>饮食：以素食为主（vegetarian）。</li>
-                        <li>作息：约 21:30 熄灯，04:00 起床；每日静坐约 10 小时。</li>
-                        <li>生活只剩四件事：睡觉 / 吃饭 / 打坐 / 上厕所。</li>
-                    </ul>
-
-                    <details>
-                        <summary>展开：典型课程作息（Schedule）</summary>
+                    <h2>6) 重要提醒（Warning）</h2>
+                    
+                    <div class="callout callout-warning">
+                        <strong>Warning：免责声明</strong>
                         <ul>
-                            <li>04:00 起床；04:30–06:30 修习</li>
-                            <li>08:00–11:00 修习；11:00 午餐</li>
-                            <li>13:00–17:00 修习；18:00–21:00 共修与开示</li>
-                            <li>21:30 就寝</li>
+                            <li><strong>这是个人体验：</strong>不同人收获可能很小，甚至不适。</li>
+                            <li><strong>它不是医疗替代：</strong>如果你有明确的身心健康问题，请优先遵循专业医疗建议。</li>
+                            <li><strong>不要追逐体验：</strong>把"舒服/特殊感觉"当成目标，可能反而更焦躁。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>附录</h2>
+                    
+                    <details>
+                        <summary>附录A：术语表（中英对照）</summary>
+                        <ul>
+                            <li><strong>内观（Vipassana）：</strong>一种以观察身心现象为核心的练习传统。</li>
+                            <li><strong>觉察（awareness）：</strong>对当下经验的清楚注意。</li>
+                            <li><strong>平等心（equanimity）：</strong>对经验不过度追逐或排斥的稳定态度。</li>
+                            <li><strong>习性反应（habitual reaction / sankhara）：</strong>遇到刺激后自动化的偏好与抗拒模式。（不同传统解释略有差异）</li>
                         </ul>
                     </details>
-                </section>
-
-                <section>
-                    <h2>最大的收获：心（Mind）</h2>
-                    <h3>1) 感受力（sensitivity to sensations）变强</h3>
-                    <ul>
-                        <li><strong>更快：</strong>身体出现微小不适时，我更早觉察到。</li>
-                        <li><strong>更细：</strong>听音乐时更容易察觉低频振动与音量差异（这是主观感受）。</li>
-                    </ul>
-
-                    <h3>2) 专注力（attention control）更可控</h3>
-                    <ul>
-                        <li>我更容易把注意力放到某个身体区域，并在一段时间内持续观察。</li>
-                        <li>关键不是"压制念头"，而是更快发现走神并回到当下对象（呼吸/感受）。</li>
-                    </ul>
-
-                    <h3>3) 对情绪的反应（reactivity）下降</h3>
-                    <ul>
-                        <li>以前：情绪来了会立刻追问、解释、内耗。</li>
-                        <li>后来：更常做的是"识别它出现了"，并观察它起伏、减弱、消失。</li>
-                    </ul>
-
+                    
                     <details>
-                        <summary>展开：一个我很喜欢的比喻（只保留这一则）</summary>
-                        <p>"悟道前吃饭挑水砍柴，悟道后还是吃饭挑水砍柴。区别是：以前吃饭想着挑水；后来吃饭就只是吃饭。"</p>
+                        <summary>附录B：扩展阅读/资料</summary>
+                        <p>这里可以放置：中心地址/报名链接/交通/携带清单</p>
+                        <p>他人长日记与长引文建议只保留链接 + 你的一句摘要</p>
+                        <p>你自己的逐日笔记（Oct 21 等）整体迁移到这里</p>
                     </details>
-                </section>
-
-                <section>
-                    <h2>身体（Body）：我观察到的变化（仅为个人当时体验）</h2>
-                    <ul>
-                        <li><strong>睡眠：</strong>入睡更快、主观睡眠质量更好；醒来精力更足。</li>
-                        <li><strong>疼痛：</strong>我尝试用"只观察、不加戏"的方式面对不适，有时不适会自行减弱。</li>
-                        <li><strong>久坐耐受：</strong>在不改变姿势的情况下，能更久保持坐姿（但不等于适合所有人）。</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>为什么我后来更愿意打坐</h2>
-                    <ul>
-                        <li>我把它当成一种"内观的研究方法（inward observation）"，和外部科学观察（external observation）互补。</li>
-                        <li>外观研究世界；内观研究体验如何生成：感受（sensation）—反应（reaction）—习性（habit）。</li>
-                        <li>对我来说，这是把"理解"从概念层（intellectual understanding）推向经验层（experiential knowing）。</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>极简词汇表（中英/巴利）</h2>
-                    <ul>
-                        <li><strong>内观 Vipassana：</strong>对身体感受与心反应的持续观察训练。</li>
-                        <li><strong>观息 Anapana：</strong>以呼吸为对象训练专注力（attention）。</li>
-                        <li><strong>感受 Sensation：</strong>身体上可被觉察的冷/热/麻/痛/痒等。</li>
-                        <li><strong>平等心 Equanimity：</strong>对愉悦/不悦都尽量"不追、不赶"的稳定心态。</li>
-                        <li><strong>慈心 Metta：</strong>向他人与自己发出善意祝愿的练习。</li>
-                        <li><strong>无常 Anicca：</strong>体验到"变化一直在发生"。</li>
-                    </ul>
                 </section>
             </article>
         </div>
