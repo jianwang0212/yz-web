@@ -785,30 +785,72 @@ function setLanguage(lang) {
     }
 }
 
-// Initialize language
-document.addEventListener('DOMContentLoaded', () => {
-    setLanguage(currentLang);
+// Initialize language - try multiple initialization strategies
+function initLanguageToggle() {
+    // Try to get buttons by ID first
+    let langZhBtn = document.getElementById('lang-zh');
+    let langEnBtn = document.getElementById('lang-en');
     
-    // Language toggle buttons - with null check and error handling
-    const langZhBtn = document.getElementById('lang-zh');
-    const langEnBtn = document.getElementById('lang-en');
+    // If not found by ID, try to find by text content as fallback
+    if (!langZhBtn || !langEnBtn) {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            const text = btn.textContent.trim();
+            if (text === '中文' && !langZhBtn) {
+                langZhBtn = btn;
+                btn.id = 'lang-zh';
+                btn.classList.add('lang-btn');
+            } else if (text === 'English' && !langEnBtn) {
+                langEnBtn = btn;
+                btn.id = 'lang-en';
+                btn.classList.add('lang-btn');
+            }
+        });
+    }
     
+    // Bind event handlers
     if (langZhBtn) {
+        // Remove any existing listeners by cloning
+        const newZhBtn = langZhBtn.cloneNode(true);
+        langZhBtn.parentNode.replaceChild(newZhBtn, langZhBtn);
+        langZhBtn = newZhBtn;
+        
         langZhBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            console.log('Language switch to Chinese');
             setLanguage('zh');
         });
     } else {
-        console.warn('Language button lang-zh not found');
+        console.error('Language button lang-zh not found in DOM');
     }
     
     if (langEnBtn) {
+        // Remove any existing listeners by cloning
+        const newEnBtn = langEnBtn.cloneNode(true);
+        langEnBtn.parentNode.replaceChild(newEnBtn, langEnBtn);
+        langEnBtn = newEnBtn;
+        
         langEnBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            console.log('Language switch to English');
             setLanguage('en');
         });
     } else {
-        console.warn('Language button lang-en not found');
+        console.error('Language button lang-en not found in DOM');
     }
-});
+}
+
+// Initialize language - try multiple strategies
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setLanguage(currentLang);
+        initLanguageToggle();
+    });
+} else {
+    // DOM is already loaded
+    setLanguage(currentLang);
+    initLanguageToggle();
+}
 
