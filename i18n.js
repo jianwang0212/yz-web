@@ -13,6 +13,7 @@ const translations = {
         'nav.timeline': '时间线',
         'nav.resume': '简历',
         'nav.finance': '财务仪表盘',
+        'nav.projects': '项目',
         
         // Hero
         'hero.name': 'Zi Yin（银子）',
@@ -165,7 +166,19 @@ const translations = {
         
         // Footer
         'footer.text': '© 2024 Zi Yin. 保留所有权利。',
-        'footer.quote': '本是后山人，偶做前堂客。醉舞经阁半卷书，坐井说天阔。大志戏功名，海斗量福祸。论到囊中羞涩时，怒指乾坤错。'
+        'footer.quote': '本是后山人，偶做前堂客。醉舞经阁半卷书，坐井说天阔。大志戏功名，海斗量福祸。论到囊中羞涩时，怒指乾坤错。',
+        
+        // Projects
+        'projects.title': '项目 / Projects',
+        'projects.vipassana_title': '内观（Vipassana）',
+        'projects.vipassana_desc': '关于内观冥想实践的思考与记录',
+        'projects.back': '← 返回项目',
+        'projects.vipassana.content.intro': '内观（Vipassana）是一种古老的冥想实践，旨在通过观察身体感受来培养觉知和智慧。这篇文章记录了我对内观实践的思考与体验。',
+        'projects.vipassana.content.section1.title': '什么是内观',
+        'projects.vipassana.content.section1.text': '内观是巴利语 Vipassana 的音译，意为"洞察"或"如实观察"。这是一种通过系统观察身体感受来净化心灵的方法。',
+        'projects.vipassana.content.section2.title': '实践体验',
+        'projects.vipassana.content.section2.text': '在实践过程中，我逐渐学会了如何不带评判地观察身体感受，这帮助我更好地理解自己的身心关系。',
+        'projects.vipassana.content.footer': '本文将持续更新，记录更多实践心得与思考。'
     },
     en: {
         // Navigation
@@ -332,7 +345,19 @@ const translations = {
         
         // Footer
         'footer.text': '© 2024 Zi Yin. All rights reserved.',
-        'footer.quote': '本是后山人，偶做前堂客。醉舞经阁半卷书，坐井说天阔。大志戏功名，海斗量福祸。论到囊中羞涩时，怒指乾坤错。'
+        'footer.quote': '本是后山人，偶做前堂客。醉舞经阁半卷书，坐井说天阔。大志戏功名，海斗量福祸。论到囊中羞涩时，怒指乾坤错。',
+        
+        // Projects
+        'projects.title': 'Projects',
+        'projects.vipassana_title': 'Vipassana',
+        'projects.vipassana_desc': 'Thoughts and records on Vipassana meditation practice',
+        'projects.back': '← Back to Projects',
+        'projects.vipassana.content.intro': 'Vipassana is an ancient meditation practice aimed at cultivating awareness and wisdom through observing bodily sensations. This article records my thoughts and experiences with Vipassana practice.',
+        'projects.vipassana.content.section1.title': 'What is Vipassana',
+        'projects.vipassana.content.section1.text': 'Vipassana is the transliteration of the Pali word Vipassana, meaning "insight" or "seeing things as they really are". It is a method of purifying the mind through systematic observation of bodily sensations.',
+        'projects.vipassana.content.section2.title': 'Practice Experience',
+        'projects.vipassana.content.section2.text': 'During practice, I gradually learned how to observe bodily sensations without judgment, which helped me better understand the relationship between my body and mind.',
+        'projects.vipassana.content.footer': 'This article will be continuously updated with more practice insights and reflections.'
     }
 };
 
