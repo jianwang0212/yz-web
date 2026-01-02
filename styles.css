@@ -3657,11 +3657,7 @@ section {
         );
     }
     
-    /* Hide hero-metrics and hero-value on mobile */
-    .hero-metrics {
-        display: none !important;
-    }
-    
+    /* Hide hero-value on mobile (keep hero-metrics visible) */
     .hero-value {
         display: none !important;
     }
