@@ -779,15 +779,36 @@ function setLanguage(lang) {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    document.getElementById(`lang-${lang}`).classList.add('active');
+    const activeLangBtn = document.getElementById(`lang-${lang}`);
+    if (activeLangBtn) {
+        activeLangBtn.classList.add('active');
+    }
 }
 
 // Initialize language
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
     
-    // Language toggle buttons
-    document.getElementById('lang-zh').addEventListener('click', () => setLanguage('zh'));
-    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+    // Language toggle buttons - with null check and error handling
+    const langZhBtn = document.getElementById('lang-zh');
+    const langEnBtn = document.getElementById('lang-en');
+    
+    if (langZhBtn) {
+        langZhBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('zh');
+        });
+    } else {
+        console.warn('Language button lang-zh not found');
+    }
+    
+    if (langEnBtn) {
+        langEnBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+        });
+    } else {
+        console.warn('Language button lang-en not found');
+    }
 });
 
