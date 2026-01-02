@@ -406,7 +406,9 @@ const translations = {
         'vipassana.appendix.title': '附录',
         'vipassana.appendix.desc': '以下内容为详细记录与参考资料，默认折叠。点击展开查看。',
         'vipassana.appendixA.title': '附录A：逐日笔记（2022-2024）',
-        'vipassana.appendixA.desc': '说明：以下为个人练习记录，按时间顺序整理。部分内容为当时的主观体验，不代表普遍结论。'
+        'vipassana.appendixA.desc': '说明：以下为个人练习记录，按时间顺序整理。部分内容为当时的主观体验，不代表普遍结论。',
+        'vipassana.appendixB.title': '附录B：外部链接与资料（中心信息、交通、报名）',
+        'vipassana.appendixC.title': '附录C：术语表（中英/巴利对照 + 一句解释）'
     },
     en: {
         // Navigation
@@ -635,7 +637,9 @@ const translations = {
         'vipassana.appendix.title': 'Appendices',
         'vipassana.appendix.desc': 'The following content contains detailed records and reference materials, collapsed by default. Click to expand.',
         'vipassana.appendixA.title': 'Appendix A: Daily Notes (2022-2024)',
-        'vipassana.appendixA.desc': 'Note: The following are personal practice records, organized chronologically. Some content reflects subjective experiences at the time and does not represent universal conclusions.'
+        'vipassana.appendixA.desc': 'Note: The following are personal practice records, organized chronologically. Some content reflects subjective experiences at the time and does not represent universal conclusions.',
+        'vipassana.appendixB.title': 'Appendix B: External Links & Resources (Center Info, Transportation, Registration)',
+        'vipassana.appendixC.title': 'Appendix C: Glossary (Chinese/English/Pāli + One-sentence Explanations)'
     }
 };
 
