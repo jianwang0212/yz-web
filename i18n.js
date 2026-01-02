@@ -9,6 +9,10 @@ const translations = {
         'nav.interests': '兴趣爱好',
         'nav.works': '作品',
         'nav.contact': '联系',
+        'nav.more': '更多',
+        'nav.timeline': '时间线',
+        'nav.resume': '简历',
+        'nav.finance': '财务仪表盘',
         
         // Hero
         'hero.name': 'Zi Yin（银子）',
@@ -352,6 +356,19 @@ function setLanguage(lang) {
             }
         }
     });
+    
+    // Show/hide hero value text based on language
+    const valueZh = document.querySelector('.value-zh');
+    const valueEn = document.querySelector('.value-en');
+    if (valueZh && valueEn) {
+        if (lang === 'zh') {
+            valueZh.style.display = 'block';
+            valueEn.style.display = 'none';
+        } else {
+            valueZh.style.display = 'none';
+            valueEn.style.display = 'block';
+        }
+    }
     
     // Update active language button
     document.querySelectorAll('.lang-btn').forEach(btn => {
