@@ -288,6 +288,27 @@ body {
     font-weight: 500;
 }
 
+.hero--bg .metric-row a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.hero--bg .metric-row a:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+}
+
+.hero--bg .metric-row a strong {
+    font-weight: 700;
+    color: inherit;
+}
+
 .hero--bg .metric-light {
     color: rgba(255, 255, 255, 0.75);
 }
