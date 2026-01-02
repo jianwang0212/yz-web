@@ -1,4 +1,7 @@
 // Internationalization (i18n) - 中英文切换
+// Initialize current language from localStorage or default to Chinese
+let currentLang = localStorage.getItem('language') || 'zh';
+
 const translations = {
     zh: {
         // Navigation
