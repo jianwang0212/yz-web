@@ -176,6 +176,10 @@ const translations = {
         'nav.interests': 'Interests',
         'nav.works': 'Works',
         'nav.contact': 'Contact',
+        'nav.more': 'More',
+        'nav.timeline': 'Timeline',
+        'nav.resume': 'Resume',
+        'nav.finance': 'Financial Dashboard',
         
         // Hero
         'hero.name': 'Zi Yin',
