@@ -238,6 +238,40 @@ body {
     line-height: 1.6;
 }
 
+/* Hero text colors - white for background images */
+.hero--bg,
+.hero--bg * {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero--bg .hero-title {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero--bg .hero-subtitle,
+.hero--bg .tagline {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.hero--bg .hero-value {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero--bg .metric-row,
+.hero--bg .metric-left,
+.hero--bg .metric-right,
+.hero--bg strong {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero--bg .metric-light {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.hero--bg .metric-separator {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .hero-metrics {
     display: flex;
     flex-direction: column;
@@ -3533,12 +3567,15 @@ section {
     filter: saturate(0.9) contrast(1.05);
 }
 
-/* Dark overlay to improve text contrast */
+/* Dark overlay to improve text contrast - cool black gradient */
 .hero--bg::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.45)
+    );
 }
 
 /* Ensure hero content sits above overlay */
@@ -3567,6 +3604,17 @@ section {
     font-size: 32px;
     font-weight: 600;
     color: #6a63ff;
+}
+
+/* Header name stays purple, Hero name becomes white */
+header .name-en,
+.navbar .name-en {
+    color: #6a63ff;
+}
+
+.hero .name-en,
+.hero--bg .name-en {
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .name-sep {
