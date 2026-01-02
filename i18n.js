@@ -33,6 +33,7 @@ const translations = {
         'hero.metric2': 'Citadel Securities 前量化交易员',
         'hero.metric3': '伯克利音乐学院（Berklee College of Music） — GPA 4.0（音乐人中极少见）',
         'hero.cta': '合作 / 咨询 → Email',
+        'hero.cta.mobile': '合作与研究联系 → Email',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
@@ -401,6 +402,7 @@ const translations = {
         'hero.metric2': 'Former Quantitative Trader at <strong>Citadel Securities</strong>',
         'hero.metric3': '<strong>Berklee College of Music</strong> — GPA <strong>4.0</strong> (rare among musicians)',
         'hero.cta': 'Project Inquiry → Email',
+        'hero.cta.mobile': 'Business / Research Inquiries → Email',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
@@ -778,13 +780,17 @@ function setLanguage(lang) {
         }
     }
     
-    // Update active language button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    // Update active language button (desktop and mobile)
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
         btn.classList.remove('active');
     });
     const activeLangBtn = document.getElementById(`lang-${lang}`);
+    const activeLangBtnMobile = document.getElementById(`lang-${lang}-mobile`);
     if (activeLangBtn) {
         activeLangBtn.classList.add('active');
+    }
+    if (activeLangBtnMobile) {
+        activeLangBtnMobile.classList.add('active');
     }
 }
 
@@ -794,16 +800,20 @@ function initLanguageToggle() {
     let langZhBtn = document.getElementById('lang-zh');
     let langEnBtn = document.getElementById('lang-en');
     
+    // Also get mobile buttons
+    let langZhBtnMobile = document.getElementById('lang-zh-mobile');
+    let langEnBtnMobile = document.getElementById('lang-en-mobile');
+    
     // If not found by ID, try to find by text content as fallback
     if (!langZhBtn || !langEnBtn) {
         const buttons = document.querySelectorAll('button');
         buttons.forEach(btn => {
             const text = btn.textContent.trim();
-            if (text === '中文' && !langZhBtn) {
+            if (text === '中文' && !langZhBtn && !btn.id.includes('mobile')) {
                 langZhBtn = btn;
                 btn.id = 'lang-zh';
                 btn.classList.add('lang-btn');
-            } else if (text === 'English' && !langEnBtn) {
+            } else if (text === 'English' && !langEnBtn && !btn.id.includes('mobile')) {
                 langEnBtn = btn;
                 btn.id = 'lang-en';
                 btn.classList.add('lang-btn');
@@ -811,36 +821,34 @@ function initLanguageToggle() {
         });
     }
     
-    // Bind event handlers
-    if (langZhBtn) {
-        // Remove any existing listeners by cloning
-        const newZhBtn = langZhBtn.cloneNode(true);
-        langZhBtn.parentNode.replaceChild(newZhBtn, langZhBtn);
-        langZhBtn = newZhBtn;
+    // Helper function to bind button
+    function bindButton(btn, lang, isMobile = false) {
+        if (!btn) return;
         
-        langZhBtn.addEventListener('click', (e) => {
+        // Remove any existing listeners by cloning
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Language switch to Chinese');
-            setLanguage('zh');
+            console.log(`Language switch to ${lang === 'zh' ? 'Chinese' : 'English'}${isMobile ? ' (mobile)' : ''}`);
+            setLanguage(lang);
         });
-    } else {
-        console.error('Language button lang-zh not found in DOM');
     }
     
-    if (langEnBtn) {
-        // Remove any existing listeners by cloning
-        const newEnBtn = langEnBtn.cloneNode(true);
-        langEnBtn.parentNode.replaceChild(newEnBtn, langEnBtn);
-        langEnBtn = newEnBtn;
-        
-        langEnBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Language switch to English');
-            setLanguage('en');
-        });
-    } else {
+    // Bind desktop buttons
+    bindButton(langZhBtn, 'zh');
+    bindButton(langEnBtn, 'en');
+    
+    // Bind mobile buttons
+    bindButton(langZhBtnMobile, 'zh', true);
+    bindButton(langEnBtnMobile, 'en', true);
+    
+    if (!langZhBtn && !langZhBtnMobile) {
+        console.error('Language button lang-zh not found in DOM');
+    }
+    if (!langEnBtn && !langEnBtnMobile) {
         console.error('Language button lang-en not found in DOM');
     }
 }

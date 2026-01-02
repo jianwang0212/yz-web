@@ -3648,6 +3648,113 @@ section {
         min-height: 72vh;
         background-position: 50% 30%;
     }
+    
+    /* Stronger overlay for mobile */
+    .hero--bg::before {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.70),
+            rgba(0, 0, 0, 0.55)
+        );
+    }
+    
+    /* Hide hero-metrics and hero-value on mobile */
+    .hero-metrics {
+        display: none !important;
+    }
+    
+    .hero-value {
+        display: none !important;
+    }
+    
+    /* Hide desktop CTA, show mobile CTA */
+    .hero--bg .cta-email {
+        display: none;
+    }
+    
+    .hero--bg .cta-email-mobile {
+        display: inline-block;
+        min-height: 48px;
+        padding: 16px 32px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 1);
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        margin-top: 2rem;
+    }
+    
+    .hero--bg .cta-email-mobile:hover,
+    .hero--bg .cta-email-mobile:active {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.7);
+        transform: translateY(-1px);
+    }
+    
+    /* Add more padding to hero content on mobile */
+    .hero--bg .hero-content {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+    
+    /* Prevent title word breaking */
+    .hero--bg .hero-title {
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Hide desktop language toggle, show in hamburger menu */
+    .nav-lang-toggle {
+        display: none;
+    }
+    
+    /* Style mobile language toggle in dropdown */
+    .nav-lang-toggle-mobile {
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .lang-btn-mobile {
+        flex: 1;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+    
+    .lang-btn-mobile.active {
+        background: #6a63ff;
+        color: white;
+        border-color: #6a63ff;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .hero--bg .hero-title {
+        font-size: clamp(28px, 8vw, 36px);
+        white-space: normal;
+        line-height: 1.3;
+    }
+    
+    .hero--bg .hero-subtitle {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+    
+    .hero--bg .hero-content {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
 }
 
 /* Site title with bilingual display */
