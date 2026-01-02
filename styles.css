@@ -221,6 +221,13 @@ body {
     justify-content: center;
 }
 
+/* Left-align content for hero with background image */
+.hero--bg .hero-content {
+    text-align: left;
+    padding-left: 8vw;
+    max-width: 100%;
+}
+
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
@@ -228,6 +235,13 @@ body {
     line-height: 1.2;
     color: #000000;
     letter-spacing: -0.01em;
+}
+
+/* Hero title spacing and size adjustment for background images */
+.hero--bg .hero-title {
+    margin-top: 6vh;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.15;
 }
 
 .hero-subtitle {
@@ -259,9 +273,13 @@ body {
 
 .hero--bg .metric-row,
 .hero--bg .metric-left,
-.hero--bg .metric-right,
-.hero--bg strong {
+.hero--bg .metric-right {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.hero--bg .metric-row strong {
     color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
 }
 
 .hero--bg .metric-light {
@@ -269,7 +287,8 @@ body {
 }
 
 .hero--bg .metric-separator {
-    color: rgba(255, 255, 255, 0.5);
+    opacity: 0.35;
+    transform: scaleY(0.8);
 }
 
 .hero-metrics {
@@ -280,6 +299,12 @@ body {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Left-align metrics for hero with background */
+.hero--bg .hero-metrics {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .metric-row {
@@ -359,6 +384,12 @@ body {
     max-width: 750px;
     margin: 0 auto;
     text-align: left;
+}
+
+/* Left-align value text for hero with background */
+.hero--bg .hero-value {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .value-zh {
@@ -3559,7 +3590,7 @@ section {
     position: relative;
     min-height: 78vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background-image: url("images/AuMusicBest.jpg");
     background-size: cover;
     background-position: 35% 35%;
@@ -3634,11 +3665,14 @@ header .name-en,
 /* Hero CTA button styling for background images */
 .hero--bg .cta-email {
     color: rgba(255, 255, 255, 0.92);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 14px 28px;
+    transition: all 0.2s ease;
 }
 
 .hero--bg .cta-email:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.18);
     border-color: rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 1);
 }
