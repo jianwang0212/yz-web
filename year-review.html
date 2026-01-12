@@ -48,8 +48,8 @@
     <!-- Year Review Section -->
     <section id="year-review" class="year-review" style="padding-top: 100px;">
         <div class="container">
-            <h2 class="section-title">2025 年度总结</h2>
-            <p class="section-subtitle">这一年，我在音乐、工作、生活和成长的道路上持续前行</p>
+            <h2 class="section-title" data-i18n="yearReview.title">2025 年度总结</h2>
+            <p class="section-subtitle" data-i18n="yearReview.subtitle">这一年，我在音乐、工作、生活和成长的道路上持续前行</p>
 
             <!-- Progress Indicator -->
             <div class="progress-indicator" id="progress-indicator">
@@ -61,16 +61,16 @@
                 <!-- Overview Card -->
                 <div class="review-card overview-card">
                     <h3>
-                        总体概览
-                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" style="font-size: 0.7rem; font-weight: 400; color: var(--text-secondary); margin-left: 0.5rem; cursor: pointer; text-decoration: underline; vertical-align: middle;">
+                        <span data-i18n="yearReview.overview.title">总体概览</span>
+                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" data-i18n="yearReview.overview.hoursNote" style="font-size: 0.7rem; font-weight: 400; color: var(--text-secondary); margin-left: 0.5rem; cursor: pointer; text-decoration: underline; vertical-align: middle;">
                             💡 为什么要记小时数？
                         </span>
                     </h3>
                     <div class="time-distribution">
                         <div class="distribution-item">
                             <div class="distribution-label">
-                                <span>音乐</span>
-                                <span class="distribution-hours">2,570 小时</span>
+                                <span data-i18n="yearReview.music.label">音乐</span>
+                                <span class="distribution-hours">2,570 <span data-i18n="common.hours">小时</span></span>
                             </div>
                             <div class="distribution-bar-container clickable-distribution-bar" data-modal-target="music-calendar-modal">
                                 <div class="distribution-bar" style="width: 44%; background: linear-gradient(135deg, #6366f1, #8b5cf6); cursor: pointer;">
@@ -80,8 +80,8 @@
                         </div>
                         <div class="distribution-item">
                             <div class="distribution-label">
-                                <span>工作</span>
-                                <span class="distribution-hours">1,752 小时</span>
+                                <span data-i18n="yearReview.work.label">工作</span>
+                                <span class="distribution-hours">1,752 <span data-i18n="common.hours">小时</span></span>
                             </div>
                             <div class="distribution-bar-container">
                                 <div class="distribution-bar" style="width: 30%; background: linear-gradient(135deg, #10b981, #059669);">
@@ -91,8 +91,8 @@
                         </div>
                         <div class="distribution-item">
                             <div class="distribution-label">
-                                <span>AI探索</span>
-                                <span class="distribution-hours">467 小时</span>
+                                <span data-i18n="yearReview.ai.label">AI探索</span>
+                                <span class="distribution-hours">467 <span data-i18n="common.hours">小时</span></span>
                             </div>
                             <div class="distribution-bar-container">
                                 <div class="distribution-bar" style="width: 8%; background: linear-gradient(135deg, #f59e0b, #d97706);">
@@ -102,8 +102,8 @@
                         </div>
                         <div class="distribution-item">
                             <div class="distribution-label">
-                                <span>亲密关系</span>
-                                <span class="distribution-hours">350 小时</span>
+                                <span data-i18n="yearReview.relationship.label">亲密关系</span>
+                                <span class="distribution-hours">350 <span data-i18n="common.hours">小时</span></span>
                             </div>
                             <div class="distribution-bar-container">
                                 <div class="distribution-bar" style="width: 6%; background: linear-gradient(135deg, #ec4899, #db2777);">
@@ -113,8 +113,8 @@
                         </div>
                         <div class="distribution-item">
                             <div class="distribution-label">
-                                <span>伙伴</span>
-                                <span class="distribution-hours">117 小时</span>
+                                <span data-i18n="yearReview.partners.label">伙伴</span>
+                                <span class="distribution-hours">117 <span data-i18n="common.hours">小时</span></span>
                             </div>
                             <div class="distribution-bar-container">
                                 <div class="distribution-bar" style="width: 2%; background: linear-gradient(135deg, #06b6d4, #0891b2);">
@@ -128,8 +128,8 @@
                 <!-- Music Achievements -->
                 <div class="review-card category-card music-card">
                     <div class="card-header">
-                        <h3>🎵 音乐成就</h3>
-                        <span class="category-percentage">44% 时间投入</span>
+                        <h3 data-i18n="yearReview.music.title">🎵 音乐成就</h3>
+                        <span class="category-percentage" data-i18n="yearReview.music.percentage">44% 时间投入</span>
                     </div>
                     <div class="achievements-grid">
                         <div class="achievement-item clickable-achievement" data-modal-target="gpa-modal" style="cursor: pointer;">
@@ -162,8 +162,8 @@
                 <!-- Work Achievements -->
                 <div class="review-card category-card work-card">
                     <div class="card-header">
-                        <h3>💼 工作成就</h3>
-                        <span class="category-percentage">30% 时间投入</span>
+                        <h3 data-i18n="yearReview.work.title">💼 工作成就</h3>
+                        <span class="category-percentage" data-i18n="yearReview.work.percentage">30% 时间投入</span>
                     </div>
                     <div class="work-items">
                         <div class="work-item">
@@ -184,17 +184,17 @@
                 <!-- Financial Summary -->
                 <div class="review-card category-card financial-card">
                     <div class="card-header">
-                        <h3>💰 财务概览</h3>
+                        <h3 data-i18n="yearReview.financial.title">💰 财务概览</h3>
                     </div>
                     
                     <!-- Password Protection -->
                     <div id="financial-password-form" style="padding: 2rem; text-align: center;">
                         <div style="margin-bottom: 1.5rem;">
-                            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;">此内容需要密码验证</p>
-                            <input type="password" id="financial-password-input" placeholder="请输入密码" style="padding: 0.8rem 1.2rem; font-size: 1rem; border: 2px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 300px; outline: none; transition: border-color 0.3s ease;" />
-                            <p id="financial-password-error" style="color: #ef4444; font-size: 0.9rem; margin-top: 0.5rem; display: none;">密码错误，请重试</p>
+                            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;" data-i18n="yearReview.financial.password">此内容需要密码验证</p>
+                            <input type="password" id="financial-password-input" data-i18n="yearReview.financial.passwordPlaceholder" placeholder="请输入密码" style="padding: 0.8rem 1.2rem; font-size: 1rem; border: 2px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 300px; outline: none; transition: border-color 0.3s ease;" />
+                            <p id="financial-password-error" style="color: #ef4444; font-size: 0.9rem; margin-top: 0.5rem; display: none;" data-i18n="yearReview.financial.passwordError">密码错误，请重试</p>
                         </div>
-                        <button id="financial-password-submit" style="padding: 0.8rem 2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s ease;">确认</button>
+                        <button id="financial-password-submit" data-i18n="yearReview.financial.submit" style="padding: 0.8rem 2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s ease;">确认</button>
                     </div>
                     
                     <!-- Overall Summary with Charts -->
@@ -579,7 +579,7 @@
                 <!-- Monthly Timeline -->
                 <div class="review-card category-card timeline-card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                        <h3>📅 月度大事件</h3>
+                        <h3 data-i18n="yearReview.timeline.title">📅 月度大事件</h3>
                         <div class="timeline-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <button class="clickable-timeline-link" data-modal-target="daily-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
                                 📝 查看每日计划
@@ -600,7 +600,7 @@
                 <!-- Relationships -->
                 <div class="review-card category-card relationship-card">
                     <div class="card-header">
-                        <h3>❤️ 亲密关系</h3>
+                        <h3 data-i18n="yearReview.relationship.title">❤️ 亲密关系</h3>
                     </div>
                     <div class="relationship-structure">
                         <div class="relationship-section">
@@ -633,7 +633,7 @@
                 <!-- Projects -->
                 <div class="review-card category-card projects-card">
                     <div class="card-header">
-                        <h3>🎯 重要项目</h3>
+                        <h3 data-i18n="yearReview.projects.title">🎯 重要项目</h3>
                     </div>
                     <div class="projects-list">
                         <div class="project-item">
@@ -654,7 +654,7 @@
                 <!-- Reading -->
                 <div class="review-card category-card reading-card">
                     <div class="card-header">
-                        <h3>📚 今年读书</h3>
+                        <h3 data-i18n="yearReview.reading.title">📚 今年读书</h3>
                         <span class="category-percentage">18 本</span>
                     </div>
                     <div class="books-grid">
@@ -681,8 +681,8 @@
                 <!-- AI Exploration -->
                 <div class="review-card category-card ai-card">
                     <div class="card-header">
-                        <h3>🤖 AI 协同工作探索</h3>
-                        <span class="category-percentage">8% 时间投入</span>
+                        <h3 data-i18n="yearReview.ai.title">🤖 AI 协同工作探索</h3>
+                        <span class="category-percentage" data-i18n="yearReview.ai.percentage">8% 时间投入</span>
                     </div>
                     
                     <!-- Core Statistics -->
@@ -765,7 +765,7 @@
                 <!-- Memorable Quote -->
                 <div class="review-card category-card memorable-quote-card">
                     <div class="card-header">
-                        <h3>💭 最让我难忘的一段话</h3>
+                        <h3 data-i18n="yearReview.quote.title">💭 最让我难忘的一段话</h3>
                     </div>
                     <div class="memorable-quote-content" style="padding: 2rem; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 12px; border-left: 4px solid var(--primary-color);">
                         <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem; font-style: italic;">
@@ -791,7 +791,7 @@
 
                 <!-- Final Message -->
                 <div class="review-card final-message-card">
-                    <h3>给家人和朋友的话</h3>
+                    <h3 data-i18n="yearReview.final.title">给家人和朋友的话</h3>
                     <p class="final-message">
                         这一年，我在音乐、工作、生活和成长的道路上持续前行。<br>
                         感谢你们的支出和理解，让我能够追求自己的梦想。<br>
@@ -806,8 +806,8 @@
     <section id="feedback" class="feedback-section" style="padding: 80px 0; background: var(--bg-secondary);">
         <div class="container">
             <div class="review-card" style="max-width: 800px; margin: 0 auto;">
-                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; text-align: center;">给我一点你的 2025</h3>
-                <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;">如果你愿意，也很期待了解你过去一年的轨迹与感受。</p>
+                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; text-align: center;" data-i18n="yearReview.feedback.title">给我一点你的 2025</h3>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;" data-i18n="yearReview.feedback.subtitle">如果你愿意，也很期待了解你过去一年的轨迹与感受。</p>
                 
                 <form id="year-review-form" class="feedback-form">
                     <!-- 基本信息 -->
@@ -1378,6 +1378,7 @@
             }
         });
     </script>
+    <script src="i18n.js"></script>
     <script src="data/docking-tech-data.js"></script>
     <script>
         // Docking Tech Chart

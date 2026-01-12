@@ -4,6 +4,9 @@ let currentLang = localStorage.getItem('language') || 'zh';
 
 const translations = {
     zh: {
+        // Common
+        'common.hours': '小时',
+        
         // Navigation
         'nav.home': '首页',
         'nav.highlights': '主要亮点',
@@ -167,6 +170,36 @@ const translations = {
         'contact.title': '联系方式',
         'contact.message': '有任何交流或合作意向，欢迎发送邮件联系',
         'contact.signature': '期待您的来信，欢迎交流，共同探讨有趣的话题',
+        
+        // Year Review
+        'yearReview.title': '2025 年度总结',
+        'yearReview.subtitle': '这一年，我在音乐、工作、生活和成长的道路上持续前行',
+        'yearReview.overview.title': '总体概览',
+        'yearReview.overview.hoursNote': '💡 为什么要记小时数？',
+        'yearReview.music.label': '音乐',
+        'yearReview.work.label': '工作',
+        'yearReview.ai.label': 'AI探索',
+        'yearReview.relationship.label': '亲密关系',
+        'yearReview.partners.label': '伙伴',
+        'yearReview.music.title': '🎵 音乐成就',
+        'yearReview.music.percentage': '44% 时间投入',
+        'yearReview.work.title': '💼 工作成就',
+        'yearReview.work.percentage': '30% 时间投入',
+        'yearReview.financial.title': '💰 财务概览',
+        'yearReview.financial.password': '此内容需要密码验证',
+        'yearReview.financial.passwordPlaceholder': '请输入密码',
+        'yearReview.financial.passwordError': '密码错误，请重试',
+        'yearReview.financial.submit': '确认',
+        'yearReview.timeline.title': '📅 月度大事件',
+        'yearReview.relationship.title': '❤️ 亲密关系',
+        'yearReview.projects.title': '🎯 重要项目',
+        'yearReview.reading.title': '📚 今年读书',
+        'yearReview.ai.title': '🤖 AI 协同工作探索',
+        'yearReview.ai.percentage': '8% 时间投入',
+        'yearReview.quote.title': '💭 最让我难忘的一段话',
+        'yearReview.final.title': '给家人和朋友的话',
+        'yearReview.feedback.title': '给我一点你的 2025',
+        'yearReview.feedback.subtitle': '如果你愿意，也很期待了解你过去一年的轨迹与感受。',
         
         // Footer
         'footer.text': '© 2024 Zi Yin. 保留所有权利。',
@@ -374,6 +407,9 @@ const translations = {
         'vipassana.appendixC.warning.text': '以上术语表基于个人学习与实践记录整理，部分内容涉及医学/临床解释（如过敏、免疫球蛋白E、结膜炎、干眼等）仅为"并置解释/推断"，不构成医疗诊断。如有身心健康问题，请咨询专业医疗人员。'
     },
     en: {
+        // Common
+        'common.hours': 'hours',
+        
         // Navigation
         'nav.home': 'Home',
         'nav.highlights': 'Highlights',
@@ -536,6 +572,36 @@ const translations = {
         'contact.title': 'Contact',
         'contact.message': 'For any inquiries or collaboration opportunities, please feel free to email',
         'contact.signature': 'Looking forward to your message. Welcome to connect and discuss interesting topics together',
+        
+        // Year Review
+        'yearReview.title': '2025 Annual Review',
+        'yearReview.subtitle': 'This year, I continued moving forward on the path of music, work, life, and growth',
+        'yearReview.overview.title': 'Overall Overview',
+        'yearReview.overview.hoursNote': '💡 Why record hours?',
+        'yearReview.music.label': 'Music',
+        'yearReview.work.label': 'Work',
+        'yearReview.ai.label': 'AI Exploration',
+        'yearReview.relationship.label': 'Intimate Relationships',
+        'yearReview.partners.label': 'Partners',
+        'yearReview.music.title': '🎵 Music Achievements',
+        'yearReview.music.percentage': '44% Time Investment',
+        'yearReview.work.title': '💼 Work Achievements',
+        'yearReview.work.percentage': '30% Time Investment',
+        'yearReview.financial.title': '💰 Financial Overview',
+        'yearReview.financial.password': 'This content requires password verification',
+        'yearReview.financial.passwordPlaceholder': 'Please enter password',
+        'yearReview.financial.passwordError': 'Incorrect password, please try again',
+        'yearReview.financial.submit': 'Confirm',
+        'yearReview.timeline.title': '📅 Monthly Highlights',
+        'yearReview.relationship.title': '❤️ Intimate Relationships',
+        'yearReview.projects.title': '🎯 Key Projects',
+        'yearReview.reading.title': '📚 Books Read This Year',
+        'yearReview.ai.title': '🤖 AI Collaboration Exploration',
+        'yearReview.ai.percentage': '8% Time Investment',
+        'yearReview.quote.title': '💭 The Most Memorable Quote',
+        'yearReview.final.title': 'Message to Family and Friends',
+        'yearReview.feedback.title': 'Share Your 2025 with Me',
+        'yearReview.feedback.subtitle': 'If you\'re willing, I\'d love to learn about your journey and experiences from the past year.',
         
         // Footer
         'footer.text': '© 2024 Zi Yin. All rights reserved.',
