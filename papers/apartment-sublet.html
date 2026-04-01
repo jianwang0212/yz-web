@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh" id="html-lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="波士顿 1179 Boylston 公寓转租说明：给下一位租客的中英文交接页。">
+    <title>波士顿公寓转租 · 给下一位租客 - Zi Yin (银子)</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 4rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: var(--primary-dark);
+        }
+
+        .handoff {
+            line-height: 1.75;
+            color: var(--text-primary);
+        }
+
+        .handoff-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.06) 0%, transparent 100%);
+            border-radius: 0 0 12px 12px;
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .handoff h1 {
+            font-size: clamp(1.65rem, 4vw, 2.1rem);
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .handoff .post-meta {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .handoff .lead {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 52ch;
+        }
+
+        .handoff h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .handoff h2::before {
+            content: "";
+            width: 4px;
+            height: 1.1em;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .fact-sheet {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .fact-row {
+            display: grid;
+            grid-template-columns: minmax(100px, 140px) 1fr;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            align-items: start;
+        }
+
+        .fact-row:last-child {
+            border-bottom: none;
+        }
+
+        .fact-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--primary-color);
+        }
+
+        .fact-val {
+            font-size: 0.98rem;
+            color: var(--text-primary);
+        }
+
+        .fact-val a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .fact-val a:hover {
+            text-decoration: underline;
+        }
+
+        .perk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 720px) {
+            .perk-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fact-row {
+                grid-template-columns: 1fr;
+                gap: 0.35rem;
+            }
+        }
+
+        .perk {
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: linear-gradient(145deg, rgba(99, 102, 241, 0.07), rgba(139, 92, 246, 0.04));
+        }
+
+        .perk h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .perk p {
+            font-size: 0.92rem;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        .handoff .body-p {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-line {
+            margin-top: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-line a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .mono {
+            font-family: ui-monospace, monospace;
+            font-size: 0.9em;
+        }
+
+        .inv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .inv-table thead {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.08));
+        }
+
+        .inv-table th {
+            text-align: left;
+            padding: 0.85rem 1rem;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary-dark);
+        }
+
+        .inv-table th.num,
+        .inv-table td.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .inv-table td {
+            padding: 0.75rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .inv-table tbody tr:nth-child(even) {
+            background: rgba(249, 250, 251, 0.8);
+        }
+
+        .note-muted {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .pdf-block {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px dashed rgba(99, 102, 241, 0.35);
+            background: rgba(99, 102, 241, 0.04);
+        }
+
+        .pdf-lead {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.35rem;
+            background: var(--primary-color);
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .pdf-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand site-title">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="../year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="../works.html" data-i18n="nav.works">作品</a></li>
+                <li><a href="../contact.html" data-i18n="nav.contact">联系</a></li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
+                    <div class="nav-dropdown">
+                        <a href="../projects.html" data-i18n="nav.projects">项目</a>
+                        <a href="../timeline.html" data-i18n="nav.timeline">时间线</a>
+                        <a href="../resume.html" data-i18n="nav.resume">简历</a>
+                        <a href="../financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
+                        <a href="../interests.html" data-i18n="nav.interests">兴趣爱好</a>
+                        <a href="../highlights.html" data-i18n="nav.highlights">主要亮点</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active">中文</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section style="padding-top: 100px; padding-bottom: 80px;">
+        <div class="article-container">
+            <a href="../projects.html" class="back-link" data-i18n="projects.back">← 返回项目</a>
+
+            <article class="handoff">
+                <header class="handoff-header">
+                    <h1 data-i18n="sublet.title">致下一位租客：公寓转租与交接说明</h1>
+                    <p class="post-meta" data-i18n="sublet.meta">波士顿 Fenway 附近 · 信息整理自转租说明 PDF</p>
+                    <p class="lead" data-i18n="sublet.lead">感谢你对这间公寓的兴趣。</p>
+                </header>
+
+                <h2 data-i18n="sublet.h2_facts">房源与联系</h2>
+                <div data-i18n="sublet.facts_html"></div>
+
+                <h2 data-i18n="sublet.h2_timing">转租起始时间</h2>
+                <p class="body-p" data-i18n="sublet.timing"></p>
+
+                <h2 data-i18n="sublet.h2_bonuses">入住月份福利</h2>
+                <div data-i18n="sublet.bonuses_html"></div>
+
+                <h2 data-i18n="sublet.h2_resale">二手物品</h2>
+                <p class="body-p" data-i18n="sublet.resale"></p>
+                <div class="contact-line" data-i18n="sublet.resale_contact"></div>
+
+                <h2 data-i18n="sublet.h2_inventory">物品与参考标价</h2>
+                <div data-i18n="sublet.items_html"></div>
+                <p class="note-muted" data-i18n="sublet.note_price"></p>
+
+                <h2 data-i18n="sublet.h2_pdf">完整 PDF</h2>
+                <div class="pdf-block" data-i18n="sublet.pdf_html"></div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../i18n.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
