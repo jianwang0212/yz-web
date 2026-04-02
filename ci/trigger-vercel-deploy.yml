@@ -1,0 +1,36 @@
+# Copy this file to: .github/workflows/trigger-vercel-deploy.yml
+# (GitHub OAuth tokens without `workflow` scope cannot push under .github/workflows via API.)
+#
+# Triggers Vercel production via Deploy Hook:
+# 1. Vercel → Project → Settings → Git → Deploy Hooks → Create (Production, main)
+# 2. GitHub → repo → Settings → Secrets → Actions → VERCEL_DEPLOY_HOOK = hook URL
+# 3. Push to main or run workflow manually.
+
+name: Trigger Vercel production deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-hook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: POST Vercel Deploy Hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOK}" ]; then
+            echo "::error::Repository secret VERCEL_DEPLOY_HOOK is not set."
+            echo "Create a Production Deploy Hook in Vercel (Project → Settings → Git → Deploy Hooks),"
+            echo "then add it as secret VERCEL_DEPLOY_HOOK under GitHub → Settings → Secrets → Actions."
+            exit 1
+          fi
+          curl -fsS -X POST "$HOOK"
+          echo "Deploy hook accepted (Vercel will queue a production deployment)."
