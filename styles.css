@@ -178,7 +178,11 @@ body {
     border-color: var(--primary-color);
 }
 
-/* Language switch inside "更多" — only used on mobile (see @media max-width 768px below) */
+/* Mobile slide-out only: language row (desktop hides entire <li>) */
+.nav-menu-lang-item {
+    display: none;
+}
+
 .nav-lang-toggle-mobile {
     display: none;
 }
@@ -1130,6 +1134,47 @@ section {
 
     .section-title {
         font-size: 2rem;
+    }
+
+    /* Mobile: hide top-right lang; show 中文/English on first level of slide-out menu */
+    .nav-lang-toggle {
+        display: none;
+    }
+
+    .nav-menu-lang-item {
+        display: list-item;
+        width: 100%;
+        padding: 0 1.25rem;
+        box-sizing: border-box;
+        list-style: none;
+    }
+
+    .nav-menu-lang-item .nav-lang-toggle-mobile {
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem 0 0.75rem;
+        margin-top: 0.35rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lang-btn-mobile {
+        flex: 1;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+
+    .lang-btn-mobile.active {
+        background: #6a63ff;
+        color: white;
+        border-color: #6a63ff;
     }
 }
 
@@ -3712,36 +3757,6 @@ section {
         text-overflow: ellipsis;
     }
     
-    /* Hide desktop language toggle, show in hamburger menu */
-    .nav-lang-toggle {
-        display: none;
-    }
-    
-    /* Style mobile language toggle in dropdown */
-    .nav-lang-toggle-mobile {
-        display: flex;
-        gap: 0.5rem;
-        padding: 1rem;
-        margin-top: 0.5rem;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    
-    .lang-btn-mobile {
-        flex: 1;
-        padding: 0.5rem 1rem;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        background: white;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: all 0.2s ease;
-    }
-    
-    .lang-btn-mobile.active {
-        background: #6a63ff;
-        color: white;
-        border-color: #6a63ff;
-    }
 }
 
 /* For very small screens */
