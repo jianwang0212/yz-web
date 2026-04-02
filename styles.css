@@ -178,6 +178,11 @@ body {
     border-color: var(--primary-color);
 }
 
+/* Language switch inside "更多" — only used on mobile (see @media max-width 768px below) */
+.nav-lang-toggle-mobile {
+    display: none;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;

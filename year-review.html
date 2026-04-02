@@ -30,6 +30,10 @@
                         <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
                         <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
                         <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
+                        <div class="nav-lang-toggle-mobile">
+                            <button id="lang-zh-mobile" class="lang-btn-mobile active">中文</button>
+                            <button id="lang-en-mobile" class="lang-btn-mobile">English</button>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -134,27 +138,27 @@
                     <div class="achievements-grid">
                         <div class="achievement-item clickable-achievement" data-modal-target="gpa-modal" style="cursor: pointer;">
                             <div class="achievement-number">GPA 4.0</div>
-                            <div class="achievement-desc">伯克利音乐学院 音乐制作和爵士作曲专业第二年顺利读过</div>
+                            <div class="achievement-desc" data-i18n="yearReview.music.gpa.desc">伯克利音乐学院 音乐制作和爵士作曲专业第二年顺利读过</div>
                         </div>
                         <div class="achievement-item clickable-achievement" data-modal-target="mixing-works-modal" style="cursor: pointer;">
-                            <div class="achievement-number">28 首</div>
-                            <div class="achievement-desc">混音作品<br>SoundGym百万分</div>
+                            <div class="achievement-number"><span data-i18n="yearReview.music.mixing.number">28</span> <span data-i18n="common.pieces">首</span></div>
+                            <div class="achievement-desc" data-i18n="yearReview.music.mixing.desc">混音作品<br>SoundGym百万分</div>
                         </div>
                         <div class="achievement-item clickable-achievement" data-modal-target="recording-sessions-modal" style="cursor: pointer;">
-                            <div class="achievement-number">37 个</div>
-                            <div class="achievement-desc">录音 session</div>
+                            <div class="achievement-number"><span data-i18n="yearReview.music.recording.number">37</span> <span data-i18n="common.items">个</span></div>
+                            <div class="achievement-desc" data-i18n="yearReview.music.recording.desc">录音 session</div>
                         </div>
                         <div class="achievement-item clickable-achievement" data-modal-target="original-compositions-modal" style="cursor: pointer;">
-                            <div class="achievement-number">16 首</div>
-                            <div class="achievement-desc">原创作曲</div>
+                            <div class="achievement-number"><span data-i18n="yearReview.music.original.number">16</span> <span data-i18n="common.pieces">首</span></div>
+                            <div class="achievement-desc" data-i18n="yearReview.music.original.desc">原创作曲</div>
                         </div>
                         <div class="achievement-item clickable-achievement" data-modal-target="arrangement-works-modal" style="cursor: pointer;">
-                            <div class="achievement-number">9 首</div>
-                            <div class="achievement-desc">编曲作品</div>
+                            <div class="achievement-number"><span data-i18n="yearReview.music.arrangement.number">9</span> <span data-i18n="common.pieces">首</span></div>
+                            <div class="achievement-desc" data-i18n="yearReview.music.arrangement.desc">编曲作品</div>
                         </div>
                         <div class="achievement-item clickable-achievement" data-modal-target="piano-performances-modal" style="cursor: pointer;">
-                            <div class="achievement-number">23 首</div>
-                            <div class="achievement-desc">钢琴演奏</div>
+                            <div class="achievement-number"><span data-i18n="yearReview.music.piano.number">23</span> <span data-i18n="common.pieces">首</span></div>
+                            <div class="achievement-desc" data-i18n="yearReview.music.piano.desc">钢琴演奏</div>
                         </div>
                     </div>
                 </div>
@@ -167,16 +171,16 @@
                     </div>
                     <div class="work-items">
                         <div class="work-item">
-                            <h4>LY 私募基金</h4>
-                            <p>年化收益 15% · AUM 翻倍</p>
+                            <h4 data-i18n="yearReview.work.ly.name">LY 私募基金</h4>
+                            <p data-i18n="yearReview.work.ly.desc">年化收益 15% · AUM 翻倍</p>
                         </div>
                         <div class="work-item clickable-work-item" data-modal-target="docking-tech-modal" style="cursor: pointer;">
-                            <h4>入坞科技</h4>
-                            <p>炼刀 AI · 年营业额到千万</p>
+                            <h4 data-i18n="yearReview.work.docking.name">入坞科技</h4>
+                            <p data-i18n="yearReview.work.docking.desc">炼刀 AI · 年营业额到千万</p>
                         </div>
                         <div class="work-item">
-                            <h4>家庭基金</h4>
-                            <p>- 长期配置 · 收益表现稳健</p>
+                            <h4 data-i18n="yearReview.work.family.name">家庭基金</h4>
+                            <p data-i18n="yearReview.work.family.desc">- 长期配置 · 收益表现稳健</p>
                         </div>
                     </div>
                 </div>
@@ -201,12 +205,12 @@
                     <div id="financial-content" class="financial-charts-container" style="display: none;">
                         <div class="financial-summary-cards">
                             <div class="summary-card-large income-card">
-                                <div class="summary-label">总收入</div>
-                                <div class="summary-value-large positive">192 万</div>
+                                <div class="summary-label" data-i18n="yearReview.financial.totalIncome">总收入</div>
+                                <div class="summary-value-large positive">192 <span data-i18n="yearReview.financial.wan">万</span></div>
                             </div>
                             <div class="summary-card-large expense-card">
-                                <div class="summary-label">总支出</div>
-                                <div class="summary-value-large negative">240 万</div>
+                                <div class="summary-label" data-i18n="yearReview.financial.totalExpense">总支出</div>
+                                <div class="summary-value-large negative">240 <span data-i18n="yearReview.financial.wan">万</span></div>
                             </div>
                         </div>
 
@@ -214,7 +218,7 @@
                         <div class="charts-row">
                             <!-- Income Breakdown Chart -->
                             <div class="chart-section-inline">
-                                <h4 class="chart-title">收入结构分析</h4>
+                                <h4 class="chart-title" data-i18n="yearReview.financial.incomeChart">收入结构分析</h4>
                                 <div class="chart-wrapper-inline">
                                     <canvas id="incomePieChart"></canvas>
                                 </div>
@@ -222,7 +226,7 @@
 
                             <!-- Expense Breakdown Chart -->
                             <div class="chart-section-inline">
-                                <h4 class="chart-title">支出结构分析</h4>
+                                <h4 class="chart-title" data-i18n="yearReview.financial.expenseChart">支出结构分析</h4>
                                 <div class="chart-wrapper-inline">
                                     <canvas id="expensePieChart"></canvas>
                                 </div>
@@ -231,7 +235,7 @@
 
                         <!-- Year-over-Year Comparison -->
                         <div class="financial-section">
-                        <h4 class="section-title">年度收入对比</h4>
+                        <h4 class="section-title" data-i18n="yearReview.financial.yearComparison">年度收入对比</h4>
                         
                         <!-- Year Comparison Summary -->
                         <div class="year-comparison-summary">
@@ -239,9 +243,9 @@
                                 <table class="comparison-table">
                                     <thead>
                                         <tr>
-                                            <th>年度</th>
-                                            <th>总收入</th>
-                                            <th>变化</th>
+                                            <th data-i18n="yearReview.financial.year">年度</th>
+                                            <th data-i18n="yearReview.financial.totalIncomeLabel">总收入</th>
+                                            <th data-i18n="yearReview.financial.change">变化</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -273,94 +277,94 @@
                         <!-- Income Structure Comparison -->
                         <div class="income-structure-comparison">
                             <div class="structure-year">
-                                <h5 class="structure-year-title">2024年收入结构</h5>
+                                <h5 class="structure-year-title" data-i18n="yearReview.financial.income2024">2024年收入结构</h5>
                                 <div class="structure-breakdown">
                                     <div class="structure-category">
                                         <div class="category-header">
                                             <span class="category-icon">①</span>
-                                            <span class="category-name">企业/项目型收入</span>
+                                            <span class="category-name" data-i18n="yearReview.financial.businessIncome">企业/项目型收入</span>
                                             <span class="category-total">152 万</span>
                                         </div>
                                         <div class="category-details">
                                             <div class="detail-row">
-                                                <span class="detail-name">入坞科技</span>
-                                                <span class="detail-amount">30 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.dockingTech">入坞科技</span>
+                                                <span class="detail-amount">30 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                             <div class="detail-row">
-                                                <span class="detail-name">SSL区块链公司(英国)</span>
-                                                <span class="detail-amount">120 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.sslBlockchain">SSL区块链公司(英国)</span>
+                                                <span class="detail-amount">120 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                             <div class="detail-row">
-                                                <span class="detail-name">私募基金</span>
-                                                <span class="detail-amount">2 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.privateFund">私募基金</span>
+                                                <span class="detail-amount">2 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="structure-category">
                                         <div class="category-header">
                                             <span class="category-icon">②</span>
-                                            <span class="category-name">投资/交易型收入</span>
+                                            <span class="category-name" data-i18n="yearReview.financial.tradingIncome">投资/交易型收入</span>
                                             <span class="category-total">110 万</span>
                                         </div>
                                         <div class="category-details">
                                             <div class="detail-row">
-                                                <span class="detail-name">私人自动交易</span>
-                                                <span class="detail-amount">110 万</span>
-                                                <span class="detail-note">(资产规模 400万)</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.privateTrading">私人自动交易</span>
+                                                <span class="detail-amount">110 <span data-i18n="yearReview.financial.wan">万</span></span>
+                                                <span class="detail-note" data-i18n="yearReview.financial.assetScale">(资产规模 400万)</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="year-total">
-                                    <span class="total-label">2024 合计</span>
+                                    <span class="total-label" data-i18n="yearReview.financial.total2024">2024 合计</span>
                                     <span class="total-value">262 万</span>
                                 </div>
                             </div>
 
                             <div class="structure-year">
-                                <h5 class="structure-year-title">2025年收入结构</h5>
+                                <h5 class="structure-year-title" data-i18n="yearReview.financial.income2025">2025年收入结构</h5>
                                 <div class="structure-breakdown">
                                     <div class="structure-category">
                                         <div class="category-header">
                                             <span class="category-icon">①</span>
-                                            <span class="category-name">主动/项目收入</span>
+                                            <span class="category-name" data-i18n="yearReview.financial.businessIncome2025">主动/项目收入</span>
                                             <span class="category-total">135 万</span>
                                         </div>
                                         <div class="category-details">
                                             <div class="detail-row">
-                                                <span class="detail-name">游戏公司</span>
-                                                <span class="detail-amount">95 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.gameCompany">游戏公司</span>
+                                                <span class="detail-amount">95 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                             <div class="detail-row">
-                                                <span class="detail-name">音乐</span>
-                                                <span class="detail-amount">15 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.music">音乐</span>
+                                                <span class="detail-amount">15 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                             <div class="detail-row">
-                                                <span class="detail-name">私募基金(含工资+分润)</span>
-                                                <span class="detail-amount">13 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.privateFund2025">私募基金(含工资+分润)</span>
+                                                <span class="detail-amount">13 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                             <div class="detail-row">
-                                                <span class="detail-name">入坞科技</span>
-                                                <span class="detail-amount">12 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.dockingTech">入坞科技</span>
+                                                <span class="detail-amount">12 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="structure-category">
                                         <div class="category-header">
                                             <span class="category-icon">②</span>
-                                            <span class="category-name">投资收入</span>
+                                            <span class="category-name" data-i18n="yearReview.financial.investmentIncome">投资收入</span>
                                             <span class="category-total">57 万</span>
                                         </div>
                                         <div class="category-details">
                                             <div class="detail-row">
-                                                <span class="detail-name">投资收入(家庭+个人)</span>
-                                                <span class="detail-amount">57 万</span>
+                                                <span class="detail-name" data-i18n="yearReview.financial.investmentIncomeDetail">投资收入(家庭+个人)</span>
+                                                <span class="detail-amount">57 <span data-i18n="yearReview.financial.wan">万</span></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="year-total">
-                                    <span class="total-label">2025 合计</span>
+                                    <span class="total-label" data-i18n="yearReview.financial.total2025">2025 合计</span>
                                     <span class="total-value">192 万</span>
                                 </div>
                             </div>
@@ -368,34 +372,34 @@
 
                         <!-- Core Comparison Conclusions -->
                         <div class="comparison-conclusions">
-                            <h5 class="conclusions-title">核心对比结论</h5>
+                            <h5 class="conclusions-title" data-i18n="yearReview.financial.conclusions">核心对比结论</h5>
                             <div class="conclusions-list">
                                 <div class="conclusion-item">
                                     <span class="conclusion-badge">1</span>
-                                    <span class="conclusion-text">2024 是"资本+高杠杆交易年"</span>
+                                    <span class="conclusion-text" data-i18n="yearReview.financial.conclusion1">2024 是"资本+高杠杆交易年"</span>
                                 </div>
                                 <div class="conclusion-item">
                                     <span class="conclusion-badge">2</span>
-                                    <span class="conclusion-text">2025 是"转型+重资产+人生再配置年"</span>
+                                    <span class="conclusion-text" data-i18n="yearReview.financial.conclusion2">2025 是"转型+重资产+人生再配置年"</span>
                                 </div>
                             </div>
                             <div class="risk-curve-section">
-                                <h6 class="risk-title">真正的变化不是收入，而是风险曲线</h6>
+                                <h6 class="risk-title" data-i18n="yearReview.financial.riskTitle">真正的变化不是收入，而是风险曲线</h6>
                                 <div class="risk-comparison">
                                     <div class="risk-year">
                                         <div class="risk-year-label">2024</div>
                                         <ul class="risk-characteristics">
-                                            <li>高收益</li>
-                                            <li>高波动</li>
-                                            <li>对个人状态极度敏感</li>
+                                            <li data-i18n="yearReview.financial.risk2024.1">高收益</li>
+                                            <li data-i18n="yearReview.financial.risk2024.2">高波动</li>
+                                            <li data-i18n="yearReview.financial.risk2024.3">对个人状态极度敏感</li>
                                         </ul>
                                     </div>
                                     <div class="risk-year">
                                         <div class="risk-year-label">2025</div>
                                         <ul class="risk-characteristics">
-                                            <li>收入下降</li>
-                                            <li>但资产沉淀(房产 + 人力资本)</li>
-                                            <li>风险从"市场"转向"人生选择"</li>
+                                            <li data-i18n="yearReview.financial.risk2025.1">收入下降</li>
+                                            <li data-i18n="yearReview.financial.risk2025.2">但资产沉淀(房产 + 人力资本)</li>
+                                            <li data-i18n="yearReview.financial.risk2025.3">风险从"市场"转向"人生选择"</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -405,7 +409,7 @@
 
                         <!-- Income Details -->
                         <div class="financial-section">
-                        <h4 class="section-title">收入明细</h4>
+                        <h4 class="section-title" data-i18n="yearReview.financial.incomeDetails">收入明细</h4>
                         <div class="financial-details-grid">
                             <div class="detail-category">
                                 <h5>主动/项目收入</h5>
@@ -431,7 +435,7 @@
                                 </div>
                             </div>
                             <div class="detail-category">
-                                <h5>投资收入</h5>
+                                <h5 data-i18n="yearReview.financial.investmentIncome">投资收入</h5>
                                 <div class="detail-total">57 万</div>
                                 <div class="detail-items">
                                     <div class="detail-item">
@@ -445,131 +449,131 @@
                                 </div>
                             </div>
                             <div class="detail-category">
-                                <h5>投资表现</h5>
-                                <div class="detail-total highlight">年化 17%</div>
-                                <p class="detail-note">综合投资回报</p>
+                                <h5 data-i18n="yearReview.financial.performance">投资表现</h5>
+                                <div class="detail-total highlight" data-i18n="yearReview.financial.annualized">年化 17%</div>
+                                <p class="detail-note" data-i18n="yearReview.financial.performanceNote">综合投资回报</p>
                             </div>
                         </div>
                         </div>
 
                         <!-- Expense Details -->
                         <div class="financial-section">
-                        <h4 class="section-title">支出明细</h4>
+                        <h4 class="section-title" data-i18n="yearReview.financial.expenseDetails">支出明细</h4>
                         
                         <!-- Intimate Relationships (Largest) -->
                         <div class="expense-category highlight-expense">
                             <div class="expense-header">
-                                <h5>① 亲密关系 (最大支出项)</h5>
-                                <div class="expense-total">170 万</div>
-                                <div class="expense-percentage">≈ 总支出的 70.8%</div>
+                                <h5 data-i18n="yearReview.financial.expense1.title">① 亲密关系 (最大支出项)</h5>
+                                <div class="expense-total">170 <span data-i18n="yearReview.financial.wan">万</span></div>
+                                <div class="expense-percentage" data-i18n="yearReview.financial.expense1.percentage">≈ 总支出的 70.8%</div>
                             </div>
                             <div class="expense-breakdown">
                                 <div class="expense-item asset-item">
                                     <div class="expense-item-header">
-                                        <span class="item-name">妈妈新房</span>
-                                        <span class="item-amount">150 万</span>
+                                        <span class="item-name" data-i18n="yearReview.financial.expense1.motherHouse">妈妈新房</span>
+                                        <span class="item-amount">150 <span data-i18n="yearReview.financial.wan">万</span></span>
                                     </div>
-                                    <span class="item-tag asset-tag">资产</span>
+                                    <span class="item-tag asset-tag" data-i18n="yearReview.financial.expense1.asset">资产</span>
                                 </div>
                                 <div class="expense-item special-item">
                                     <div class="expense-item-header">
-                                        <span class="item-name">孝敬基金</span>
-                                        <span class="item-amount">8.4 万</span>
+                                        <span class="item-name" data-i18n="yearReview.financial.expense1.filial">孝敬基金</span>
+                                        <span class="item-amount">8.4 <span data-i18n="yearReview.financial.wan">万</span></span>
                                     </div>
                                     <div class="sub-items">
                                         <div class="sub-item">
-                                            <span class="sub-name">春节红包</span>
-                                            <span class="sub-amount">6.2 万</span>
+                                            <span class="sub-name" data-i18n="yearReview.financial.expense1.redPacket">春节红包</span>
+                                            <span class="sub-amount">6.2 <span data-i18n="yearReview.financial.wan">万</span></span>
                                         </div>
                                         <div class="sub-item">
-                                            <span class="sub-name">哈尔滨旅游</span>
-                                            <span class="sub-amount">1.5 万</span>
+                                            <span class="sub-name" data-i18n="yearReview.financial.expense1.harbinTrip">哈尔滨旅游</span>
+                                            <span class="sub-amount">1.5 <span data-i18n="yearReview.financial.wan">万</span></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="expense-item special-item">
                                     <div class="expense-item-header">
-                                        <span class="item-name">小荷包</span>
-                                        <span class="item-amount">7.5 万</span>
+                                        <span class="item-name" data-i18n="yearReview.financial.expense1.wallet">小荷包</span>
+                                        <span class="item-amount">7.5 <span data-i18n="yearReview.financial.wan">万</span></span>
                                     </div>
                                     <div class="sub-items">
                                         <div class="sub-item">
-                                            <span class="sub-name">LV包</span>
-                                            <span class="sub-amount">2 万</span>
+                                            <span class="sub-name" data-i18n="yearReview.financial.expense1.lvBag">LV包</span>
+                                            <span class="sub-amount">2 <span data-i18n="yearReview.financial.wan">万</span></span>
                                         </div>
                                         <div class="sub-item">
-                                            <span class="sub-name">美国飞机票</span>
-                                            <span class="sub-amount">1.3 万</span>
+                                            <span class="sub-name" data-i18n="yearReview.financial.expense1.planeTicket">美国飞机票</span>
+                                            <span class="sub-amount">1.3 <span data-i18n="yearReview.financial.wan">万</span></span>
                                         </div>
                                         <div class="sub-item">
-                                            <span class="sub-name">3D 打印机+2个手机</span>
-                                            <span class="sub-amount">2 万</span>
+                                            <span class="sub-name" data-i18n="yearReview.financial.expense1.printer">3D 打印机+2个手机</span>
+                                            <span class="sub-amount">2 <span data-i18n="yearReview.financial.wan">万</span></span>
                                         </div>
                                         <div class="sub-item">
-                                            <span class="sub-name">三亚旅游</span>
-                                            <span class="sub-amount">1 万</span>
+                                            <span class="sub-name" data-i18n="yearReview.financial.expense1.sanyaTrip">三亚旅游</span>
+                                            <span class="sub-amount">1 <span data-i18n="yearReview.financial.wan">万</span></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="expense-item">
-                                    <span class="item-name">妈妈每年房租</span>
-                                    <span class="item-amount">3 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense1.motherRent">妈妈每年房租</span>
+                                    <span class="item-amount">3 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                                 <div class="expense-item">
-                                    <span class="item-name">给张园的工资</span>
-                                    <span class="item-amount">1 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense1.zhangyuanSalary">给张园的工资</span>
+                                    <span class="item-amount">1 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                                 <div class="expense-item">
-                                    <span class="item-name">给老婆的零花钱</span>
-                                    <span class="item-amount">1.2 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense1.wifeAllowance">给老婆的零花钱</span>
+                                    <span class="item-amount">1.2 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                             </div>
                             <div class="expense-note">
-                                <strong>性质判断：</strong>买房为资产，其余为情感/家庭/关系维持型消费
+                                <span data-i18n="yearReview.financial.expense1.note"><strong>性质判断：</strong>买房为资产，其余为情感/家庭/关系维持型消费</span>
                             </div>
                         </div>
 
                         <!-- Music Dream (Second) -->
                         <div class="expense-category">
                             <div class="expense-header">
-                                <h5>② 音乐梦想 (第二大支出)</h5>
-                                <div class="expense-total">40 万</div>
-                                <div class="expense-percentage">≈ 总支出的 16.7%</div>
+                                <h5 data-i18n="yearReview.financial.expense2.title">② 音乐梦想 (第二大支出)</h5>
+                                <div class="expense-total">40 <span data-i18n="yearReview.financial.wan">万</span></div>
+                                <div class="expense-percentage" data-i18n="yearReview.financial.expense2.percentage">≈ 总支出的 16.7%</div>
                             </div>
                             <div class="expense-breakdown">
                                 <div class="expense-item">
-                                    <span class="item-name">学费</span>
-                                    <span class="item-amount">35 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense2.tuition">学费</span>
+                                    <span class="item-amount">35 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                                 <div class="expense-item">
-                                    <span class="item-name">设备/软件</span>
-                                    <span class="item-amount">5 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense2.equipment">设备/软件</span>
+                                    <span class="item-amount">5 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                             </div>
                             <div class="expense-note">
-                                <strong>性质判断：</strong>人力资本投资
+                                <span data-i18n="yearReview.financial.expense2.note"><strong>性质判断：</strong>人力资本投资</span>
                             </div>
                         </div>
 
                         <!-- Living Expenses (Third) -->
                         <div class="expense-category">
                             <div class="expense-header">
-                                <h5>③ 生活支出 (第三大支出)</h5>
-                                <div class="expense-total">30 万</div>
-                                <div class="expense-percentage">≈ 总支出的 12.5%</div>
+                                <h5 data-i18n="yearReview.financial.expense3.title">③ 生活支出 (第三大支出)</h5>
+                                <div class="expense-total">30 <span data-i18n="yearReview.financial.wan">万</span></div>
+                                <div class="expense-percentage" data-i18n="yearReview.financial.expense3.percentage">≈ 总支出的 12.5%</div>
                             </div>
                             <div class="expense-breakdown">
                                 <div class="expense-item">
-                                    <span class="item-name">住房</span>
-                                    <span class="item-amount">20 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense3.housing">住房</span>
+                                    <span class="item-amount">20 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                                 <div class="expense-item">
-                                    <span class="item-name">美国生活</span>
-                                    <span class="item-amount">10 万</span>
+                                    <span class="item-name" data-i18n="yearReview.financial.expense3.usaLife">美国生活</span>
+                                    <span class="item-amount">10 <span data-i18n="yearReview.financial.wan">万</span></span>
                                 </div>
                             </div>
                             <div class="expense-note">
-                                <strong>性质判断：</strong>维持型刚性支出
+                                <span data-i18n="yearReview.financial.expense3.note"><strong>性质判断：</strong>维持型刚性支出</span>
                             </div>
                         </div>
                     </div>
@@ -604,26 +608,26 @@
                     </div>
                     <div class="relationship-structure">
                         <div class="relationship-section">
-                            <h4 class="section-title">重要事件</h4>
+                            <h4 class="section-title" data-i18n="yearReview.relationship.events">重要事件</h4>
                             <div class="relationship-items">
                                 <div class="relationship-item highlight-item">
-                                    <h5>1月: 结婚 & 度蜜月</h5>
-                                    <p>人生重要里程碑</p>
+                                    <h5 data-i18n="yearReview.relationship.january">1月: 结婚 & 度蜜月</h5>
+                                    <p data-i18n="yearReview.relationship.januaryDesc">人生重要里程碑</p>
                                 </div>
                                 <div class="relationship-item">
-                                    <h5>8月: 老婆来美国旅行</h5>
-                                    <p>阿卡迪亚、罗德岛 · 共度美好时光</p>
+                                    <h5 data-i18n="yearReview.relationship.august">8月: 老婆来美国旅行</h5>
+                                    <p data-i18n="yearReview.relationship.augustDesc">阿卡迪亚、罗德岛 · 共度美好时光</p>
                                 </div>
                             </div>
                         </div>
                         <div class="relationship-section">
-                            <h4 class="section-title">目标与成果</h4>
+                            <h4 class="section-title" data-i18n="yearReview.relationship.goals">目标与成果</h4>
                             <div class="relationship-result">
                                 <div class="result-item positive">
-                                    <span class="result-label">深入沟通增加</span>
+                                    <span class="result-label" data-i18n="yearReview.relationship.positive">深入沟通增加</span>
                                 </div>
                                 <div class="result-item negative">
-                                    <span class="result-label">肤浅沟通锐减</span>
+                                    <span class="result-label" data-i18n="yearReview.relationship.negative">肤浅沟通锐减</span>
                                 </div>
                             </div>
                         </div>
@@ -637,16 +641,16 @@
                     </div>
                     <div class="projects-list">
                         <div class="project-item">
-                            <h4>T0 级亲密关系</h4>
-                            <p>家人的深度沟通</p>
+                            <h4 data-i18n="yearReview.projects.intimate">T0 级亲密关系</h4>
+                            <p data-i18n="yearReview.projects.intimateDesc">家人的深度沟通</p>
                         </div>
                         <div class="project-item">
-                            <h4>创业相关</h4>
-                            <p>每周周会, 季度总结, 年度总结</p>
+                            <h4 data-i18n="yearReview.projects.startup">创业相关</h4>
+                            <p data-i18n="yearReview.projects.startupDesc">每周周会, 季度总结, 年度总结</p>
                         </div>
                         <div class="project-item">
-                            <h4>健康管理</h4>
-                            <p>运动 + 饮食 + 睡眠 + 内观打坐</p>
+                            <h4 data-i18n="yearReview.projects.health">健康管理</h4>
+                            <p data-i18n="yearReview.projects.healthDesc">运动 + 饮食 + 睡眠 + 内观打坐</p>
                         </div>
                     </div>
                 </div>
@@ -655,26 +659,26 @@
                 <div class="review-card category-card reading-card">
                     <div class="card-header">
                         <h3 data-i18n="yearReview.reading.title">📚 今年读书</h3>
-                        <span class="category-percentage">18 本</span>
+                        <span class="category-percentage"><span data-i18n="yearReview.reading.books">18</span> <span data-i18n="common.books">本</span></span>
                     </div>
                     <div class="books-grid">
-                        <div class="book-item">男人火星, 女人金星</div>
-                        <div class="book-item">走出戈壁</div>
-                        <div class="book-item">贪婪的多巴胺</div>
-                        <div class="book-item">爱的五种语言</div>
-                        <div class="book-item">达芬奇传</div>
-                        <div class="book-item">自私的基因</div>
-                        <div class="book-item">别人怎么对你, 都是你教的</div>
-                        <div class="book-item">正面管教</div>
-                        <div class="book-item">英伟达之心</div>
-                        <div class="book-item">李飞飞自传: 我看见的世界</div>
-                        <div class="book-item">段永平自传</div>
-                        <div class="book-item">Disney CEO 自传</div>
-                        <div class="book-item">Effortless Mastery</div>
-                        <div class="book-item">MBTI 的故事</div>
-                        <div class="book-item">小骨哥心理学 INTJ 分析</div>
-                        <div class="book-item">程前朋友圈的创业笔记</div>
-                        <div class="book-item">孙宇晨自传</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book1">男人火星, 女人金星</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book2">走出戈壁</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book3">贪婪的多巴胺</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book4">爱的五种语言</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book5">达芬奇传</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book6">自私的基因</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book7">别人怎么对你, 都是你教的</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book8">正面管教</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book9">英伟达之心</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book10">李飞飞自传: 我看见的世界</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book11">段永平自传</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book12">Disney CEO 自传</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book13">Effortless Mastery</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book14">MBTI 的故事</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book15">小骨哥心理学 INTJ 分析</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book16">程前朋友圈的创业笔记</div>
+                        <div class="book-item" data-i18n="yearReview.reading.book17">孙宇晨自传</div>
                     </div>
                 </div>
 
@@ -688,38 +692,38 @@
                     <!-- Core Statistics -->
                     <div class="ai-stats">
                         <div class="ai-stat-item">
-                            <div class="stat-number">1.5 小时</div>
-                            <div class="stat-label">平均每日 AI 使用时长</div>
+                            <div class="stat-number" data-i18n="yearReview.ai.dailyHours">1.5 小时</div>
+                            <div class="stat-label" data-i18n="yearReview.ai.dailyHoursLabel">平均每日 AI 使用时长</div>
                         </div>
                         <div class="ai-stat-item">
-                            <div class="stat-number">32 个</div>
-                            <div class="stat-label">平均每日提示词数量</div>
+                            <div class="stat-number"><span data-i18n="yearReview.ai.dailyPrompts">32</span> <span data-i18n="common.items">个</span></div>
+                            <div class="stat-label" data-i18n="yearReview.ai.dailyPromptsLabel">平均每日提示词数量</div>
                         </div>
                     </div>
 
                     <!-- Detailed Conversation Statistics -->
                     <div class="ai-conversation-stats">
-                        <h5 class="ai-section-title">2025年对话统计数据</h5>
+                        <h5 class="ai-section-title" data-i18n="yearReview.ai.conversationStats">2025年对话统计数据</h5>
                         <div class="conversation-stats-grid">
                             <div class="conversation-stat-card">
                                 <div class="stat-icon">💬</div>
                                 <div class="stat-value">872</div>
-                                <div class="stat-label-small">对话总次数</div>
+                                <div class="stat-label-small" data-i18n="yearReview.ai.totalConversations">对话总次数</div>
                             </div>
                             <div class="conversation-stat-card">
                                 <div class="stat-icon">📨</div>
                                 <div class="stat-value">7,547</div>
-                                <div class="stat-label-small">消息发送量</div>
+                                <div class="stat-label-small" data-i18n="yearReview.ai.totalMessages">消息发送量</div>
                             </div>
                             <div class="conversation-stat-card">
                                 <div class="stat-icon">🔄</div>
                                 <div class="stat-value">2,391</div>
-                                <div class="stat-label-small">长对话使用次数</div>
+                                <div class="stat-label-small" data-i18n="yearReview.ai.longConversations">长对话使用次数</div>
                             </div>
                             <div class="conversation-stat-card">
                                 <div class="stat-icon">🖼️</div>
                                 <div class="stat-value">12</div>
-                                <div class="stat-label-small">生成图片数量</div>
+                                <div class="stat-label-small" data-i18n="yearReview.ai.imagesGenerated">生成图片数量</div>
                             </div>
                         </div>
                     </div>
@@ -729,29 +733,29 @@
                         <div class="peak-item">
                             <div class="peak-icon">📅</div>
                             <div class="peak-content">
-                                <div class="peak-label">对话最忙碌的一天</div>
-                                <div class="peak-value">2025年 10月25日</div>
+                                <div class="peak-label" data-i18n="yearReview.ai.busiestDay">对话最忙碌的一天</div>
+                                <div class="peak-value" data-i18n="yearReview.ai.busiestDate">2025年 10月25日</div>
                             </div>
                         </div>
                         <div class="peak-item">
                             <div class="peak-icon">📊</div>
                             <div class="peak-content">
-                                <div class="peak-label">消息发送占比</div>
+                                <div class="peak-label" data-i18n="yearReview.ai.messagePercentage">消息发送占比</div>
                                 <div class="peak-value">1%</div>
                             </div>
                         </div>
                         <div class="peak-item">
                             <div class="peak-icon">🏆</div>
                             <div class="peak-content">
-                                <div class="peak-label">用户排名</div>
-                                <div class="peak-value">前 5%</div>
+                                <div class="peak-label" data-i18n="yearReview.ai.userRanking">用户排名</div>
+                                <div class="peak-value" data-i18n="yearReview.ai.top5">前 5%</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- AI Tools -->
                     <div class="ai-tools-section">
-                        <h5 class="ai-section-title">常用 AI 工具</h5>
+                        <h5 class="ai-section-title" data-i18n="yearReview.ai.toolsTitle">常用 AI 工具</h5>
                         <div class="ai-tools">
                             <span class="tool-tag">Cursor</span>
                             <span class="tool-tag">Atlas</span>
@@ -768,23 +772,23 @@
                         <h3 data-i18n="yearReview.quote.title">💭 最让我难忘的一段话</h3>
                     </div>
                     <div class="memorable-quote-content" style="padding: 2rem; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 12px; border-left: 4px solid var(--primary-color);">
-                        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem; font-style: italic;">
+                        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem; font-style: italic;" data-i18n="yearReview.quote.opening">
                             "与人合作，有三种境界：
                         </p>
                         <ul style="list-style: none; padding: 0; margin: 1.5rem 0;">
                             <li style="padding: 1rem; margin-bottom: 1rem; background: white; border-radius: 8px; border-left: 4px solid #10b981;">
-                                <strong style="color: #10b981;">A 境界：</strong>先付出，不问回报。把金钱当作工具，而不是目标。在办事之前就投入资源——不是因为它能带来什么，而是因为你想成就多大的事。这样的人，朋友会越来越多，人脉越来越广，办成事的能力越来越强。
+                                <strong style="color: #10b981;">A 境界：</strong><span data-i18n="yearReview.quote.levelA">先付出，不问回报。把金钱当作工具，而不是目标。在办事之前就投入资源——不是因为它能带来什么，而是因为你想成就多大的事。这样的人，朋友会越来越多，人脉越来越广，办成事的能力越来越强。</span>
                             </li>
                             <li style="padding: 1rem; margin-bottom: 1rem; background: white; border-radius: 8px; border-left: 4px solid #6366f1;">
-                                <strong style="color: #6366f1;">B 境界：</strong>相对公平，你请3顿，我请3顿。维持一种平衡的交换关系。
+                                <strong style="color: #6366f1;">B 境界：</strong><span data-i18n="yearReview.quote.levelB">相对公平，你请3顿，我请3顿。维持一种平衡的交换关系。</span>
                             </li>
                             <li style="padding: 1rem; margin-bottom: 1rem; background: white; border-radius: 8px; border-left: 4px solid #f59e0b;">
-                                <strong style="color: #f59e0b;">C 境界：</strong>最好还能占点便宜，有好事带上我，但我只请1顿。总是希望从关系中获益更多。
+                                <strong style="color: #f59e0b;">C 境界：</strong><span data-i18n="yearReview.quote.levelC">最好还能占点便宜，有好事带上我，但我只请1顿。总是希望从关系中获益更多。</span>
                             </li>
                         </ul>
-                        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--primary-color); font-weight: 600; margin-top: 1.5rem; border-top: 2px solid var(--border-color); padding-top: 1.5rem;">
+                        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--primary-color); font-weight: 600; margin-top: 1.5rem; border-top: 2px solid var(--border-color); padding-top: 1.5rem;" data-i18n="yearReview.quote.conclusion">
                             选择哪种境界，取决于一个前提：<br>
-                            <span style="font-size: 1.4rem; display: inline-block; margin-top: 0.5rem;">你想成就多大的事情？</span>
+                            <span style="font-size: 1.4rem; display: inline-block; margin-top: 0.5rem;" data-i18n="yearReview.quote.question">你想成就多大的事情？</span>
                         </p>
                     </div>
                 </div>
@@ -793,9 +797,9 @@
                 <div class="review-card final-message-card">
                     <h3 data-i18n="yearReview.final.title">给家人和朋友的话</h3>
                     <p class="final-message">
-                        这一年，我在音乐、工作、生活和成长的道路上持续前行。<br>
-                        感谢你们的支出和理解，让我能够追求自己的梦想。<br>
-                        我会继续努力，让你们为我感到骄傲和放心。
+                        <span data-i18n="yearReview.final.message1">这一年，我在音乐、工作、生活和成长的道路上持续前行。</span><br>
+                        <span data-i18n="yearReview.final.message2">感谢你们的支出和理解，让我能够追求自己的梦想。</span><br>
+                        <span data-i18n="yearReview.final.message3">我会继续努力，让你们为我感到骄傲和放心。</span>
                     </p>
                 </div>
             </div>
@@ -812,58 +816,58 @@
                 <form id="year-review-form" class="feedback-form">
                     <!-- 基本信息 -->
                     <div class="form-section">
-                        <h4 class="form-section-title">1️⃣ 基本信息</h4>
+                        <h4 class="form-section-title" data-i18n="yearReview.feedback.basicInfo">1️⃣ 基本信息</h4>
                         <div class="form-group">
-                            <label for="name">姓名 <span class="required">*</span></label>
+                            <label for="name" data-i18n="yearReview.feedback.name">姓名 <span class="required">*</span></label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-i18n="yearReview.feedback.email">Email</label>
                             <input type="email" id="email" name="email">
                         </div>
                         <div class="form-group">
-                            <label for="contact">微信 / 其他备注</label>
+                            <label for="contact" data-i18n="yearReview.feedback.contact">微信 / 其他备注</label>
                             <input type="text" id="contact" name="contact">
                         </div>
                     </div>
 
                     <!-- 回顾 2025 -->
                     <div class="form-section">
-                        <h4 class="form-section-title">2️⃣ 回顾 2025</h4>
+                        <h4 class="form-section-title" data-i18n="yearReview.feedback.review2025">2️⃣ 回顾 2025</h4>
                         <div class="form-group">
-                            <label for="impressive-event">你在过去一年里 <strong>最印象深刻的一件事</strong> 是什么？</label>
-                            <textarea id="impressive-event" name="impressive-event" rows="4" placeholder="请分享你最印象深刻的一件事..."></textarea>
+                            <label for="impressive-event" data-i18n="yearReview.feedback.impressiveEvent">你在过去一年里 <strong>最印象深刻的一件事</strong> 是什么？</label>
+                            <textarea id="impressive-event" name="impressive-event" rows="4" data-i18n="yearReview.feedback.impressiveEventPlaceholder" placeholder="请分享你最印象深刻的一件事..."></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="interesting-people">有没有 <strong>遇到有趣的人 / 发生新鲜的事情</strong>？</label>
-                            <textarea id="interesting-people" name="interesting-people" rows="4" placeholder="请分享你遇到的有趣的人或新鲜事..."></textarea>
+                            <label for="interesting-people" data-i18n="yearReview.feedback.interestingPeople">有没有 <strong>遇到有趣的人 / 发生新鲜的事情</strong>？</label>
+                            <textarea id="interesting-people" name="interesting-people" rows="4" data-i18n="yearReview.feedback.interestingPeoplePlaceholder" placeholder="请分享你遇到的有趣的人或新鲜事..."></textarea>
                         </div>
                     </div>
 
                     <!-- 年度关键词 -->
                     <div class="form-section">
-                        <h4 class="form-section-title">3️⃣ 你的 2025 年度关键词</h4>
+                        <h4 class="form-section-title" data-i18n="yearReview.feedback.keywords">3️⃣ 你的 2025 年度关键词</h4>
                         <div class="form-group">
-                            <label for="keywords">请写下 1–5 个关键词（如：转型 / 学习 / 疲惫 / 勇气 / 重启）</label>
-                            <input type="text" id="keywords" name="keywords" placeholder="用 / 分隔多个关键词">
+                            <label for="keywords" data-i18n="yearReview.feedback.keywordsLabel">请写下 1–5 个关键词（如：转型 / 学习 / 疲惫 / 勇气 / 重启）</label>
+                            <input type="text" id="keywords" name="keywords" data-i18n="yearReview.feedback.keywordsPlaceholder" placeholder="用 / 分隔多个关键词">
                         </div>
                         <div class="form-group">
-                            <label for="keyword-importance">哪个关键词对你来说最重要？为什么？（可选）</label>
-                            <textarea id="keyword-importance" name="keyword-importance" rows="3" placeholder="请说明最重要的关键词及其原因..."></textarea>
+                            <label for="keyword-importance" data-i18n="yearReview.feedback.keywordImportance">哪个关键词对你来说最重要？为什么？（可选）</label>
+                            <textarea id="keyword-importance" name="keyword-importance" rows="3" data-i18n="yearReview.feedback.keywordImportancePlaceholder" placeholder="请说明最重要的关键词及其原因..."></textarea>
                         </div>
                     </div>
 
                     <!-- 时间与选择 -->
                     <div class="form-section">
-                        <h4 class="form-section-title">4️⃣ 时间与选择</h4>
+                        <h4 class="form-section-title" data-i18n="yearReview.feedback.timeAndChoice">4️⃣ 时间与选择</h4>
                         <div class="form-group">
-                            <label>2025 年你 <strong>花时间最多的三件事</strong> 是什么？</label>
+                            <label data-i18n="yearReview.feedback.timeSpent">2025 年你 <strong>花时间最多的三件事</strong> 是什么？</label>
                             <input type="text" name="time-spent-1" placeholder="①" style="margin-bottom: 0.5rem;">
                             <input type="text" name="time-spent-2" placeholder="②" style="margin-bottom: 0.5rem;">
                             <input type="text" name="time-spent-3" placeholder="③">
                         </div>
                         <div class="form-group">
-                            <label>2025 年你 <strong>最满意的三笔消费 / 投入</strong> 是什么？</label>
+                            <label data-i18n="yearReview.feedback.satisfaction">2025 年你 <strong>最满意的三笔消费 / 投入</strong> 是什么？</label>
                             <input type="text" name="satisfaction-1" placeholder="①" style="margin-bottom: 0.5rem;">
                             <input type="text" name="satisfaction-2" placeholder="②" style="margin-bottom: 0.5rem;">
                             <input type="text" name="satisfaction-3" placeholder="③">
@@ -872,26 +876,26 @@
 
                     <!-- 向未来 -->
                     <div class="form-section">
-                        <h4 class="form-section-title">5️⃣ 向未来</h4>
+                        <h4 class="form-section-title" data-i18n="yearReview.feedback.future">5️⃣ 向未来</h4>
                         <div class="form-group">
-                            <label for="future-try">如果展望 2026，你现在最想尝试的一件事是？（可选）</label>
-                            <textarea id="future-try" name="future-try" rows="3" placeholder="请分享你最想尝试的事情..."></textarea>
+                            <label for="future-try" data-i18n="yearReview.feedback.futureTry">如果展望 2026，你现在最想尝试的一件事是？（可选）</label>
+                            <textarea id="future-try" name="future-try" rows="3" data-i18n="yearReview.feedback.futureTryPlaceholder" placeholder="请分享你最想尝试的事情..."></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="collaboration">有没有什么 <strong>我们未来可以一起做的事情</strong>？（可选）</label>
-                            <textarea id="collaboration" name="collaboration" rows="3" placeholder="请分享你的想法..."></textarea>
+                            <label for="collaboration" data-i18n="yearReview.feedback.collaboration">有没有什么 <strong>我们未来可以一起做的事情</strong>？（可选）</label>
+                            <textarea id="collaboration" name="collaboration" rows="3" data-i18n="yearReview.feedback.collaborationPlaceholder" placeholder="请分享你的想法..."></textarea>
                         </div>
                     </div>
 
                     <div class="form-submit">
-                        <button type="submit" class="submit-btn">提交 · 发送给银子</button>
+                        <button type="submit" class="submit-btn" data-i18n="yearReview.feedback.submit">提交 · 发送给银子</button>
                     </div>
                 </form>
 
                 <div id="form-success" class="form-success" style="display: none;">
                     <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; color: var(--text-primary);">
-                        谢谢你的分享，我会认真阅读。<br>
-                        也欢迎你随时来和我聊聊。
+                        <span data-i18n="yearReview.feedback.success">谢谢你的分享，我会认真阅读。</span><br>
+                        <span data-i18n="yearReview.feedback.success2">也欢迎你随时来和我聊聊。</span>
                     </p>
                 </div>
             </div>
@@ -1379,6 +1383,7 @@
         });
     </script>
     <script src="i18n.js"></script>
+    <script src="year-review-data-en.js"></script>
     <script src="data/docking-tech-data.js"></script>
     <script>
         // Docking Tech Chart
