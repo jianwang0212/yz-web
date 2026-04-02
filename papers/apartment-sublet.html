@@ -276,6 +276,48 @@
             background: var(--primary-dark);
             transform: translateY(-1px);
         }
+
+        .qr-strip {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.25rem;
+            margin-top: 1.75rem;
+            padding: 1.25rem 1.5rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+            max-width: 100%;
+        }
+
+        .qr-strip img {
+            width: 148px;
+            height: 148px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        .qr-strip figcaption {
+            flex: 1;
+            min-width: 200px;
+            margin: 0;
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .qr-strip .qr-url {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            font-family: ui-monospace, monospace;
+            color: var(--primary-color);
+            word-break: break-all;
+        }
     </style>
 </head>
 <body>
@@ -324,6 +366,13 @@
                     <h1 data-i18n="sublet.title">致下一位租客：公寓转租与交接说明</h1>
                     <p class="post-meta" data-i18n="sublet.meta">波士顿 Fenway 附近 · 信息整理自转租说明 PDF</p>
                     <p class="lead" data-i18n="sublet.lead">感谢你对这间公寓的兴趣。</p>
+                    <figure class="qr-strip">
+                        <img src="../images/apartment-sublet-qr.png" width="148" height="148" alt="" loading="lazy" decoding="async">
+                        <figcaption>
+                            <span data-i18n="sublet.qr_caption">扫码打开本页 · 转租说明与物品清单</span>
+                            <span class="qr-url">thisisyz.com/papers/apartment-sublet.html</span>
+                        </figcaption>
+                    </figure>
                 </header>
 
                 <h2 data-i18n="sublet.h2_facts">房源与联系</h2>
