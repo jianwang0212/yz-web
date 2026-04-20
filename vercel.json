@@ -1,15 +1,23 @@
 {
   "version": 2,
-        "rewrites": [
-          {
-            "source": "/year-review",
-            "destination": "/year-review.html"
-          },
-          {
-            "source": "/financial-dashboard",
-            "destination": "/financial-dashboard.html"
-          }
-        ],
+  "rewrites": [
+    {
+      "source": "/year-review",
+      "destination": "/year-review.html"
+    },
+    {
+      "source": "/financial-dashboard",
+      "destination": "/financial-dashboard.html"
+    },
+    {
+      "source": "/papers/chord-trainer",
+      "destination": "/papers/chord-trainer.html"
+    },
+    {
+      "source": "/papers/left-hand-voicing-trainer",
+      "destination": "/papers/left-hand-voicing-trainer.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
@@ -48,4 +56,3 @@
     }
   ]
 }
-

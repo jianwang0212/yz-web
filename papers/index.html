@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Left Hand Voicing Trainer 左手和弦训练</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="chord-trainer-body">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand site-title">
+          <span class="name-en">Zi Yin</span>
+          <span class="name-sep">·</span>
+          <span class="name-zh">银子</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="/index.html" data-i18n="nav.home">首页</a></li>
+          <li><a href="/year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+          <li><a href="/works.html" data-i18n="nav.works">作品</a></li>
+          <li><a href="/contact.html" data-i18n="nav.contact">联系</a></li>
+          <li class="nav-menu-lang-item">
+            <div class="nav-lang-toggle-mobile">
+              <button type="button" id="lang-zh-mobile" class="lang-btn-mobile">中文</button>
+              <button type="button" id="lang-en-mobile" class="lang-btn-mobile active">English</button>
+            </div>
+          </li>
+          <li class="nav-menu-item">
+            <a href="#" class="nav-dropdown-toggle">
+              <span data-i18n="nav.more">更多</span>
+              <span style="font-size: 0.8em;">▼</span>
+            </a>
+            <div class="nav-dropdown">
+              <a href="/projects.html" data-i18n="nav.projects" style="color: var(--primary-color);">项目</a>
+              <a href="/timeline.html" data-i18n="nav.timeline">时间线</a>
+              <a href="/resume.html" data-i18n="nav.resume">简历</a>
+              <a href="/financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
+              <a href="/interests.html" data-i18n="nav.interests">兴趣爱好</a>
+              <a href="/highlights.html" data-i18n="nav.highlights">主要亮点</a>
+            </div>
+          </li>
+        </ul>
+        <div class="nav-lang-toggle">
+          <button type="button" id="lang-zh" class="lang-btn">中文</button>
+          <button type="button" id="lang-en" class="lang-btn active">English</button>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="ct-page">
+      <a href="/projects.html" class="ct-back" data-i18n="projects.back">← 返回项目</a>
+
+      <div class="app-shell">
+        <section class="hero-card">
+          <div class="hero-copy">
+            <p class="eyebrow">Left Hand Voicing Drill</p>
+            <h1>Left Hand Voicing Trainer</h1>
+            <p class="subcopy">
+              给你一个 `maj7` 或 `m7` 和弦名，用 MIDI 左手弹出符合区间规则的 voicing。
+            </p>
+          </div>
+          <button id="connect-midi" type="button" class="secondary-button">连接 MIDI</button>
+        </section>
+
+        <section class="keyboard-card">
+          <div class="keyboard-status">
+            <div>
+              <span class="status-label">MIDI</span>
+              <strong id="midi-status">未连接</strong>
+            </div>
+            <div>
+              <span class="status-label">Voice</span>
+              <strong id="voice-status">已就绪</strong>
+            </div>
+            <div>
+              <span class="status-label">Pressed</span>
+              <strong id="pressed-notes">无</strong>
+            </div>
+          </div>
+          <div id="keyboard" class="keyboard" aria-label="Piano keyboard"></div>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card accent">
+            <span>Progress</span>
+            <strong id="progress-text">0%</strong>
+            <div class="progress-track" aria-hidden="true">
+              <div id="progress-bar" class="progress-fill"></div>
+            </div>
+          </article>
+          <article class="stat-card">
+            <span>Correct</span>
+            <strong id="correct-count">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Incorrect</span>
+            <strong id="incorrect-count">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Review Queue</span>
+            <strong id="review-count">0</strong>
+          </article>
+        </section>
+
+        <section class="control-card">
+          <div class="button-row">
+            <button id="new-chord" type="button" class="primary-button">下一题</button>
+            <button id="repeat-chord" type="button" class="secondary-button">再念一次</button>
+            <button id="show-chord" type="button" class="secondary-button">显示答案</button>
+            <button id="reset-score" type="button" class="ghost-button">重置</button>
+          </div>
+
+          <div class="settings-grid secondary-settings">
+            <label class="toggle-row">
+              <span>自动播报</span>
+              <input id="auto-speak" type="checkbox" checked />
+            </label>
+
+            <div class="category-picker">
+              <span class="category-title">练习类型</span>
+              <label class="category-option">
+                <input id="quality-maj7" type="checkbox" checked />
+                <span>Maj7</span>
+              </label>
+              <label class="category-option">
+                <input id="quality-min7" type="checkbox" checked />
+                <span>m7</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="prompt-card">
+          <p class="prompt-label">Play This Voicing</p>
+          <h2 id="target-chord">加载中...</h2>
+          <p id="result-text" class="result-text neutral">正在准备第一题。</p>
+          <p id="selection-text" class="answer-text">当前题库: maj7, m7</p>
+          <p id="answer-text" class="answer-text"></p>
+        </section>
+
+        <section class="help-card">
+          <h3>Voicing Rules</h3>
+          <ul>
+            <li>`E1` 起：`1 - 5 - 1`</li>
+            <li>`A1` 起：`1 - 5 - 3` 或 `1 - 5 - b3`</li>
+            <li>`Bb1` 起：`1 - 5 - 9`</li>
+            <li>`B1` 起：`1 - 5 - 9 - 3` 或 `1 - 5 - 9 - b3`</li>
+            <li>`D2` 起：`1 - 5 - 7` 或 `1 - 5 - b7`</li>
+            <li>系统会根据你弹的最低音决定该题用哪一档 voicing 规则。</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; Zi Yin</p>
+        <div class="footer-links">
+          <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+          <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/i18n.js"></script>
+    <script src="/script.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
