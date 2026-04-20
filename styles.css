@@ -3556,6 +3556,94 @@ section {
     margin-bottom: 3rem;
 }
 
+.works-page .works {
+    background:
+        radial-gradient(circle at 8% 10%, rgba(99, 102, 241, 0.08), transparent 24%),
+        radial-gradient(circle at 92% 14%, rgba(14, 165, 233, 0.08), transparent 22%),
+        linear-gradient(180deg, #fbfcff 0%, #ffffff 28%, #f7f8fc 100%);
+}
+
+.works-page .video-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.works-page .video-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--card-cover);
+    background-position: var(--card-focus, center center);
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.18;
+    transform: scale(1.04);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.works-page .video-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.74) 0%,
+        rgba(255, 255, 255, 0.88) 32%,
+        rgba(255, 255, 255, 0.96) 100%
+    );
+}
+
+.works-page .video-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.works-page .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 52px rgba(15, 23, 42, 0.1);
+    border-color: rgba(99, 102, 241, 0.22) !important;
+}
+
+.works-page .video-card:hover::before {
+    opacity: 0.28;
+    transform: scale(1.08);
+}
+
+.works-page .video-card span {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(8px);
+}
+
+.works-page .video-card a {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.works-page .video-card a:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(99, 102, 241, 0.28);
+    transform: translateY(-1px);
+}
+
+.works-page .vid-filter {
+    background: rgba(255, 255, 255, 0.68) !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.works-page .vid-filter:hover,
+.works-page .vid-filter.is-active {
+    border-color: rgba(99, 102, 241, 0.28) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
 .work-link {
     background: white;
     padding: 2rem;
@@ -3623,6 +3711,12 @@ section {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    .works-page .video-card::before {
+        opacity: 0.14;
+    }
 }
 
 .download-btn:hover {
@@ -3858,4 +3952,3 @@ header .name-en,
 .hero--bg .hero-description {
     color: rgba(255, 255, 255, 0.75);
 }
-

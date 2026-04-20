@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="works-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -135,7 +135,7 @@
                 <div id="video-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
 
                     <!-- 1) Pirates -->
-                    <article class="video-card" data-cat="film"
+                    <article class="video-card" data-cat="film" data-cover="images/works/pirates.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             加勒比海盗 – Hans Zimmer（Zigge「钢琴」）
@@ -158,7 +158,7 @@
                     </article>
 
                     <!-- 2) My Foolish Heart -->
-                    <article class="video-card" data-cat="jazz"
+                    <article class="video-card" data-cat="jazz" data-cover="images/works/foolish-heart.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             My Foolish Heart – 维克托·扬（Zigge「钢琴」）
@@ -181,7 +181,7 @@
                     </article>
 
                     <!-- 3) Flight of the Bumblebee -->
-                    <article class="video-card" data-cat="classical"
+                    <article class="video-card" data-cat="classical" data-cover="images/works/bumblebee.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             野蜂飞舞 – Rimsky（Zigge「钢琴」）
@@ -204,7 +204,7 @@
                     </article>
 
                     <!-- 4) Chopin Black Keys -->
-                    <article class="video-card" data-cat="classical"
+                    <article class="video-card" data-cat="classical" data-cover="images/works/black-keys.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             黑键练习曲 – 肖邦（Zigge「钢琴」）
@@ -227,7 +227,7 @@
                     </article>
 
                     <!-- 5) Interstellar -->
-                    <article class="video-card" data-cat="film"
+                    <article class="video-card" data-cat="film" data-cover="images/works/interstellar.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             Interstellar – 星际穿越（Zigge「钢琴」）
@@ -250,7 +250,7 @@
                     </article>
 
                     <!-- 6) 多得他 -->
-                    <article class="video-card" data-cat="originals"
+                    <article class="video-card" data-cat="originals" data-cover="images/works/duode-ta-live.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             《多得他》深夜 Live 版｜林忆莲 × 方大同神级融合
@@ -275,7 +275,7 @@
                     </article>
 
                     <!-- 7) Shivers -->
-                    <article class="video-card" data-cat="originals"
+                    <article class="video-card" data-cat="originals" data-cover="images/works/shivers-reharm.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             w13 – Shivers 改编 Reharm
@@ -299,7 +299,7 @@
                     </article>
 
                     <!-- 8) Cat Salmon -->
-                    <article class="video-card" data-cat="originals"
+                    <article class="video-card" data-cat="originals" data-cover="images/works/cat-salmon.jpg"
                         style="padding:14px 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px;">
                         <div style="font-weight:700; font-size:16px; line-height:1.35;">
                             爵士 AABA – 原创 – Cat Salmon – w6
@@ -326,7 +326,14 @@
 
                 <!-- Script: simple filtering -->
                 <script>
-                    (function () {
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelectorAll('.video-card[data-cover]').forEach(card => {
+                            const cover = card.getAttribute('data-cover');
+                            if (cover) {
+                                card.style.setProperty('--card-cover', `url("${cover}")`);
+                            }
+                        });
+
                         const filters = document.querySelectorAll('#music-videos .vid-filter');
                         const cards = document.querySelectorAll('#music-videos .video-card');
 
@@ -350,7 +357,7 @@
                                 applyFilter(key);
                             });
                         });
-                    })();
+                    });
                 </script>
             </section>
             <!-- =================== /Music Videos / 音乐视频 =================== -->
@@ -362,7 +369,7 @@
                 <div id="youtube-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
 
                     <!-- Havana -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/havana.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">Havana</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：流行拉丁改编</div>
                         <div style="opacity:0.85; margin-top:10px; line-height:1.55;">
@@ -377,7 +384,7 @@
                     </article>
 
                     <!-- This World -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/this-world.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">This World</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：爵士 / 世界音乐</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -392,7 +399,7 @@
                     </article>
 
                     <!-- Uptown Funk -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/uptown-funk.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">Uptown Funk</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：流行/放克改编</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -407,7 +414,7 @@
                     </article>
 
                     <!-- I Wish -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/i-wish.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">I Wish</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：流行/放克改编</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -422,7 +429,7 @@
                     </article>
 
                     <!-- Virtual Insanity -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/virtual-insanity.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">Virtual Insanity</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：流行/酸爵士改编</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -437,7 +444,7 @@
                     </article>
 
                     <!-- Study of Modes -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/study-of-modes.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">Study of Modes</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：原创习作</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -452,7 +459,7 @@
                     </article>
 
                     <!-- Minuet in Mass Ave -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/minuet-in-mass-ave.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">Minuet in Mass Ave</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：原创钢琴独奏</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -467,7 +474,7 @@
                     </article>
 
                     <!-- Hey Jude bossa -->
-                    <article class="video-card" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
+                    <article class="video-card" data-cover="images/works/hey-jude-bossa.jpg" style="padding:14px 16px; border:1px solid rgba(0,0,0,0.12); border-radius:12px;">
                         <div style="font-weight:700; font-size:16px;">Hey Jude – bossa nova style</div>
                         <div style="opacity:0.8; margin-top:6px;">类型：爵士/波萨诺瓦改编</div>
                         <div style="opacity:0.85; margin-top:10px;">
@@ -534,4 +541,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
