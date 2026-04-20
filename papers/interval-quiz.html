@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" id="html-lang">
+<html lang="en" id="html-lang">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -208,6 +208,38 @@
             filter: brightness(1.05);
         }
 
+        .iq-voice-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem 0.8rem;
+            margin: 0 0 0.95rem;
+        }
+
+        .iq-voice-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.42rem;
+            font-size: 0.84rem;
+            color: var(--iq-text);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .iq-voice-toggle input {
+            width: 1rem;
+            height: 1rem;
+            accent-color: var(--iq-accent);
+            cursor: pointer;
+        }
+
+        .iq-voice-status {
+            font-size: 0.8rem;
+            color: var(--iq-muted);
+            margin: 0;
+            min-height: 1.1rem;
+        }
+
         .feedback {
             min-height: 1.35rem;
             margin: 0.65rem 0 0.35rem;
@@ -234,6 +266,13 @@
             cursor: pointer;
             text-decoration: underline;
             text-underline-offset: 2px;
+        }
+
+        .iq-shortcuts {
+            margin: 0.85rem 0 0;
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: var(--iq-muted);
         }
 
         .iq-notes-title {
@@ -279,13 +318,41 @@
             margin-bottom: 0.25rem;
         }
 
+        .iq-progress-block {
+            margin-bottom: 1rem;
+        }
+
+        .iq-progress-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: #efe7de;
+            overflow: hidden;
+        }
+
+        .iq-progress-fill {
+            display: block;
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #a3432f 0%, #d07658 100%);
+            transition: width 180ms ease;
+        }
+
+        .iq-progress-caption {
+            margin: 0.55rem 0 0;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--iq-muted);
+        }
+
         .iq-stat-boxes {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
             gap: 0.65rem;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 360px) {
             .iq-stat-boxes {
                 grid-template-columns: 1fr;
             }
@@ -312,6 +379,69 @@
             color: var(--iq-text);
         }
 
+        .iq-focus-title {
+            margin: 1rem 0 0.45rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--iq-muted);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .iq-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .iq-pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            background: #f3ede5;
+            color: #4a413b;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .iq-pill--muted {
+            color: var(--iq-muted);
+            background: #f5f1eb;
+        }
+
+        .iq-preset-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .iq-preset-btn {
+            padding: 0.42rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #fff;
+            color: var(--iq-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .iq-preset-btn.is-active {
+            background: var(--iq-accent);
+            color: #fff;
+            border-color: var(--iq-accent);
+        }
+
+        .iq-section-help {
+            margin: 0 0 0.8rem;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--iq-muted);
+        }
+
         #interval-options {
             display: flex;
             flex-wrap: wrap;
@@ -336,6 +466,108 @@
             accent-color: var(--iq-accent);
             cursor: pointer;
         }
+
+        .iq-keyboard-panel {
+            margin-top: 1rem;
+        }
+
+        .iq-keyboard-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--iq-text);
+            margin: 0 0 0.35rem;
+        }
+
+        .iq-keyboard-hint {
+            font-size: 0.82rem;
+            color: var(--iq-muted);
+            margin: 0 0 0.85rem;
+            line-height: 1.5;
+        }
+
+        .iq-piano {
+            position: relative;
+            height: 132px;
+            max-width: 560px;
+            margin: 0 auto 1rem;
+        }
+
+        .iq-piano-whites {
+            display: flex;
+            gap: 3px;
+            height: 100%;
+        }
+
+        .iq-key--white {
+            flex: 1;
+            min-width: 0;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 0 0 8px 8px;
+            background: linear-gradient(180deg, #fff 0%, #f3f0ec 100%);
+            font-size: clamp(0.68rem, 2.2vw, 0.82rem);
+            font-weight: 600;
+            color: var(--iq-text);
+            cursor: pointer;
+            padding-top: 0.45rem;
+            font-family: inherit;
+        }
+
+        .iq-key--white:hover {
+            filter: brightness(0.97);
+        }
+
+        .iq-key--white:active {
+            transform: translateY(1px);
+        }
+
+        .iq-piano-blacks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 58%;
+            pointer-events: none;
+        }
+
+        .iq-key--black {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            border: none;
+            border-radius: 0 0 5px 5px;
+            background: linear-gradient(180deg, #2a2a2a 0%, #0f0f0f 100%);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+            font-weight: 600;
+            cursor: pointer;
+            pointer-events: auto;
+            font-family: inherit;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .iq-key--black:hover {
+            filter: brightness(1.08);
+        }
+
+        .iq-key--black:active {
+            transform: translateY(1px);
+        }
+
+        .iq-midi-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.65rem;
+            margin-top: 0.25rem;
+        }
+
+        .iq-midi-status {
+            font-size: 0.78rem;
+            color: var(--iq-muted);
+            margin: 0;
+            flex: 1;
+            min-width: 12rem;
+        }
     </style>
 </head>
 <body class="interval-quiz-body">
@@ -353,8 +585,8 @@
                 <li><a href="../contact.html" data-i18n="nav.contact">联系</a></li>
                 <li class="nav-menu-lang-item">
                     <div class="nav-lang-toggle-mobile">
-                        <button type="button" id="lang-zh-mobile" class="lang-btn-mobile active">中文</button>
-                        <button type="button" id="lang-en-mobile" class="lang-btn-mobile">English</button>
+                        <button type="button" id="lang-zh-mobile" class="lang-btn-mobile">中文</button>
+                        <button type="button" id="lang-en-mobile" class="lang-btn-mobile active">English</button>
                     </div>
                 </li>
                 <li class="nav-menu-item">
@@ -370,8 +602,8 @@
                 </li>
             </ul>
             <div class="nav-lang-toggle">
-                <button type="button" id="lang-zh" class="lang-btn active">中文</button>
-                <button type="button" id="lang-en" class="lang-btn">English</button>
+                <button type="button" id="lang-zh" class="lang-btn">中文</button>
+                <button type="button" id="lang-en" class="lang-btn active">English</button>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -401,6 +633,14 @@
                     <button type="button" class="iq-btn-ghost" id="next-btn" data-quiz="nextButton">换一题</button>
                 </div>
                 <p id="question" class="iq-question" role="status"></p>
+                <div class="iq-voice-row">
+                    <label class="iq-voice-toggle">
+                        <input type="checkbox" id="voice-auto-toggle" checked />
+                        <span data-quiz="voiceAuto">自动播报</span>
+                    </label>
+                    <button type="button" class="iq-btn-ghost" id="voice-repeat-btn" data-quiz="voiceRepeat">再念一次</button>
+                    <p class="iq-voice-status" id="voice-status" data-quiz="voiceReady">语音已就绪</p>
+                </div>
                 <form id="answer-form" class="iq-form">
                     <label for="answer-input" data-quiz="answerLabel">你的答案</label>
                     <div class="iq-input-row">
@@ -410,6 +650,7 @@
                 </form>
                 <p id="feedback" class="feedback" aria-live="polite"></p>
                 <button type="button" class="iq-reveal-link" id="reveal-btn" data-quiz="revealButton">显示答案</button>
+                <p class="iq-shortcuts" data-quiz="shortcutHint"></p>
             </section>
 
             <!-- Top right: sticky notes / mistakes -->
@@ -428,6 +669,12 @@
                     <span class="iq-head-primary" data-quiz="statsLabel">统计</span>
                     <span class="iq-head-secondary" data-quiz="progressTitle">进度</span>
                 </div>
+                <div class="iq-progress-block">
+                    <div class="iq-progress-track" aria-hidden="true">
+                        <span class="iq-progress-fill" id="set-progress-bar"></span>
+                    </div>
+                    <p class="iq-progress-caption" id="set-progress-copy"></p>
+                </div>
                 <div class="iq-stat-boxes">
                     <div class="iq-stat-box">
                         <span class="iq-stat-label" data-quiz="setProgressLabel">本组进度</span>
@@ -441,7 +688,25 @@
                         <span class="iq-stat-label" data-quiz="roundLabel">组数</span>
                         <span class="iq-stat-val" id="accuracy-count">1</span>
                     </div>
+                    <div class="iq-stat-box">
+                        <span class="iq-stat-label" data-quiz="remainingLabel">剩余</span>
+                        <span class="iq-stat-val" id="remaining-count">10</span>
+                    </div>
+                    <div class="iq-stat-box">
+                        <span class="iq-stat-label" data-quiz="streakLabel">连对</span>
+                        <span class="iq-stat-val" id="streak-count">0</span>
+                    </div>
+                    <div class="iq-stat-box">
+                        <span class="iq-stat-label" data-quiz="bestStreakLabel">最高连对</span>
+                        <span class="iq-stat-val" id="best-streak-count">0</span>
+                    </div>
+                    <div class="iq-stat-box">
+                        <span class="iq-stat-label" data-quiz="avgTimeLabel">平均用时</span>
+                        <span class="iq-stat-val" id="avg-time-count">--</span>
+                    </div>
                 </div>
+                <p class="iq-focus-title" data-quiz="focusTitle">重点关注</p>
+                <div class="iq-pill-row" id="focus-intervals"></div>
             </section>
 
             <!-- Bottom right: interval checkboxes -->
@@ -450,9 +715,25 @@
                     <span class="iq-head-primary" data-quiz="intervalLabel">题型</span>
                     <span class="iq-head-secondary" data-quiz="intervalTitle">扩展音程</span>
                 </div>
+                <div class="iq-preset-row">
+                    <button type="button" class="iq-preset-btn" data-preset="core" data-quiz="presetCore">和弦音</button>
+                    <button type="button" class="iq-preset-btn" data-preset="extensions" data-quiz="presetExtensions">延伸音</button>
+                    <button type="button" class="iq-preset-btn" data-preset="all" data-quiz="presetAll">全部</button>
+                </div>
+                <p class="iq-section-help" data-quiz="intervalHelper"></p>
                 <div id="interval-options"></div>
             </section>
         </div>
+
+        <section class="iq-card iq-keyboard-panel">
+            <h2 class="iq-keyboard-title" data-quiz="keyboardTitle">键盘输入</h2>
+            <p class="iq-keyboard-hint" data-quiz="keyboardHint"></p>
+            <div class="iq-piano" id="iq-piano" aria-label="Piano"></div>
+            <div class="iq-midi-row">
+                <button type="button" class="iq-btn-ghost" id="midi-enable-btn" data-quiz="midiEnable">开启 MIDI</button>
+                <p class="iq-midi-status" id="midi-status" data-quiz="midiIdle"></p>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -467,6 +748,6 @@
 
     <script src="../i18n.js"></script>
     <script src="../script.js"></script>
-    <script src="interval-quiz.js" defer></script>
+    <script src="interval-quiz.js?v=3" defer></script>
 </body>
 </html>
