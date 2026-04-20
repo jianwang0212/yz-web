@@ -410,6 +410,16 @@ const translations = {
         'projects.vipassana_desc': '关于内观冥想实践的思考与记录',
         'projects.sublet_title': '波士顿公寓转租（给下一位租客）',
         'projects.sublet_desc': '步行伯克利约 10 分钟 · 2026 年 5 月 20 日起 · 二手清单与入住福利',
+        'projects.interval_quiz_title': '音程测验（Interval Quiz）',
+        'projects.interval_quiz_desc': '扩展和弦音程：给定音，猜主音 · 中英双语 · 错题贴纸',
+        'projects.degree_quiz_title': '调号级数测试',
+        'projects.degree_quiz_desc': '12 个调可选：给定调和音，判断是第几级 · 中英双语 · 错题贴纸板',
+        'projects.chord_quiz_title': '和弦测验（Chord Quiz）',
+        'projects.chord_quiz_desc': 'MIDI 输入判断和弦性质 · 只弹琴不打字 · 错题回炉',
+        'projects.chord_trainer_title': '和弦训练（Chord Trainer）',
+        'projects.chord_trainer_desc': 'MIDI 输入和弦识别 · 语音播报 · 错题复习队列 · 中英双语界面',
+        'projects.left_hand_title': '左手 Voicing 训练',
+        'projects.left_hand_desc': '只练 maj7 / m7 · 按最低音区间匹配左手 voicing · MIDI 判题',
         'projects.back': '← 返回项目',
         'sublet.title': '致下一位租客：公寓转租与交接说明',
         'sublet.meta': '波士顿 Fenway 附近 · 信息整理自转租说明 PDF',
@@ -1032,6 +1042,16 @@ const translations = {
         'projects.vipassana_desc': 'Thoughts and records on Vipassana meditation practice',
         'projects.sublet_title': 'Boston Sublet · Handoff for the Next Tenant',
         'projects.sublet_desc': '~10 min walk to Berklee · Available after May 20, 2026 · Furnishings & move-in perks',
+        'projects.interval_quiz_title': 'Interval Quiz',
+        'projects.interval_quiz_desc': 'Extended chord intervals: guess the root from a given note · bilingual UI · review stickers',
+        'projects.degree_quiz_title': 'Degree Quiz',
+        'projects.degree_quiz_desc': 'Pick from 12 major keys, then identify the scale degree of a note · bilingual UI · review board',
+        'projects.chord_quiz_title': 'Chord Quiz',
+        'projects.chord_quiz_desc': 'Recognize chord qualities from MIDI input · play only, no typing · quick review loop',
+        'projects.chord_trainer_title': 'Chord Trainer',
+        'projects.chord_trainer_desc': 'MIDI chord recognition · spoken prompts · review queue · bilingual interface',
+        'projects.left_hand_title': 'Left-Hand Voicing Trainer',
+        'projects.left_hand_desc': 'Focus on maj7 / m7 voicings · judge left-hand shapes by lowest-note range · MIDI grading',
         'projects.back': '← Back to Projects',
         'sublet.title': 'For the Next Tenant: Sublet & Handoff Notes',
         'sublet.meta': 'Near Fenway, Boston · Summarized from the sublet PDF',
@@ -1374,4 +1394,3 @@ if (document.readyState === 'loading') {
     setLanguage(currentLang);
     initLanguageToggle();
 }
-

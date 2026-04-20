@@ -243,6 +243,20 @@ body {
     max-width: 100%;
 }
 
+.hero--bg .hero-avatar {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.hero--bg .hero-avatar img {
+    width: 168px;
+    height: 168px;
+    border: 3px solid rgba(255, 255, 255, 0.78);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.24);
+    object-position: 58% 18%;
+    background: rgba(255, 255, 255, 0.08);
+}
+
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
@@ -3748,6 +3762,11 @@ section {
         padding-left: 6vw;
         padding-right: 6vw;
     }
+
+    .hero--bg .hero-avatar img {
+        width: 120px;
+        height: 120px;
+    }
     
     /* Prevent title word breaking */
     .hero--bg .hero-title {
@@ -3774,6 +3793,11 @@ section {
     .hero--bg .hero-content {
         padding-left: 5vw;
         padding-right: 5vw;
+    }
+
+    .hero--bg .hero-avatar img {
+        width: 104px;
+        height: 104px;
     }
 }
 
@@ -3834,5 +3858,4 @@ header .name-en,
 .hero--bg .hero-description {
     color: rgba(255, 255, 255, 0.75);
 }
-
 
