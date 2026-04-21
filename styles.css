@@ -3580,9 +3580,10 @@ section {
     background-position: var(--card-focus, center center);
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0.18;
+    opacity: 0.42;
     transform: scale(1.04);
     transition: opacity 0.25s ease, transform 0.25s ease;
+    filter: saturate(1.02) contrast(1.01);
 }
 
 .works-page .video-card::after {
@@ -3591,9 +3592,10 @@ section {
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.74) 0%,
-        rgba(255, 255, 255, 0.88) 32%,
-        rgba(255, 255, 255, 0.96) 100%
+        rgba(255, 255, 255, 0.28) 0%,
+        rgba(255, 255, 255, 0.58) 26%,
+        rgba(255, 255, 255, 0.82) 58%,
+        rgba(255, 255, 255, 0.94) 100%
     );
 }
 
@@ -3609,7 +3611,7 @@ section {
 }
 
 .works-page .video-card:hover::before {
-    opacity: 0.28;
+    opacity: 0.56;
     transform: scale(1.08);
 }
 
@@ -3715,7 +3717,7 @@ section {
 
 @media (max-width: 768px) {
     .works-page .video-card::before {
-        opacity: 0.14;
+        opacity: 0.34;
     }
 }
 
