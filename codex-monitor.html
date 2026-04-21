@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Codex Monitor - 本地 MacBookPro 的公开同步摘要">
+    <title>Codex Monitor · MacBookPro - Zi Yin (银子)</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cm-shell {
+            padding-top: 110px;
+            padding-bottom: 80px;
+        }
+
+        .cm-hero,
+        .cm-panel {
+            background: linear-gradient(180deg, rgba(17,24,39,0.94), rgba(15,23,42,0.88));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            color: #fff;
+            box-shadow: 0 24px 48px rgba(15,23,42,0.18);
+        }
+
+        .cm-hero {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .cm-kicker {
+            margin: 0 0 0.4rem;
+            color: #7dd3fc;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .cm-title {
+            margin: 0;
+            font-size: clamp(2rem, 4.2vw, 3.6rem);
+            line-height: 1.04;
+        }
+
+        .cm-subtitle {
+            margin: 0.7rem 0 0;
+            color: rgba(255,255,255,0.72);
+            font-size: 1rem;
+        }
+
+        .cm-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.05);
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .cm-pill::before {
+            content: "";
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 999px;
+            background: #34d399;
+            box-shadow: 0 0 12px currentColor;
+        }
+
+        .cm-pill.stale::before {
+            background: #f59e0b;
+        }
+
+        .cm-pill.offline::before {
+            background: #ef4444;
+        }
+
+        .cm-meta {
+            display: grid;
+            gap: 0.45rem;
+            text-align: right;
+            color: rgba(255,255,255,0.66);
+            font-size: 0.94rem;
+        }
+
+        .cm-summary-grid,
+        .cm-chart-grid,
+        .cm-detail-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cm-summary-grid {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .cm-chart-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .cm-detail-grid {
+            grid-template-columns: 1.45fr 1fr;
+        }
+
+        .cm-card,
+        .cm-panel {
+            padding: 1.2rem 1.25rem 1.3rem;
+        }
+
+        .cm-card {
+            background: linear-gradient(180deg, rgba(17,24,39,0.92), rgba(15,23,42,0.84));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            color: #fff;
+        }
+
+        .cm-card-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .cm-card-value {
+            margin-top: 0.7rem;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .cm-card-hint {
+            margin-top: 0.65rem;
+            color: rgba(255,255,255,0.64);
+            font-size: 0.92rem;
+        }
+
+        .cm-panel-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .cm-panel-title {
+            margin: 0;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+
+        .cm-panel-subtitle {
+            color: rgba(255,255,255,0.58);
+            font-size: 0.9rem;
+        }
+
+        .cm-chart {
+            width: 100%;
+            height: 210px;
+            display: block;
+        }
+
+        .cm-list {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .cm-list-item {
+            display: grid;
+            gap: 0.28rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .cm-list-item:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .cm-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .cm-muted {
+            color: rgba(255,255,255,0.62);
+        }
+
+        .cm-empty {
+            padding: 1.4rem 0.4rem;
+            color: rgba(255,255,255,0.62);
+            text-align: center;
+        }
+
+        @media (max-width: 1180px) {
+            .cm-summary-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .cm-chart-grid,
+            .cm-detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .cm-hero {
+                flex-direction: column;
+            }
+
+            .cm-meta {
+                text-align: left;
+            }
+
+            .cm-summary-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand site-title">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="projects.html">返回 Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="cm-shell">
+        <div class="container" style="max-width: 1280px;">
+            <section class="cm-hero">
+                <div>
+                    <p class="cm-kicker">Local MacBookPro</p>
+                    <h1 class="cm-title" id="cm-title">Codex Monitor</h1>
+                    <p class="cm-subtitle" id="cm-subtitle">每 5 分钟从本地 MacBookPro 同步一次公开摘要</p>
+                </div>
+                <div class="cm-meta">
+                    <div class="cm-pill" id="cm-status">等待同步</div>
+                    <div id="cm-sync-time">尚无数据</div>
+                    <div id="cm-source">来源：本地 MacBookPro</div>
+                </div>
+            </section>
+
+            <section class="cm-summary-grid" id="cm-summary"></section>
+
+            <section class="cm-chart-grid">
+                <article class="cm-panel">
+                    <div class="cm-panel-header">
+                        <h2 class="cm-panel-title">CPU</h2>
+                        <span class="cm-panel-subtitle">最近同步历史</span>
+                    </div>
+                    <svg id="cm-cpu-chart" class="cm-chart" viewBox="0 0 600 210" preserveAspectRatio="none"></svg>
+                </article>
+                <article class="cm-panel">
+                    <div class="cm-panel-header">
+                        <h2 class="cm-panel-title">Memory</h2>
+                        <span class="cm-panel-subtitle">最近同步历史</span>
+                    </div>
+                    <svg id="cm-memory-chart" class="cm-chart" viewBox="0 0 600 210" preserveAspectRatio="none"></svg>
+                </article>
+                <article class="cm-panel">
+                    <div class="cm-panel-header">
+                        <h2 class="cm-panel-title">Tokens</h2>
+                        <span class="cm-panel-subtitle">累计总量</span>
+                    </div>
+                    <svg id="cm-token-chart" class="cm-chart" viewBox="0 0 600 210" preserveAspectRatio="none"></svg>
+                </article>
+            </section>
+
+            <section class="cm-detail-grid">
+                <article class="cm-panel">
+                    <div class="cm-panel-header">
+                        <h2 class="cm-panel-title">活跃 Agents</h2>
+                        <span class="cm-panel-subtitle">公开摘要，不含本地命令细节</span>
+                    </div>
+                    <div id="cm-agents" class="cm-list"></div>
+                </article>
+                <article class="cm-panel">
+                    <div class="cm-panel-header">
+                        <h2 class="cm-panel-title">模型分布</h2>
+                        <span class="cm-panel-subtitle">来自本地 ccusage 汇总</span>
+                    </div>
+                    <div id="cm-models" class="cm-list"></div>
+                </article>
+            </section>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const machineQuery = 'macbookpro';
+        const summaryEl = document.getElementById('cm-summary');
+        const titleEl = document.getElementById('cm-title');
+        const subtitleEl = document.getElementById('cm-subtitle');
+        const syncTimeEl = document.getElementById('cm-sync-time');
+        const statusEl = document.getElementById('cm-status');
+        const sourceEl = document.getElementById('cm-source');
+        const agentsEl = document.getElementById('cm-agents');
+        const modelsEl = document.getElementById('cm-models');
+
+        const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
+        const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+
+        function formatNumber(value) {
+            return compact.format(value || 0);
+        }
+
+        function formatBytes(bytes) {
+            const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+            let value = bytes || 0;
+            let index = 0;
+            while (value >= 1024 && index < units.length - 1) {
+                value /= 1024;
+                index += 1;
+            }
+            return `${value.toFixed(value >= 100 ? 0 : value >= 10 ? 1 : 2)} ${units[index]}`;
+        }
+
+        function formatPercent(value) {
+            return `${(value || 0).toFixed(value > 100 ? 0 : 1)}%`;
+        }
+
+        function formatMoney(value) {
+            return money.format(value || 0);
+        }
+
+        function relativeTime(timestamp) {
+            if (!timestamp) return 'n/a';
+            const diff = Date.now() - new Date(timestamp).getTime();
+            if (diff < 60000) return `${Math.max(1, Math.round(diff / 1000))} 秒前`;
+            if (diff < 3600000) return `${Math.round(diff / 60000)} 分钟前`;
+            if (diff < 86400000) return `${Math.round(diff / 3600000)} 小时前`;
+            return `${Math.round(diff / 86400000)} 天前`;
+        }
+
+        function clock(timestamp) {
+            return new Date(timestamp).toLocaleString('zh-CN', {
+                hour12: false,
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function renderSummary(latest) {
+            const summary = latest?.summary || {};
+            const cards = [
+                ['Active Agents', String(summary.activeAgents || 0), '当前同步到网站的活跃 agent 数量'],
+                ['Tokens Today', formatNumber(summary.todayTokens), '今日累计 tokens'],
+                ['Weekly Usage', formatNumber(summary.weekTokens), '最近 7 天累计 tokens'],
+                ['Estimated Cost', formatMoney(summary.estimatedCostUsd), '公开成本估算'],
+                ['CPU', formatPercent(summary.cpu), '本地 Codex 相关 CPU 汇总'],
+                ['Memory', formatBytes(summary.memoryBytes), '本地 Codex 相关内存汇总']
+            ];
+
+            summaryEl.innerHTML = cards.map(([label, value, hint]) => `
+                <article class="cm-card">
+                    <div class="cm-card-label">${label}</div>
+                    <div class="cm-card-value">${value}</div>
+                    <div class="cm-card-hint">${hint}</div>
+                </article>
+            `).join('');
+        }
+
+        function renderList(container, items, emptyText, renderer) {
+            if (!items || items.length === 0) {
+                container.innerHTML = `<div class="cm-empty">${emptyText}</div>`;
+                return;
+            }
+            container.innerHTML = items.map(renderer).join('');
+        }
+
+        function renderLineChart(elementId, items, key, color, formatter) {
+            const svg = document.getElementById(elementId);
+            svg.innerHTML = '';
+            if (!items || items.length === 0) {
+                svg.innerHTML = `<text x="20" y="28" fill="rgba(255,255,255,0.58)" font-size="14">暂无历史</text>`;
+                return;
+            }
+
+            const width = 600;
+            const height = 210;
+            const plot = { top: 12, right: 12, bottom: 36, left: 12 };
+            const chartWidth = width - plot.left - plot.right;
+            const chartHeight = height - plot.top - plot.bottom;
+            const values = items.map((item) => item[key] || 0);
+            const max = Math.max(...values);
+            const min = Math.min(...values);
+            const range = max - min || 1;
+            const indexes = [...new Set([0, 0.5, 1].map((ratio) => Math.round((items.length - 1) * ratio)))];
+            const coords = values.map((value, index) => {
+                const x = plot.left + (index / Math.max(items.length - 1, 1)) * chartWidth;
+                const y = plot.top + chartHeight - ((value - min) / range) * chartHeight;
+                return `${x},${y}`;
+            }).join(' ');
+            const ticks = indexes.map((index) => {
+                const x = plot.left + (index / Math.max(items.length - 1, 1)) * chartWidth;
+                return `
+                    <line x1="${x}" y1="${plot.top}" x2="${x}" y2="${plot.top + chartHeight}" stroke="rgba(255,255,255,0.05)" />
+                    <text x="${x}" y="${height - 12}" fill="rgba(255,255,255,0.56)" font-size="11" text-anchor="${index === 0 ? 'start' : index === items.length - 1 ? 'end' : 'middle'}">${new Date(items[index].timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</text>
+                `;
+            }).join('');
+
+            svg.innerHTML = `
+                <defs>
+                    <linearGradient id="${elementId}-gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="${color}" stop-opacity="0.28" />
+                        <stop offset="100%" stop-color="${color}" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+                <line x1="${plot.left}" y1="${plot.top}" x2="${width - plot.right}" y2="${plot.top}" stroke="rgba(255,255,255,0.05)" />
+                <line x1="${plot.left}" y1="${plot.top + chartHeight / 2}" x2="${width - plot.right}" y2="${plot.top + chartHeight / 2}" stroke="rgba(255,255,255,0.05)" />
+                <line x1="${plot.left}" y1="${plot.top + chartHeight}" x2="${width - plot.right}" y2="${plot.top + chartHeight}" stroke="rgba(255,255,255,0.05)" />
+                ${ticks}
+                <polyline points="${coords} ${width - plot.right},${plot.top + chartHeight} ${plot.left},${plot.top + chartHeight}" fill="url(#${elementId}-gradient)" opacity="0.7"></polyline>
+                <polyline points="${coords}" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                <text x="${plot.left}" y="26" fill="rgba(255,255,255,0.72)" font-size="13">${formatter(max)}</text>
+                <text x="${width - plot.right}" y="26" fill="rgba(255,255,255,0.72)" font-size="12" text-anchor="end">最新 ${formatter(values.at(-1))}</text>
+            `;
+        }
+
+        function renderDashboard(payload) {
+            const latest = payload.latest;
+            if (!latest) {
+                titleEl.textContent = 'Codex Monitor';
+                subtitleEl.textContent = '网站尚未收到本地同步数据';
+                statusEl.textContent = '未同步';
+                statusEl.className = 'cm-pill offline';
+                syncTimeEl.textContent = '尚无数据';
+                sourceEl.textContent = '来源：等待本地同步';
+                renderSummary(null);
+                renderList(agentsEl, [], '暂无活跃 agent 数据', () => '');
+                renderList(modelsEl, [], '暂无模型数据', () => '');
+                renderLineChart('cm-cpu-chart', [], 'cpu', '#63d2ff', formatPercent);
+                renderLineChart('cm-memory-chart', [], 'memoryBytes', '#34d399', formatBytes);
+                renderLineChart('cm-token-chart', [], 'totalTokens', '#fbbf24', formatNumber);
+                return;
+            }
+
+            titleEl.textContent = `${latest.machine.name} · Codex Monitor`;
+            subtitleEl.textContent = `${latest.machine.label} · 每 5 分钟同步一次公开摘要`;
+            statusEl.textContent = latest.syncStatus === 'online' ? '在线' : latest.syncStatus === 'stale' ? '延迟' : '离线';
+            statusEl.className = `cm-pill ${latest.syncStatus}`;
+            syncTimeEl.textContent = `上次同步：${clock(latest.syncedAt)} · ${relativeTime(latest.syncedAt)}`;
+            sourceEl.textContent = `来源：${latest.machine.label}`;
+            document.title = `${latest.machine.name} · Codex Monitor - Zi Yin`;
+
+            renderSummary(latest);
+            renderList(
+                agentsEl,
+                latest.agents || [],
+                '暂无活跃 agent 数据',
+                (agent) => `
+                    <div class="cm-list-item">
+                        <div class="cm-row">
+                            <strong>${agent.sessionTitle || agent.processName || agent.agentId}</strong>
+                            <span class="cm-muted">${agent.status}</span>
+                        </div>
+                        <div class="cm-row cm-muted">
+                            <span>${agent.workspaceLabel || '未标注项目'}</span>
+                            <span>${formatPercent(agent.cpu)} · ${formatBytes(agent.memoryBytes)}</span>
+                        </div>
+                    </div>
+                `
+            );
+            renderList(
+                modelsEl,
+                latest.models || [],
+                '暂无模型数据',
+                (model) => `
+                    <div class="cm-list-item">
+                        <div class="cm-row">
+                            <strong>${model.model}</strong>
+                            <span>${formatMoney(model.costUSD)}</span>
+                        </div>
+                        <div class="cm-row cm-muted">
+                            <span>${formatNumber(model.totalTokens)} tokens</span>
+                            <span>${formatNumber(model.inputTokens)} in / ${formatNumber(model.outputTokens)} out</span>
+                        </div>
+                    </div>
+                `
+            );
+            renderLineChart('cm-cpu-chart', latest.history || [], 'cpu', '#63d2ff', formatPercent);
+            renderLineChart('cm-memory-chart', latest.history || [], 'memoryBytes', '#34d399', formatBytes);
+            renderLineChart('cm-token-chart', latest.history || [], 'totalTokens', '#fbbf24', formatNumber);
+        }
+
+        async function loadDashboard() {
+            try {
+                const response = await fetch(`/api/codex-monitor/latest?machine=${machineQuery}`, {
+                    cache: 'no-store'
+                });
+                const payload = await response.json();
+                renderDashboard(payload);
+            } catch (error) {
+                renderDashboard({ latest: null });
+            }
+        }
+
+        loadDashboard();
+        setInterval(loadDashboard, 60000);
+    </script>
+</body>
+</html>
