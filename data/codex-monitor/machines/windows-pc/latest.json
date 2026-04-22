@@ -16,40 +16,20 @@
       "sessionTitle": "win-搭建codex监控后台",
       "correlationConfidence": "high",
       "correlationReason": "logs_2.sqlite thread_id matched this process pid directly",
-      "cpu": 1.0333333333333332,
-      "memoryBytes": 184270848,
-      "memoryPercent": 1.0851799177551915,
+      "cpu": 1.8333333333333333,
+      "memoryBytes": 195108864,
+      "memoryPercent": 1.1490055170790163,
       "startedAt": "2026-04-21T22:00:11.231Z",
-      "lastActivityAt": "2026-04-22T03:00:05.000Z",
-      "lastSeenAt": "2026-04-22T03:00:09.480Z",
+      "lastActivityAt": "2026-04-22T03:00:24.000Z",
+      "lastSeenAt": "2026-04-22T03:00:24.430Z",
       "source": "codex_logs+process_scan"
-    },
-    {
-      "agentId": "b9025806312664b9",
-      "pid": 10080,
-      "processName": "powershell.exe",
-      "sanitizedCommand": "\"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;\nStart-Sleep -Seconds 5; Get-ScheduledTaskInfo -TaskName 'Codex Monitor Sync (Windows PC)' | Select-Object LastRunTime,LastTaskResult,NextRunTime\"",
-      "status": "idle",
-      "workspace": null,
-      "workspaceLabel": null,
-      "sessionId": null,
-      "sessionTitle": null,
-      "correlationConfidence": "low",
-      "correlationReason": "no direct thread_id evidence; showing standalone Codex-related process",
-      "cpu": 0,
-      "memoryBytes": 0,
-      "memoryPercent": 0,
-      "startedAt": null,
-      "lastActivityAt": null,
-      "lastSeenAt": "2026-04-22T03:00:09.480Z",
-      "source": "process_scan_only"
     }
   ],
   "usage": {
-    "todayTokens": 332062754,
-    "weekTokens": 332062754,
-    "totalTokens": 332062754,
-    "estimatedCost": 145.01115800000002,
+    "todayTokens": 332216202,
+    "weekTokens": 332216202,
+    "totalTokens": 332216202,
+    "estimatedCost": 145.057121,
     "sessions": [
       {
         "sessionId": "2026/04/21/rollout-2026-04-21T09-01-37-019db021-c730-70c2-8a80-ba78fefbcd3c",
@@ -1498,15 +1478,15 @@
         "workspace": "\\\\?\\C:\\Users\\ziyin\\Documents\\CodeXProject",
         "workspaceLabel": "CodeXProject",
         "startedAt": "2026-04-21T22:00:11.231Z",
-        "lastActivity": "2026-04-22T02:59:56.343Z",
+        "lastActivity": "2026-04-22T03:00:12.770Z",
         "model": "gpt-5.4",
-        "inputTokens": 17882893,
-        "cachedInputTokens": 16917120,
-        "outputTokens": 98905,
-        "reasoningOutputTokens": 26008,
-        "totalTokens": 17981798,
-        "costUSD": 8.127287500000001,
-        "stateTokensUsed": 16677224,
+        "inputTokens": 18035959,
+        "cachedInputTokens": 17069312,
+        "outputTokens": 99287,
+        "reasoningOutputTokens": 26177,
+        "totalTokens": 18135246,
+        "costUSD": 8.1732505,
+        "stateTokensUsed": 16830672,
         "source": "ccusage+state_5.sqlite",
         "confidence": "exact",
         "correlationNote": "matched state_5.sqlite thread row"
@@ -1515,730 +1495,40 @@
     "models": [
       {
         "model": "gpt-5.4",
-        "inputTokens": 330051344,
-        "outputTokens": 2011410,
-        "totalTokens": 332062754,
-        "costUSD": 145.011158
+        "inputTokens": 330204410,
+        "outputTokens": 2011792,
+        "totalTokens": 332216202,
+        "costUSD": 145.057121
       }
     ],
     "daily": [
       {
         "dateKey": "2026-04-21",
         "dateLabel": "Apr 21, 2026",
-        "inputTokens": 330051344,
-        "cachedInputTokens": 315683712,
-        "outputTokens": 2011410,
-        "reasoningOutputTokens": 690310,
-        "totalTokens": 332062754,
-        "costUSD": 145.01115800000002,
-        "modelsJson": "{\"gpt-5.4\":{\"inputTokens\":330051344,\"cachedInputTokens\":315683712,\"outputTokens\":2011410,\"reasoningOutputTokens\":690310,\"totalTokens\":332062754,\"isFallback\":false}}"
+        "inputTokens": 330204410,
+        "cachedInputTokens": 315835904,
+        "outputTokens": 2011792,
+        "reasoningOutputTokens": 690479,
+        "totalTokens": 332216202,
+        "costUSD": 145.057121,
+        "modelsJson": "{\"gpt-5.4\":{\"inputTokens\":330204410,\"cachedInputTokens\":315835904,\"outputTokens\":2011792,\"reasoningOutputTokens\":690479,\"totalTokens\":332216202,\"isFallback\":false}}"
       }
     ]
   },
   "logs": [
     {
-      "id": "d278ab4d826fa54f",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "codex_app_server::outgoing_message",
-      "message": "app-server event: item/started targeted_connections=1"
-    },
-    {
-      "id": "5c70b5035e05a2d3",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "DEBUG",
-      "source": "codex_core::stream_events_utils",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "057ce32b0893d2a2",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "codex_api::endpoint::responses_websocket",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "2cfdacb7a1186801",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "INFO",
-      "source": "codex_otel.trace_safe",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "279800812c0412ec",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "INFO",
-      "source": "codex_otel.log_only",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "7428e1816c38c1a2",
-      "timestamp": "2026-04-22T03:00:05.000Z",
+      "id": "d154e9302e219fdb",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
       "level": "TRACE",
       "source": "log",
-      "message": "WouldBlock"
+      "message": "Received message {\"type\":\"response.in_progress\",\"response\":{\"id\":\"resp_03b8c865138741470169e839c844e481918490a3352fe35550\",\"object\":\"response\",\"created_at\":1776826824,\"status\":\"in_progress\",\"background\":false,\"completed_"
     },
     {
-      "id": "671a145152765b40",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
-    },
-    {
-      "id": "8412bb0000974eef",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "c0519b694417eced",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
-    },
-    {
-      "id": "07abd0d4d3227882",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
-    },
-    {
-      "id": "1d5095cd586d69b0",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "2da4f623b9a3ad94",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
-    },
-    {
-      "id": "ebe7ba7f291871cc",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Received message {\"type\":\"response.output_item.added\",\"item\":{\"id\":\"rs_03b8c865138741470169e839b59e908191a51d12cca839b3d8\",\"type\":\"reasoning\",\"encrypted_content\":\"gAAAAABp6Dm17nbdpUl7owAbFI1V5IWGWJ0f5lmZD6bxle5-W2bIHpHdj"
-    },
-    {
-      "id": "8753b9d0a288c3e6",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "decompressing 844 bytes in final frame"
-    },
-    {
-      "id": "d0295e7ae515581d",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "received frame <FRAME> final: true reserved: true false false opcode: TEXT length: 848 payload length: 844 payload: 0x749d49afa3480cc7bf4bdf33a258c3a10f146b202c211096d108b10628b640c226f5779f9737ddaf471a4ddd5c17bb24cb7fc9"
-    },
-    {
-      "id": "3d753533491eadf2",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Masked: false"
-    },
-    {
-      "id": "7bff35d10bd604ce",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Opcode: Data(Text)"
-    },
-    {
-      "id": "d75cc8b0277f067f",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Second: 1111110"
-    },
-    {
-      "id": "b472249a789f3179",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "First: 11000001"
-    },
-    {
-      "id": "8f5dc1a5ce650736",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Parsed headers [193, 126]"
-    },
-    {
-      "id": "0281f24081e9cc42",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
-    },
-    {
-      "id": "8b3dc287e52b2821",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "14d126d3a821942b",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
-    },
-    {
-      "id": "ca6df5cadefc12da",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
-    },
-    {
-      "id": "c026053420864ad2",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "21741a739f6740df",
-      "timestamp": "2026-04-22T03:00:05.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
-    },
-    {
-      "id": "b36427bb6584e971",
-      "timestamp": "2026-04-22T03:00:04.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "hyper_util::client::legacy::pool",
-      "message": "idle interval checking for expired"
-    },
-    {
-      "id": "f59e9d76a5af43b3",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "WouldBlock"
-    },
-    {
-      "id": "10c318285449fc1a",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
-    },
-    {
-      "id": "0d2a52ba34ebcdea",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "3bd4e190e1353cee",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
-    },
-    {
-      "id": "35b5129e535e5a74",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
-    },
-    {
-      "id": "c25d6b5b3e96ae51",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "af834559704cd8de",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
-    },
-    {
-      "id": "4faa2c7b118139b4",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:185 Write.with_context flush -> poll_flush"
-    },
-    {
-      "id": "7e03537ceca4a513",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "3c97ae5c4de10bdc",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:183 Write.flush"
-    },
-    {
-      "id": "56015e698c2c5630",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:174 Write.with_context write -> poll_write"
-    },
-    {
-      "id": "904917fd094518bc",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "8302131fbdd7d317",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:172 Write.write"
-    },
-    {
-      "id": "09b78434e8cb9646",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "d8b472276a266cd7",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "writing frame <FRAME> final: true reserved: false false false opcode: PONG length: 10 payload length: 4 payload: 0xcff9912c"
-    },
-    {
-      "id": "c5dae349f43bcba4",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Sending frame: Frame { header: FrameHeader { is_final: true, rsv1: false, rsv2: false, rsv3: false, opcode: Control(Pong), mask: Some([130, 129, 65, 39]) }, payload: b\"\\xcf\\xf9\\x91,\" }"
-    },
-    {
-      "id": "9e3657e7cb06c835",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Sending pong/close"
-    },
-    {
-      "id": "7fa5ab43ca556ec5",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "b53aa569b2a17da5",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Received message Binary Data<length=4>"
-    },
-    {
-      "id": "624a38eb4e4cd5dd",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "received frame <FRAME> final: true reserved: false false false opcode: PING length: 6 payload length: 4 payload: 0xcff9912c"
-    },
-    {
-      "id": "82c323e224679452",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Masked: false"
-    },
-    {
-      "id": "cd20e51f4ab3e117",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Opcode: Control(Ping)"
-    },
-    {
-      "id": "63410a27d9ed2a67",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Second: 100"
-    },
-    {
-      "id": "cead9550094be57b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "First: 10001001"
-    },
-    {
-      "id": "1bcbbf637c5ccc71",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Parsed headers [137, 4]"
-    },
-    {
-      "id": "72788a8e1525ca2c",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
-    },
-    {
-      "id": "734b6a622df3f0ec",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "11d78b14203a70cf",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
-    },
-    {
-      "id": "931e366fc103c577",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
-    },
-    {
-      "id": "7aff3292c57fef13",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "9826e68f9b55c9fd",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
-    },
-    {
-      "id": "6b0e608fd04e080e",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "codex_api::sse::responses",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "ba0ca88e15ee94a4",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "codex_api::endpoint::responses_websocket",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "21cec3bcb9379b2a",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "INFO",
-      "source": "codex_otel.trace_safe",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "a6e8a13f7e6ca52c",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
-      "pid": 20564,
-      "level": "INFO",
-      "source": "codex_otel.log_only",
-      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
-    },
-    {
-      "id": "b2b89786e906d981",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "WouldBlock"
-    },
-    {
-      "id": "c6c741c974d9afc9",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
-    },
-    {
-      "id": "5d549818a8bec9de",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
-    },
-    {
-      "id": "a6faa72858d9b360",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
-    },
-    {
-      "id": "1bdbf2944d818721",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
-    },
-    {
-      "id": "c9d628805befee1b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
-    },
-    {
-      "id": "4387450134352853",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
-    },
-    {
-      "id": "a4783d26e4d6d85d",
-      "timestamp": "2026-04-22T03:00:03.000Z",
-      "agentId": null,
-      "sessionId": null,
-      "pid": 20564,
-      "level": "TRACE",
-      "source": "log",
-      "message": "Received message {\"type\":\"response.in_progress\",\"response\":{\"id\":\"resp_03b8c865138741470169e839b2fa988191996fa3fef7021445\",\"object\":\"response\",\"created_at\":1776826803,\"status\":\"in_progress\",\"background\":false,\"completed_"
-    },
-    {
-      "id": "0e0f32b52ae95164",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "8fcba0d408687508",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2247,18 +1537,18 @@
       "message": "decompressing 13485 bytes in final frame"
     },
     {
-      "id": "f35470629b421c1d",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "de8cda1526a6ae79",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
       "level": "TRACE",
       "source": "log",
-      "message": "received frame <FRAME> final: true reserved: true false false opcode: TEXT length: 13489 payload length: 13485 payload: 0xec7d6d731bd799e55fe9e1cc8e480620f562c736152796f5927056b21451b22b15a5c806d020db02d01834408a3371557e"
+      "message": "received frame <FRAME> final: true reserved: true false false opcode: TEXT length: 13489 payload length: 13485 payload: 0xec7deb721bd799edabf430734624035057c70e15279675493847b21451b22b15b9c806d020db02d01834408a3376551ee2"
     },
     {
-      "id": "fbb451f40f8943bf",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "0e11c62e8abd2ff6",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2267,8 +1557,8 @@
       "message": "Masked: false"
     },
     {
-      "id": "7018b1aaabe02063",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "0f125a4bef0a3aa0",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2277,8 +1567,8 @@
       "message": "Opcode: Data(Text)"
     },
     {
-      "id": "9ccb8722fa2c6830",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "e108e2a2795a4673",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2287,8 +1577,8 @@
       "message": "Second: 1111110"
     },
     {
-      "id": "1128d5d14ff0b390",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "946f36ffba4cb6ab",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2297,8 +1587,8 @@
       "message": "First: 11000001"
     },
     {
-      "id": "0b5bfb00f1175f8b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "49c648ecafa1040e",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2307,8 +1597,8 @@
       "message": "Parsed headers [193, 126]"
     },
     {
-      "id": "e5821f2af984133d",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "5066e96d3a76b7ec",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2317,8 +1607,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
     },
     {
-      "id": "88e5b6adf3280e7b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "5e8afaa7ffae6dff",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2327,8 +1617,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
     },
     {
-      "id": "a32196c57eed9df7",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "368584624e8bba94",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2337,8 +1627,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
     },
     {
-      "id": "1de9748a41f23163",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "0eb85003c1efefe6",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2347,8 +1637,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     },
     {
-      "id": "7eadf7aa8cafeaab",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "2eb480576f357e9b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2357,8 +1647,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
     },
     {
-      "id": "463e1b8346d7ef4b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "f904448cdd560c6c",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2367,8 +1657,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
     },
     {
-      "id": "40ce9281abe2af01",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "ef12e2c8c3eef61b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2377,8 +1667,8 @@
       "message": "WouldBlock"
     },
     {
-      "id": "df21bf0634469b8e",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "bf1db3050959d14b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2387,8 +1677,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
     },
     {
-      "id": "c7ad053dbe5b6626",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "f8f53a1450f8459b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2397,8 +1687,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
     },
     {
-      "id": "86d2adcc7471afcd",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "f6bc85dc573fad03",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2407,8 +1697,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
     },
     {
-      "id": "787d15af7161f5a2",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "33f213234e5191c4",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2417,8 +1707,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     },
     {
-      "id": "fd788c9806ab3a6c",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "781cee4c2f30dc54",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2427,8 +1717,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
     },
     {
-      "id": "e74145d0a4f56389",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "8583952dcc0c5052",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2437,8 +1727,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
     },
     {
-      "id": "ae346d82bdcec495",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "c21123c381186d55",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2447,8 +1737,8 @@
       "message": "WouldBlock"
     },
     {
-      "id": "44e6344c0ff680a4",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "458644d577b74b67",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2457,8 +1747,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
     },
     {
-      "id": "09c9751279a81fee",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "d092eb1b1b6138ae",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2467,8 +1757,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
     },
     {
-      "id": "de8672f75a8eaae1",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "1661e4776127d143",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2477,8 +1767,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
     },
     {
-      "id": "2515a464edb436c8",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "a865bde4c4d6f666",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2487,8 +1777,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     },
     {
-      "id": "a546f168fa9a5455",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "6927adda5e025d2b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2497,8 +1787,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
     },
     {
-      "id": "64b622f8301b7181",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "d69b8fb83ffb31f5",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2507,8 +1797,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
     },
     {
-      "id": "c8411be705160a42",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "ee301ef388bb79a5",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2517,8 +1807,8 @@
       "message": "WouldBlock"
     },
     {
-      "id": "615e98af2cda4fad",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "e2a939a3128d3c41",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2527,8 +1817,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
     },
     {
-      "id": "ae60983e1e640dcd",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "846a7bd4ec4ea48a",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2537,8 +1827,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
     },
     {
-      "id": "97bd15afdbf1f511",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "3da04ad859a84aa1",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2547,8 +1837,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
     },
     {
-      "id": "04f3013d28926bcc",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "3187bd3d1ee53637",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2557,8 +1847,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     },
     {
-      "id": "c26f16253fec459d",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "2d042637af568f5f",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2567,8 +1857,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
     },
     {
-      "id": "14cada8659398484",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "24ef3b906f145372",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2577,8 +1867,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
     },
     {
-      "id": "245e21e9bceb1143",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "d9ffb9452163fc54",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2587,8 +1877,8 @@
       "message": "WouldBlock"
     },
     {
-      "id": "e1d8c42c54d5df6b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "a480df7554f9bdcb",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2597,8 +1887,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
     },
     {
-      "id": "c8f53e61792d7713",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "b79a074a513b5fb2",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2607,8 +1897,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
     },
     {
-      "id": "aefadd8af65e30b8",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "93f3811e0dcd3182",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2617,8 +1907,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
     },
     {
-      "id": "52a844fd207d297b",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "aa009c4b72e91ce3",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2627,8 +1917,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     },
     {
-      "id": "5269fa67e20251d6",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "e011f889469f435b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2637,8 +1927,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
     },
     {
-      "id": "f44c27ddb1904311",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "025e31e8f9fad618",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2647,8 +1937,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
     },
     {
-      "id": "7d1d8620d65ce9b9",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "491dc7f6ba57f46c",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2657,8 +1947,8 @@
       "message": "WouldBlock"
     },
     {
-      "id": "c5fcee5207a275c5",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "65900ab8c6ea36ab",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2667,8 +1957,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
     },
     {
-      "id": "23958ee896cc36f9",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "8b907a6927896a47",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2677,8 +1967,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
     },
     {
-      "id": "fa3cf2c6bf8d0561",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "c47f5ecd1dd852d8",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2687,8 +1977,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
     },
     {
-      "id": "bca64e5f7ac448b7",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "947f555095ef0e37",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2697,8 +1987,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     },
     {
-      "id": "b0ad41e518786700",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "47179e5ce16ae891",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2707,8 +1997,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
     },
     {
-      "id": "cd21165cb4838cb2",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "6241ce1d61b95d2f",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2717,8 +2007,8 @@
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
     },
     {
-      "id": "645057b7082500bb",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "2342bd628a47858c",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
@@ -2727,45 +2017,735 @@
       "message": "WouldBlock"
     },
     {
-      "id": "1c60eb24690585dd",
-      "timestamp": "2026-04-22T03:00:03.000Z",
+      "id": "2037a5d8d30a3cf2",
+      "timestamp": "2026-04-22T03:00:24.000Z",
       "agentId": null,
       "sessionId": null,
       "pid": 20564,
       "level": "TRACE",
       "source": "log",
       "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "ef1994ee6cea2181",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "0a31ba4dac56e10f",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "202faff3b6874fea",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "0113fd9b44fa8fc6",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "5951cdc02a67e88b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "70e52e43f7275092",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "612d2e1d42e85419",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "8f9bd0811d81e7e5",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "5132957c3fec5aab",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "76a649650bf72b53",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "69ee1c65806844cc",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "4263d655762f4b0e",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "9871471866bdac28",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "dab52282a9d38907",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "c5f2dab3a4d9fe27",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "aeffac070d976cec",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "456d549f74cf4399",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "6ae3be074544ba03",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "9322ccf33ce52245",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "0ea9bc16f1d08380",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "3638360f16a74e81",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "a342da445e31ed31",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "f4008f97005362cb",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "797dc40d83d11d50",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "158bc7fd9d848d46",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "0a71bec0e9d80bc4",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "20c6230db6c437ff",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "codex_api::endpoint::responses_websocket",
+      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
+    },
+    {
+      "id": "9fba69737ab50065",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
+      "pid": 20564,
+      "level": "INFO",
+      "source": "codex_otel.trace_safe",
+      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
+    },
+    {
+      "id": "b29348ed6dff4421",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": "019db20e-daaa-70a3-b558-a4478d7c0ead",
+      "pid": 20564,
+      "level": "INFO",
+      "source": "codex_otel.log_only",
+      "message": "session_loop{thread_id=019db20e-daaa-70a3-b558-a4478d7c0ead}:submission_dispatch{otel.name=\"op.dispatch.user_input\" submission.id=\"019db31b-5fd9-7391-9484-fee99c45225a\" codex.op=\"user_input\"}:turn{otel.name=\"session_task"
+    },
+    {
+      "id": "4d0514576e7cec7e",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "91fe429389a4fa52",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "f47057778a03c66b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "a20832bab66ce1ed",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "5077e12ed850cfc3",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "43b81c0386d2963e",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "271f8d64f82639be",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "71b7ed3581edf2db",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "Received message {\"type\":\"response.created\",\"response\":{\"id\":\"resp_03b8c865138741470169e839c844e481918490a3352fe35550\",\"object\":\"response\",\"created_at\":1776826824,\"status\":\"in_progress\",\"background\":false,\"completed_at\":"
+    },
+    {
+      "id": "5a3cdbc3d35a277f",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "decompressing 13478 bytes in final frame"
+    },
+    {
+      "id": "4a58589188353f19",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "received frame <FRAME> final: true reserved: true false false opcode: TEXT length: 13482 payload length: 13478 payload: 0xec7deb721bd799edabf430734624035057c70e15279675493847b21451b22b15b9c806d020db02d01834408a3376551ee2"
+    },
+    {
+      "id": "c4cf291ac88981a9",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "Masked: false"
+    },
+    {
+      "id": "156808885ec18c3c",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "Opcode: Data(Text)"
+    },
+    {
+      "id": "d11fe623f96780ef",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "Second: 1111110"
+    },
+    {
+      "id": "8e62b702c579aaa9",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "First: 11000001"
+    },
+    {
+      "id": "5282f47779245730",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "Parsed headers [193, 126]"
+    },
+    {
+      "id": "1e2ee62270af3482",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "11d07214fc1e45af",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "53c6650fa1f7340e",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "ddd88164fa287c51",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "4f79fcd1543c8eae",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "6dd102acd75d816d",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "2a539ed0e5735301",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "5f82fe220b49b805",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "8df60564fc63770a",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "d3bb059560c4bdb1",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "b3882719106bd32a",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "729f80fda3baf8b3",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "0abc4da35e51f66f",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "94ccefddb8559f69",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "e1d193bf6e217bc7",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "8ae20669fdcd70e4",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "eb8ee46c9eff7aff",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "b79b18e30f38f29b",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
+    },
+    {
+      "id": "85b1b41358c81073",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:245 WebSocketStream.with_context"
+    },
+    {
+      "id": "7745e20aa731eb80",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:294 Stream.poll_next"
+    },
+    {
+      "id": "b89252839f7046f8",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "WouldBlock"
+    },
+    {
+      "id": "6bc7658009bb8395",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:157 Read.with_context read -> poll_read"
+    },
+    {
+      "id": "aa76d11103f0574d",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:131 AllowStd.with_context"
+    },
+    {
+      "id": "ba2dbd62725768d5",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\compat.rs:154 Read.read"
+    },
+    {
+      "id": "4a3b9219851f4502",
+      "timestamp": "2026-04-22T03:00:24.000Z",
+      "agentId": null,
+      "sessionId": null,
+      "pid": 20564,
+      "level": "TRACE",
+      "source": "log",
+      "message": "C:\\Users\\runneradmin\\.cargo\\git\\checkouts\\tokio-tungstenite-ea4445d9acecae62\\132f5b3\\src\\lib.rs:304 Stream.with_context poll_next -> read()"
     }
   ],
   "history": [
     {
-      "timestamp": "2026-04-22T02:59:59.346Z",
-      "cpu": 76.55,
-      "memoryBytes": 1473818624,
-      "sessionCpu": 1.0333333333333332,
-      "sessionMemoryBytes": 184270848,
-      "backgroundCpu": 75.51666666666667,
-      "backgroundMemoryBytes": 1289547776,
-      "totalTokens": 332062754,
-      "activeAgents": 2
+      "timestamp": "2026-04-22T03:00:14.858Z",
+      "cpu": 62.76666666666667,
+      "memoryBytes": 1499308032,
+      "sessionCpu": 1.8333333333333333,
+      "sessionMemoryBytes": 195108864,
+      "backgroundCpu": 60.93333333333334,
+      "backgroundMemoryBytes": 1304199168,
+      "totalTokens": 332216202,
+      "activeAgents": 1
     }
   ],
   "health": {
-    "timestamp": "2026-04-22T02:59:59.346Z",
+    "timestamp": "2026-04-22T03:00:14.858Z",
     "parser": {
       "level": "ok",
       "message": "synced 73 sessions from ccusage",
-      "lastSuccessAt": "2026-04-22T02:59:59.346Z"
+      "lastSuccessAt": "2026-04-22T03:00:14.858Z"
     },
     "processWatcher": {
       "level": "ok",
-      "message": "tracked 8 Codex-related processes",
-      "lastSuccessAt": "2026-04-22T02:59:59.346Z"
+      "message": "tracked 7 Codex-related processes",
+      "lastSuccessAt": "2026-04-22T03:00:14.858Z"
     },
     "logWatcher": {
       "level": "ok",
       "message": "captured 120 recent log rows",
-      "lastSuccessAt": "2026-04-22T02:59:59.346Z"
+      "lastSuccessAt": "2026-04-22T03:00:14.858Z"
     },
     "db": {
       "level": "ok",
@@ -2778,6 +2758,6 @@
     "name": "Windows PC",
     "label": "Local Windows PC"
   },
-  "syncedAt": "2026-04-22T03:00:09.607Z",
-  "receivedAt": "2026-04-22T03:00:09.607Z"
+  "syncedAt": "2026-04-22T03:00:24.536Z",
+  "receivedAt": "2026-04-22T03:00:24.536Z"
 }
