@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T13:19:44.262Z",
+  "syncedAt": "2026-04-22T13:24:53.580Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,25 +9,14 @@
   },
   "summary": {
     "activeAgents": 7,
-    "todayTokens": 20479548,
-    "weekTokens": 602933749,
-    "totalTokens": 610769517,
-    "estimatedCostUsd": 287.60529414999996,
-    "cpu": 50.614191554017744,
-    "memoryBytes": 2900934656
+    "todayTokens": 22891046,
+    "weekTokens": 605345247,
+    "totalTokens": 613181015,
+    "estimatedCostUsd": 288.38256464999995,
+    "cpu": 50.47979158661873,
+    "memoryBytes": 3126099968
   },
   "agents": [
-    {
-      "agentId": "dee37465def7bbf3",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019dad10-db4b-7910-9fcc-9f254bfc46cb",
-      "sessionTitle": "thisisyz.com",
-      "workspaceLabel": "interval-quiz-remote",
-      "cpu": 1.7742861536884196,
-      "memoryBytes": 639385600,
-      "confidence": "high"
-    },
     {
       "agentId": "0fceae72cff3e8cc",
       "processName": "codex",
@@ -35,8 +24,19 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.7742861536884196,
-      "memoryBytes": 639385600,
+      "cpu": 1.783783783783784,
+      "memoryBytes": 738476032,
+      "confidence": "high"
+    },
+    {
+      "agentId": "daad37929a1419c6",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
+      "sessionTitle": "搭建 Codex 监控后台",
+      "workspaceLabel": "CodexProject",
+      "cpu": 1.783783783783784,
+      "memoryBytes": 738476032,
       "confidence": "high"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5222752397600038,
+      "cpu": 0.5223835096029829,
       "memoryBytes": 13631488,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5384251471825063,
+      "cpu": 0.5385196965351826,
       "memoryBytes": 13877248,
       "confidence": "low"
     },
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.521907040328093,
-      "memoryBytes": 35553280,
+      "cpu": 0.5220384504241106,
+      "memoryBytes": 34209792,
       "confidence": "low"
     },
     {
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.579864472410455,
+      "cpu": 0.5775726187795541,
       "memoryBytes": 17301504,
       "confidence": "low"
     },
@@ -90,18 +90,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.514299946750949,
-      "memoryBytes": 16449536,
+      "cpu": 0.5144551139664423,
+      "memoryBytes": 16433152,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 607256562,
-      "inputTokens": 604555503,
-      "outputTokens": 2701059,
-      "costUSD": 285.3071385
+      "totalTokens": 609668060,
+      "inputTokens": 606960902,
+      "outputTokens": 2707158,
+      "costUSD": 286.084409
     },
     {
       "model": "gpt-5.3-codex",
@@ -116,5 +116,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T13:19:45.316Z"
+  "receivedAt": "2026-04-22T13:24:54.667Z"
 }
