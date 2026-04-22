@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T02:20:21.721Z",
+  "syncedAt": "2026-04-22T02:21:27.081Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 9,
-    "todayTokens": 194707155,
-    "weekTokens": 545502565,
-    "totalTokens": 553053088,
-    "estimatedCostUsd": 263.05928015,
-    "cpu": 125.10983065555577,
-    "memoryBytes": 5803327488
+    "activeAgents": 8,
+    "todayTokens": 196271187,
+    "weekTokens": 547066597,
+    "totalTokens": 554617120,
+    "estimatedCostUsd": 263.74107115,
+    "cpu": 124.76067876119166,
+    "memoryBytes": 4422713344
   },
   "agents": [
     {
@@ -24,8 +24,8 @@
       "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
       "sessionTitle": "搭建 Codex 监控后台",
       "workspaceLabel": "CodexProject",
-      "cpu": 2.8623654779489343,
-      "memoryBytes": 2432991232,
+      "cpu": 2.8651177460050463,
+      "memoryBytes": 2195734528,
       "confidence": "high"
     },
     {
@@ -35,19 +35,8 @@
       "sessionId": "019daae3-0129-70d0-a77b-6495b9305bba",
       "sessionTitle": "白雪公主 - 视频编辑",
       "workspaceLabel": "Downloads",
-      "cpu": 2.8623654779489343,
-      "memoryBytes": 2432991232,
-      "confidence": "high"
-    },
-    {
-      "agentId": "0fceae72cff3e8cc",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 2.8623654779489343,
-      "memoryBytes": 2432991232,
+      "cpu": 2.8651177460050463,
+      "memoryBytes": 2195734528,
       "confidence": "high"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5134630350194552,
+      "cpu": 0.5134760511319882,
       "memoryBytes": 16941056,
       "confidence": "low"
     },
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.491253123884327,
-      "memoryBytes": 17039360,
+      "cpu": 0.49076333217148826,
+      "memoryBytes": 17055744,
       "confidence": "low"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.49584687612856626,
+      "cpu": 0.49559393725766654,
       "memoryBytes": 17022976,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.4876813505671327,
+      "cpu": 0.4876728171161226,
       "memoryBytes": 30162944,
       "confidence": "low"
     },
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.4841303881621274,
+      "cpu": 0.48413461538461533,
       "memoryBytes": 20758528,
+      "confidence": "low"
+    },
+    {
+      "agentId": "068692644b7d3230",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.755",
+      "cpu": 0.4798496895762989,
+      "memoryBytes": 17137664,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 549540133,
-      "inputTokens": 547091029,
-      "outputTokens": 2449104,
-      "costUSD": 260.7611245
+      "totalTokens": 551104165,
+      "inputTokens": 548647143,
+      "outputTokens": 2457022,
+      "costUSD": 261.4429155
     },
     {
       "model": "gpt-5.3-codex",
@@ -127,5 +127,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T02:20:22.227Z"
+  "receivedAt": "2026-04-22T02:21:27.817Z"
 }
