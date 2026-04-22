@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T18:13:30.622Z",
+  "syncedAt": "2026-04-22T18:18:38.457Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 3,
+    "activeAgents": 4,
     "todayTokens": 34198948,
     "weekTokens": 616653149,
     "totalTokens": 624488917,
     "estimatedCostUsd": 293.13595065,
-    "cpu": 113.83837072242477,
-    "memoryBytes": 8532721664
+    "cpu": 83.3147570265509,
+    "memoryBytes": 7439532032
   },
   "agents": [
     {
@@ -24,8 +24,8 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 2.3799582463465554,
-      "memoryBytes": 5513199616,
+      "cpu": 3.0801526717557253,
+      "memoryBytes": 5278679040,
       "confidence": "high"
     },
     {
@@ -35,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.3228511530398323,
-      "memoryBytes": 20758528,
+      "cpu": 0.47066326530612246,
+      "memoryBytes": 33341440,
       "confidence": "low"
     },
     {
@@ -46,8 +46,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.3008474576271186,
-      "memoryBytes": 20840448,
+      "cpu": 0.5064456721915286,
+      "memoryBytes": 20889600,
+      "confidence": "low"
+    },
+    {
+      "agentId": "5c7a855fb61de285",
+      "processName": "SkyComputerUseService",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 6.011904761904762,
+      "memoryBytes": 267485184,
       "confidence": "low"
     }
   ],
@@ -72,5 +83,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T18:13:31.572Z"
+  "receivedAt": "2026-04-22T18:18:39.414Z"
 }
