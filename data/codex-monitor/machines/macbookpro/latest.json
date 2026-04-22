@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T13:09:26.842Z",
+  "syncedAt": "2026-04-22T13:14:35.612Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 8,
-    "todayTokens": 14346609,
-    "weekTokens": 596800810,
-    "totalTokens": 604636578,
-    "estimatedCostUsd": 285.52217464999995,
-    "cpu": 55.658444981029604,
-    "memoryBytes": 3240902656
+    "activeAgents": 9,
+    "todayTokens": 17107876,
+    "weekTokens": 599562077,
+    "totalTokens": 607397845,
+    "estimatedCostUsd": 286.51031314999994,
+    "cpu": 55.54392716681576,
+    "memoryBytes": 3117285376
   },
   "agents": [
-    {
-      "agentId": "dee37465def7bbf3",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019dad10-db4b-7910-9fcc-9f254bfc46cb",
-      "sessionTitle": "thisisyz.com",
-      "workspaceLabel": "interval-quiz-remote",
-      "cpu": 1.7333517546283503,
-      "memoryBytes": 739377152,
-      "confidence": "high"
-    },
     {
       "agentId": "0fceae72cff3e8cc",
       "processName": "codex",
@@ -35,8 +24,30 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.7333517546283503,
-      "memoryBytes": 739377152,
+      "cpu": 1.7609942967085825,
+      "memoryBytes": 744259584,
+      "confidence": "high"
+    },
+    {
+      "agentId": "dee37465def7bbf3",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "019dad10-db4b-7910-9fcc-9f254bfc46cb",
+      "sessionTitle": "thisisyz.com",
+      "workspaceLabel": "interval-quiz-remote",
+      "cpu": 1.7609942967085825,
+      "memoryBytes": 744259584,
+      "confidence": "high"
+    },
+    {
+      "agentId": "daad37929a1419c6",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
+      "sessionTitle": "搭建 Codex 监控后台",
+      "workspaceLabel": "CodexProject",
+      "cpu": 1.7609942967085825,
+      "memoryBytes": 744259584,
       "confidence": "high"
     },
     {
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5213941558597214,
+      "cpu": 0.5218084473527662,
       "memoryBytes": 13615104,
       "confidence": "low"
     },
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5375223745024178,
+      "cpu": 0.537984578287713,
       "memoryBytes": 13877248,
       "confidence": "low"
     },
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5210783551802152,
-      "memoryBytes": 35094528,
+      "cpu": 0.5215509096218928,
+      "memoryBytes": 35602432,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5789473684210527,
+      "cpu": 0.5791263405702328,
       "memoryBytes": 17301504,
       "confidence": "low"
     },
@@ -90,29 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5135590277777778,
+      "cpu": 0.513901360779167,
       "memoryBytes": 16449536,
-      "confidence": "low"
-    },
-    {
-      "agentId": "5832ce627ed96b1f",
-      "processName": "SkyComputerUseService",
-      "status": "running",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 4.786933927245731,
-      "memoryBytes": 270155776,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 601123623,
-      "inputTokens": 598446220,
-      "outputTokens": 2677403,
-      "costUSD": 283.224019
+      "totalTokens": 603884890,
+      "inputTokens": 601194361,
+      "outputTokens": 2690529,
+      "costUSD": 284.2121575
     },
     {
       "model": "gpt-5.3-codex",
@@ -127,5 +127,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T13:09:27.827Z"
+  "receivedAt": "2026-04-22T13:14:36.557Z"
 }
