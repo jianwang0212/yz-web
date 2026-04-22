@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T03:03:23.262Z",
+  "syncedAt": "2026-04-22T03:08:32.438Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 8,
-    "todayTokens": 219760103,
-    "weekTokens": 570555513,
-    "totalTokens": 578106036,
-    "estimatedCostUsd": 272.63335115,
-    "cpu": 115.28761581573768,
-    "memoryBytes": 2082013184
+    "activeAgents": 10,
+    "todayTokens": 222476017,
+    "weekTokens": 573271427,
+    "totalTokens": 580821950,
+    "estimatedCostUsd": 273.90530315,
+    "cpu": 121.41732795745654,
+    "memoryBytes": 2669543424
   },
   "agents": [
     {
@@ -24,8 +24,19 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 2.8448003714020427,
-      "memoryBytes": 330530816,
+      "cpu": 2.873495354478466,
+      "memoryBytes": 461422592,
+      "confidence": "high"
+    },
+    {
+      "agentId": "dee37465def7bbf3",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "019dad10-db4b-7910-9fcc-9f254bfc46cb",
+      "sessionTitle": "thisisyz.com",
+      "workspaceLabel": "interval-quiz-remote",
+      "cpu": 2.873495354478466,
+      "memoryBytes": 461422592,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5081585081585082,
-      "memoryBytes": 13615104,
+      "cpu": 0.5086928525434643,
+      "memoryBytes": 13598720,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.48412256267409465,
-      "memoryBytes": 13729792,
+      "cpu": 0.48542325254654023,
+      "memoryBytes": 13680640,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.49037922660190547,
-      "memoryBytes": 13828096,
+      "cpu": 0.49169904627340166,
+      "memoryBytes": 13631488,
       "confidence": "low"
     },
     {
@@ -68,8 +79,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5229615745079663,
-      "memoryBytes": 14106624,
+      "cpu": 0.5232558139534884,
+      "memoryBytes": 14057472,
+      "confidence": "low"
+    },
+    {
+      "agentId": "15470de44394b66d",
+      "processName": "SkyComputerUseService",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 7.141935483870967,
+      "memoryBytes": 360120320,
       "confidence": "low"
     },
     {
@@ -79,40 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.48753424021542324,
-      "memoryBytes": 17104896,
-      "confidence": "low"
-    },
-    {
-      "agentId": "3a517297ddfe325f",
-      "processName": "SkyComputerUseClient",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.48389527217931816,
-      "memoryBytes": 16760832,
-      "confidence": "low"
-    },
-    {
-      "agentId": "068692644b7d3230",
-      "processName": "SkyComputerUseClient",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.47988313056806203,
-      "memoryBytes": 13664256,
+      "cpu": 0.4880995972171366,
+      "memoryBytes": 35028992,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 574593081,
-      "inputTokens": 572099791,
-      "outputTokens": 2493290,
-      "costUSD": 270.3351955
+      "totalTokens": 577308995,
+      "inputTokens": 574809787,
+      "outputTokens": 2499208,
+      "costUSD": 271.6071475
     },
     {
       "model": "gpt-5.3-codex",
@@ -127,5 +127,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T03:03:24.407Z"
+  "receivedAt": "2026-04-22T03:08:33.657Z"
 }
