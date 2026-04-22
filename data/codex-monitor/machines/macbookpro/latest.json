@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T12:23:05.900Z",
+  "syncedAt": "2026-04-22T12:28:14.219Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,23 +9,23 @@
   },
   "summary": {
     "activeAgents": 8,
-    "todayTokens": 2188391,
-    "weekTokens": 584642592,
-    "totalTokens": 592478360,
-    "estimatedCostUsd": 280.11138715,
-    "cpu": 52.170445521055655,
-    "memoryBytes": 2795126784
+    "todayTokens": 2804703,
+    "weekTokens": 585258904,
+    "totalTokens": 593094672,
+    "estimatedCostUsd": 280.37071414999997,
+    "cpu": 57.9975827045767,
+    "memoryBytes": 2755870720
   },
   "agents": [
     {
-      "agentId": "daad37929a1419c6",
+      "agentId": "dee37465def7bbf3",
       "processName": "codex",
       "status": "running",
-      "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
-      "sessionTitle": "搭建 Codex 监控后台",
-      "workspaceLabel": "CodexProject",
-      "cpu": 1.5415888104783848,
-      "memoryBytes": 717553664,
+      "sessionId": "019dad10-db4b-7910-9fcc-9f254bfc46cb",
+      "sessionTitle": "thisisyz.com",
+      "workspaceLabel": "interval-quiz-remote",
+      "cpu": 1.602063827100359,
+      "memoryBytes": 418562048,
       "confidence": "high"
     },
     {
@@ -35,19 +35,8 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.5415888104783848,
-      "memoryBytes": 717553664,
-      "confidence": "high"
-    },
-    {
-      "agentId": "dee37465def7bbf3",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "019dad10-db4b-7910-9fcc-9f254bfc46cb",
-      "sessionTitle": "thisisyz.com",
-      "workspaceLabel": "interval-quiz-remote",
-      "cpu": 1.5415888104783848,
-      "memoryBytes": 717553664,
+      "cpu": 1.602063827100359,
+      "memoryBytes": 418562048,
       "confidence": "high"
     },
     {
@@ -57,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5178498048078899,
-      "memoryBytes": 13647872,
+      "cpu": 0.5182448272347365,
+      "memoryBytes": 13615104,
       "confidence": "low"
     },
     {
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5335353535353535,
+      "cpu": 0.5339264259969106,
       "memoryBytes": 13893632,
       "confidence": "low"
     },
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5166721091397264,
-      "memoryBytes": 30785536,
+      "cpu": 0.5172469781706657,
+      "memoryBytes": 31801344,
       "confidence": "low"
     },
     {
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5735694822888283,
+      "cpu": 0.5738963531669866,
       "memoryBytes": 17203200,
       "confidence": "low"
     },
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5104617012349733,
-      "memoryBytes": 16449536,
+      "cpu": 0.5108023291671957,
+      "memoryBytes": 16433152,
+      "confidence": "low"
+    },
+    {
+      "agentId": "5832ce627ed96b1f",
+      "processName": "SkyComputerUseService",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 6.018099547511312,
+      "memoryBytes": 137379840,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 588965405,
-      "inputTokens": 586376415,
-      "outputTokens": 2588990,
-      "costUSD": 277.8132315
+      "totalTokens": 589581717,
+      "inputTokens": 586990849,
+      "outputTokens": 2590868,
+      "costUSD": 278.0725585
     },
     {
       "model": "gpt-5.3-codex",
@@ -127,5 +127,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T12:23:06.827Z"
+  "receivedAt": "2026-04-22T12:28:15.063Z"
 }
