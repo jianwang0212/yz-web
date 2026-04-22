@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T14:11:12.968Z",
+  "syncedAt": "2026-04-22T14:16:22.209Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 6,
+    "activeAgents": 7,
     "todayTokens": 23088406,
     "weekTokens": 605542607,
     "totalTokens": 613378375,
     "estimatedCostUsd": 288.46150364999994,
-    "cpu": 49.00708572479232,
-    "memoryBytes": 2889564160
+    "cpu": 55.989631073447626,
+    "memoryBytes": 3311403008
   },
   "agents": [
     {
@@ -24,9 +24,20 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.7601201103716928,
-      "memoryBytes": 470876160,
+      "cpu": 1.7582325295951162,
+      "memoryBytes": 610320384,
       "confidence": "high"
+    },
+    {
+      "agentId": "c9af8e46444239fb",
+      "processName": "SkyComputerUseService",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 7.135135135135136,
+      "memoryBytes": 279838720,
+      "confidence": "low"
     },
     {
       "agentId": "c018f618f1a481b8",
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5257908988838254,
+      "cpu": 0.5259118341642613,
       "memoryBytes": 13631488,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5423341517368792,
+      "cpu": 0.5424890218597693,
       "memoryBytes": 13877248,
       "confidence": "low"
     },
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5248421496859226,
-      "memoryBytes": 18874368,
+      "cpu": 0.5250654090894409,
+      "memoryBytes": 35045376,
       "confidence": "low"
     },
     {
@@ -68,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5827447721922172,
+      "cpu": 0.5814077025232404,
       "memoryBytes": 17252352,
       "confidence": "low"
     },
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.5179917136984961,
+      "cpu": 0.5181692769617787,
       "memoryBytes": 16465920,
       "confidence": "low"
     }
@@ -105,5 +116,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T14:11:13.929Z"
+  "receivedAt": "2026-04-22T14:16:23.262Z"
 }
