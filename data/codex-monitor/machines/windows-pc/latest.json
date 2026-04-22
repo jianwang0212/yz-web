@@ -1,29 +1,41 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-22T06:40:12.312Z",
+  "syncedAt": "2026-04-22T06:45:12.418Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 0,
-    "todayTokens": 6621332,
-    "weekTokens": 348002243,
-    "totalTokens": 348002243,
-    "estimatedCostUsd": 151.9496175,
-    "cpu": 17.48,
-    "memoryBytes": 1263378432
+    "activeAgents": 1,
+    "todayTokens": 6868434,
+    "weekTokens": 348249345,
+    "totalTokens": 348249345,
+    "estimatedCostUsd": 152.038436,
+    "cpu": 2.6,
+    "memoryBytes": 1262968832
   },
-  "agents": [],
+  "agents": [
+    {
+      "agentId": "e6b0072a25ef1183",
+      "processName": "codex.exe",
+      "status": "idle",
+      "sessionId": "019db03d-b973-7c72-bc01-c6e5dac13c30",
+      "sessionTitle": "trader",
+      "workspaceLabel": "CodeXTrader",
+      "cpu": 0,
+      "memoryBytes": 159178752,
+      "confidence": "high"
+    }
+  ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 348002243,
-      "inputTokens": 345953295,
-      "outputTokens": 2048948,
-      "costUSD": 151.94961750000002
+      "totalTokens": 348249345,
+      "inputTokens": 346199558,
+      "outputTokens": 2049787,
+      "costUSD": 152.03843600000002
     }
   ],
   "health": {
@@ -31,5 +43,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-22T06:40:12.313Z"
+  "receivedAt": "2026-04-22T06:45:12.418Z"
 }
