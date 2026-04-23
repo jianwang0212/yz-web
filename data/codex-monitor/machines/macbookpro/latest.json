@@ -1,32 +1,54 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T02:05:33.610Z",
+  "syncedAt": "2026-04-23T02:10:41.865Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 2,
+    "activeAgents": 4,
     "todayTokens": 34198948,
     "weekTokens": 616653149,
     "totalTokens": 624488917,
     "estimatedCostUsd": 293.13595065,
-    "cpu": 88.72343767344067,
-    "memoryBytes": 8685486080
+    "cpu": 89.37567398610597,
+    "memoryBytes": 4890279936
   },
   "agents": [
     {
       "agentId": "cfaf884556a73bfb",
       "processName": "codex",
-      "status": "idle",
+      "status": "running",
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.0632247760572182,
-      "memoryBytes": 5535301632,
+      "cpu": 1.0573686018550328,
+      "memoryBytes": 3018096640,
       "confidence": "high"
+    },
+    {
+      "agentId": "e7684c99d3f4e802",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
+      "sessionTitle": "搭建 Codex 监控后台",
+      "workspaceLabel": "CodexProject",
+      "cpu": 1.0573686018550328,
+      "memoryBytes": 3018096640,
+      "confidence": "high"
+    },
+    {
+      "agentId": "e2d4dbf92614a5e3",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.755",
+      "cpu": 0.7216494845360825,
+      "memoryBytes": 20758528,
+      "confidence": "low"
     },
     {
       "agentId": "880be3d7322db60b",
@@ -35,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.4067013888888889,
-      "memoryBytes": 33390592,
+      "cpu": 0.4071732856946544,
+      "memoryBytes": 32686080,
       "confidence": "low"
     }
   ],
@@ -61,5 +83,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T02:05:34.665Z"
+  "receivedAt": "2026-04-23T02:10:42.924Z"
 }
