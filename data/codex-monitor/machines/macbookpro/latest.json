@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T02:10:41.865Z",
+  "syncedAt": "2026-04-23T02:15:50.432Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 4,
+    "activeAgents": 5,
     "todayTokens": 34198948,
     "weekTokens": 616653149,
     "totalTokens": 624488917,
     "estimatedCostUsd": 293.13595065,
-    "cpu": 89.37567398610597,
-    "memoryBytes": 4890279936
+    "cpu": 89.47322362089922,
+    "memoryBytes": 4886937600
   },
   "agents": [
     {
@@ -24,19 +24,8 @@
       "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.0573686018550328,
-      "memoryBytes": 3018096640,
-      "confidence": "high"
-    },
-    {
-      "agentId": "e7684c99d3f4e802",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
-      "sessionTitle": "搭建 Codex 监控后台",
-      "workspaceLabel": "CodexProject",
-      "cpu": 1.0573686018550328,
-      "memoryBytes": 3018096640,
+      "cpu": 1.0771976341015703,
+      "memoryBytes": 3036151808,
       "confidence": "high"
     },
     {
@@ -46,8 +35,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.7216494845360825,
+      "cpu": 0.6271604938271604,
       "memoryBytes": 20758528,
+      "confidence": "low"
+    },
+    {
+      "agentId": "18c5bd0a878eaf69",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.755",
+      "cpu": 0.6112956810631229,
+      "memoryBytes": 28442624,
+      "confidence": "low"
+    },
+    {
+      "agentId": "50b59c425ce7574b",
+      "processName": "SkyComputerUseService",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.33333333333333337,
+      "memoryBytes": 103202816,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.4071732856946544,
-      "memoryBytes": 32686080,
+      "cpu": 0.40926706554256187,
+      "memoryBytes": 32702464,
       "confidence": "low"
     }
   ],
@@ -83,5 +94,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T02:10:42.924Z"
+  "receivedAt": "2026-04-23T02:15:51.391Z"
 }
