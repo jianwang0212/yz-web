@@ -50,6 +50,42 @@
             font-size: 1rem;
         }
 
+        .cm-controls {
+            margin-top: 1.1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            align-items: center;
+        }
+
+        .cm-control {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .cm-control-label {
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.54);
+        }
+
+        .cm-select {
+            min-width: 220px;
+            padding: 0.78rem 0.95rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            font: inherit;
+            outline: none;
+        }
+
+        .cm-select option {
+            color: #0f172a;
+        }
+
         .cm-pill {
             display: inline-flex;
             align-items: center;
@@ -242,9 +278,18 @@
         <div class="container" style="max-width: 1280px;">
             <section class="cm-hero">
                 <div>
-                    <p class="cm-kicker">Local MacBookPro</p>
+                    <p class="cm-kicker" id="cm-kicker">Local MacBookPro</p>
                     <h1 class="cm-title" id="cm-title">Codex Monitor</h1>
                     <p class="cm-subtitle" id="cm-subtitle">每 5 分钟从本地 MacBookPro 同步一次公开摘要</p>
+                    <div class="cm-controls">
+                        <label class="cm-control" for="cm-machine-select">
+                            <span class="cm-control-label">查看机器</span>
+                            <select id="cm-machine-select" class="cm-select">
+                                <option value="macbookpro">MacBookPro</option>
+                                <option value="windows-pc">Windows PC</option>
+                            </select>
+                        </label>
+                    </div>
                 </div>
                 <div class="cm-meta">
                     <div class="cm-pill" id="cm-status">等待同步</div>
@@ -282,8 +327,8 @@
             <section class="cm-detail-grid">
                 <article class="cm-panel">
                     <div class="cm-panel-header">
-                        <h2 class="cm-panel-title">活跃 Agents</h2>
-                        <span class="cm-panel-subtitle">公开摘要，不含本地命令细节</span>
+                        <h2 class="cm-panel-title">最近 1 天最活跃 Agent</h2>
+                        <span class="cm-panel-subtitle">已过滤 SkyComputerUseClient</span>
                     </div>
                     <div id="cm-agents" class="cm-list"></div>
                 </article>
@@ -309,8 +354,22 @@
     </footer>
 
     <script>
-        const machineQuery = 'macbookpro';
+        const machinePresets = [
+            {
+                id: 'macbookpro',
+                name: 'MacBookPro',
+                label: '本地 MacBookPro'
+            },
+            {
+                id: 'windows-pc',
+                name: 'Windows PC',
+                label: '本地 Windows PC'
+            }
+        ];
+
+        let machineQuery = new URLSearchParams(window.location.search).get('machine') || 'macbookpro';
         const summaryEl = document.getElementById('cm-summary');
+        const kickerEl = document.getElementById('cm-kicker');
         const titleEl = document.getElementById('cm-title');
         const subtitleEl = document.getElementById('cm-subtitle');
         const syncTimeEl = document.getElementById('cm-sync-time');
@@ -318,6 +377,7 @@
         const sourceEl = document.getElementById('cm-source');
         const agentsEl = document.getElementById('cm-agents');
         const modelsEl = document.getElementById('cm-models');
+        const machineSelectEl = document.getElementById('cm-machine-select');
 
         const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
         const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
@@ -345,6 +405,16 @@
             return money.format(value || 0);
         }
 
+        function formatDuration(minutes) {
+            const safeMinutes = Math.max(0, Math.round(minutes || 0));
+            if (safeMinutes >= 60) {
+                const hours = Math.floor(safeMinutes / 60);
+                const restMinutes = safeMinutes % 60;
+                return restMinutes ? `约 ${hours} 小时 ${restMinutes} 分` : `约 ${hours} 小时`;
+            }
+            return `约 ${safeMinutes} 分钟`;
+        }
+
         function relativeTime(timestamp) {
             if (!timestamp) return 'n/a';
             const diff = Date.now() - new Date(timestamp).getTime();
@@ -364,10 +434,75 @@
             });
         }
 
+        function slugify(value) {
+            return String(value || '')
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '') || 'macbookpro';
+        }
+
+        function getMachineMeta(payload) {
+            const syncedMachines = Array.isArray(payload?.machines) ? payload.machines : [];
+            const latestMachine = payload?.latest?.machine || null;
+            const machineMap = new Map();
+
+            machinePresets.forEach((machine) => {
+                machineMap.set(machine.id, { ...machine, available: false });
+            });
+
+            syncedMachines.forEach((machine) => {
+                const id = slugify(machine.id || machine.name);
+                machineMap.set(id, {
+                    id,
+                    name: machine.name || machineMap.get(id)?.name || id,
+                    label: machine.label || machineMap.get(id)?.label || machine.name || id,
+                    available: true
+                });
+            });
+
+            if (latestMachine?.id || latestMachine?.name) {
+                const id = slugify(latestMachine.id || latestMachine.name);
+                machineMap.set(id, {
+                    id,
+                    name: latestMachine.name || machineMap.get(id)?.name || id,
+                    label: latestMachine.label || machineMap.get(id)?.label || latestMachine.name || id,
+                    available: true
+                });
+            }
+
+            if (!machineMap.has(machineQuery)) {
+                machineMap.set(machineQuery, {
+                    id: machineQuery,
+                    name: machineQuery,
+                    label: machineQuery,
+                    available: false
+                });
+            }
+
+            return Array.from(machineMap.values());
+        }
+
+        function syncMachineQueryToUrl() {
+            const url = new URL(window.location.href);
+            url.searchParams.set('machine', machineQuery);
+            window.history.replaceState({}, '', url);
+        }
+
+        function renderMachineSelect(payload) {
+            const machines = getMachineMeta(payload);
+            machineSelectEl.innerHTML = machines.map((machine) => `
+                <option value="${machine.id}">
+                    ${machine.name}${machine.available ? '' : '（尚未同步）'}
+                </option>
+            `).join('');
+            machineSelectEl.value = machines.some((machine) => machine.id === machineQuery) ? machineQuery : machines[0]?.id || 'macbookpro';
+        }
+
         function renderSummary(latest) {
             const summary = latest?.summary || {};
             const cards = [
-                ['Active Agents', String(summary.activeAgents || 0), '当前同步到网站的活跃 agent 数量'],
+                ['Active Agents', String(summary.visibleActiveAgents ?? summary.activeAgents ?? 0), '当前公开展示的活跃 agent 数量'],
                 ['Tokens Today', formatNumber(summary.todayTokens), '今日累计 tokens'],
                 ['Weekly Usage', formatNumber(summary.weekTokens), '最近 7 天累计 tokens'],
                 ['Estimated Cost', formatMoney(summary.estimatedCostUsd), '公开成本估算'],
@@ -443,13 +578,19 @@
 
         function renderDashboard(payload) {
             const latest = payload.latest;
+            const machines = getMachineMeta(payload);
+            const selectedMachine = machines.find((machine) => machine.id === machineQuery) || machinePresets[0];
+            renderMachineSelect(payload);
+
             if (!latest) {
-                titleEl.textContent = 'Codex Monitor';
-                subtitleEl.textContent = '网站尚未收到本地同步数据';
+                kickerEl.textContent = `Local ${selectedMachine.name}`;
+                titleEl.textContent = `${selectedMachine.name} · Codex Monitor`;
+                subtitleEl.textContent = `${selectedMachine.label} · 尚未同步到网站`;
                 statusEl.textContent = '未同步';
                 statusEl.className = 'cm-pill offline';
-                syncTimeEl.textContent = '尚无数据';
-                sourceEl.textContent = '来源：等待本地同步';
+                syncTimeEl.textContent = `尚未收到 ${selectedMachine.name} 的同步数据`;
+                sourceEl.textContent = `来源：等待 ${selectedMachine.label}`;
+                document.title = `${selectedMachine.name} · Codex Monitor - Zi Yin`;
                 renderSummary(null);
                 renderList(agentsEl, [], '暂无活跃 agent 数据', () => '');
                 renderList(modelsEl, [], '暂无模型数据', () => '');
@@ -459,6 +600,7 @@
                 return;
             }
 
+            kickerEl.textContent = `Local ${latest.machine.name}`;
             titleEl.textContent = `${latest.machine.name} · Codex Monitor`;
             subtitleEl.textContent = `${latest.machine.label} · 每 5 分钟同步一次公开摘要`;
             statusEl.textContent = latest.syncStatus === 'online' ? '在线' : latest.syncStatus === 'stale' ? '延迟' : '离线';
@@ -470,17 +612,21 @@
             renderSummary(latest);
             renderList(
                 agentsEl,
-                latest.agents || [],
-                '暂无活跃 agent 数据',
+                latest.agentHighlights || latest.agents || [],
+                '最近 1 天没有可用 agent 活动',
                 (agent) => `
                     <div class="cm-list-item">
                         <div class="cm-row">
                             <strong>${agent.sessionTitle || agent.processName || agent.agentId}</strong>
-                            <span class="cm-muted">${agent.status}</span>
+                            <span class="cm-muted">${formatDuration(agent.approxActiveMinutes || 5)}</span>
                         </div>
                         <div class="cm-row cm-muted">
                             <span>${agent.workspaceLabel || '未标注项目'}</span>
-                            <span>${formatPercent(agent.cpu)} · ${formatBytes(agent.memoryBytes)}</span>
+                            <span>均值 ${formatPercent(agent.avgCpu ?? agent.cpu)} · 峰值 ${formatPercent(agent.peakCpu ?? agent.cpu)}</span>
+                        </div>
+                        <div class="cm-row cm-muted">
+                            <span>${relativeTime(agent.lastSeenAt || latest.syncedAt)}</span>
+                            <span>${formatBytes(agent.peakMemoryBytes ?? agent.memoryBytes)}</span>
                         </div>
                     </div>
                 `
@@ -519,6 +665,13 @@
             }
         }
 
+        machineSelectEl.addEventListener('change', () => {
+            machineQuery = machineSelectEl.value;
+            syncMachineQueryToUrl();
+            loadDashboard();
+        });
+
+        syncMachineQueryToUrl();
         loadDashboard();
         setInterval(loadDashboard, 60000);
     </script>

@@ -6,6 +6,12 @@ const LOCAL_ROOT = path.join(process.cwd(), 'data', 'codex-monitor');
 const USE_BLOB = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 const IS_VERCEL_RUNTIME = Boolean(process.env.VERCEL);
 const HISTORY_LIMIT = 576;
+const GITHUB_DATA_REPO = process.env.CODEX_MONITOR_GITHUB_DATA_REPO || 'jianwang0212/yz-web';
+const GITHUB_DATA_BRANCH = process.env.CODEX_MONITOR_GITHUB_DATA_BRANCH || 'codex-monitor-data';
+const GITHUB_DATA_BASE_URL = (
+  process.env.CODEX_MONITOR_GITHUB_DATA_BASE_URL ||
+  'https://raw.githubusercontent.com/jianwang0212/yz-web/codex-monitor-data/data/codex-monitor'
+).replace(/\/+$/, '');
 
 function slugify(value) {
   return String(value || 'macbookpro')
@@ -77,6 +83,68 @@ async function readBlobJson(pathname, fallback = null) {
   return await response.json();
 }
 
+async function readGitHubJson(pathname, fallback = null) {
+  if (!GITHUB_DATA_REPO || !GITHUB_DATA_BRANCH) {
+    return fallback;
+  }
+
+  try {
+    const apiPath = `https://api.github.com/repos/${GITHUB_DATA_REPO}/contents/data/codex-monitor/${pathname}?ref=${encodeURIComponent(GITHUB_DATA_BRANCH)}`;
+    const response = await fetch(apiPath, {
+      headers: {
+        'cache-control': 'no-cache',
+        'user-agent': 'thisisyz-codex-monitor'
+      }
+    });
+    if (response.ok) {
+      const payload = await response.json();
+      if (typeof payload?.content === 'string' && payload.content.length > 0) {
+        const content = Buffer.from(payload.content.replace(/\n/g, ''), 'base64').toString('utf8');
+        return JSON.parse(content);
+      }
+    }
+  } catch {
+    // Fall through to raw URL fallback below.
+  }
+
+  try {
+    const response = await fetch(`${GITHUB_DATA_BASE_URL}/${pathname}?v=${Date.now()}`, {
+      headers: {
+        'cache-control': 'no-cache'
+      }
+    });
+    if (!response.ok) {
+      return fallback;
+    }
+    return await response.json();
+  } catch {
+    return fallback;
+  }
+}
+
+async function readGitHubDirectory(pathname) {
+  if (!GITHUB_DATA_REPO || !GITHUB_DATA_BRANCH) {
+    return [];
+  }
+
+  try {
+    const apiPath = `https://api.github.com/repos/${GITHUB_DATA_REPO}/contents/data/codex-monitor/${pathname}?ref=${encodeURIComponent(GITHUB_DATA_BRANCH)}`;
+    const response = await fetch(apiPath, {
+      headers: {
+        'cache-control': 'no-cache',
+        'user-agent': 'thisisyz-codex-monitor'
+      }
+    });
+    if (!response.ok) {
+      return [];
+    }
+    const payload = await response.json();
+    return Array.isArray(payload) ? payload : [];
+  } catch {
+    return [];
+  }
+}
+
 async function writeBlobJson(pathname, value) {
   return await put(pathname, JSON.stringify(value, null, 2), {
     access: 'public',
@@ -118,6 +186,55 @@ function syncStatusFromTimestamp(timestamp) {
   return 'offline';
 }
 
+function timestampValue(timestamp) {
+  const value = new Date(timestamp ?? '').getTime();
+  return Number.isFinite(value) ? value : 0;
+}
+
+function normalizeMachineRecords(machines) {
+  return machines
+    .filter(Boolean)
+    .map((machine) => ({
+      ...machine,
+      syncStatus: syncStatusFromTimestamp(machine.syncedAt),
+      syncAgeSeconds: Math.max(0, Math.round((Date.now() - new Date(machine.syncedAt).getTime()) / 1000))
+    }))
+    .sort((left, right) => String(right.syncedAt ?? '').localeCompare(String(left.syncedAt ?? '')));
+}
+
+function compactHistoryAgents(agents) {
+  if (!Array.isArray(agents)) {
+    return [];
+  }
+
+  return agents.slice(0, 12).map((agent) => ({
+    agentId: agent?.agentId ?? null,
+    processName: agent?.processName ?? null,
+    status: agent?.status ?? null,
+    sessionId: agent?.sessionId ?? null,
+    sessionTitle: agent?.sessionTitle ?? null,
+    workspaceLabel: agent?.workspaceLabel ?? null,
+    cpu: Number(agent?.cpu ?? 0),
+    memoryBytes: Number(agent?.memoryBytes ?? 0),
+    confidence: agent?.confidence ?? null
+  }));
+}
+
+async function listGitHubMachineSnapshots() {
+  const entries = await readGitHubDirectory('machines');
+  if (entries.length === 0) {
+    return [];
+  }
+
+  const machines = await Promise.all(
+    entries
+      .filter((entry) => entry?.type === 'dir' && entry?.name)
+      .map((entry) => readGitHubJson(`machines/${entry.name}/latest.json`, null))
+  );
+
+  return normalizeMachineRecords(machines);
+}
+
 export async function writeMonitorSnapshot(snapshot) {
   const machineId = slugify(snapshot?.machine?.id ?? snapshot?.machine?.name);
   const syncedAt = snapshot?.syncedAt ?? new Date().toISOString();
@@ -140,7 +257,8 @@ export async function writeMonitorSnapshot(snapshot) {
     totalTokens: Number(snapshot?.summary?.totalTokens ?? 0),
     todayTokens: Number(snapshot?.summary?.todayTokens ?? 0),
     activeAgents: Number(snapshot?.summary?.activeAgents ?? 0),
-    estimatedCostUsd: Number(snapshot?.summary?.estimatedCostUsd ?? 0)
+    estimatedCostUsd: Number(snapshot?.summary?.estimatedCostUsd ?? 0),
+    agents: compactHistoryAgents(snapshot?.agents)
   };
   const trimmedHistory = [...history.filter((item) => item?.timestamp !== point.timestamp), point].slice(-HISTORY_LIMIT);
 
@@ -155,28 +273,63 @@ export async function writeMonitorSnapshot(snapshot) {
 }
 
 export async function listMonitorMachines() {
+  const machineMap = new Map();
+
   if (USE_BLOB) {
-    const page = await list({
-      prefix: 'codex-monitor/machines/',
-      limit: 500
+    try {
+      const page = await list({
+        prefix: 'codex-monitor/machines/',
+        limit: 500
+      });
+      const latestRefs = page.blobs.filter((blob) => blob.pathname.endsWith('/latest.json'));
+      const machines = await Promise.all(
+        latestRefs.map(async (blob) => {
+          const latest = await fetch(`${blob.url}?v=${Date.now()}`, {
+            headers: { 'cache-control': 'no-cache' }
+          }).then((response) => (response.ok ? response.json() : null));
+          return latest;
+        })
+      );
+      normalizeMachineRecords(machines).forEach((machine) => {
+        const machineId = machine?.machine?.id;
+        if (!machineId) {
+          return;
+        }
+        machineMap.set(machineId, machine);
+      });
+    } catch {
+      // Fall through to GitHub or local-file fallback below.
+    }
+  }
+
+  const githubIndex = await readGitHubJson('index.json', null);
+  if (Array.isArray(githubIndex?.machines) && githubIndex.machines.length > 0) {
+    normalizeMachineRecords(githubIndex.machines).forEach((machine) => {
+      const machineId = machine?.machine?.id;
+      if (!machineId) {
+        return;
+      }
+      const current = machineMap.get(machineId);
+      if (!current || timestampValue(machine.syncedAt) >= timestampValue(current.syncedAt)) {
+        machineMap.set(machineId, machine);
+      }
     });
-    const latestRefs = page.blobs.filter((blob) => blob.pathname.endsWith('/latest.json'));
-    const machines = await Promise.all(
-      latestRefs.map(async (blob) => {
-        const latest = await fetch(`${blob.url}?v=${Date.now()}`, {
-          headers: { 'cache-control': 'no-cache' }
-        }).then((response) => (response.ok ? response.json() : null));
-        return latest;
-      })
-    );
-    return machines
-      .filter(Boolean)
-      .map((machine) => ({
-        ...machine,
-        syncStatus: syncStatusFromTimestamp(machine.syncedAt),
-        syncAgeSeconds: Math.max(0, Math.round((Date.now() - new Date(machine.syncedAt).getTime()) / 1000))
-      }))
-      .sort((left, right) => String(right.syncedAt ?? '').localeCompare(String(left.syncedAt ?? '')));
+  }
+
+  const githubMachineSnapshots = await listGitHubMachineSnapshots();
+  githubMachineSnapshots.forEach((machine) => {
+    const machineId = machine?.machine?.id;
+    if (!machineId) {
+      return;
+    }
+    const current = machineMap.get(machineId);
+    if (!current || timestampValue(machine.syncedAt) >= timestampValue(current.syncedAt)) {
+      machineMap.set(machineId, machine);
+    }
+  });
+
+  if (machineMap.size > 0) {
+    return Array.from(machineMap.values()).sort((left, right) => String(right.syncedAt ?? '').localeCompare(String(left.syncedAt ?? '')));
   }
 
   const machinesRoot = path.join(LOCAL_ROOT, 'machines');
@@ -198,11 +351,20 @@ export async function listMonitorMachines() {
 
 export async function readMonitorMachine(machineId) {
   const slug = slugify(machineId);
-  const latest = await readJson('latest', slug, null);
+  const blobLatest = await readJson('latest', slug, null);
+  const githubLatest = await readGitHubJson(`machines/${slug}/latest.json`, null);
+  const latest =
+    timestampValue(githubLatest?.syncedAt) >= timestampValue(blobLatest?.syncedAt)
+      ? (githubLatest ?? blobLatest)
+      : (blobLatest ?? githubLatest);
   if (!latest) {
     return null;
   }
-  const history = Array.isArray((await readJson('history', slug, []))) ? await readJson('history', slug, []) : [];
+  const blobHistory = await readJson('history', slug, null);
+  const githubHistory = await readGitHubJson(`machines/${slug}/history.json`, []);
+  const historySource =
+    timestampValue(githubLatest?.syncedAt) >= timestampValue(blobLatest?.syncedAt) ? githubHistory : (blobHistory ?? githubHistory);
+  const history = Array.isArray(historySource) ? historySource : [];
   return {
     ...latest,
     history,
