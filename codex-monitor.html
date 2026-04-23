@@ -363,6 +363,8 @@
 
     <section class="cm-shell">
         <div class="container" style="max-width: 1280px;">
+            <section class="cm-analysis" id="cm-analysis"></section>
+
             <section class="cm-hero">
                 <div>
                     <p class="cm-kicker" id="cm-kicker">Local MacBookPro</p>
@@ -386,8 +388,6 @@
             </section>
 
             <section class="cm-summary-grid" id="cm-summary"></section>
-
-            <section class="cm-analysis" id="cm-analysis"></section>
 
             <section class="cm-chart-grid">
                 <article class="cm-panel">
@@ -471,8 +471,21 @@
         const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
         const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
         const percent = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
-        const PLUS_MONTHLY_USD = 20;
-        const PRO_MONTHLY_USD = 200;
+        const officialCodexUsage = {
+            source: 'OpenAI Codex Settings',
+            capturedAt: '2026-04-23 11:44 ET',
+            fiveHourRemaining: 30,
+            weeklyRemaining: 33,
+            sparkFiveHourRemaining: 100,
+            sparkWeeklyRemaining: 100,
+            creditBalance: 0,
+            fiveHourReset: '12:25',
+            weeklyReset: '2026年4月28日 14:56',
+            monthThreads: 162,
+            monthTurns: 641,
+            averageThreadsPerDay: 5.4,
+            averageTurnsPerDay: 21.4
+        };
         const analysisEl = document.getElementById('cm-analysis');
 
         function formatNumber(value) {
@@ -622,29 +635,18 @@
         }
 
         function renderUsageAnalysis(latest) {
-            if (!latest) {
-                analysisEl.innerHTML = `
-                    <article class="cm-panel">
-                        <div class="cm-analysis-kicker">Usage Analysis</div>
-                        <h2 class="cm-analysis-headline">暂无可分析的 token 数据</h2>
-                        <p class="cm-analysis-body">等这台机器完成下一次同步后，这里会自动计算当前用量、折算比例和订阅建议。</p>
-                    </article>
-                `;
-                return;
-            }
-
-            const summary = latest.summary || {};
+            const summary = latest?.summary || {};
             const usedTokens = Number(summary.totalTokens || summary.weekTokens || summary.todayTokens || 0);
             const estimatedCost = Number(summary.estimatedCostUsd || 0);
-            const proUsageRatio = estimatedCost > 0 ? (estimatedCost / PRO_MONTHLY_USD) * 100 : 0;
-            const plusUsageRatio = estimatedCost > 0 ? (estimatedCost / PLUS_MONTHLY_USD) * 100 : 0;
-            const estimatedProTokenBudget = estimatedCost > 0 ? usedTokens * (PRO_MONTHLY_USD / estimatedCost) : 0;
-            const estimatedPlusTokenBudget = estimatedCost > 0 ? usedTokens * (PLUS_MONTHLY_USD / estimatedCost) : 0;
-            const proMeter = Math.max(0, Math.min(100, proUsageRatio));
-            const shouldDowngrade = plusUsageRatio < 60 && proUsageRatio < 15;
-            const conclusion = shouldDowngrade
-                ? '可以考虑降级到 Plus，但需要继续观察一周。'
-                : '不建议降级到 Plus。你现在的 Codex 用量已经明显超过 Plus 适合承载的轻量使用范围。';
+            const fiveHourUsed = 100 - officialCodexUsage.fiveHourRemaining;
+            const weeklyUsed = 100 - officialCodexUsage.weeklyRemaining;
+            const sparkFiveHourUsed = 100 - officialCodexUsage.sparkFiveHourRemaining;
+            const sparkWeeklyUsed = 100 - officialCodexUsage.sparkWeeklyRemaining;
+            const weeklyMeter = Math.max(0, Math.min(100, weeklyUsed));
+            const plusEquivalentWeeklyUse = weeklyUsed * 20 / 100;
+            const conclusion = weeklyUsed >= 50 || fiveHourUsed >= 50
+                ? '不建议降级到 Plus。官方账户数据显示，你已经用掉了 Pro 的大部分 Codex 周额度。'
+                : '可以考虑降级到 Plus，但需要继续观察一周。';
 
             analysisEl.innerHTML = `
                 <article class="cm-panel cm-analysis-main">
@@ -652,46 +654,51 @@
                         <div class="cm-analysis-kicker">Usage Analysis</div>
                         <h2 class="cm-analysis-headline">${conclusion}</h2>
                         <p class="cm-analysis-body">
-                            当前累计使用 ${formatLongNumber(usedTokens)} tokens，按当前模型组合的公开成本估算约为 ${formatMoney(estimatedCost)}。
-                            由于 ChatGPT Plus / Pro 官方不是按一个固定 token 总桶公开额度，这里用「当前模型组合 + 估算成本」折算：
-                            约等于 Pro $200 月度价值的 ${formatUsagePercent(proUsageRatio)}，也约等于 Plus $20 月度价值的 ${formatUsagePercent(plusUsageRatio)}。
+                            主 Codex 额度：5 小时已用约 ${formatUsagePercent(fiveHourUsed)}，每周已用约 ${formatUsagePercent(weeklyUsed)}。
+                            Spark 专项额度：GPT-5.3-Codex-Spark 的 5 小时和每周额度都还剩 ${officialCodexUsage.sparkWeeklyRemaining}%。
+                            最近 1 个月活动：${officialCodexUsage.monthThreads} threads，${officialCodexUsage.monthTurns} turns，平均每天 ${officialCodexUsage.averageThreadsPerDay} threads / ${officialCodexUsage.averageTurnsPerDay} turns。
                         </p>
                     </div>
                     <div>
                         <div class="cm-row cm-muted">
-                            <span>Pro $200 折算使用率</span>
-                            <strong>${formatUsagePercent(proUsageRatio)}</strong>
+                            <span>官方 Pro 周额度已用</span>
+                            <strong>${formatUsagePercent(weeklyUsed)}</strong>
                         </div>
-                        <div class="cm-meter" aria-label="Pro usage meter">
-                            <div class="cm-meter-fill" style="width: ${proMeter}%"></div>
+                        <div class="cm-meter" aria-label="Official weekly Codex usage meter">
+                            <div class="cm-meter-fill" style="width: ${weeklyMeter}%"></div>
                         </div>
                     </div>
                 </article>
                 <article class="cm-panel">
                     <div class="cm-panel-header">
-                        <h2 class="cm-panel-title">额度折算</h2>
-                        <span class="cm-panel-subtitle">按当前模型组合估算</span>
+                        <h2 class="cm-panel-title">官方账户读数</h2>
+                        <span class="cm-panel-subtitle">${officialCodexUsage.source} · ${officialCodexUsage.capturedAt}</span>
                     </div>
                     <div class="cm-analysis-grid">
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">已用 Tokens</div>
-                            <div class="cm-mini-value">${formatNumber(usedTokens)}</div>
-                            <div class="cm-mini-hint">${formatLongNumber(usedTokens)} tokens</div>
+                            <div class="cm-mini-label">5 小时额度</div>
+                            <div class="cm-mini-value">${formatUsagePercent(fiveHourUsed)}</div>
+                            <div class="cm-mini-hint">剩 ${officialCodexUsage.fiveHourRemaining}% · 重置 ${officialCodexUsage.fiveHourReset}</div>
                         </div>
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">Pro 等价总量</div>
-                            <div class="cm-mini-value">${formatNumber(estimatedProTokenBudget)}</div>
-                            <div class="cm-mini-hint">当前用量约占 ${formatUsagePercent(proUsageRatio)}</div>
+                            <div class="cm-mini-label">每周额度</div>
+                            <div class="cm-mini-value">${formatUsagePercent(weeklyUsed)}</div>
+                            <div class="cm-mini-hint">剩 ${officialCodexUsage.weeklyRemaining}% · 重置 ${officialCodexUsage.weeklyReset}</div>
                         </div>
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">Plus 等价总量</div>
-                            <div class="cm-mini-value">${formatNumber(estimatedPlusTokenBudget)}</div>
-                            <div class="cm-mini-hint">当前用量约为 Plus 的 ${formatUsagePercent(plusUsageRatio)}</div>
+                            <div class="cm-mini-label">Spark 专项</div>
+                            <div class="cm-mini-value">${officialCodexUsage.sparkWeeklyRemaining}% 剩余</div>
+                            <div class="cm-mini-hint">GPT-5.3-Codex-Spark：5 小时已用 ${formatUsagePercent(sparkFiveHourUsed)} · 周额度已用 ${formatUsagePercent(sparkWeeklyUsed)}</div>
                         </div>
                         <div class="cm-mini-card">
                             <div class="cm-mini-label">订阅建议</div>
-                            <div class="cm-mini-value">${shouldDowngrade ? '观察后降级' : '保留 Pro'}</div>
-                            <div class="cm-mini-hint">Plus 适合轻量项目；当前更像持续高强度 Codex 工作流。</div>
+                            <div class="cm-mini-value">保留 Pro</div>
+                            <div class="cm-mini-hint">官方 Pro 周额度已用 ${formatUsagePercent(weeklyUsed)}；按 Pro 约 20x Plus 估算，已经约等于 ${plusEquivalentWeeklyUse.toFixed(1)} 个 Plus 周额度。</div>
+                        </div>
+                        <div class="cm-mini-card">
+                            <div class="cm-mini-label">最近 1 个月活动</div>
+                            <div class="cm-mini-value">${officialCodexUsage.monthThreads} / ${officialCodexUsage.monthTurns}</div>
+                            <div class="cm-mini-hint">平均每天 ${officialCodexUsage.averageThreadsPerDay} threads / ${officialCodexUsage.averageTurnsPerDay} turns · 额外积分 ${officialCodexUsage.creditBalance}</div>
                         </div>
                     </div>
                 </article>
@@ -771,7 +778,6 @@
                 sourceEl.textContent = `来源：等待 ${selectedMachine.label}`;
                 document.title = `${selectedMachine.name} · Codex Monitor - Zi Yin`;
                 renderSummary(null);
-                renderUsageAnalysis(null);
                 renderList(agentsEl, [], '暂无活跃 agent 数据', () => '');
                 renderList(modelsEl, [], '暂无模型数据', () => '');
                 renderLineChart('cm-cpu-chart', [], 'cpu', '#63d2ff', formatPercent);
@@ -790,7 +796,6 @@
             document.title = `${latest.machine.name} · Codex Monitor - Zi Yin`;
 
             renderSummary(latest);
-            renderUsageAnalysis(latest);
             renderList(
                 agentsEl,
                 latest.agentHighlights || latest.agents || [],
@@ -852,6 +857,7 @@
             loadDashboard();
         });
 
+        renderUsageAnalysis();
         syncMachineQueryToUrl();
         loadDashboard();
         setInterval(loadDashboard, 60000);
