@@ -1,41 +1,29 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T15:35:15.816Z",
+  "syncedAt": "2026-04-23T15:40:14.776Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 192415855,
-    "weekTokens": 812798809,
-    "totalTokens": 812798809,
-    "estimatedCostUsd": 335.06093799999996,
-    "cpu": 67.46000000000001,
-    "memoryBytes": 1590427648
+    "activeAgents": 0,
+    "todayTokens": 192630363,
+    "weekTokens": 813013317,
+    "totalTokens": 813013317,
+    "estimatedCostUsd": 335.134591,
+    "cpu": 8.42,
+    "memoryBytes": 1470156800
   },
-  "agents": [
-    {
-      "agentId": "ff03004a5a0e32d1",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019dbaea-538c-7e93-9ff1-087398747768",
-      "sessionTitle": "添加BTC仪表盘",
-      "workspaceLabel": "CodeXTrader",
-      "cpu": 2.18,
-      "memoryBytes": 185368576,
-      "confidence": "high"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 812798809,
-      "inputTokens": 808804714,
-      "outputTokens": 3994095,
-      "costUSD": 335.060938
+      "totalTokens": 813013317,
+      "inputTokens": 809018008,
+      "outputTokens": 3995309,
+      "costUSD": 335.13459100000006
     }
   ],
   "health": {
@@ -43,5 +31,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T15:35:15.816Z"
+  "receivedAt": "2026-04-23T15:40:14.776Z"
 }
