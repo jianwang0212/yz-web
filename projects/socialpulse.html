@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SocialPulse - 五平台发布检查台">
+    <title>SocialPulse - Zi Yin</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pulse-bg: #071018;
+            --pulse-panel: rgba(255, 255, 255, 0.065);
+            --pulse-panel-strong: rgba(255, 255, 255, 0.105);
+            --pulse-line: rgba(255, 255, 255, 0.13);
+            --pulse-text: #f6fbff;
+            --pulse-muted: rgba(246, 251, 255, 0.68);
+            --pulse-faint: rgba(246, 251, 255, 0.48);
+            --pulse-green: #39d98a;
+            --pulse-cyan: #38c7ff;
+            --pulse-amber: #ffc857;
+            --pulse-red: #ff6b7a;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 12% 8%, rgba(56, 199, 255, 0.18), transparent 28%),
+                radial-gradient(circle at 82% 0%, rgba(255, 107, 122, 0.14), transparent 24%),
+                linear-gradient(180deg, #071018 0%, #111827 100%);
+            color: var(--pulse-text);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.96);
+        }
+
+        .socialpulse-shell {
+            min-height: 100vh;
+            padding: 116px 0 64px;
+        }
+
+        .socialpulse-topline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: #b5f4d0;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            width: 0.62rem;
+            height: 0.62rem;
+            border-radius: 999px;
+            background: var(--pulse-green);
+            box-shadow: 0 0 0 6px rgba(57, 217, 138, 0.12);
+        }
+
+        .socialpulse-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 2rem;
+            align-items: end;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--pulse-line);
+        }
+
+        .socialpulse-hero h1 {
+            margin: 0.8rem 0 0.6rem;
+            font-size: clamp(2.4rem, 7vw, 5.4rem);
+            line-height: 0.95;
+            letter-spacing: 0;
+            color: var(--pulse-text);
+        }
+
+        .socialpulse-hero p {
+            max-width: 680px;
+            color: var(--pulse-muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .summary-tile,
+        .pulse-chip,
+        .platform-card,
+        .info-block,
+        .recent-item,
+        .notice {
+            border: 1px solid var(--pulse-line);
+            background: var(--pulse-panel);
+            backdrop-filter: blur(18px);
+        }
+
+        .summary-tile {
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .summary-label {
+            color: var(--pulse-faint);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .summary-value {
+            margin-top: 0.35rem;
+            color: var(--pulse-text);
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .summary-value span {
+            color: var(--pulse-faint);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .pulse-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.3rem 0 2rem;
+        }
+
+        .pulse-chip {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.6rem;
+            border-radius: 8px;
+            padding: 0.55rem 0.85rem;
+            color: var(--pulse-muted);
+            font-size: 0.92rem;
+        }
+
+        .pulse-chip strong {
+            margin-left: 0.45rem;
+            color: var(--pulse-text);
+            font-weight: 700;
+        }
+
+        .notice {
+            display: none;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            padding: 0.95rem 1rem;
+            color: #ffe6a3;
+        }
+
+        .notice.visible {
+            display: block;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .platform-card {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .platform-accent {
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .platform-card-inner {
+            padding: 1.2rem;
+        }
+
+        .platform-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .platform-title-wrap {
+            display: flex;
+            gap: 0.85rem;
+            min-width: 0;
+        }
+
+        .platform-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 8px;
+            background: color-mix(in srgb, var(--accent) 18%, transparent);
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .platform-name {
+            color: var(--pulse-text);
+            font-size: 1.22rem;
+            font-weight: 800;
+        }
+
+        .platform-entry {
+            margin-top: 0.1rem;
+            color: var(--pulse-faint);
+            font-size: 0.86rem;
+            overflow-wrap: anywhere;
+        }
+
+        .badge-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            align-items: flex-end;
+            flex: 0 0 auto;
+        }
+
+        .badge {
+            border: 1px solid var(--pulse-line);
+            border-radius: 6px;
+            padding: 0.28rem 0.5rem;
+            color: var(--pulse-muted);
+            font-size: 0.74rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .badge.ok {
+            border-color: rgba(57, 217, 138, 0.34);
+            background: rgba(57, 217, 138, 0.12);
+            color: #b7f7d1;
+        }
+
+        .badge.warn {
+            border-color: rgba(255, 200, 87, 0.36);
+            background: rgba(255, 200, 87, 0.12);
+            color: #ffe6a3;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .info-block {
+            border-radius: 8px;
+            padding: 0.85rem;
+        }
+
+        .info-label {
+            color: var(--pulse-faint);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            margin-top: 0.42rem;
+            color: var(--pulse-text);
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+
+        .latest-title {
+            margin-top: 1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 0.85rem;
+        }
+
+        .latest-title h3 {
+            color: var(--pulse-text);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .latest-title p {
+            margin-top: 0.45rem;
+            color: var(--pulse-muted);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .recent-list {
+            display: grid;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .recent-item {
+            border-radius: 8px;
+            padding: 0.85rem;
+        }
+
+        .recent-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .recent-title {
+            color: var(--pulse-text);
+            font-size: 0.92rem;
+            font-weight: 700;
+            line-height: 1.55;
+        }
+
+        .recent-source {
+            align-self: flex-start;
+            border: 1px solid var(--pulse-line);
+            border-radius: 6px;
+            padding: 0.18rem 0.38rem;
+            color: var(--pulse-faint);
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .pulse-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.45rem;
+            border: 1px solid var(--pulse-line);
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            color: var(--pulse-text);
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .pulse-link:hover {
+            border-color: color-mix(in srgb, var(--accent) 48%, white 10%);
+            background: var(--pulse-panel-strong);
+        }
+
+        .loading {
+            grid-column: 1 / -1;
+            border: 1px dashed var(--pulse-line);
+            border-radius: 8px;
+            padding: 2rem;
+            color: var(--pulse-muted);
+            text-align: center;
+        }
+
+        @media (max-width: 880px) {
+            .socialpulse-shell {
+                padding-top: 96px;
+            }
+
+            .socialpulse-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .summary-grid,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-head,
+            .recent-top {
+                flex-direction: column;
+            }
+
+            .badge-stack {
+                align-items: flex-start;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="nav-brand site-title" href="/">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/index.html">首页</a></li>
+                <li><a href="/year-review.html">年度总结</a></li>
+                <li><a href="/works.html">作品</a></li>
+                <li><a href="/contact.html">联系</a></li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-dropdown-toggle">更多 <span style="font-size: 0.8em;">▼</span></a>
+                    <div class="nav-dropdown">
+                        <a href="/projects.html" style="color: var(--primary-color);">项目</a>
+                        <a href="/timeline.html">时间线</a>
+                        <a href="/resume.html">简历</a>
+                        <a href="/financial-dashboard.html">财务仪表盘</a>
+                        <a href="/interests.html">兴趣爱好</a>
+                        <a href="/highlights.html">主要亮点</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="socialpulse-shell">
+        <div class="container">
+            <a class="pulse-link" href="/projects.html">← 返回项目</a>
+
+            <section class="socialpulse-hero" aria-labelledby="page-title">
+                <div>
+                    <div class="socialpulse-topline"><span class="status-dot"></span>SocialPulse</div>
+                    <h1 id="page-title">五平台发布检查台</h1>
+                    <p>同步检查 Instagram、知乎、Reddit、小红书和 X 的最近发布状态。数据来自服务器上的发布清单和 SocialPulse SQLite 快照。</p>
+                </div>
+                <div class="summary-grid" aria-label="Summary">
+                    <div class="summary-tile">
+                        <div class="summary-label">Published</div>
+                        <div class="summary-value"><span id="published-count">-</span> <span>/ 5</span></div>
+                    </div>
+                    <div class="summary-tile">
+                        <div class="summary-label">Readable</div>
+                        <div class="summary-value"><span id="readable-count">-</span> <span>/ 5</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="pulse-meta">
+                <div class="pulse-chip">当前批次 <strong id="current-package">读取中</strong></div>
+                <div class="pulse-chip">最近同步 <strong id="synced-at">读取中</strong></div>
+                <div class="pulse-chip">更新时间 <strong id="sync-age">读取中</strong></div>
+            </div>
+
+            <div id="notice" class="notice"></div>
+            <section id="platform-grid" class="platform-grid" aria-live="polite">
+                <div class="loading">正在读取 SocialPulse 数据...</div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/script.js"></script>
+    <script>
+        const platformOrder = ['instagram', 'zhihu', 'reddit', 'xiaohongshu', 'x'];
+        const platformMeta = {
+            instagram: { label: 'Instagram', short: 'IG', accent: '#ff6aa2' },
+            zhihu: { label: '知乎 / Zhihu', short: '知', accent: '#49a3ff' },
+            reddit: { label: 'Reddit', short: 'RD', accent: '#ff8a3d' },
+            xiaohongshu: { label: '小红书 / Xiaohongshu', short: '红', accent: '#ff5d75' },
+            x: { label: 'X', short: 'X', accent: '#d7e0ea' }
+        };
+
+        const elements = {
+            grid: document.getElementById('platform-grid'),
+            notice: document.getElementById('notice'),
+            currentPackage: document.getElementById('current-package'),
+            syncedAt: document.getElementById('synced-at'),
+            syncAge: document.getElementById('sync-age'),
+            publishedCount: document.getElementById('published-count'),
+            readableCount: document.getElementById('readable-count')
+        };
+
+        function escapeHtml(value) {
+            return String(value ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function formatDate(value) {
+            if (!value) return '暂无';
+            return new Intl.DateTimeFormat('zh-CN', {
+                month: 'numeric',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+                timeZone: 'America/New_York'
+            }).format(new Date(value));
+        }
+
+        function formatRelative(value) {
+            if (!value) return '暂无';
+            const seconds = Math.max(0, Math.round((Date.now() - new Date(value).getTime()) / 1000));
+            if (seconds < 90) return '刚刚';
+            const rtf = new Intl.RelativeTimeFormat('zh-CN', { numeric: 'auto' });
+            if (seconds < 3600) return rtf.format(-Math.floor(seconds / 60), 'minute');
+            if (seconds < 86400) return rtf.format(-Math.floor(seconds / 3600), 'hour');
+            return rtf.format(-Math.floor(seconds / 86400), 'day');
+        }
+
+        function publishLabel(status) {
+            if (status === 'published') return '已发布';
+            if (status === 'failed') return '失败';
+            if (status === 'pending') return '进行中';
+            if (status === 'skipped') return '跳过';
+            return '无记录';
+        }
+
+        function readLabel(level) {
+            if (level === 'verified') return '公开可读';
+            if (level === 'likely') return '入口可用';
+            if (level === 'blocked') return '需要兜底';
+            return '未检查';
+        }
+
+        function latestRecord(ledger, platform) {
+            return ledger?.recordsByPlatform?.[platform]?.[0] ?? null;
+        }
+
+        function readStatus(statuses, platform) {
+            return statuses.find((status) => status.platform === platform) ?? null;
+        }
+
+        function renderRecentItems(items) {
+            if (!items || items.length === 0) {
+                return '<div class="recent-item"><div class="recent-title">还没有拿到最近标题。</div></div>';
+            }
+
+            return items.slice(0, 3).map((item, index) => `
+                <article class="recent-item">
+                    <div class="recent-top">
+                        <div class="recent-title">${index + 1}. ${escapeHtml(item.title)}</div>
+                        <div class="recent-source">${item.source === 'public' ? 'public' : 'manifest'}</div>
+                    </div>
+                    ${item.summary ? `<p class="info-value">${escapeHtml(item.summary)}</p>` : ''}
+                </article>
+            `).join('');
+        }
+
+        function renderPlatform(snapshot, platform) {
+            const meta = platformMeta[platform];
+            const record = latestRecord(snapshot.ledger, platform);
+            const status = readStatus(snapshot.publicReadStatuses, platform);
+            const published = record?.status === 'published';
+            const readable = status?.availability === 'verified' || status?.availability === 'likely';
+            const title = status?.latestTitle || record?.titleUsed || '暂无标题';
+            const summary = status?.latestSummary || record?.summary || '';
+
+            const links = [
+                record?.postUrl ? `<a class="pulse-link" href="${escapeHtml(record.postUrl)}" target="_blank" rel="noopener noreferrer">打开最近发布</a>` : '',
+                status?.exampleUrl ? `<a class="pulse-link" href="${escapeHtml(status.exampleUrl)}" target="_blank" rel="noopener noreferrer">打开检查入口</a>` : ''
+            ].filter(Boolean).join('');
+
+            return `
+                <article class="platform-card" style="--accent: ${meta.accent}">
+                    <div class="platform-accent"></div>
+                    <div class="platform-card-inner">
+                        <header class="platform-head">
+                            <div class="platform-title-wrap">
+                                <div class="platform-icon">${escapeHtml(meta.short)}</div>
+                                <div>
+                                    <div class="platform-name">${escapeHtml(meta.label)}</div>
+                                    <div class="platform-entry">${escapeHtml(status?.identifierValue || '未设置检查入口')}</div>
+                                </div>
+                            </div>
+                            <div class="badge-stack">
+                                <span class="badge ${published ? 'ok' : 'warn'}">${publishLabel(record?.status)}</span>
+                                <span class="badge ${readable ? 'ok' : 'warn'}">${readLabel(status?.availability)}</span>
+                            </div>
+                        </header>
+
+                        <div class="info-grid">
+                            <div class="info-block">
+                                <div class="info-label">Latest Publish</div>
+                                <div class="info-value">${formatDate(record?.timestamp)}</div>
+                            </div>
+                            <div class="info-block">
+                                <div class="info-label">Public Check</div>
+                                <div class="info-value">${escapeHtml(status?.currentFinding || '暂无公开检查结果')}</div>
+                            </div>
+                        </div>
+
+                        <section class="latest-title">
+                            <h3>${escapeHtml(title)}</h3>
+                            ${summary ? `<p>${escapeHtml(summary)}</p>` : ''}
+                        </section>
+
+                        <div class="recent-list">
+                            ${renderRecentItems(status?.recentItems)}
+                        </div>
+
+                        ${links ? `<div class="actions">${links}</div>` : ''}
+                    </div>
+                </article>
+            `;
+        }
+
+        function updateSummary(snapshot) {
+            const published = platformOrder.filter((platform) => latestRecord(snapshot.ledger, platform)?.status === 'published').length;
+            const readable = snapshot.publicReadStatuses.filter((status) => status.availability === 'verified' || status.availability === 'likely').length;
+            elements.publishedCount.textContent = published;
+            elements.readableCount.textContent = readable;
+            elements.currentPackage.textContent = snapshot.ledger?.currentPackageId || '暂无';
+            elements.syncedAt.textContent = formatDate(snapshot.syncedAt);
+            elements.syncAge.textContent = formatRelative(snapshot.syncedAt);
+        }
+
+        async function loadSocialPulse() {
+            try {
+                const response = await fetch('/api/socialpulse/latest', { cache: 'no-store' });
+                const payload = await response.json();
+                if (!response.ok || !payload.ok) {
+                    throw new Error(payload.error || `HTTP ${response.status}`);
+                }
+                updateSummary(payload);
+                elements.grid.innerHTML = platformOrder.map((platform) => renderPlatform(payload, platform)).join('');
+                elements.notice.classList.remove('visible');
+                elements.notice.textContent = '';
+            } catch (error) {
+                elements.notice.textContent = `读取失败：${error.message}`;
+                elements.notice.classList.add('visible');
+                if (!elements.grid.querySelector('.platform-card')) {
+                    elements.grid.innerHTML = '<div class="loading">暂时无法读取 SocialPulse 数据。</div>';
+                }
+            }
+        }
+
+        loadSocialPulse();
+        window.setInterval(loadSocialPulse, 60000);
+    </script>
+</body>
+</html>
