@@ -18,6 +18,28 @@ function manifestCandidatePaths() {
   ];
 }
 
+export async function readPublishManifestInfo() {
+  for (const candidatePath of manifestCandidatePaths()) {
+    try {
+      const [stat, manifestRaw] = await Promise.all([
+        fs.stat(candidatePath),
+        fs.readFile(candidatePath, 'utf8')
+      ]);
+      const manifest = JSON.parse(manifestRaw);
+
+      return {
+        path: candidatePath,
+        mtimeMs: stat.mtimeMs,
+        currentPackageId: manifest.current_package?.package_id ?? null
+      };
+    } catch {
+      continue;
+    }
+  }
+
+  return null;
+}
+
 function normalizePlatform(value) {
   if (!value || !SUPPORTED_PLATFORMS.has(value)) {
     return null;

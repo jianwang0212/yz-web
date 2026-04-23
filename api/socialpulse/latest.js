@@ -1,4 +1,6 @@
+import { readPublishManifestInfo } from '../_lib/socialpulse-ledger.js';
 import { readLatestSocialPulseSnapshot, socialPulseDbPath } from '../_lib/socialpulse-snapshot-store.js';
+import { syncSocialPulseSnapshot } from '../_lib/socialpulse-sync.js';
 
 function toSerializable(value) {
   return JSON.parse(
@@ -15,6 +17,30 @@ function sendJson(res, status, value) {
     .send(JSON.stringify(toSerializable(value)));
 }
 
+function snapshotNeedsRefresh(snapshot, manifestInfo) {
+  if (!snapshot) {
+    return true;
+  }
+
+  if (!manifestInfo) {
+    return false;
+  }
+
+  const snapshotPackageId = snapshot.ledger?.currentPackageId ?? null;
+
+  if (manifestInfo.currentPackageId && manifestInfo.currentPackageId !== snapshotPackageId) {
+    return true;
+  }
+
+  const snapshotTime = new Date(snapshot.syncedAt).getTime();
+
+  if (!Number.isFinite(snapshotTime)) {
+    return true;
+  }
+
+  return manifestInfo.mtimeMs > snapshotTime + 1000;
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -29,6 +55,13 @@ export default async function handler(req, res) {
   }
 
   try {
+    const firstSnapshot = await readLatestSocialPulseSnapshot();
+    const manifestInfo = await readPublishManifestInfo();
+
+    if (snapshotNeedsRefresh(firstSnapshot, manifestInfo)) {
+      await syncSocialPulseSnapshot();
+    }
+
     const snapshot = await readLatestSocialPulseSnapshot();
 
     if (!snapshot) {
