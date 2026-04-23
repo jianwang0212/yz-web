@@ -35,9 +35,19 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
+    const toggleMobileMenu = () => {
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active') ? 'true' : 'false');
+    };
+
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.addEventListener('click', toggleMobileMenu);
+    hamburger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMobileMenu();
+        }
     });
 
     // Close mobile menu when clicking on a link (but not dropdown toggle)
@@ -45,6 +55,7 @@ if (hamburger && navMenu) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         });
     });
     
@@ -53,6 +64,7 @@ if (hamburger && navMenu) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('active');
             });
@@ -823,4 +835,3 @@ fadeElements.forEach(element => {
     element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     fadeObserver.observe(element);
 });
-

@@ -20,15 +20,15 @@
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+            <ul class="nav-menu" id="primary-navigation">
+                <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a></li>
                 <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
                 <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
                 <li class="nav-menu-lang-item">
                     <div class="nav-lang-toggle-mobile">
-                        <button id="lang-zh-mobile" class="lang-btn-mobile active">中文</button>
-                        <button id="lang-en-mobile" class="lang-btn-mobile">English</button>
+                        <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                        <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
                     </div>
                 </li>
                 <li class="nav-menu-item">
@@ -44,10 +44,10 @@
                 </li>
             </ul>
             <div class="nav-lang-toggle">
-                <button id="lang-zh" class="lang-btn active">中文</button>
-                <button id="lang-en" class="lang-btn">English</button>
+                <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
             </div>
-            <div class="hamburger">
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -67,32 +67,39 @@
                         decoding="async"
                     >
                 </div>
-                <h1 class="hero-title" data-i18n="hero.title">量化研究员 · 创业者 · 音乐人</h1>
+                <h1 class="hero-title" aria-label="量化研究员、创业者、音乐人" data-i18n-aria-label="hero.title.aria">
+                    <span class="hero-role-token" data-role-token="quant" data-i18n="hero.role.quant">量化研究员</span>
+                    <span class="hero-role-separator" aria-hidden="true">·</span>
+                    <span class="hero-role-token" data-role-token="founder" data-i18n="hero.role.founder">创业者</span>
+                    <span class="hero-role-separator" aria-hidden="true">·</span>
+                    <span class="hero-role-token" data-role-token="musician" data-i18n="hero.role.musician">音乐人</span>
+                </h1>
                 <h2 class="hero-subtitle" data-i18n="hero.subtitle">市场训练直觉，数据塑造纪律，音乐完善判断。</h2>
+
+                <div class="hero-cta" aria-label="Primary actions">
+                    <a href="mailto:silver.ziyin@gmail.com" class="cta-email cta-email-primary" data-i18n="hero.cta">联系合作</a>
+                    <a href="works.html" class="cta-secondary" data-i18n="hero.cta.secondary">查看作品</a>
+                    <a href="mailto:silver.ziyin@gmail.com" class="cta-email-mobile" data-i18n="hero.cta.mobile">联系合作</a>
+                </div>
                 
                 <div class="hero-metrics">
-                    <div class="metric-row hero-identity">
-                        <div class="metric-left"><a href="https://www.a47g.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"><strong><span data-i18n="hero.identity.left">A47G 基金创始人</span></strong></a></div>
+                    <div class="metric-row hero-identity credential-card">
+                        <div class="metric-left"><a href="https://www.a47g.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" aria-label="A47G 基金创始人"><strong><span data-i18n="hero.identity.left">A47G 基金创始人</span></strong></a></div>
                         <div class="metric-separator">｜</div>
                         <div class="metric-right"><span class="metric-light" data-i18n="hero.identity.right">牛津大学量化研究员</span></div>
                     </div>
-                    <div class="metric-row">
-                        <div class="metric-left"><a href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"><strong><span data-i18n="hero.experience.left">Citadel Securities</span></strong></a></div>
+                    <div class="metric-row credential-card">
+                        <div class="metric-left"><a href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" aria-label="Citadel Securities"><strong><span data-i18n="hero.experience.left">Citadel Securities</span></strong></a></div>
                         <div class="metric-separator">｜</div>
                         <div class="metric-right"><span class="metric-light" data-i18n="hero.experience.right">量化交易员</span></div>
                     </div>
-                    <div class="metric-row">
-                        <div class="metric-left"><a href="https://www.berklee.edu/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"><strong><span data-i18n="hero.training.left">伯克利音乐学院</span></strong></a></div>
+                    <div class="metric-row credential-card">
+                        <div class="metric-left"><a href="https://www.berklee.edu/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" aria-label="伯克利音乐学院"><strong><span data-i18n="hero.training.left">伯克利音乐学院</span></strong></a></div>
                         <div class="metric-separator">｜</div>
                         <div class="metric-right"><strong data-i18n="hero.training.right">GPA 4.0</strong></div>
                     </div>
                 </div>
-                
-                <div class="hero-cta">
-                    <a href="mailto:silver.ziyin@gmail.com" class="cta-email" data-i18n="hero.cta">合作 / 咨询 → Email</a>
-                    <a href="mailto:silver.ziyin@gmail.com" class="cta-email-mobile" data-i18n="hero.cta.mobile">合作与研究联系 → Email</a>
-                </div>
-                
+
                 <p class="hero-value">
                     <span class="value-zh" data-i18n="hero.value.zh" data-lang="zh">我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。</span>
                     <span class="value-en" data-i18n="hero.value.en" data-lang="en">I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.</span>

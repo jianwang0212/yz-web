@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Personal website for Zi Yin",
   "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "lint": "node scripts/check-js-syntax.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:home": "node --test tests/home-hero.test.js"
+  },
   "dependencies": {
     "@vercel/blob": "^1.1.1",
     "better-sqlite3": "^12.9.0",

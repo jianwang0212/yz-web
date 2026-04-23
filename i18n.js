@@ -28,6 +28,10 @@ const translations = {
         'hero.name': 'Zi Yin（银子）',
         'hero.tagline': '一本正经的胡说八道',
         'hero.title': '量化研究员 · 创业者 · 音乐人',
+        'hero.title.aria': '量化研究员、创业者、音乐人',
+        'hero.role.quant': '量化研究员',
+        'hero.role.founder': '创业者',
+        'hero.role.musician': '音乐人',
         'hero.subtitle': '市场训练直觉，数据塑造纪律，音乐完善判断。',
         'hero.identity.left': 'A47G 基金创始人',
         'hero.identity.right': '牛津大学量化研究员',
@@ -38,8 +42,9 @@ const translations = {
         'hero.metric1': '管理过 $5M+ 量化资产 ｜最高年化 120%+',
         'hero.metric2': 'Citadel Securities 前量化交易员',
         'hero.metric3': '伯克利音乐学院（Berklee College of Music） — GPA 4.0（音乐人中极少见）',
-        'hero.cta': '合作 / 咨询 → Email',
-        'hero.cta.mobile': '合作与研究联系 → Email',
+        'hero.cta': '联系合作',
+        'hero.cta.secondary': '查看作品',
+        'hero.cta.mobile': '联系合作',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
@@ -658,6 +663,10 @@ const translations = {
         'hero.name': 'Zi Yin',
         'hero.tagline': 'Seriously talking nonsense',
         'hero.title': 'Quant Researcher · Founder · Musician',
+        'hero.title.aria': 'Quant Researcher, Founder, Musician',
+        'hero.role.quant': 'Quant Researcher',
+        'hero.role.founder': 'Founder',
+        'hero.role.musician': 'Musician',
         'hero.subtitle': 'Trained by markets, disciplined by data, educated by music.',
         'hero.identity.left': 'A47G Fund Founder',
         'hero.identity.right': 'Oxford Quantitative Researcher',
@@ -668,8 +677,9 @@ const translations = {
         'hero.metric1': 'Managed <strong>$5M+</strong> quantitative assets ｜Peak annualized return <strong>120%+</strong>',
         'hero.metric2': 'Former Quantitative Trader at <strong>Citadel Securities</strong>',
         'hero.metric3': '<strong>Berklee College of Music</strong> — GPA <strong>4.0</strong> (rare among musicians)',
-        'hero.cta': 'Project Inquiry → Email',
-        'hero.cta.mobile': 'Business / Research Inquiries → Email',
+        'hero.cta': 'Start a Conversation',
+        'hero.cta.secondary': 'View Work',
+        'hero.cta.mobile': 'Start a Conversation',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
         
@@ -1287,6 +1297,13 @@ function setLanguage(lang) {
             }
         }
     });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(element => {
+        const key = element.getAttribute('data-i18n-aria-label');
+        if (translations[lang] && translations[lang][key]) {
+            element.setAttribute('aria-label', translations[lang][key]);
+        }
+    });
     
     // Show/hide hero value text based on language
     const valueZh = document.querySelector('.value-zh');
@@ -1304,14 +1321,17 @@ function setLanguage(lang) {
     // Update active language button (desktop and mobile)
     document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
         btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
     });
     const activeLangBtn = document.getElementById(`lang-${lang}`);
     const activeLangBtnMobile = document.getElementById(`lang-${lang}-mobile`);
     if (activeLangBtn) {
         activeLangBtn.classList.add('active');
+        activeLangBtn.setAttribute('aria-pressed', 'true');
     }
     if (activeLangBtnMobile) {
         activeLangBtnMobile.classList.add('active');
+        activeLangBtnMobile.setAttribute('aria-pressed', 'true');
     }
     
     // Re-render monthly timeline if function exists
