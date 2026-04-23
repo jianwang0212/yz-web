@@ -1,41 +1,29 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T21:00:14.087Z",
+  "syncedAt": "2026-04-23T21:05:14.967Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 248078111,
-    "weekTokens": 868461065,
-    "totalTokens": 868461065,
-    "estimatedCostUsd": 362.23414349999996,
-    "cpu": 7.500000000000001,
-    "memoryBytes": 1734385664
+    "activeAgents": 0,
+    "todayTokens": 248341529,
+    "weekTokens": 868724483,
+    "totalTokens": 868724483,
+    "estimatedCostUsd": 362.3313015,
+    "cpu": 64.72,
+    "memoryBytes": 1704378368
   },
-  "agents": [
-    {
-      "agentId": "bb193382c8dadd7e",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019dafde-c7db-7c30-a013-6d2ef46c687f",
-      "sessionTitle": "telegram-codex",
-      "workspaceLabel": "CodeXProject",
-      "cpu": 0.3,
-      "memoryBytes": 144998400,
-      "confidence": "high"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 868461065,
-      "inputTokens": 864091047,
-      "outputTokens": 4370018,
-      "costUSD": 362.2341435
+      "totalTokens": 868724483,
+      "inputTokens": 864352743,
+      "outputTokens": 4371740,
+      "costUSD": 362.33130150000005
     }
   ],
   "health": {
@@ -43,5 +31,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T21:00:14.087Z"
+  "receivedAt": "2026-04-23T21:05:14.968Z"
 }
