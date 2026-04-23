@@ -143,6 +143,88 @@
             grid-template-columns: 1.45fr 1fr;
         }
 
+        .cm-analysis {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 1rem;
+        }
+
+        .cm-analysis-main {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .cm-analysis-kicker {
+            color: #7dd3fc;
+            font-size: 0.76rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .cm-analysis-headline {
+            margin: 0.35rem 0 0;
+            font-size: clamp(1.8rem, 3vw, 2.7rem);
+            line-height: 1.08;
+        }
+
+        .cm-analysis-body {
+            margin: 0.75rem 0 0;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .cm-meter {
+            overflow: hidden;
+            height: 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .cm-meter-fill {
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #34d399, #fbbf24, #fb7185);
+            transition: width 0.35s ease;
+        }
+
+        .cm-analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .cm-mini-card {
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+        }
+
+        .cm-mini-label {
+            color: rgba(255,255,255,0.58);
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .cm-mini-value {
+            margin-top: 0.45rem;
+            font-size: 1.45rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .cm-mini-hint {
+            margin-top: 0.45rem;
+            color: rgba(255,255,255,0.58);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
         .cm-card,
         .cm-panel {
             padding: 1.2rem 1.25rem 1.3rem;
@@ -240,6 +322,7 @@
             }
 
             .cm-chart-grid,
+            .cm-analysis,
             .cm-detail-grid {
                 grid-template-columns: 1fr;
             }
@@ -256,6 +339,10 @@
 
             .cm-summary-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cm-analysis-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -299,6 +386,8 @@
             </section>
 
             <section class="cm-summary-grid" id="cm-summary"></section>
+
+            <section class="cm-analysis" id="cm-analysis"></section>
 
             <section class="cm-chart-grid">
                 <article class="cm-panel">
@@ -381,6 +470,10 @@
 
         const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
         const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+        const percent = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
+        const PLUS_MONTHLY_USD = 20;
+        const PRO_MONTHLY_USD = 200;
+        const analysisEl = document.getElementById('cm-analysis');
 
         function formatNumber(value) {
             return compact.format(value || 0);
@@ -403,6 +496,15 @@
 
         function formatMoney(value) {
             return money.format(value || 0);
+        }
+
+        function formatLongNumber(value) {
+            return new Intl.NumberFormat('zh-CN').format(Math.round(value || 0));
+        }
+
+        function formatUsagePercent(value) {
+            if (!Number.isFinite(value)) return 'n/a';
+            return `${percent.format(value)}%`;
         }
 
         function formatDuration(minutes) {
@@ -519,6 +621,83 @@
             `).join('');
         }
 
+        function renderUsageAnalysis(latest) {
+            if (!latest) {
+                analysisEl.innerHTML = `
+                    <article class="cm-panel">
+                        <div class="cm-analysis-kicker">Usage Analysis</div>
+                        <h2 class="cm-analysis-headline">暂无可分析的 token 数据</h2>
+                        <p class="cm-analysis-body">等这台机器完成下一次同步后，这里会自动计算当前用量、折算比例和订阅建议。</p>
+                    </article>
+                `;
+                return;
+            }
+
+            const summary = latest.summary || {};
+            const usedTokens = Number(summary.totalTokens || summary.weekTokens || summary.todayTokens || 0);
+            const estimatedCost = Number(summary.estimatedCostUsd || 0);
+            const proUsageRatio = estimatedCost > 0 ? (estimatedCost / PRO_MONTHLY_USD) * 100 : 0;
+            const plusUsageRatio = estimatedCost > 0 ? (estimatedCost / PLUS_MONTHLY_USD) * 100 : 0;
+            const estimatedProTokenBudget = estimatedCost > 0 ? usedTokens * (PRO_MONTHLY_USD / estimatedCost) : 0;
+            const estimatedPlusTokenBudget = estimatedCost > 0 ? usedTokens * (PLUS_MONTHLY_USD / estimatedCost) : 0;
+            const proMeter = Math.max(0, Math.min(100, proUsageRatio));
+            const shouldDowngrade = plusUsageRatio < 60 && proUsageRatio < 15;
+            const conclusion = shouldDowngrade
+                ? '可以考虑降级到 Plus，但需要继续观察一周。'
+                : '不建议降级到 Plus。你现在的 Codex 用量已经明显超过 Plus 适合承载的轻量使用范围。';
+
+            analysisEl.innerHTML = `
+                <article class="cm-panel cm-analysis-main">
+                    <div>
+                        <div class="cm-analysis-kicker">Usage Analysis</div>
+                        <h2 class="cm-analysis-headline">${conclusion}</h2>
+                        <p class="cm-analysis-body">
+                            当前累计使用 ${formatLongNumber(usedTokens)} tokens，按当前模型组合的公开成本估算约为 ${formatMoney(estimatedCost)}。
+                            由于 ChatGPT Plus / Pro 官方不是按一个固定 token 总桶公开额度，这里用「当前模型组合 + 估算成本」折算：
+                            约等于 Pro $200 月度价值的 ${formatUsagePercent(proUsageRatio)}，也约等于 Plus $20 月度价值的 ${formatUsagePercent(plusUsageRatio)}。
+                        </p>
+                    </div>
+                    <div>
+                        <div class="cm-row cm-muted">
+                            <span>Pro $200 折算使用率</span>
+                            <strong>${formatUsagePercent(proUsageRatio)}</strong>
+                        </div>
+                        <div class="cm-meter" aria-label="Pro usage meter">
+                            <div class="cm-meter-fill" style="width: ${proMeter}%"></div>
+                        </div>
+                    </div>
+                </article>
+                <article class="cm-panel">
+                    <div class="cm-panel-header">
+                        <h2 class="cm-panel-title">额度折算</h2>
+                        <span class="cm-panel-subtitle">按当前模型组合估算</span>
+                    </div>
+                    <div class="cm-analysis-grid">
+                        <div class="cm-mini-card">
+                            <div class="cm-mini-label">已用 Tokens</div>
+                            <div class="cm-mini-value">${formatNumber(usedTokens)}</div>
+                            <div class="cm-mini-hint">${formatLongNumber(usedTokens)} tokens</div>
+                        </div>
+                        <div class="cm-mini-card">
+                            <div class="cm-mini-label">Pro 等价总量</div>
+                            <div class="cm-mini-value">${formatNumber(estimatedProTokenBudget)}</div>
+                            <div class="cm-mini-hint">当前用量约占 ${formatUsagePercent(proUsageRatio)}</div>
+                        </div>
+                        <div class="cm-mini-card">
+                            <div class="cm-mini-label">Plus 等价总量</div>
+                            <div class="cm-mini-value">${formatNumber(estimatedPlusTokenBudget)}</div>
+                            <div class="cm-mini-hint">当前用量约为 Plus 的 ${formatUsagePercent(plusUsageRatio)}</div>
+                        </div>
+                        <div class="cm-mini-card">
+                            <div class="cm-mini-label">订阅建议</div>
+                            <div class="cm-mini-value">${shouldDowngrade ? '观察后降级' : '保留 Pro'}</div>
+                            <div class="cm-mini-hint">Plus 适合轻量项目；当前更像持续高强度 Codex 工作流。</div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
         function renderList(container, items, emptyText, renderer) {
             if (!items || items.length === 0) {
                 container.innerHTML = `<div class="cm-empty">${emptyText}</div>`;
@@ -592,6 +771,7 @@
                 sourceEl.textContent = `来源：等待 ${selectedMachine.label}`;
                 document.title = `${selectedMachine.name} · Codex Monitor - Zi Yin`;
                 renderSummary(null);
+                renderUsageAnalysis(null);
                 renderList(agentsEl, [], '暂无活跃 agent 数据', () => '');
                 renderList(modelsEl, [], '暂无模型数据', () => '');
                 renderLineChart('cm-cpu-chart', [], 'cpu', '#63d2ff', formatPercent);
@@ -610,6 +790,7 @@
             document.title = `${latest.machine.name} · Codex Monitor - Zi Yin`;
 
             renderSummary(latest);
+            renderUsageAnalysis(latest);
             renderList(
                 agentsEl,
                 latest.agentHighlights || latest.agents || [],
