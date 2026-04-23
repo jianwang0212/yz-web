@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T14:15:15.495Z",
+  "syncedAt": "2026-04-23T14:18:37.740Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 19,
-    "todayTokens": 98705956,
-    "weekTokens": 179349062,
-    "totalTokens": 186899585,
-    "estimatedCostUsd": 89.35987315,
-    "cpu": 31.50889590678908,
-    "memoryBytes": 3798401024
+    "activeAgents": 17,
+    "todayTokens": 102076981,
+    "weekTokens": 182720087,
+    "totalTokens": 190270610,
+    "estimatedCostUsd": 90.39249914999999,
+    "cpu": 31.229340520570286,
+    "memoryBytes": 3813195776
   },
   "agents": [
     {
@@ -24,30 +24,8 @@
       "sessionId": "019dba58-2835-7f30-a4a8-e6be781cc503",
       "sessionTitle": "优化修改并展示",
       "workspaceLabel": "codex-monitor",
-      "cpu": 4.253681608083413,
-      "memoryBytes": 653066240,
-      "confidence": "high"
-    },
-    {
-      "agentId": "20809e45061b9869",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019dba50-c111-7b42-ac11-40af6b872a18",
-      "sessionTitle": "统一本地和服务器仓库",
-      "workspaceLabel": "yz-web",
-      "cpu": 4.253681608083413,
-      "memoryBytes": 653066240,
-      "confidence": "high"
-    },
-    {
-      "agentId": "2c883ac71bd1bd78",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019dba57-ad99-7a50-93ae-c4f904cea797",
-      "sessionTitle": "优化代码并生成HTML",
-      "workspaceLabel": "socialpulse",
-      "cpu": 4.253681608083413,
-      "memoryBytes": 653066240,
+      "cpu": 4.204607616242373,
+      "memoryBytes": 653017088,
       "confidence": "high"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.7924569435360802,
+      "cpu": 0.7920443638690412,
       "memoryBytes": 20856832,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.7294025157232704,
+      "cpu": 0.7310681090964497,
       "memoryBytes": 36487168,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.7223979753242644,
+      "cpu": 0.7241379310344828,
       "memoryBytes": 17481728,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.7174497706059167,
+      "cpu": 0.7193439607602697,
       "memoryBytes": 17350656,
       "confidence": "low"
     },
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.755",
-      "cpu": 0.7124957670165932,
+      "cpu": 0.7145195613029955,
       "memoryBytes": 17301504,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f426884abed4e84f",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.755",
+      "cpu": 0.7109105824446268,
+      "memoryBytes": 17432576,
+      "confidence": "low"
+    },
+    {
+      "agentId": "2dd9715788845722",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.755",
+      "cpu": 0.7170987856908434,
+      "memoryBytes": 17465344,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 183386630,
-      "inputTokens": 182524593,
-      "outputTokens": 862037,
-      "costUSD": 87.0617175
+      "totalTokens": 186757655,
+      "inputTokens": 185891675,
+      "outputTokens": 865980,
+      "costUSD": 88.0943435
     },
     {
       "model": "gpt-5.3-codex",
@@ -127,5 +127,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T14:15:16.498Z"
+  "receivedAt": "2026-04-23T14:18:38.462Z"
 }
