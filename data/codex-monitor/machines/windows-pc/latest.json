@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T20:30:16.344Z",
+  "syncedAt": "2026-04-23T20:35:15.200Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
@@ -9,33 +9,33 @@
   },
   "summary": {
     "activeAgents": 1,
-    "todayTokens": 246364842,
-    "weekTokens": 866747796,
-    "totalTokens": 866747796,
-    "estimatedCostUsd": 361.6192884999999,
-    "cpu": 105.34,
-    "memoryBytes": 2220507136
+    "todayTokens": 246903225,
+    "weekTokens": 867286179,
+    "totalTokens": 867286179,
+    "estimatedCostUsd": 361.80243049999996,
+    "cpu": 118.12,
+    "memoryBytes": 1763221504
   },
   "agents": [
     {
-      "agentId": "b26705b79e8232c7",
+      "agentId": "33197a7f22bbbf49",
       "processName": "codex.exe",
       "status": "running",
-      "sessionId": "019dbb6f-8e45-75a3-bcbb-154e6550f430",
-      "sessionTitle": "检查BackTesting",
+      "sessionId": "019dbb1c-f7ea-7430-8a63-11dd1bdf47f6",
+      "sessionTitle": "BacktestingLooper",
       "workspaceLabel": "CodeXTraderA",
-      "cpu": 0.9400000000000001,
-      "memoryBytes": 172937216,
-      "confidence": "medium"
+      "cpu": 24.68,
+      "memoryBytes": 172838912,
+      "confidence": "high"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 866747796,
-      "inputTokens": 862388671,
-      "outputTokens": 4359125,
-      "costUSD": 361.61928850000004
+      "totalTokens": 867286179,
+      "inputTokens": 862924325,
+      "outputTokens": 4361854,
+      "costUSD": 361.8024305
     }
   ],
   "health": {
@@ -43,5 +43,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T20:30:16.345Z"
+  "receivedAt": "2026-04-23T20:35:15.201Z"
 }
