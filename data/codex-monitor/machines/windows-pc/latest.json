@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T22:30:14.443Z",
+  "syncedAt": "2026-04-23T22:35:14.503Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
+    "activeAgents": 0,
     "todayTokens": 254538453,
     "weekTokens": 874921407,
     "totalTokens": 874921407,
     "estimatedCostUsd": 365.02836349999995,
-    "cpu": 13.46,
-    "memoryBytes": 1754587136
+    "cpu": 4.06,
+    "memoryBytes": 1746444288
   },
-  "agents": [
-    {
-      "agentId": "9e5f575e8672f4cc",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019dbb6f-8e45-75a3-bcbb-154e6550f430",
-      "sessionTitle": "检查BackTesting",
-      "workspaceLabel": "CodeXTraderA",
-      "cpu": 0,
-      "memoryBytes": 135159808,
-      "confidence": "high"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -43,5 +31,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T22:30:14.443Z"
+  "receivedAt": "2026-04-23T22:35:14.504Z"
 }
