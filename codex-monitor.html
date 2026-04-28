@@ -473,18 +473,18 @@
         const percent = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
         const officialCodexUsage = {
             source: 'OpenAI Codex Settings',
-            capturedAt: '2026-04-26 02:01 ET',
-            fiveHourRemaining: 86,
-            weeklyRemaining: 1,
+            capturedAt: '2026-04-28 02:16 ET',
+            fiveHourRemaining: 98,
+            weeklyRemaining: 100,
             sparkFiveHourRemaining: 100,
-            sparkWeeklyRemaining: 97,
+            sparkWeeklyRemaining: 92,
             creditBalance: 0,
-            fiveHourReset: '4:27',
-            weeklyReset: '2026年4月28日 14:56',
-            monthThreads: 169,
-            monthTurns: 852,
-            averageThreadsPerDay: 5.6,
-            averageTurnsPerDay: 28.4
+            fiveHourReset: '7:02 AM',
+            weeklyReset: '暂未显示',
+            monthThreads: 232,
+            monthTurns: 1480,
+            averageThreadsPerDay: 7.7,
+            averageTurnsPerDay: 49.3
         };
         const analysisEl = document.getElementById('cm-analysis');
 
@@ -644,9 +644,14 @@
             const sparkWeeklyUsed = 100 - officialCodexUsage.sparkWeeklyRemaining;
             const weeklyMeter = Math.max(0, Math.min(100, weeklyUsed));
             const plusEquivalentWeeklyUse = weeklyUsed * 20 / 100;
+            const shouldKeepPro = weeklyUsed >= 50 || fiveHourUsed >= 50;
             const conclusion = weeklyUsed >= 50 || fiveHourUsed >= 50
                 ? '不建议降级到 Plus。官方账户数据显示，你已经用掉了 Pro 的大部分 Codex 周额度。'
                 : '可以考虑降级到 Plus，但需要继续观察一周。';
+            const subscriptionAdvice = shouldKeepPro ? '保留 Pro' : '观察后再决定';
+            const subscriptionHint = shouldKeepPro
+                ? `官方 Pro 周额度已用 ${formatUsagePercent(weeklyUsed)}；按 Pro 约 20x Plus 估算，已经约等于 ${plusEquivalentWeeklyUse.toFixed(1)} 个 Plus 周额度。`
+                : `本周官方 Pro 周额度已用 ${formatUsagePercent(weeklyUsed)}，当前 5 小时额度已用 ${formatUsagePercent(fiveHourUsed)}。先继续观察这一周的峰值使用量。`;
 
             analysisEl.innerHTML = `
                 <article class="cm-panel cm-analysis-main">
@@ -692,8 +697,8 @@
                         </div>
                         <div class="cm-mini-card">
                             <div class="cm-mini-label">订阅建议</div>
-                            <div class="cm-mini-value">保留 Pro</div>
-                            <div class="cm-mini-hint">官方 Pro 周额度已用 ${formatUsagePercent(weeklyUsed)}；按 Pro 约 20x Plus 估算，已经约等于 ${plusEquivalentWeeklyUse.toFixed(1)} 个 Plus 周额度。</div>
+                            <div class="cm-mini-value">${subscriptionAdvice}</div>
+                            <div class="cm-mini-hint">${subscriptionHint}</div>
                         </div>
                         <div class="cm-mini-card">
                             <div class="cm-mini-label">最近 1 个月活动</div>
