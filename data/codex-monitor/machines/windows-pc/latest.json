@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-30T04:20:23.657Z",
+  "syncedAt": "2026-04-30T04:25:20.735Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
+    "activeAgents": 0,
     "todayTokens": 1024930,
     "weekTokens": 957176371,
     "totalTokens": 957176371,
     "estimatedCostUsd": 414.2695295,
-    "cpu": 1.26,
-    "memoryBytes": 565911552
+    "cpu": 0,
+    "memoryBytes": 520892416
   },
-  "agents": [
-    {
-      "agentId": "49b7ccb904385f64",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019ddc45-66d2-71f1-a033-825e02d5bf38",
-      "sessionTitle": "为什么只有个人账号？ 我还有一个叫做dockingtech的企业账号？ windows不行么？",
-      "workspaceLabel": "CodeXTraderA",
-      "cpu": 0.3,
-      "memoryBytes": 99725312,
-      "confidence": "high"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -50,5 +38,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-30T04:20:23.658Z"
+  "receivedAt": "2026-04-30T04:25:20.735Z"
 }
