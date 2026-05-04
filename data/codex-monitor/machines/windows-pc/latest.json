@@ -1,22 +1,45 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-04T21:45:42.903Z",
+  "syncedAt": "2026-05-04T21:50:50.182Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 0,
-    "todayTokens": 5324121,
-    "weekTokens": 961475562,
-    "totalTokens": 961475562,
-    "estimatedCostUsd": 419.06333209999997,
-    "cpu": 127.08333333333334,
-    "memoryBytes": 821182464
+    "activeAgents": 2,
+    "todayTokens": 728586,
+    "weekTokens": 621016418,
+    "totalTokens": 962204148,
+    "estimatedCostUsd": 420.2578291,
+    "cpu": 104.4,
+    "memoryBytes": 1011576832
   },
-  "agents": [],
+  "agents": [
+    {
+      "agentId": "3e835bb856ab2368",
+      "processName": "codex.exe",
+      "status": "running",
+      "sessionId": "019df4f7-9ecd-79f2-9435-0bd6e73e283a",
+      "sessionTitle": "修改粘贴复制快捷键",
+      "workspaceLabel": "yz-web-inspect",
+      "cpu": 2.85,
+      "memoryBytes": 139264000,
+      "confidence": "medium"
+    },
+    {
+      "agentId": "834ca48c49eeb3a5",
+      "processName": "powershell.exe",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.5166666666666666,
+      "memoryBytes": 75001856,
+      "confidence": "low"
+    }
+  ],
   "models": [
     {
       "model": "gpt-5.4",
@@ -27,10 +50,10 @@
     },
     {
       "model": "gpt-5.5",
-      "totalTokens": 9380990,
-      "inputTokens": 9301294,
-      "outputTokens": 79696,
-      "costUSD": 12.1092646
+      "totalTokens": 10109576,
+      "inputTokens": 10017617,
+      "outputTokens": 91959,
+      "costUSD": 13.3037616
     }
   ],
   "health": {
@@ -38,5 +61,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-04T21:45:42.904Z"
+  "receivedAt": "2026-05-04T21:50:50.183Z"
 }
