@@ -4035,14 +4035,14 @@ header .name-en,
     align-items: center;
     padding: 92px 0 42px;
     background-position: 36% 42%;
-    filter: saturate(0.92) contrast(1.04);
+    filter: brightness(1.08) saturate(0.96) contrast(1.02);
 }
 
 .hero--bg::before {
     background:
-        radial-gradient(circle at 18% 48%, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.58) 54%, rgba(0, 0, 0, 0.78) 100%),
-        linear-gradient(90deg, rgba(2, 6, 23, 0.86) 0%, rgba(2, 6, 23, 0.66) 38%, rgba(2, 6, 23, 0.28) 72%, rgba(2, 6, 23, 0.54) 100%),
-        linear-gradient(180deg, rgba(2, 6, 23, 0.66) 0%, rgba(2, 6, 23, 0.12) 34%, rgba(2, 6, 23, 0.72) 100%);
+        radial-gradient(circle at 18% 48%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.46) 54%, rgba(0, 0, 0, 0.66) 100%),
+        linear-gradient(90deg, rgba(2, 6, 23, 0.72) 0%, rgba(2, 6, 23, 0.54) 38%, rgba(2, 6, 23, 0.20) 72%, rgba(2, 6, 23, 0.42) 100%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.52) 0%, rgba(2, 6, 23, 0.08) 34%, rgba(2, 6, 23, 0.58) 100%);
 }
 
 .hero--bg .hero-content {
@@ -4314,8 +4314,8 @@ html[lang="en"] .hero--bg .hero-title {
 
     .hero--bg::before {
         background:
-            linear-gradient(90deg, rgba(2, 6, 23, 0.84), rgba(2, 6, 23, 0.46)),
-            linear-gradient(180deg, rgba(2, 6, 23, 0.58), rgba(2, 6, 23, 0.76));
+            linear-gradient(90deg, rgba(2, 6, 23, 0.70), rgba(2, 6, 23, 0.36)),
+            linear-gradient(180deg, rgba(2, 6, 23, 0.48), rgba(2, 6, 23, 0.62));
     }
 
     .hero--bg .container {
