@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-04T22:15:15.473Z",
+  "syncedAt": "2026-05-04T22:20:26.797Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
+    "activeAgents": 0,
     "todayTokens": 2492060,
     "weekTokens": 622779892,
     "totalTokens": 963967622,
     "estimatedCostUsd": 422.66168209999995,
-    "cpu": 8.85,
-    "memoryBytes": 972009472
+    "cpu": 38.74,
+    "memoryBytes": 916914176
   },
-  "agents": [
-    {
-      "agentId": "53531c2771f4770d",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019df4f4-3eca-7943-9030-f4c8e06e485e",
-      "sessionTitle": "定位反复出现原因",
-      "workspaceLabel": "yz-web-inspect",
-      "cpu": 0.25,
-      "memoryBytes": 95207424,
-      "confidence": "medium"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -50,5 +38,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-04T22:15:15.473Z"
+  "receivedAt": "2026-05-04T22:20:26.798Z"
 }
