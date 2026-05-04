@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-04T22:25:22.218Z",
+  "syncedAt": "2026-05-04T22:30:19.508Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 3195265,
-    "weekTokens": 623483097,
-    "totalTokens": 964670827,
-    "estimatedCostUsd": 423.54501209999995,
-    "cpu": 59.1,
-    "memoryBytes": 953548800
+    "activeAgents": 0,
+    "todayTokens": 3897103,
+    "weekTokens": 624184935,
+    "totalTokens": 965372665,
+    "estimatedCostUsd": 424.1942691,
+    "cpu": 0.32,
+    "memoryBytes": 780079104
   },
-  "agents": [
-    {
-      "agentId": "53531c2771f4770d",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019df514-2851-7e81-8ae9-826f5dc30b36",
-      "sessionTitle": "设置切换程序快捷键",
-      "workspaceLabel": "yz-web-inspect",
-      "cpu": 10.940000000000001,
-      "memoryBytes": 113668096,
-      "confidence": "medium"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -39,10 +27,10 @@
     },
     {
       "model": "gpt-5.5",
-      "totalTokens": 12576255,
-      "inputTokens": 12454764,
-      "outputTokens": 121491,
-      "costUSD": 16.5909446
+      "totalTokens": 13278093,
+      "inputTokens": 13149855,
+      "outputTokens": 128238,
+      "costUSD": 17.2402016
     }
   ],
   "health": {
@@ -50,5 +38,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-04T22:25:22.218Z"
+  "receivedAt": "2026-05-04T22:30:19.508Z"
 }
