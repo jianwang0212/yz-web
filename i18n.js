@@ -47,6 +47,18 @@ const translations = {
         'hero.cta.mobile': '联系合作',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
+
+        // Home Resume
+        'homeResume.kicker': '简历',
+        'homeResume.title': '量化交易、创业与音乐创作的交叉履历',
+        'homeResume.desc': '系统化交易员、量化研究员与创业者背景；现于 Berklee 深造 Music Production and Engineering 与 Jazz Composition，GPA 4.0。',
+        'homeResume.link': '查看完整简历',
+        'homeResume.fact1.label': '职业',
+        'homeResume.fact1.value': 'Citadel Securities 量化交易员',
+        'homeResume.fact2.label': '学术',
+        'homeResume.fact2.value': 'Oxford MPhil · UQ 学术奖章',
+        'homeResume.fact3.label': '音乐',
+        'homeResume.fact3.value': 'Berklee · GPA 4.0',
         
         // Entry
         'entry.title': '探索不同维度的长期记录',
@@ -682,6 +694,18 @@ const translations = {
         'hero.cta.mobile': 'Start a Conversation',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
+
+        // Home Resume
+        'homeResume.kicker': 'Resume',
+        'homeResume.title': 'A cross-disciplinary record in quant trading, entrepreneurship, and music',
+        'homeResume.desc': 'Systematic trading, quant research, and founder experience; currently studying Music Production and Engineering and Jazz Composition at Berklee, GPA 4.0.',
+        'homeResume.link': 'View Full Resume',
+        'homeResume.fact1.label': 'Career',
+        'homeResume.fact1.value': 'Quant Trader at Citadel Securities',
+        'homeResume.fact2.label': 'Academics',
+        'homeResume.fact2.value': 'Oxford MPhil · UQ Academic Medal',
+        'homeResume.fact3.label': 'Music',
+        'homeResume.fact3.value': 'Berklee · GPA 4.0',
         
         // Entry
         'entry.title': 'Explore Long-term Records Across Dimensions',

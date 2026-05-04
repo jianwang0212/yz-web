@@ -72,3 +72,16 @@ test('credential cards have expected content and explicit link semantics', () =>
     expectIncludes(indexHtml, `data-i18n="${key}"`);
   }
 });
+
+test('home resume section appears before long-term records', () => {
+  const resumeIndex = indexHtml.indexOf('<section id="home-resume" class="home-resume">');
+  const entryIndex = indexHtml.indexOf('<section id="entry" class="entry">');
+  assert.ok(resumeIndex > -1, 'Expected home resume section');
+  assert.ok(entryIndex > -1, 'Expected entry section');
+  assert.ok(resumeIndex < entryIndex, 'Expected resume section before entry records');
+
+  expectIncludes(indexHtml, 'href="resume.html" class="home-resume-link" data-i18n="homeResume.link"');
+  expectIncludes(indexHtml, 'data-i18n="homeResume.title"');
+  expectIncludes(i18nJs, "'homeResume.title': '量化交易、创业与音乐创作的交叉履历'");
+  expectIncludes(i18nJs, "'homeResume.link': 'View Full Resume'");
+});
