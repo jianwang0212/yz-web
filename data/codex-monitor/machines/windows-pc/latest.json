@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-04T22:05:42.962Z",
+  "syncedAt": "2026-05-04T22:10:24.609Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 4969115,
-    "weekTokens": 625256947,
-    "totalTokens": 966444677,
-    "estimatedCostUsd": 425.2460781,
-    "cpu": 124,
-    "memoryBytes": 902885376
+    "activeAgents": 0,
+    "todayTokens": 5212532,
+    "weekTokens": 625500364,
+    "totalTokens": 966688094,
+    "estimatedCostUsd": 425.41346109999995,
+    "cpu": 1.7999999999999998,
+    "memoryBytes": 653623296
   },
-  "agents": [
-    {
-      "agentId": "3e835bb856ab2368",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019df4f7-9ecd-79f2-9435-0bd6e73e283a",
-      "sessionTitle": "修改粘贴复制快捷键",
-      "workspaceLabel": "yz-web-inspect",
-      "cpu": 14.316666666666666,
-      "memoryBytes": 140083200,
-      "confidence": "medium"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -39,10 +27,10 @@
     },
     {
       "model": "gpt-5.5",
-      "totalTokens": 14350105,
-      "inputTokens": 14198334,
-      "outputTokens": 151771,
-      "costUSD": 18.2920106
+      "totalTokens": 14593522,
+      "inputTokens": 14440493,
+      "outputTokens": 153029,
+      "costUSD": 18.4593936
     }
   ],
   "health": {
@@ -50,5 +38,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-04T22:05:42.962Z"
+  "receivedAt": "2026-05-04T22:10:24.609Z"
 }
