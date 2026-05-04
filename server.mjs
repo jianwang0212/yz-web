@@ -86,6 +86,16 @@ app.use(
     setHeaders(res, filePath) {
       if (/\.(html?)$/i.test(filePath)) {
         res.setHeader('Cache-Control', 'no-cache');
+        return;
+      }
+
+      if (/\.(?:css|js)$/i.test(filePath)) {
+        res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+        return;
+      }
+
+      if (/\.(?:avif|webp|png|jpe?g|gif|svg|ico|woff2?)$/i.test(filePath)) {
+        res.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=2592000');
       }
     }
   })
