@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -920,7 +919,7 @@
             <h3 class="modal-title">音乐时间统计计算方式</h3>
             <div class="modal-body">
                 <p class="modal-description">以下是我每日日历时间安排的示例，通过统计所有音乐相关活动（钢琴练习、作曲、混音等）的时间，计算出今年在音乐上投入的时间占比为44%。</p>
-                <img src="images/music-calendar-example.png" alt="音乐时间统计日历" class="modal-image" />
+                <img src="images/music-calendar-example.png" alt="音乐时间统计日历" class="modal-image" loading="lazy" decoding="async" />
                 <p class="modal-note">注：每一天都有详细的日历安排，记录当天的时间分配情况。</p>
             </div>
         </div>
@@ -943,7 +942,7 @@
                     <li>避免为明天而焦虑，安心入睡</li>
                 </ul>
                 <p class="modal-description" style="margin-top: 1rem; font-style: italic; color: var(--text-secondary);">一般晚上总是需要写完这个计划表，我才能睡觉，因为这样我才能知道我明天需要干什么，我才不会为明天而焦虑。</p>
-                <img src="images/daily-gtd.png" alt="每日计划示例" class="modal-image" />
+                <img src="images/daily-gtd.png" alt="每日计划示例" class="modal-image" loading="lazy" decoding="async" />
                 <p class="modal-note">注：每日计划是最小时间尺度的精确规划，帮助我将月度目标分解为具体可执行的每日任务。</p>
             </div>
         </div>
@@ -964,7 +963,7 @@
                     <li>帮助我在一个月内专注于一件事情</li>
                     <li>避免左看看右看看，保持专注和效率</li>
                 </ul>
-                <img src="images/monthly-plan.png" alt="月度计划示例" class="modal-image" />
+                <img src="images/monthly-plan.png" alt="月度计划示例" class="modal-image" loading="lazy" decoding="async" />
                 <p class="modal-note">注：月度计划帮助我将年度目标分解为可执行的月度任务，确保每个月的努力都朝着年度目标前进。</p>
             </div>
         </div>
@@ -990,7 +989,7 @@
                     <li>我的情绪如何</li>
                     <li>我是否能够接受更有挑战性的任务</li>
                 </ul>
-                <img src="images/weekly-record-example.png" alt="每周回顾记录示例" class="modal-image" />
+                <img src="images/weekly-record-example.png" alt="每周回顾记录示例" class="modal-image" loading="lazy" decoding="async" />
                 <p class="modal-note">注：这些记录帮助我持续跟踪自己的成长轨迹，及时调整方向和策略。</p>
             </div>
         </div>
@@ -1021,8 +1020,8 @@
             <div class="modal-body">
                 <p class="modal-description">以下是我在伯克利两年的所有GPA成绩记录，均保持4.0的完美成绩。包括最近一次（2025年秋季）的课程，涵盖了音乐制作工程、AI学习、爵士作曲、编曲、拉丁、爵士、钢琴演奏等课程。</p>
                 <div class="modal-images-grid">
-                    <img src="images/berklee-gpa1.jpg" alt="伯克利GPA成绩记录1" class="modal-image" />
-                    <img src="images/berklee-gpa2.jpg" alt="伯克利GPA成绩记录2" class="modal-image" />
+                    <img src="images/berklee-gpa1.jpg" alt="伯克利GPA成绩记录1" class="modal-image" loading="lazy" decoding="async" />
+                    <img src="images/berklee-gpa2.jpg" alt="伯克利GPA成绩记录2" class="modal-image" loading="lazy" decoding="async" />
                 </div>
                 <p class="modal-note">注：所有学期均保持GPA 4.0的完美成绩。</p>
             </div>
@@ -1142,9 +1141,159 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script>
+        let chartLibrariesPromise;
+        let financialChartsRendered = false;
+
+        function loadScriptOnce(src) {
+            const existingScript = document.querySelector(`script[src="${src}"]`);
+            if (existingScript) {
+                return new Promise((resolve, reject) => {
+                    existingScript.addEventListener('load', resolve, { once: true });
+                    existingScript.addEventListener('error', reject, { once: true });
+                });
+            }
+
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = true;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        function loadChartLibraries() {
+            if (!chartLibrariesPromise) {
+                chartLibrariesPromise = loadScriptOnce('https://cdn.jsdelivr.net/npm/chart.js')
+                    .then(() => loadScriptOnce('https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2'));
+            }
+            return chartLibrariesPromise;
+        }
+
+        async function renderFinancialCharts() {
+            if (financialChartsRendered) return;
+
+            const expenseCtx = document.getElementById('expensePieChart');
+            const incomeCtx = document.getElementById('incomePieChart');
+            if (!expenseCtx && !incomeCtx) return;
+
+            await loadChartLibraries();
+            Chart.register(ChartDataLabels);
+            financialChartsRendered = true;
+
+            // Expense Pie Chart
+            if (expenseCtx) {
+                new Chart(expenseCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['资产性支出', '消费性支出'],
+                        datasets: [{
+                            data: [150, 90],
+                            backgroundColor: [
+                                '#10b981',
+                                '#f59e0b'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#fff',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                formatter: (value, ctx) => {
+                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return percentage + '%';
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.parsed + ' 万';
+                                        const percentage = ((context.parsed / 240) * 100).toFixed(1);
+                                        label += ' (' + percentage + '%)';
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Income Pie Chart
+            if (incomeCtx) {
+                new Chart(incomeCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['主动/项目收入', '投资收入'],
+                        datasets: [{
+                            data: [135, 57],
+                            backgroundColor: [
+                                '#2563eb',
+                                '#f59e0b'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#fff',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                formatter: (value, ctx) => {
+                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return percentage + '%';
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.parsed + ' 万';
+                                        const percentage = ((context.parsed / 192) * 100).toFixed(1);
+                                        label += ' (' + percentage + '%)';
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -1194,6 +1343,7 @@
             if (localStorage.getItem('financial-authenticated') === 'true') {
                 financialPasswordForm.style.display = 'none';
                 financialContent.style.display = 'block';
+                renderFinancialCharts();
             }
             
             // Password submit handler
@@ -1204,6 +1354,7 @@
                     financialPasswordForm.style.display = 'none';
                     financialContent.style.display = 'block';
                     financialPasswordError.style.display = 'none';
+                    renderFinancialCharts();
                 } else {
                     financialPasswordError.style.display = 'block';
                     financialPasswordInput.value = '';
@@ -1265,124 +1416,6 @@
                 }
             });
         });
-
-        // Financial Charts
-        document.addEventListener('DOMContentLoaded', () => {
-            // Register ChartDataLabels plugin
-            Chart.register(ChartDataLabels);
-
-            // Expense Pie Chart
-            const expenseCtx = document.getElementById('expensePieChart');
-            if (expenseCtx) {
-                new Chart(expenseCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['资产性支出', '消费性支出'],
-                        datasets: [{
-                            data: [150, 90],
-                            backgroundColor: [
-                                '#10b981',
-                                '#f59e0b'
-                            ],
-                            borderWidth: 2,
-                            borderColor: '#fff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            datalabels: {
-                                display: true,
-                                color: '#fff',
-                                font: {
-                                    size: 16,
-                                    weight: 'bold'
-                                },
-                                formatter: (value, ctx) => {
-                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    return percentage + '%';
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        label += context.parsed + ' 万';
-                                        const percentage = ((context.parsed / 240) * 100).toFixed(1);
-                                        label += ' (' + percentage + '%)';
-                                        return label;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Income Pie Chart
-            const incomeCtx = document.getElementById('incomePieChart');
-            if (incomeCtx) {
-                new Chart(incomeCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['主动/项目收入', '投资收入'],
-                        datasets: [{
-                            data: [135, 57],
-                            backgroundColor: [
-                                '#2563eb',
-                                '#f59e0b'
-                            ],
-                            borderWidth: 2,
-                            borderColor: '#fff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            datalabels: {
-                                display: true,
-                                color: '#fff',
-                                font: {
-                                    size: 16,
-                                    weight: 'bold'
-                                },
-                                formatter: (value, ctx) => {
-                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    return percentage + '%';
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        label += context.parsed + ' 万';
-                                        const percentage = ((context.parsed / 192) * 100).toFixed(1);
-                                        label += ' (' + percentage + '%)';
-                                        return label;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        });
     </script>
     <script src="i18n.js"></script>
     <script src="year-review-data-en.js"></script>
@@ -1398,6 +1431,7 @@
             if (modal && chartCanvas) {
                 const observer = new MutationObserver(async (mutations) => {
                     if (modal.classList.contains('active') && !chart) {
+                        await loadChartLibraries();
                         const processedData = await loadDockingTechData();
                         
                         if (processedData && processedData.dates.length > 0) {
@@ -1608,4 +1642,3 @@
     </script>
 </body>
 </html>
-
