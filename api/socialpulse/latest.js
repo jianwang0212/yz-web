@@ -1,4 +1,5 @@
 import { readPublishManifestInfo } from '../_lib/socialpulse-ledger.js';
+import { loadInventorySnapshot } from '../_lib/socialpulse-inventory.js';
 import { readLatestSocialPulseSnapshot, socialPulseDbPath } from '../_lib/socialpulse-snapshot-store.js';
 import { syncSocialPulseSnapshot } from '../_lib/socialpulse-sync.js';
 import { endOptions, requireMethod, sendJson, setCors } from '../_lib/http.js';
@@ -43,6 +44,7 @@ export default async function handler(req, res) {
     }
 
     const snapshot = await readLatestSocialPulseSnapshot();
+    const inventory = await loadInventorySnapshot();
 
     if (!snapshot) {
       return sendJson(res, 404, {
@@ -66,6 +68,7 @@ export default async function handler(req, res) {
       storedAt: snapshot.storedAt,
       liveBaseUrl: snapshot.liveBaseUrl,
       ledger: snapshot.ledger,
+      inventory,
       publicReadStatuses: snapshot.publicReadStatuses
     });
   } catch (error) {
