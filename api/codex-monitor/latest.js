@@ -1,10 +1,7 @@
 import { listMonitorMachines, readMonitorMachine, slugify } from '../_lib/codex-monitor-store.js';
+import { endOptions, requireMethod, sendJson, setCors } from '../_lib/http.js';
 
 const AGENT_ACTIVITY_WINDOW_MS = 24 * 60 * 60 * 1000;
-
-function sendJson(res, status, value) {
-  res.status(status).json(value);
-}
 
 function isUsefulAgent(agent) {
   const haystack = [agent?.processName, agent?.sessionTitle, agent?.workspaceLabel].filter(Boolean).join(' ');
@@ -122,16 +119,10 @@ function buildAgentHighlights(latest) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  setCors(res);
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'GET') {
-    return sendJson(res, 405, { ok: false, error: 'Method not allowed' });
+  if (endOptions(req, res) || !requireMethod(req, res, 'GET')) {
+    return;
   }
 
   try {

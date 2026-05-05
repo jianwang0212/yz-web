@@ -439,7 +439,7 @@
                 <div>
                     <div class="socialpulse-topline"><span class="status-dot"></span>SocialPulse</div>
                     <h1 id="page-title">五平台发布检查台</h1>
-                    <p>同步检查 Instagram、知乎、Reddit、小红书和 X 的最近发布状态。数据来自服务器上的发布清单和 SocialPulse SQLite 快照。</p>
+                    <p>同步检查 Instagram、X、Reddit、小红书和抖音的最近发布状态。数据来自服务器上的发布清单和 SocialPulse SQLite 快照。</p>
                 </div>
                 <div class="summary-grid" aria-label="Summary">
                     <div class="summary-tile">
@@ -468,13 +468,14 @@
 
     <script src="/script.js"></script>
     <script>
-        const platformOrder = ['instagram', 'zhihu', 'reddit', 'xiaohongshu', 'x'];
+        const platformOrder = ['instagram', 'x', 'reddit', 'xiaohongshu', 'douyin'];
         const platformMeta = {
             instagram: { label: 'Instagram', short: 'IG', accent: '#ff6aa2' },
             zhihu: { label: '知乎 / Zhihu', short: '知', accent: '#49a3ff' },
             reddit: { label: 'Reddit', short: 'RD', accent: '#ff8a3d' },
             xiaohongshu: { label: '小红书 / Xiaohongshu', short: '红', accent: '#ff5d75' },
-            x: { label: 'X', short: 'X', accent: '#d7e0ea' }
+            x: { label: 'X', short: 'X', accent: '#d7e0ea' },
+            douyin: { label: '抖音 / Douyin', short: '抖', accent: '#ff4b5f' }
         };
 
         const elements = {

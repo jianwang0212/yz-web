@@ -1,17 +1,36 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { list, put } from '@vercel/blob';
+import { readJsonFile, writeJsonFile } from './json-file.js';
 
 const LOCAL_ROOT = path.join(process.cwd(), 'data', 'codex-monitor');
 const USE_BLOB = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 const IS_VERCEL_RUNTIME = Boolean(process.env.VERCEL);
 const HISTORY_LIMIT = 576;
-const GITHUB_DATA_REPO = process.env.CODEX_MONITOR_GITHUB_DATA_REPO || 'jianwang0212/yz-web';
-const GITHUB_DATA_BRANCH = process.env.CODEX_MONITOR_GITHUB_DATA_BRANCH || 'codex-monitor-data';
+const GITHUB_DATA_REPO = String(
+  process.env.CODEX_MONITOR_GITHUB_DATA_REPO ||
+  process.env.CODEX_MONITOR_GITHUB_REPO ||
+  'jianwang0212/yz-web'
+).trim();
+const GITHUB_DATA_BRANCH = String(
+  process.env.CODEX_MONITOR_GITHUB_DATA_BRANCH ||
+  process.env.CODEX_MONITOR_GITHUB_BRANCH ||
+  'codex-monitor-data'
+).trim();
+const GITHUB_DATA_BASE_PATH = String(
+  process.env.CODEX_MONITOR_GITHUB_DATA_BASE_PATH ||
+  process.env.CODEX_MONITOR_GITHUB_BASE_PATH ||
+  'data/codex-monitor'
+).trim().replace(/^\/+|\/+$/g, '');
 const GITHUB_DATA_BASE_URL = (
   process.env.CODEX_MONITOR_GITHUB_DATA_BASE_URL ||
-  'https://raw.githubusercontent.com/jianwang0212/yz-web/codex-monitor-data/data/codex-monitor'
+  `https://raw.githubusercontent.com/${GITHUB_DATA_REPO}/${GITHUB_DATA_BRANCH}/${GITHUB_DATA_BASE_PATH}`
 ).replace(/\/+$/, '');
+const GITHUB_DATA_TOKEN = String(
+  process.env.CODEX_MONITOR_GITHUB_DATA_TOKEN ||
+  process.env.CODEX_MONITOR_GITHUB_TOKEN ||
+  ''
+).trim();
 
 function slugify(value) {
   return String(value || 'macbookpro')
@@ -41,24 +60,6 @@ function historyLocalPath(machineId) {
   return path.join(LOCAL_ROOT, 'machines', machineId, 'history.json');
 }
 
-async function ensureLocalDir(filePath) {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-}
-
-async function readLocalJson(filePath, fallback = null) {
-  try {
-    const raw = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(raw);
-  } catch {
-    return fallback;
-  }
-}
-
-async function writeLocalJson(filePath, value) {
-  await ensureLocalDir(filePath);
-  await fs.writeFile(filePath, JSON.stringify(value, null, 2), 'utf8');
-}
-
 async function findBlobByPath(pathname) {
   const page = await list({
     prefix: pathname,
@@ -83,18 +84,35 @@ async function readBlobJson(pathname, fallback = null) {
   return await response.json();
 }
 
+function githubHeaders({ accept } = {}) {
+  const headers = {
+    'cache-control': 'no-cache',
+    'user-agent': 'thisisyz-codex-monitor'
+  };
+
+  if (accept) {
+    headers.accept = accept;
+  }
+
+  if (GITHUB_DATA_TOKEN) {
+    headers.authorization = `Bearer ${GITHUB_DATA_TOKEN}`;
+  }
+
+  return headers;
+}
+
+function githubApiPath(pathname) {
+  return `https://api.github.com/repos/${GITHUB_DATA_REPO}/contents/${GITHUB_DATA_BASE_PATH}/${pathname}?ref=${encodeURIComponent(GITHUB_DATA_BRANCH)}`;
+}
+
 async function readGitHubJson(pathname, fallback = null) {
-  if (!GITHUB_DATA_REPO || !GITHUB_DATA_BRANCH) {
+  if (!GITHUB_DATA_REPO || !GITHUB_DATA_BRANCH || !GITHUB_DATA_BASE_PATH) {
     return fallback;
   }
 
   try {
-    const apiPath = `https://api.github.com/repos/${GITHUB_DATA_REPO}/contents/data/codex-monitor/${pathname}?ref=${encodeURIComponent(GITHUB_DATA_BRANCH)}`;
-    const response = await fetch(apiPath, {
-      headers: {
-        'cache-control': 'no-cache',
-        'user-agent': 'thisisyz-codex-monitor'
-      }
+    const response = await fetch(githubApiPath(pathname), {
+      headers: githubHeaders({ accept: 'application/vnd.github+json' })
     });
     if (response.ok) {
       const payload = await response.json();
@@ -123,17 +141,13 @@ async function readGitHubJson(pathname, fallback = null) {
 }
 
 async function readGitHubDirectory(pathname) {
-  if (!GITHUB_DATA_REPO || !GITHUB_DATA_BRANCH) {
+  if (!GITHUB_DATA_REPO || !GITHUB_DATA_BRANCH || !GITHUB_DATA_BASE_PATH) {
     return [];
   }
 
   try {
-    const apiPath = `https://api.github.com/repos/${GITHUB_DATA_REPO}/contents/data/codex-monitor/${pathname}?ref=${encodeURIComponent(GITHUB_DATA_BRANCH)}`;
-    const response = await fetch(apiPath, {
-      headers: {
-        'cache-control': 'no-cache',
-        'user-agent': 'thisisyz-codex-monitor'
-      }
+    const response = await fetch(githubApiPath(pathname), {
+      headers: githubHeaders({ accept: 'application/vnd.github+json' })
     });
     if (!response.ok) {
       return [];
@@ -159,7 +173,7 @@ async function readJson(kind, machineId, fallback = null) {
   }
   const pathname = kind === 'latest' ? latestBlobPath(machineId) : historyBlobPath(machineId);
   const localPath = kind === 'latest' ? latestLocalPath(machineId) : historyLocalPath(machineId);
-  return USE_BLOB ? await readBlobJson(pathname, fallback) : await readLocalJson(localPath, fallback);
+  return USE_BLOB ? await readBlobJson(pathname, fallback) : await readJsonFile(localPath, fallback);
 }
 
 async function writeJson(kind, machineId, value) {
@@ -168,7 +182,7 @@ async function writeJson(kind, machineId, value) {
   }
   const pathname = kind === 'latest' ? latestBlobPath(machineId) : historyBlobPath(machineId);
   const localPath = kind === 'latest' ? latestLocalPath(machineId) : historyLocalPath(machineId);
-  return USE_BLOB ? await writeBlobJson(pathname, value) : await writeLocalJson(localPath, value);
+  return USE_BLOB ? await writeBlobJson(pathname, value) : await writeJsonFile(localPath, value);
 }
 
 function syncStatusFromTimestamp(timestamp) {
@@ -335,7 +349,7 @@ export async function listMonitorMachines() {
   const machinesRoot = path.join(LOCAL_ROOT, 'machines');
   try {
     const machineIds = await fs.readdir(machinesRoot);
-    const machines = await Promise.all(machineIds.map((machineId) => readLocalJson(latestLocalPath(machineId), null)));
+    const machines = await Promise.all(machineIds.map((machineId) => readJsonFile(latestLocalPath(machineId), null)));
     return machines
       .filter(Boolean)
       .map((machine) => ({

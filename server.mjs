@@ -8,6 +8,7 @@ import socialPulseHistoryHandler from './api/socialpulse/history.js';
 import socialPulseLatestHandler from './api/socialpulse/latest.js';
 import socialPulseSyncHandler from './api/socialpulse/sync.js';
 import feedbackHandler from './api/submit-feedback/index.js';
+import { findRouteAlias } from './site-routes.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,6 +47,11 @@ function maybeHtmlPath(urlPath) {
   return null;
 }
 
+function resolveAliasedPath(urlPath) {
+  const aliasedPath = findRouteAlias(urlPath);
+  return aliasedPath ? fileIfExists(aliasedPath) : null;
+}
+
 function wrapHandler(handler) {
   return async (req, res) => {
     try {
@@ -78,6 +84,15 @@ app.all('/api/socialpulse/latest', wrapHandler(socialPulseLatestHandler));
 app.all('/api/socialpulse/sync', wrapHandler(socialPulseSyncHandler));
 app.all('/api/submit-feedback', wrapHandler(feedbackHandler));
 app.all('/api/submit-feedback/index.js', wrapHandler(feedbackHandler));
+
+app.use((req, res, next) => {
+  const resolved = resolveAliasedPath(req.path);
+  if (!resolved) {
+    next();
+    return;
+  }
+  res.sendFile(resolved);
+});
 
 app.use(
   express.static(__dirname, {

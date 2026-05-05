@@ -1,21 +1,7 @@
 import { readPublishManifestInfo } from '../_lib/socialpulse-ledger.js';
 import { readLatestSocialPulseSnapshot, socialPulseDbPath } from '../_lib/socialpulse-snapshot-store.js';
 import { syncSocialPulseSnapshot } from '../_lib/socialpulse-sync.js';
-
-function toSerializable(value) {
-  return JSON.parse(
-    JSON.stringify(value, (_, nestedValue) =>
-      typeof nestedValue === 'bigint' ? Number(nestedValue) : nestedValue
-    )
-  );
-}
-
-function sendJson(res, status, value) {
-  res
-    .status(status)
-    .type('application/json')
-    .send(JSON.stringify(toSerializable(value)));
-}
+import { endOptions, requireMethod, sendJson, setCors } from '../_lib/http.js';
 
 function snapshotNeedsRefresh(snapshot, manifestInfo) {
   if (!snapshot) {
@@ -42,16 +28,10 @@ function snapshotNeedsRefresh(snapshot, manifestInfo) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  setCors(res);
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'GET') {
-    return sendJson(res, 405, { ok: false, error: 'Method not allowed' });
+  if (endOptions(req, res) || !requireMethod(req, res, 'GET')) {
+    return;
   }
 
   try {

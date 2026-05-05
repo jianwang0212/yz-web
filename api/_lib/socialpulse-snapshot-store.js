@@ -2,11 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import Database from 'better-sqlite3';
+import { SOCIALPULSE_HISTORY_PLATFORMS } from './platform-config.js';
 
 const DATA_ROOT = path.join(process.cwd(), 'data', 'socialpulse');
 const DB_PATH = path.join(DATA_ROOT, 'socialpulse.sqlite');
 const SNAPSHOT_LIMIT = 2880;
-const PLATFORM_ORDER = ['instagram', 'zhihu', 'reddit', 'xiaohongshu', 'x'];
 
 function ensureDataRoot() {
   fs.mkdirSync(DATA_ROOT, { recursive: true });
@@ -125,7 +125,7 @@ function summarizeSnapshot(row) {
   const ledger = JSON.parse(row.ledger_json);
   const publicReadStatuses = JSON.parse(row.public_read_json);
   const platformStatusMap = Object.fromEntries(
-    PLATFORM_ORDER.map((platform) => {
+    SOCIALPULSE_HISTORY_PLATFORMS.map((platform) => {
       const publicStatus = publicReadStatuses.find((status) => status.platform === platform) ?? null;
       const latestRecord = Array.isArray(ledger?.recordsByPlatform?.[platform])
         ? ledger.recordsByPlatform[platform][0] ?? null

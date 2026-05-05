@@ -1,16 +1,17 @@
 // Vercel Serverless Function for handling year review feedback form submissions
 import nodemailer from 'nodemailer';
+import { endOptions, getClientIp, requireMethod, sendJson, setCors } from '../_lib/http.js';
 
 // 简单的防重复提交（基于IP和时间）
 const submissions = new Map();
 
 function checkDuplicate(ip, timestamp) {
     const lastSubmission = submissions.get(ip);
-    
+
     if (lastSubmission && (timestamp - lastSubmission) < 60000) { // 1分钟内
         return true;
     }
-    
+
     submissions.set(ip, timestamp);
     // 清理旧记录（保留最近1小时）
     setTimeout(() => {
@@ -18,7 +19,7 @@ function checkDuplicate(ip, timestamp) {
             submissions.delete(ip);
         }
     }, 3600000);
-    
+
     return false;
 }
 
@@ -103,36 +104,29 @@ IP地址：${clientIP}
 }
 
 export default async function handler(req, res) {
-    // 设置CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    setCors(res, {
+        methods: 'POST, OPTIONS',
+        headers: 'Content-Type'
+    });
 
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
-
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+    if (endOptions(req, res) || !requireMethod(req, res, 'POST')) {
+        return;
     }
 
     try {
-        const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || 
-                        req.headers['x-real-ip'] || 
-                        req.connection?.remoteAddress || 
-                        'unknown';
+        const clientIP = getClientIp(req);
         const timestamp = Date.now();
 
         // 防重复提交检查
         if (checkDuplicate(clientIP, timestamp)) {
-            return res.status(429).json({ error: '请勿重复提交，请稍后再试' });
+            return sendJson(res, 429, { ok: false, error: '请勿重复提交，请稍后再试' });
         }
 
         const formData = req.body;
 
         // 验证必填字段
         if (!formData.name || formData.name.trim() === '') {
-            return res.status(400).json({ error: '姓名是必填项' });
+            return sendJson(res, 400, { ok: false, error: '姓名是必填项' });
         }
 
         // 发送邮件
@@ -145,14 +139,16 @@ export default async function handler(req, res) {
         // - 使用MongoDB Atlas
         // - 使用简单的文件存储（不推荐用于生产环境）
 
-        return res.status(200).json({ 
+        return sendJson(res, 200, {
+            ok: true,
             success: true,
             message: '提交成功，感谢你的分享！'
         });
 
     } catch (error) {
         console.error('Error processing form submission:', error);
-        return res.status(500).json({ 
+        return sendJson(res, 500, {
+            ok: false,
             error: '提交失败，请稍后重试',
             details: process.env.NODE_ENV === 'development' ? error.message : undefined
         });

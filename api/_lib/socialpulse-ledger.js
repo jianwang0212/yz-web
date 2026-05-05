@@ -1,15 +1,6 @@
-import { promises as fs } from 'node:fs';
 import path from 'node:path';
-
-const SUPPORTED_PLATFORMS = new Set(['instagram', 'zhihu', 'reddit', 'xiaohongshu', 'x']);
-
-const EMPTY_RECORDS = {
-  instagram: [],
-  zhihu: [],
-  reddit: [],
-  xiaohongshu: [],
-  x: []
-};
+import { emptySocialPulseRecords, SUPPORTED_SOCIALPULSE_PLATFORMS } from './platform-config.js';
+import { readJsonFileWithStat } from './json-file.js';
 
 function manifestCandidatePaths() {
   return [
@@ -21,11 +12,7 @@ function manifestCandidatePaths() {
 export async function readPublishManifestInfo() {
   for (const candidatePath of manifestCandidatePaths()) {
     try {
-      const [stat, manifestRaw] = await Promise.all([
-        fs.stat(candidatePath),
-        fs.readFile(candidatePath, 'utf8')
-      ]);
-      const manifest = JSON.parse(manifestRaw);
+      const { stat, value: manifest } = await readJsonFileWithStat(candidatePath);
 
       return {
         path: candidatePath,
@@ -41,7 +28,7 @@ export async function readPublishManifestInfo() {
 }
 
 function normalizePlatform(value) {
-  if (!value || !SUPPORTED_PLATFORMS.has(value)) {
+  if (!value || !SUPPORTED_SOCIALPULSE_PLATFORMS.has(value)) {
     return null;
   }
 
@@ -84,6 +71,8 @@ function inferPostLabel(platform, postUrl) {
       return '小红书笔记 / Xiaohongshu note';
     case 'x':
       return 'X 帖子 / X post';
+    case 'douyin':
+      return '抖音图文 / Douyin post';
     default:
       return null;
   }
@@ -121,6 +110,12 @@ function buildSummary(platform, status, postUrl, notes) {
   if (platform === 'x') {
     return postUrl
       ? '发布成功；链接是 X post。 / Published successfully; link captured as an X post.'
+      : '发布成功；公开链接未抓到。 / Published successfully; public link not captured.';
+  }
+
+  if (platform === 'douyin') {
+    return postUrl
+      ? '发布成功；链接是抖音图文。 / Published successfully; link captured as a Douyin post.'
       : '发布成功；公开链接未抓到。 / Published successfully; public link not captured.';
   }
 
@@ -171,11 +166,11 @@ export async function loadPublishLedger() {
 
   try {
     let manifestPath = candidatePaths[0];
-    let manifestRaw = null;
+    let manifest = null;
 
     for (const candidatePath of candidatePaths) {
       try {
-        manifestRaw = await fs.readFile(candidatePath, 'utf8');
+        ({ value: manifest } = await readJsonFileWithStat(candidatePath));
         manifestPath = candidatePath;
         break;
       } catch {
@@ -183,20 +178,13 @@ export async function loadPublishLedger() {
       }
     }
 
-    if (!manifestRaw) {
+    if (!manifest) {
       throw new Error(`No publish manifest found in: ${candidatePaths.join(', ')}`);
     }
 
-    const manifest = JSON.parse(manifestRaw);
     const currentPackageId = manifest.current_package?.package_id ?? null;
     const seen = new Set();
-    const recordsByPlatform = {
-      instagram: [],
-      zhihu: [],
-      reddit: [],
-      xiaohongshu: [],
-      x: []
-    };
+    const recordsByPlatform = emptySocialPulseRecords();
 
     const pushRecord = (record) => {
       if (!record) {
@@ -251,7 +239,7 @@ export async function loadPublishLedger() {
     return {
       currentPackageId: null,
       manifestPath: candidatePaths[0],
-      recordsByPlatform: EMPTY_RECORDS,
+      recordsByPlatform: emptySocialPulseRecords(),
       loadError: error instanceof Error ? error.message : 'Failed to load publish manifest'
     };
   }

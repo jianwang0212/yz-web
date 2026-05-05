@@ -191,7 +191,7 @@
                     <div class="card-header">
                         <h3 data-i18n="yearReview.financial.title">💰 财务概览</h3>
                     </div>
-                    
+
                     <!-- Password Protection -->
                     <div id="financial-password-form" style="padding: 2rem; text-align: center;">
                         <div style="margin-bottom: 1.5rem;">
@@ -201,7 +201,7 @@
                         </div>
                         <button id="financial-password-submit" data-i18n="yearReview.financial.submit" style="padding: 0.8rem 2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s ease;">确认</button>
                     </div>
-                    
+
                     <!-- Overall Summary with Charts -->
                     <div id="financial-content" class="financial-charts-container" style="display: none;">
                         <div class="financial-summary-cards">
@@ -237,7 +237,7 @@
                         <!-- Year-over-Year Comparison -->
                         <div class="financial-section">
                         <h4 class="section-title" data-i18n="yearReview.financial.yearComparison">年度收入对比</h4>
-                        
+
                         <!-- Year Comparison Summary -->
                         <div class="year-comparison-summary">
                             <div class="comparison-table-wrapper">
@@ -460,7 +460,7 @@
                         <!-- Expense Details -->
                         <div class="financial-section">
                         <h4 class="section-title" data-i18n="yearReview.financial.expenseDetails">支出明细</h4>
-                        
+
                         <!-- Intimate Relationships (Largest) -->
                         <div class="expense-category highlight-expense">
                             <div class="expense-header">
@@ -689,7 +689,7 @@
                         <h3 data-i18n="yearReview.ai.title">🤖 AI 协同工作探索</h3>
                         <span class="category-percentage" data-i18n="yearReview.ai.percentage">8% 时间投入</span>
                     </div>
-                    
+
                     <!-- Core Statistics -->
                     <div class="ai-stats">
                         <div class="ai-stat-item">
@@ -813,7 +813,7 @@
             <div class="review-card" style="max-width: 800px; margin: 0 auto;">
                 <h3 style="font-size: 2rem; margin-bottom: 0.5rem; text-align: center;" data-i18n="yearReview.feedback.title">给我一点你的 2025</h3>
                 <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;" data-i18n="yearReview.feedback.subtitle">如果你愿意，也很期待了解你过去一年的轨迹与感受。</p>
-                
+
                 <form id="year-review-form" class="feedback-form">
                     <!-- 基本信息 -->
                     <div class="form-section">
@@ -1338,14 +1338,14 @@
             const financialPasswordSubmit = document.getElementById('financial-password-submit');
             const financialPasswordError = document.getElementById('financial-password-error');
             const FINANCIAL_PASSWORD = '106106';
-            
+
             // Check if already authenticated
             if (localStorage.getItem('financial-authenticated') === 'true') {
                 financialPasswordForm.style.display = 'none';
                 financialContent.style.display = 'block';
                 renderFinancialCharts();
             }
-            
+
             // Password submit handler
             function handlePasswordSubmit() {
                 const inputPassword = financialPasswordInput.value.trim();
@@ -1361,17 +1361,17 @@
                     financialPasswordInput.focus();
                 }
             }
-            
+
             financialPasswordSubmit.addEventListener('click', handlePasswordSubmit);
             financialPasswordInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     handlePasswordSubmit();
                 }
             });
-            
+
             // Get all clickable distribution bars, achievement items, work items, and timeline links
             const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item, .clickable-timeline-link');
-            
+
             clickableElements.forEach(element => {
                 element.addEventListener('click', function() {
                     const modalTarget = this.getAttribute('data-modal-target');
@@ -1388,14 +1388,14 @@
             modals.forEach(modal => {
                 const closeBtn = modal.querySelector('.modal-close');
                 const overlay = modal.querySelector('.modal-overlay');
-                
+
                 if (closeBtn) {
                     closeBtn.addEventListener('click', () => {
                         modal.classList.remove('active');
                         document.body.style.overflow = ''; // Restore scrolling
                     });
                 }
-                
+
                 if (overlay) {
                     overlay.addEventListener('click', () => {
                         modal.classList.remove('active');
@@ -1418,7 +1418,6 @@
         });
     </script>
     <script src="i18n.js"></script>
-    <script src="year-review-data-en.js"></script>
     <script src="data/docking-tech-data.js"></script>
     <script>
         // Docking Tech Chart
@@ -1426,14 +1425,14 @@
             const modal = document.getElementById('docking-tech-modal');
             const chartCanvas = document.getElementById('dockingTechChart');
             let chart = null;
-            
+
             // Load data when modal is opened
             if (modal && chartCanvas) {
                 const observer = new MutationObserver(async (mutations) => {
                     if (modal.classList.contains('active') && !chart) {
                         await loadChartLibraries();
                         const processedData = await loadDockingTechData();
-                        
+
                         if (processedData && processedData.dates.length > 0) {
                             chart = new Chart(chartCanvas, {
                                 type: 'line',
@@ -1553,12 +1552,12 @@
                         }
                     }
                 });
-                
+
                 observer.observe(modal, {
                     attributes: true,
                     attributeFilter: ['class']
                 });
-                
+
                 // Clean up chart when modal closes
                 const closeBtns = modal.querySelectorAll('.modal-close, .modal-overlay');
                 closeBtns.forEach(btn => {
@@ -1573,7 +1572,7 @@
         });
     </script>
     <script src="year-review-data.js"></script>
-    
+
     <!-- Feedback Form Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1583,7 +1582,7 @@
 
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
+
                 // 禁用提交按钮
                 submitBtn.disabled = true;
                 submitBtn.textContent = '提交中...';
@@ -1622,7 +1621,7 @@
                         // 显示成功消息
                         form.style.display = 'none';
                         successMessage.style.display = 'block';
-                        
+
                         // 滚动到成功消息
                         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     } else {

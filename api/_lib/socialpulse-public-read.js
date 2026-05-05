@@ -1,52 +1,5 @@
 import { loadPublishLedger } from './socialpulse-ledger.js';
-
-const PLATFORM_CONFIG = {
-  instagram: {
-    title: 'Instagram',
-    identifierLabel: '公开用户名 / Public username',
-    identifierValue: 'silverzigge',
-    availability: 'blocked',
-    summary: '当前以发布清单为准，适合作为发布检查面板。 / This is currently manifest-backed and works well for publish verification.',
-    currentFinding: '已从发布清单恢复最近内容。 / Latest content was recovered from the manifest.',
-    exampleUrl: 'https://www.instagram.com/silverzigge/'
-  },
-  zhihu: {
-    title: '知乎 / Zhihu',
-    identifierLabel: '主页 URL / Profile URL',
-    identifierValue: 'https://www.zhihu.com/people/zi-yin-96',
-    availability: 'blocked',
-    summary: '知乎公开抓取不稳定，所以这里优先展示你自己的发布记录。 / Zhihu public scraping is unstable, so this panel prioritizes your own publish records.',
-    currentFinding: '已从发布清单恢复最近内容。 / Latest content was recovered from the manifest.',
-    exampleUrl: 'https://www.zhihu.com/people/zi-yin-96'
-  },
-  reddit: {
-    title: 'Reddit',
-    identifierLabel: '用户名 / Username',
-    identifierValue: 'Mammoth-Trash-972',
-    availability: 'verified',
-    summary: 'Reddit 的公开链接稳定，所以这里可以直接用作发布验证。 / Reddit public links are stable, so this works well for publish verification.',
-    currentFinding: '已从发布清单恢复最近内容，并保留公开链接。 / Latest content was recovered from the manifest with public links preserved.',
-    exampleUrl: 'https://www.reddit.com/user/Mammoth-Trash-972/submitted/'
-  },
-  xiaohongshu: {
-    title: '小红书 / Xiaohongshu',
-    identifierLabel: '公开笔记 URL / Public note URL',
-    identifierValue: 'https://www.xiaohongshu.com/explore/69e7785b000000001f002d29?type=normal&xsec_source=app_share',
-    availability: 'verified',
-    summary: '小红书优先用你自己的发布记录，再保留公开笔记入口。 / Xiaohongshu uses your publish records first and keeps a public note entry as reference.',
-    currentFinding: '已从发布清单恢复最近内容。 / Latest content was recovered from the manifest.',
-    exampleUrl: 'https://www.xiaohongshu.com/explore/69e7785b000000001f002d29?type=normal&xsec_source=app_share'
-  },
-  x: {
-    title: 'X',
-    identifierLabel: '用户名 / Username',
-    identifierValue: 'thisisyzspace',
-    availability: 'blocked',
-    summary: 'X 目前先用发布清单做监控，再保留公开主页入口。 / X is currently monitored from the publish manifest first, with the public profile kept as a reference entry.',
-    currentFinding: '已从发布清单恢复最近内容。 / Latest content was recovered from the manifest.',
-    exampleUrl: 'https://x.com/thisisyzspace'
-  }
-};
+import { SOCIALPULSE_PUBLIC_CONFIG } from './platform-config.js';
 
 function normalizeWhitespace(value) {
   return String(value ?? '')
@@ -121,7 +74,7 @@ function recentItemsFromRecords(records) {
 export async function getPublicReadStatuses(ledgerInput = null) {
   const ledger = ledgerInput ?? (await loadPublishLedger());
 
-  return Object.entries(PLATFORM_CONFIG).map(([platform, config]) => {
+  return Object.entries(SOCIALPULSE_PUBLIC_CONFIG).map(([platform, config]) => {
     const records = ledger.recordsByPlatform?.[platform] ?? [];
     const recentItems = recentItemsFromRecords(records);
     const latestItem = recentItems[0] ?? null;
