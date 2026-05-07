@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-07T16:34:53.895Z",
+  "syncedAt": "2026-05-07T16:40:06.423Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,25 +9,14 @@
   },
   "summary": {
     "activeAgents": 10,
-    "todayTokens": 37971181,
-    "weekTokens": 356880216,
-    "totalTokens": 678885137,
-    "estimatedCostUsd": 522.41491615,
-    "cpu": 13.95580430360256,
-    "memoryBytes": 2244427776
+    "todayTokens": 40667373,
+    "weekTokens": 359576408,
+    "totalTokens": 681581329,
+    "estimatedCostUsd": 523.8968151500001,
+    "cpu": 13.843061309230084,
+    "memoryBytes": 1616789504
   },
   "agents": [
-    {
-      "agentId": "f09a68a8c8d7a64a",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019e02a7-17c1-7d31-9341-1fdebeea1b4d",
-      "sessionTitle": "合并 Berklee 文件夹",
-      "workspaceLabel": "berklee-canvas",
-      "cpu": 0.6003149062257094,
-      "memoryBytes": 180617216,
-      "confidence": "high"
-    },
     {
       "agentId": "f9e477ceeca9a4d7",
       "processName": "SkyComputerUseClient",
@@ -35,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.7416182638804177,
-      "memoryBytes": 29917184,
+      "cpu": 0.7423842670558737,
+      "memoryBytes": 29753344,
       "confidence": "low"
     },
     {
@@ -46,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.7384842030195832,
-      "memoryBytes": 29802496,
+      "cpu": 0.7392219602559784,
+      "memoryBytes": 29687808,
       "confidence": "low"
     },
     {
@@ -57,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.8926903631662227,
-      "memoryBytes": 30228480,
+      "cpu": 0.8933154310923563,
+      "memoryBytes": 29999104,
       "confidence": "low"
     },
     {
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.8491201797079746,
-      "memoryBytes": 30064640,
+      "cpu": 0.8525021949078138,
+      "memoryBytes": 30031872,
       "confidence": "low"
     },
     {
@@ -79,8 +68,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.7372894993421115,
-      "memoryBytes": 30392320,
+      "cpu": 0.7380655756271589,
+      "memoryBytes": 29671424,
+      "confidence": "low"
+    },
+    {
+      "agentId": "0b3762515b3899ec",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.603371918798149,
+      "memoryBytes": 79151104,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.8514408281264572,
-      "memoryBytes": 30228480,
+      "cpu": 0.8554729974628488,
+      "memoryBytes": 29999104,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.8533283540285687,
-      "memoryBytes": 30638080,
+      "cpu": 0.8574927431059507,
+      "memoryBytes": 29343744,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 427612540,
-      "inputTokens": 426248630,
-      "outputTokens": 1363910,
-      "costUSD": 389.27916999999997
+      "totalTokens": 430308732,
+      "inputTokens": 428942419,
+      "outputTokens": 1366313,
+      "costUSD": 390.76106899999996
     },
     {
       "model": "gpt-5.4",
@@ -134,5 +134,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-07T16:34:55.008Z"
+  "receivedAt": "2026-05-07T16:40:07.389Z"
 }
