@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-07T17:47:41.452Z",
+  "syncedAt": "2026-05-07T17:52:55.764Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 12,
-    "todayTokens": 40788216,
-    "weekTokens": 359697251,
-    "totalTokens": 681702172,
-    "estimatedCostUsd": 524.1491591500001,
-    "cpu": 15.836295406152484,
-    "memoryBytes": 2222538752
+    "activeAgents": 16,
+    "todayTokens": 41747740,
+    "weekTokens": 360656775,
+    "totalTokens": 682661696,
+    "estimatedCostUsd": 525.66134515,
+    "cpu": 19.47700302221135,
+    "memoryBytes": 2550169600
   },
   "agents": [
+    {
+      "agentId": "e461da764b0a3dbc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "019dfcef-dd57-7100-930e-66aa8e300bbf",
+      "sessionTitle": "查找独立音乐网站",
+      "workspaceLabel": "yz-web",
+      "cpu": 0.6037976559429385,
+      "memoryBytes": 213860352,
+      "confidence": "high"
+    },
     {
       "agentId": "f9e477ceeca9a4d7",
       "processName": "SkyComputerUseClient",
@@ -24,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.7530512538535037,
-      "memoryBytes": 30621696,
+      "cpu": 0.7535482827120655,
+      "memoryBytes": 30244864,
       "confidence": "low"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.7494276082135968,
-      "memoryBytes": 30588928,
+      "cpu": 0.7499078659967101,
+      "memoryBytes": 30261248,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.9028991439605616,
-      "memoryBytes": 30834688,
+      "cpu": 0.903012282751053,
+      "memoryBytes": 30441472,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.8913779483128316,
-      "memoryBytes": 30851072,
+      "cpu": 0.8917660105350707,
+      "memoryBytes": 30474240,
       "confidence": "low"
     },
     {
@@ -68,19 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 0.7486910042905971,
-      "memoryBytes": 30638080,
-      "confidence": "low"
-    },
-    {
-      "agentId": "0b3762515b3899ec",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.6018800681782965,
-      "memoryBytes": 138117120,
+      "cpu": 0.7491683360375632,
+      "memoryBytes": 30277632,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 1.0191518467852256,
-      "memoryBytes": 36536320,
+      "cpu": 0.9894636015325672,
+      "memoryBytes": 33685504,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.770",
-      "cpu": 1.0140056022408963,
-      "memoryBytes": 36634624,
+      "cpu": 0.9863680623174295,
+      "memoryBytes": 33751040,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 430429575,
-      "inputTokens": 429061301,
-      "outputTokens": 1368274,
-      "costUSD": 391.01341299999996
+      "totalTokens": 431389099,
+      "inputTokens": 430017251,
+      "outputTokens": 1371848,
+      "costUSD": 392.52559899999994
     },
     {
       "model": "gpt-5.4",
@@ -134,5 +134,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-07T17:47:42.719Z"
+  "receivedAt": "2026-05-07T17:52:57.019Z"
 }
