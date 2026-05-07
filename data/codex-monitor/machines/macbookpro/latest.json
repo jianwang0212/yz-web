@@ -1,118 +1,125 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-04-23T14:34:59.023Z",
+  "syncedAt": "2026-05-07T02:53:58.200Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 18,
-    "todayTokens": 112153003,
-    "weekTokens": 192796109,
-    "totalTokens": 200346632,
-    "estimatedCostUsd": 94.31214265,
-    "cpu": 31.35059125122228,
-    "memoryBytes": 3948167168
+    "activeAgents": 8,
+    "todayTokens": 81578010,
+    "weekTokens": 413734789,
+    "totalTokens": 640913956,
+    "estimatedCostUsd": 491.83591415,
+    "cpu": 12.882001917082684,
+    "memoryBytes": 2115502080
   },
   "agents": [
     {
-      "agentId": "23a8194b33cfce7c",
+      "agentId": "e461da764b0a3dbc",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "019dba58-2835-7f30-a4a8-e6be781cc503",
-      "sessionTitle": "优化修改并展示",
-      "workspaceLabel": "codex-monitor",
-      "cpu": 4.071803184895585,
-      "memoryBytes": 696352768,
+      "status": "idle",
+      "sessionId": "019dfcef-dd57-7100-930e-66aa8e300bbf",
+      "sessionTitle": "查找独立音乐网站",
+      "workspaceLabel": "yz-web",
+      "cpu": 0.5577982738530208,
+      "memoryBytes": 206372864,
       "confidence": "high"
     },
     {
-      "agentId": "257aaa2729fc192a",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019dba5b-6264-7973-bf4e-dfe71aed7c21",
-      "sessionTitle": "推送到 git",
-      "workspaceLabel": "social-auto-poster",
-      "cpu": 4.071803184895585,
-      "memoryBytes": 696352768,
-      "confidence": "high"
-    },
-    {
-      "agentId": "81a20725bbbace99",
+      "agentId": "f9e477ceeca9a4d7",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.7877003282486966,
-      "memoryBytes": 20824064,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.6099518459069021,
+      "memoryBytes": 30982144,
       "confidence": "low"
     },
     {
-      "agentId": "35b9aba38ea18db1",
+      "agentId": "b4a7c125e2bf7021",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.7338282078472959,
-      "memoryBytes": 36438016,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.6102310000697885,
+      "memoryBytes": 30949376,
       "confidence": "low"
     },
     {
-      "agentId": "bcbb6397caaf58c9",
+      "agentId": "6802f32877694b54",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.7274180655475619,
-      "memoryBytes": 17448960,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.8566433566433567,
+      "memoryBytes": 34045952,
       "confidence": "low"
     },
     {
-      "agentId": "a6d3d6d330fb5b41",
+      "agentId": "820514426d2416a2",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.7239173884077281,
-      "memoryBytes": 17334272,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.8507985975847293,
+      "memoryBytes": 31768576,
       "confidence": "low"
     },
     {
-      "agentId": "8d1aac78de3b93b8",
+      "agentId": "1485cf64f3d7ba87",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.7198871650211566,
-      "memoryBytes": 17268736,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.6040329159720498,
+      "memoryBytes": 30998528,
       "confidence": "low"
     },
     {
-      "agentId": "f426884abed4e84f",
+      "agentId": "2fdc223f821baab7",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.755",
-      "cpu": 0.7156585641605426,
-      "memoryBytes": 17399808,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.44791118901548355,
+      "memoryBytes": 31391744,
+      "confidence": "low"
+    },
+    {
+      "agentId": "9a188070dfdb2d54",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.770",
+      "cpu": 0.6901439707065383,
+      "memoryBytes": 31227904,
       "confidence": "low"
     }
   ],
   "models": [
     {
+      "model": "gpt-5.5",
+      "totalTokens": 389641359,
+      "inputTokens": 388392202,
+      "outputTokens": 1249157,
+      "costUSD": 358.700168
+    },
+    {
       "model": "gpt-5.4",
-      "totalTokens": 196833677,
-      "inputTokens": 195951744,
-      "outputTokens": 881933,
-      "costUSD": 92.01398699999999
+      "totalTokens": 247759642,
+      "inputTokens": 246585543,
+      "outputTokens": 1174099,
+      "costUSD": 130.8375905
     },
     {
       "model": "gpt-5.3-codex",
@@ -127,5 +134,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-04-23T14:34:59.659Z"
+  "receivedAt": "2026-05-07T02:53:59.987Z"
 }
