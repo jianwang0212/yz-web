@@ -19,7 +19,7 @@
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
             </div>
-            <ul class="nav-menu">
+            <ul id="primary-navigation" class="nav-menu">
                 <li><a href="index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
@@ -46,7 +46,7 @@
                 <button id="lang-zh" class="lang-btn active">中文</button>
                 <button id="lang-en" class="lang-btn">English</button>
             </div>
-            <div class="hamburger">
+            <div class="hamburger" role="button" tabindex="0" aria-controls="primary-navigation" aria-expanded="false" aria-label="打开导航菜单">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -55,44 +55,113 @@
     </nav>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects" style="padding-top: 100px; padding-bottom: 80px;">
+    <section id="projects" class="projects projects-page">
         <div class="container">
-            <h2 class="section-title" data-i18n="projects.title">项目 / Projects</h2>
-            
-            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <a href="/projects/vipassana" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.vipassana_title">内观（Vipassana）</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.vipassana_desc">关于内观冥想实践的思考与记录</p>
-                </a>
-                <a href="/projects/apartment-sublet" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.sublet_title">波士顿公寓转租（给下一位租客）</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.sublet_desc">步行伯克利约 10 分钟 · 2026 年 5 月 20 日起 · 二手清单与入住福利</p>
-                </a>
-                <a href="/projects/interval-quiz" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.interval_quiz_title">音程测验（Interval Quiz）</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.interval_quiz_desc">扩展和弦音程：给定音，猜主音 · 中英双语 · 错题贴纸</p>
-                </a>
-                <a href="/projects/degree-quiz" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.degree_quiz_title">调号级数测试</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.degree_quiz_desc">12 个调可选：给定调和音，判断是第几级 · 中英双语 · 错题贴纸板</p>
-                </a>
-                <a href="/projects/chord-trainer" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.chord_trainer_title">和弦训练（Chord Trainer）</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.chord_trainer_desc">MIDI 输入和弦识别 · 语音播报 · 错题复习队列 · 中英双语界面</p>
-                </a>
-                <a href="/projects/left-hand-voicing-trainer" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.left_hand_title">左手 Voicing 训练</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.left_hand_desc">只练 maj7 / m7 · 按最低音区间匹配左手 voicing · MIDI 判题</p>
-                </a>
-                <a href="codex-monitor.html" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);">Codex 使用监控后台</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">本地 MacBookPro 公开摘要页：每 5 分钟同步一次活跃 agent、token、CPU、内存和趋势数据到网站</p>
-                </a>
-                <a href="/projects/socialpulse" class="project-card" style="display: block; padding: 2rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: white;">
-                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);" data-i18n="projects.socialpulse_title">SocialPulse 发布检查台</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" data-i18n="projects.socialpulse_desc">五平台发布状态和最近标题：Instagram、知乎、Reddit、小红书、X 的实时检查面板</p>
-                </a>
-            </div>
+            <header class="projects-page-header">
+                <p class="projects-eyebrow" data-i18n="projects.kicker">项目索引</p>
+                <h2 class="section-title" data-i18n="projects.title">项目 / Projects</h2>
+                <p class="projects-intro" data-i18n="projects.intro">公开作品放在前面，内部工具单独收纳，方便访客快速理解每个入口的用途。</p>
+            </header>
+
+            <section class="project-group" aria-labelledby="public-work-title">
+                <div class="project-group-header">
+                    <p class="projects-eyebrow" data-i18n="projects.public.kicker">Public Work</p>
+                    <h3 id="public-work-title" data-i18n="projects.public.title">公开作品</h3>
+                    <p data-i18n="projects.public.desc">可以直接阅读、使用或分享的文章、音乐训练工具和临时公开页面。</p>
+                </div>
+
+                <div class="projects-grid">
+                    <a href="/projects/vipassana" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.essay">文章</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.vipassana_title">内观（Vipassana）</h3>
+                            <p class="project-description" data-i18n="projects.vipassana_desc">关于内观冥想实践的思考与记录</p>
+                        </div>
+                    </a>
+                    <a href="/projects/apartment-sublet" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.temporary">临时公开页</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.sublet_title">波士顿公寓转租（给下一位租客）</h3>
+                            <p class="project-description" data-i18n="projects.sublet_desc">步行伯克利约 10 分钟 · 2026 年 5 月 20 日起 · 二手清单与入住福利</p>
+                        </div>
+                    </a>
+                    <a href="/projects/interval-quiz" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
+                                <span class="tag" data-i18n="projects.tag.interactive">互动练习</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.interval_quiz_title">音程测验（Interval Quiz）</h3>
+                            <p class="project-description" data-i18n="projects.interval_quiz_desc">扩展和弦音程：给定音，猜主音 · 中英双语 · 错题贴纸</p>
+                        </div>
+                    </a>
+                    <a href="/projects/degree-quiz" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
+                                <span class="tag" data-i18n="projects.tag.interactive">互动练习</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.degree_quiz_title">调号级数测试</h3>
+                            <p class="project-description" data-i18n="projects.degree_quiz_desc">12 个调可选：给定调和音，判断是第几级 · 中英双语 · 错题贴纸板</p>
+                        </div>
+                    </a>
+                    <a href="/projects/chord-trainer" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
+                                <span class="tag" data-i18n="projects.tag.interactive">互动练习</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.chord_trainer_title">和弦训练（Chord Trainer）</h3>
+                            <p class="project-description" data-i18n="projects.chord_trainer_desc">MIDI 输入和弦识别 · 语音播报 · 错题复习队列 · 中英双语界面</p>
+                        </div>
+                    </a>
+                    <a href="/projects/left-hand-voicing-trainer" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
+                                <span class="tag" data-i18n="projects.tag.interactive">互动练习</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.left_hand_title">左手 Voicing 训练</h3>
+                            <p class="project-description" data-i18n="projects.left_hand_desc">只练 maj7 / m7 · 按最低音区间匹配左手 voicing · MIDI 判题</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="project-group project-group-muted" aria-labelledby="operations-title">
+                <div class="project-group-header">
+                    <p class="projects-eyebrow" data-i18n="projects.operations.kicker">Operations</p>
+                    <h3 id="operations-title" data-i18n="projects.operations.title">私人工具后台</h3>
+                    <p data-i18n="projects.operations.desc">用于同步、监控和发布运营的工作台；保留公开入口，但降低视觉优先级。</p>
+                </div>
+
+                <div class="projects-grid projects-grid-compact">
+                    <a href="codex-monitor.html" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.operations">内部工具</span>
+                                <span class="tag" data-i18n="projects.tag.dashboard">仪表盘</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.codex_title">Codex 使用监控后台</h3>
+                            <p class="project-description" data-i18n="projects.codex_desc">本地 MacBookPro 公开摘要页：每 5 分钟同步一次活跃 agent、token、CPU、内存和趋势数据到网站</p>
+                        </div>
+                    </a>
+                    <a href="/projects/socialpulse" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.operations">内部工具</span>
+                                <span class="tag" data-i18n="projects.tag.publishing">发布检查</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.socialpulse_title">SocialPulse 发布检查台</h3>
+                            <p class="project-description" data-i18n="projects.socialpulse_desc">五平台发布状态、库存和最近标题：Instagram、X、Reddit、小红书、抖音的运营检查面板</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
         </div>
     </section>
 

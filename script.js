@@ -35,6 +35,21 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger && navMenu) {
+    if (!navMenu.id) {
+        navMenu.id = 'primary-navigation';
+    }
+
+    if (!hamburger.hasAttribute('role')) {
+        hamburger.setAttribute('role', 'button');
+    }
+
+    if (!hamburger.hasAttribute('tabindex')) {
+        hamburger.setAttribute('tabindex', '0');
+    }
+
+    hamburger.setAttribute('aria-controls', navMenu.id);
+    hamburger.setAttribute('aria-label', hamburger.getAttribute('aria-label') || '打开导航菜单');
+
     const toggleMobileMenu = () => {
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
