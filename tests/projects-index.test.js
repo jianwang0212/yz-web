@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 const projectsHtml = readFileSync(new URL('../projects.html', import.meta.url), 'utf8');
 const i18nJs = readFileSync(new URL('../i18n.js', import.meta.url), 'utf8');
 const scriptJs = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
+const stylesCss = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
 function expectIncludes(source, value, message) {
   assert.ok(source.includes(value), message || `Expected source to include ${value}`);
@@ -51,4 +52,11 @@ test('mobile navigation fills missing accessibility attributes', () => {
   expectIncludes(scriptJs, "hamburger.setAttribute('role', 'button')");
   expectIncludes(scriptJs, "hamburger.setAttribute('tabindex', '0')");
   expectIncludes(scriptJs, "hamburger.setAttribute('aria-controls', navMenu.id)");
+});
+
+test('project cards keep whole-card links without visible text underlines', () => {
+  expectIncludes(stylesCss, '.projects-page .project-card *');
+  expectIncludes(stylesCss, 'text-decoration: none !important;');
+  expectIncludes(stylesCss, 'box-shadow: var(--shadow-md);');
+  expectIncludes(stylesCss, 'transform: translateY(-5px);');
 });
