@@ -85,3 +85,16 @@ test('home resume section appears before long-term records', () => {
   expectIncludes(i18nJs, "'homeResume.title': '量化交易、创业与音乐创作的交叉履历'");
   expectIncludes(i18nJs, "'homeResume.link': 'View Full Resume'");
 });
+
+test('home page features Snow White before resume records', () => {
+  const snowIndex = indexHtml.indexOf('<section id="home-snow" class="home-snow-feature"');
+  const resumeIndex = indexHtml.indexOf('<section id="home-resume" class="home-resume">');
+  assert.ok(snowIndex > -1, 'Expected Snow White feature section');
+  assert.ok(resumeIndex > snowIndex, 'Expected Snow White feature before resume section');
+
+  expectIncludes(indexHtml, 'Snow White / 白雪公主');
+  expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
+  expectIncludes(indexHtml, 'href="/snow-white" class="home-snow-primary"');
+  expectIncludes(indexHtml, 'href="/snow-white#resources" class="home-snow-secondary"');
+  expectIncludes(indexHtml, 'assets/snow-white/thumbs/snow-white-full-score.pdf.png');
+});
