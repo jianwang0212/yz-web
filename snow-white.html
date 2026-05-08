@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Snow White / 白雪公主 - 银子 Zi Yin bilingual production archive">
+    <title>Snow White / 白雪公主 - 银子 Zi Yin</title>
+    <link rel="stylesheet" href="styles.css?v=20260507-consistent-nav">
+    <link rel="stylesheet" href="snow-white.css?v=20260507-consistent-nav">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="snow-white-page">
+    <nav class="navbar snow-nav">
+        <div class="container">
+            <a class="nav-brand site-title snow-brand" href="index.html" aria-label="Back to Zi Yin homepage">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </a>
+            <ul class="nav-menu" id="primary-navigation">
+                <li><a href="index.html" class="nav-link">首页 Home</a></li>
+                <li><a href="works.html">作品 Works</a></li>
+                <li><a href="#story">故事 Story</a></li>
+                <li><a href="#videos">视频 Video</a></li>
+                <li><a href="#credits">制作名单 Credits</a></li>
+                <li><a href="#resources">资料 Files</a></li>
+            </ul>
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单 / Open navigation" aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="snow-hero" aria-labelledby="snow-title">
+            <div class="snow-hero-shell">
+                <div class="snow-hero-copy">
+                    <p class="snow-kicker">原创制作档案 / Original production archive</p>
+                    <h1 id="snow-title">Snow White <span>白雪公主</span></h1>
+                    <p class="snow-subtitle">
+                        <span lang="zh-CN">一首由银子演唱、作曲并制作的中文电影感流行作品，用童话记忆、现场乐队、爵士和声与管乐色彩讲述等待、距离和承诺。</span>
+                        <span lang="en">A cinematic Chinese pop song performed, composed, and produced by Zi Yin, built from fairy-tale memory, live band energy, jazz harmony, and horn/woodwind color.</span>
+                    </p>
+
+                    <div class="snow-meta-grid" aria-label="Project metadata / 项目信息">
+                        <div>
+                            <span>Artist / 演唱</span>
+                            <strong>银子 Zi Yin</strong>
+                        </div>
+                        <div>
+                            <span>Composer / 作曲</span>
+                            <strong>银子 Zi Yin</strong>
+                        </div>
+                        <div>
+                            <span>Lyrics / 作词</span>
+                            <strong>Ge Dai 和 银子 Zi Yin</strong>
+                        </div>
+                        <div>
+                            <span>Mastered / 母带</span>
+                            <strong>May 5, 2026</strong>
+                        </div>
+                    </div>
+
+                    <div class="snow-audio-panel" aria-label="Snow White audio player / 白雪公主播放器">
+                        <div class="snow-audio-header">
+                            <div>
+                                <span>Rough mix / 粗混</span>
+                                <strong>4:35</strong>
+                            </div>
+                            <div class="snow-audio-actions">
+                                <a href="assets/snow-white/snow-white-rough-mix.mp3" download>下载 MP3 / Download</a>
+                                <a href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer">B站合集 / Bilibili</a>
+                            </div>
+                        </div>
+                        <canvas id="snow-visualizer" width="960" height="180" aria-hidden="true"></canvas>
+                        <audio id="snow-audio" controls preload="metadata" src="assets/snow-white/snow-white-rough-mix.mp3"></audio>
+                    </div>
+                </div>
+
+                <div class="snow-hero-art" aria-label="Snow White visual score collage / 白雪公主曲谱视觉">
+                    <div class="score-staff score-staff-one"></div>
+                    <div class="score-staff score-staff-two"></div>
+                    <figure class="score-frame score-frame-main">
+                        <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Snow White full score preview">
+                    </figure>
+                    <figure class="score-frame score-frame-side">
+                        <img src="assets/snow-white/thumbs/snow-white-production-notes.pdf.png" alt="Snow White production notes preview">
+                    </figure>
+                    <a class="hero-season-card" href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer" aria-label="Open Bilibili Snow White making season">
+                        <span>Bilibili Season / B站合集</span>
+                        <strong>原创-白雪公主的制作</strong>
+                        <small>3 videos · updated 05-01</small>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="snow-section snow-overview" aria-labelledby="overview-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">公开资料 / Public release files</p>
+                <h2 id="overview-title">作品资料集中在这里。 / Song materials, collected in one place.</h2>
+            </div>
+            <div class="overview-grid overview-grid-single">
+                <article>
+                    <span>04</span>
+                    <h3>资料 / Files</h3>
+                    <p>曲谱只公开第一页预览；完整总谱与分谱需要访问密码下载。歌词、制作名单、制作笔记、预算和 B站制作合集仍在页面下方公开。<br>Only the first score page is public. Full score and parts require an access code to download. Lyrics, credits, production notes, budget, and the Bilibili making-of season remain available below.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="story" class="snow-section snow-story" aria-labelledby="story-title">
+            <div class="story-copy">
+                <p class="snow-kicker">创作故事 / Song story</p>
+                <h2 id="story-title">白雪、公主、白裙，与没有说出口的诺言。 / Snow White, a white dress, and the promises left unsaid.</h2>
+                <p>
+                    <span lang="zh-CN">最初的制作笔记里，这首歌从对白色的理解开始：看到白色长裙照片时的感受、两个人在一起的回忆，以及想把私人记忆放进童话叙事里的冲动。于是“白雪公主”不是字面角色，而是等待、回忆、距离和承诺的象征。</span>
+                    <span lang="en">In the earliest production notes, the song begins with an understanding of white: the feeling of seeing a white-dress photo, memories of time together, and the impulse to place a private memory inside a fairy-tale frame. Snow White becomes less a literal character than a symbol of waiting, memory, distance, and promise.</span>
+                </p>
+                <p>
+                    <span lang="zh-CN">音乐的参考方向来自中文流行抒情歌，同时保留更大的电影感编制：钢琴和弦乐先把故事拉开，随后现场乐队、吉他、鼓、贝斯、木管和铜管把情绪推向更宽的副歌。</span>
+                    <span lang="en">The musical references sit in Chinese pop ballad language while opening into a larger cinematic arrangement: piano and strings begin the story, then live band, guitar, drums, bass, woodwinds, and brass push the emotion toward a wider chorus.</span>
+                </p>
+            </div>
+            <div class="story-stats" aria-label="Production statistics / 制作统计">
+                <div><strong>13</strong><span>份曲谱与分谱 / score files and parts</span></div>
+                <div><strong>$30,000</strong><span>项目预算 / project budget</span></div>
+                <div><strong>Studio 1</strong><span>录音与母带 / recording and mastering</span></div>
+            </div>
+        </section>
+
+        <section class="snow-section snow-notes" aria-labelledby="notes-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">制作笔记 / Production notes</p>
+                <h2 id="notes-title">从情绪路径到钢琴编配。 / From emotional path to piano arranging.</h2>
+            </div>
+            <div class="notes-grid">
+                <article>
+                    <h3>情绪路径 / Emotional path</h3>
+                    <p>笔记把每个段落标成不同强度：第一段更平静，第二段逐渐增加动态，副歌和桥段把故事推到更高张力。<br>The notes map each section by emotional intensity: the first verse stays calmer, the second verse grows dynamically, and the chorus and bridge push the story toward greater tension.</p>
+                </article>
+                <article>
+                    <h3>钢琴编配 / Piano arranging</h3>
+                    <p>钢琴草稿强调固定动机、弱拍强化、左手切拍、经过低音、副旋律线，以及 16 分音符和三连音带来的情绪推动。<br>The piano sketch focuses on fixed motifs, offbeat emphasis, left-hand syncopation, passing bass motion, countermelody, and 16th-note or triplet motion for emotional lift.</p>
+                </article>
+                <article>
+                    <h3>混音复盘 / Mixing review</h3>
+                    <p>后期笔记提醒先把 vocal、drums、piano 的基本平衡做好，再处理 reverb、compression、panning 和 guitar focal points。<br>The later mixing notes return to the core balance of vocal, drums, and piano before refining reverb, compression, panning, and guitar focal points.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="videos" class="snow-section snow-videos" aria-labelledby="videos-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">视频合集 / Video season</p>
+                <h2 id="videos-title">原创-白雪公主的制作 / Making Snow White</h2>
+                <p class="section-lede">B站合集目前有 3 个视频，更新到 2026-05-01。这个模块把每集内容按创作顺序整理出来，点击卡片可打开对应视频。<br>The Bilibili season currently has 3 videos, updated through 2026-05-01. Each card below links to the original episode.</p>
+            </div>
+            <div class="season-layout">
+                <a class="season-feature" href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer">
+                    <div class="season-feature-media">
+                        <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Snow White video season preview">
+                        <span class="play-mark" aria-hidden="true"></span>
+                    </div>
+                    <div class="season-feature-copy">
+                        <span>Bilibili · 3 videos</span>
+                        <strong>从一首原创歌的灵感，到 Demo、Leadsheet、编曲层次和动态。</strong>
+                        <small>Songwriting, demo building, lead sheet, arrangement layers, and dynamics.</small>
+                    </div>
+                </a>
+
+                <div class="episode-grid">
+                    <a class="episode-card" href="https://www.bilibili.com/video/BV1jcdyBdE5o/" target="_blank" rel="noopener noreferrer">
+                        <figure>
+                            <img src="assets/snow-white/thumbs/snow-white-production-notes.pdf.png" alt="E1 songwriting preview">
+                            <span class="play-mark" aria-hidden="true"></span>
+                            <time>01:48</time>
+                        </figure>
+                        <div class="episode-meta"><span>E1</span><span>04-20</span><span>110 plays</span></div>
+                        <h3>一首原创歌是怎么诞生的？《白雪公主》E1｜Songwriting：旋律、灵感和作词作曲的起点</h3>
+                        <p>内容：从“白色”和童话意象出发，讲旋律、灵感、作词作曲最初如何成形。<br>Basic content: the songwriting origin, including melody, inspiration, and the first lyric/composition decisions.</p>
+                    </a>
+
+                    <a class="episode-card" href="https://www.bilibili.com/video/BV18Bd1BJE72/" target="_blank" rel="noopener noreferrer">
+                        <figure>
+                            <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="E2 demo and lead sheet preview">
+                            <span class="play-mark" aria-hidden="true"></span>
+                            <time>02:00</time>
+                        </figure>
+                        <div class="episode-meta"><span>E2</span><span>04-20</span><span>57 plays</span></div>
+                        <h3>《白雪公主》一首原创是怎么被搭成 Demo 的？E2｜Logic、Leadsheet 和编曲方向落地</h3>
+                        <p>内容：把原创想法落进 Logic 工程、Lead Sheet 和初步编曲方向，展示 Demo 是怎么搭起来的。<br>Basic content: turning the song idea into a Logic demo, lead sheet, and concrete arrangement direction.</p>
+                    </a>
+
+                    <a class="episode-card" href="https://www.bilibili.com/video/BV1HFRgBvEm4/" target="_blank" rel="noopener noreferrer">
+                        <figure>
+                            <img src="assets/snow-white/thumbs/snow-white-credits.pdf.png" alt="E3 arrangement layers preview">
+                            <span class="play-mark" aria-hidden="true"></span>
+                            <time>01:40</time>
+                        </figure>
+                        <div class="episode-meta"><span>E3</span><span>05-01</span><span>150 plays</span></div>
+                        <h3>《白雪公主》E3：编曲不是叠乐器，而是让层次和动态成立</h3>
+                        <p>内容：讲编曲的层次、动态和乐器功能，重点不是堆叠音色，而是让歌曲推进成立。<br>Basic content: arrangement layers and dynamics, focusing on musical function rather than simply adding instruments.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="snow-section snow-lyrics" aria-labelledby="lyrics-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">歌词 / Lyrics</p>
+                <h2 id="lyrics-title">中文歌词 / English translation</h2>
+            </div>
+            <div class="lyrics-grid">
+                <article lang="zh-Hant">
+                    <h3>中文</h3>
+                    <p>沉睡著<br>等待花開的時間<br>誰留戀<br>魔鏡中說謊容顏<br>任歲月<br>青絲轉念飄白雪<br>卻難忘纖纖年華 初相見</p>
+                    <p>秋漸涼<br>誰在提筆醉詩篇<br>江山遠<br>鮮衣怒馬的少年<br>是否已忘記<br>曾許拔劍為紅顏<br>待何時攜手歸路 隱田園</p>
+                    <p>行囊裝滿<br>無處安放的信箋<br>眼裡藏著<br>欲言又止的思念<br>大聲呼喚<br>你是否能聽見<br>這是未曾說出的諾言</p>
+                    <p>白雪公主<br>還沉睡在夢裡面<br>風雪之間<br>誰還記得諾言<br>時間走遠<br>只剩你的容顏<br>我在原點<br>等你醒來那天</p>
+                    <p>白雪公主<br>世界早已改變<br>多少思念<br>落在風雪裡面<br>如果夢境<br>能帶你回從前<br>我願再等<br>直到你出現</p>
+                </article>
+                <article lang="en">
+                    <h3>English</h3>
+                    <p>Sleeping still<br>Waiting for the flowers to bloom<br>Who remains<br>In the mirror's lying truth<br>Through the years<br>Black hair fades into white snow<br>Yet I remember<br>The first time we met</p>
+                    <p>Autumn falls<br>Who writes poems in drunken dreams<br>Far away<br>Riding youth in golden scenes<br>Have you now<br>Forgot the vow you once made<br>Draw your sword<br>For the one you would save</p>
+                    <p>My bag is filled<br>With letters I can't send away<br>In my eyes<br>All the words I couldn't say<br>Calling out<br>Can you hear me through the pain<br>This is all<br>The promise left unspoken</p>
+                    <p>Snow White still<br>Sleeping deep inside her dreams<br>In the storm<br>Who still holds onto the dream<br>Time moves on<br>Only your face remains<br>I'll be here<br>Waiting for you again</p>
+                    <p>Snow White now<br>The world has changed so much<br>All these thoughts<br>Lost in wind and snow and dust<br>If this dream<br>Could bring you back in time<br>I would wait<br>Until you reappear</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="credits" class="snow-section snow-credits" aria-labelledby="credits-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">制作名单 / Credits</p>
+                <h2 id="credits-title">制作与录音信息 / Production and recording information</h2>
+            </div>
+            <div class="credits-layout">
+                <div class="credits-card">
+                    <h3>核心信息 / Core</h3>
+                    <dl>
+                        <div><dt>Song title / 歌名</dt><dd>Snow White / 白雪公主</dd></div>
+                        <div><dt>Artist / 演唱</dt><dd>银子 Zi Yin</dd></div>
+                        <div><dt>Composer / 作曲</dt><dd>银子 Zi Yin</dd></div>
+                        <div><dt>Lyrics / 作词</dt><dd>Ge Dai 和 银子 Zi Yin</dd></div>
+                        <div><dt>Producer / 制作人</dt><dd>银子 Zi Yin</dd></div>
+                        <div><dt>Arranger / 编曲</dt><dd>银子 Zi Yin</dd></div>
+                    </dl>
+                </div>
+                <div class="credits-card">
+                    <h3>时间线 / Timeline</h3>
+                    <dl>
+                        <div><dt>Tracking / 录音</dt><dd>Mar 26, 2026</dd></div>
+                        <div><dt>Overdubs / 加录</dt><dd>Apr 5, 2026</dd></div>
+                        <div><dt>Mixing / 混音</dt><dd>Apr 5, 2026</dd></div>
+                        <div><dt>Mastering / 母带</dt><dd>May 5, 2026</dd></div>
+                        <div><dt>Studio / 录音棚</dt><dd>Berklee Studio 1</dd></div>
+                    </dl>
+                </div>
+                <div class="credits-card">
+                    <h3>技术团队 / Technical</h3>
+                    <dl>
+                        <div><dt>Recording engineer / 录音师</dt><dd>Jianyang Li</dd></div>
+                        <div><dt>Overdub engineer / 加录录音师</dt><dd>Jianyang Li</dd></div>
+                        <div><dt>Mix engineer / 混音师</dt><dd>银子 Zi Yin</dd></div>
+                        <div><dt>Assistant engineer / 助理录音师</dt><dd>Sean Zhou</dd></div>
+                        <div><dt>Mastering engineer / 母带师</dt><dd>银子 Zi Yin</dd></div>
+                    </dl>
+                </div>
+                <div class="credits-card credits-card-wide">
+                    <h3>乐手与鸣谢 / Musicians and thanks</h3>
+                    <ul class="musician-list">
+                        <li><span>Lead vocal / 主唱</span><strong>银子 Zi Yin</strong></li>
+                        <li><span>BGV / 和声</span><strong>银子 Zi Yin</strong></li>
+                        <li><span>Drums / percussion / 鼓与打击乐</span><strong>Zhitang Zeng</strong></li>
+                        <li><span>Bass / 贝斯</span><strong>Tong Hu</strong></li>
+                        <li><span>Electric guitar / 电吉他</span><strong>Daoge</strong></li>
+                        <li><span>Electric piano / 电钢琴</span><strong>Kevin Yuen</strong></li>
+                        <li><span>Flute / 长笛</span><strong>Doris Jiao</strong></li>
+                        <li><span>Trumpet / 小号</span><strong>Oscar Tsui</strong></li>
+                        <li><span>Alto sax / 中音萨克斯</span><strong>Keye Xin</strong></li>
+                        <li><span>Tenor sax / 次中音萨克斯</span><strong>Grady O'Connor</strong></li>
+                        <li><span>Trombone / 长号</span><strong>Zane Larsen-Kuerth</strong></li>
+                        <li><span>Special thanks / 特别鸣谢</span><strong>Yuheng Zhu</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="snow-section snow-resources" aria-labelledby="resources-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">资料 / Resources</p>
+                <h2 id="resources-title">曲谱、文档与制作文件 / Score, documents, and production files</h2>
+            </div>
+            <div class="resource-layout">
+                <article class="resource-feature resource-preview">
+                    <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Full score preview / 全谱预览">
+                    <div>
+                        <span>第一页预览 / First-page preview</span>
+                        <strong>全谱 / Full Score</strong>
+                        <button class="resource-download-button" type="button" data-protected-file="full-score" data-download-label="Full Score / 全谱">下载完整总谱 / Download full score</button>
+                    </div>
+                </article>
+                <div class="resource-list">
+                    <button type="button" data-protected-file="lead-sheet" data-download-label="Lead Sheet / 主旋律谱"><span>Locked PDF</span> Lead Sheet / 主旋律谱</button>
+                    <button type="button" data-protected-file="vocal-score" data-download-label="Vocal Score / 人声谱"><span>Locked PDF</span> Vocal Score / 人声谱</button>
+                    <a href="assets/snow-white/snow-white-lyrics.pdf" target="_blank" rel="noopener noreferrer"><span>PDF</span> Lyrics / 歌词</a>
+                    <a href="assets/snow-white/snow-white-credits.pdf" target="_blank" rel="noopener noreferrer"><span>PDF</span> Credit List / 制作名单</a>
+                    <button type="button" data-protected-file="charts" data-download-label="Charts / 分谱图"><span>Locked PDF</span> Charts / 分谱图</button>
+                    <a href="assets/snow-white/snow-white-production-notes.pdf" target="_blank" rel="noopener noreferrer"><span>PDF</span> Production Notes / 制作笔记</a>
+                    <button type="button" data-protected-file="piano-arrangement" data-download-label="Piano Arrangement / 钢琴编配"><span>Locked PDF</span> Piano Arrangement / 钢琴编配</button>
+                    <a href="assets/snow-white/snow-white-budget.xlsx"><span>XLSX</span> Budget / 预算</a>
+                    <a href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer"><span>Bilibili</span> B站合集 / Season</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="snow-download-modal" id="snow-download-modal" hidden>
+        <div class="snow-download-backdrop" data-snow-download-close></div>
+        <form class="snow-download-dialog" id="snow-download-form" aria-labelledby="snow-download-title">
+            <button class="snow-download-close" type="button" data-snow-download-close aria-label="Close password dialog">×</button>
+            <p class="snow-kicker">密码下载 / Protected download</p>
+            <h2 id="snow-download-title">输入访问密码 / Enter access code</h2>
+            <p class="snow-download-target" id="snow-download-target">Full Score / 全谱</p>
+            <label for="snow-download-password">访问密码 / Access code</label>
+            <input id="snow-download-password" name="password" type="password" autocomplete="current-password" required>
+            <button class="snow-download-submit" type="submit">下载 / Download</button>
+            <p class="snow-download-status" id="snow-download-status" role="alert"></p>
+        </form>
+    </div>
+
+    <footer class="footer snow-footer">
+        <div class="container">
+            <p>&copy; Zi Yin / 银子</p>
+            <div class="footer-links">
+                <a href="index.html">首页 / Homepage</a>
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+    <script src="/site-nav.js?v=20260507-consistent-nav"></script>
+    <script src="/i18n.js?v=20260507-lang-toggle-fix"></script>
+
+    <script src="script.js" defer></script>
+    <script src="snow-white.js?v=20260507-lang-toggle-fix" defer></script>
+</body>
+</html>

@@ -3931,6 +3931,159 @@ section {
     background: rgba(255, 255, 255, 0.9) !important;
 }
 
+.works-snow-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+    gap: 28px;
+    align-items: center;
+    margin: 34px 0 28px;
+    padding: 30px;
+    border: 1px solid rgba(23, 19, 17, 0.12);
+    border-radius: 8px;
+    background:
+        linear-gradient(120deg, rgba(255, 250, 242, 0.95), rgba(255, 255, 255, 0.9)),
+        repeating-linear-gradient(90deg, rgba(30, 111, 97, 0.1) 0, rgba(30, 111, 97, 0.1) 1px, transparent 1px, transparent 24px);
+    box-shadow: 0 24px 58px rgba(72, 54, 40, 0.12);
+    overflow: hidden;
+}
+
+.works-snow-kicker {
+    margin: 0 0 10px;
+    color: #1e6f61;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.works-snow-copy h2 {
+    margin: 0;
+    color: #171311;
+    font-size: clamp(2.1rem, 4vw, 3.5rem);
+    line-height: 1.04;
+}
+
+.works-snow-copy p:not(.works-snow-kicker) {
+    max-width: 690px;
+    margin: 14px 0 0;
+    color: #5f574f;
+    line-height: 1.72;
+}
+
+.works-snow-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.works-snow-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.78rem 1rem;
+    border-radius: 8px;
+    color: #fffaf2;
+    background: #b7372b;
+    text-decoration: none;
+    font-weight: 800;
+    box-shadow: 0 14px 30px rgba(183, 55, 43, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.works-snow-actions a + a {
+    color: #171311;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(23, 19, 17, 0.14);
+    box-shadow: none;
+}
+
+.works-snow-actions a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(183, 55, 43, 0.25);
+}
+
+.works-snow-preview {
+    position: relative;
+    min-height: 260px;
+    border: 1px solid rgba(23, 19, 17, 0.13);
+    border-radius: 8px;
+    color: #171311;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 24px 58px rgba(72, 54, 40, 0.15);
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.works-snow-preview::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 250, 242, 0.56) 46%, transparent 62%);
+    transform: translateX(-120%);
+    animation: works-snow-shimmer 7s ease-in-out infinite;
+}
+
+.works-snow-preview img {
+    width: 100%;
+    height: 210px;
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.works-snow-preview div {
+    position: relative;
+    z-index: 1;
+    padding: 18px;
+}
+
+.works-snow-preview span {
+    display: block;
+    color: #6f655c;
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.works-snow-preview strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 1.1rem;
+    line-height: 1.32;
+}
+
+.hero-training-program {
+    display: block;
+    margin-top: 0.34rem;
+}
+
+.hero--bg .metric-right .hero-training-link {
+    display: inline-block;
+    padding: 0.18rem 0.3rem;
+    color: inherit;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.hero--bg .metric-right .hero-training-link:hover,
+.hero--bg .metric-right .hero-training-link:focus-visible {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.hero--bg .metric-right .hero-training-link:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.86);
+    outline-offset: 4px;
+}
+
+.hero--bg .metric-right .hero-training-link strong {
+    color: inherit;
+}
+
 .work-link {
     background: white;
     padding: 2rem;
@@ -4003,6 +4156,35 @@ section {
 @media (max-width: 768px) {
     .works-page .video-card::before {
         opacity: 0.34;
+    }
+
+    .works-snow-feature {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+
+    .works-snow-actions a {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .works-snow-preview::after {
+        animation: none;
+    }
+
+    .works-snow-actions a:hover {
+        transform: none;
+    }
+}
+
+@keyframes works-snow-shimmer {
+    0%, 48% {
+        transform: translateX(-120%);
+    }
+
+    68%, 100% {
+        transform: translateX(120%);
     }
 }
 

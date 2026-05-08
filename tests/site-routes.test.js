@@ -6,6 +6,8 @@ import { buildVercelConfig, findRouteAlias } from '../site-routes.mjs';
 test('server route aliases cover clean project URLs', () => {
   assert.equal(findRouteAlias('/year-review'), 'year-review.html');
   assert.equal(findRouteAlias('/financial-dashboard'), 'financial-dashboard.html');
+  assert.equal(findRouteAlias('/snow-white'), 'snow-white.html');
+  assert.equal(findRouteAlias('/berklee'), 'berklee.html');
   assert.equal(findRouteAlias('/projects/socialpulse'), 'projects/socialpulse.html');
   assert.equal(findRouteAlias('/projects/interval-quiz'), 'papers/interval-quiz.html');
   assert.equal(findRouteAlias('/projects/interval-quiz.js'), 'papers/interval-quiz.js');
@@ -24,6 +26,8 @@ test('vercel config is generated from the same project route table', () => {
   const rewrites = new Map(config.rewrites.map((rewrite) => [rewrite.source, rewrite.destination]));
 
   assert.equal(rewrites.get('/projects/socialpulse'), '/projects/socialpulse.html');
+  assert.equal(rewrites.get('/snow-white'), '/snow-white.html');
+  assert.equal(rewrites.get('/berklee'), '/berklee.html');
   assert.equal(rewrites.get('/projects/chord-quiz'), '/papers/chord-quiz.html');
   assert.equal(rewrites.get('/projects/chord-trainer-assets/(.*)'), '/papers/chord-trainer-assets/$1');
   assert.ok(config.headers.some((header) => header.source === '/(.*)'));

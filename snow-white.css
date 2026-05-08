@@ -1,0 +1,1103 @@
+.snow-white-page {
+    --snow-ink: #171311;
+    --snow-muted: #6f655c;
+    --snow-paper: #fffaf2;
+    --snow-cream: #f6efe4;
+    --snow-red: #b7372b;
+    --snow-green: #1e6f61;
+    --snow-gold: #c08a2d;
+    --snow-line: rgba(23, 19, 17, 0.12);
+    --snow-shadow: 0 22px 80px rgba(72, 54, 40, 0.18);
+    background: var(--snow-paper);
+    color: var(--snow-ink);
+}
+
+html[lang="zh"] .snow-white-page [lang="en"],
+html[lang="zh-CN"] .snow-white-page [lang="en"],
+html[lang="en"] .snow-white-page [lang="zh-CN"],
+html[lang="en"] .snow-white-page [lang="zh-Hant"] {
+    display: none !important;
+}
+
+.snow-white-page .snow-nav {
+    background: rgba(255, 250, 242, 0.9);
+}
+
+.snow-white-page .snow-brand {
+    text-decoration: none;
+}
+
+.snow-hero {
+    min-height: 100vh;
+    padding: 118px 24px 58px;
+    background:
+        linear-gradient(120deg, rgba(255, 250, 242, 0.96) 0%, rgba(255, 250, 242, 0.72) 45%, rgba(255, 250, 242, 0.22) 100%),
+        url("assets/snow-white/thumbs/snow-white-production-notes.pdf.png") right 6% top 42% / min(48vw, 580px) auto no-repeat,
+        var(--snow-paper);
+}
+
+.snow-hero-shell {
+    width: min(100%, 1240px);
+    min-height: calc(100vh - 176px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
+    gap: 42px;
+    align-items: center;
+}
+
+.snow-hero-copy {
+    position: relative;
+    z-index: 2;
+}
+
+.snow-kicker {
+    margin: 0 0 14px;
+    color: var(--snow-green);
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.snow-hero h1 {
+    max-width: 720px;
+    margin: 0;
+    color: var(--snow-ink);
+    font-size: 4.8rem;
+    line-height: 0.96;
+    font-weight: 800;
+}
+
+.snow-hero h1 span {
+    display: block;
+    color: var(--snow-red);
+    font-size: 3.1rem;
+}
+
+.snow-subtitle {
+    max-width: 650px;
+    margin: 24px 0 0;
+    color: var(--snow-muted);
+    font-size: 1.18rem;
+    line-height: 1.72;
+}
+
+.snow-subtitle span,
+.story-copy p span {
+    display: block;
+}
+
+.snow-subtitle span + span,
+.story-copy p span + span {
+    margin-top: 8px;
+}
+
+.snow-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 760px;
+    margin: 30px 0 22px;
+}
+
+.snow-meta-grid div,
+.snow-audio-panel,
+.overview-grid article,
+.notes-grid article,
+.season-feature,
+.episode-card,
+.credits-card,
+.story-stats,
+.resource-list,
+.resource-feature {
+    border: 1px solid var(--snow-line);
+    background: rgba(255, 250, 242, 0.82);
+    box-shadow: var(--snow-shadow);
+    backdrop-filter: blur(18px);
+}
+
+.snow-meta-grid div {
+    min-height: 86px;
+    padding: 15px 14px;
+    border-radius: 8px;
+}
+
+.snow-meta-grid span,
+.snow-audio-header span,
+.credits-card dt,
+.resource-list span,
+.resource-feature span,
+.snow-download-dialog label {
+    display: block;
+    color: var(--snow-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.snow-meta-grid strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+.snow-audio-panel {
+    width: min(100%, 760px);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.snow-audio-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.snow-audio-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.snow-audio-header strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.25rem;
+}
+
+.snow-audio-header a {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.52rem 0.82rem;
+    border: 1px solid rgba(183, 55, 43, 0.26);
+    border-radius: 6px;
+    color: var(--snow-red);
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 800;
+}
+
+#snow-visualizer {
+    width: 100%;
+    height: 128px;
+    display: block;
+    margin: 10px 0 12px;
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(23, 19, 17, 0.04), rgba(23, 19, 17, 0.02)),
+        repeating-linear-gradient(90deg, rgba(23, 19, 17, 0.06) 0, rgba(23, 19, 17, 0.06) 1px, transparent 1px, transparent 34px);
+}
+
+.snow-audio-panel audio {
+    width: 100%;
+    display: block;
+}
+
+.snow-hero-art {
+    position: relative;
+    min-height: 610px;
+}
+
+.score-frame {
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid rgba(23, 19, 17, 0.16);
+    border-radius: 8px;
+    background: var(--snow-paper);
+    box-shadow: 0 32px 90px rgba(31, 23, 16, 0.24);
+}
+
+.score-frame::after,
+.season-feature-media::after,
+.episode-card figure::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 250, 242, 0.58) 44%, transparent 62%);
+    transform: translateX(-120%);
+    animation: snow-shimmer 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.score-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.score-frame-main {
+    top: 32px;
+    right: 16px;
+    width: min(90%, 520px);
+    aspect-ratio: 1.38;
+    transform: rotate(2deg);
+    animation: score-float-main 9s ease-in-out infinite;
+}
+
+.score-frame-side {
+    left: 0;
+    bottom: 20px;
+    width: min(54%, 290px);
+    aspect-ratio: 0.78;
+    transform: rotate(-5deg);
+    animation: score-float-side 10s ease-in-out infinite;
+}
+
+.score-staff {
+    position: absolute;
+    height: 64px;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(183, 55, 43, 0.24) 0,
+        rgba(183, 55, 43, 0.24) 1px,
+        transparent 1px,
+        transparent 13px
+    );
+    pointer-events: none;
+}
+
+.score-staff-one {
+    top: 72px;
+    left: 42px;
+    right: 18px;
+    transform: rotate(5deg);
+}
+
+.score-staff-two {
+    left: 8px;
+    right: 118px;
+    bottom: 62px;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(30, 111, 97, 0.24) 0,
+        rgba(30, 111, 97, 0.24) 1px,
+        transparent 1px,
+        transparent 13px
+    );
+    transform: rotate(-6deg);
+}
+
+.hero-season-card {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: min(72%, 360px);
+    padding: 16px;
+    border: 1px solid rgba(23, 19, 17, 0.15);
+    border-radius: 8px;
+    color: var(--snow-ink);
+    background:
+        linear-gradient(135deg, rgba(255, 250, 242, 0.88), rgba(246, 239, 228, 0.82)),
+        repeating-linear-gradient(90deg, rgba(30, 111, 97, 0.12) 0, rgba(30, 111, 97, 0.12) 1px, transparent 1px, transparent 18px);
+    box-shadow: 0 24px 70px rgba(31, 23, 16, 0.2);
+    text-decoration: none;
+    overflow: hidden;
+    animation: card-lift 8s ease-in-out infinite;
+}
+
+.hero-season-card::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 14px;
+    height: 42px;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(183, 55, 43, 0.22) 0,
+        rgba(183, 55, 43, 0.22) 1px,
+        transparent 1px,
+        transparent 10px
+    );
+    opacity: 0.7;
+}
+
+.hero-season-card span,
+.hero-season-card strong,
+.hero-season-card small {
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+
+.hero-season-card span {
+    color: var(--snow-green);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.hero-season-card strong {
+    margin-top: 42px;
+    font-size: 1.16rem;
+    line-height: 1.28;
+}
+
+.hero-season-card small {
+    margin-top: 8px;
+    color: var(--snow-muted);
+    font-weight: 700;
+}
+
+.snow-section {
+    width: min(100% - 48px, 1180px);
+    margin: 0 auto;
+    padding: 78px 0;
+}
+
+.snow-section-header {
+    max-width: 740px;
+    margin-bottom: 28px;
+}
+
+.section-lede {
+    margin: 18px 0 0;
+    color: var(--snow-muted);
+    line-height: 1.72;
+}
+
+.snow-section h2 {
+    margin: 0;
+    color: var(--snow-ink);
+    font-size: 2.55rem;
+    line-height: 1.1;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.overview-grid.overview-grid-single {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.overview-grid article,
+.notes-grid article {
+    min-height: 240px;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.overview-grid.overview-grid-single article {
+    min-height: 0;
+}
+
+.overview-grid span {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    border-radius: 50%;
+    background: var(--snow-red);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.overview-grid h3,
+.notes-grid h3,
+.credits-card h3,
+.lyrics-grid h3 {
+    margin: 0 0 12px;
+    font-size: 1.08rem;
+}
+
+.overview-grid p,
+.notes-grid p,
+.story-copy p,
+.lyrics-grid p {
+    margin: 0;
+    color: var(--snow-muted);
+    line-height: 1.72;
+}
+
+.overview-grid p + p,
+.notes-grid p + p,
+.story-copy p + p,
+.lyrics-grid p + p {
+    margin-top: 14px;
+}
+
+.snow-story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.story-copy {
+    max-width: 760px;
+}
+
+.story-copy h2 {
+    margin-bottom: 22px;
+}
+
+.story-stats {
+    display: grid;
+    align-content: center;
+    gap: 20px;
+    padding: 28px;
+    border-radius: 8px;
+}
+
+.story-stats div {
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--snow-line);
+}
+
+.story-stats div:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.story-stats strong {
+    display: block;
+    color: var(--snow-red);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.story-stats span {
+    display: block;
+    margin-top: 8px;
+    color: var(--snow-muted);
+    font-size: 0.92rem;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.notes-grid article {
+    min-height: 270px;
+}
+
+.snow-videos {
+    width: min(100% - 48px, 1240px);
+}
+
+.season-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+    gap: 16px;
+    align-items: stretch;
+}
+
+.season-feature {
+    display: grid;
+    grid-template-rows: minmax(280px, 1fr) auto;
+    border-radius: 8px;
+    color: var(--snow-ink);
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.season-feature-media,
+.episode-card figure {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    background: var(--snow-cream);
+}
+
+.season-feature-media {
+    min-height: 280px;
+}
+
+.season-feature-media img,
+.episode-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.01);
+    transition: transform 0.45s ease;
+}
+
+.season-feature-copy {
+    padding: 22px;
+}
+
+.season-feature-copy span,
+.episode-meta,
+.episode-card time {
+    color: var(--snow-muted);
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.season-feature-copy strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.32rem;
+    line-height: 1.22;
+}
+
+.season-feature-copy small {
+    display: block;
+    margin-top: 10px;
+    color: var(--snow-muted);
+    line-height: 1.5;
+}
+
+.episode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.episode-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: 170px auto auto 1fr;
+    min-width: 0;
+    border-radius: 8px;
+    color: var(--snow-ink);
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.episode-card figure {
+    height: 170px;
+}
+
+.episode-card time {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    min-height: 24px;
+    padding: 4px 7px;
+    border-radius: 6px;
+    color: var(--snow-paper);
+    background: rgba(23, 19, 17, 0.72);
+}
+
+.play-mark {
+    position: absolute;
+    left: 14px;
+    bottom: 12px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 250, 242, 0.78);
+    border-radius: 50%;
+    background: rgba(183, 55, 43, 0.9);
+    box-shadow: 0 10px 28px rgba(23, 19, 17, 0.24);
+}
+
+.play-mark::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 12px solid var(--snow-paper);
+}
+
+.episode-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 18px 0;
+}
+
+.episode-meta span {
+    padding-right: 8px;
+    border-right: 1px solid var(--snow-line);
+}
+
+.episode-meta span:last-child {
+    border-right: 0;
+}
+
+.episode-card h3 {
+    margin: 10px 18px 0;
+    font-size: 1rem;
+    line-height: 1.32;
+}
+
+.episode-card p {
+    margin: 12px 18px 20px;
+    color: var(--snow-muted);
+    line-height: 1.65;
+}
+
+.season-feature:hover img,
+.episode-card:hover img {
+    transform: scale(1.06);
+}
+
+.season-feature:hover,
+.episode-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 84px rgba(72, 54, 40, 0.24);
+}
+
+.lyrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.lyrics-grid article {
+    min-height: 520px;
+    padding: 28px;
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(255, 250, 242, 0.88), rgba(246, 239, 228, 0.88)),
+        var(--snow-cream);
+    border: 1px solid var(--snow-line);
+}
+
+.lyrics-grid article:first-child p {
+    font-size: 1.05rem;
+    line-height: 1.88;
+}
+
+.credits-layout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.credits-card {
+    padding: 22px;
+    border-radius: 8px;
+}
+
+.credits-card dl {
+    display: grid;
+    gap: 13px;
+}
+
+.credits-card dl div {
+    display: grid;
+    gap: 4px;
+}
+
+.credits-card dd {
+    margin: 0;
+    font-weight: 750;
+}
+
+.credits-card-wide {
+    grid-column: 1 / -1;
+}
+
+.musician-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.musician-list li {
+    display: flex;
+    min-height: 54px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 12px 0;
+    border-top: 1px solid var(--snow-line);
+}
+
+.musician-list li:nth-child(odd) {
+    margin-right: 18px;
+}
+
+.musician-list span {
+    color: var(--snow-muted);
+}
+
+.resource-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+    gap: 16px;
+}
+
+.resource-feature {
+    display: grid;
+    grid-template-rows: minmax(220px, 1fr) auto;
+    overflow: hidden;
+    border-radius: 8px;
+    color: var(--snow-ink);
+}
+
+.resource-feature img {
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    object-fit: cover;
+}
+
+.resource-feature div {
+    padding: 18px;
+}
+
+.resource-feature strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 1.25rem;
+}
+
+.resource-download-button,
+.snow-download-submit {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 16px;
+    border: 0;
+    border-radius: 8px;
+    color: #fffaf2;
+    background: var(--snow-red);
+    font: inherit;
+    font-weight: 850;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(183, 55, 43, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.resource-list a,
+.resource-list button {
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--snow-ink);
+    background: transparent;
+    text-decoration: none;
+    text-align: left;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.resource-list a:hover,
+.resource-list button:hover,
+.resource-feature:hover {
+    background: rgba(183, 55, 43, 0.07);
+}
+
+.resource-list button span {
+    color: var(--snow-red);
+}
+
+.resource-download-button:hover,
+.snow-download-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(183, 55, 43, 0.28);
+}
+
+.snow-download-modal[hidden] {
+    display: none;
+}
+
+.snow-download-modal {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.snow-download-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(23, 19, 17, 0.54);
+    backdrop-filter: blur(10px);
+}
+
+.snow-download-dialog {
+    position: relative;
+    width: min(100%, 430px);
+    padding: 28px;
+    border: 1px solid rgba(255, 250, 242, 0.54);
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(246, 239, 228, 0.94)),
+        var(--snow-paper);
+    box-shadow: 0 30px 90px rgba(23, 19, 17, 0.32);
+}
+
+.snow-download-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--snow-line);
+    border-radius: 50%;
+    color: var(--snow-ink);
+    background: rgba(255, 250, 242, 0.8);
+    font: inherit;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.snow-download-dialog h2 {
+    margin: 0;
+    padding-right: 34px;
+    color: var(--snow-ink);
+    font-size: 1.65rem;
+    line-height: 1.14;
+}
+
+.snow-download-target {
+    margin: 12px 0 20px;
+    color: var(--snow-muted);
+    font-weight: 800;
+}
+
+.snow-download-dialog input {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 8px;
+    padding: 0 12px;
+    border: 1px solid var(--snow-line);
+    border-radius: 8px;
+    color: var(--snow-ink);
+    background: rgba(255, 255, 255, 0.74);
+    font: inherit;
+}
+
+.snow-download-dialog input:focus,
+.resource-list button:focus,
+.resource-download-button:focus,
+.snow-download-submit:focus,
+.snow-download-close:focus {
+    outline: 3px solid rgba(30, 111, 97, 0.24);
+    outline-offset: 3px;
+}
+
+.snow-download-status {
+    min-height: 22px;
+    margin: 12px 0 0;
+    color: var(--snow-red);
+    font-size: 0.92rem;
+    font-weight: 750;
+}
+
+.snow-footer {
+    background: #171311;
+}
+
+@media (max-width: 980px) {
+    .snow-hero {
+        padding: 110px 18px 44px;
+    }
+
+    .snow-hero-shell,
+    .snow-story,
+    .season-layout,
+    .resource-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .snow-hero-shell {
+        min-height: 0;
+    }
+
+    .snow-hero-art {
+        min-height: 480px;
+    }
+
+    .overview-grid,
+    .notes-grid,
+    .episode-grid,
+    .credits-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .snow-white-page .hamburger span {
+        background: var(--snow-ink);
+    }
+
+    .snow-hero h1 {
+        font-size: 3.1rem;
+    }
+
+    .snow-hero h1 span {
+        font-size: 2.2rem;
+    }
+
+    .snow-subtitle {
+        font-size: 1rem;
+    }
+
+    .snow-meta-grid,
+    .overview-grid,
+    .notes-grid,
+    .episode-grid,
+    .lyrics-grid,
+    .credits-layout,
+    .musician-list,
+    .resource-list {
+        grid-template-columns: 1fr;
+    }
+
+    .snow-section {
+        width: min(100% - 28px, 1180px);
+        padding: 56px 0;
+    }
+
+    .snow-section h2 {
+        font-size: 2rem;
+    }
+
+    .snow-hero-art {
+        min-height: 360px;
+    }
+
+    .score-frame-main {
+        width: 94%;
+        right: 0;
+    }
+
+    .score-frame-side {
+        width: 44%;
+    }
+
+    .hero-season-card {
+        width: 76%;
+        right: 0;
+    }
+
+    .musician-list li:nth-child(odd) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .snow-hero {
+        padding-top: 94px;
+    }
+
+    .snow-audio-header {
+        display: grid;
+    }
+
+    .snow-audio-actions {
+        justify-content: flex-start;
+    }
+
+    #snow-visualizer {
+        height: 96px;
+    }
+
+    .lyrics-grid article {
+        min-height: 0;
+        padding: 22px;
+    }
+}
+
+@media (max-width: 560px) {
+    .episode-card {
+        grid-template-rows: 190px auto auto 1fr;
+    }
+
+    .episode-card figure {
+        height: 190px;
+    }
+
+    .season-feature {
+        grid-template-rows: 240px auto;
+    }
+
+    .season-feature-media {
+        min-height: 240px;
+    }
+
+    .hero-season-card {
+        left: 12px;
+        right: 12px;
+        bottom: 0;
+        width: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .score-frame,
+    .score-frame::after,
+    .season-feature-media::after,
+    .episode-card figure::after,
+    .hero-season-card {
+        animation: none;
+    }
+
+    .season-feature:hover,
+    .episode-card:hover,
+    .home-snow-primary:hover,
+    .home-snow-secondary:hover,
+    .home-snow-preview:hover {
+        transform: none;
+    }
+}
+
+@keyframes snow-shimmer {
+    0%, 48% {
+        transform: translateX(-120%);
+    }
+    68%, 100% {
+        transform: translateX(120%);
+    }
+}
+
+@keyframes score-float-main {
+    0%, 100% {
+        transform: translateY(0) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+}
+
+@keyframes score-float-side {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(8px) rotate(-4deg);
+    }
+}
+
+@keyframes card-lift {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}

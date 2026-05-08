@@ -14,10 +14,19 @@ const projectScripts = [
   ['chord-quiz.js', 'papers/chord-quiz.js']
 ];
 
+const standalonePages = [
+  ['snow-white', 'snow-white.html'],
+  ['berklee', 'berklee.html']
+];
+
 export const routeAliases = [
   ['/year-review', 'year-review.html'],
   ['/financial-dashboard', 'financial-dashboard.html'],
   ['/projects/socialpulse', 'projects/socialpulse.html'],
+  ...standalonePages.flatMap(([slug, destination]) => [
+    [`/${slug}`, destination],
+    [`/${slug}.html`, destination]
+  ]),
   ...projectScripts.map(([source, destination]) => [`/projects/${source}`, destination]),
   ...projectPages.flatMap(([slug, destination]) => [
     [`/projects/${slug}`, destination],
