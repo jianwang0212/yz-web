@@ -1,32 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T12:32:58.818Z",
+  "syncedAt": "2026-05-08T12:38:09.539Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 3,
-    "todayTokens": 29404194,
-    "weekTokens": 354757358,
-    "totalTokens": 732883984,
-    "estimatedCostUsd": 568.73775215,
-    "cpu": 10.170488038410753,
-    "memoryBytes": 923320320
+    "activeAgents": 5,
+    "todayTokens": 31205988,
+    "weekTokens": 356281748,
+    "totalTokens": 734408374,
+    "estimatedCostUsd": 570.41977615,
+    "cpu": 18.543548910399345,
+    "memoryBytes": 1197047808
   },
   "agents": [
     {
-      "agentId": "4d8ce158c20c2609",
+      "agentId": "e0157a0e13996b8a",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.433389544688027,
-      "memoryBytes": 117047296,
-      "confidence": "low"
+      "status": "running",
+      "sessionId": "019dfcfe-7dad-7682-b8ad-8441feaca646",
+      "sessionTitle": "总结内容发布到视频平台; youtube, bilibili. /Users/Zi/Code/CodexWorkspace/projects/vlog-editing/ai-project-meeting-screen-recording-2026-04-25.mov",
+      "workspaceLabel": "social-auto-poster",
+      "cpu": 0.6629966491144088,
+      "memoryBytes": 206340096,
+      "confidence": "high"
     },
     {
       "agentId": "f97d03f03a53003a",
@@ -35,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.780",
-      "cpu": 1.1327967806841046,
-      "memoryBytes": 33783808,
+      "cpu": 1.114002478314746,
+      "memoryBytes": 32374784,
       "confidence": "low"
     },
     {
@@ -46,18 +46,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.780",
-      "cpu": 1.1239837398373984,
-      "memoryBytes": 32817152,
+      "cpu": 1.1084788029925188,
+      "memoryBytes": 33128448,
+      "confidence": "low"
+    },
+    {
+      "agentId": "b1ded44dddef3ece",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.780",
+      "cpu": 1.1517857142857142,
+      "memoryBytes": 39305216,
+      "confidence": "low"
+    },
+    {
+      "agentId": "26d43415813273bf",
+      "processName": "SkyComputerUseService",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 5.98876404494382,
+      "memoryBytes": 76464128,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 481611387,
-      "inputTokens": 480082612,
-      "outputTokens": 1528775,
-      "costUSD": 435.60200599999996
+      "totalTokens": 483135777,
+      "inputTokens": 481608416,
+      "outputTokens": 1527361,
+      "costUSD": 437.28403
     },
     {
       "model": "gpt-5.4",
@@ -79,5 +101,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T12:32:59.981Z"
+  "receivedAt": "2026-05-08T12:38:10.775Z"
 }
