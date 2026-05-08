@@ -1,32 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T11:41:20.743Z",
+  "syncedAt": "2026-05-08T11:46:31.148Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 4,
-    "todayTokens": 26054736,
-    "weekTokens": 351407900,
-    "totalTokens": 729534526,
-    "estimatedCostUsd": 565.4863501499999,
-    "cpu": 6.521216002192951,
-    "memoryBytes": 1507459072
+    "activeAgents": 3,
+    "todayTokens": 26320136,
+    "weekTokens": 351673300,
+    "totalTokens": 729799926,
+    "estimatedCostUsd": 565.68484715,
+    "cpu": 6.302444465776101,
+    "memoryBytes": 1108213760
   },
   "agents": [
     {
-      "agentId": "f578c63573d1170d",
+      "agentId": "9a0989e559c0e591",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "019df4d9-af9a-7d30-9364-c8b92ca4e42b",
-      "sessionTitle": "继续发布 5 个社交媒体, /Users/Zi/Code/CodexWorkspace/projects/daily-note-generator 下一个",
-      "workspaceLabel": "social-auto-poster",
-      "cpu": 0.18938702678589533,
-      "memoryBytes": 331776000,
-      "confidence": "high"
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.19148850424164265,
+      "memoryBytes": 84459520,
+      "confidence": "low"
     },
     {
       "agentId": "d8e9ad4339e2d61a",
@@ -35,19 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.780",
-      "cpu": 0.8976936723832051,
-      "memoryBytes": 31145984,
-      "confidence": "low"
-    },
-    {
-      "agentId": "fe7191b56b023bcc",
-      "processName": "SkyComputerUseClient",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "1.0.780",
-      "cpu": 0.8969258589511755,
-      "memoryBytes": 30883840,
+      "cpu": 0.8800599700149925,
+      "memoryBytes": 31850496,
       "confidence": "low"
     },
     {
@@ -57,18 +46,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.780",
-      "cpu": 0.9709267110841915,
-      "memoryBytes": 37896192,
+      "cpu": 0.9413564507904131,
+      "memoryBytes": 34422784,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 478261929,
-      "inputTokens": 476750034,
-      "outputTokens": 1511895,
-      "costUSD": 432.350604
+      "totalTokens": 478527329,
+      "inputTokens": 477015001,
+      "outputTokens": 1512328,
+      "costUSD": 432.54910099999995
     },
     {
       "model": "gpt-5.4",
@@ -90,5 +79,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T11:41:21.746Z"
+  "receivedAt": "2026-05-08T11:46:32.201Z"
 }
