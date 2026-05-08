@@ -1,41 +1,96 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T11:10:11.895Z",
+  "syncedAt": "2026-05-08T11:15:22.870Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 62565834,
-    "weekTokens": 381474869,
-    "totalTokens": 703479790,
-    "estimatedCostUsd": 543.68395915,
-    "cpu": 1.6096023944210995,
-    "memoryBytes": 536608768
+    "activeAgents": 6,
+    "todayTokens": 1105762,
+    "weekTokens": 326458926,
+    "totalTokens": 704585552,
+    "estimatedCostUsd": 545.70600415,
+    "cpu": 3.652913874557463,
+    "memoryBytes": 2866724864
   },
   "agents": [
     {
-      "agentId": "9a0989e559c0e591",
+      "agentId": "f578c63573d1170d",
       "processName": "codex",
+      "status": "running",
+      "sessionId": "019df4d9-af9a-7d30-9364-c8b92ca4e42b",
+      "sessionTitle": "继续发布 5 个社交媒体, /Users/Zi/Code/CodexWorkspace/projects/daily-note-generator 下一个",
+      "workspaceLabel": "social-auto-poster",
+      "cpu": 0.043175108356540134,
+      "memoryBytes": 1322565632,
+      "confidence": "high"
+    },
+    {
+      "agentId": "56524545e715ac95",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "019e074a-8cd6-7ab0-8d09-fde66153cbe7",
+      "sessionTitle": "抓取炒股养猪记录",
+      "workspaceLabel": "social-auto-poster",
+      "cpu": 0.043175108356540134,
+      "memoryBytes": 1322565632,
+      "confidence": "high"
+    },
+    {
+      "agentId": "6d8b9980672e3c45",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "019e074b-094f-7dc2-a059-423a3678d99b",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.043175108356540134,
+      "memoryBytes": 1322565632,
+      "confidence": "high"
+    },
+    {
+      "agentId": "d8e9ad4339e2d61a",
+      "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.02670235410651436,
-      "memoryBytes": 52428800,
+      "workspaceLabel": "1.0.780",
+      "cpu": 0.5413533834586466,
+      "memoryBytes": 36077568,
+      "confidence": "low"
+    },
+    {
+      "agentId": "fe7191b56b023bcc",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.780",
+      "cpu": 0.5247524752475248,
+      "memoryBytes": 36421632,
+      "confidence": "low"
+    },
+    {
+      "agentId": "25cdbe4b77e72af5",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.780",
+      "cpu": 0.5268817204301075,
+      "memoryBytes": 37060608,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 452207193,
-      "inputTokens": 450734369,
-      "outputTokens": 1472824,
-      "costUSD": 410.54821300000003
+      "totalTokens": 453312955,
+      "inputTokens": 451835480,
+      "outputTokens": 1477475,
+      "costUSD": 412.57025799999997
     },
     {
       "model": "gpt-5.4",
@@ -57,5 +112,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T11:10:12.831Z"
+  "receivedAt": "2026-05-08T11:15:24.070Z"
 }
