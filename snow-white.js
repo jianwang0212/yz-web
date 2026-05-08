@@ -2,6 +2,13 @@ const snowCopy = {
     zh: {
         '.snow-hero .snow-kicker': '原创制作档案',
         '#snow-title': '白雪公主 <span>Snow White</span>',
+        '.snow-release-strip span:nth-child(1)': 'Demo 档案',
+        '.snow-release-strip span:nth-child(2)': '4:35 粗混',
+        '.snow-release-strip span:nth-child(3)': 'Berklee Studio 1',
+        '.snow-release-strip span:nth-child(4)': 'B站制作合集',
+        '.snow-hero-cta a:nth-child(1)': '试听',
+        '.snow-hero-cta a:nth-child(2)': '创作故事',
+        '.snow-hero-cta a:nth-child(3)': '资料包',
         '.snow-meta-grid div:nth-child(1) span': '演唱',
         '.snow-meta-grid div:nth-child(2) span': '作曲',
         '.snow-meta-grid div:nth-child(3) span': '作词',
@@ -72,6 +79,13 @@ const snowCopy = {
     en: {
         '.snow-hero .snow-kicker': 'Original production archive',
         '#snow-title': 'Snow White <span>白雪公主</span>',
+        '.snow-release-strip span:nth-child(1)': 'Demo archive',
+        '.snow-release-strip span:nth-child(2)': '4:35 rough mix',
+        '.snow-release-strip span:nth-child(3)': 'Berklee Studio 1',
+        '.snow-release-strip span:nth-child(4)': 'Making season on Bilibili',
+        '.snow-hero-cta a:nth-child(1)': 'Listen',
+        '.snow-hero-cta a:nth-child(2)': 'Story',
+        '.snow-hero-cta a:nth-child(3)': 'Files',
         '.snow-meta-grid div:nth-child(1) span': 'Artist',
         '.snow-meta-grid div:nth-child(2) span': 'Composer',
         '.snow-meta-grid div:nth-child(3) span': 'Lyrics',
@@ -216,7 +230,7 @@ if (document.readyState === 'loading') {
     initSnowLanguage();
 }
 
-const audio = document.getElementById('snow-audio');
+const audio = document.getElementById('snow-audio-player');
 const canvas = document.getElementById('snow-visualizer');
 
 if (audio && canvas) {

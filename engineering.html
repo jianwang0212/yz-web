@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zi Yin (银子) 的 Engineering / GitHub 展示：个人网站架构、AI 辅助工作流、内部运营系统与音乐训练工具。">
+    <meta property="og:title" content="Engineering / GitHub - Zi Yin (银子)">
+    <meta property="og:description" content="个人网站架构、AI 辅助工作流、运营系统与音乐训练工具。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thisisyz.com/engineering">
+    <meta property="og:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Engineering / GitHub - Zi Yin (银子)">
+    <meta name="twitter:description" content="个人网站架构、AI 辅助工作流、运营系统与音乐训练工具。">
+    <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <link rel="canonical" href="https://thisisyz.com/engineering">
+    <title>Engineering / GitHub - Zi Yin (银子)</title>
+    <link rel="stylesheet" href="styles.css?v=20260508-snow-card">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="engineering-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand site-title">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </div>
+            <ul class="nav-menu" id="primary-navigation">
+                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="works.html" data-i18n="nav.works">作品</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+                <li class="nav-menu-lang-item">
+                    <div class="nav-lang-toggle-mobile">
+                        <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                        <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+                    </div>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
+                    <div class="nav-dropdown">
+                        <a href="projects.html" data-i18n="nav.projects">项目</a>
+                        <a href="engineering.html" data-i18n="nav.engineering" style="color: var(--primary-color);">Engineering</a>
+                        <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
+                        <a href="resume.html" data-i18n="nav.resume">简历</a>
+                        <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
+                        <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
+                        <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">EN</button>
+            </div>
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="engineering-shell">
+        <section class="engineering-hero">
+            <div class="container">
+                <p class="engineering-kicker">Engineering / GitHub</p>
+                <h1>把个人网站做成一个长期运行的作品系统。</h1>
+                <p>这里集中展示公开代码、AI 辅助工作流、内部运营系统和音乐训练工具。它不是另一个项目清单，而是说明这些工具怎样支撑写作、音乐制作、发布和复盘。</p>
+                <div class="engineering-actions">
+                    <a href="https://github.com/jianwang0212" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+                    <a href="https://github.com/jianwang0212/yz-web" target="_blank" rel="noopener noreferrer">Website Repo</a>
+                    <a href="projects.html">Project Index</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="engineering-section">
+            <div class="container engineering-grid">
+                <article class="engineering-card engineering-card-wide">
+                    <span>System</span>
+                    <h2>Personal site as operating layer</h2>
+                    <p>Static pages, a small Express server, route aliases, SEO metadata, sitemap, public music archives, and noindex operations dashboards live in the same codebase so the site can stay coherent as it grows.</p>
+                </article>
+                <article class="engineering-card">
+                    <span>Runtime</span>
+                    <h2>Node + Express</h2>
+                    <p>Clean URL aliases, API routes, cache headers, health checks, Caddy deployment, and Vercel config are generated from one shared route table.</p>
+                </article>
+                <article class="engineering-card">
+                    <span>Workflow</span>
+                    <h2>AI-assisted iteration</h2>
+                    <p>Codex helps inspect, refactor, test, deploy, and keep local, GitHub, and server copies aligned.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="engineering-section engineering-section-muted">
+            <div class="container">
+                <div class="engineering-section-header">
+                    <p class="engineering-kicker">Selected systems</p>
+                    <h2>工程项目不是藏在后台，而是解释清楚用途。</h2>
+                </div>
+                <div class="engineering-system-list">
+                    <a href="/snow-white" class="engineering-system">
+                        <span>Music archive</span>
+                        <strong>Snow White / 白雪公主</strong>
+                        <p>音频、歌词、曲谱、制作名单、制作笔记和 B站合集组织成一个正式作品档案。</p>
+                    </a>
+                    <a href="/projects/chord-trainer" class="engineering-system">
+                        <span>Music tool</span>
+                        <strong>Chord Trainer</strong>
+                        <p>MIDI 输入、和弦识别、语音播报和错题队列，用来支撑日常和声训练。</p>
+                    </a>
+                    <a href="codex-monitor.html" class="engineering-system">
+                        <span>Operations</span>
+                        <strong>Codex Monitor</strong>
+                        <p>同步本地 agent、token、CPU、内存和趋势数据，用于看见自动化工作流的运行状态。</p>
+                    </a>
+                    <a href="/projects/socialpulse" class="engineering-system">
+                        <span>Publishing ops</span>
+                        <strong>SocialPulse</strong>
+                        <p>把 Instagram、X、Reddit、小红书和抖音的发布库存与状态放进统一检查台。</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://github.com/jianwang0212" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

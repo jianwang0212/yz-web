@@ -3,13 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Snow White / 白雪公主 - 银子 Zi Yin bilingual production archive">
+    <meta name="description" content="Snow White / 白雪公主：银子 Zi Yin 演唱、作曲并制作的中文电影感流行 Demo，收录试听、歌词、曲谱、制作名单、制作笔记和 B站制作合集。">
+    <meta property="og:title" content="Snow White / 白雪公主 - Zi Yin">
+    <meta property="og:description" content="中文电影感流行 Demo：试听、歌词、曲谱、制作名单和创作故事。">
+    <meta property="og:type" content="music.song">
+    <meta property="og:url" content="https://thisisyz.com/snow-white">
+    <meta property="og:image" content="https://thisisyz.com/assets/snow-white/thumbs/snow-white-full-score.pdf.png">
+    <meta property="og:audio" content="https://thisisyz.com/assets/snow-white/snow-white-rough-mix.mp3">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Snow White / 白雪公主 - Zi Yin">
+    <meta name="twitter:description" content="中文电影感流行 Demo：试听、歌词、曲谱、制作名单和创作故事。">
+    <meta name="twitter:image" content="https://thisisyz.com/assets/snow-white/thumbs/snow-white-full-score.pdf.png">
+    <link rel="canonical" href="https://thisisyz.com/snow-white">
     <title>Snow White / 白雪公主 - 银子 Zi Yin</title>
     <link rel="stylesheet" href="styles.css?v=20260507-consistent-nav">
     <link rel="stylesheet" href="snow-white.css?v=20260507-consistent-nav">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicRecording",
+        "name": "Snow White / 白雪公主",
+        "byArtist": {
+            "@type": "Person",
+            "name": "Zi Yin",
+            "alternateName": "银子"
+        },
+        "composer": {
+            "@type": "Person",
+            "name": "Zi Yin"
+        },
+        "inLanguage": ["zh-CN", "en"],
+        "url": "https://thisisyz.com/snow-white",
+        "image": "https://thisisyz.com/assets/snow-white/thumbs/snow-white-full-score.pdf.png",
+        "audio": "https://thisisyz.com/assets/snow-white/snow-white-rough-mix.mp3",
+        "description": "A cinematic Chinese pop demo performed, composed, and produced by Zi Yin."
+    }
+    </script>
 </head>
 <body class="snow-white-page">
     <nav class="navbar snow-nav">
@@ -46,6 +78,19 @@
                         <span lang="en">A cinematic Chinese pop song performed, composed, and produced by Zi Yin, built from fairy-tale memory, live band energy, jazz harmony, and horn/woodwind color.</span>
                     </p>
 
+                    <div class="snow-release-strip" aria-label="Release summary / 发布摘要">
+                        <span>Demo archive</span>
+                        <span>4:35 rough mix</span>
+                        <span>Berklee Studio 1</span>
+                        <span>Making season on Bilibili</span>
+                    </div>
+
+                    <div class="snow-hero-cta" aria-label="Primary Snow White actions">
+                        <a href="#snow-audio">试听 / Listen</a>
+                        <a href="#story">创作故事 / Story</a>
+                        <a href="#resources">资料包 / Files</a>
+                    </div>
+
                     <div class="snow-meta-grid" aria-label="Project metadata / 项目信息">
                         <div>
                             <span>Artist / 演唱</span>
@@ -65,7 +110,7 @@
                         </div>
                     </div>
 
-                    <div class="snow-audio-panel" aria-label="Snow White audio player / 白雪公主播放器">
+                    <div class="snow-audio-panel" id="snow-audio" aria-label="Snow White audio player / 白雪公主播放器">
                         <div class="snow-audio-header">
                             <div>
                                 <span>Rough mix / 粗混</span>
@@ -77,7 +122,7 @@
                             </div>
                         </div>
                         <canvas id="snow-visualizer" width="960" height="180" aria-hidden="true"></canvas>
-                        <audio id="snow-audio" controls preload="metadata" src="assets/snow-white/snow-white-rough-mix.mp3"></audio>
+                        <audio id="snow-audio-player" controls preload="metadata" src="assets/snow-white/snow-white-rough-mix.mp3"></audio>
                     </div>
                 </div>
 
@@ -85,10 +130,10 @@
                     <div class="score-staff score-staff-one"></div>
                     <div class="score-staff score-staff-two"></div>
                     <figure class="score-frame score-frame-main">
-                        <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Snow White full score preview">
+                        <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" width="1200" height="776" alt="Snow White full score preview">
                     </figure>
                     <figure class="score-frame score-frame-side">
-                        <img src="assets/snow-white/thumbs/snow-white-production-notes.pdf.png" alt="Snow White production notes preview">
+                        <img src="assets/snow-white/thumbs/snow-white-production-notes.pdf.png" width="927" height="1200" alt="Snow White production notes preview" loading="lazy" decoding="async">
                     </figure>
                     <a class="hero-season-card" href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer" aria-label="Open Bilibili Snow White making season">
                         <span>Bilibili Season / B站合集</span>
@@ -163,7 +208,7 @@
             <div class="season-layout">
                 <a class="season-feature" href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer">
                     <div class="season-feature-media">
-                        <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Snow White video season preview">
+                            <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" width="1200" height="776" alt="Snow White video season preview" loading="lazy" decoding="async">
                         <span class="play-mark" aria-hidden="true"></span>
                     </div>
                     <div class="season-feature-copy">
@@ -176,7 +221,7 @@
                 <div class="episode-grid">
                     <a class="episode-card" href="https://www.bilibili.com/video/BV1jcdyBdE5o/" target="_blank" rel="noopener noreferrer">
                         <figure>
-                            <img src="assets/snow-white/thumbs/snow-white-production-notes.pdf.png" alt="E1 songwriting preview">
+                            <img src="assets/snow-white/thumbs/snow-white-production-notes.pdf.png" width="927" height="1200" alt="E1 songwriting preview" loading="lazy" decoding="async">
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>01:48</time>
                         </figure>
@@ -187,7 +232,7 @@
 
                     <a class="episode-card" href="https://www.bilibili.com/video/BV18Bd1BJE72/" target="_blank" rel="noopener noreferrer">
                         <figure>
-                            <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="E2 demo and lead sheet preview">
+                            <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" width="1200" height="776" alt="E2 demo and lead sheet preview" loading="lazy" decoding="async">
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>02:00</time>
                         </figure>
@@ -198,7 +243,7 @@
 
                     <a class="episode-card" href="https://www.bilibili.com/video/BV1HFRgBvEm4/" target="_blank" rel="noopener noreferrer">
                         <figure>
-                            <img src="assets/snow-white/thumbs/snow-white-credits.pdf.png" alt="E3 arrangement layers preview">
+                            <img src="assets/snow-white/thumbs/snow-white-credits.pdf.png" width="927" height="1200" alt="E3 arrangement layers preview" loading="lazy" decoding="async">
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>01:40</time>
                         </figure>
@@ -299,7 +344,7 @@
             </div>
             <div class="resource-layout">
                 <article class="resource-feature resource-preview">
-                    <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Full score preview / 全谱预览">
+                        <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" width="1200" height="776" alt="Full score preview / 全谱预览" loading="lazy" decoding="async">
                     <div>
                         <span>第一页预览 / First-page preview</span>
                         <strong>全谱 / Full Score</strong>

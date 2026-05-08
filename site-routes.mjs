@@ -16,12 +16,20 @@ const projectScripts = [
 
 const standalonePages = [
   ['snow-white', 'snow-white.html'],
-  ['berklee', 'berklee.html']
+  ['berklee', 'berklee.html'],
+  ['works', 'works.html'],
+  ['projects', 'projects.html'],
+  ['engineering', 'engineering.html'],
+  ['resume', 'resume.html'],
+  ['contact', 'contact.html'],
+  ['timeline', 'timeline.html'],
+  ['highlights', 'highlights.html'],
+  ['interests', 'interests.html'],
+  ['year-review', 'year-review.html'],
+  ['financial-dashboard', 'financial-dashboard.html']
 ];
 
 export const routeAliases = [
-  ['/year-review', 'year-review.html'],
-  ['/financial-dashboard', 'financial-dashboard.html'],
   ['/projects/socialpulse', 'projects/socialpulse.html'],
   ...standalonePages.flatMap(([slug, destination]) => [
     [`/${slug}`, destination],

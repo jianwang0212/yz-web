@@ -3,12 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zi Yin (银子) - 量化研究员、创业者、音乐人">
-    <title>Zi Yin (银子) - Personal Website</title>
-    <link rel="stylesheet" href="styles.css?v=20260505-credential-tone">
+    <meta name="description" content="Zi Yin (银子) 的个人网站：量化研究、创业、Berklee 音乐制作、原创歌曲 Snow White、项目工具与长期记录。">
+    <meta property="og:title" content="Zi Yin (银子) - Quant Research, Music, Engineering">
+    <meta property="og:description" content="量化研究、创业、音乐制作与工程项目的个人作品站。">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://thisisyz.com/">
+    <meta property="og:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zi Yin (银子)">
+    <meta name="twitter:description" content="量化研究、创业、音乐制作与工程项目的个人作品站。">
+    <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <link rel="canonical" href="https://thisisyz.com/">
+    <title>Zi Yin (银子) - Quant Research, Music, Engineering</title>
+    <link rel="stylesheet" href="styles.css?v=20260508-snow-card">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Zi Yin",
+        "alternateName": "银子",
+        "url": "https://thisisyz.com/",
+        "image": "https://thisisyz.com/images/hero-bg.jpg",
+        "jobTitle": ["Quantitative Researcher", "Founder", "Music Producer"],
+        "sameAs": [
+            "https://www.linkedin.com/in/zi-yin-96a61772/",
+            "https://github.com/jianwang0212"
+        ],
+        "knowsAbout": ["Quantitative trading", "Music production", "Jazz composition", "AI tools", "Entrepreneurship"]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -34,6 +60,7 @@
                     <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
                     <div class="nav-dropdown">
                         <a href="projects.html" data-i18n="nav.projects">项目</a>
+                        <a href="engineering.html" data-i18n="nav.engineering">Engineering</a>
                         <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
                         <a href="resume.html" data-i18n="nav.resume">简历</a>
                         <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
@@ -63,6 +90,7 @@
                         src="images/photos/academic-presentation.webp"
                         alt="Zi Yin"
                         loading="eager"
+                        fetchpriority="high"
                         decoding="async"
                     >
                 </div>
@@ -110,24 +138,18 @@
     <!-- Featured Music Demo -->
     <section id="home-snow" class="home-snow-feature" aria-labelledby="home-snow-title">
         <div class="container">
-            <div class="home-snow-layout">
+            <article class="home-snow-card">
                 <div class="home-snow-copy">
-                    <p class="home-snow-kicker">新作品 Demo / New music demo</p>
+                    <p class="home-snow-kicker">New music demo / 新作品 Demo</p>
                     <h2 id="home-snow-title">Snow White / 白雪公主</h2>
-                    <p>银子演唱、作曲并制作的双语音乐作品档案，集合播放、歌词、曲谱、制作名单和写歌故事。<br>A bilingual music archive for a song performed, composed, and produced by Zi Yin, with listening, lyrics, score, credits, and story in one place.</p>
-                    <div class="home-snow-actions">
-                        <a href="/snow-white" class="home-snow-primary">打开 Demo / Open</a>
-                        <a href="/snow-white#resources" class="home-snow-secondary">查看曲谱预览 / Score Preview</a>
-                    </div>
+                    <p>银子演唱、作曲并制作的中文电影感流行 Demo。这里收录试听、歌词、曲谱、制作名单和写歌故事。</p>
                 </div>
-                <a href="/snow-white" class="home-snow-preview" aria-label="打开 Snow White demo">
-                    <img src="assets/snow-white/thumbs/snow-white-full-score.pdf.png" alt="Snow White full score preview">
-                    <div>
-                        <span>银子 / Zi Yin production archive</span>
-                        <strong>播放 · 歌词 · 曲谱 · 制作名单 · 故事<br>Listen · Lyrics · Score · Credits · Story</strong>
-                    </div>
-                </a>
-            </div>
+                <div class="home-snow-actions" role="group" aria-label="Snow White links">
+                    <a href="/snow-white" class="home-snow-primary">打开 Demo / Open</a>
+                    <a href="/snow-white#resources" class="home-snow-secondary">曲谱 / Score</a>
+                    <a href="https://space.bilibili.com/320595677/lists/8064931?type=season" target="_blank" rel="noopener noreferrer" class="home-snow-secondary">B站合集</a>
+                </div>
+            </article>
         </div>
     </section>
 
@@ -178,6 +200,11 @@
                     <h3 class="entry-card-title" data-i18n="entry.works.title">音乐与作品</h3>
                     <p class="entry-card-desc" data-i18n="entry.works.desc">创作、演出与训练记录</p>
                     <span class="entry-card-link" data-i18n="entry.works.link">→ 查看作品</span>
+                </a>
+                <a href="engineering.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.engineering.title">Engineering / GitHub</h3>
+                    <p class="entry-card-desc" data-i18n="entry.engineering.desc">网站架构、AI 工作流与工具系统</p>
+                    <span class="entry-card-link" data-i18n="entry.engineering.link">→ 查看工程展示</span>
                 </a>
                 <a href="year-review.html" class="entry-card">
                     <h3 class="entry-card-title" data-i18n="entry.review.title">年度总结</h3>
@@ -439,22 +466,22 @@
 
             <!-- Works Links -->
             <div class="works-grid">
-                <a href="https://zhuanlan.zhihu.com/p/411636643" target="_blank" class="work-link">
+                <a href="https://zhuanlan.zhihu.com/p/411636643" target="_blank" rel="noopener noreferrer" class="work-link">
                     <div class="work-icon">📝</div>
                     <h4 data-i18n="works.zhihu.title">知乎专栏</h4>
                     <p data-i18n="works.zhihu.desc">《为什么当一名交易员会累》</p>
                 </a>
-                <a href="#" target="_blank" class="work-link" id="netease-link">
+                <a href="https://music.163.com/#/song?id=1921358902" target="_blank" rel="noopener noreferrer" class="work-link" id="netease-link">
                     <div class="work-icon">🎵</div>
                     <h4 data-i18n="works.netease.title">网易云音乐</h4>
                     <p data-i18n="works.netease.desc">原创歌曲及电台节目</p>
                 </a>
-                <a href="#" target="_blank" class="work-link" id="youtube-link">
+                <a href="https://www.youtube.com/channel/UCMmj3zBve9CXt5V46Wyy2aQ" target="_blank" rel="noopener noreferrer" class="work-link" id="youtube-link">
                     <div class="work-icon">📺</div>
                     <h4 data-i18n="works.youtube.title">YouTube</h4>
                     <p data-i18n="works.youtube.desc">个人频道/视频</p>
                 </a>
-                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" class="work-link" id="linkedin-link">
+                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer" class="work-link" id="linkedin-link">
                     <div class="work-icon">💼</div>
                     <h4 data-i18n="works.linkedin.title">LinkedIn</h4>
                     <p data-i18n="works.linkedin.desc">职业档案</p>

@@ -21,6 +21,7 @@ test('projects index separates public work from internal operations', () => {
   const operationsSection = projectsHtml.slice(operationsStart);
 
   expectIncludes(publicSection, 'href="/projects/vipassana"');
+  expectIncludes(publicSection, 'href="/engineering"');
   expectIncludes(publicSection, 'href="/projects/chord-trainer"');
   assert.equal(publicSection.includes('codex-monitor.html'), false);
   assert.equal(publicSection.includes('href="/projects/socialpulse"'), false);
@@ -33,6 +34,7 @@ test('projects index separates public work from internal operations', () => {
 test('projects index copy describes the current SocialPulse platforms', () => {
   expectIncludes(i18nJs, "'projects.operations.title': '私人工具后台'");
   expectIncludes(i18nJs, "'projects.operations.title': 'Internal Tools'");
+  expectIncludes(i18nJs, "'projects.engineering_title': 'Engineering / GitHub'");
   expectIncludes(
     i18nJs,
     "'projects.socialpulse_desc': '五平台发布状态、库存和最近标题：Instagram、X、Reddit、小红书、抖音的运营检查面板'"

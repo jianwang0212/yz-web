@@ -14,6 +14,7 @@
 
     const moreItems = [
         { key: 'nav.projects', label: '项目', href: '/projects.html', match: ['/projects.html', '/projects/socialpulse.html', '/codex-monitor.html'] },
+        { key: 'nav.engineering', label: '工程 / GitHub', href: '/engineering.html', match: ['/engineering.html', '/engineering'] },
         { key: 'nav.timeline', label: '时间线', href: '/timeline.html', match: ['/timeline.html'] },
         { key: 'nav.resume', label: '简历', href: '/resume.html', match: ['/resume.html', '/berklee.html'] },
         { key: 'nav.finance', label: '财务仪表盘', href: '/financial-dashboard.html', match: ['/financial-dashboard.html'] },

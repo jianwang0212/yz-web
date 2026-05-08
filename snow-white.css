@@ -93,6 +93,63 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     margin-top: 8px;
 }
 
+.snow-release-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 760px;
+    margin-top: 22px;
+}
+
+.snow-release-strip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0.38rem 0.62rem;
+    border: 1px solid rgba(23, 19, 17, 0.12);
+    border-radius: 999px;
+    color: var(--snow-muted);
+    background: rgba(255, 250, 242, 0.72);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.snow-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.snow-hero-cta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.68rem 0.96rem;
+    border-radius: 8px;
+    color: var(--snow-paper);
+    background: var(--snow-ink);
+    text-decoration: none;
+    font-weight: 800;
+    box-shadow: 0 14px 30px rgba(23, 19, 17, 0.16);
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.snow-hero-cta a + a {
+    color: var(--snow-ink);
+    background: rgba(255, 250, 242, 0.78);
+    border: 1px solid rgba(23, 19, 17, 0.13);
+    box-shadow: none;
+}
+
+.snow-hero-cta a:hover,
+.snow-hero-cta a:focus-visible {
+    color: var(--snow-paper);
+    transform: translateY(-1px);
+    background: var(--snow-red);
+}
+
 .snow-meta-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

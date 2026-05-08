@@ -94,7 +94,12 @@ test('home page features Snow White before resume records', () => {
 
   expectIncludes(indexHtml, 'Snow White / 白雪公主');
   expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
+  expectIncludes(indexHtml, '<article class="home-snow-card">');
   expectIncludes(indexHtml, 'href="/snow-white" class="home-snow-primary"');
   expectIncludes(indexHtml, 'href="/snow-white#resources" class="home-snow-secondary"');
-  expectIncludes(indexHtml, 'assets/snow-white/thumbs/snow-white-full-score.pdf.png');
+  assert.equal(
+    indexHtml.includes('class="home-snow-preview"'),
+    false,
+    'Home page should keep Snow White as a compact share card, not a full score preview'
+  );
 });
