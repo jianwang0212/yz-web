@@ -1,41 +1,63 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T12:22:38.385Z",
+  "syncedAt": "2026-05-08T12:27:48.176Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 29078338,
-    "weekTokens": 354431502,
-    "totalTokens": 732558128,
-    "estimatedCostUsd": 567.98145315,
-    "cpu": 7.0682738607595175,
-    "memoryBytes": 654606336
+    "activeAgents": 3,
+    "todayTokens": 29404194,
+    "weekTokens": 354757358,
+    "totalTokens": 732883984,
+    "estimatedCostUsd": 568.73775215,
+    "cpu": 10.32041954338703,
+    "memoryBytes": 1165557760
   },
   "agents": [
     {
-      "agentId": "4d8ce158c20c2609",
+      "agentId": "465d02a5decc5d10",
       "processName": "codex",
+      "status": "idle",
+      "sessionId": "019e078c-0d6f-72d1-90e8-0e34816405cc",
+      "sessionTitle": "查验网站是否诈骗",
+      "workspaceLabel": "Downloads",
+      "cpu": 0.4100817438692098,
+      "memoryBytes": 142508032,
+      "confidence": "high"
+    },
+    {
+      "agentId": "f97d03f03a53003a",
+      "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.12251941328731665,
-      "memoryBytes": 58015744,
+      "workspaceLabel": "1.0.780",
+      "cpu": 1.1236559139784945,
+      "memoryBytes": 37879808,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e7413fcf72f0b646",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.780",
+      "cpu": 1.1160220994475138,
+      "memoryBytes": 39600128,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 481285531,
-      "inputTokens": 479760567,
-      "outputTokens": 1524964,
-      "costUSD": 434.84570699999995
+      "totalTokens": 481611387,
+      "inputTokens": 480082612,
+      "outputTokens": 1528775,
+      "costUSD": 435.60200599999996
     },
     {
       "model": "gpt-5.4",
@@ -57,5 +79,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T12:22:39.522Z"
+  "receivedAt": "2026-05-08T12:27:49.389Z"
 }
