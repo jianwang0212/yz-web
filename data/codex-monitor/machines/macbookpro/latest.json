@@ -1,63 +1,41 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T12:02:03.378Z",
+  "syncedAt": "2026-05-08T12:07:11.614Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 3,
-    "todayTokens": 28540143,
-    "weekTokens": 353893307,
-    "totalTokens": 732019933,
-    "estimatedCostUsd": 567.5808641499999,
-    "cpu": 7.2654628145709514,
-    "memoryBytes": 1053573120
+    "activeAgents": 1,
+    "todayTokens": 29078338,
+    "weekTokens": 354431502,
+    "totalTokens": 732558128,
+    "estimatedCostUsd": 567.98145315,
+    "cpu": 10.1690308690488,
+    "memoryBytes": 992329728
   },
   "agents": [
     {
-      "agentId": "f578c63573d1170d",
+      "agentId": "4d8ce158c20c2609",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "019df4d9-af9a-7d30-9364-c8b92ca4e42b",
-      "sessionTitle": "继续发布 5 个社交媒体, /Users/Zi/Code/CodexWorkspace/projects/daily-note-generator 下一个",
-      "workspaceLabel": "social-auto-poster",
-      "cpu": 0.23465189873417722,
-      "memoryBytes": 121929728,
-      "confidence": "high"
-    },
-    {
-      "agentId": "d8e9ad4339e2d61a",
-      "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.780",
-      "cpu": 0.9250170415814588,
-      "memoryBytes": 31293440,
-      "confidence": "low"
-    },
-    {
-      "agentId": "25cdbe4b77e72af5",
-      "processName": "SkyComputerUseClient",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "1.0.780",
-      "cpu": 0.9664823773324119,
-      "memoryBytes": 31588352,
+      "workspaceLabel": "/",
+      "cpu": 0.5732758620689655,
+      "memoryBytes": 109494272,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 480747336,
-      "inputTokens": 479224898,
-      "outputTokens": 1522438,
-      "costUSD": 434.445118
+      "totalTokens": 481285531,
+      "inputTokens": 479760567,
+      "outputTokens": 1524964,
+      "costUSD": 434.84570699999995
     },
     {
       "model": "gpt-5.4",
@@ -79,5 +57,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T12:02:04.517Z"
+  "receivedAt": "2026-05-08T12:07:12.710Z"
 }
