@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T13:25:15.466Z",
+  "syncedAt": "2026-05-08T13:30:14.120Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 20197224,
-    "weekTokens": 66447358,
-    "totalTokens": 1009776350,
-    "estimatedCostUsd": 461.3159111,
-    "cpu": 83.44,
-    "memoryBytes": 1220370432
+    "activeAgents": 0,
+    "todayTokens": 21078754,
+    "weekTokens": 67328888,
+    "totalTokens": 1010657880,
+    "estimatedCostUsd": 461.8517731,
+    "cpu": 1.5833333333333335,
+    "memoryBytes": 976310272
   },
-  "agents": [
-    {
-      "agentId": "74cb102420e70ae3",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019df4f4-3eca-7943-9030-f4c8e06e485e",
-      "sessionTitle": "定位反复出现原因",
-      "workspaceLabel": "yz-web-inspect",
-      "cpu": 9.06,
-      "memoryBytes": 178364416,
-      "confidence": "high"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -39,10 +27,10 @@
     },
     {
       "model": "gpt-5.5",
-      "totalTokens": 57681778,
-      "inputTokens": 57379435,
-      "outputTokens": 302343,
-      "costUSD": 54.3618436
+      "totalTokens": 58563308,
+      "inputTokens": 58260017,
+      "outputTokens": 303291,
+      "costUSD": 54.897705599999995
     }
   ],
   "health": {
@@ -50,5 +38,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T13:25:15.466Z"
+  "receivedAt": "2026-05-08T13:30:14.120Z"
 }
