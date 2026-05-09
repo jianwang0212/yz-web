@@ -1,34 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-09T16:00:24.052Z",
+  "syncedAt": "2026-05-09T16:05:15.307Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 1,
-    "todayTokens": 777653,
-    "weekTokens": 93314373,
-    "totalTokens": 1044977864,
-    "estimatedCostUsd": 488.4186211,
-    "cpu": 90,
-    "memoryBytes": 956063744
+    "activeAgents": 0,
+    "todayTokens": 1055850,
+    "weekTokens": 93592570,
+    "totalTokens": 1045256061,
+    "estimatedCostUsd": 488.9318581,
+    "cpu": 15.883333333333335,
+    "memoryBytes": 828497920
   },
-  "agents": [
-    {
-      "agentId": "91190f1822c99beb",
-      "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "019e0d26-1b16-7713-9d71-c24f2ea9ab90",
-      "sessionTitle": "解释 dll_usage 文档",
-      "workspaceLabel": "Wechat-database",
-      "cpu": 9.06,
-      "memoryBytes": 101285888,
-      "confidence": "high"
-    }
-  ],
+  "agents": [],
   "models": [
     {
       "model": "gpt-5.4",
@@ -39,10 +27,10 @@
     },
     {
       "model": "gpt-5.5",
-      "totalTokens": 92883292,
-      "inputTokens": 92472785,
-      "outputTokens": 410507,
-      "costUSD": 81.46455360000002
+      "totalTokens": 93161489,
+      "inputTokens": 92745242,
+      "outputTokens": 416247,
+      "costUSD": 81.97779060000002
     }
   ],
   "health": {
@@ -50,5 +38,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-09T16:00:24.052Z"
+  "receivedAt": "2026-05-09T16:05:15.307Z"
 }
