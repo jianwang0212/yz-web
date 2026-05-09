@@ -96,7 +96,11 @@ test('home page features Snow White before resume records', () => {
   expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
   expectIncludes(indexHtml, '<article class="home-snow-card">');
   expectIncludes(indexHtml, 'href="/snow-white" class="home-snow-primary"');
-  expectIncludes(indexHtml, 'href="/snow-white#resources" class="home-snow-secondary"');
+  assert.equal(
+    indexHtml.includes('class="home-snow-secondary"'),
+    false,
+    'Home Snow White share card should expose only the Open Demo action'
+  );
   assert.equal(
     indexHtml.includes('class="home-snow-preview"'),
     false,
