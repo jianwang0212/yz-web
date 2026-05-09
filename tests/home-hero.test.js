@@ -54,12 +54,15 @@ test('home navigation has an active current-page state', () => {
 });
 
 test('credential cards have expected content and explicit link semantics', () => {
-  const credentialCards = indexHtml.match(/class="metric-row(?: hero-identity)? credential-card"/g) || [];
+  const credentialCards = indexHtml.match(/class="metric-row(?: hero-identity)? credential-card credential-card-link"/g) || [];
   assert.equal(credentialCards.length, 3);
 
-  for (const href of ['https://www.a47g.com/', 'https://www.citadelsecurities.com/', 'https://www.berklee.edu/']) {
+  for (const href of ['https://www.a47g.com/', 'https://www.citadelsecurities.com/', '/berklee']) {
     expectIncludes(indexHtml, `href="${href}"`);
   }
+
+  const credentialCtas = indexHtml.match(/class="credential-card-cta"/g) || [];
+  assert.equal(credentialCtas.length, 3);
 
   for (const key of [
     'hero.identity.left',

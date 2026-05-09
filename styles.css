@@ -4981,7 +4981,7 @@ html[lang="en"] .hero--bg .hero-title {
 }
 
 .hero--bg .metric-row {
-    grid-template-columns: minmax(190px, 0.95fr) auto minmax(170px, 1fr);
+    grid-template-columns: minmax(170px, 0.85fr) auto minmax(150px, 1fr) auto;
     gap: 0.9rem;
     min-height: 58px;
     padding: 0.8rem 1rem;
@@ -4993,10 +4993,45 @@ html[lang="en"] .hero--bg .hero-title {
     font-size: 1rem;
 }
 
+.hero--bg .credential-card-link {
+    position: relative;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.hero--bg .credential-card-link::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.58);
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
 .hero--bg .metric-row:hover,
-.hero--bg .metric-row:focus-within {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(15, 23, 42, 0.34);
+.hero--bg .metric-row:focus-within,
+.hero--bg .credential-card-link:focus-visible {
+    border-color: rgba(255, 255, 255, 0.42);
+    background: rgba(15, 23, 42, 0.42);
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.22);
+}
+
+.hero--bg .credential-card-link:hover,
+.hero--bg .credential-card-link:focus-visible {
+    transform: translateY(-2px);
+}
+
+.hero--bg .credential-card-link:hover::before,
+.hero--bg .credential-card-link:focus-visible::before {
+    opacity: 1;
 }
 
 .hero--bg .metric-row a {
@@ -5011,6 +5046,11 @@ html[lang="en"] .hero--bg .hero-title {
 
 .hero--bg .metric-row a:focus-visible {
     outline: 2px solid rgba(255, 255, 255, 0.86);
+}
+
+.hero--bg .credential-card-link:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.86);
+    outline-offset: 4px;
 }
 
 .hero--bg .metric-row strong {
@@ -5034,6 +5074,35 @@ html[lang="en"] .hero--bg .hero-title {
 .hero--bg .metric-separator {
     color: rgba(255, 255, 255, 0.26);
     opacity: 1;
+}
+
+.hero--bg .credential-card-cta {
+    position: relative;
+    z-index: 1;
+    justify-self: end;
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.76rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition:
+        background 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease;
+}
+
+.hero--bg .credential-card-link:hover .credential-card-cta,
+.hero--bg .credential-card-link:focus-visible .credential-card-cta {
+    border-color: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f172a;
 }
 
 .hero--bg .hero-value {
@@ -5188,6 +5257,14 @@ html[lang="en"] .hero--bg .hero-title {
         min-height: 0;
         padding: 0.72rem 0.85rem;
         font-size: 0.93rem;
+    }
+
+    .hero--bg .credential-card-cta {
+        justify-self: start;
+        min-height: 28px;
+        margin-top: 0.32rem;
+        padding: 0.28rem 0.62rem;
+        font-size: 0.72rem;
     }
 
     .hero--bg .metric-right,
