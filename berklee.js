@@ -282,7 +282,9 @@ function renderFilters() {
 
 function renderCourseCard(course) {
     const category = categoryById.get(course.category);
-    const card = createElement('article', 'course-card');
+    const card = createElement('a', 'course-card');
+    card.href = '/login?next=%2Farchive%2F';
+    card.setAttribute('aria-label', `Open private archive login for ${course.code} ${course.title}`);
     card.dataset.category = course.category;
     card.dataset.search = [
         course.code,
