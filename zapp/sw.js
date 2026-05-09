@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v5-20260509";
+const CACHE_VERSION = "zapp-store-v6-20260509";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -13,6 +13,8 @@ const STATIC_ASSETS = [
   "icons/apps/calculator.svg",
   "icons/apps/calculator-192.png",
   "icons/apps/calculator-512.png",
+  "icons/apps/snow-white-board.svg",
+  "icons/apps/wellness.svg",
   "icons/apps/thisisyz.svg",
   "icons/apps/music-tool.svg",
   "icons/apps/socialpulse.svg",
@@ -27,7 +29,13 @@ const STATIC_ASSETS = [
   "apps/calculator.html",
   "apps/calculator.css",
   "apps/calculator.js",
-  "apps/calculator.webmanifest"
+  "apps/calculator.webmanifest",
+  "apps/snow-white-board.html",
+  "apps/snow-white-board.css",
+  "apps/snow-white-board.js",
+  "apps/wellness-tracker.html",
+  "apps/wellness-tracker.css",
+  "apps/wellness-tracker.js"
 ];
 
 self.addEventListener("install", (event) => {
@@ -62,11 +70,15 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (request.mode === "navigate") {
-    const fallback = url.pathname.endsWith("/apps/calculator.html")
-      ? "apps/calculator.html"
-      : url.pathname.endsWith("/apps/workbench.html")
-        ? "apps/workbench.html"
-        : "index.html";
+    const fallback = url.pathname.endsWith("/apps/snow-white-board.html")
+      ? "apps/snow-white-board.html"
+      : url.pathname.endsWith("/apps/wellness-tracker.html")
+        ? "apps/wellness-tracker.html"
+        : url.pathname.endsWith("/apps/calculator.html")
+          ? "apps/calculator.html"
+          : url.pathname.endsWith("/apps/workbench.html")
+            ? "apps/workbench.html"
+            : "index.html";
     event.respondWith(networkFirst(request, fallback));
     return;
   }
