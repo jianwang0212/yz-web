@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/store.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="workbench.css" />
+    <title>Zapp</title>
+  </head>
+  <body>
+    <main class="mini-shell">
+      <header class="mini-header">
+        <a href="../" class="back-button" aria-label="返回商店">←</a>
+        <div class="mini-title">
+          <img id="appIcon" alt="" />
+          <div>
+            <p id="appCategory"></p>
+            <h1 id="appName"></h1>
+          </div>
+        </div>
+      </header>
+
+      <section class="mini-stats" id="stats"></section>
+
+      <section class="tool-surface">
+        <form id="entryForm" class="entry-form"></form>
+        <div class="entries" id="entries"></div>
+      </section>
+    </main>
+
+    <script type="module" src="workbench.js"></script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Zapp Store" />
+    <meta
+      name="description"
+      content="A personal app store for shipping private tools to your phone and desktop."
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/store.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Zapp Store</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="store-header">
+        <div class="brand-lockup">
+          <img src="icons/store.svg" alt="" class="store-mark" />
+          <div>
+            <p class="eyebrow">Personal App Store</p>
+            <h1 id="storeName">Zapp Store</h1>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-button" id="refreshButton" type="button" title="刷新应用清单">
+            <span aria-hidden="true">↻</span>
+          </button>
+          <button class="install-button" id="installButton" type="button" hidden>
+            安装
+          </button>
+        </div>
+      </header>
+
+      <section class="status-strip" aria-live="polite">
+        <div>
+          <strong id="appCount">0</strong>
+          <span>apps</span>
+        </div>
+        <div>
+          <strong id="buildLabel">Build --</strong>
+          <span id="updatedLabel">--</span>
+        </div>
+        <div>
+          <strong id="networkLabel">Online</strong>
+          <span id="displayModeLabel">Browser</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Store controls">
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="搜索你的应用" autocomplete="off" />
+        </label>
+        <div class="tabs" id="categoryTabs" role="tablist" aria-label="应用分类"></div>
+      </section>
+
+      <section class="featured" id="featuredApp" aria-label="Featured app"></section>
+
+      <section class="app-grid" id="appGrid" aria-label="Apps"></section>
+
+      <footer class="store-footer">
+        <span id="footerOwner">Private shelf</span>
+        <span>Manifest + Service Worker + JSON catalog</span>
+      </footer>
+    </main>
+
+    <template id="appCardTemplate">
+      <article class="app-card">
+        <div class="app-card__icon-wrap">
+          <img class="app-card__icon" alt="" />
+        </div>
+        <div class="app-card__body">
+          <div class="app-card__title-row">
+            <div>
+              <h2></h2>
+              <p class="subtitle"></p>
+            </div>
+            <span class="status-pill"></span>
+          </div>
+          <p class="description"></p>
+          <div class="meta-row"></div>
+        </div>
+        <div class="app-card__actions">
+          <a class="open-button">Open</a>
+          <button class="update-button" type="button">Update</button>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
