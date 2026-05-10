@@ -1,22 +1,34 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-10T20:35:15.216Z",
+  "syncedAt": "2026-05-10T20:40:15.363Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 0,
+    "activeAgents": 1,
     "todayTokens": 262801,
     "weekTokens": 93424290,
     "totalTokens": 1045518862,
     "estimatedCostUsd": 489.5188011,
-    "cpu": 16.933333333333334,
-    "memoryBytes": 623095808
+    "cpu": 14.833333333333332,
+    "memoryBytes": 621383680
   },
-  "agents": [],
+  "agents": [
+    {
+      "agentId": "6852ce01a576a939",
+      "processName": "codex.exe",
+      "status": "idle",
+      "sessionId": "019e0922-8ade-7050-8825-3c325acda02c",
+      "sessionTitle": "查找微信数据库破解方案",
+      "workspaceLabel": "Wechat-database",
+      "cpu": 0,
+      "memoryBytes": 76656640,
+      "confidence": "high"
+    }
+  ],
   "models": [
     {
       "model": "gpt-5.4",
@@ -38,5 +50,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-10T20:35:15.216Z"
+  "receivedAt": "2026-05-10T20:40:15.363Z"
 }
