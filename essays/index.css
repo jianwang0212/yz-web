@@ -150,6 +150,7 @@
 .garden-pill-b { right: 8%; top: 15%; }
 .garden-pill-c { left: 10%; bottom: 13%; }
 .garden-pill-d { right: 9%; bottom: 12%; }
+.garden-pill-e { left: calc(50% - 88px); bottom: 5%; background: #f8fff9; }
 
 .essays-section {
     width: min(1120px, calc(100% - 40px));
@@ -201,6 +202,7 @@
 .essay-card-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
 }
 
 .essay-card {
@@ -227,6 +229,14 @@
     background:
         linear-gradient(180deg, rgba(15, 63, 56, 0.06), rgba(15, 63, 56, 0.24)),
         url("/images/photos/music-practice.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+.essay-card-berklee .essay-card-image {
+    background:
+        linear-gradient(180deg, rgba(15, 63, 56, 0.04), rgba(15, 63, 56, 0.2)),
+        url("/images/plans/berklee-stage.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -351,7 +361,8 @@
     .garden-pill-a,
     .garden-pill-b,
     .garden-pill-c,
-    .garden-pill-d {
+    .garden-pill-d,
+    .garden-pill-e {
         position: relative;
         inset: auto;
         width: auto;
