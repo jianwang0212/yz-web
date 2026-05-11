@@ -36,6 +36,8 @@ const standalonePages = [
 
 export const routeAliases = [
   ['/projects/socialpulse', 'projects/socialpulse.html'],
+  ['/essays', 'essays/index.html'],
+  ['/essays/', 'essays/index.html'],
   ...essayPages.flatMap(([slug, destination]) => [
     [`/essays/${slug}`, destination],
     [`/essays/${slug}.html`, destination]

@@ -717,6 +717,18 @@ body {
     transform: translateY(-2px);
 }
 
+.entry-card-garden {
+    border-color: rgba(47, 122, 99, 0.28);
+    background:
+        linear-gradient(135deg, rgba(220, 239, 232, 0.68), rgba(255, 255, 255, 0.92) 52%, rgba(215, 233, 247, 0.5));
+}
+
+.entry-card-garden:hover {
+    border-color: rgba(47, 122, 99, 0.72);
+    background:
+        linear-gradient(135deg, rgba(220, 239, 232, 0.86), rgba(255, 255, 255, 0.94) 52%, rgba(245, 178, 155, 0.28));
+}
+
 .entry-card-title {
     font-size: 1.5rem;
     font-weight: 600;
