@@ -8,6 +8,10 @@ const projectPages = [
   ['left-hand-voicing-trainer', 'papers/left-hand-voicing-trainer.html']
 ];
 
+const essayPages = [
+  ['why-mpe', 'essays/why-mpe.html']
+];
+
 const projectScripts = [
   ['interval-quiz.js', 'papers/interval-quiz.js'],
   ['degree-quiz.js', 'papers/degree-quiz.js'],
@@ -32,6 +36,10 @@ const standalonePages = [
 
 export const routeAliases = [
   ['/projects/socialpulse', 'projects/socialpulse.html'],
+  ...essayPages.flatMap(([slug, destination]) => [
+    [`/essays/${slug}`, destination],
+    [`/essays/${slug}.html`, destination]
+  ]),
   ...standalonePages.flatMap(([slug, destination]) => [
     [`/${slug}`, destination],
     [`/${slug}.html`, destination]
