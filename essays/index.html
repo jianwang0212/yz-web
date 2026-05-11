@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="essays-index-page">
+<body class="essays-index-page" data-i18n-title="essaysIndex.meta.title" data-i18n-description="essaysIndex.meta.description">
     <nav class="navbar essays-nav">
         <div class="container">
             <a class="nav-brand site-title" href="/index.html" aria-label="Back to Zi Yin homepage">
@@ -45,30 +45,30 @@
 
     <header class="essays-hero">
         <div class="essays-hero-copy">
-            <p class="essays-kicker">Essays / Music Garden</p>
-            <h1>把原始记录，慢慢养成公开作品。</h1>
-            <p>这里收纳从 Confluence 提炼出来的文章节点。它不像传统博客按日期堆叠，而是按音乐制作、Berklee、作品系统和长期判断互相连接。</p>
+            <p class="essays-kicker" data-i18n="essaysIndex.kicker">Essays / Music Garden</p>
+            <h1 data-i18n="essaysIndex.hero.title">把原始记录，慢慢养成公开作品。</h1>
+            <p data-i18n="essaysIndex.hero.desc">这里收纳从 Confluence 提炼出来的文章节点。它不像传统博客按日期堆叠，而是按音乐制作、Berklee、作品系统和长期判断互相连接。</p>
         </div>
         <div class="essays-hero-board" aria-label="Essays knowledge map">
             <a href="/essays/why-mpe" class="garden-pill garden-pill-main">
-                <strong>为什么是 MPE</strong>
-                <span>Budding essay</span>
+                <strong data-i18n="essaysIndex.node.mpe.title">为什么是 MPE</strong>
+                <span data-i18n="essaysIndex.node.mpe.stage">Budding essay</span>
             </a>
             <a href="/berklee.html" class="garden-pill garden-pill-a">
-                <strong>Berklee</strong>
-                <span>课程地图</span>
+                <strong data-i18n="essaysIndex.node.berklee.title">Berklee</strong>
+                <span data-i18n="essaysIndex.node.berklee.stage">课程地图</span>
             </a>
             <a href="/works.html" class="garden-pill garden-pill-b">
-                <strong>Works</strong>
-                <span>公开作品</span>
+                <strong data-i18n="essaysIndex.node.works.title">Works</strong>
+                <span data-i18n="essaysIndex.node.works.stage">公开作品</span>
             </a>
             <a href="/snow-white.html" class="garden-pill garden-pill-c">
-                <strong>Snow White</strong>
-                <span>作品档案</span>
+                <strong data-i18n="essaysIndex.node.snow.title">Snow White</strong>
+                <span data-i18n="essaysIndex.node.snow.stage">作品档案</span>
             </a>
             <a href="/engineering.html" class="garden-pill garden-pill-d">
-                <strong>System</strong>
-                <span>网站工程</span>
+                <strong data-i18n="essaysIndex.node.system.title">System</strong>
+                <span data-i18n="essaysIndex.node.system.stage">网站工程</span>
             </a>
         </div>
     </header>
@@ -76,8 +76,8 @@
     <main>
         <section class="essays-section essays-taxonomy" aria-labelledby="taxonomy-title">
             <div>
-                <p class="essays-kicker">Topics</p>
-                <h2 id="taxonomy-title">先按问题聚类，再让文章互相长出链接。</h2>
+                <p class="essays-kicker" data-i18n="essaysIndex.topics.kicker">Topics</p>
+                <h2 id="taxonomy-title" data-i18n="essaysIndex.topics.title">先按问题聚类，再让文章互相长出链接。</h2>
             </div>
             <div class="taxonomy-cloud" aria-label="Essay topics">
                 <span>Music Production</span>
@@ -91,17 +91,17 @@
 
         <section class="essays-section" aria-labelledby="essays-title">
             <div class="essays-section-heading">
-                <p class="essays-kicker">Budding</p>
-                <h2 id="essays-title">当前公开节点</h2>
+                <p class="essays-kicker" data-i18n="essaysIndex.list.kicker">Budding</p>
+                <h2 id="essays-title" data-i18n="essaysIndex.list.title">当前公开节点</h2>
             </div>
             <div class="essay-card-grid">
                 <a href="/essays/why-mpe" class="essay-card essay-card-featured">
                     <div class="essay-card-image" aria-hidden="true"></div>
                     <div class="essay-card-copy">
-                        <span class="essay-stage">Budding Note</span>
-                        <h3>为什么是 Music Production &amp; Engineering</h3>
-                        <p>从量化判断、音乐创作到制作系统：为什么我选择 MPE，而不是把音乐只当作表演或爱好。</p>
-                        <span class="essay-card-link">阅读文章</span>
+                        <span class="essay-stage" data-i18n="essaysIndex.card.stage">Budding Note</span>
+                        <h3 data-i18n="essaysIndex.card.title">为什么是 Music Production &amp; Engineering</h3>
+                        <p data-i18n="essaysIndex.card.desc">从量化判断、音乐创作到制作系统：为什么我选择 MPE，而不是把音乐只当作表演或爱好。</p>
+                        <span class="essay-card-link" data-i18n="essaysIndex.card.link">阅读文章</span>
                     </div>
                 </a>
             </div>
@@ -109,21 +109,21 @@
 
         <section class="essays-section related-paths" aria-labelledby="paths-title">
             <div class="essays-section-heading">
-                <p class="essays-kicker">Backlinks</p>
-                <h2 id="paths-title">相邻入口</h2>
+                <p class="essays-kicker" data-i18n="essaysIndex.paths.kicker">Backlinks</p>
+                <h2 id="paths-title" data-i18n="essaysIndex.paths.title">相邻入口</h2>
             </div>
             <div class="path-grid">
                 <a href="/berklee.html">
-                    <strong>Berklee 课程地图</strong>
-                    <span>49 门课组成的训练结构。</span>
+                    <strong data-i18n="essaysIndex.path.berklee.title">Berklee 课程地图</strong>
+                    <span data-i18n="essaysIndex.path.berklee.desc">49 门课组成的训练结构。</span>
                 </a>
                 <a href="/works.html">
-                    <strong>作品索引</strong>
-                    <span>音乐、论文、视频和公开作品。</span>
+                    <strong data-i18n="essaysIndex.path.works.title">作品索引</strong>
+                    <span data-i18n="essaysIndex.path.works.desc">音乐、论文、视频和公开作品。</span>
                 </a>
                 <a href="/engineering.html">
-                    <strong>thisisyz 作为系统</strong>
-                    <span>网站架构、AI 工作流和运营工具。</span>
+                    <strong data-i18n="essaysIndex.path.engineering.title">thisisyz 作为系统</strong>
+                    <span data-i18n="essaysIndex.path.engineering.desc">网站架构、AI 工作流和运营工具。</span>
                 </a>
             </div>
         </section>
@@ -133,11 +133,13 @@
         <div class="container">
             <p>&copy; Zi Yin / 银子</p>
             <div class="footer-links">
-                <a href="/index.html">首页</a>
+                <a href="/index.html" data-i18n="essaysIndex.footer.home">首页</a>
                 <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
             </div>
         </div>
     </footer>
     <script src="/site-nav.js" defer></script>
+    <script src="/i18n.js?v=20260511-essays-en2" defer></script>
+    <script src="/script.js?v=20260511-essays-nav" defer></script>
 </body>
 </html>

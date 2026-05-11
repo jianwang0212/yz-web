@@ -82,6 +82,108 @@ const translations = {
         'entry.review.title': '年度总结',
         'entry.review.desc': '目标、复盘与偏差校正',
         'entry.review.link': '→ 阅读年度总结',
+
+        // Essays / Music Garden
+        'essaysIndex.meta.title': 'Essays / 音乐花园 - Zi Yin',
+        'essaysIndex.meta.description': 'Zi Yin（银子）的 Essays 音乐花园：把 Confluence 原始记录提炼成公开文章、作品笔记和学习节点。',
+        'essaysIndex.kicker': 'Essays / Music Garden',
+        'essaysIndex.hero.title': '把原始记录，慢慢养成公开作品。',
+        'essaysIndex.hero.desc': '这里收纳从 Confluence 提炼出来的文章节点。它不像传统博客按日期堆叠，而是按音乐制作、Berklee、作品系统和长期判断互相连接。',
+        'essaysIndex.node.mpe.title': '为什么是 MPE',
+        'essaysIndex.node.mpe.stage': 'Budding essay',
+        'essaysIndex.node.plans.title': '长期计划',
+        'essaysIndex.node.plans.stage': 'Interactive essay',
+        'essaysIndex.node.berklee.title': 'Berklee',
+        'essaysIndex.node.berklee.stage': '课程地图',
+        'essaysIndex.node.works.title': 'Works',
+        'essaysIndex.node.works.stage': '公开作品',
+        'essaysIndex.node.snow.title': 'Snow White',
+        'essaysIndex.node.snow.stage': '作品档案',
+        'essaysIndex.node.system.title': 'System',
+        'essaysIndex.node.system.stage': '网站工程',
+        'essaysIndex.topics.kicker': 'Topics',
+        'essaysIndex.topics.title': '先按问题聚类，再让文章互相长出链接。',
+        'essaysIndex.list.kicker': 'Budding',
+        'essaysIndex.list.title': '当前公开节点',
+        'essaysIndex.card.stage': 'Budding Note',
+        'essaysIndex.card.title': '为什么是 Music Production & Engineering',
+        'essaysIndex.card.desc': '从量化判断、音乐创作到制作系统：为什么我选择 MPE，而不是把音乐只当作表演或爱好。',
+        'essaysIndex.card.link': '阅读文章',
+        'essaysIndex.cardPlans.stage': 'Interactive Essay',
+        'essaysIndex.cardPlans.title': '长期计划档案',
+        'essaysIndex.cardPlans.desc': '2014 年在澳洲开始规划未来十年：从 UQ 的满绩点、奖章、论文，到 Oxford、顶级公司、经济独立和今天的创作自由。',
+        'essaysIndex.cardPlans.link': '选择视觉版本',
+        'essaysIndex.paths.kicker': 'Backlinks',
+        'essaysIndex.paths.title': '相邻入口',
+        'essaysIndex.path.berklee.title': 'Berklee 课程地图',
+        'essaysIndex.path.berklee.desc': '49 门课组成的训练结构。',
+        'essaysIndex.path.works.title': '作品索引',
+        'essaysIndex.path.works.desc': '音乐、论文、视频和公开作品。',
+        'essaysIndex.path.engineering.title': 'thisisyz 作为系统',
+        'essaysIndex.path.engineering.desc': '网站架构、AI 工作流和运营工具。',
+        'essaysIndex.footer.home': '首页',
+        'essayWhyMpe.meta.title': '为什么是 MPE - Zi Yin',
+        'essayWhyMpe.meta.description': '银子 / Zi Yin 关于为什么选择 Berklee Music Production & Engineering 的公开改写版：从量化判断、音乐创作到制作系统。',
+        'essayWhyMpe.kicker': 'Music Garden · Budding Note',
+        'essayWhyMpe.title': '为什么是 Music Production & Engineering',
+        'essayWhyMpe.lede': '我不是从一个职业跳进另一个职业，而是在把同一种判断力搬进声音里：听见系统，拆开系统，再把它重新组合成作品。',
+        'essayWhyMpe.meta.source': 'Source: Confluence',
+        'essayWhyMpe.meta.stage': 'Draft for thisisyz',
+        'essayWhyMpe.meta.tended': 'Last tended: May 2026',
+        'essayWhyMpe.map.kicker': 'Knowledge Map',
+        'essayWhyMpe.map.title': '这篇文章不是一条时间线，而是一组互相牵引的音乐问题。',
+        'essayWhyMpe.node.center.title': 'MPE',
+        'essayWhyMpe.node.center.desc': '制作系统',
+        'essayWhyMpe.node.listening.title': 'Listening',
+        'essayWhyMpe.node.listening.desc': '听觉判断',
+        'essayWhyMpe.node.engineering.title': 'Engineering',
+        'essayWhyMpe.node.engineering.desc': '技术纪律',
+        'essayWhyMpe.node.songwriting.title': 'Songwriting',
+        'essayWhyMpe.node.songwriting.desc': '表达动机',
+        'essayWhyMpe.node.producer.title': 'Producer',
+        'essayWhyMpe.node.producer.desc': '组织作品',
+        'essayWhyMpe.node.quant.title': 'Quant',
+        'essayWhyMpe.node.quant.desc': '复杂系统',
+        'essayWhyMpe.node.portfolio.title': 'Portfolio',
+        'essayWhyMpe.node.portfolio.desc': '公开输出',
+        'essayWhyMpe.backlinks.kicker': 'Backlinks',
+        'essayWhyMpe.backlinks.berklee': 'Berklee 课程地图',
+        'essayWhyMpe.backlinks.snow': 'Snow White 作品档案',
+        'essayWhyMpe.backlinks.works': '作品索引',
+        'essayWhyMpe.backlinks.engineering': '工程展示',
+        'essayWhyMpe.system.title': '我想学的不是“录音”，而是制作系统。',
+        'essayWhyMpe.system.p1': 'Music Production & Engineering 吸引我的地方，不只是麦克风、console、混音或录音棚。真正让我兴奋的是：一首歌如何从一个不稳定的念头，穿过写作、编曲、演唱、录音、剪辑、混音、母带，最后变成一个可以被反复聆听的对象。',
+        'essayWhyMpe.system.p2': '这中间每一步都像一个小型决策系统。声音不是单纯“好不好听”，而是在问：这个音色有没有承担叙事功能？这个鼓组有没有让身体相信律动？这个 vocal 有没有把词的重量带出来？工程不是艺术的反面，它是让艺术持续变清楚的方法。',
+        'essayWhyMpe.quant.title': '从量化交易到音乐制作，中间有一条暗线。',
+        'essayWhyMpe.quant.p1': '我以前训练的是市场判断：在噪声里识别结构，在有限信息下做决定，在情绪和系统之间保持纪律。音乐制作看起来离金融很远，但我越做越发现，它们共享一种底层能力：把复杂系统拆成可以听、可以改、可以验证的局部。',
+        'essayWhyMpe.quant.p2': '区别在于，市场给你的反馈常常是价格；音乐给你的反馈是身体。一个和弦有没有落地，一个低频有没有占住空间，一个前奏有没有让人愿意继续听下去，答案不只在屏幕里，也在呼吸和肌肉反应里。',
+        'essayWhyMpe.listening.title': '第一门核心课其实是聆听。',
+        'essayWhyMpe.listening.p1': '我选择 MPE，是因为我需要把“喜欢音乐”升级成“能解释我为什么喜欢”。喜欢一张唱片，不能只停在情绪层面；我想知道它的空间、频率、动态、编曲密度、vocal placement 和 groove 是怎样共同塑造体验的。',
+        'essayWhyMpe.listening.p2': '当听觉变得具体，创作也会变具体。你不再只是说“这里不够高级”，而是能说：这里的 high-mid 让人紧张，这里的 transient 太硬，这里的和声没有给歌词留出足够的阴影。',
+        'essayWhyMpe.engineering.title': '技术给灵感一个可以反复回来的房间。',
+        'essayWhyMpe.engineering.p1': '我过去写歌时，很多东西靠直觉完成。直觉很珍贵，但如果没有工程能力，直觉很容易停在 demo 里。MPE 对我重要，是因为它把“我脑子里听到的东西”和“别人耳机里真正听到的东西”之间的距离缩短。',
+        'essayWhyMpe.engineering.p2': '麦克风选择、声源位置、gain staging、session organization、editing discipline、mix translation，这些词听起来朴素，却决定了一首歌能不能从私人感动变成公共作品。',
+        'essayWhyMpe.songwriting.title': '我仍然从 songwriting 出发。',
+        'essayWhyMpe.songwriting.p1': '制作不是给空壳做包装。它应该服务于歌本身：旋律的走向、歌词的视角、和声的张力、歌手的身份。对我来说，MPE 最理想的训练不是把我变成只会操作设备的人，而是让我更有能力保护一首歌的核心。',
+        'essayWhyMpe.songwriting.p2': '一首好歌有时像一个很小的真相。制作人的工作，是不要把它弄丢。',
+        'essayWhyMpe.producer.title': '我想成为能组织作品的人。',
+        'essayWhyMpe.producer.p1': 'Producer 这个角色迷人的地方在于，它站在许多语言之间：音乐语言、技术语言、人的语言、时间和预算的语言。它既要理解创作者的脆弱，也要在 deadline 前做出可交付的判断。',
+        'essayWhyMpe.producer.p2': '这和我过去做项目、做交易、做团队很像：最后不是证明自己懂得最多，而是让系统产出一个更好的结果。',
+        'essayWhyMpe.portfolio.title': '这篇文章会变成一个长期节点。',
+        'essayWhyMpe.portfolio.p1': '它不是最终答案，而是 thisisyz 音乐花园里的第一个公开节点。之后它应该连到具体作品：一首歌的制作笔记，一次混音复盘，一张唱片的 production analysis，一套练耳方法，一个课堂项目如何变成真正的 release。',
+        'essayWhyMpe.portfolio.p2': 'Confluence 继续保存原始记录；这里保存被蒸馏后的版本。不是为了把所有东西都公开，而是让值得被看见的 output 有一个清楚、耐读、可继续生长的位置。',
+        'essayWhyMpe.related.kicker': 'Next Notes',
+        'essayWhyMpe.related.title': '这株植物旁边，应该继续长出这些节点。',
+        'essayWhyMpe.related.berklee.stage': 'Course Map',
+        'essayWhyMpe.related.berklee.title': 'Berklee 训练结构',
+        'essayWhyMpe.related.berklee.desc': '49 门课如何分成制作、作曲、钢琴、听训和合奏。',
+        'essayWhyMpe.related.snow.stage': 'Artifact',
+        'essayWhyMpe.related.snow.title': 'Snow White',
+        'essayWhyMpe.related.snow.desc': '把歌曲、谱面、制作笔记和预算放在同一个作品档案里。',
+        'essayWhyMpe.related.system.stage': 'System',
+        'essayWhyMpe.related.system.title': 'thisisyz 作为作品系统',
+        'essayWhyMpe.related.system.desc': '个人网站不是简历，而是长期输出的组织方式。',
+        'essayWhyMpe.footer.works': '作品',
         
         // Info
         'info.origin': '籍贯：',
@@ -760,6 +862,108 @@ const translations = {
         'entry.review.title': 'Year Review',
         'entry.review.desc': 'Goals, retrospectives, and course corrections',
         'entry.review.link': '→ Read Year Review',
+
+        // Essays / Music Garden
+        'essaysIndex.meta.title': 'Essays / Music Garden - Zi Yin',
+        'essaysIndex.meta.description': 'Zi Yin’s music garden for public essays, work notes, and learning nodes distilled from Confluence.',
+        'essaysIndex.kicker': 'Essays / Music Garden',
+        'essaysIndex.hero.title': 'Turning raw records into public work, slowly.',
+        'essaysIndex.hero.desc': 'This is where selected Confluence notes become public writing nodes. It is not a chronological blog; it is organized by music production, Berklee, work systems, and long-term judgment.',
+        'essaysIndex.node.mpe.title': 'Why MPE',
+        'essaysIndex.node.mpe.stage': 'Budding essay',
+        'essaysIndex.node.plans.title': 'Long-term Plans',
+        'essaysIndex.node.plans.stage': 'Interactive essay',
+        'essaysIndex.node.berklee.title': 'Berklee',
+        'essaysIndex.node.berklee.stage': 'Course map',
+        'essaysIndex.node.works.title': 'Works',
+        'essaysIndex.node.works.stage': 'Public output',
+        'essaysIndex.node.snow.title': 'Snow White',
+        'essaysIndex.node.snow.stage': 'Work archive',
+        'essaysIndex.node.system.title': 'System',
+        'essaysIndex.node.system.stage': 'Site engineering',
+        'essaysIndex.topics.kicker': 'Topics',
+        'essaysIndex.topics.title': 'Cluster by questions first, then let the essays grow links to one another.',
+        'essaysIndex.list.kicker': 'Budding',
+        'essaysIndex.list.title': 'Current Public Nodes',
+        'essaysIndex.card.stage': 'Budding Note',
+        'essaysIndex.card.title': 'Why Music Production & Engineering',
+        'essaysIndex.card.desc': 'From quantitative judgment to songwriting and production systems: why I chose MPE instead of treating music only as performance or a hobby.',
+        'essaysIndex.card.link': 'Read Essay',
+        'essaysIndex.cardPlans.stage': 'Interactive Essay',
+        'essaysIndex.cardPlans.title': 'Long-term Planning Archive',
+        'essaysIndex.cardPlans.desc': 'A ten-year planning archive that starts in Australia in 2014: from UQ GPA, medals, and papers to Oxford, top companies, economic independence, and creative freedom.',
+        'essaysIndex.cardPlans.link': 'Choose a visual version',
+        'essaysIndex.paths.kicker': 'Backlinks',
+        'essaysIndex.paths.title': 'Adjacent Entrances',
+        'essaysIndex.path.berklee.title': 'Berklee Course Map',
+        'essaysIndex.path.berklee.desc': 'A training structure built from 49 courses.',
+        'essaysIndex.path.works.title': 'Works Index',
+        'essaysIndex.path.works.desc': 'Music, papers, videos, and public artifacts.',
+        'essaysIndex.path.engineering.title': 'thisisyz as a System',
+        'essaysIndex.path.engineering.desc': 'Site architecture, AI workflows, and operating tools.',
+        'essaysIndex.footer.home': 'Home',
+        'essayWhyMpe.meta.title': 'Why MPE - Zi Yin',
+        'essayWhyMpe.meta.description': 'Zi Yin’s public essay on why Berklee Music Production & Engineering matters: from quantitative judgment to music-making systems.',
+        'essayWhyMpe.kicker': 'Music Garden · Budding Note',
+        'essayWhyMpe.title': 'Why Music Production & Engineering',
+        'essayWhyMpe.lede': 'I am not jumping from one career into another. I am moving the same kind of judgment into sound: hearing a system, taking it apart, and reassembling it into a work.',
+        'essayWhyMpe.meta.source': 'Source: Confluence',
+        'essayWhyMpe.meta.stage': 'Draft for thisisyz',
+        'essayWhyMpe.meta.tended': 'Last tended: May 2026',
+        'essayWhyMpe.map.kicker': 'Knowledge Map',
+        'essayWhyMpe.map.title': 'This essay is not a timeline. It is a set of musical questions pulling on one another.',
+        'essayWhyMpe.node.center.title': 'MPE',
+        'essayWhyMpe.node.center.desc': 'Production system',
+        'essayWhyMpe.node.listening.title': 'Listening',
+        'essayWhyMpe.node.listening.desc': 'Aural judgment',
+        'essayWhyMpe.node.engineering.title': 'Engineering',
+        'essayWhyMpe.node.engineering.desc': 'Technical discipline',
+        'essayWhyMpe.node.songwriting.title': 'Songwriting',
+        'essayWhyMpe.node.songwriting.desc': 'Expressive motive',
+        'essayWhyMpe.node.producer.title': 'Producer',
+        'essayWhyMpe.node.producer.desc': 'Organizing the work',
+        'essayWhyMpe.node.quant.title': 'Quant',
+        'essayWhyMpe.node.quant.desc': 'Complex systems',
+        'essayWhyMpe.node.portfolio.title': 'Portfolio',
+        'essayWhyMpe.node.portfolio.desc': 'Public output',
+        'essayWhyMpe.backlinks.kicker': 'Backlinks',
+        'essayWhyMpe.backlinks.berklee': 'Berklee Course Map',
+        'essayWhyMpe.backlinks.snow': 'Snow White Work Archive',
+        'essayWhyMpe.backlinks.works': 'Works Index',
+        'essayWhyMpe.backlinks.engineering': 'Engineering Notes',
+        'essayWhyMpe.system.title': 'I do not want to study “recording” so much as a production system.',
+        'essayWhyMpe.system.p1': 'What draws me to Music Production & Engineering is not only microphones, consoles, mixing, or studios. What excites me is how a song moves from an unstable idea through writing, arrangement, performance, recording, editing, mixing, and mastering until it becomes something people can return to and hear again.',
+        'essayWhyMpe.system.p2': 'Every step is a small decision system. Sound is not simply “good” or “bad.” It asks whether a tone is carrying narrative weight, whether a drum part makes the body believe the groove, and whether a vocal brings out the gravity of the words. Engineering is not the opposite of art. It is one way art becomes clearer.',
+        'essayWhyMpe.quant.title': 'There is a hidden line from quantitative trading to music production.',
+        'essayWhyMpe.quant.p1': 'I used to train market judgment: finding structure inside noise, making decisions with incomplete information, and staying disciplined between emotion and system. Music production looks far away from finance, but the more I work on it, the more I see a shared ability: breaking a complex system into parts that can be heard, changed, and tested.',
+        'essayWhyMpe.quant.p2': 'The difference is that markets often give feedback through price; music gives feedback through the body. Does a chord land? Does the low end hold the space? Does the intro make someone want to keep listening? The answer lives not only on the screen, but also in breathing and muscle response.',
+        'essayWhyMpe.listening.title': 'The first core class is really listening.',
+        'essayWhyMpe.listening.p1': 'I chose MPE because I need to upgrade “I like music” into “I can explain why I like it.” Loving a record cannot stop at emotion. I want to understand how space, frequency, dynamics, arrangement density, vocal placement, and groove shape the experience together.',
+        'essayWhyMpe.listening.p2': 'When listening becomes specific, creation becomes specific too. You stop saying only “this does not feel polished” and start saying: the high-mid range is making the moment tense, the transient is too hard, or the harmony is not leaving enough shadow for the lyric.',
+        'essayWhyMpe.engineering.title': 'Technique gives inspiration a room it can return to.',
+        'essayWhyMpe.engineering.p1': 'When I wrote songs before, a lot of the process relied on instinct. Instinct is precious, but without engineering skill it often stays trapped inside the demo. MPE matters to me because it shortens the distance between what I hear in my head and what someone else actually hears in their headphones.',
+        'essayWhyMpe.engineering.p2': 'Microphone choice, source placement, gain staging, session organization, editing discipline, and mix translation sound plain, but they decide whether a song can move from private feeling into public work.',
+        'essayWhyMpe.songwriting.title': 'I still begin with songwriting.',
+        'essayWhyMpe.songwriting.p1': 'Production is not decoration for an empty shell. It should serve the song itself: melodic direction, lyrical perspective, harmonic tension, and the singer’s identity. The ideal MPE training would not turn me into someone who only operates equipment. It would make me more capable of protecting a song’s core.',
+        'essayWhyMpe.songwriting.p2': 'A good song sometimes feels like a small truth. The producer’s job is not to lose it.',
+        'essayWhyMpe.producer.title': 'I want to become someone who can organize work into being.',
+        'essayWhyMpe.producer.p1': 'The producer role is compelling because it stands between many languages: musical language, technical language, human language, and the language of time and budget. It has to understand the vulnerability of creators while still making deliverable decisions before a deadline.',
+        'essayWhyMpe.producer.p2': 'That feels close to the way I have worked on projects, trading systems, and teams. In the end, the point is not to prove that I understand the most. It is to help the system produce a better result.',
+        'essayWhyMpe.portfolio.title': 'This essay is meant to become a long-term node.',
+        'essayWhyMpe.portfolio.p1': 'It is not a final answer. It is the first public node in the thisisyz music garden. Later, it should connect to concrete work: production notes for a song, a mixing postmortem, an album production analysis, an ear-training method, or a class project that becomes an actual release.',
+        'essayWhyMpe.portfolio.p2': 'Confluence keeps the raw record; this site keeps the distilled version. The goal is not to make everything public. It is to give the output worth showing a clear, readable, and growable place.',
+        'essayWhyMpe.related.kicker': 'Next Notes',
+        'essayWhyMpe.related.title': 'The next nodes should grow next to this one.',
+        'essayWhyMpe.related.berklee.stage': 'Course Map',
+        'essayWhyMpe.related.berklee.title': 'Berklee Training Structure',
+        'essayWhyMpe.related.berklee.desc': 'How 49 courses split across production, composition, piano, ear training, and ensembles.',
+        'essayWhyMpe.related.snow.stage': 'Artifact',
+        'essayWhyMpe.related.snow.title': 'Snow White',
+        'essayWhyMpe.related.snow.desc': 'A work archive that puts song, scores, production notes, and budget in one place.',
+        'essayWhyMpe.related.system.stage': 'System',
+        'essayWhyMpe.related.system.title': 'thisisyz as a Work System',
+        'essayWhyMpe.related.system.desc': 'A personal site as an organizing system for long-term public output, not just a resume.',
+        'essayWhyMpe.footer.works': 'Works',
         
         // Info
         'info.origin': 'Origin:',
@@ -1359,6 +1563,22 @@ function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
+
+    const body = document.body;
+    const titleKey = body && body.getAttribute('data-i18n-title');
+    if (titleKey && translations[lang] && translations[lang][titleKey]) {
+        document.title = translations[lang][titleKey];
+        document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]').forEach(meta => {
+            meta.setAttribute('content', translations[lang][titleKey]);
+        });
+    }
+
+    const descriptionKey = body && body.getAttribute('data-i18n-description');
+    if (descriptionKey && translations[lang] && translations[lang][descriptionKey]) {
+        document.querySelectorAll('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]').forEach(meta => {
+            meta.setAttribute('content', translations[lang][descriptionKey]);
+        });
+    }
     
     // Update html lang attribute
     const htmlElement = document.getElementById('html-lang');
@@ -1485,14 +1705,36 @@ function initLanguageToggle() {
     }
 }
 
+function bindDelegatedLanguageToggle() {
+    if (window.__ziLanguageDelegationBound) {
+        return;
+    }
+
+    window.__ziLanguageDelegationBound = true;
+    document.addEventListener('click', (event) => {
+        const button = event.target.closest('#lang-zh, #lang-en, #lang-zh-mobile, #lang-en-mobile, .lang-btn, .lang-btn-mobile');
+        if (!button) {
+            return;
+        }
+
+        const text = button.textContent.trim().toLowerCase();
+        const lang = button.id.includes('en') || text === 'english' ? 'en' : 'zh';
+        event.preventDefault();
+        event.stopPropagation();
+        setLanguage(lang);
+    });
+}
+
 // Initialize language - try multiple strategies
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
+        bindDelegatedLanguageToggle();
         setLanguage(currentLang);
         initLanguageToggle();
     });
 } else {
     // DOM is already loaded
+    bindDelegatedLanguageToggle();
     setLanguage(currentLang);
     initLanguageToggle();
 }
