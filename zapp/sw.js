@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v6-20260509";
+const CACHE_VERSION = "zapp-store-v11-20260511-ytd";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -23,9 +23,14 @@ const STATIC_ASSETS = [
   "icons/apps/medical.svg",
   "icons/apps/food.svg",
   "icons/apps/homeschool.svg",
+  "icons/apps/finance.svg",
   "apps/workbench.html",
   "apps/workbench.css",
   "apps/workbench.js",
+  "apps/boa-finance.html",
+  "apps/boa-finance.css",
+  "apps/boa-finance.js",
+  "apps/boa-finance-data.enc.json",
   "apps/calculator.html",
   "apps/calculator.css",
   "apps/calculator.js",
@@ -70,7 +75,9 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (request.mode === "navigate") {
-    const fallback = url.pathname.endsWith("/apps/snow-white-board.html")
+    const fallback = url.pathname.endsWith("/apps/boa-finance.html")
+      ? "apps/boa-finance.html"
+      : url.pathname.endsWith("/apps/snow-white-board.html")
       ? "apps/snow-white-board.html"
       : url.pathname.endsWith("/apps/wellness-tracker.html")
         ? "apps/wellness-tracker.html"
