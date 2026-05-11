@@ -20,6 +20,7 @@ const standalonePages = [
   ['works', 'works.html'],
   ['projects', 'projects.html'],
   ['engineering', 'engineering.html'],
+  ['plans', 'plans.html'],
   ['resume', 'resume.html'],
   ['contact', 'contact.html'],
   ['timeline', 'timeline.html'],
