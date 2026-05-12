@@ -1681,7 +1681,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 
 .cover-card img {
     width: 100%;
-    aspect-ratio: 0.68;
+    height: clamp(500px, 34vw, 640px);
     display: block;
     object-fit: cover;
 }
@@ -2600,13 +2600,14 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 .snow-story::before {
     content: "";
     position: absolute;
-    inset: 24px 0;
+    inset: 12px 0;
     z-index: -2;
     border-radius: 8px;
-    opacity: 0.2;
+    opacity: 0.38;
     background:
-        linear-gradient(135deg, rgba(255, 250, 248, 0.5), rgba(255, 250, 248, 0.84)),
-        url("assets/snow-white/covers/optimized/visual-03-snow-castle-1200.webp") center / cover;
+        linear-gradient(105deg, rgba(255, 250, 248, 0.72) 0%, rgba(255, 250, 248, 0.42) 48%, rgba(255, 250, 248, 0.68) 100%),
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center 46% / cover;
+    background-blend-mode: screen;
 }
 
 .snow-story::after {
@@ -2615,7 +2616,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     inset: 24px 0;
     z-index: -1;
     border-radius: 8px;
-    background: linear-gradient(135deg, rgba(255, 250, 248, 0.72), rgba(247, 251, 252, 0.48));
+    background: linear-gradient(135deg, rgba(255, 250, 248, 0.44), rgba(247, 251, 252, 0.2));
 }
 
 .resource-list {
