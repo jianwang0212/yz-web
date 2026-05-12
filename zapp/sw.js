@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v21-20260512-ly-fund-faceid";
+const CACHE_VERSION = "zapp-store-v22-20260512-qhrb-net-worth";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -24,6 +24,10 @@ const STATIC_ASSETS = [
   "icons/apps/food.svg",
   "icons/apps/homeschool.svg",
   "icons/apps/gt.svg",
+  "apps/qhrb-net-worth.html",
+  "apps/qhrb-net-worth.css",
+  "apps/qhrb-net-worth.js",
+  "apps/qhrb-san-ci-can-sai-data.json",
   "apps/gt.html",
   "apps/gt.css",
   "apps/gt.js",
@@ -86,6 +90,8 @@ self.addEventListener("fetch", (event) => {
   if (request.mode === "navigate") {
     const fallback = url.pathname.endsWith("/apps/gt.html")
       ? "apps/gt.html"
+      : url.pathname.endsWith("/apps/qhrb-net-worth.html")
+      ? "apps/qhrb-net-worth.html"
       : url.pathname.endsWith("/apps/ly-fund.html")
       ? "apps/ly-fund.html"
       : url.pathname.endsWith("/apps/boa-finance.html")
