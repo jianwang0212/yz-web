@@ -9,9 +9,11 @@ const SERVICE_RULES = [
   { id: "soundgym", name: "SoundGym", kind: "Music training", tokens: ["SOUNDGYM"], cadence: "subscription" },
   { id: "uber-one", name: "Uber One", kind: "Delivery membership", tokens: ["UBER *ONE"], cadence: "monthly" },
   { id: "starry", name: "Starry Internet", kind: "Internet", tokens: ["STARRY"], cadence: "monthly" },
+  { id: "rcn", name: "RCN / Astound Internet", kind: "Internet", tokens: ["RCN"], cadence: "monthly" },
   { id: "tmobile", name: "T-Mobile prepaid", kind: "Mobile phone", tokens: ["TMOBILE", "T-MOBILE"], cadence: "monthly" },
   { id: "eversource", name: "Eversource", kind: "Electric", tokens: ["EVERSOURCE"], cadence: "monthly" },
   { id: "national-grid", name: "National Grid", kind: "Utility", tokens: ["NGRID"], cadence: "monthly" },
+  { id: "youtube-premium", name: "YouTube Premium", kind: "Video subscription", tokens: ["YOUTUBEPREMIUM", "YOUTUBE PREMIUM"], cadence: "monthly" },
 ];
 
 const DEFAULT_MANUAL_SERVICES = [
@@ -25,13 +27,13 @@ const DEFAULT_MANUAL_SERVICES = [
     id: "pro-tools",
     name: "Pro Tools / Avid",
     monthly: "",
-    note: "2026 BOA 数据里还没有检测到 Avid 或 Pro Tools 扣款。",
+    note: "当前 BOA 数据里还没有检测到 Avid 或 Pro Tools 扣款。",
   },
   {
     id: "notability",
     name: "Notability",
     monthly: "",
-    note: "2026 BOA 数据里还没有检测到 Notability 扣款。",
+    note: "当前 BOA 数据里还没有检测到 Notability 扣款。",
   },
 ];
 
@@ -44,7 +46,7 @@ const EMPTY_META = {
   currency: "USD",
 };
 
-const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260511ytd1";
+const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260512hist3";
 
 let BOA_META = EMPTY_META;
 let transactions = [];
@@ -305,7 +307,8 @@ function bindEvents() {
 }
 
 function buildFilters() {
-  const months = ["all", ...BOA_META.months];
+  const years = [...new Set(BOA_META.months.map((month) => month.slice(0, 4)))].sort();
+  const months = ["all", ...years, ...BOA_META.months];
   els.monthFilter.innerHTML = months
     .map((month) => `<option value="${month}">${month === "all" ? "全部" : formatMonth(month)}</option>`)
     .join("");
@@ -344,11 +347,11 @@ function renderStats() {
   }
 
   const spendRows = transactions.filter((item) => item.spend_amount > 0);
-  const foodRows = spendRows.filter((item) => item.category_group === "food");
-  const serviceRows = spendRows.filter(isServiceLike);
+  const foodRows = transactions.filter((item) => item.category_group === "food");
+  const serviceRows = transactions.filter(isServiceLike);
   const detected = detectServices();
 
-  els.totalSpend.textContent = money.format(sum(spendRows, "spend_amount"));
+  els.totalSpend.textContent = money.format(sum(transactions, "spend_amount"));
   els.foodSpend.textContent = money.format(sum(foodRows, "spend_amount"));
   els.serviceSpend.textContent = money.format(sum(serviceRows, "spend_amount"));
   els.serviceCount.textContent = String(detected.length);
@@ -359,7 +362,7 @@ function renderStats() {
 
 function renderOverview() {
   if (!isUnlocked) {
-    els.monthCards.innerHTML = `<div class="empty">输入密码后显示 2026 BOA 总览。</div>`;
+    els.monthCards.innerHTML = `<div class="empty">输入密码后显示 BOA 总览。</div>`;
     els.categoryTotal.textContent = "$0.00";
     els.categoryBars.innerHTML = `<div class="empty">分类支出已加密。</div>`;
     els.recentList.innerHTML = `<div class="empty">最近交易已加密。</div>`;
@@ -367,13 +370,14 @@ function renderOverview() {
   }
 
   const monthRows = BOA_META.months.map((month) => {
-    const rows = transactions.filter((item) => item.month === month && item.spend_amount > 0);
+    const rows = transactions.filter((item) => item.month === month);
+    const spendRows = rows.filter((item) => item.spend_amount > 0);
     return {
       month,
       spend: sum(rows, "spend_amount"),
       food: sum(rows.filter((item) => item.category_group === "food"), "spend_amount"),
       services: sum(rows.filter(isServiceLike), "spend_amount"),
-      count: rows.length,
+      count: spendRows.length,
     };
   });
 
@@ -396,7 +400,7 @@ function renderOverview() {
     )
     .join("");
 
-  const rows = transactions.filter((item) => item.spend_amount > 0);
+  const rows = transactions.filter((item) => item.spend_amount !== 0);
   const groupTotals = groupBy(rows, (item) => labelGroup(item.category_group));
   const sorted = [...groupTotals.entries()]
     .map(([label, list]) => ({ label, total: sum(list, "spend_amount") }))
@@ -444,7 +448,7 @@ function renderServices() {
   els.serviceWindowTotal.textContent = money.format(total);
   els.serviceStatus.innerHTML = `
     <div><strong>${detected.length}</strong><span>检测到的服务流</span></div>
-    <div><strong>${money.format(total)}</strong><span>2026 服务相关支出</span></div>
+    <div><strong>${money.format(total)}</strong><span>服务相关支出</span></div>
     <div><strong>${last ? shortDate(last) : "none"}</strong><span>最近一次服务扣款</span></div>
   `;
 
@@ -614,7 +618,7 @@ function parseQuestion(text) {
 
 function rowsForQuery(query) {
   return transactions.filter((item) => {
-    if (query.month !== "all" && item.month !== query.month) return false;
+    if (!matchesMonth(item, query.month)) return false;
     if (query.status !== "all" && item.status !== query.status) return false;
     if (!matchesCategory(item, query.category)) return false;
     if (!query.search) return true;
@@ -626,7 +630,7 @@ function renderAnswerResults() {
   if (!state.answerRows.length || !state.answerKind) {
     els.answerResults.innerHTML = "";
     if (!state.answer) {
-      els.answerLine.textContent = "数据已载入，可以直接问 2026、任意月份、吃饭、OpenAI、最大支出或按分类汇总。";
+      els.answerLine.textContent = "数据已载入，可以直接问 2023-2026、任意月份、吃饭、OpenAI、最大支出或按分类汇总。";
     }
     return;
   }
@@ -653,6 +657,7 @@ function renderAnswerResults() {
 
 function renderCategorySummaryTable(rows) {
   const stats = getCategoryStats(rows);
+  const displayMonths = BOA_META.months.filter((month) => rows.some((item) => item.month === month));
   els.categoryTableTotal.textContent = money.format(sum(rows, "spend_amount"));
 
   if (!stats.length) {
@@ -666,7 +671,7 @@ function renderCategorySummaryTable(rows) {
         <tr>
           <th>大类</th>
           <th>小类</th>
-          ${BOA_META.months.map((month) => `<th>${formatShortMonth(month)}</th>`).join("")}
+          ${displayMonths.map((month) => `<th>${formatShortMonth(month)}</th>`).join("")}
           <th>合计</th>
           <th>笔数</th>
           <th>最近</th>
@@ -679,7 +684,7 @@ function renderCategorySummaryTable(rows) {
               <tr>
                 <td>${escapeHTML(labelGroup(item.group))}</td>
                 <td>${escapeHTML(labelCategory(item.category))}</td>
-                ${BOA_META.months.map((month) => `<td class="numeric">${money.format(item.months[month] || 0)}</td>`).join("")}
+                ${displayMonths.map((month) => `<td class="numeric">${money.format(item.months[month] || 0)}</td>`).join("")}
                 <td class="numeric strong">${money.format(item.total)}</td>
                 <td class="numeric">${item.count}</td>
                 <td>${shortDate(item.latestDate)}</td>
@@ -777,7 +782,7 @@ function renderMiniTransactionTable(rows) {
 }
 
 function getCategoryStats(rows) {
-  return [...groupBy(rows.filter((item) => item.spend_amount > 0), (item) => `${item.category_group}||${item.category}`).entries()]
+  return [...groupBy(rows.filter((item) => item.spend_amount !== 0), (item) => `${item.category_group}||${item.category}`).entries()]
     .map(([key, list]) => {
       const [group, category] = key.split("||");
       const months = {};
@@ -803,9 +808,51 @@ function clearAnswer() {
 }
 
 function parseMonth(lower) {
-  if (lower.includes("4月") || lower.includes("april") || lower.includes("2026-04")) return "2026-04";
-  if (lower.includes("5月") || lower.includes("may") || lower.includes("2026-05")) return "2026-05";
+  if (/(20\d{2})\s*(?:-|到|至|~)\s*(20\d{2})/.test(lower)) return "all";
+
+  const yearMonth = lower.match(/(20\d{2})\s*(?:年|-|\/|\.)\s*(0?[1-9]|1[0-2])\s*月?/);
+  if (yearMonth) return normalizeMonth(yearMonth[1], yearMonth[2]);
+
+  const englishMonths = {
+    january: "01",
+    jan: "01",
+    february: "02",
+    feb: "02",
+    march: "03",
+    mar: "03",
+    april: "04",
+    apr: "04",
+    may: "05",
+    june: "06",
+    jun: "06",
+    july: "07",
+    jul: "07",
+    august: "08",
+    aug: "08",
+    september: "09",
+    sep: "09",
+    october: "10",
+    oct: "10",
+    november: "11",
+    nov: "11",
+    december: "12",
+    dec: "12",
+  };
+  const year = lower.match(/\b(20\d{2})\b/)?.[1] || latestYear();
+  const english = Object.entries(englishMonths).find(([name]) => lower.includes(name));
+  if (english) return normalizeMonth(year, english[1]);
+
+  const chineseMonth = lower.match(/(?:^|[^\d])([1-9]|1[0-2])\s*月/);
+  if (chineseMonth) return normalizeMonth(year, chineseMonth[1]);
+
+  const yearOnly = lower.match(/\b(20\d{2})\b/);
+  if (yearOnly) return yearOnly[1];
+
   return "all";
+}
+
+function normalizeMonth(year, month) {
+  return `${year}-${String(Number(month)).padStart(2, "0")}`;
 }
 
 function categoryFromQuestion(text) {
@@ -819,6 +866,11 @@ function categoryFromQuestion(text) {
   if (/(收入|利息收入|income)/i.test(text)) return "group:income";
   if (/(信用卡还款|还款|internal transfer|credit card payment)/i.test(text)) return "group:internal_transfer";
   if (/(费用|手续费|利息|fee|fees)/i.test(text)) return "group:fees_interest";
+  if (/(购物|买东西|amazon|shopping|merchandise)/i.test(text)) return "group:shopping";
+  if (/(交通|打车|地铁|火车|油费|uber|lyft|mbta|amtrak|transport|fuel|gas)/i.test(text)) return "group:transportation";
+  if (/(旅行|酒店|机票|travel|hotel|airfare)/i.test(text)) return "group:travel";
+  if (/(娱乐|演出|票|concert|ticket|event)/i.test(text)) return "group:entertainment";
+  if (/(学费|学校|教育|berklee|education|school)/i.test(text)) return "group:education";
   return "all";
 }
 
@@ -841,12 +893,18 @@ function searchableText(item) {
 function filteredTransactions() {
   const query = state.search.toLowerCase();
   return transactions.filter((item) => {
-    if (state.month !== "all" && item.month !== state.month) return false;
+    if (!matchesMonth(item, state.month)) return false;
     if (state.status !== "all" && item.status !== state.status) return false;
     if (!matchesCategory(item, state.category)) return false;
     if (!query) return true;
     return searchableText(item).includes(query);
   });
+}
+
+function matchesMonth(item, month) {
+  if (month === "all") return true;
+  if (/^20\d{2}$/.test(month)) return item.month.startsWith(`${month}-`);
+  return item.month === month;
 }
 
 function detectServices() {
@@ -995,6 +1053,10 @@ function latestMonthTotal(rows) {
   };
 }
 
+function latestYear() {
+  return BOA_META.months.at(-1)?.slice(0, 4) || new Date().getFullYear().toString();
+}
+
 function merchantFromQuestion(lower) {
   const map = [
     ["openai", "openai"],
@@ -1073,6 +1135,7 @@ function shortDate(dateText) {
 function formatMonth(month) {
   if (!month) return "当前月";
   if (month === "all") return "全部月份";
+  if (/^20\d{2}$/.test(month)) return `${month}年`;
   const [year, value] = month.split("-");
   return `${year}年${Number(value)}月`;
 }
@@ -1084,6 +1147,11 @@ function formatShortMonth(month) {
 
 function labelGroup(group) {
   const labels = {
+    adjustments: "调整",
+    business_admin: "事务/行政",
+    cash: "现金",
+    education: "教育",
+    entertainment: "娱乐",
     fees_interest: "费用/利息",
     food: "吃饭",
     health_pharmacy: "健康/药房",
@@ -1091,7 +1159,13 @@ function labelGroup(group) {
     income: "收入",
     internal_transfer: "内部转账",
     people_payments: "个人转账",
+    personal_care: "个人护理",
+    refunds_credits: "退款/返现",
+    shopping: "购物",
     subscriptions: "订阅/软件",
+    transfers: "资金转入转出",
+    transportation: "交通",
+    travel: "旅行",
     utilities: "水电网手机",
   };
   return labels[group] || group || "其他";
@@ -1099,20 +1173,42 @@ function labelGroup(group) {
 
 function labelCategory(category) {
   const labels = {
+    airfare: "机票",
+    apple_billing: "Apple 扣款",
+    balance_adjustment: "余额调整",
+    bank_fee: "银行手续费",
+    cash_deposit: "现金存入",
+    cash_withdrawal: "现金取出",
     credit_card_payment: "信用卡还款",
     delivery_membership: "外卖会员",
     digital: "数字服务",
     dining: "餐饮",
     electric: "电费",
+    external_transfer: "外部转账",
     fees_interest: "费用/利息",
+    fuel: "油费",
+    gas: "燃气",
+    general_merchandise: "综合购物",
     groceries: "超市/杂货",
+    haircut: "理发",
+    identity_admin: "身份/行政",
+    investment_transfer: "投资转账",
     interest_income: "利息收入",
+    live_events: "演出/票务",
+    lodging: "住宿",
     internet: "网络",
+    mobile_deposit: "移动存款",
     mobile_phone: "手机",
+    online_merchandise: "线上购物",
     person_to_person: "个人转账",
     pharmacy: "药房",
+    refund_or_credit: "退款/返现",
     rent: "房租",
+    rideshare_transit: "打车/公共交通",
+    school: "学校",
+    shipping_printing: "寄送/打印",
     software: "软件",
+    uncategorized: "未分类",
   };
   return labels[category] || category || "其他";
 }
