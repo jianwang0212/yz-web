@@ -9,6 +9,7 @@ const projectPages = [
 ];
 
 const essayPages = [
+  ['long-term-plans', 'essays/long-term-plans.html'],
   ['why-berklee', 'essays/why-berklee.html'],
   ['why-mpe', 'essays/why-mpe.html']
 ];
