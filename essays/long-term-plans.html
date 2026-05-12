@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://thisisyz.com/essays/long-term-plans">
     <title>长期计划档案 - Zi Yin</title>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/essays/long-term-plans.css?v=20260511-hook">
+    <link rel="stylesheet" href="/essays/long-term-plans.css?v=20260512-lightbox">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -136,19 +136,19 @@
             </div>
             <div class="evidence-layout">
                 <div class="evidence-stack" aria-label="Planning evidence">
-                    <button class="evidence-card active" type="button" data-evidence="future">
+                    <button class="evidence-card active" type="button" data-evidence="future" aria-label="查看 2015 Future plan 大图">
                         <img src="/images/plans/plan-2015-future.png" alt="2015 future plan screenshot" loading="lazy" decoding="async">
                         <span>2015 Future plan</span>
                     </button>
-                    <button class="evidence-card" type="button" data-evidence="schedule">
+                    <button class="evidence-card" type="button" data-evidence="schedule" aria-label="查看 Weekly execution 大图">
                         <img src="/images/plans/plan-2015-schedule.png" alt="2015 schedule screenshot" loading="lazy" decoding="async">
                         <span>Weekly execution</span>
                     </button>
-                    <button class="evidence-card" type="button" data-evidence="medal">
+                    <button class="evidence-card" type="button" data-evidence="medal" aria-label="查看 UQ academic signal 大图">
                         <img src="/images/credentials/uq-bachelor-medal.jpg" alt="UQ Bachelor Medal" loading="lazy" decoding="async">
                         <span>UQ academic signal</span>
                     </button>
-                    <button class="evidence-card" type="button" data-evidence="oxford">
+                    <button class="evidence-card" type="button" data-evidence="oxford" aria-label="查看 Oxford result 大图">
                         <img src="/images/credentials/oxford-mphil.jpg" alt="Oxford MPhil certificate" loading="lazy" decoding="async">
                         <span>Oxford result</span>
                     </button>
@@ -199,8 +199,23 @@
         </div>
     </footer>
 
+    <div class="evidence-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-describedby="lightbox-summary" hidden>
+        <button class="lightbox-backdrop" type="button" aria-label="关闭大图"></button>
+        <figure class="lightbox-panel" tabindex="-1">
+            <div class="lightbox-image-wrap">
+                <img id="lightbox-image" src="/images/plans/plan-2015-future.png" alt="2015 future plan screenshot">
+            </div>
+            <figcaption class="lightbox-caption">
+                <span id="lightbox-year">2015</span>
+                <h3 id="lightbox-title">Future plan</h3>
+                <p id="lightbox-summary">这一页把未来写成一条高速轨道：Deutsche Bank、UQ tutor、honors、CS / Finance、MIT、Oxford、PhD 和奖学金。</p>
+            </figcaption>
+            <button class="lightbox-close" type="button" aria-label="关闭大图">×</button>
+        </figure>
+    </div>
+
     <script src="/site-nav.js" defer></script>
     <script src="/i18n.js" defer></script>
-    <script src="/essays/long-term-plans.js?v=20260511-hook" defer></script>
+    <script src="/essays/long-term-plans.js?v=20260512-lightbox" defer></script>
 </body>
 </html>

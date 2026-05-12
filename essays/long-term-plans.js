@@ -41,22 +41,30 @@ const evidenceData = {
     future: {
         year: '2015',
         title: 'Future plan',
-        summary: '这一页把未来写成一条高速轨道：Deutsche Bank、UQ tutor、honors、CS / Finance、MIT、Oxford、PhD 和奖学金。'
+        summary: '这一页把未来写成一条高速轨道：Deutsche Bank、UQ tutor、honors、CS / Finance、MIT、Oxford、PhD 和奖学金。',
+        image: '/images/plans/plan-2015-future.png',
+        alt: '2015 future plan screenshot'
     },
     schedule: {
         year: '2015',
         title: 'Weekly execution',
-        summary: '最早的计划不是空中楼阁。旁边跟着密密麻麻的学习、考试、阅读、作业和生活安排，把远期目标落到每一周。'
+        summary: '最早的计划不是空中楼阁。旁边跟着密密麻麻的学习、考试、阅读、作业和生活安排，把远期目标落到每一周。',
+        image: '/images/plans/plan-2015-schedule.png',
+        alt: '2015 schedule screenshot'
     },
     medal: {
         year: 'UQ',
         title: 'Academic signal',
-        summary: '满绩点、学术奖章、论文和教授信任，是早期计划里用来换取名校申请机会的第一层硬信号。'
+        summary: '满绩点、学术奖章、论文和教授信任，是早期计划里用来换取名校申请机会的第一层硬信号。',
+        image: '/images/credentials/uq-bachelor-medal.jpg',
+        alt: 'UQ Bachelor Medal'
     },
     oxford: {
         year: 'Oxford',
         title: 'Result signal',
-        summary: 'Oxford 不是孤立结果，而是早期计划链条里“名校教育作为敲门砖”的兑现，之后继续通向量化金融和经济独立。'
+        summary: 'Oxford 不是孤立结果，而是早期计划链条里“名校教育作为敲门砖”的兑现，之后继续通向量化金融和经济独立。',
+        image: '/images/credentials/oxford-mphil.jpg',
+        alt: 'Oxford MPhil certificate'
     }
 };
 
@@ -78,6 +86,17 @@ const evidenceEls = {
     title: document.getElementById('evidence-title'),
     summary: document.getElementById('evidence-summary')
 };
+
+const lightbox = document.querySelector('.evidence-lightbox');
+const lightboxPanel = document.querySelector('.lightbox-panel');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxEls = {
+    year: document.getElementById('lightbox-year'),
+    title: document.getElementById('lightbox-title'),
+    summary: document.getElementById('lightbox-summary')
+};
+const lightboxCloseButtons = Array.from(document.querySelectorAll('.lightbox-close, .lightbox-backdrop'));
+let lastFocusedElement = null;
 
 function renderWorld(worldId) {
     const item = worldData[worldId] || worldData.past;
@@ -108,6 +127,34 @@ function renderEvidence(evidenceId) {
     });
 }
 
+function openEvidenceLightbox(evidenceId) {
+    const item = evidenceData[evidenceId] || evidenceData.future;
+
+    if (!lightbox || !lightboxImage || !lightboxPanel) return;
+
+    lightboxImage.src = item.image;
+    lightboxImage.alt = item.alt;
+    lightboxEls.year.textContent = item.year;
+    lightboxEls.title.textContent = item.title;
+    lightboxEls.summary.textContent = item.summary;
+
+    lastFocusedElement = document.activeElement;
+    lightbox.hidden = false;
+    document.body.classList.add('lightbox-open');
+    lightboxPanel.focus();
+}
+
+function closeEvidenceLightbox() {
+    if (!lightbox) return;
+
+    lightbox.hidden = true;
+    document.body.classList.remove('lightbox-open');
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+    }
+}
+
 worldButtons.forEach((button) => {
     const worldId = button.dataset.world;
     button.addEventListener('click', () => renderWorld(worldId));
@@ -116,8 +163,21 @@ worldButtons.forEach((button) => {
 
 evidenceButtons.forEach((button) => {
     const evidenceId = button.dataset.evidence;
-    button.addEventListener('click', () => renderEvidence(evidenceId));
+    button.addEventListener('click', () => {
+        renderEvidence(evidenceId);
+        openEvidenceLightbox(evidenceId);
+    });
     button.addEventListener('mouseenter', () => renderEvidence(evidenceId));
+});
+
+lightboxCloseButtons.forEach((button) => {
+    button.addEventListener('click', closeEvidenceLightbox);
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+        closeEvidenceLightbox();
+    }
 });
 
 window.addEventListener('pointermove', (event) => {
