@@ -410,6 +410,11 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     padding: 78px 0;
 }
 
+.snow-section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: 900px;
+}
+
 .snow-section-header {
     max-width: 740px;
     margin-bottom: 28px;
@@ -1220,7 +1225,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
         linear-gradient(90deg, rgba(5, 11, 22, 0.94) 0%, rgba(8, 19, 34, 0.78) 38%, rgba(8, 19, 34, 0.2) 70%, rgba(8, 19, 34, 0.5) 100%),
         radial-gradient(circle at 78% 22%, rgba(255, 124, 174, 0.26), transparent 22rem),
         radial-gradient(circle at 22% 76%, rgba(114, 221, 255, 0.18), transparent 24rem),
-        url("assets/snow-white/covers/cover-10-final.jpg") center right 12% / min(58rem, 86vw) auto no-repeat,
+        url("assets/snow-white/covers/optimized/cover-10-final-960.webp") center right 12% / min(58rem, 86vw) auto no-repeat,
         #081322;
 }
 
@@ -1722,7 +1727,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 .story-stats {
     background:
         linear-gradient(135deg, rgba(8, 19, 34, 0.92), rgba(255, 111, 159, 0.14)),
-        url("assets/snow-white/covers/visual-03-snow-castle.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-03-snow-castle-1200.webp") center / cover;
     color: #f6fbff;
 }
 
@@ -1794,7 +1799,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     .snow-hero::before {
         background:
             linear-gradient(180deg, rgba(5, 11, 22, 0.82) 0%, rgba(8, 19, 34, 0.74) 52%, rgba(8, 19, 34, 0.9) 100%),
-            url("assets/snow-white/covers/cover-10-final.jpg") center top / cover no-repeat,
+            url("assets/snow-white/covers/optimized/cover-10-final-960.webp") center top / cover no-repeat,
             #081322;
     }
 
@@ -1941,7 +1946,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
         linear-gradient(90deg, rgba(255, 250, 253, 0.98) 0%, rgba(255, 246, 251, 0.9) 42%, rgba(255, 246, 251, 0.52) 72%, rgba(255, 250, 253, 0.84) 100%),
         radial-gradient(circle at 24% 16%, rgba(255, 190, 219, 0.56), transparent 24rem),
         radial-gradient(circle at 78% 14%, rgba(210, 237, 255, 0.62), transparent 28rem),
-        url("assets/snow-white/covers/cover-10-final.jpg") center right 7% / min(55rem, 82vw) auto no-repeat,
+        url("assets/snow-white/covers/optimized/cover-10-final-960.webp") center right 7% / min(55rem, 82vw) auto no-repeat,
         #fff8fc;
 }
 
@@ -2069,7 +2074,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     color: #301926;
     background:
         linear-gradient(135deg, rgba(255, 250, 253, 0.88), rgba(255, 229, 241, 0.78)),
-        url("assets/snow-white/covers/visual-06-spring-room.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center / cover;
     background-blend-mode: screen;
     box-shadow: 0 24px 70px rgba(184, 92, 139, 0.18);
 }
@@ -2097,7 +2102,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 .story-stats {
     background:
         linear-gradient(135deg, rgba(255, 250, 253, 0.9), rgba(255, 229, 241, 0.72)),
-        url("assets/snow-white/covers/visual-03-snow-castle.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-03-snow-castle-1200.webp") center / cover;
     background-blend-mode: screen;
     color: #301926;
 }
@@ -2134,15 +2139,15 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 }
 
 .notes-grid article:nth-child(1)::before {
-    background-image: url("assets/snow-white/covers/visual-05-mirror.jpg");
+    background-image: url("assets/snow-white/covers/optimized/visual-05-mirror-1100.webp");
 }
 
 .notes-grid article:nth-child(2)::before {
-    background-image: url("assets/snow-white/covers/visual-02-empty-room.jpg");
+    background-image: url("assets/snow-white/covers/optimized/visual-02-empty-room-1100.webp");
 }
 
 .notes-grid article:nth-child(3)::before {
-    background-image: url("assets/snow-white/covers/visual-06-spring-room.jpg");
+    background-image: url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp");
 }
 
 .season-feature-media,
@@ -2154,17 +2159,6 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 .play-mark {
     border-color: rgba(216, 95, 157, 0.32);
 }
-
-.cover-card:nth-child(1) { background-image: url("assets/snow-white/covers/cover-01-night-window.jpg"); }
-.cover-card:nth-child(2) { background-image: url("assets/snow-white/covers/cover-02-snow-castle.jpg"); }
-.cover-card:nth-child(3) { background-image: url("assets/snow-white/covers/cover-03-empty-room.jpg"); }
-.cover-card:nth-child(4) { background-image: url("assets/snow-white/covers/cover-04-she-was-here.jpg"); }
-.cover-card:nth-child(5) { background-image: url("assets/snow-white/covers/cover-05-mirror.jpg"); }
-.cover-card:nth-child(6) { background-image: url("assets/snow-white/covers/cover-06-boston-night.jpg"); }
-.cover-card:nth-child(7) { background-image: url("assets/snow-white/covers/cover-07-scattered-photos.jpg"); }
-.cover-card:nth-child(8) { background-image: url("assets/snow-white/covers/cover-08-sleeping.jpg"); }
-.cover-card:nth-child(9) { background-image: url("assets/snow-white/covers/cover-09-spring.jpg"); }
-.cover-card:nth-child(10) { background-image: url("assets/snow-white/covers/cover-10-final.jpg"); }
 
 .cover-card {
     background-position: center;
@@ -2185,7 +2179,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     overflow: hidden;
     background:
         linear-gradient(135deg, rgba(255, 250, 253, 0.82), rgba(255, 229, 241, 0.5)),
-        url("assets/snow-white/covers/visual-06-spring-room.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center / cover;
     background-blend-mode: screen;
 }
 
@@ -2211,7 +2205,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     .snow-hero::before {
         background:
             linear-gradient(180deg, rgba(255, 250, 253, 0.78) 0%, rgba(255, 246, 251, 0.82) 50%, rgba(255, 250, 253, 0.96) 100%),
-            url("assets/snow-white/covers/cover-10-final.jpg") center top / cover no-repeat,
+            url("assets/snow-white/covers/optimized/cover-10-final-960.webp") center top / cover no-repeat,
             #fff8fc;
     }
 
@@ -2257,7 +2251,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     background:
         linear-gradient(90deg, rgba(255, 250, 248, 0.98) 0%, rgba(255, 250, 248, 0.9) 42%, rgba(255, 250, 248, 0.54) 100%),
         radial-gradient(circle at 20% 20%, rgba(225, 190, 199, 0.4), transparent 26rem),
-        url("assets/snow-white/covers/poster-wide-lyrics.jpg") center right / cover no-repeat,
+        url("assets/snow-white/covers/optimized/poster-wide-lyrics-1600.webp") center right / cover no-repeat,
         #fffaf8;
 }
 
@@ -2392,7 +2386,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     opacity: 0.18;
     background:
         linear-gradient(135deg, rgba(255, 250, 248, 0.28), rgba(255, 250, 248, 0.72)),
-        url("assets/snow-white/covers/visual-06-spring-room.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center / cover;
 }
 
 .snow-notes::after {
@@ -2505,7 +2499,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     .snow-hero::before {
         background:
             linear-gradient(180deg, rgba(255, 250, 248, 0.78), rgba(255, 250, 248, 0.96)),
-            url("assets/snow-white/covers/poster-wide-lyrics.jpg") center top / cover no-repeat,
+            url("assets/snow-white/covers/optimized/poster-wide-lyrics-1600.webp") center top / cover no-repeat,
             #fffaf8;
     }
 
@@ -2540,7 +2534,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     overflow: hidden;
     background:
         linear-gradient(135deg, rgba(255, 250, 248, 0.86), rgba(255, 250, 248, 0.7)),
-        url("assets/snow-white/covers/visual-02-empty-room.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-02-empty-room-1100.webp") center / cover;
     background-blend-mode: screen;
 }
 
@@ -2560,7 +2554,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 #snow-visualizer {
     background:
         linear-gradient(90deg, rgba(255, 250, 248, 0.86), rgba(255, 250, 248, 0.46)),
-        url("assets/snow-white/covers/visual-02-empty-room.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-02-empty-room-1100.webp") center / cover;
     background-blend-mode: screen;
 }
 
@@ -2612,7 +2606,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     opacity: 0.2;
     background:
         linear-gradient(135deg, rgba(255, 250, 248, 0.5), rgba(255, 250, 248, 0.84)),
-        url("assets/snow-white/covers/visual-03-snow-castle.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-03-snow-castle-1200.webp") center / cover;
 }
 
 .snow-story::after {
@@ -2629,7 +2623,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     overflow: hidden;
     background:
         linear-gradient(135deg, rgba(255, 250, 248, 0.88), rgba(255, 250, 248, 0.68)),
-        url("assets/snow-white/covers/visual-05-mirror.jpg") center / cover;
+        url("assets/snow-white/covers/optimized/visual-05-mirror-1100.webp") center / cover;
     background-blend-mode: screen;
 }
 

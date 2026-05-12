@@ -139,6 +139,37 @@ const snowCopy = {
     }
 };
 
+const snowNavCopy = {
+    zh: {
+        'nav.home': '首页',
+        'nav.yearReview': '年度总结',
+        'nav.works': '作品',
+        'nav.contact': '联系',
+        'nav.more': '更多',
+        'nav.projects': '项目',
+        'nav.engineering': '工程 / GitHub',
+        'nav.timeline': '时间线',
+        'nav.resume': '简历',
+        'nav.finance': '财务仪表盘',
+        'nav.interests': '兴趣爱好',
+        'nav.highlights': '主要亮点'
+    },
+    en: {
+        'nav.home': 'Home',
+        'nav.yearReview': 'Year Review',
+        'nav.works': 'Works',
+        'nav.contact': 'Contact',
+        'nav.more': 'More',
+        'nav.projects': 'Projects',
+        'nav.engineering': 'Engineering / GitHub',
+        'nav.timeline': 'Timeline',
+        'nav.resume': 'Resume',
+        'nav.finance': 'Finance Dashboard',
+        'nav.interests': 'Interests',
+        'nav.highlights': 'Highlights'
+    }
+};
+
 const snowDownloadLabels = {
     zh: {
         'full-score': '全谱',
@@ -185,6 +216,22 @@ function applySnowLanguage() {
     const lang = getSnowLanguage();
     const translations = snowCopy[lang];
 
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        const value = snowNavCopy[lang][key];
+        if (value) {
+            element.textContent = value;
+        }
+    });
+
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach((button) => {
+        const isActive = button.id.includes(lang);
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
     Object.entries(translations).forEach(([selector, value]) => {
         document.querySelectorAll(selector).forEach((element) => {
             if (value.includes('<')) {
@@ -206,6 +253,19 @@ function applySnowLanguage() {
 function initSnowLanguage() {
     applySnowLanguage();
     window.addEventListener('site-language-change', applySnowLanguage);
+
+    document.addEventListener('click', (event) => {
+        const button = event.target.closest('#lang-zh, #lang-en, #lang-zh-mobile, #lang-en-mobile, .lang-btn, .lang-btn-mobile');
+        if (!button) return;
+
+        const text = button.textContent.trim().toLowerCase();
+        const lang = button.id.includes('en') || text === 'english' ? 'en' : 'zh';
+        event.preventDefault();
+        event.stopPropagation();
+        localStorage.setItem('language', lang);
+        applySnowLanguage();
+        window.dispatchEvent(new CustomEvent('site-language-change', { detail: { language: lang } }));
+    });
 }
 
 if (document.readyState === 'loading') {
@@ -225,6 +285,8 @@ if (audio && canvas) {
     let source;
     let dataArray;
     let animationFrame;
+    let idleDrawTime = 0;
+    let isCanvasVisible = true;
     let seeded = 0;
 
     const palette = ['#ff8ab7', '#72ddff', '#eaf7ff', '#14243d'];
@@ -285,14 +347,30 @@ if (audio && canvas) {
         analyser.connect(audioContext.destination);
     }
 
-    function renderIdleLoop() {
-        if (!audio.paused) return;
-        drawIdle();
+    function renderIdleLoop(timestamp = 0) {
+        if (!audio.paused || !isCanvasVisible || document.hidden) return;
+        if (!idleDrawTime || timestamp - idleDrawTime > 80) {
+            drawIdle();
+            idleDrawTime = timestamp;
+        }
         animationFrame = requestAnimationFrame(renderIdleLoop);
     }
 
     resizeCanvas();
-    renderIdleLoop();
+    drawIdle();
+
+    if ('IntersectionObserver' in window) {
+        const visualizerObserver = new IntersectionObserver((entries) => {
+            isCanvasVisible = entries.some((entry) => entry.isIntersecting);
+            cancelAnimationFrame(animationFrame);
+            if (audio.paused && isCanvasVisible) {
+                renderIdleLoop();
+            }
+        }, { threshold: 0.12 });
+        visualizerObserver.observe(canvas);
+    } else {
+        renderIdleLoop();
+    }
 
     audio.addEventListener('play', async () => {
         bootAudioGraph();
@@ -319,6 +397,13 @@ if (audio && canvas) {
     window.addEventListener('resize', () => {
         resizeCanvas();
         if (audio.paused) drawIdle();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        cancelAnimationFrame(animationFrame);
+        if (!document.hidden && audio.paused && isCanvasVisible) {
+            renderIdleLoop();
+        }
     });
 }
 
