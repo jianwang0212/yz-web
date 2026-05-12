@@ -192,6 +192,7 @@ button {
 .query-panel,
 .panel,
 .unlock-panel,
+.device-unlock-panel,
 .filters,
 .transaction-summary,
 .service-status,
@@ -272,6 +273,70 @@ button {
   grid-column: 1 / -1;
   color: var(--muted);
   line-height: 1.4;
+}
+
+.unlock-actions {
+  grid-column: 2;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.device-unlock-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 13px;
+}
+
+.device-unlock-panel p,
+.device-unlock-panel h2,
+.device-unlock-panel small {
+  margin: 0;
+}
+
+.device-unlock-panel p {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.device-unlock-panel h2 {
+  margin-top: 3px;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+.device-unlock-panel small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.device-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.secondary-button,
+.device-actions button {
+  min-height: 42px;
+  border: 1px solid rgba(36, 95, 135, 0.2);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--blue);
+  background: rgba(36, 95, 135, 0.08);
+  font-weight: 850;
+}
+
+.device-actions .ghost-button {
+  color: var(--red);
+  border-color: rgba(169, 54, 69, 0.2);
+  background: rgba(169, 54, 69, 0.08);
 }
 
 #questionForm {
@@ -802,6 +867,7 @@ select:focus {
   .month-grid,
   .analysis-grid,
   .unlock-panel,
+  .device-unlock-panel,
   .service-status,
   .filters,
   .manual-service-form {
@@ -850,8 +916,20 @@ select:focus {
 
   .summary-grid,
   .unlock-panel form,
+  .unlock-actions,
+  .device-actions,
   #questionForm {
     grid-template-columns: 1fr;
+  }
+
+  .unlock-actions,
+  .device-actions {
+    grid-column: 1;
+  }
+
+  .unlock-actions button,
+  .device-actions button {
+    width: 100%;
   }
 
   .query-chips button {

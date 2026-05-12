@@ -46,12 +46,15 @@ const EMPTY_META = {
   currency: "USD",
 };
 
-const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260512hist3";
+const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260512bio1";
+const BIOMETRIC_UNLOCK_KEY = "boaFinance.biometricUnlock.v1";
 
 let BOA_META = EMPTY_META;
 let transactions = [];
 let encryptedPackage = null;
 let isUnlocked = false;
+let lastUnlockPassword = "";
+let attemptedAutoBiometric = false;
 
 const money = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -80,6 +83,11 @@ const els = {
   unlockForm: document.querySelector("#unlockForm"),
   unlockPassword: document.querySelector("#unlockPassword"),
   unlockStatus: document.querySelector("#unlockStatus"),
+  biometricUnlock: document.querySelector("#biometricUnlock"),
+  deviceUnlockPanel: document.querySelector("#deviceUnlockPanel"),
+  biometricStatus: document.querySelector("#biometricStatus"),
+  biometricSetup: document.querySelector("#biometricSetup"),
+  biometricReset: document.querySelector("#biometricReset"),
   sourceBadge: document.querySelector("#sourceBadge"),
   tabs: [...document.querySelectorAll("[data-view]")],
   views: {
@@ -122,6 +130,7 @@ function init() {
   buildFilters();
   bindEvents();
   hydrateFromURL();
+  updateBiometricUI();
   loadEncryptedPackage();
   render();
 }
@@ -147,12 +156,13 @@ async function loadEncryptedPackage() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     encryptedPackage = await response.json();
     els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "BOA Finance"}。请输入密码解锁。`;
+    await maybeAutoBiometricUnlock();
   } catch (error) {
     els.unlockStatus.textContent = `加密数据包加载失败：${error.message}`;
   }
 }
 
-async function unlockData(password) {
+async function unlockData(password, options = {}) {
   if (!password) return;
   els.unlockStatus.textContent = "正在解密...";
 
@@ -168,10 +178,12 @@ async function unlockData(password) {
     BOA_META = payload.meta || EMPTY_META;
     transactions = (payload.transactions || []).map(normalizeTransaction);
     isUnlocked = true;
+    lastUnlockPassword = options.source === "biometric" ? "" : password;
     els.unlockPassword.value = "";
     els.unlockStatus.textContent = `已解锁 ${transactions.length} 笔交易。`;
     els.unlockPanel.classList.add("hidden");
     buildFilters();
+    updateBiometricUI();
 
     if (state.pendingQuestion) {
       const result = answerQuestion(state.pendingQuestion);
@@ -182,6 +194,7 @@ async function unlockData(password) {
     render();
   } catch (error) {
     isUnlocked = false;
+    updateBiometricUI();
     els.unlockStatus.textContent = "密码不对，或数据包已损坏。";
     console.error(error);
   }
@@ -210,9 +223,238 @@ async function decryptPackage(packageData, password) {
   return JSON.parse(new TextDecoder().decode(plainBuffer));
 }
 
+async function maybeAutoBiometricUnlock() {
+  if (attemptedAutoBiometric || isUnlocked || !loadBiometricRecord()) return;
+  attemptedAutoBiometric = true;
+  try {
+    await unlockWithBiometric({ auto: true });
+  } catch {
+    updateBiometricUI("Face ID 已启用；点“Face ID 打开”即可解锁。");
+  }
+}
+
+function hasBiometricRuntime() {
+  return Boolean(
+    window.isSecureContext &&
+      window.PublicKeyCredential &&
+      navigator.credentials &&
+      crypto?.subtle &&
+      crypto?.getRandomValues,
+  );
+}
+
+function loadBiometricRecord() {
+  try {
+    const raw = localStorage.getItem(BIOMETRIC_UNLOCK_KEY);
+    if (!raw) return null;
+    const record = JSON.parse(raw);
+    return record?.version === 1 && record.credentialId && record.salt && record.wrappedPassword ? record : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveBiometricRecord(record) {
+  localStorage.setItem(BIOMETRIC_UNLOCK_KEY, JSON.stringify(record));
+}
+
+function updateBiometricUI(message = "") {
+  const record = loadBiometricRecord();
+  const runtime = hasBiometricRuntime();
+
+  els.biometricUnlock.classList.toggle("hidden", isUnlocked || !record || !runtime);
+  els.deviceUnlockPanel.classList.toggle("hidden", !isUnlocked || !runtime);
+  els.biometricSetup.classList.toggle("hidden", Boolean(record));
+  els.biometricReset.classList.toggle("hidden", !record);
+
+  if (!runtime) {
+    els.unlockStatus.textContent = els.unlockStatus.textContent || "这个浏览器暂不支持设备面容解锁。";
+    return;
+  }
+
+  if (!message && !isUnlocked && record) {
+    els.unlockStatus.textContent = "Face ID 已启用，可直接打开。";
+  }
+
+  if (isUnlocked) {
+    els.biometricStatus.textContent =
+      message ||
+      (record
+        ? "Face ID / Touch ID 已为这台设备启用。"
+        : "可在这台设备上启用 Face ID / Touch ID，下次不再输入密码。");
+  } else if (message) {
+    els.unlockStatus.textContent = message;
+  }
+}
+
+async function setupBiometricUnlock() {
+  if (!hasBiometricRuntime()) {
+    updateBiometricUI("这个浏览器暂不支持 Face ID / Touch ID 解锁。");
+    return;
+  }
+  if (!lastUnlockPassword) {
+    updateBiometricUI("请先用密码解锁一次，再启用 Face ID。");
+    return;
+  }
+
+  els.biometricStatus.textContent = "正在请求系统面容验证...";
+  try {
+    const { credentialId, salt, secret } = await createBiometricSecret();
+    const wrappedPassword = await encryptSavedPassword(lastUnlockPassword, secret);
+    saveBiometricRecord({
+      version: 1,
+      credentialId: bytesToBase64Url(credentialId),
+      salt: bytesToBase64(salt),
+      wrappedPassword,
+      createdAt: new Date().toISOString(),
+      origin: window.location.origin,
+    });
+    lastUnlockPassword = "";
+    updateBiometricUI("已启用。以后这台设备可用 Face ID / Touch ID 打开。");
+  } catch (error) {
+    console.error(error);
+    updateBiometricUI("这台浏览器没有完成 Face ID 绑定；仍可用密码或系统密码管理器打开。");
+  }
+}
+
+async function unlockWithBiometric(options = {}) {
+  const record = loadBiometricRecord();
+  if (!record) {
+    if (!options.auto) updateBiometricUI("这台设备还没有启用 Face ID。请先用密码解锁一次。");
+    return;
+  }
+  if (!hasBiometricRuntime()) {
+    if (!options.auto) updateBiometricUI("这个浏览器暂不支持 Face ID / Touch ID 解锁。");
+    return;
+  }
+
+  els.unlockStatus.textContent = "正在请求 Face ID...";
+  const secret = await getBiometricSecret(record);
+  const password = await decryptSavedPassword(record.wrappedPassword, secret);
+  await unlockData(password, { source: "biometric" });
+}
+
+function resetBiometricUnlock() {
+  localStorage.removeItem(BIOMETRIC_UNLOCK_KEY);
+  updateBiometricUI("已移除这台设备的 Face ID 解锁。");
+}
+
+async function createBiometricSecret() {
+  const platformAvailable = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable?.();
+  if (platformAvailable === false) {
+    throw new Error("No platform authenticator");
+  }
+
+  const salt = crypto.getRandomValues(new Uint8Array(32));
+  const userId = crypto.getRandomValues(new Uint8Array(16));
+  const credential = await navigator.credentials.create({
+    publicKey: {
+      challenge: crypto.getRandomValues(new Uint8Array(32)),
+      rp: { name: "BOA Finance" },
+      user: {
+        id: userId,
+        name: "boa-finance-local",
+        displayName: "BOA Finance Local Unlock",
+      },
+      pubKeyCredParams: [
+        { type: "public-key", alg: -7 },
+        { type: "public-key", alg: -257 },
+      ],
+      authenticatorSelection: {
+        authenticatorAttachment: "platform",
+        residentKey: "preferred",
+        userVerification: "required",
+      },
+      timeout: 60000,
+      attestation: "none",
+      extensions: {
+        prf: {
+          eval: { first: salt },
+        },
+      },
+    },
+  });
+  if (!credential) throw new Error("No credential created");
+
+  const credentialId = new Uint8Array(credential.rawId);
+  const results = credential.getClientExtensionResults?.();
+  let secret = results?.prf?.results?.first;
+  if (!secret) {
+    secret = await getBiometricSecret({ credentialId: bytesToBase64(credentialId), salt: bytesToBase64(salt) });
+  }
+  if (!secret) throw new Error("PRF extension unavailable");
+  return { credentialId, salt, secret };
+}
+
+async function getBiometricSecret(record) {
+  const credentialId = base64UrlToBytes(record.credentialId);
+  const credentialIdKey = base64ToBase64Url(record.credentialId);
+  const credential = await navigator.credentials.get({
+    publicKey: {
+      challenge: crypto.getRandomValues(new Uint8Array(32)),
+      allowCredentials: [{ type: "public-key", id: credentialId }],
+      userVerification: "required",
+      timeout: 60000,
+      extensions: {
+        prf: {
+          evalByCredential: {
+            [credentialIdKey]: { first: base64ToBytes(record.salt) },
+          },
+        },
+      },
+    },
+  });
+  const results = credential?.getClientExtensionResults?.();
+  const secret = results?.prf?.results?.first;
+  if (!secret) throw new Error("PRF extension unavailable");
+  return secret;
+}
+
+async function encryptSavedPassword(password, secret) {
+  const key = await crypto.subtle.importKey("raw", secret, "AES-GCM", false, ["encrypt"]);
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(password));
+  return {
+    iv: bytesToBase64(iv),
+    ciphertext: bytesToBase64(ciphertext),
+  };
+}
+
+async function decryptSavedPassword(wrappedPassword, secret) {
+  const key = await crypto.subtle.importKey("raw", secret, "AES-GCM", false, ["decrypt"]);
+  const plainBuffer = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: base64ToBytes(wrappedPassword.iv) },
+    key,
+    base64ToBytes(wrappedPassword.ciphertext),
+  );
+  return new TextDecoder().decode(plainBuffer);
+}
+
 function base64ToBytes(value) {
   const binary = atob(value);
   return Uint8Array.from(binary, (char) => char.charCodeAt(0));
+}
+
+function bytesToBase64(value) {
+  const bytes = new Uint8Array(value);
+  let binary = "";
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+
+function bytesToBase64Url(value) {
+  return bytesToBase64(value).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+}
+
+function base64ToBase64Url(value) {
+  return value.replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+}
+
+function base64UrlToBytes(value) {
+  const base64 = value.replaceAll("-", "+").replaceAll("_", "/");
+  return base64ToBytes(base64.padEnd(Math.ceil(base64.length / 4) * 4, "="));
 }
 
 function normalizeTransaction(item) {
@@ -228,8 +470,12 @@ function normalizeTransaction(item) {
 function bindEvents() {
   els.unlockForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    await unlockData(els.unlockPassword.value);
+    await unlockData(els.unlockPassword.value, { source: "password" });
   });
+
+  els.biometricUnlock.addEventListener("click", () => unlockWithBiometric());
+  els.biometricSetup.addEventListener("click", () => setupBiometricUnlock());
+  els.biometricReset.addEventListener("click", () => resetBiometricUnlock());
 
   els.tabs.forEach((button) => {
     button.addEventListener("click", () => {

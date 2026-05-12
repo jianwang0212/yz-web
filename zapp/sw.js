@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v15-20260512-no-featured-dup";
+const CACHE_VERSION = "zapp-store-v16-20260512-biometric";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
