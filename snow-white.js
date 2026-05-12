@@ -1,13 +1,9 @@
 const snowCopy = {
     zh: {
-        '.snow-hero .snow-kicker': '原创制作档案',
+        '.snow-hero .snow-kicker': '原创音乐作品',
         '#snow-title': '白雪公主 <span>Snow White</span>',
-        '.snow-release-strip span:nth-child(1)': 'Demo 档案',
-        '.snow-release-strip span:nth-child(2)': '4:35 粗混',
-        '.snow-release-strip span:nth-child(3)': 'Berklee Studio 1',
-        '.snow-release-strip span:nth-child(4)': 'B站制作合集',
         '.snow-hero-cta a:nth-child(1)': '试听',
-        '.snow-hero-cta a:nth-child(2)': '创作故事',
+        '.snow-hero-cta a:nth-child(2)': '视觉世界',
         '.snow-hero-cta a:nth-child(3)': '资料包',
         '.snow-meta-grid div:nth-child(1) span': '演唱',
         '.snow-meta-grid div:nth-child(2) span': '作曲',
@@ -18,10 +14,6 @@ const snowCopy = {
         '.snow-audio-actions a:nth-child(2)': 'B站合集',
         '.hero-season-card span': 'B站合集',
         '.hero-season-card small': '3 个视频 · 05-01 更新',
-        '.snow-overview .snow-kicker': '公开资料',
-        '#overview-title': '作品资料集中在这里。',
-        '.snow-overview article h3': '资料',
-        '.snow-overview article p': '曲谱只公开第一页预览；完整总谱与分谱需要访问密码下载。歌词、制作名单、制作笔记、预算和 B站制作合集仍在页面下方公开。',
         '.snow-story .snow-kicker': '创作故事',
         '#story-title': '白雪、公主、白裙，与没有说出口的诺言。',
         '.story-stats div:nth-child(1) span': '份曲谱与分谱',
@@ -77,14 +69,10 @@ const snowCopy = {
         '.snow-footer .footer-links a:first-child': '首页'
     },
     en: {
-        '.snow-hero .snow-kicker': 'Original production archive',
+        '.snow-hero .snow-kicker': 'Original music work',
         '#snow-title': 'Snow White <span>白雪公主</span>',
-        '.snow-release-strip span:nth-child(1)': 'Demo archive',
-        '.snow-release-strip span:nth-child(2)': '4:35 rough mix',
-        '.snow-release-strip span:nth-child(3)': 'Berklee Studio 1',
-        '.snow-release-strip span:nth-child(4)': 'Making season on Bilibili',
         '.snow-hero-cta a:nth-child(1)': 'Listen',
-        '.snow-hero-cta a:nth-child(2)': 'Story',
+        '.snow-hero-cta a:nth-child(2)': 'Visuals',
         '.snow-hero-cta a:nth-child(3)': 'Files',
         '.snow-meta-grid div:nth-child(1) span': 'Artist',
         '.snow-meta-grid div:nth-child(2) span': 'Composer',
@@ -95,10 +83,6 @@ const snowCopy = {
         '.snow-audio-actions a:nth-child(2)': 'Bilibili season',
         '.hero-season-card span': 'Bilibili Season',
         '.hero-season-card small': '3 videos · updated 05-01',
-        '.snow-overview .snow-kicker': 'Public release files',
-        '#overview-title': 'Song materials, collected in one place.',
-        '.snow-overview article h3': 'Files',
-        '.snow-overview article p': 'Only the first score page is public. Full score and parts require an access code to download. Lyrics, credits, production notes, budget, and the Bilibili making-of season remain available below.',
         '.snow-story .snow-kicker': 'Song story',
         '#story-title': 'Snow White, a white dress, and the promises left unsaid.',
         '.story-stats div:nth-child(1) span': 'score files and parts',
@@ -243,7 +227,7 @@ if (audio && canvas) {
     let animationFrame;
     let seeded = 0;
 
-    const palette = ['#b7372b', '#1e6f61', '#c08a2d', '#171311'];
+    const palette = ['#ff8ab7', '#72ddff', '#eaf7ff', '#14243d'];
 
     function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
