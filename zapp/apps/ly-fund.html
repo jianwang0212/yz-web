@@ -10,7 +10,7 @@
     <link rel="manifest" href="../manifest.webmanifest" />
     <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icons/icon-192.png" />
-    <link rel="stylesheet" href="ly-fund.css?v=20260512enc2" />
+    <link rel="stylesheet" href="ly-fund.css?v=20260512enc3" />
     <title>LY Fund</title>
   </head>
   <body>
@@ -43,7 +43,22 @@
           </label>
           <button type="submit">解锁</button>
         </form>
+        <div class="unlock-actions">
+          <button type="button" class="secondary-button hidden" id="biometricUnlock">Face ID 打开</button>
+        </div>
         <small id="unlockStatus">公开站点只保存加密数据包，基金明细会在你的浏览器里解密。</small>
+      </section>
+
+      <section class="device-unlock-panel hidden" id="deviceUnlockPanel" aria-label="Device unlock">
+        <div>
+          <p>Device Unlock</p>
+          <h2>本设备快速打开</h2>
+          <small id="biometricStatus">可在这台设备上启用 Face ID / Touch ID，下次不再输入密码。</small>
+        </div>
+        <div class="device-actions">
+          <button type="button" id="biometricSetup">启用 Face ID</button>
+          <button type="button" class="ghost-button hidden" id="biometricReset">移除</button>
+        </div>
       </section>
 
       <section class="summary-grid" aria-label="LY Fund summary">
@@ -192,6 +207,6 @@
       </section>
     </main>
 
-    <script type="module" src="ly-fund.js?v=20260512enc2"></script>
+    <script type="module" src="ly-fund.js?v=20260512enc3"></script>
   </body>
 </html>

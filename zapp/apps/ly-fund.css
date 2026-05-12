@@ -195,7 +195,8 @@ button {
   display: none !important;
 }
 
-.unlock-panel {
+.unlock-panel,
+.device-unlock-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
   gap: 12px;
@@ -209,19 +210,24 @@ button {
 }
 
 .unlock-panel p,
-.unlock-panel h2 {
+.unlock-panel h2,
+.device-unlock-panel p,
+.device-unlock-panel h2,
+.device-unlock-panel small {
   margin: 0;
 }
 
 .unlock-panel p,
-.unlock-panel span {
+.unlock-panel span,
+.device-unlock-panel p {
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 850;
   text-transform: uppercase;
 }
 
-.unlock-panel h2 {
+.unlock-panel h2,
+.device-unlock-panel h2 {
   margin-top: 3px;
   font-size: 1.12rem;
   letter-spacing: 0;
@@ -251,7 +257,9 @@ button {
   background: #fff;
 }
 
-.unlock-panel button {
+.unlock-panel button,
+.device-actions button,
+.secondary-button {
   align-self: end;
   min-height: 42px;
   border: 0;
@@ -266,6 +274,39 @@ button {
   grid-column: 1 / -1;
   color: var(--muted);
   font-weight: 700;
+}
+
+.unlock-actions,
+.device-actions {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+  justify-content: flex-end;
+}
+
+.secondary-button {
+  width: 100%;
+  color: var(--green-strong) !important;
+  border: 1px solid rgba(47, 111, 99, 0.28) !important;
+  background: #fff !important;
+}
+
+.device-unlock-panel {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.device-unlock-panel small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.device-actions .ghost-button {
+  color: var(--green-strong);
+  border: 1px solid rgba(47, 111, 99, 0.28);
+  background: #fff;
 }
 
 .panel,
@@ -540,8 +581,15 @@ th.num {
   .control-panel,
   .filters,
   .unlock-panel,
+  .device-unlock-panel,
   .unlock-panel form {
     grid-template-columns: 1fr;
+  }
+
+  .unlock-actions,
+  .device-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .view-tabs {
