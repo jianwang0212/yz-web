@@ -46,7 +46,7 @@ const EMPTY_META = {
   currency: "USD",
 };
 
-const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260512bio1";
+const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260512bio2";
 const BIOMETRIC_UNLOCK_KEY = "boaFinance.biometricUnlock.v1";
 
 let BOA_META = EMPTY_META;
@@ -340,11 +340,6 @@ function resetBiometricUnlock() {
 }
 
 async function createBiometricSecret() {
-  const platformAvailable = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable?.();
-  if (platformAvailable === false) {
-    throw new Error("No platform authenticator");
-  }
-
   const salt = crypto.getRandomValues(new Uint8Array(32));
   const userId = crypto.getRandomValues(new Uint8Array(16));
   const credential = await navigator.credentials.create({
