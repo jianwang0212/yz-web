@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v18-20260512-gt";
+const CACHE_VERSION = "zapp-store-v20-20260512-ly-fund-encrypted";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -29,6 +29,10 @@ const STATIC_ASSETS = [
   "apps/gt.js",
   "apps/gt-data.json",
   "icons/apps/finance.svg",
+  "apps/ly-fund.html",
+  "apps/ly-fund.css",
+  "apps/ly-fund.js",
+  "apps/ly-fund-data.enc.json",
   "apps/workbench.html",
   "apps/workbench.css",
   "apps/workbench.js",
@@ -82,6 +86,8 @@ self.addEventListener("fetch", (event) => {
   if (request.mode === "navigate") {
     const fallback = url.pathname.endsWith("/apps/gt.html")
       ? "apps/gt.html"
+      : url.pathname.endsWith("/apps/ly-fund.html")
+      ? "apps/ly-fund.html"
       : url.pathname.endsWith("/apps/boa-finance.html")
       ? "apps/boa-finance.html"
       : url.pathname.endsWith("/apps/snow-white-board.html")

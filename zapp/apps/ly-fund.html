@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="LY Fund" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="ly-fund.css?v=20260512" />
+    <title>LY Fund</title>
+  </head>
+  <body>
+    <main class="fund-shell">
+      <header class="topbar">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>Yuque Fund Console</p>
+          <h1>LY Fund</h1>
+        </div>
+        <span class="data-badge" id="dataBadge">Encrypted</span>
+      </header>
+
+      <nav class="view-tabs" aria-label="LY Fund views">
+        <button type="button" class="active" data-view="overview">总览</button>
+        <button type="button" data-view="accounts">账户</button>
+        <button type="button" data-view="data">数据</button>
+        <button type="button" data-view="downloads">文件</button>
+      </nav>
+
+      <section class="unlock-panel" id="unlockPanel" aria-label="Unlock encrypted LY Fund data">
+        <div>
+          <p>Encrypted LY Fund Data</p>
+          <h2>输入密码解锁基金数据</h2>
+        </div>
+        <form id="unlockForm">
+          <label>
+            <span>密码</span>
+            <input id="unlockPassword" type="password" autocomplete="current-password" placeholder="同 BOA Finance 解锁密码" required />
+          </label>
+          <button type="submit">解锁</button>
+        </form>
+        <small id="unlockStatus">公开站点只保存加密数据包，基金明细会在你的浏览器里解密。</small>
+      </section>
+
+      <section class="summary-grid" aria-label="LY Fund summary">
+        <article>
+          <span>基金总余额</span>
+          <strong id="totalBalance">--</strong>
+          <small id="totalDate">--</small>
+        </article>
+        <article>
+          <span>总表净盈利</span>
+          <strong id="totalProfit">--</strong>
+          <small id="profitDate">--</small>
+        </article>
+        <article>
+          <span>数据范围</span>
+          <strong id="dateRange">--</strong>
+          <small id="recordCount">--</small>
+        </article>
+        <article>
+          <span>页签</span>
+          <strong id="sheetCount">--</strong>
+          <small id="accountCount">--</small>
+        </article>
+      </section>
+
+      <section class="view-section" id="overviewView" aria-label="Overview">
+        <section class="panel chart-panel" aria-label="Total balance chart">
+          <div class="section-head">
+            <div>
+              <p>Total</p>
+              <h2>基金总余额折线图</h2>
+            </div>
+            <span id="overviewRange">--</span>
+          </div>
+          <div class="chart-wrap large" id="totalBalanceChart"></div>
+        </section>
+
+        <section class="panel chart-panel" aria-label="Total profit chart">
+          <div class="section-head">
+            <div>
+              <p>Profit</p>
+              <h2>总表净盈利折线图</h2>
+            </div>
+            <span id="profitRange">--</span>
+          </div>
+          <div class="chart-wrap" id="totalProfitChart"></div>
+        </section>
+
+        <div class="two-column">
+          <section class="panel" aria-label="Latest account balances">
+            <div class="section-head">
+              <div>
+                <p>Latest</p>
+                <h2>账户快照</h2>
+              </div>
+              <span id="latestDate">--</span>
+            </div>
+            <div class="account-list" id="accountList"></div>
+          </section>
+
+          <section class="panel" aria-label="Downloads">
+            <div class="section-head">
+              <div>
+                <p>Exports</p>
+                <h2>可下载文件</h2>
+              </div>
+            </div>
+            <div class="download-list compact" id="quickDownloads"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view-section hidden" id="accountsView" aria-label="Accounts">
+        <section class="control-panel" aria-label="Chart controls">
+          <label>
+            <span>指标</span>
+            <select id="metricSelect">
+              <option value="balance">总余额</option>
+              <option value="profit">净盈利</option>
+              <option value="principal">总本金U</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="panel chart-panel" aria-label="Account comparison chart">
+          <div class="section-head">
+            <div>
+              <p id="accountMetricLabel">Balance</p>
+              <h2 id="accountChartTitle">各账户总余额折线图</h2>
+            </div>
+            <span id="accountRange">--</span>
+          </div>
+          <div class="chart-wrap large" id="accountChart"></div>
+        </section>
+
+        <section class="panel table-panel" aria-label="Month-end table">
+          <div class="section-head">
+            <div>
+              <p>Month End</p>
+              <h2>月末余额</h2>
+            </div>
+          </div>
+          <div class="data-table-wrap" id="monthTable"></div>
+        </section>
+      </section>
+
+      <section class="view-section hidden" id="dataView" aria-label="Data">
+        <section class="filters" aria-label="Filters">
+          <label>
+            <span>账户</span>
+            <select id="accountFilter"></select>
+          </label>
+          <label>
+            <span>月份</span>
+            <select id="monthFilter"></select>
+          </label>
+          <label>
+            <span>搜索</span>
+            <input id="searchFilter" type="search" autocomplete="off" placeholder="日期 / 页签 / 指标" />
+          </label>
+        </section>
+
+        <section class="panel table-panel" aria-label="Cleaned rows">
+          <div class="section-head">
+            <div>
+              <p>Rows</p>
+              <h2>清洗后明细</h2>
+            </div>
+            <span id="tableCount">--</span>
+          </div>
+          <div class="data-table-wrap" id="dataTable"></div>
+        </section>
+      </section>
+
+      <section class="view-section hidden" id="downloadsView" aria-label="Downloads">
+        <section class="panel">
+          <div class="section-head">
+            <div>
+              <p>Local Files</p>
+              <h2>导出与源数据</h2>
+            </div>
+            <span id="downloadMeta">--</span>
+          </div>
+          <div class="download-list" id="downloadList"></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="ly-fund.js?v=20260512"></script>
+  </body>
+</html>
