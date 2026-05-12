@@ -165,23 +165,25 @@ function renderAppCard(app) {
 function render() {
   renderTabs();
   const visibleApps = getVisibleApps();
+  const featured = catalog.apps.find((app) => app.featured) || catalog.apps[0];
+  const gridApps = featured ? visibleApps.filter((app) => app.id !== featured.id) : visibleApps;
   document.querySelector("#appCount").textContent = String(catalog.apps.length);
   document.querySelector("#storeName").textContent = catalog.store.name || "Zapp Store";
   document.querySelector("#buildLabel").textContent = `Build ${catalog.store.build || "--"}`;
   document.querySelector("#updatedLabel").textContent = normalizeDate(catalog.store.updated);
   document.querySelector("#footerOwner").textContent = catalog.store.owner || "Private shelf";
 
-  renderFeatured(catalog.apps.find((app) => app.featured) || catalog.apps[0]);
+  renderFeatured(featured);
 
-  if (!visibleApps.length) {
+  if (!gridApps.length) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
-    empty.textContent = "没有找到匹配的应用。";
+    empty.textContent = visibleApps.length ? "精选应用已显示在上方。" : "没有找到匹配的应用。";
     appGrid.replaceChildren(empty);
     return;
   }
 
-  appGrid.replaceChildren(...visibleApps.map(renderAppCard));
+  appGrid.replaceChildren(...gridApps.map(renderAppCard));
 }
 
 async function loadCatalog() {
