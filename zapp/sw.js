@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v17-20260512-biometric-gesture";
+const CACHE_VERSION = "zapp-store-v18-20260512-gt";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -23,6 +23,11 @@ const STATIC_ASSETS = [
   "icons/apps/medical.svg",
   "icons/apps/food.svg",
   "icons/apps/homeschool.svg",
+  "icons/apps/gt.svg",
+  "apps/gt.html",
+  "apps/gt.css",
+  "apps/gt.js",
+  "apps/gt-data.json",
   "icons/apps/finance.svg",
   "apps/workbench.html",
   "apps/workbench.css",
@@ -75,7 +80,9 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (request.mode === "navigate") {
-    const fallback = url.pathname.endsWith("/apps/boa-finance.html")
+    const fallback = url.pathname.endsWith("/apps/gt.html")
+      ? "apps/gt.html"
+      : url.pathname.endsWith("/apps/boa-finance.html")
       ? "apps/boa-finance.html"
       : url.pathname.endsWith("/apps/snow-white-board.html")
       ? "apps/snow-white-board.html"

@@ -2,10 +2,28 @@
   "store": {
     "name": "Zapp Store",
     "owner": "Zi's private app shelf",
-    "build": 8,
+    "build": 9,
     "updated": "2026-05-12"
   },
   "apps": [
+    {
+      "id": "gt",
+      "name": "GT",
+      "subtitle": "Strategy assets",
+      "description": "A structured GT asset dashboard with net value, daily P/L, exchange snapshot, BTC comparison, remarks, and exported rows.",
+      "category": "Finance",
+      "version": "0.1.0",
+      "build": 1,
+      "updated": "2026-05-12",
+      "status": "Ready",
+      "scope": "Local JSON",
+      "featured": true,
+      "updateAvailable": false,
+      "icon": "icons/apps/gt.svg",
+      "accent": "#2f6f63",
+      "accentStrong": "#1f4f48",
+      "url": "apps/gt.html"
+    },
     {
       "id": "boa-finance",
       "name": "BOA Finance",
@@ -17,7 +35,7 @@
       "updated": "2026-05-12",
       "status": "Ready",
       "scope": "Encrypted web",
-      "featured": true,
+      "featured": false,
       "updateAvailable": false,
       "icon": "icons/apps/finance.svg",
       "accent": "#2f6f63",
