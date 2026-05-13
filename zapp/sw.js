@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v23-20260513-moments-memory";
+const CACHE_VERSION = "zapp-store-v24-20260513-zi-health";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -24,6 +24,8 @@ const STATIC_ASSETS = [
   "icons/apps/food.svg",
   "icons/apps/homeschool.svg",
   "icons/apps/moments-memory.svg",
+  "icons/apps/zi-health.svg",
+  "apps/zi-health.html",
   "apps/moments-memory.html",
   "apps/moments-memory.css",
   "apps/moments-memory.js",
@@ -95,6 +97,8 @@ self.addEventListener("fetch", (event) => {
   if (request.mode === "navigate") {
     const fallback = url.pathname.endsWith("/apps/moments-memory.html")
       ? "apps/moments-memory.html"
+      : url.pathname.endsWith("/apps/zi-health.html")
+      ? "apps/zi-health.html"
       : url.pathname.endsWith("/apps/gt.html")
       ? "apps/gt.html"
       : url.pathname.endsWith("/apps/qhrb-net-worth.html")
