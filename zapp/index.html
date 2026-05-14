@@ -14,7 +14,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/store.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20" />
     <title>Zapp Store</title>
   </head>
   <body>
@@ -32,68 +32,85 @@
           <button class="icon-button" id="refreshButton" type="button" title="刷新应用清单">
             <span aria-hidden="true">↻</span>
           </button>
-          <button class="install-button" id="installButton" type="button" hidden>
-            安装
-          </button>
+          <button class="install-button" id="installButton" type="button" hidden>安装</button>
         </div>
       </header>
 
-      <section class="status-strip" aria-live="polite">
-        <div>
-          <strong id="appCount">0</strong>
-          <span>apps</span>
-        </div>
-        <div>
-          <strong id="buildLabel">Build --</strong>
-          <span id="updatedLabel">--</span>
-        </div>
-        <div>
-          <strong id="networkLabel">Online</strong>
-          <span id="displayModeLabel">Browser</span>
-        </div>
-      </section>
-
-      <section class="controls" aria-label="Store controls">
+      <section class="toolbar" aria-label="Store controls">
+        <div class="mode-tabs" id="viewTabs" role="tablist" aria-label="应用视图"></div>
         <label class="search-field">
           <span aria-hidden="true">⌕</span>
-          <input id="searchInput" type="search" placeholder="搜索你的应用" autocomplete="off" />
+          <input id="searchInput" type="search" placeholder="搜索" autocomplete="off" />
         </label>
-        <div class="tabs" id="categoryTabs" role="tablist" aria-label="应用分类"></div>
       </section>
 
-      <section class="featured" id="featuredApp" aria-label="Featured app"></section>
+      <section class="summary-row" aria-live="polite">
+        <span><strong id="appCount">0</strong> apps</span>
+        <span id="updatedLabel">Updated --</span>
+        <span id="displayModeLabel">Browser</span>
+        <span id="networkLabel">Online</span>
+      </section>
 
-      <section class="app-grid" id="appGrid" aria-label="Apps"></section>
+      <section class="shelf-section" id="todaySection" aria-labelledby="todayTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Today</p>
+            <h2 id="todayTitle">最近新增 / 更新</h2>
+          </div>
+          <span id="todaySummary"></span>
+        </div>
+        <div class="tile-grid today-grid" id="todayGrid"></div>
+      </section>
+
+      <section class="shelf-section" id="pinnedSection" aria-labelledby="pinnedTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Pinned</p>
+            <h2 id="pinnedTitle">常用工具</h2>
+          </div>
+        </div>
+        <div class="tile-grid" id="pinnedGrid"></div>
+      </section>
+
+      <section class="category-stack" id="categoryStack" aria-label="Apps by category"></section>
+
+      <section class="empty-state" id="emptyState" hidden>没有找到匹配的应用。</section>
 
       <footer class="store-footer">
         <span id="footerOwner">Private shelf</span>
-        <span>Manifest + Service Worker + JSON catalog</span>
+        <span id="buildLabel">Build --</span>
       </footer>
     </main>
 
-    <template id="appCardTemplate">
-      <article class="app-card">
-        <div class="app-card__icon-wrap">
-          <img class="app-card__icon" alt="" />
+    <template id="appTileTemplate">
+      <article class="app-tile" tabindex="0">
+        <img class="app-tile__icon" alt="" />
+        <div class="app-tile__body">
+          <h3></h3>
+          <p></p>
         </div>
-        <div class="app-card__body">
-          <div class="app-card__title-row">
-            <div>
-              <h2></h2>
-              <p class="subtitle"></p>
-            </div>
-            <span class="status-pill"></span>
-          </div>
-          <p class="description"></p>
-          <div class="meta-row"></div>
-        </div>
-        <div class="app-card__actions">
-          <a class="open-button">Open</a>
-          <button class="update-button" type="button">Update</button>
-        </div>
+        <a class="open-button">Open</a>
       </article>
     </template>
 
-    <script type="module" src="app.js"></script>
+    <div class="detail-overlay" id="detailOverlay" hidden>
+      <article class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <header class="detail-header">
+          <img id="detailIcon" alt="" />
+          <div>
+            <p id="detailCategory"></p>
+            <h2 id="detailTitle"></h2>
+          </div>
+          <button class="icon-button" id="detailClose" type="button" title="关闭">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <p class="detail-description" id="detailDescription"></p>
+        <dl class="detail-list" id="detailList"></dl>
+        <a class="open-button detail-open" id="detailOpen">Open</a>
+      </article>
+    </div>
+
+    <script type="module" src="app.js?v=20"></script>
   </body>
 </html>

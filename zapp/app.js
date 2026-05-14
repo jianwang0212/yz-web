@@ -1,15 +1,42 @@
-const appGrid = document.querySelector("#appGrid");
-const appCardTemplate = document.querySelector("#appCardTemplate");
-const categoryTabs = document.querySelector("#categoryTabs");
-const searchInput = document.querySelector("#searchInput");
-const featuredApp = document.querySelector("#featuredApp");
-const installButton = document.querySelector("#installButton");
-const refreshButton = document.querySelector("#refreshButton");
-const networkLabel = document.querySelector("#networkLabel");
+const appCount = document.querySelector("#appCount");
+const buildLabel = document.querySelector("#buildLabel");
+const categoryStack = document.querySelector("#categoryStack");
+const detailCategory = document.querySelector("#detailCategory");
+const detailClose = document.querySelector("#detailClose");
+const detailDescription = document.querySelector("#detailDescription");
+const detailIcon = document.querySelector("#detailIcon");
+const detailList = document.querySelector("#detailList");
+const detailOpen = document.querySelector("#detailOpen");
+const detailOverlay = document.querySelector("#detailOverlay");
+const detailTitle = document.querySelector("#detailTitle");
 const displayModeLabel = document.querySelector("#displayModeLabel");
+const emptyState = document.querySelector("#emptyState");
+const footerOwner = document.querySelector("#footerOwner");
+const installButton = document.querySelector("#installButton");
+const networkLabel = document.querySelector("#networkLabel");
+const pinnedGrid = document.querySelector("#pinnedGrid");
+const pinnedSection = document.querySelector("#pinnedSection");
+const refreshButton = document.querySelector("#refreshButton");
+const searchInput = document.querySelector("#searchInput");
+const storeName = document.querySelector("#storeName");
+const todayGrid = document.querySelector("#todayGrid");
+const todaySection = document.querySelector("#todaySection");
+const todaySummary = document.querySelector("#todaySummary");
+const tileTemplate = document.querySelector("#appTileTemplate");
+const updatedLabel = document.querySelector("#updatedLabel");
+const viewTabs = document.querySelector("#viewTabs");
 
+const VIEW_MODES = [
+  { id: "my", label: "My Apps" },
+  { id: "updates", label: "Updates" },
+  { id: "all", label: "All" },
+];
+
+const CATEGORY_ORDER = ["Creation", "Health", "Memory", "Finance", "Music", "Publishing", "Personal"];
+const MAX_TODAY_APPS = 3;
+
+let activeView = "all";
 let catalog = { store: {}, apps: [] };
-let activeCategory = "All";
 let deferredInstallPrompt = null;
 
 const formatter = new Intl.DateTimeFormat("zh-CN", {
@@ -35,6 +62,12 @@ function normalizeDate(value) {
   return Number.isNaN(date.valueOf()) ? value : formatter.format(date);
 }
 
+function dateValue(value) {
+  if (!value) return 0;
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.valueOf()) ? 0 : parsed.valueOf();
+}
+
 function appMatches(app, query) {
   const haystack = [
     app.name,
@@ -42,6 +75,7 @@ function appMatches(app, query) {
     app.description,
     app.category,
     app.status,
+    app.scope,
     ...(app.tags || []),
   ]
     .join(" ")
@@ -50,27 +84,49 @@ function appMatches(app, query) {
   return haystack.includes(query.toLowerCase());
 }
 
+function isLocalApp(app) {
+  return !/^https?:\/\//.test(app.url || "");
+}
+
+function getBaseApps() {
+  if (activeView === "updates") return catalog.apps.filter((app) => app.updateAvailable);
+  if (activeView === "my") return catalog.apps.filter(isLocalApp);
+  return catalog.apps;
+}
+
 function getVisibleApps() {
   const query = searchInput.value.trim();
-  return catalog.apps.filter((app) => {
-    const categoryMatch = activeCategory === "All" || app.category === activeCategory;
-    const queryMatch = !query || appMatches(app, query);
-    return categoryMatch && queryMatch;
+  return getBaseApps().filter((app) => !query || appMatches(app, query));
+}
+
+function getCategorySortValue(category) {
+  const index = CATEGORY_ORDER.indexOf(category);
+  return index === -1 ? CATEGORY_ORDER.length : index;
+}
+
+function sortByCategory(apps) {
+  return [...apps].sort((a, b) => {
+    const categoryDelta = getCategorySortValue(a.category) - getCategorySortValue(b.category);
+    if (categoryDelta) return categoryDelta;
+    return a.name.localeCompare(b.name, "zh-CN");
   });
 }
 
-function renderTabs() {
-  const categories = ["All", ...new Set(catalog.apps.map((app) => app.category).filter(Boolean))];
-  categoryTabs.replaceChildren(
-    ...categories.map((category) => {
+function sortByRecent(apps) {
+  return [...apps].sort((a, b) => dateValue(b.updated) - dateValue(a.updated) || a.name.localeCompare(b.name, "zh-CN"));
+}
+
+function renderViewTabs() {
+  viewTabs.replaceChildren(
+    ...VIEW_MODES.map((mode) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "tab-button";
+      button.className = "mode-tab";
       button.role = "tab";
-      button.ariaSelected = String(category === activeCategory);
-      button.textContent = category;
+      button.ariaSelected = String(mode.id === activeView);
+      button.textContent = mode.label;
       button.addEventListener("click", () => {
-        activeCategory = category;
+        activeView = mode.id;
         render();
       });
       return button;
@@ -78,112 +134,134 @@ function renderTabs() {
   );
 }
 
-function makeMeta(app) {
-  const items = [
-    `v${app.version || "0.1"}`,
-    `Build ${app.build || 1}`,
-    normalizeDate(app.updated),
+function openAppDetails(app) {
+  detailIcon.src = app.icon;
+  detailTitle.textContent = app.name;
+  detailCategory.textContent = app.category || "App";
+  detailDescription.textContent = app.description || app.subtitle || "";
+  detailOpen.href = app.url;
+  detailOpen.setAttribute("aria-label", `Open ${app.name}`);
+
+  const details = [
+    ["Status", app.updateAvailable ? "Update available" : app.status || "Ready"],
+    ["Version", app.version || "--"],
+    ["Build", app.build || "--"],
+    ["Scope", app.scope || "--"],
+    ["Updated", normalizeDate(app.updated)],
+    ["URL", app.url || "--"],
   ];
 
-  if (app.scope) items.push(app.scope);
-  return items;
-}
-
-function renderFeatured(app) {
-  if (!app) {
-    featuredApp.replaceChildren();
-    return;
-  }
-
-  const card = document.createElement("article");
-  card.className = "featured-card";
-  card.style.setProperty("--featured-accent", app.accent || "#176f74");
-
-  const icon = document.createElement("img");
-  icon.src = app.icon;
-  icon.alt = "";
-
-  const body = document.createElement("div");
-  const title = document.createElement("h2");
-  title.textContent = app.name;
-  const copy = document.createElement("p");
-  copy.textContent = app.description;
-  body.append(title, copy);
-
-  const link = document.createElement("a");
-  link.className = "open-button";
-  link.href = app.url;
-  link.textContent = app.updateAvailable ? "Update" : "Open";
-  link.setAttribute("aria-label", `${link.textContent} ${app.name}`);
-
-  card.append(icon, body, link);
-  featuredApp.replaceChildren(card);
-}
-
-function renderAppCard(app) {
-  const fragment = appCardTemplate.content.cloneNode(true);
-  const card = fragment.querySelector(".app-card");
-  const icon = fragment.querySelector(".app-card__icon");
-  const title = fragment.querySelector("h2");
-  const subtitle = fragment.querySelector(".subtitle");
-  const description = fragment.querySelector(".description");
-  const status = fragment.querySelector(".status-pill");
-  const meta = fragment.querySelector(".meta-row");
-  const open = fragment.querySelector(".open-button");
-  const update = fragment.querySelector(".update-button");
-
-  card.style.setProperty("--accent", app.accent || "#176f74");
-  card.style.setProperty("--accent-strong", app.accentStrong || app.accent || "#0c5155");
-  icon.src = app.icon;
-  title.textContent = app.name;
-  subtitle.textContent = app.subtitle || app.category || "";
-  description.textContent = app.description || "";
-  status.textContent = app.updateAvailable ? "Update ready" : app.status || "Ready";
-
-  meta.replaceChildren(
-    ...makeMeta(app).map((item) => {
-      const chip = document.createElement("span");
-      chip.textContent = item;
-      return chip;
+  detailList.replaceChildren(
+    ...details.flatMap(([term, value]) => {
+      const dt = document.createElement("dt");
+      dt.textContent = term;
+      const dd = document.createElement("dd");
+      dd.textContent = value;
+      return [dt, dd];
     }),
   );
 
+  detailOverlay.hidden = false;
+  detailClose.focus();
+}
+
+function closeAppDetails() {
+  detailOverlay.hidden = true;
+}
+
+function renderTile(app, compact = false) {
+  const fragment = tileTemplate.content.cloneNode(true);
+  const tile = fragment.querySelector(".app-tile");
+  const icon = fragment.querySelector(".app-tile__icon");
+  const title = fragment.querySelector("h3");
+  const description = fragment.querySelector("p");
+  const open = fragment.querySelector(".open-button");
+
+  tile.classList.toggle("app-tile--compact", compact);
+  tile.style.setProperty("--accent", app.accent || "#176f74");
+  icon.src = app.icon;
+  title.textContent = app.name;
+  description.textContent = app.subtitle || app.description || app.category || "";
   open.href = app.url;
-  open.textContent = "Open";
   open.setAttribute("aria-label", `Open ${app.name}`);
 
-  update.textContent = app.updateAvailable ? "Update" : "Current";
-  update.disabled = !app.updateAvailable;
-  update.addEventListener("click", async () => {
-    await refreshCaches();
-    window.location.href = app.url;
+  tile.addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+    openAppDetails(app);
+  });
+  tile.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openAppDetails(app);
+    }
   });
 
   return fragment;
 }
 
+function setSection(section, grid, apps, compact = false) {
+  section.hidden = !apps.length;
+  grid.replaceChildren(...apps.map((app) => renderTile(app, compact)));
+}
+
+function renderCategories(apps, usedIds) {
+  const remainingApps = apps.filter((app) => !usedIds.has(app.id));
+  const grouped = sortByCategory(remainingApps).reduce((groups, app) => {
+    const category = app.category || "Other";
+    if (!groups.has(category)) groups.set(category, []);
+    groups.get(category).push(app);
+    return groups;
+  }, new Map());
+
+  const sections = [...grouped.entries()].map(([category, categoryApps]) => {
+    const section = document.createElement("section");
+    section.className = "shelf-section category-section";
+
+    const heading = document.createElement("div");
+    heading.className = "section-heading section-heading--small";
+
+    const titleWrap = document.createElement("div");
+    const kicker = document.createElement("p");
+    kicker.className = "section-kicker";
+    kicker.textContent = "Category";
+    const title = document.createElement("h2");
+    title.textContent = category;
+    titleWrap.append(kicker, title);
+
+    const count = document.createElement("span");
+    count.textContent = `${categoryApps.length} apps`;
+    heading.append(titleWrap, count);
+
+    const grid = document.createElement("div");
+    grid.className = "tile-grid";
+    grid.replaceChildren(...categoryApps.map((app) => renderTile(app, true)));
+
+    section.append(heading, grid);
+    return section;
+  });
+
+  categoryStack.replaceChildren(...sections);
+}
+
 function render() {
-  renderTabs();
+  renderViewTabs();
   const visibleApps = getVisibleApps();
-  const featured = catalog.apps.find((app) => app.featured) || catalog.apps[0];
-  const gridApps = featured ? visibleApps.filter((app) => app.id !== featured.id) : visibleApps;
-  document.querySelector("#appCount").textContent = String(catalog.apps.length);
-  document.querySelector("#storeName").textContent = catalog.store.name || "Zapp Store";
-  document.querySelector("#buildLabel").textContent = `Build ${catalog.store.build || "--"}`;
-  document.querySelector("#updatedLabel").textContent = normalizeDate(catalog.store.updated);
-  document.querySelector("#footerOwner").textContent = catalog.store.owner || "Private shelf";
+  const pinnedApps = visibleApps.filter((app) => app.featured);
+  const recentCandidates = visibleApps.filter((app) => !app.featured);
+  const todayApps = sortByRecent(recentCandidates.length ? recentCandidates : visibleApps).slice(0, MAX_TODAY_APPS);
+  const usedIds = new Set([...todayApps, ...pinnedApps].map((app) => app.id));
 
-  renderFeatured(featured);
+  appCount.textContent = String(visibleApps.length);
+  storeName.textContent = catalog.store.name || "Zapp Store";
+  buildLabel.textContent = `Build ${catalog.store.build || "--"}`;
+  updatedLabel.textContent = `Updated ${normalizeDate(catalog.store.updated)}`;
+  footerOwner.textContent = catalog.store.owner || "Private shelf";
+  todaySummary.textContent = todayApps.length ? `${todayApps.length} apps` : "";
 
-  if (!gridApps.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty-state";
-    empty.textContent = visibleApps.length ? "精选应用已显示在上方。" : "没有找到匹配的应用。";
-    appGrid.replaceChildren(empty);
-    return;
-  }
-
-  appGrid.replaceChildren(...gridApps.map(renderAppCard));
+  setSection(todaySection, todayGrid, todayApps);
+  setSection(pinnedSection, pinnedGrid, pinnedApps, true);
+  renderCategories(visibleApps, usedIds);
+  emptyState.hidden = Boolean(visibleApps.length);
 }
 
 async function loadCatalog() {
@@ -233,6 +311,13 @@ refreshButton.addEventListener("click", async () => {
 });
 
 searchInput.addEventListener("input", render);
+detailClose.addEventListener("click", closeAppDetails);
+detailOverlay.addEventListener("click", (event) => {
+  if (event.target === detailOverlay) closeAppDetails();
+});
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !detailOverlay.hidden) closeAppDetails();
+});
 window.addEventListener("online", setNetworkState);
 window.addEventListener("offline", setNetworkState);
 window.matchMedia("(display-mode: standalone)").addEventListener("change", setNetworkState);
@@ -241,5 +326,7 @@ setNetworkState();
 registerServiceWorker().catch(console.error);
 loadCatalog().catch((error) => {
   console.error(error);
-  appGrid.innerHTML = '<div class="empty-state">应用清单加载失败，请检查 apps.json。</div>';
+  categoryStack.replaceChildren();
+  emptyState.hidden = false;
+  emptyState.textContent = "应用清单加载失败，请检查 apps.json。";
 });
