@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v27-20260513-zi-health-server-cachefix";
+const CACHE_VERSION = "zapp-store-v28-20260514-pruned";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -10,19 +10,9 @@ const STATIC_ASSETS = [
   "icons/store.svg",
   "icons/icon-192.png",
   "icons/icon-512.png",
-  "icons/apps/calculator.svg",
-  "icons/apps/calculator-192.png",
-  "icons/apps/calculator-512.png",
-  "icons/apps/snow-white-board.svg",
-  "icons/apps/wellness.svg",
   "icons/apps/thisisyz.svg",
   "icons/apps/music-tool.svg",
   "icons/apps/socialpulse.svg",
-  "icons/apps/airchat.svg",
-  "icons/apps/workout.svg",
-  "icons/apps/medical.svg",
-  "icons/apps/food.svg",
-  "icons/apps/homeschool.svg",
   "icons/apps/moments-memory.svg",
   "icons/apps/zi-health.svg",
   "apps/zi-health.html",
@@ -44,23 +34,10 @@ const STATIC_ASSETS = [
   "apps/ly-fund.css",
   "apps/ly-fund.js",
   "apps/ly-fund-data.enc.json",
-  "apps/workbench.html",
-  "apps/workbench.css",
-  "apps/workbench.js",
   "apps/boa-finance.html",
   "apps/boa-finance.css",
   "apps/boa-finance.js",
-  "apps/boa-finance-data.enc.json",
-  "apps/calculator.html",
-  "apps/calculator.css",
-  "apps/calculator.js",
-  "apps/calculator.webmanifest",
-  "apps/snow-white-board.html",
-  "apps/snow-white-board.css",
-  "apps/snow-white-board.js",
-  "apps/wellness-tracker.html",
-  "apps/wellness-tracker.css",
-  "apps/wellness-tracker.js"
+  "apps/boa-finance-data.enc.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -106,16 +83,8 @@ self.addEventListener("fetch", (event) => {
       : url.pathname.endsWith("/apps/ly-fund.html")
       ? "apps/ly-fund.html"
       : url.pathname.endsWith("/apps/boa-finance.html")
-      ? "apps/boa-finance.html"
-      : url.pathname.endsWith("/apps/snow-white-board.html")
-      ? "apps/snow-white-board.html"
-      : url.pathname.endsWith("/apps/wellness-tracker.html")
-        ? "apps/wellness-tracker.html"
-        : url.pathname.endsWith("/apps/calculator.html")
-          ? "apps/calculator.html"
-          : url.pathname.endsWith("/apps/workbench.html")
-            ? "apps/workbench.html"
-            : "index.html";
+        ? "apps/boa-finance.html"
+        : "index.html";
     event.respondWith(networkFirst(request, fallback));
     return;
   }
