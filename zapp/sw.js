@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v26-20260513-zi-health-server";
+const CACHE_VERSION = "zapp-store-v27-20260513-zi-health-server-cachefix";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -126,7 +126,7 @@ self.addEventListener("fetch", (event) => {
 async function networkFirst(request, fallback = null) {
   const cache = await caches.open(STATIC_CACHE);
   try {
-    const response = await fetch(request);
+    const response = await fetch(request, { cache: "no-store" });
     cache.put(request, response.clone());
     return response;
   } catch (error) {

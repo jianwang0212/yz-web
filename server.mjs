@@ -99,6 +99,12 @@ app.use(
     extensions: ['html'],
     index: ['index.html'],
     setHeaders(res, filePath) {
+      const normalizedPath = filePath.split(path.sep).join('/');
+      if (normalizedPath.endsWith('/zapp/sw.js') || normalizedPath.endsWith('/zapp/apps.json')) {
+        res.setHeader('Cache-Control', 'no-cache');
+        return;
+      }
+
       if (/\.(html?)$/i.test(filePath)) {
         res.setHeader('Cache-Control', 'no-cache');
         return;
