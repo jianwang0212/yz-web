@@ -1356,7 +1356,7 @@
             const financialPasswordSubmit = document.getElementById('financial-password-submit');
             const financialPasswordError = document.getElementById('financial-password-error');
             const FINANCIAL_PASSWORD = '106106';
-            const DOCKING_TECH_FINANCIAL_AUTH_KEY = 'docking-tech-financial-authenticated';
+            const dockingTechModal = document.getElementById('docking-tech-modal');
             const dockingTechPasswordForm = document.getElementById('docking-tech-password-form');
             const dockingTechFinancialContent = document.getElementById('docking-tech-financial-content');
             const dockingTechPasswordInput = document.getElementById('docking-tech-password-input');
@@ -1393,21 +1393,28 @@
                 }
             });
 
+            function resetDockingTechFinancialGate() {
+                dockingTechModal.dataset.financialUnlocked = 'false';
+                dockingTechPasswordForm.style.display = 'block';
+                dockingTechFinancialContent.style.display = 'none';
+                dockingTechPasswordError.style.display = 'none';
+                dockingTechPasswordInput.value = '';
+                document.dispatchEvent(new CustomEvent('docking-tech-financial-locked'));
+            }
+
             function showDockingTechFinancialContent() {
+                dockingTechModal.dataset.financialUnlocked = 'true';
                 dockingTechPasswordForm.style.display = 'none';
                 dockingTechFinancialContent.style.display = 'block';
                 dockingTechPasswordError.style.display = 'none';
                 document.dispatchEvent(new CustomEvent('docking-tech-financial-unlocked'));
             }
 
-            if (localStorage.getItem(DOCKING_TECH_FINANCIAL_AUTH_KEY) === 'true') {
-                showDockingTechFinancialContent();
-            }
+            resetDockingTechFinancialGate();
 
             function handleDockingTechPasswordSubmit() {
                 const inputPassword = dockingTechPasswordInput.value.trim();
                 if (inputPassword === FINANCIAL_PASSWORD) {
-                    localStorage.setItem(DOCKING_TECH_FINANCIAL_AUTH_KEY, 'true');
                     showDockingTechFinancialContent();
                 } else {
                     dockingTechPasswordError.style.display = 'block';
@@ -1431,6 +1438,9 @@
                     const modalTarget = this.getAttribute('data-modal-target');
                     const modal = document.getElementById(modalTarget);
                     if (modal) {
+                        if (modalTarget === 'docking-tech-modal') {
+                            resetDockingTechFinancialGate();
+                        }
                         modal.classList.add('active');
                         document.body.style.overflow = 'hidden'; // Prevent background scrolling
                     }
@@ -1447,6 +1457,9 @@
                     closeBtn.addEventListener('click', () => {
                         modal.classList.remove('active');
                         document.body.style.overflow = ''; // Restore scrolling
+                        if (modal.id === 'docking-tech-modal') {
+                            resetDockingTechFinancialGate();
+                        }
                     });
                 }
 
@@ -1454,6 +1467,9 @@
                     overlay.addEventListener('click', () => {
                         modal.classList.remove('active');
                         document.body.style.overflow = ''; // Restore scrolling
+                        if (modal.id === 'docking-tech-modal') {
+                            resetDockingTechFinancialGate();
+                        }
                     });
                 }
             });
@@ -1465,6 +1481,9 @@
                         if (modal.classList.contains('active')) {
                             modal.classList.remove('active');
                             document.body.style.overflow = ''; // Restore scrolling
+                            if (modal.id === 'docking-tech-modal') {
+                                resetDockingTechFinancialGate();
+                            }
                         }
                     });
                 }
@@ -1478,14 +1497,20 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const modal = document.getElementById('docking-tech-modal');
             const chartCanvas = document.getElementById('dockingTechChart');
-            const DOCKING_TECH_FINANCIAL_AUTH_KEY = 'docking-tech-financial-authenticated';
             let chart = null;
             let isRenderingChart = false;
+
+            function destroyDockingTechChart() {
+                if (chart) {
+                    chart.destroy();
+                    chart = null;
+                }
+            }
 
             async function renderDockingTechChartIfUnlocked() {
                 if (!modal || !chartCanvas || chart || isRenderingChart) return;
                 if (!modal.classList.contains('active')) return;
-                if (localStorage.getItem(DOCKING_TECH_FINANCIAL_AUTH_KEY) !== 'true') return;
+                if (modal.dataset.financialUnlocked !== 'true') return;
 
                 isRenderingChart = true;
                 try {
@@ -1615,6 +1640,10 @@
             // Load data when modal is opened
             if (modal && chartCanvas) {
                 const observer = new MutationObserver(async (mutations) => {
+                    if (!modal.classList.contains('active')) {
+                        destroyDockingTechChart();
+                        return;
+                    }
                     await renderDockingTechChartIfUnlocked();
                 });
 
@@ -1623,16 +1652,12 @@
                     attributeFilter: ['class']
                 });
                 document.addEventListener('docking-tech-financial-unlocked', renderDockingTechChartIfUnlocked);
+                document.addEventListener('docking-tech-financial-locked', destroyDockingTechChart);
 
                 // Clean up chart when modal closes
                 const closeBtns = modal.querySelectorAll('.modal-close, .modal-overlay');
                 closeBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        if (chart) {
-                            chart.destroy();
-                            chart = null;
-                        }
-                    });
+                    btn.addEventListener('click', destroyDockingTechChart);
                 });
             }
         });

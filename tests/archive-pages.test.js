@@ -63,7 +63,10 @@ test('dockingtech finance modal requires its own password before rendering chart
   expectIncludes(yearReviewHtml, 'id="docking-tech-password-submit"');
   expectIncludes(yearReviewHtml, 'id="docking-tech-financial-content" style="display: none;"');
   expectIncludes(yearReviewHtml, "const FINANCIAL_PASSWORD = '106106'");
-  expectIncludes(yearReviewHtml, "const DOCKING_TECH_FINANCIAL_AUTH_KEY = 'docking-tech-financial-authenticated'");
-  expectIncludes(yearReviewHtml, "localStorage.getItem(DOCKING_TECH_FINANCIAL_AUTH_KEY) !== 'true'");
+  expectIncludes(yearReviewHtml, "dockingTechModal.dataset.financialUnlocked = 'false'");
+  expectIncludes(yearReviewHtml, "modalTarget === 'docking-tech-modal'");
+  expectIncludes(yearReviewHtml, "modal.dataset.financialUnlocked !== 'true'");
   expectIncludes(yearReviewHtml, "document.addEventListener('docking-tech-financial-unlocked', renderDockingTechChartIfUnlocked)");
+  expectIncludes(yearReviewHtml, "document.addEventListener('docking-tech-financial-locked', destroyDockingTechChart)");
+  assert.equal(yearReviewHtml.includes('docking-tech-financial-authenticated'), false);
 });
