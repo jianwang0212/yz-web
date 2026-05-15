@@ -46,7 +46,12 @@ test('dockingtech page keeps BP-derived assets with the page', () => {
   expectIncludes(dockingtechHtml, '<a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">');
   expectIncludes(dockingtechHtml, 'projects/dockingtech.css');
   expectIncludes(dockingtechHtml, '/assets/dockingtech/team-zi.webp');
-  expectIncludes(dockingtechHtml, '/assets/dockingtech/product-interface.webp');
+  expectIncludes(dockingtechHtml, '/assets/dockingtech/team-karl.webp');
+  assert.equal(dockingtechHtml.includes('id="product"'), false);
+  assert.equal(dockingtechHtml.includes('id="traction"'), false);
+  assert.equal(dockingtechHtml.includes('id="moat"'), false);
+  assert.equal(dockingtechHtml.includes('id="next"'), false);
+  assert.equal(dockingtechHtml.includes('内容根据《炼刀-BP'), false);
   assert.equal(existsSync(new URL('../assets/dockingtech/team-zi.webp', import.meta.url)), true);
-  assert.equal(existsSync(new URL('../assets/dockingtech/product-interface.webp', import.meta.url)), true);
+  assert.equal(existsSync(new URL('../assets/dockingtech/team-karl.webp', import.meta.url)), true);
 });
