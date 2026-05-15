@@ -8,6 +8,7 @@ const worksHtml = readFileSync(new URL('../works.html', import.meta.url), 'utf8'
 const indexHtml = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const resumeHtml = readFileSync(new URL('../resume.html', import.meta.url), 'utf8');
 const dockingtechHtml = readFileSync(new URL('../projects/dockingtech.html', import.meta.url), 'utf8');
+const yearReviewHtml = readFileSync(new URL('../year-review.html', import.meta.url), 'utf8');
 
 function expectIncludes(source, value, message) {
   assert.ok(source.includes(value), message || `Expected source to include ${value}`);
@@ -54,4 +55,15 @@ test('dockingtech page keeps BP-derived assets with the page', () => {
   assert.equal(dockingtechHtml.includes('内容根据《炼刀-BP'), false);
   assert.equal(existsSync(new URL('../assets/dockingtech/team-zi.webp', import.meta.url)), true);
   assert.equal(existsSync(new URL('../assets/dockingtech/team-karl.webp', import.meta.url)), true);
+});
+
+test('dockingtech finance modal requires its own password before rendering chart data', () => {
+  expectIncludes(yearReviewHtml, 'id="docking-tech-password-form"');
+  expectIncludes(yearReviewHtml, 'id="docking-tech-password-input"');
+  expectIncludes(yearReviewHtml, 'id="docking-tech-password-submit"');
+  expectIncludes(yearReviewHtml, 'id="docking-tech-financial-content" style="display: none;"');
+  expectIncludes(yearReviewHtml, "const FINANCIAL_PASSWORD = '106106'");
+  expectIncludes(yearReviewHtml, "const DOCKING_TECH_FINANCIAL_AUTH_KEY = 'docking-tech-financial-authenticated'");
+  expectIncludes(yearReviewHtml, "localStorage.getItem(DOCKING_TECH_FINANCIAL_AUTH_KEY) !== 'true'");
+  expectIncludes(yearReviewHtml, "document.addEventListener('docking-tech-financial-unlocked', renderDockingTechChartIfUnlocked)");
 });

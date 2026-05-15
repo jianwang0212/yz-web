@@ -1010,11 +1010,21 @@
             <button class="modal-close" aria-label="Close">&times;</button>
             <h3 class="modal-title">入坞科技 财务数据</h3>
             <div class="modal-body">
-                <p class="modal-description">入坞科技在时间线上的收入、支出和股东分红情况。图表显示了累积收入和分红强度的变化趋势。</p>
-                <div class="chart-modal-container">
-                    <canvas id="dockingTechChart"></canvas>
+                <div id="docking-tech-password-form" style="padding: 2rem; text-align: center;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;" data-i18n="yearReview.financial.password">此内容需要密码验证</p>
+                        <input type="password" id="docking-tech-password-input" data-i18n="yearReview.financial.passwordPlaceholder" placeholder="请输入密码" autocomplete="current-password" style="padding: 0.8rem 1.2rem; font-size: 1rem; border: 2px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 300px; outline: none; transition: border-color 0.3s ease;" />
+                        <p id="docking-tech-password-error" style="color: #ef4444; font-size: 0.9rem; margin-top: 0.5rem; display: none;" data-i18n="yearReview.financial.passwordError">密码错误，请重试</p>
+                    </div>
+                    <button id="docking-tech-password-submit" data-i18n="yearReview.financial.submit" style="padding: 0.8rem 2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s ease;">确认</button>
                 </div>
-                <p class="modal-note">注：数据来源自财务记录，包含收入、支出和股东分红等详细信息。</p>
+                <div id="docking-tech-financial-content" style="display: none;">
+                    <p class="modal-description">入坞科技在时间线上的收入、支出和股东分红情况。图表显示了累积收入和分红强度的变化趋势。</p>
+                    <div class="chart-modal-container">
+                        <canvas id="dockingTechChart"></canvas>
+                    </div>
+                    <p class="modal-note">注：数据来源自财务记录，包含收入、支出和股东分红等详细信息。</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1346,6 +1356,12 @@
             const financialPasswordSubmit = document.getElementById('financial-password-submit');
             const financialPasswordError = document.getElementById('financial-password-error');
             const FINANCIAL_PASSWORD = '106106';
+            const DOCKING_TECH_FINANCIAL_AUTH_KEY = 'docking-tech-financial-authenticated';
+            const dockingTechPasswordForm = document.getElementById('docking-tech-password-form');
+            const dockingTechFinancialContent = document.getElementById('docking-tech-financial-content');
+            const dockingTechPasswordInput = document.getElementById('docking-tech-password-input');
+            const dockingTechPasswordSubmit = document.getElementById('docking-tech-password-submit');
+            const dockingTechPasswordError = document.getElementById('docking-tech-password-error');
 
             // Check if already authenticated
             if (localStorage.getItem('financial-authenticated') === 'true') {
@@ -1374,6 +1390,36 @@
             financialPasswordInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     handlePasswordSubmit();
+                }
+            });
+
+            function showDockingTechFinancialContent() {
+                dockingTechPasswordForm.style.display = 'none';
+                dockingTechFinancialContent.style.display = 'block';
+                dockingTechPasswordError.style.display = 'none';
+                document.dispatchEvent(new CustomEvent('docking-tech-financial-unlocked'));
+            }
+
+            if (localStorage.getItem(DOCKING_TECH_FINANCIAL_AUTH_KEY) === 'true') {
+                showDockingTechFinancialContent();
+            }
+
+            function handleDockingTechPasswordSubmit() {
+                const inputPassword = dockingTechPasswordInput.value.trim();
+                if (inputPassword === FINANCIAL_PASSWORD) {
+                    localStorage.setItem(DOCKING_TECH_FINANCIAL_AUTH_KEY, 'true');
+                    showDockingTechFinancialContent();
+                } else {
+                    dockingTechPasswordError.style.display = 'block';
+                    dockingTechPasswordInput.value = '';
+                    dockingTechPasswordInput.focus();
+                }
+            }
+
+            dockingTechPasswordSubmit.addEventListener('click', handleDockingTechPasswordSubmit);
+            dockingTechPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleDockingTechPasswordSubmit();
                 }
             });
 
@@ -1432,139 +1478,151 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const modal = document.getElementById('docking-tech-modal');
             const chartCanvas = document.getElementById('dockingTechChart');
+            const DOCKING_TECH_FINANCIAL_AUTH_KEY = 'docking-tech-financial-authenticated';
             let chart = null;
+            let isRenderingChart = false;
 
-            // Load data when modal is opened
-            if (modal && chartCanvas) {
-                const observer = new MutationObserver(async (mutations) => {
-                    if (modal.classList.contains('active') && !chart) {
-                        await loadChartLibraries();
-                        const processedData = await loadDockingTechData();
+            async function renderDockingTechChartIfUnlocked() {
+                if (!modal || !chartCanvas || chart || isRenderingChart) return;
+                if (!modal.classList.contains('active')) return;
+                if (localStorage.getItem(DOCKING_TECH_FINANCIAL_AUTH_KEY) !== 'true') return;
 
-                        if (processedData && processedData.dates.length > 0) {
-                            chart = new Chart(chartCanvas, {
-                                type: 'line',
-                                data: {
-                                    labels: processedData.dates,
-                                    datasets: [
-                                        {
-                                            label: '累积收入',
-                                            data: processedData.cumulativeIncome,
-                                            borderColor: '#2563eb',
-                                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                                            fill: true,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 3
-                                        },
-                                        {
-                                            label: '收入',
-                                            data: processedData.income,
-                                            borderColor: '#10b981',
-                                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                                            fill: false,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 2
-                                        },
-                                        {
-                                            label: '支出',
-                                            data: processedData.expense,
-                                            borderColor: '#ef4444',
-                                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                            fill: false,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 2
-                                        },
-                                        {
-                                            label: '股东分红',
-                                            data: processedData.dividend,
-                                            borderColor: '#f59e0b',
-                                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                                            fill: false,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 2,
-                                            pointRadius: 4
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    interaction: {
-                                        mode: 'index',
-                                        intersect: false,
+                isRenderingChart = true;
+                try {
+                    await loadChartLibraries();
+                    const processedData = await loadDockingTechData();
+
+                    if (processedData && processedData.dates.length > 0) {
+                        chart = new Chart(chartCanvas, {
+                            type: 'line',
+                            data: {
+                                labels: processedData.dates,
+                                datasets: [
+                                    {
+                                        label: '累积收入',
+                                        data: processedData.cumulativeIncome,
+                                        borderColor: '#2563eb',
+                                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                                        fill: true,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 3
                                     },
-                                    plugins: {
-                                        legend: {
-                                            position: 'top',
-                                        },
+                                    {
+                                        label: '收入',
+                                        data: processedData.income,
+                                        borderColor: '#10b981',
+                                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                                        fill: false,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 2
+                                    },
+                                    {
+                                        label: '支出',
+                                        data: processedData.expense,
+                                        borderColor: '#ef4444',
+                                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                        fill: false,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 2
+                                    },
+                                    {
+                                        label: '股东分红',
+                                        data: processedData.dividend,
+                                        borderColor: '#f59e0b',
+                                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                                        fill: false,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 2,
+                                        pointRadius: 4
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                interaction: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: '入坞科技财务时间序列',
+                                        font: {
+                                            size: 18
+                                        }
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                let label = context.dataset.label || '';
+                                                if (label) {
+                                                    label += ': ';
+                                                }
+                                                const roundedValue = Math.round(context.parsed.y * 10) / 10;
+                                                label += roundedValue.toLocaleString('zh-CN', {
+                                                    minimumFractionDigits: 1,
+                                                    maximumFractionDigits: 1
+                                                });
+                                                label += ' 万';
+                                                return label;
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        display: true,
                                         title: {
                                             display: true,
-                                            text: '入坞科技财务时间序列',
-                                            font: {
-                                                size: 18
-                                            }
-                                        },
-                                        tooltip: {
-                                            callbacks: {
-                                                label: function(context) {
-                                                    let label = context.dataset.label || '';
-                                                    if (label) {
-                                                        label += ': ';
-                                                    }
-                                                    // 确保数值四舍五入到1位小数
-                                                    const roundedValue = Math.round(context.parsed.y * 10) / 10;
-                                                    label += roundedValue.toLocaleString('zh-CN', {
-                                                        minimumFractionDigits: 1,
-                                                        maximumFractionDigits: 1
-                                                    });
-                                                    label += ' 万';
-                                                    return label;
-                                                }
-                                            }
+                                            text: '时间'
                                         }
                                     },
-                                    scales: {
-                                        x: {
+                                    y: {
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'left',
+                                        title: {
                                             display: true,
-                                            title: {
-                                                display: true,
-                                                text: '时间'
-                                            }
+                                            text: '金额 (万)'
                                         },
-                                        y: {
-                                            type: 'linear',
-                                            display: true,
-                                            position: 'left',
-                                            title: {
-                                                display: true,
-                                                text: '金额 (万)'
-                                            },
-                                            ticks: {
-                                                callback: function(value) {
-                                                    // 确保数值四舍五入到1位小数
-                                                    const roundedValue = Math.round(value * 10) / 10;
-                                                    return roundedValue.toLocaleString('zh-CN', {
-                                                        minimumFractionDigits: 1,
-                                                        maximumFractionDigits: 1
-                                                    });
-                                                }
+                                        ticks: {
+                                            callback: function(value) {
+                                                const roundedValue = Math.round(value * 10) / 10;
+                                                return roundedValue.toLocaleString('zh-CN', {
+                                                    minimumFractionDigits: 1,
+                                                    maximumFractionDigits: 1
+                                                });
                                             }
                                         }
                                     }
                                 }
-                            });
-                        }
+                            }
+                        });
                     }
+                } finally {
+                    isRenderingChart = false;
+                }
+            }
+
+            // Load data when modal is opened
+            if (modal && chartCanvas) {
+                const observer = new MutationObserver(async (mutations) => {
+                    await renderDockingTechChartIfUnlocked();
                 });
 
                 observer.observe(modal, {
                     attributes: true,
                     attributeFilter: ['class']
                 });
+                document.addEventListener('docking-tech-financial-unlocked', renderDockingTechChartIfUnlocked);
 
                 // Clean up chart when modal closes
                 const closeBtns = modal.querySelectorAll('.modal-close, .modal-overlay');
