@@ -42,7 +42,7 @@
 
     nav.innerHTML = `
         <div class="container">
-            <a class="nav-brand site-title" href="/index.html" aria-label="Back to Zi Yin homepage">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>

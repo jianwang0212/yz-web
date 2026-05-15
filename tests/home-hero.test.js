@@ -48,6 +48,7 @@ test('language controls expose accessible names and selected state', () => {
 });
 
 test('home navigation has an active current-page state', () => {
+  expectIncludes(indexHtml, '<a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">');
   expectIncludes(indexHtml, '<ul class="nav-menu" id="primary-navigation">');
   expectIncludes(indexHtml, '<a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a>');
   expectIncludes(indexHtml, 'class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation"');

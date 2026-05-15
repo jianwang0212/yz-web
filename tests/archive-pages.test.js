@@ -43,6 +43,7 @@ test('public entry points link to recovered pages', () => {
 
 test('dockingtech page keeps BP-derived assets with the page', () => {
   expectIncludes(dockingtechHtml, '入坞科技 Dockingtech');
+  expectIncludes(dockingtechHtml, '<a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">');
   expectIncludes(dockingtechHtml, 'projects/dockingtech.css');
   expectIncludes(dockingtechHtml, '/assets/dockingtech/team-zi.webp');
   expectIncludes(dockingtechHtml, '/assets/dockingtech/product-interface.webp');

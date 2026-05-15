@@ -57,6 +57,7 @@ body {
 .nav-brand {
     font-size: 1.5rem;
     font-weight: 700;
+    text-decoration: none;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -5442,6 +5443,18 @@ header .name-en,
     background: none;
     -webkit-text-fill-color: currentColor;
     color: #111827;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-brand:hover {
+    text-decoration: none;
+}
+
+.nav-brand:focus-visible {
+    border-radius: 8px;
+    outline: 3px solid rgba(99, 102, 241, 0.32);
+    outline-offset: 6px;
 }
 
 .nav-menu {
