@@ -7,6 +7,7 @@ const berkleeHtml = readFileSync(new URL('../berklee.html', import.meta.url), 'u
 const worksHtml = readFileSync(new URL('../works.html', import.meta.url), 'utf8');
 const indexHtml = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const resumeHtml = readFileSync(new URL('../resume.html', import.meta.url), 'utf8');
+const dockingtechHtml = readFileSync(new URL('../projects/dockingtech.html', import.meta.url), 'utf8');
 
 function expectIncludes(source, value, message) {
   assert.ok(source.includes(value), message || `Expected source to include ${value}`);
@@ -36,5 +37,15 @@ test('public entry points link to recovered pages', () => {
   expectIncludes(worksHtml, 'class="works-snow-feature"');
   expectIncludes(worksHtml, 'href="/snow-white"');
   expectIncludes(indexHtml, 'href="/berklee"');
+  expectIncludes(indexHtml, 'href="/projects/dockingtech"');
   expectIncludes(resumeHtml, 'href="/berklee"');
+});
+
+test('dockingtech page keeps BP-derived assets with the page', () => {
+  expectIncludes(dockingtechHtml, '入坞科技 Dockingtech');
+  expectIncludes(dockingtechHtml, 'projects/dockingtech.css');
+  expectIncludes(dockingtechHtml, '/assets/dockingtech/team-zi.webp');
+  expectIncludes(dockingtechHtml, '/assets/dockingtech/product-interface.webp');
+  assert.equal(existsSync(new URL('../assets/dockingtech/team-zi.webp', import.meta.url)), true);
+  assert.equal(existsSync(new URL('../assets/dockingtech/product-interface.webp', import.meta.url)), true);
 });

@@ -1,0 +1,447 @@
+.dockingtech-page {
+    --primary-color: #0b5cff;
+    --primary-dark: #003fc4;
+    --secondary-color: #d71920;
+    --dock-ink: #111827;
+    --dock-muted: #5d6b82;
+    --dock-faint: #8b98aa;
+    --dock-line: #dce4f0;
+    --dock-panel: #ffffff;
+    --dock-soft: #f4f7fb;
+    --dock-blue: #0b5cff;
+    --dock-red: #d71920;
+    --dock-navy: #071a38;
+    background: var(--dock-soft);
+    color: var(--dock-ink);
+}
+
+.dockingtech-page .navbar {
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.dock-shell {
+    padding-top: 72px;
+    background: var(--dock-soft);
+}
+
+.dock-team-first {
+    padding: 76px 0 78px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(244, 247, 251, 0.98)),
+        url("/assets/dockingtech/bp-cover.webp") center top / cover no-repeat;
+    border-bottom: 1px solid var(--dock-line);
+}
+
+.dock-team-lede {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.66fr);
+    gap: 42px;
+    align-items: end;
+}
+
+.dock-kicker {
+    margin: 0 0 14px;
+    color: var(--dock-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.dock-lede-copy h1,
+.dock-section h2 {
+    margin: 0;
+    max-width: 920px;
+    color: var(--dock-ink);
+    font-weight: 850;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.dock-lede-copy h1 {
+    font-size: clamp(2.45rem, 4.5vw, 4.25rem);
+}
+
+.dock-section h2 {
+    font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.dock-lede-text,
+.dock-section p {
+    color: var(--dock-muted);
+    font-size: 1.04rem;
+    line-height: 1.8;
+}
+
+.dock-lede-text {
+    max-width: 760px;
+    margin: 24px 0 0;
+    font-size: 1.13rem;
+}
+
+.dock-skill-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.dock-skill-strip span,
+.dock-next-list span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.42rem 0.75rem;
+    border: 1px solid rgba(11, 92, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.84);
+    color: var(--dock-navy);
+    font-size: 0.88rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.dock-office-figure,
+.dock-slide-figure,
+.dock-product-shot {
+    margin: 0;
+}
+
+.dock-office-figure {
+    overflow: hidden;
+    border: 1px solid rgba(7, 26, 56, 0.12);
+    border-radius: 8px;
+    background: var(--dock-panel);
+    box-shadow: 0 24px 60px rgba(7, 26, 56, 0.12);
+}
+
+.dock-office-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 36% center;
+}
+
+.dock-office-figure figcaption {
+    padding: 12px 14px;
+    color: var(--dock-muted);
+    font-size: 0.84rem;
+}
+
+.dock-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 34px;
+}
+
+.dock-team-card {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.42fr) minmax(0, 1fr);
+    min-height: 390px;
+    overflow: hidden;
+    border: 1px solid var(--dock-line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.dock-team-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 390px;
+    object-fit: cover;
+    object-position: center top;
+    border-right: 1px solid var(--dock-line);
+}
+
+.dock-team-copy {
+    padding: 24px 22px;
+}
+
+.dock-team-copy p {
+    margin: 0 0 8px;
+    color: var(--dock-blue);
+    font-size: 0.9rem;
+    font-weight: 850;
+}
+
+.dock-team-copy h2 {
+    margin: 0 0 18px;
+    color: var(--dock-ink);
+    font-size: clamp(1.35rem, 2.1vw, 2rem);
+    line-height: 1.16;
+    letter-spacing: 0;
+}
+
+.dock-team-copy ul,
+.dock-check-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dock-team-copy li,
+.dock-check-list li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--dock-muted);
+    line-height: 1.65;
+}
+
+.dock-team-copy li::before,
+.dock-check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--dock-blue);
+}
+
+.dock-section {
+    padding: 84px 0;
+    border-bottom: 1px solid var(--dock-line);
+}
+
+.dock-proposition,
+.dock-product,
+.dock-moat {
+    background: #ffffff;
+}
+
+.dock-steps,
+.dock-traction {
+    background: var(--dock-soft);
+}
+
+.dock-split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1fr);
+    gap: 42px;
+    align-items: center;
+}
+
+.dock-split-reverse {
+    grid-template-columns: minmax(360px, 1fr) minmax(0, 0.82fr);
+}
+
+.dock-split p + p {
+    margin-top: 16px;
+}
+
+.dock-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.dock-proof,
+.dock-step-grid li,
+.dock-traction-copy div {
+    border: 1px solid var(--dock-line);
+    border-radius: 8px;
+    background: var(--dock-panel);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.dock-proof {
+    min-height: 150px;
+    padding: 22px;
+}
+
+.dock-proof strong {
+    display: block;
+    color: var(--dock-blue);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.dock-proof span,
+.dock-step-grid p,
+.dock-traction-copy span {
+    display: block;
+    margin-top: 10px;
+    color: var(--dock-muted);
+    line-height: 1.62;
+}
+
+.dock-section-header {
+    max-width: 900px;
+    margin-bottom: 30px;
+}
+
+.dock-step-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+}
+
+.dock-step-grid li {
+    padding: 24px;
+}
+
+.dock-step-grid span {
+    color: var(--dock-red);
+    font-size: 0.82rem;
+    font-weight: 850;
+}
+
+.dock-step-grid h3 {
+    margin: 10px 0 0;
+    color: var(--dock-ink);
+    font-size: 1.25rem;
+    line-height: 1.24;
+}
+
+.dock-slide-figure,
+.dock-product-shot {
+    overflow: hidden;
+    border: 1px solid var(--dock-line);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.09);
+}
+
+.dock-slide-figure img,
+.dock-product-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.dock-traction-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.58fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.dock-traction-copy {
+    display: grid;
+    gap: 14px;
+}
+
+.dock-traction-copy div {
+    padding: 24px;
+}
+
+.dock-traction-copy strong {
+    display: block;
+    color: var(--dock-navy);
+    font-size: 1.7rem;
+    line-height: 1.1;
+}
+
+.dock-next {
+    background: #ffffff;
+}
+
+.dock-next-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.58fr);
+    gap: 34px;
+    align-items: center;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    border: 1px solid rgba(11, 92, 255, 0.18);
+    border-radius: 8px;
+    background:
+        linear-gradient(90deg, rgba(11, 92, 255, 0.08), rgba(215, 25, 32, 0.05)),
+        #ffffff;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.dock-next-panel h2 {
+    color: var(--dock-navy);
+}
+
+.dock-next-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (max-width: 1100px) {
+    .dock-team-lede,
+    .dock-split,
+    .dock-split-reverse,
+    .dock-traction-grid,
+    .dock-next-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .dock-office-figure img {
+        aspect-ratio: 16 / 10;
+    }
+
+    .dock-team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dock-team-card {
+        grid-template-columns: 220px minmax(0, 1fr);
+        min-height: 320px;
+    }
+
+    .dock-team-card img {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 760px) {
+    .dock-shell {
+        padding-top: 64px;
+    }
+
+    .dock-team-first {
+        padding: 54px 0 58px;
+    }
+
+    .dock-section {
+        padding: 58px 0;
+    }
+
+    .dock-lede-copy h1 {
+        font-size: clamp(2.2rem, 12vw, 3.4rem);
+    }
+
+    .dock-lede-text,
+    .dock-section p {
+        font-size: 1rem;
+    }
+
+    .dock-team-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .dock-team-card img {
+        height: 300px;
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--dock-line);
+    }
+
+    .dock-proof-grid,
+    .dock-step-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dock-proof {
+        min-height: 126px;
+    }
+
+    .dock-next-panel {
+        padding: 28px 20px;
+    }
+}
