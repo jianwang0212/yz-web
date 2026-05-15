@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v31-20260514-compact";
+const CACHE_VERSION = "zapp-store-v33-20260514-voiceover-nopass";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -15,6 +15,10 @@ const STATIC_ASSETS = [
   "icons/apps/socialpulse.svg",
   "icons/apps/moments-memory.svg",
   "icons/apps/zi-health.svg",
+  "icons/apps/ziyin-voiceover.svg",
+  "apps/ziyin-voiceover.html",
+  "apps/ziyin-voiceover.css",
+  "apps/ziyin-voiceover.js",
   "apps/zi-health.html",
   "apps/moments-memory.html",
   "apps/moments-memory.css",
@@ -74,6 +78,8 @@ self.addEventListener("fetch", (event) => {
   if (request.mode === "navigate") {
     const fallback = url.pathname.endsWith("/apps/moments-memory.html")
       ? "apps/moments-memory.html"
+      : url.pathname.endsWith("/apps/ziyin-voiceover.html")
+      ? "apps/ziyin-voiceover.html"
       : url.pathname.endsWith("/apps/zi-health.html")
       ? "apps/zi-health.html"
       : url.pathname.endsWith("/apps/gt.html")
