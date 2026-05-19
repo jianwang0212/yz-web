@@ -1,4 +1,4 @@
-const DATA_URL = "qhrb-san-ci-can-sai-data.json?v=20260512";
+const DATA_URL = "qhrb-san-ci-can-sai-data.json?v=20260519";
 
 const els = {
   playerName: document.querySelector("#playerName"),

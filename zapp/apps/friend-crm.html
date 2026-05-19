@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="人脉 CRM" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/moments-memory.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="friend-crm.css?v=20260515a" />
+    <title>人脉 CRM</title>
+  </head>
+  <body>
+    <main class="crm-shell">
+      <header class="topbar">
+        <a class="back-button" href="../" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>Private People Database</p>
+          <h1>人脉 CRM</h1>
+        </div>
+        <span class="data-badge" id="dataBadge">Encrypted</span>
+      </header>
+
+      <section class="unlock-panel" id="unlockPanel" aria-label="Unlock encrypted friend CRM data">
+        <div>
+          <p>Encrypted WeChat CRM</p>
+          <h2>输入密码解锁联系人资料</h2>
+        </div>
+        <form id="unlockForm">
+          <label>
+            <span>密码</span>
+            <input id="unlockPassword" type="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit">解锁</button>
+        </form>
+        <small id="unlockStatus">公开站点只保存加密数据包，明文资料只在你的浏览器里解密。</small>
+      </section>
+
+      <section class="summary-grid hidden" id="summaryGrid" aria-label="CRM summary">
+        <article>
+          <span>联系人</span>
+          <strong id="profileCount">--</strong>
+          <small>已结构化入库</small>
+        </article>
+        <article>
+          <span>微信备注</span>
+          <strong id="remarkCount">--</strong>
+          <small>已同步</small>
+        </article>
+        <article>
+          <span>MBTI</span>
+          <strong id="mbtiCount">--</strong>
+          <small>可检索字段</small>
+        </article>
+        <article>
+          <span>社交账号</span>
+          <strong id="socialCount">--</strong>
+          <small>跨平台映射</small>
+        </article>
+      </section>
+
+      <section class="control-panel hidden" id="controlPanel" aria-label="CRM controls">
+        <label class="search-field">
+          <span>⌕</span>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="搜索姓名 / 城市 / 职业 / MBTI / 社交账号" />
+        </label>
+        <select id="mbtiFilter" aria-label="筛选 MBTI">
+          <option value="all">全部 MBTI</option>
+        </select>
+      </section>
+
+      <section class="profile-grid hidden" id="profileGrid" aria-label="Friend profiles"></section>
+
+      <section class="table-panel hidden" id="tablePanel" aria-label="Friend profile table">
+        <div class="section-head">
+          <div>
+            <p>Structured Rows</p>
+            <h2>资料表</h2>
+          </div>
+          <span id="tableCount">--</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>姓名</th>
+                <th>地点</th>
+                <th>职业</th>
+                <th>MBTI</th>
+                <th>社交账号</th>
+                <th>微信备注</th>
+              </tr>
+            </thead>
+            <tbody id="profileRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="friend-crm.js?v=20260515a"></script>
+  </body>
+</html>
