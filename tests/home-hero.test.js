@@ -56,14 +56,14 @@ test('home navigation has an active current-page state', () => {
 
 test('credential cards have expected content and explicit link semantics', () => {
   const credentialCards = indexHtml.match(/class="metric-row(?: hero-identity)? credential-card credential-card-link"/g) || [];
-  assert.equal(credentialCards.length, 4);
+  assert.equal(credentialCards.length, 5);
 
-  for (const href of ['https://www.a47g.com/', '/projects/dockingtech', 'https://www.citadelsecurities.com/', '/berklee']) {
+  for (const href of ['https://www.a47g.com/', '/projects/dockingtech', 'https://www.citadelsecurities.com/', 'https://www.ox.ac.uk/', '/berklee']) {
     expectIncludes(indexHtml, `href="${href}"`);
   }
 
   const credentialCtas = indexHtml.match(/class="credential-card-cta"/g) || [];
-  assert.equal(credentialCtas.length, 4);
+  assert.equal(credentialCtas.length, 5);
 
   for (const key of [
     'hero.identity.left',
@@ -72,14 +72,18 @@ test('credential cards have expected content and explicit link semantics', () =>
     'hero.docking.right',
     'hero.experience.left',
     'hero.experience.right',
+    'hero.oxford.left',
+    'hero.oxford.right',
     'hero.training.left',
     'hero.training.right',
   ]) {
     expectIncludes(indexHtml, `data-i18n="${key}"`);
   }
 
-  expectIncludes(indexHtml, 'Citadel Securities (London)');
-  expectIncludes(i18nJs, "'hero.experience.left': 'Citadel Securities (London)'");
+  expectIncludes(indexHtml, '前 Citadel Securities (London)');
+  expectIncludes(indexHtml, '牛津大学');
+  expectIncludes(i18nJs, "'hero.experience.left': '前 Citadel Securities (London)'");
+  expectIncludes(i18nJs, "'hero.oxford.left': '牛津大学'");
 });
 
 test('home resume section appears before long-term records', () => {
