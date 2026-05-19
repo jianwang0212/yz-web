@@ -1,4 +1,5 @@
-const DATA_URL = "qhrb-san-ci-can-sai-data.json?v=20260519";
+const DATA_URL = "qhrb-san-ci-can-sai-data.json?v=2026051905";
+const UPDATE_LOG_URL = "qhrb-net-worth-update-log.json";
 
 const els = {
   playerName: document.querySelector("#playerName"),
@@ -17,6 +18,8 @@ const els = {
   recordList: document.querySelector("#recordList"),
   matchDate: document.querySelector("#matchDate"),
   profileList: document.querySelector("#profileList"),
+  updateLogStatus: document.querySelector("#updateLogStatus"),
+  updateLogList: document.querySelector("#updateLogList"),
   rowCount: document.querySelector("#rowCount"),
   netWorthTable: document.querySelector("#netWorthTable"),
 };
@@ -41,7 +44,7 @@ init();
 
 async function init() {
   try {
-    const response = await fetch(DATA_URL, { cache: "no-store" });
+    const [response] = await Promise.all([fetch(DATA_URL, { cache: "no-store" }), renderUpdateLog()]);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     render(data);
@@ -112,6 +115,21 @@ function render(data) {
     recordItem("期权累计净利润", `${formatMoney(detail.optFrontVO?.netProfit)} 元`),
   );
   els.netWorthTable.innerHTML = netWorthTable(netWorthRows);
+}
+
+async function renderUpdateLog() {
+  if (!els.updateLogList || !els.updateLogStatus) return;
+  try {
+    const response = await fetch(`${UPDATE_LOG_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const log = await response.json();
+    const entries = log.entries || [];
+    els.updateLogStatus.textContent = entries.length ? formatDateTime(entries[0].checkedAt) : "No checks";
+    els.updateLogList.innerHTML = updateLogList(entries.slice(0, 12));
+  } catch (error) {
+    els.updateLogStatus.textContent = "Log failed";
+    els.updateLogList.innerHTML = `<div class="empty-state">更新记录加载失败：${escapeHtml(error.message)}</div>`;
+  }
 }
 
 function recordItem(label, value) {
@@ -218,6 +236,45 @@ function netWorthTable(rows) {
   </table>`;
 }
 
+function updateLogList(entries) {
+  if (!entries.length) return '<div class="empty-state">暂无抓取记录。</div>';
+  return entries
+    .map((entry) => {
+      const changed = entry.status === "changed";
+      const summary = entry.summary || {};
+      const changes = entry.changes || [];
+      const changeText = changed
+        ? changes.map((change) => `${change.field}: ${formatLogValue(change.before)} -> ${formatLogValue(change.after)}`).join("；")
+        : "无变化";
+      return `<article class="update-row ${changed ? "is-changed" : ""}">
+        <div>
+          <strong>${escapeHtml(changed ? "已更新" : "无变化")}</strong>
+          <span>${escapeHtml(formatDateTime(entry.checkedAt))}</span>
+        </div>
+        <p>${escapeHtml(changeText)}</p>
+        <small>${escapeHtml(summaryLine(summary))}</small>
+      </article>`;
+    })
+    .join("");
+}
+
+function summaryLine(summary) {
+  return [
+    summary.tradeDate ? `日期 ${formatDate(summary.tradeDate)}` : null,
+    summary.rank ? `排名 #${summary.rank}` : null,
+    summary.latestNetWorth ? `净值 ${formatDecimal(summary.latestNetWorth, 5)}` : null,
+    summary.rows ? `${summary.rows} 行` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+function formatLogValue(value) {
+  if (value === null || value === undefined) return "--";
+  if (typeof value === "object") return JSON.stringify(value);
+  return String(value);
+}
+
 function formatMoney(value) {
   const number = Number(value || 0);
   return money.format(number);
@@ -240,6 +297,11 @@ function formatSigned(value) {
 
 function formatDate(value) {
   return String(value || "--").split(" ")[0];
+}
+
+function formatDateTime(value) {
+  if (!value) return "--";
+  return String(value).replace("T", " ").slice(0, 19);
 }
 
 function shortId(value) {

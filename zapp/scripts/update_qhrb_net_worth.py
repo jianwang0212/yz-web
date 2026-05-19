@@ -15,10 +15,12 @@ PLAYER_ID = "5acab1e5-0496-4258-b0ee-f2fca71dc34a"
 GROUP_TYPE = 2
 BASE_URL = "https://spdspc.qhrb.com.cn/api"
 DATA_PATH = ROOT / "apps" / "qhrb-san-ci-can-sai-data.json"
+LOG_PATH = ROOT / "apps" / "qhrb-net-worth-update-log.json"
 APP_JS_PATH = ROOT / "apps" / "qhrb-net-worth.js"
 HTML_PATH = ROOT / "apps" / "qhrb-net-worth.html"
 APPS_PATH = ROOT / "apps.json"
 SW_PATH = ROOT / "sw.js"
+LOG_LIMIT = 288
 
 
 def get_json(path: str, params: dict[str, object] | None = None) -> dict:
@@ -52,7 +54,72 @@ def update_text(path: Path, replacements: list[tuple[str, str]]) -> None:
     path.write_text(text)
 
 
+def load_json(path: Path, fallback):
+    if not path.exists():
+        return fallback
+    with path.open() as f:
+        return json.load(f)
+
+
+def snapshot(data: dict) -> dict:
+    records = data.get("records") or []
+    record = records[0] if records else {}
+    player_id = record.get("playerId") or PLAYER_ID
+    detail = data.get("detailsByPlayerId", {}).get(player_id, {})
+    basic = detail.get("basicDataFrontVO", {})
+    rows = detail.get("netWorthVOList") or []
+    latest_row = rows[-1] if rows else {}
+    return {
+        "tradeDate": data.get("tradeDate"),
+        "rank": record.get("sortNo"),
+        "latestNetWorth": basic.get("netWorth"),
+        "rankNetWorth": record.get("netWorth"),
+        "totalNetWorth": record.get("totalNetWorth"),
+        "equity": record.get("dateBalanceToday"),
+        "netProfit": record.get("netProfit"),
+        "riskDegree": record.get("riskDegree"),
+        "withrawalRate": record.get("withrawalRate"),
+        "comprehensiveScore": record.get("comprehensiveScore"),
+        "rows": len(rows),
+        "latestCurveDate": latest_row.get("tradeDate"),
+        "latestCurveNetWorth": latest_row.get("netWorth"),
+    }
+
+
+def meaningful_data(data: dict) -> dict:
+    return {
+        "tradeDate": data.get("tradeDate"),
+        "nickname": data.get("nickname"),
+        "groupType": data.get("groupType"),
+        "groupName": data.get("groupName"),
+        "rank": data.get("rank"),
+        "total": data.get("total"),
+        "records": data.get("records"),
+        "detailsByPlayerId": data.get("detailsByPlayerId"),
+    }
+
+
+def diff_summary(before: dict | None, after: dict) -> list[dict]:
+    if not before:
+        return [{"field": "data", "before": None, "after": snapshot(after)}]
+    old = snapshot(before)
+    new = snapshot(after)
+    changes = []
+    for key, new_value in new.items():
+        old_value = old.get(key)
+        if old_value != new_value:
+            changes.append({"field": key, "before": old_value, "after": new_value})
+    return changes
+
+
+def write_log(entry: dict) -> None:
+    log = load_json(LOG_PATH, {"entries": []})
+    entries = [entry, *log.get("entries", [])][:LOG_LIMIT]
+    LOG_PATH.write_text(json.dumps({"entries": entries}, ensure_ascii=False, indent=2) + "\n")
+
+
 def main() -> None:
+    old_data = load_json(DATA_PATH, None)
     latest_date = ymd(get_json("/spsread2026/adm/getLastDayFront")["dataPoints"])
     fetched_at = datetime.now().replace(microsecond=0).isoformat()
     version = latest_date.replace("-", "")
@@ -95,6 +162,22 @@ def main() -> None:
         "records": records,
         "detailsByPlayerId": {player_id: detail},
     }
+    changes = diff_summary(old_data, output)
+    changed = bool(changes)
+
+    log_entry = {
+        "checkedAt": fetched_at,
+        "status": "changed" if changed else "no_change",
+        "sourceTradeDate": latest_date,
+        "summary": snapshot(output),
+        "changes": changes,
+    }
+    write_log(log_entry)
+
+    if not changed and old_data and meaningful_data(old_data) == meaningful_data(output):
+        print(json.dumps(log_entry, ensure_ascii=False, indent=2))
+        return
+
     DATA_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
 
     with APPS_PATH.open() as f:
@@ -120,19 +203,12 @@ def main() -> None:
     )
     update_text(
         SW_PATH,
-        [(r'const CACHE_VERSION = "zapp-store-v[^"]+";', f'const CACHE_VERSION = "zapp-store-v35-{version}-qhrb";')],
+        [(r'const CACHE_VERSION = "zapp-store-v[^"]+";', f'const CACHE_VERSION = "zapp-store-v37-{version}-qhrb-monitor";')],
     )
 
-    latest_row = detail.get("netWorthVOList", [])[-1]
     print(
         json.dumps(
-            {
-                "tradeDate": latest_date,
-                "rank": records[0].get("sortNo"),
-                "netWorth": detail.get("basicDataFrontVO", {}).get("netWorth"),
-                "latestCurvePoint": latest_row,
-                "rows": len(detail.get("netWorthVOList", [])),
-            },
+            log_entry,
             ensure_ascii=False,
             indent=2,
         )

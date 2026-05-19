@@ -238,6 +238,49 @@ select {
   text-align: right;
 }
 
+.update-log {
+  display: grid;
+  gap: 8px;
+}
+
+.update-row {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.update-row.is-changed {
+  border-color: rgba(15, 118, 110, 0.28);
+  background: rgba(15, 118, 110, 0.06);
+}
+
+.update-row div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.update-row strong {
+  color: var(--ink);
+}
+
+.update-row span,
+.update-row small {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.update-row p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+}
+
 .table-wrap {
   overflow: auto;
   border: 1px solid var(--line);
@@ -325,6 +368,12 @@ tr:last-child td {
     justify-content: flex-start;
     max-width: 100%;
     white-space: normal;
+  }
+
+  .update-row div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .chart-wrap,

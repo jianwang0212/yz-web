@@ -10,7 +10,7 @@
     <link rel="manifest" href="../manifest.webmanifest" />
     <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icons/icon-192.png" />
-    <link rel="stylesheet" href="qhrb-net-worth.css?v=20260519" />
+    <link rel="stylesheet" href="qhrb-net-worth.css?v=2026051905" />
     <title>三次参赛净值</title>
   </head>
   <body>
@@ -82,6 +82,17 @@
         </section>
       </section>
 
+      <section class="panel" aria-label="Fetch update log">
+        <div class="section-head">
+          <div>
+            <p>Monitor</p>
+            <h2>抓取更新记录</h2>
+          </div>
+          <span id="updateLogStatus">Loading</span>
+        </div>
+        <div class="update-log" id="updateLogList"></div>
+      </section>
+
       <section class="panel table-panel" aria-label="Net worth rows">
         <div class="section-head">
           <div>
@@ -94,6 +105,6 @@
       </section>
     </main>
 
-    <script type="module" src="qhrb-net-worth.js?v=20260519"></script>
+    <script type="module" src="qhrb-net-worth.js?v=2026051905"></script>
   </body>
 </html>
