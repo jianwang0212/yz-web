@@ -59,6 +59,108 @@ p {
   padding: max(14px, env(safe-area-inset-top)) 14px max(18px, env(safe-area-inset-bottom));
 }
 
+.app-shell.locked {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.store-unlock {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.store-unlock[hidden] {
+  display: none !important;
+}
+
+.store-unlock__panel {
+  display: grid;
+  gap: 14px;
+  width: min(460px, 100%);
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 20px 60px rgba(25, 25, 23, 0.16);
+}
+
+.store-unlock__panel h2 {
+  margin-top: 4px;
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+
+.store-unlock__panel small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.store-unlock__panel form,
+.store-unlock__panel label {
+  display: grid;
+  gap: 8px;
+}
+
+.store-unlock__panel label span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.store-unlock__panel input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--text);
+  background: #fff;
+  outline: 0;
+}
+
+.store-unlock__panel input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.store-unlock__panel button {
+  min-height: 42px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.store-unlock__panel form button {
+  border: 0;
+  color: #fff;
+  background: var(--accent);
+}
+
+.store-unlock__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.store-unlock__actions button {
+  flex: 1;
+}
+
+.secondary-button,
+.ghost-button {
+  border: 1px solid var(--line);
+  color: var(--accent-strong);
+  background: #fff;
+}
+
 .store-header {
   display: flex;
   align-items: center;

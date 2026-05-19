@@ -1,4 +1,5 @@
 const ENCRYPTED_DATA_URL = "friend-crm-data.enc.json?v=20260515a";
+const STORE_SESSION_PASSWORD_KEY = "zappStore.sessionUnlockPassword.v1";
 
 const state = {
   data: null,
@@ -38,7 +39,7 @@ async function init() {
 function bindEvents() {
   els.unlockForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    unlockData(els.unlockPassword.value);
+    unlockData(getStoreUnlockPassword());
   });
 
   els.searchInput.addEventListener("input", () => {
@@ -57,7 +58,8 @@ async function loadEncryptedPackage() {
     const response = await fetch(ENCRYPTED_DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     encryptedPackage = await response.json();
-    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "Friend CRM"}。请输入密码解锁。`;
+    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "Friend CRM"}。正在使用 Zapp Store 会话打开。`;
+    await unlockData(getStoreUnlockPassword());
   } catch (error) {
     els.dataBadge.textContent = "Load failed";
     els.unlockStatus.textContent = `加密数据包加载失败：${error.message}`;
@@ -65,7 +67,10 @@ async function loadEncryptedPackage() {
 }
 
 async function unlockData(password) {
-  if (!password) return;
+  if (!password) {
+    requireStoreUnlock();
+    return;
+  }
   els.unlockStatus.textContent = "正在解密...";
 
   try {
@@ -87,6 +92,24 @@ async function unlockData(password) {
     els.unlockStatus.textContent = "密码不对，或数据包已损坏。";
     console.error(error);
   }
+}
+
+function getStoreUnlockPassword() {
+  return sessionStorage.getItem(STORE_SESSION_PASSWORD_KEY) || "";
+}
+
+function requireStoreUnlock() {
+  els.unlockPassword.closest("label").classList.add("hidden");
+  els.unlockForm.querySelector("button").textContent = "回到 Zapp Store";
+  els.unlockStatus.textContent = "请先在 Zapp Store 用 Face ID 打开一次；这个 app 不再单独输入密码。";
+  els.unlockForm.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+      window.location.href = "../";
+    },
+    { once: true },
+  );
 }
 
 async function decryptPackage(packageData, password) {

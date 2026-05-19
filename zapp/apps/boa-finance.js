@@ -48,6 +48,7 @@ const EMPTY_META = {
 
 const ENCRYPTED_DATA_URL = "boa-finance-data.enc.json?v=20260512bio2";
 const BIOMETRIC_UNLOCK_KEY = "boaFinance.biometricUnlock.v1";
+const STORE_SESSION_PASSWORD_KEY = "zappStore.sessionUnlockPassword.v1";
 
 let BOA_META = EMPTY_META;
 let transactions = [];
@@ -155,15 +156,18 @@ async function loadEncryptedPackage() {
     const response = await fetch(ENCRYPTED_DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     encryptedPackage = await response.json();
-    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "BOA Finance"}。请输入密码解锁。`;
-    await maybeAutoBiometricUnlock();
+    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "BOA Finance"}。正在使用 Zapp Store 会话打开。`;
+    await unlockData(getStoreUnlockPassword(), { source: "store" });
   } catch (error) {
     els.unlockStatus.textContent = `加密数据包加载失败：${error.message}`;
   }
 }
 
 async function unlockData(password, options = {}) {
-  if (!password) return;
+  if (!password) {
+    requireStoreUnlock();
+    return;
+  }
   els.unlockStatus.textContent = "正在解密...";
 
   try {
@@ -224,6 +228,7 @@ async function decryptPackage(packageData, password) {
 }
 
 async function maybeAutoBiometricUnlock() {
+  return;
   if (attemptedAutoBiometric || isUnlocked || !loadBiometricRecord()) return;
   attemptedAutoBiometric = true;
   try {
@@ -259,6 +264,12 @@ function saveBiometricRecord(record) {
 }
 
 function updateBiometricUI(message = "") {
+  els.biometricUnlock.classList.add("hidden");
+  els.deviceUnlockPanel.classList.add("hidden");
+  els.biometricSetup.classList.add("hidden");
+  els.biometricReset.classList.add("hidden");
+  if (message && !isUnlocked) els.unlockStatus.textContent = message;
+  return;
   const record = loadBiometricRecord();
   const runtime = hasBiometricRuntime();
 
@@ -285,6 +296,24 @@ function updateBiometricUI(message = "") {
   } else if (message) {
     els.unlockStatus.textContent = message;
   }
+}
+
+function getStoreUnlockPassword() {
+  return sessionStorage.getItem(STORE_SESSION_PASSWORD_KEY) || "";
+}
+
+function requireStoreUnlock() {
+  els.unlockPassword.closest("label").classList.add("hidden");
+  els.unlockForm.querySelector("button").textContent = "回到 Zapp Store";
+  els.unlockStatus.textContent = "请先在 Zapp Store 用 Face ID 打开一次；BOA Finance 不再单独输入密码。";
+  els.unlockForm.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+      window.location.href = "../";
+    },
+    { once: true },
+  );
 }
 
 async function setupBiometricUnlock() {
@@ -465,7 +494,7 @@ function normalizeTransaction(item) {
 function bindEvents() {
   els.unlockForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    await unlockData(els.unlockPassword.value, { source: "password" });
+    await unlockData(getStoreUnlockPassword(), { source: "store" });
   });
 
   els.biometricUnlock.addEventListener("click", () => unlockWithBiometric());

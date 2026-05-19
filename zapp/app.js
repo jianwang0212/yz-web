@@ -1,4 +1,5 @@
 const appCount = document.querySelector("#appCount");
+const appShell = document.querySelector("#appShell");
 const buildLabel = document.querySelector("#buildLabel");
 const categoryStack = document.querySelector("#categoryStack");
 const detailCategory = document.querySelector("#detailCategory");
@@ -17,6 +18,12 @@ const networkLabel = document.querySelector("#networkLabel");
 const refreshButton = document.querySelector("#refreshButton");
 const searchInput = document.querySelector("#searchInput");
 const storeName = document.querySelector("#storeName");
+const storeFaceReset = document.querySelector("#storeFaceReset");
+const storeFaceUnlock = document.querySelector("#storeFaceUnlock");
+const storeUnlock = document.querySelector("#storeUnlock");
+const storeUnlockForm = document.querySelector("#storeUnlockForm");
+const storeUnlockPassword = document.querySelector("#storeUnlockPassword");
+const storeUnlockStatus = document.querySelector("#storeUnlockStatus");
 const tileTemplate = document.querySelector("#appTileTemplate");
 const updatedLabel = document.querySelector("#updatedLabel");
 const viewTabs = document.querySelector("#viewTabs");
@@ -28,6 +35,8 @@ const VIEW_MODES = [
 ];
 
 const CATEGORY_ORDER = ["财务", "微信", "其他"];
+const STORE_BIOMETRIC_UNLOCK_KEY = "zappStore.biometricUnlock.v1";
+const STORE_SESSION_PASSWORD_KEY = "zappStore.sessionUnlockPassword.v1";
 
 let activeView = "all";
 let catalog = { store: {}, apps: [] };
@@ -40,6 +49,272 @@ const formatter = new Intl.DateTimeFormat("zh-CN", {
 
 function isStandalone() {
   return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+}
+
+function hasBiometricRuntime() {
+  return Boolean(
+    window.isSecureContext &&
+      window.PublicKeyCredential &&
+      navigator.credentials &&
+      crypto?.subtle &&
+      crypto?.getRandomValues,
+  );
+}
+
+function loadBiometricRecord() {
+  try {
+    const raw = localStorage.getItem(STORE_BIOMETRIC_UNLOCK_KEY);
+    if (!raw) return null;
+    const record = JSON.parse(raw);
+    if (record?.version === 1 && record.credentialId && record.salt && record.wrappedPassword) return record;
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+function saveSessionPassword(password) {
+  sessionStorage.setItem(STORE_SESSION_PASSWORD_KEY, password);
+}
+
+function setStoreUnlocked(password) {
+  saveSessionPassword(password);
+  storeUnlock.hidden = true;
+  appShell.classList.remove("locked");
+  appShell.removeAttribute("aria-hidden");
+}
+
+function updateStoreUnlockUI(message = "") {
+  const record = loadBiometricRecord();
+  const runtime = hasBiometricRuntime();
+  storeFaceUnlock.hidden = !record || !runtime;
+  storeFaceReset.hidden = !record;
+  storeUnlockPassword.closest("form").hidden = Boolean(record && runtime);
+
+  if (message) {
+    storeUnlockStatus.textContent = message;
+  } else if (record && runtime) {
+    storeUnlockStatus.textContent = "Face ID 已启用。打开 Zapp Store 后验证一次，里面的加密 app 会自动打开。";
+  } else if (!runtime) {
+    storeUnlockStatus.textContent = "这个浏览器暂不支持 Face ID / Touch ID；首次进入可用密码打开本次会话。";
+  }
+}
+
+async function unlockStoreWithPassword(password) {
+  if (!password) return;
+  storeUnlockStatus.textContent = "正在验证 Zapp 解锁口令...";
+  const isValid = await validateStorePassword(password);
+  if (!isValid) {
+    storeUnlockStatus.textContent = "这个口令不能打开加密数据。请确认后再试一次。";
+    return;
+  }
+
+  if (!hasBiometricRuntime()) {
+    setStoreUnlocked(password);
+    return;
+  }
+
+  storeUnlockStatus.textContent = "正在设置 Face ID...";
+  try {
+    const { credentialId, salt, secret } = await createBiometricSecret();
+    const wrappedPassword = await encryptSavedPassword(password, secret);
+    localStorage.setItem(
+      STORE_BIOMETRIC_UNLOCK_KEY,
+      JSON.stringify({
+        version: 1,
+        credentialId: bytesToBase64Url(credentialId),
+        salt: bytesToBase64(salt),
+        wrappedPassword,
+        createdAt: new Date().toISOString(),
+        origin: window.location.origin,
+      }),
+    );
+    storeUnlockPassword.value = "";
+    setStoreUnlocked(password);
+  } catch (error) {
+    console.error(error);
+    storeUnlockStatus.textContent = "Face ID 设置未完成。可以重新输入密码再试一次。";
+  }
+}
+
+async function validateStorePassword(password) {
+  try {
+    const response = await fetch("apps/boa-finance-data.enc.json?v=20260512bio2", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const packageData = await response.json();
+    await decryptPackageWithPassword(packageData, password);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+async function decryptPackageWithPassword(packageData, password) {
+  const salt = base64ToBytes(packageData.salt);
+  const iv = base64ToBytes(packageData.iv);
+  const ciphertext = base64ToBytes(packageData.ciphertext);
+  const passwordKey = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, [
+    "deriveKey",
+  ]);
+  const key = await crypto.subtle.deriveKey(
+    {
+      name: "PBKDF2",
+      salt,
+      iterations: packageData.iterations,
+      hash: packageData.hash || "SHA-256",
+    },
+    passwordKey,
+    { name: "AES-GCM", length: 256 },
+    false,
+    ["decrypt"],
+  );
+  await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+}
+
+async function unlockStoreWithBiometric() {
+  const record = loadBiometricRecord();
+  if (!record) {
+    updateStoreUnlockUI("这台设备还没有设置 Zapp Face ID。请输入一次解锁密码。");
+    return;
+  }
+  if (!hasBiometricRuntime()) {
+    updateStoreUnlockUI("这个浏览器暂不支持 Face ID / Touch ID。");
+    return;
+  }
+
+  storeUnlockStatus.textContent = "正在请求 Face ID...";
+  try {
+    const secret = await getBiometricSecret(record);
+    const password = await decryptSavedPassword(record.wrappedPassword, secret);
+    setStoreUnlocked(password);
+  } catch (error) {
+    console.error(error);
+    updateStoreUnlockUI("Face ID 没有完成。可以重试，或重设 Face ID。");
+  }
+}
+
+function resetStoreBiometric() {
+  localStorage.removeItem(STORE_BIOMETRIC_UNLOCK_KEY);
+  sessionStorage.removeItem(STORE_SESSION_PASSWORD_KEY);
+  storeUnlock.hidden = false;
+  appShell.classList.add("locked");
+  appShell.setAttribute("aria-hidden", "true");
+  updateStoreUnlockUI("已重设。请输入一次解锁密码来重新绑定 Face ID。");
+  storeUnlockPassword.focus();
+}
+
+async function createBiometricSecret() {
+  const salt = crypto.getRandomValues(new Uint8Array(32));
+  const userId = crypto.getRandomValues(new Uint8Array(16));
+  const credential = await navigator.credentials.create({
+    publicKey: {
+      challenge: crypto.getRandomValues(new Uint8Array(32)),
+      rp: { name: "Zapp Store" },
+      user: {
+        id: userId,
+        name: "zapp-store-local",
+        displayName: "Zapp Store Unlock",
+      },
+      pubKeyCredParams: [
+        { type: "public-key", alg: -7 },
+        { type: "public-key", alg: -257 },
+      ],
+      authenticatorSelection: {
+        authenticatorAttachment: "platform",
+        residentKey: "preferred",
+        userVerification: "required",
+      },
+      timeout: 60000,
+      attestation: "none",
+      extensions: {
+        prf: {
+          eval: { first: salt },
+        },
+      },
+    },
+  });
+  if (!credential) throw new Error("No credential created");
+
+  const credentialId = new Uint8Array(credential.rawId);
+  const results = credential.getClientExtensionResults?.();
+  let secret = results?.prf?.results?.first;
+  if (!secret) {
+    secret = await getBiometricSecret({ credentialId: bytesToBase64Url(credentialId), salt: bytesToBase64(salt) });
+  }
+  if (!secret) throw new Error("PRF extension unavailable");
+  return { credentialId, salt, secret };
+}
+
+async function getBiometricSecret(record) {
+  const credentialId = base64UrlToBytes(record.credentialId);
+  const credentialIdKey = base64ToBase64Url(record.credentialId);
+  const credential = await navigator.credentials.get({
+    publicKey: {
+      challenge: crypto.getRandomValues(new Uint8Array(32)),
+      allowCredentials: [{ type: "public-key", id: credentialId }],
+      userVerification: "required",
+      timeout: 60000,
+      extensions: {
+        prf: {
+          evalByCredential: {
+            [credentialIdKey]: { first: base64ToBytes(record.salt) },
+          },
+        },
+      },
+    },
+  });
+  const results = credential?.getClientExtensionResults?.();
+  const secret = results?.prf?.results?.first;
+  if (!secret) throw new Error("PRF extension unavailable");
+  return secret;
+}
+
+async function encryptSavedPassword(password, secret) {
+  const key = await crypto.subtle.importKey("raw", secret, "AES-GCM", false, ["encrypt"]);
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(password));
+  return {
+    iv: bytesToBase64(iv),
+    ciphertext: bytesToBase64(ciphertext),
+  };
+}
+
+async function decryptSavedPassword(wrappedPassword, secret) {
+  const key = await crypto.subtle.importKey("raw", secret, "AES-GCM", false, ["decrypt"]);
+  const plainBuffer = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: base64ToBytes(wrappedPassword.iv) },
+    key,
+    base64ToBytes(wrappedPassword.ciphertext),
+  );
+  return new TextDecoder().decode(plainBuffer);
+}
+
+function base64ToBytes(value) {
+  const binary = atob(value);
+  return Uint8Array.from(binary, (char) => char.charCodeAt(0));
+}
+
+function bytesToBase64(value) {
+  const bytes = new Uint8Array(value);
+  let binary = "";
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+
+function bytesToBase64Url(value) {
+  return bytesToBase64(value).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+}
+
+function base64ToBase64Url(value) {
+  return value.replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+}
+
+function base64UrlToBytes(value) {
+  const base64 = value.replaceAll("-", "+").replaceAll("_", "/");
+  return base64ToBytes(base64.padEnd(Math.ceil(base64.length / 4) * 4, "="));
 }
 
 function setNetworkState() {
@@ -281,6 +556,12 @@ refreshButton.addEventListener("click", async () => {
   refreshButton.disabled = false;
 });
 
+storeUnlockForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  await unlockStoreWithPassword(storeUnlockPassword.value);
+});
+storeFaceUnlock.addEventListener("click", () => unlockStoreWithBiometric());
+storeFaceReset.addEventListener("click", resetStoreBiometric);
 searchInput.addEventListener("input", render);
 detailClose.addEventListener("click", closeAppDetails);
 detailOverlay.addEventListener("click", (event) => {
@@ -294,6 +575,16 @@ window.addEventListener("offline", setNetworkState);
 window.matchMedia("(display-mode: standalone)").addEventListener("change", setNetworkState);
 
 setNetworkState();
+if (sessionStorage.getItem(STORE_SESSION_PASSWORD_KEY)) {
+  setStoreUnlocked(sessionStorage.getItem(STORE_SESSION_PASSWORD_KEY));
+} else {
+  updateStoreUnlockUI();
+  if (loadBiometricRecord() && hasBiometricRuntime()) {
+    unlockStoreWithBiometric();
+  } else {
+    storeUnlockPassword.focus();
+  }
+}
 registerServiceWorker().catch(console.error);
 loadCatalog().catch((error) => {
   console.error(error);

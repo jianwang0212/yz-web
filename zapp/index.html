@@ -14,11 +14,11 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/store.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="stylesheet" href="styles.css?v=20" />
+    <link rel="stylesheet" href="styles.css?v=21" />
     <title>Zapp Store</title>
   </head>
   <body>
-    <main class="app-shell">
+    <main class="app-shell locked" id="appShell" aria-hidden="true">
       <header class="store-header">
         <div class="brand-lockup">
           <img src="icons/store.svg" alt="" class="store-mark" />
@@ -90,6 +90,27 @@
       </article>
     </div>
 
-    <script type="module" src="app.js?v=21"></script>
+    <section class="store-unlock" id="storeUnlock" aria-label="Zapp Store unlock">
+      <div class="store-unlock__panel">
+        <div>
+          <p class="eyebrow">Zapp Secure Session</p>
+          <h2>Face ID 打开 Zapp</h2>
+          <small id="storeUnlockStatus">先在这台设备设置一次 Face ID，之后打开 Zapp Store 就能进入所有加密 app。</small>
+        </div>
+        <form id="storeUnlockForm">
+          <label>
+            <span>首次设置密码</span>
+            <input id="storeUnlockPassword" type="password" autocomplete="current-password" placeholder="同 BOA / LY / CRM 解锁密码" required />
+          </label>
+          <button type="submit">打开 Zapp</button>
+        </form>
+        <div class="store-unlock__actions">
+          <button type="button" id="storeFaceUnlock" class="secondary-button" hidden>Face ID 打开</button>
+          <button type="button" id="storeFaceReset" class="ghost-button" hidden>重设 Face ID</button>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="app.js?v=22"></script>
   </body>
 </html>

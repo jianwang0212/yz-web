@@ -1,6 +1,7 @@
 const ENCRYPTED_DATA_URL = "ly-fund-data.enc.json?v=20260519enc1";
 const BIOMETRIC_UNLOCK_KEY = "lyFund.biometricUnlock.v1";
 const SHARED_BIOMETRIC_UNLOCK_KEYS = ["boaFinance.biometricUnlock.v1"];
+const STORE_SESSION_PASSWORD_KEY = "zappStore.sessionUnlockPassword.v1";
 
 const state = {
   view: "overview",
@@ -110,8 +111,8 @@ async function loadEncryptedPackage() {
     const response = await fetch(ENCRYPTED_DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     encryptedPackage = await response.json();
-    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "LY Fund"}。请输入密码解锁。`;
-    await maybeAutoBiometricUnlock();
+    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "LY Fund"}。正在使用 Zapp Store 会话打开。`;
+    await unlockData(getStoreUnlockPassword(), { source: "store" });
   } catch (error) {
     els.dataBadge.textContent = "Load failed";
     els.unlockStatus.textContent = `加密数据包加载失败：${error.message}`;
@@ -119,7 +120,10 @@ async function loadEncryptedPackage() {
 }
 
 async function unlockData(password, options = {}) {
-  if (!password) return;
+  if (!password) {
+    requireStoreUnlock();
+    return;
+  }
   els.unlockStatus.textContent = "正在解密...";
 
   try {
@@ -150,7 +154,7 @@ async function unlockData(password, options = {}) {
 function bindEvents() {
   els.unlockForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    unlockData(els.unlockPassword.value, { source: "password" });
+    unlockData(getStoreUnlockPassword(), { source: "store" });
   });
 
   els.biometricUnlock.addEventListener("click", () => unlockWithBiometric());
@@ -436,6 +440,7 @@ async function decryptPackage(packageData, password) {
 }
 
 async function maybeAutoBiometricUnlock() {
+  return;
   if (attemptedAutoBiometric || state.data || !loadBiometricRecord()) return;
   attemptedAutoBiometric = true;
   try {
@@ -476,6 +481,12 @@ function saveBiometricRecord(record) {
 }
 
 function updateBiometricUI(message = "") {
+  els.biometricUnlock.classList.add("hidden");
+  els.deviceUnlockPanel.classList.add("hidden");
+  els.biometricSetup.classList.add("hidden");
+  els.biometricReset.classList.add("hidden");
+  if (message && !state.data) els.unlockStatus.textContent = message;
+  return;
   const record = loadBiometricRecord();
   const runtime = hasBiometricRuntime();
   const isUnlocked = Boolean(state.data);
@@ -508,6 +519,24 @@ function updateBiometricUI(message = "") {
   } else if (message) {
     els.unlockStatus.textContent = message;
   }
+}
+
+function getStoreUnlockPassword() {
+  return sessionStorage.getItem(STORE_SESSION_PASSWORD_KEY) || "";
+}
+
+function requireStoreUnlock() {
+  els.unlockPassword.closest("label").classList.add("hidden");
+  els.unlockForm.querySelector("button").textContent = "回到 Zapp Store";
+  els.unlockStatus.textContent = "请先在 Zapp Store 用 Face ID 打开一次；LY Fund 不再单独输入密码。";
+  els.unlockForm.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+      window.location.href = "../";
+    },
+    { once: true },
+  );
 }
 
 async function setupBiometricUnlock() {
