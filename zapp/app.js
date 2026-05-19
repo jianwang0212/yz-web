@@ -14,14 +14,9 @@ const emptyState = document.querySelector("#emptyState");
 const footerOwner = document.querySelector("#footerOwner");
 const installButton = document.querySelector("#installButton");
 const networkLabel = document.querySelector("#networkLabel");
-const pinnedGrid = document.querySelector("#pinnedGrid");
-const pinnedSection = document.querySelector("#pinnedSection");
 const refreshButton = document.querySelector("#refreshButton");
 const searchInput = document.querySelector("#searchInput");
 const storeName = document.querySelector("#storeName");
-const todayGrid = document.querySelector("#todayGrid");
-const todaySection = document.querySelector("#todaySection");
-const todaySummary = document.querySelector("#todaySummary");
 const tileTemplate = document.querySelector("#appTileTemplate");
 const updatedLabel = document.querySelector("#updatedLabel");
 const viewTabs = document.querySelector("#viewTabs");
@@ -32,8 +27,7 @@ const VIEW_MODES = [
   { id: "all", label: "All" },
 ];
 
-const CATEGORY_ORDER = ["Creation", "Health", "Memory", "Finance", "Music", "Publishing", "Personal"];
-const MAX_TODAY_APPS = 3;
+const CATEGORY_ORDER = ["财务", "微信", "其他"];
 
 let activeView = "all";
 let catalog = { store: {}, apps: [] };
@@ -60,12 +54,6 @@ function normalizeDate(value) {
     ? new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]))
     : new Date(value);
   return Number.isNaN(date.valueOf()) ? value : formatter.format(date);
-}
-
-function dateValue(value) {
-  if (!value) return 0;
-  const parsed = new Date(value);
-  return Number.isNaN(parsed.valueOf()) ? 0 : parsed.valueOf();
 }
 
 function appMatches(app, query) {
@@ -110,10 +98,6 @@ function sortByCategory(apps) {
     if (categoryDelta) return categoryDelta;
     return a.name.localeCompare(b.name, "zh-CN");
   });
-}
-
-function sortByRecent(apps) {
-  return [...apps].sort((a, b) => dateValue(b.updated) - dateValue(a.updated) || a.name.localeCompare(b.name, "zh-CN"));
 }
 
 function renderViewTabs() {
@@ -199,14 +183,8 @@ function renderTile(app, compact = false) {
   return fragment;
 }
 
-function setSection(section, grid, apps, compact = false) {
-  section.hidden = !apps.length;
-  grid.replaceChildren(...apps.map((app) => renderTile(app, compact)));
-}
-
 function renderCategories(apps, usedIds) {
-  const remainingApps = apps.filter((app) => !usedIds.has(app.id));
-  const grouped = sortByCategory(remainingApps).reduce((groups, app) => {
+  const grouped = sortByCategory(apps).reduce((groups, app) => {
     const category = app.category || "Other";
     if (!groups.has(category)) groups.set(category, []);
     groups.get(category).push(app);
@@ -246,21 +224,14 @@ function renderCategories(apps, usedIds) {
 function render() {
   renderViewTabs();
   const visibleApps = getVisibleApps();
-  const pinnedApps = visibleApps.filter((app) => app.featured);
-  const recentCandidates = visibleApps.filter((app) => !app.featured);
-  const todayApps = sortByRecent(recentCandidates.length ? recentCandidates : visibleApps).slice(0, MAX_TODAY_APPS);
-  const usedIds = new Set([...todayApps, ...pinnedApps].map((app) => app.id));
 
   appCount.textContent = String(visibleApps.length);
   storeName.textContent = catalog.store.name || "Zapp Store";
   buildLabel.textContent = `Build ${catalog.store.build || "--"}`;
   updatedLabel.textContent = `Updated ${normalizeDate(catalog.store.updated)}`;
   footerOwner.textContent = catalog.store.owner || "Private shelf";
-  todaySummary.textContent = todayApps.length ? `${todayApps.length} apps` : "";
 
-  setSection(todaySection, todayGrid, todayApps);
-  setSection(pinnedSection, pinnedGrid, pinnedApps, true);
-  renderCategories(visibleApps, usedIds);
+  renderCategories(visibleApps);
   emptyState.hidden = Boolean(visibleApps.length);
 }
 
