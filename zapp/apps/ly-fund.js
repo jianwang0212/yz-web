@@ -1,4 +1,4 @@
-const ENCRYPTED_DATA_URL = "ly-fund-data.enc.json?v=20260512enc1";
+const ENCRYPTED_DATA_URL = "ly-fund-data.enc.json?v=20260519enc1";
 const BIOMETRIC_UNLOCK_KEY = "lyFund.biometricUnlock.v1";
 const SHARED_BIOMETRIC_UNLOCK_KEYS = ["boaFinance.biometricUnlock.v1"];
 
