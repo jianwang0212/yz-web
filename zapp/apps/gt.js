@@ -1,4 +1,4 @@
-const DATA_URL = "gt-data.json?v=20260512";
+const DATA_URL = "gt-data.json?v=20260519";
 
 const state = {
   view: "overview",
