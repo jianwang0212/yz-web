@@ -1,0 +1,35 @@
+.vocal-essay-page .garden-hero-media {
+    background-image: url("/images/photos/music-practice.webp");
+    background-position: center 42%;
+}
+
+.vocal-essay-page .garden-hero::before {
+    background:
+        linear-gradient(90deg, rgba(251, 252, 250, 0.97) 0%, rgba(251, 252, 250, 0.84) 42%, rgba(251, 252, 250, 0.16) 74%),
+        linear-gradient(0deg, rgba(23, 33, 33, 0.3), rgba(23, 33, 33, 0.05));
+}
+
+.vocal-essay-page .map-node-center {
+    background: #315050;
+}
+
+.vocal-essay-page .map-node-a,
+.vocal-essay-page .map-node-b {
+    background: #f8fff9;
+}
+
+.vocal-essay-page .map-node-c,
+.vocal-essay-page .map-node-d {
+    background: #fffaf7;
+}
+
+.vocal-essay-page .map-node-e,
+.vocal-essay-page .map-node-f {
+    background: #f8fbff;
+}
+
+@media (max-width: 920px) {
+    .vocal-essay-page .garden-hero-media {
+        background-position: 47% center;
+    }
+}

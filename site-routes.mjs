@@ -11,6 +11,7 @@ const projectPages = [
 
 const essayPages = [
   ['long-term-plans', 'essays/long-term-plans.html'],
+  ['vocal-training-system', 'essays/vocal-training-system.html'],
   ['why-berklee', 'essays/why-berklee.html'],
   ['why-mpe', 'essays/why-mpe.html']
 ];
