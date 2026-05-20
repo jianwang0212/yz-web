@@ -1,363 +1,351 @@
-const API_PATH = '/api/zapp-live-call/signaling';
-const CLIENT_KEY = 'zappLiveCall:clientId';
-const NAME_KEY = 'zappLiveCall:name';
+const LOCAL_CHAT_URL = 'http://localhost:8005/v1/chat/completions';
+const LOCAL_CHAT_FALLBACK_URL = 'http://127.0.0.1:8005/v1/chat/completions';
+const LOCAL_TTS_URL = 'http://localhost:8005/v1/audio/speech';
+const LOCAL_TTS_FALLBACK_URL = 'http://127.0.0.1:8005/v1/audio/speech';
+const PRODUCTION_CHAT_PATH = '/api/zi-style-reply/chat';
+const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
+const STORAGE_KEY = 'zappAiZiVoice:messages';
+
+const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输出银子会说的一句话或两句话。
+
+风格规则：
+- 短句，直接，少客套，像微信语音里自然说话。
+- 可以中英混合：codex, private, doc, doublecheck, Boston time。
+- 常用“可以 / 等我 / 我先看一下 / 我觉得 / 我感觉 / 要不然 / 先...再...”。
+- 不要说自己是 AI、模型、虚拟人、机器人。
+- 如果被问“你是谁”，只说“我是银子这边的语音版本”。
+- 输出只能是回复内容，不要解释。`;
 
 const els = {
-  acceptButton: document.querySelector('#acceptButton'),
   callButton: document.querySelector('#callButton'),
-  callPanel: document.querySelector('#callPanel'),
-  callState: document.querySelector('#callState'),
-  callTimer: document.querySelector('#callTimer'),
   chatForm: document.querySelector('#chatForm'),
-  chatLog: document.querySelector('#chatLog'),
-  copyLinkButton: document.querySelector('#copyLinkButton'),
-  declineButton: document.querySelector('#declineButton'),
   hangupButton: document.querySelector('#hangupButton'),
-  incomingName: document.querySelector('#incomingName'),
-  incomingPanel: document.querySelector('#incomingPanel'),
+  liveCaption: document.querySelector('#liveCaption'),
   messageInput: document.querySelector('#messageInput'),
-  muteButton: document.querySelector('#muteButton'),
-  remoteAudio: document.querySelector('#remoteAudio'),
-  roomLabel: document.querySelector('#roomLabel'),
-  statusText: document.querySelector('#statusText')
+  micButton: document.querySelector('#micButton'),
+  orb: document.querySelector('#callButton'),
+  replyCaption: document.querySelector('#replyCaption'),
+  resetButton: document.querySelector('#resetButton'),
+  statusText: document.querySelector('#statusText'),
+  transcriptPanel: document.querySelector('#transcriptPanel')
 };
 
-let roomId = '';
-let clientId = localStorage.getItem(CLIENT_KEY) || crypto.randomUUID();
-let displayName = localStorage.getItem(NAME_KEY) || `Zi-${clientId.slice(0, 4)}`;
-let lastSeq = 0;
-let pollTimer = null;
-let peer = null;
-let localStream = null;
-let pendingOffer = null;
-let pendingIceCandidates = [];
-let callStartedAt = 0;
-let callClock = null;
-let isMuted = false;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let listening = false;
+let thinking = false;
+let activeAudio = null;
+let messages = [];
 
-localStorage.setItem(CLIENT_KEY, clientId);
-localStorage.setItem(NAME_KEY, displayName);
+function isLocalMode() {
+  return ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname) || window.location.protocol === 'file:';
+}
 
-function apiUrl(params = {}) {
-  const url = new URL(API_PATH, window.location.origin);
-  for (const [key, value] of Object.entries(params)) {
-    if (value !== undefined && value !== null) url.searchParams.set(key, value);
-  }
-  return url.href;
+function modeLabel() {
+  return isLocalMode() ? '本地 WeClone 8005' : 'thisisyz Zi style + ElevenLabs';
 }
 
 function setStatus(text) {
   els.statusText.textContent = text;
 }
 
-function roomFromLocation() {
-  const hash = window.location.hash.replace(/^#/, '');
-  const params = new URLSearchParams(hash);
-  return (params.get('room') || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 64);
+function setLiveCaption(text) {
+  els.liveCaption.textContent = text;
 }
 
-function setRoom(nextRoom) {
-  roomId = nextRoom;
-  els.roomLabel.textContent = roomId;
-  const params = new URLSearchParams();
-  params.set('room', roomId);
-  history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${params.toString()}`);
+function setOrbState(state) {
+  els.orb.classList.toggle('is-listening', state === 'listening');
+  els.orb.classList.toggle('is-thinking', state === 'thinking');
+  els.orb.classList.toggle('is-speaking', state === 'speaking');
+  els.micButton.classList.toggle('is-active', state === 'listening');
 }
 
-function appendSystem(text) {
-  const node = document.createElement('div');
-  node.className = 'system-chip';
-  node.textContent = text;
-  els.chatLog.append(node);
-  els.chatLog.scrollTop = els.chatLog.scrollHeight;
+function productionUrl(path) {
+  return new URL(path, window.location.origin).href;
 }
 
-function appendMessage({ mine = false, name = '对方', text }) {
-  const row = document.createElement('div');
-  row.className = `message-row${mine ? ' me' : ''}`;
-
-  const avatar = document.createElement('div');
-  avatar.className = 'bubble-avatar';
-  avatar.textContent = mine ? '我' : name.slice(0, 1).toUpperCase();
-
-  const bubble = document.createElement('div');
-  bubble.className = 'bubble';
-  bubble.textContent = text;
-
-  row.append(avatar, bubble);
-  els.chatLog.append(row);
-  els.chatLog.scrollTop = els.chatLog.scrollHeight;
+function loadMessages() {
+  try {
+    messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(
+      (message) => message && ['me', 'zi'].includes(message.role) && typeof message.text === 'string'
+    );
+  } catch {
+    messages = [];
+  }
 }
 
-async function sendSignal(type, payload = {}) {
-  const response = await fetch(apiUrl(), {
+function saveMessages() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(messages.slice(-20)));
+}
+
+function renderTranscript() {
+  els.transcriptPanel.replaceChildren();
+  for (const message of messages.slice(-4)) {
+    const line = document.createElement('div');
+    line.className = `transcript-line ${message.role === 'me' ? 'me' : 'zi'}`;
+    line.textContent = message.text;
+    els.transcriptPanel.append(line);
+  }
+  els.transcriptPanel.scrollTop = els.transcriptPanel.scrollHeight;
+}
+
+function apiMessages(latestText) {
+  const history = messages.slice(-8).map((message) => ({
+    role: message.role === 'me' ? 'user' : 'assistant',
+    content: message.text
+  }));
+  if (history.at(-1)?.role === 'user') history.pop();
+  history.push({ role: 'user', content: latestText });
+  return [{ role: 'system', content: STYLE_SYSTEM_PROMPT }, ...history];
+}
+
+function fallbackReply(text) {
+  if (/在吗|听得到|hello|你好/i.test(text)) return '我在 你说';
+  if (/忙|干嘛|做什么/.test(text)) return '我现在在看这个 等我一下';
+  if (/可以|能不能|行吗|要不要/.test(text)) return '可以 我先看一下';
+  if (/为什么|为啥/.test(text)) return '我感觉主要是这个点没对上';
+  if (/怎么办|怎么弄|咋办/.test(text)) return '先别急 我们拆小一点';
+  return '我先想一下 你继续说';
+}
+
+async function postJson(url, body) {
+  return fetch(url, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ roomId, clientId, name: displayName, type, payload })
+    body: JSON.stringify(body)
   });
-  const data = await response.json();
-  if (!response.ok || !data.ok) throw new Error(data.error || 'Signal failed');
-  if (!roomId) setRoom(data.roomId);
-  return data;
 }
 
-async function poll() {
-  if (!roomId) return;
+async function requestLocalChat(body) {
   try {
-    const response = await fetch(apiUrl({ roomId, clientId, after: lastSeq }), { cache: 'no-store' });
-    const data = await response.json();
-    if (!data.ok) throw new Error(data.error || 'Poll failed');
-    for (const event of data.events) {
-      lastSeq = Math.max(lastSeq, event.seq);
-      await handleEvent(event);
+    return await postJson(LOCAL_CHAT_URL, body);
+  } catch {
+    return postJson(LOCAL_CHAT_FALLBACK_URL, body);
+  }
+}
+
+async function requestAiReply(text) {
+  const body = {
+    model: 'gpt-3.5-turbo',
+    messages: apiMessages(text),
+    temperature: 0.55,
+    top_p: 0.7,
+    max_tokens: 120
+  };
+  const response = isLocalMode() ? await requestLocalChat(body) : await postJson(productionUrl(PRODUCTION_CHAT_PATH), body);
+
+  if (!response.ok) throw new Error(`chat ${response.status}`);
+  const payload = await response.json();
+  return payload?.choices?.[0]?.message?.content?.trim() || '';
+}
+
+async function requestVoice(text) {
+  if (!isLocalMode()) {
+    const response = await postJson(productionUrl(PRODUCTION_TTS_PATH), { text });
+    if (!response.ok) throw new Error(`tts ${response.status}`);
+    return response.blob();
+  }
+
+  const body = {
+    model: 'eleven_multilingual_v2',
+    voice: 'kITDn23VjnL9Oo4bL8Ad',
+    input: text
+  };
+  let response;
+  try {
+    response = await postJson(LOCAL_TTS_URL, body);
+  } catch {
+    response = await postJson(LOCAL_TTS_FALLBACK_URL, body);
+  }
+  if (!response.ok) throw new Error(`local tts ${response.status}`);
+  return response.blob();
+}
+
+function playBlob(blob) {
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
+  }
+  const audio = new Audio(URL.createObjectURL(blob));
+  activeAudio = audio;
+  setOrbState('speaking');
+  setStatus('银子正在说');
+  audio.addEventListener('ended', () => {
+    activeAudio = null;
+    setOrbState(listening ? 'listening' : 'idle');
+    setStatus(listening ? '继续说，我在听' : '点麦克风开始说话');
+    if (listening) restartRecognition();
+  });
+  audio.play().catch(() => {
+    setStatus('点屏幕播放语音');
+    setOrbState('idle');
+  });
+}
+
+async function speakReply(text) {
+  setStatus(isLocalMode() ? '正在请求本地语音' : '正在生成 ElevenLabs 语音');
+  try {
+    const blob = await requestVoice(text);
+    playBlob(blob);
+  } catch {
+    setStatus('语音生成失败，文字已显示');
+    setOrbState(listening ? 'listening' : 'idle');
+    if (listening) restartRecognition();
+  }
+}
+
+async function sendMessage(text) {
+  if (thinking || !text.trim()) return;
+  thinking = true;
+  stopRecognition();
+  setOrbState('thinking');
+  setStatus(isLocalMode() ? '正在问本地 WeClone' : '正在问 Zi style clone');
+  setLiveCaption(`你：${text}`);
+  messages.push({ role: 'me', text });
+  saveMessages();
+  renderTranscript();
+
+  let reply = '';
+  try {
+    reply = (await requestAiReply(text)) || fallbackReply(text);
+  } catch {
+    reply = fallbackReply(text);
+    setLiveCaption(isLocalMode() ? '8005 没连上，用了本地 fallback' : '线上 clone 暂时没连上，用了 fallback');
+  }
+
+  messages.push({ role: 'zi', text: reply });
+  saveMessages();
+  renderTranscript();
+  els.replyCaption.textContent = reply;
+  thinking = false;
+  await speakReply(reply);
+}
+
+function createRecognition() {
+  if (!SpeechRecognition) return null;
+  const instance = new SpeechRecognition();
+  instance.lang = 'zh-CN';
+  instance.interimResults = true;
+  instance.continuous = false;
+
+  let finalTranscript = '';
+  instance.onstart = () => {
+    setOrbState('listening');
+    setStatus('正在听你说');
+  };
+  instance.onresult = (event) => {
+    let interim = '';
+    for (let index = event.resultIndex; index < event.results.length; index += 1) {
+      const transcript = event.results[index][0].transcript.trim();
+      if (event.results[index].isFinal) finalTranscript += transcript;
+      else interim += transcript;
     }
-    setStatus(data.peers.length > 1 ? `${data.peers.length} 人在线` : '等对方打开链接');
-  } catch (error) {
-    setStatus('连接重试中');
-  }
-}
-
-function startPolling() {
-  clearInterval(pollTimer);
-  pollTimer = setInterval(poll, 1200);
-  poll();
-}
-
-async function createPeer() {
-  if (peer) return peer;
-
-  peer = new RTCPeerConnection({
-    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-  });
-
-  peer.onicecandidate = (event) => {
-    if (event.candidate) sendSignal('ice', { candidate: event.candidate }).catch(() => {});
+    if (interim) setLiveCaption(interim);
   };
-
-  peer.ontrack = (event) => {
-    els.remoteAudio.srcObject = event.streams[0];
-    markCallConnected();
+  instance.onerror = () => {
+    setStatus('语音识别失败，可以打字');
+    setOrbState('idle');
   };
-
-  peer.onconnectionstatechange = () => {
-    if (['failed', 'closed', 'disconnected'].includes(peer.connectionState)) endCall(false);
-    if (peer.connectionState === 'connected') markCallConnected();
-  };
-
-  localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-  for (const track of localStream.getTracks()) peer.addTrack(track, localStream);
-  await flushPendingIce();
-  return peer;
-}
-
-async function flushPendingIce() {
-  if (!peer?.remoteDescription || !pendingIceCandidates.length) return;
-  const candidates = pendingIceCandidates;
-  pendingIceCandidates = [];
-  for (const candidate of candidates) {
-    try {
-      await peer.addIceCandidate(candidate);
-    } catch {}
-  }
-}
-
-function showCallPanel(text) {
-  els.callPanel.hidden = false;
-  els.callState.textContent = text;
-}
-
-function hideIncoming() {
-  els.incomingPanel.hidden = true;
-  pendingOffer = null;
-}
-
-function startClock() {
-  clearInterval(callClock);
-  callStartedAt = Date.now();
-  callClock = setInterval(() => {
-    const elapsed = Math.floor((Date.now() - callStartedAt) / 1000);
-    const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
-    const seconds = String(elapsed % 60).padStart(2, '0');
-    els.callTimer.textContent = `${minutes}:${seconds}`;
-  }, 500);
-}
-
-function markCallConnected() {
-  if (!callStartedAt) startClock();
-  showCallPanel('通话中');
-}
-
-async function startCall() {
-  if (!navigator.mediaDevices?.getUserMedia) {
-    appendSystem('当前浏览器不支持麦克风通话');
-    return;
-  }
-
-  try {
-    showCallPanel('正在呼叫');
-    const pc = await createPeer();
-    const offer = await pc.createOffer({ offerToReceiveAudio: true });
-    await pc.setLocalDescription(offer);
-    await sendSignal('ring', { state: 'calling' });
-    await sendSignal('offer', { sdp: pc.localDescription });
-  } catch (error) {
-    appendSystem('发起通话失败，请检查麦克风权限');
-    endCall(false);
-  }
-}
-
-async function acceptCall() {
-  if (!pendingOffer) return;
-
-  try {
-    const pc = await createPeer();
-    await pc.setRemoteDescription(pendingOffer.payload.sdp);
-    await flushPendingIce();
-    const answer = await pc.createAnswer();
-    await pc.setLocalDescription(answer);
-    await sendSignal('answer', { sdp: pc.localDescription });
-    hideIncoming();
-    showCallPanel('接通中');
-  } catch (error) {
-    appendSystem('接听失败，请检查麦克风权限');
-    endCall(true);
-  }
-}
-
-function endCall(send = true) {
-  clearInterval(callClock);
-  callClock = null;
-  callStartedAt = 0;
-  els.callTimer.textContent = '00:00';
-  els.callPanel.hidden = true;
-  hideIncoming();
-
-  if (peer) {
-    peer.onicecandidate = null;
-    peer.ontrack = null;
-    peer.close();
-    peer = null;
-  }
-  pendingIceCandidates = [];
-
-  if (localStream) {
-    for (const track of localStream.getTracks()) track.stop();
-    localStream = null;
-  }
-
-  els.remoteAudio.srcObject = null;
-  isMuted = false;
-  els.muteButton.textContent = '静音';
-  if (send) sendSignal('hangup', { state: 'ended' }).catch(() => {});
-}
-
-async function handleEvent(event) {
-  if (event.type === 'chat') {
-    appendMessage({ mine: false, name: event.name, text: event.payload.text });
-    return;
-  }
-
-  if (event.type === 'join') {
-    appendSystem(`${event.name || '对方'} 进入房间`);
-    return;
-  }
-
-  if (event.type === 'ring') {
-    appendSystem(`${event.name || '对方'} 正在呼叫`);
-    return;
-  }
-
-  if (event.type === 'offer') {
-    pendingOffer = event;
-    els.incomingName.textContent = event.name || '对方';
-    els.incomingPanel.hidden = false;
-    return;
-  }
-
-  if (event.type === 'answer' && peer) {
-    await peer.setRemoteDescription(event.payload.sdp);
-    await flushPendingIce();
-    showCallPanel('接通中');
-    return;
-  }
-
-  if (event.type === 'ice' && event.payload.candidate) {
-    if (!peer?.remoteDescription) {
-      pendingIceCandidates.push(event.payload.candidate);
+  instance.onend = () => {
+    const text = finalTranscript.trim();
+    finalTranscript = '';
+    if (text) {
+      sendMessage(text);
       return;
     }
-    try {
-      await peer.addIceCandidate(event.payload.candidate);
-    } catch {}
+    if (listening && !thinking && !activeAudio) {
+      setStatus('没听清，再点麦克风');
+      setOrbState('idle');
+    }
+  };
+  return instance;
+}
+
+function startRecognition() {
+  if (!SpeechRecognition) {
+    setStatus('当前浏览器不支持语音识别，可以打字');
+    setLiveCaption('iOS Safari/Chrome 支持较不稳定，桌面 Chrome 更稳。');
     return;
   }
-
-  if (event.type === 'hangup') {
-    appendSystem(`${event.name || '对方'} 已挂断`);
-    endCall(false);
-  }
+  recognition = recognition || createRecognition();
+  try {
+    recognition.start();
+  } catch {}
 }
 
-async function boot() {
-  const existingRoom = roomFromLocation();
-  if (existingRoom) {
-    setRoom(existingRoom);
-  } else {
-    const data = await sendSignal('join', { state: 'new' });
-    setRoom(data.roomId);
-  }
-  appendSystem('复制房间链接给另一台设备即可聊天或语音通话');
-  await sendSignal('join', { state: 'online' });
-  startPolling();
+function stopRecognition() {
+  try {
+    recognition?.stop();
+  } catch {}
 }
 
-els.chatForm.addEventListener('submit', async (event) => {
+function restartRecognition() {
+  if (!listening || thinking || activeAudio) return;
+  setTimeout(startRecognition, 300);
+}
+
+function startVoiceMode() {
+  listening = true;
+  setLiveCaption(`${modeLabel()} · 正在听`);
+  startRecognition();
+}
+
+function endVoiceMode() {
+  listening = false;
+  thinking = false;
+  stopRecognition();
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
+    activeAudio = null;
+  }
+  setOrbState('idle');
+  setStatus('点麦克风开始说话');
+  setLiveCaption(`${modeLabel()} · 已结束`);
+}
+
+function autosizeInput() {
+  els.messageInput.style.height = 'auto';
+  els.messageInput.style.height = `${Math.min(132, els.messageInput.scrollHeight)}px`;
+}
+
+els.callButton.addEventListener('click', () => {
+  if (!listening || activeAudio) startVoiceMode();
+  else restartRecognition();
+});
+
+els.micButton.addEventListener('click', () => {
+  if (!listening) startVoiceMode();
+  else restartRecognition();
+});
+
+els.hangupButton.addEventListener('click', endVoiceMode);
+els.resetButton.addEventListener('click', () => {
+  messages = [];
+  saveMessages();
+  renderTranscript();
+  els.replyCaption.textContent = '';
+  setLiveCaption(`${modeLabel()} · 对话已清空`);
+});
+
+els.chatForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const text = els.messageInput.value.trim();
   if (!text) return;
   els.messageInput.value = '';
-  appendMessage({ mine: true, name: displayName, text });
-  try {
-    await sendSignal('chat', { text });
-  } catch {
-    appendSystem('消息发送失败');
+  autosizeInput();
+  sendMessage(text);
+});
+
+els.messageInput.addEventListener('input', autosizeInput);
+els.messageInput.addEventListener('keydown', (event) => {
+  if (event.isComposing) return;
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault();
+    els.chatForm.requestSubmit();
   }
 });
 
-els.messageInput.addEventListener('input', () => {
-  els.messageInput.style.height = 'auto';
-  els.messageInput.style.height = `${Math.min(130, els.messageInput.scrollHeight)}px`;
-});
-
-els.copyLinkButton.addEventListener('click', async () => {
-  await navigator.clipboard.writeText(window.location.href);
-  appendSystem('已复制房间链接');
-});
-
-els.callButton.addEventListener('click', startCall);
-els.acceptButton.addEventListener('click', acceptCall);
-els.declineButton.addEventListener('click', () => {
-  hideIncoming();
-  sendSignal('hangup', { state: 'declined' }).catch(() => {});
-});
-els.hangupButton.addEventListener('click', () => endCall(true));
-els.muteButton.addEventListener('click', () => {
-  if (!localStream) return;
-  isMuted = !isMuted;
-  for (const track of localStream.getAudioTracks()) track.enabled = !isMuted;
-  els.muteButton.textContent = isMuted ? '取消静音' : '静音';
-});
-
-window.addEventListener('beforeunload', () => {
-  navigator.sendBeacon?.(
-    apiUrl(),
-    new Blob([JSON.stringify({ roomId, clientId, name: displayName, type: 'leave', payload: { state: 'offline' } })], {
-      type: 'application/json'
-    })
-  );
-});
-
-boot().catch(() => {
-  setStatus('连接失败');
-  appendSystem('实时服务暂时不可用');
-});
+loadMessages();
+renderTranscript();
+setLiveCaption(`${modeLabel()} · 点麦克风开始`);
