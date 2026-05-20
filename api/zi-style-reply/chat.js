@@ -35,6 +35,37 @@ function sanitizeBodyText(text) {
   return String(text || '').slice(0, 1000);
 }
 
+function latestUserText(messages) {
+  return [...messages].reverse().find((message) => message.role === 'user')?.content || '';
+}
+
+function fallbackReply(messages) {
+  const text = latestUserText(messages);
+  if (/在吗|听得到|hello|你好/i.test(text)) return '我在 你说';
+  if (/忙|干嘛|做什么/.test(text)) return '我现在在看这个 等我一下';
+  if (/可以|能不能|行吗|要不要/.test(text)) return '可以 我先看一下';
+  if (/为什么|为啥/.test(text)) return '我感觉主要是这个点没对上';
+  if (/怎么办|怎么弄|咋办/.test(text)) return '先别急 我们拆小一点';
+  if (/谢谢|感谢|辛苦/.test(text)) return '好 谢谢 辛苦';
+  return '我先想一下 你继续说';
+}
+
+function sendFallback(res, messages, reason) {
+  return sendJson(res, 200, {
+    ok: true,
+    fallback: true,
+    fallbackReason: reason,
+    choices: [
+      {
+        message: {
+          role: 'assistant',
+          content: fallbackReply(messages)
+        }
+      }
+    ]
+  });
+}
+
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
 
@@ -73,6 +104,9 @@ export default async function handler(req, res) {
 
     const text = await response.text();
     if (!response.ok) {
+      if (response.status >= 500) {
+        return sendFallback(res, body.messages, 'upstream_error');
+      }
       return sendJson(res, response.status >= 500 ? 502 : response.status, {
         ok: false,
         error: 'Zi style model request failed.',
@@ -86,9 +120,6 @@ export default async function handler(req, res) {
     return res.end(text);
   } catch (error) {
     const timeout = error?.name === 'TimeoutError' || error?.name === 'AbortError';
-    return sendJson(res, timeout ? 504 : 502, {
-      ok: false,
-      error: timeout ? 'Zi style model timed out.' : 'Zi style model is unavailable.'
-    });
+    return sendFallback(res, body.messages, timeout ? 'upstream_timeout' : 'upstream_unavailable');
   }
 }
