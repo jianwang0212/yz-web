@@ -36,6 +36,8 @@ let listening = false;
 let thinking = false;
 let activeAudio = null;
 let messages = [];
+let listenTimeout = null;
+let actionToken = 0;
 
 function isLocalMode() {
   return ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname) || window.location.protocol === 'file:';
@@ -58,6 +60,11 @@ function setOrbState(state) {
   els.orb.classList.toggle('is-thinking', state === 'thinking');
   els.orb.classList.toggle('is-speaking', state === 'speaking');
   els.micButton.classList.toggle('is-active', state === 'listening');
+}
+
+function clearListenTimeout() {
+  clearTimeout(listenTimeout);
+  listenTimeout = null;
 }
 
 function productionUrl(path) {
@@ -161,7 +168,8 @@ async function requestVoice(text) {
   return response.blob();
 }
 
-function playBlob(blob) {
+function playBlob(blob, token) {
+  if (token !== actionToken) return;
   if (activeAudio) {
     activeAudio.pause();
     activeAudio.currentTime = 0;
@@ -171,6 +179,7 @@ function playBlob(blob) {
   setOrbState('speaking');
   setStatus('银子正在说');
   audio.addEventListener('ended', () => {
+    if (token !== actionToken) return;
     activeAudio = null;
     setOrbState(listening ? 'listening' : 'idle');
     setStatus(listening ? '继续说，我在听' : '点麦克风开始说话');
@@ -182,12 +191,14 @@ function playBlob(blob) {
   });
 }
 
-async function speakReply(text) {
+async function speakReply(text, token) {
+  if (token !== actionToken) return;
   setStatus(isLocalMode() ? '正在请求本地语音' : '正在生成 ElevenLabs 语音');
   try {
     const blob = await requestVoice(text);
-    playBlob(blob);
+    playBlob(blob, token);
   } catch {
+    if (token !== actionToken) return;
     setStatus('语音生成失败，文字已显示');
     setOrbState(listening ? 'listening' : 'idle');
     if (listening) restartRecognition();
@@ -196,7 +207,11 @@ async function speakReply(text) {
 
 async function sendMessage(text) {
   if (thinking || !text.trim()) return;
+  const token = ++actionToken;
+  const resumeAfterReply = listening;
   thinking = true;
+  listening = false;
+  clearListenTimeout();
   stopRecognition();
   setOrbState('thinking');
   setStatus(isLocalMode() ? '正在问本地 WeClone' : '正在问 Zi style clone');
@@ -209,16 +224,19 @@ async function sendMessage(text) {
   try {
     reply = (await requestAiReply(text)) || fallbackReply(text);
   } catch {
+    if (token !== actionToken) return;
     reply = fallbackReply(text);
     setLiveCaption(isLocalMode() ? '8005 没连上，用了本地 fallback' : '线上 clone 暂时没连上，用了 fallback');
   }
 
+  if (token !== actionToken) return;
   messages.push({ role: 'zi', text: reply });
   saveMessages();
   renderTranscript();
   els.replyCaption.textContent = reply;
   thinking = false;
-  await speakReply(reply);
+  listening = resumeAfterReply;
+  await speakReply(reply, token);
 }
 
 function createRecognition() {
@@ -230,6 +248,16 @@ function createRecognition() {
 
   let finalTranscript = '';
   instance.onstart = () => {
+    clearListenTimeout();
+    listenTimeout = setTimeout(() => {
+      if (!thinking && listening) {
+        stopRecognition();
+        listening = false;
+        setOrbState('idle');
+        setStatus('没听到声音，再点麦克风');
+        setLiveCaption(`${modeLabel()} · 等待重新开始`);
+      }
+    }, 12000);
     setOrbState('listening');
     setStatus('正在听你说');
   };
@@ -243,17 +271,22 @@ function createRecognition() {
     if (interim) setLiveCaption(interim);
   };
   instance.onerror = () => {
+    clearListenTimeout();
+    listening = false;
     setStatus('语音识别失败，可以打字');
+    setLiveCaption(`${modeLabel()} · 识别失败，按钮可重新开始`);
     setOrbState('idle');
   };
   instance.onend = () => {
+    clearListenTimeout();
     const text = finalTranscript.trim();
     finalTranscript = '';
-    if (text) {
+    if (text && listening) {
       sendMessage(text);
       return;
     }
     if (listening && !thinking && !activeAudio) {
+      listening = false;
       setStatus('没听清，再点麦克风');
       setOrbState('idle');
     }
@@ -263,14 +296,21 @@ function createRecognition() {
 
 function startRecognition() {
   if (!SpeechRecognition) {
+    listening = false;
     setStatus('当前浏览器不支持语音识别，可以打字');
-    setLiveCaption('iOS Safari/Chrome 支持较不稳定，桌面 Chrome 更稳。');
+    setLiveCaption('当前浏览器不支持语音识别，可以直接打字。');
+    setOrbState('idle');
     return;
   }
   recognition = recognition || createRecognition();
   try {
     recognition.start();
-  } catch {}
+  } catch {
+    listening = false;
+    clearListenTimeout();
+    setOrbState('idle');
+    setStatus('语音识别没有启动，再点一次');
+  }
 }
 
 function stopRecognition() {
@@ -285,14 +325,18 @@ function restartRecognition() {
 }
 
 function startVoiceMode() {
+  if (thinking) return;
+  actionToken += 1;
   listening = true;
   setLiveCaption(`${modeLabel()} · 正在听`);
   startRecognition();
 }
 
 function endVoiceMode() {
+  actionToken += 1;
   listening = false;
   thinking = false;
+  clearListenTimeout();
   stopRecognition();
   if (activeAudio) {
     activeAudio.pause();
@@ -301,7 +345,7 @@ function endVoiceMode() {
   }
   setOrbState('idle');
   setStatus('点麦克风开始说话');
-  setLiveCaption(`${modeLabel()} · 已结束`);
+    setLiveCaption(`${modeLabel()} · 已结束`);
 }
 
 function autosizeInput() {
@@ -310,13 +354,13 @@ function autosizeInput() {
 }
 
 els.callButton.addEventListener('click', () => {
-  if (!listening || activeAudio) startVoiceMode();
-  else restartRecognition();
+  if (listening) endVoiceMode();
+  else startVoiceMode();
 });
 
 els.micButton.addEventListener('click', () => {
-  if (!listening) startVoiceMode();
-  else restartRecognition();
+  if (listening) endVoiceMode();
+  else startVoiceMode();
 });
 
 els.hangupButton.addEventListener('click', endVoiceMode);

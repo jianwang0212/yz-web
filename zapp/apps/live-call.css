@@ -17,7 +17,10 @@
 
 html,
 body {
+  width: 100%;
+  height: 100%;
   min-height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -41,10 +44,13 @@ textarea {
 .voice-screen {
   position: relative;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto auto;
-  min-height: 100vh;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   overflow: hidden;
-  padding: max(26px, env(safe-area-inset-top)) 26px max(20px, env(safe-area-inset-bottom));
+  padding: max(22px, env(safe-area-inset-top)) clamp(16px, 5vw, 26px) max(16px, env(safe-area-inset-bottom));
   background:
     radial-gradient(circle at 50% 44%, rgba(20, 165, 255, 0.14), transparent 23rem),
     #000;
@@ -54,8 +60,8 @@ textarea {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  min-height: 82px;
-  z-index: 2;
+  min-height: 76px;
+  z-index: 5;
 }
 
 .back-link {
@@ -98,22 +104,23 @@ textarea {
   display: grid;
   place-items: center;
   align-content: center;
-  gap: 24px;
+  gap: clamp(14px, 2.6vh, 24px);
   min-height: 0;
-  padding-bottom: 16vh;
+  padding: 0 0 clamp(18px, 8vh, 92px);
+  z-index: 1;
 }
 
 .orb {
   position: relative;
   display: grid;
   place-items: center;
-  width: min(42vw, 220px);
-  min-width: 172px;
+  width: clamp(160px, 44vw, 220px);
   aspect-ratio: 1;
   border: 0;
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .orb-core {
@@ -168,10 +175,11 @@ textarea {
 .transcript-panel {
   display: grid;
   gap: 8px;
-  max-height: 118px;
+  max-height: min(118px, 14vh);
   overflow-y: auto;
   padding: 0 0 12px;
   scrollbar-width: none;
+  z-index: 4;
 }
 
 .transcript-panel::-webkit-scrollbar {
@@ -201,7 +209,8 @@ textarea {
   grid-template-columns: 52px minmax(0, 1fr) 52px 52px;
   align-items: end;
   gap: 12px;
-  z-index: 2;
+  z-index: 10;
+  width: 100%;
 }
 
 .round-button {
@@ -216,6 +225,7 @@ textarea {
   background: var(--panel);
   font-size: 2rem;
   line-height: 1;
+  touch-action: manipulation;
 }
 
 .mic-button {
@@ -297,21 +307,75 @@ textarea {
     padding-inline: 20px;
   }
 
+  .voice-header {
+    min-height: 68px;
+  }
+
+  .voice-header h1 {
+    font-size: 1.22rem;
+  }
+
+  .voice-header p {
+    font-size: 0.8rem;
+  }
+
   .voice-stage {
-    padding-bottom: 12vh;
+    padding-bottom: clamp(18px, 6vh, 58px);
+  }
+
+  .orb {
+    width: clamp(152px, 48vw, 196px);
+  }
+
+  .reply-caption {
+    min-height: 44px;
+    font-size: 0.98rem;
+  }
+
+  .live-caption {
+    font-size: 0.84rem;
+  }
+
+  .transcript-panel {
+    max-height: 92px;
   }
 
   .voice-composer {
-    grid-template-columns: 48px minmax(0, 1fr) 48px 48px;
-    gap: 10px;
+    grid-template-columns: 46px minmax(0, 1fr) 46px 46px;
+    gap: 8px;
   }
 
   .round-button {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
   }
 
   .voice-composer textarea {
-    min-height: 48px;
+    min-height: 46px;
+    padding: 12px 15px;
+  }
+}
+
+@media (max-height: 700px) {
+  .voice-header {
+    min-height: 56px;
+  }
+
+  .voice-stage {
+    gap: 10px;
+    padding-bottom: 12px;
+  }
+
+  .orb {
+    width: clamp(132px, 34vh, 174px);
+  }
+
+  .reply-caption {
+    min-height: 36px;
+    font-size: 0.92rem;
+  }
+
+  .transcript-panel {
+    max-height: 72px;
   }
 }
