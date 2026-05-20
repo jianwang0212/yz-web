@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v51-20260520-thisisyz-voice-reply";
+const CACHE_VERSION = "zapp-store-v54-20260520-zi-style-pvc";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",

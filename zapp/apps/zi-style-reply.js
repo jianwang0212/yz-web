@@ -1,10 +1,10 @@
 const STYLE_RULES = `你是一个写作风格转换器。你的任务不是冒充真人，也不要自动发送消息；只为 Zi 起草“像 Zi 微信说话风格”的候选回复。
 
 风格统计：
-- 样本数：936
-- 平均长度：12.3 字；中位数：14 字
-- 常见短语：谢谢, 辛苦, 可以, 先, 你可以, 再, 好的, 好啊, 我觉得, 没事, 我现在, 咋样, 能不能, 我在
-- 标点/混合习惯：问号 60，感叹号 418，中英混合 79，中文空格切分 567
+- 样本数：163382
+- 平均长度：9.8 字；中位数：6 字
+- 常见短语：可以, 谢谢, 好的, 我觉得, 先, 再, 我在, 辛苦, 你可以, 没事, 慢慢来, 不用, 我现在, 我感觉
+- 标点/混合习惯：问号 15254，感叹号 8090，中英混合 41077，中文空格切分 33654
 
 Zi 微信风格规则：
 1. 短句，直接，少客套；通常 1-3 个短分句。
@@ -29,7 +29,7 @@ const API_URL_FALLBACK = 'http://127.0.0.1:8005/v1/chat/completions';
 const TTS_URL = 'http://localhost:8005/v1/audio/speech';
 const TTS_URL_FALLBACK = 'http://127.0.0.1:8005/v1/audio/speech';
 const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
-const VOICE_ONLY_MODE = true;
+const VOICE_ONLY_MODE = false;
 
 const els = {
   chatForm: document.querySelector('#chatForm'),
@@ -140,6 +140,10 @@ function isFilePreview() {
 
 function useLocalApi() {
   return isLocalHost() || isFilePreview();
+}
+
+function shouldUseVoiceReply() {
+  return !useLocalApi();
 }
 
 function productionTtsUrl() {
@@ -521,13 +525,14 @@ async function sendMessage(text) {
     const reply = await requestApiReply(text);
     document.querySelector(`#${typingId}`)?.remove();
     const ziMessage = VOICE_ONLY_MODE ? addVoiceOnlyReply(reply || chooseReply(text)) : addMessage('zi', reply || chooseReply(text));
-    setConnectionState('API 已回复 · 正在生成语音');
-    addVoiceForReply(ziMessage);
+    const voiceEnabled = shouldUseVoiceReply();
+    setConnectionState(voiceEnabled ? 'API 已回复 · 正在生成语音' : 'API 已回复');
+    if (voiceEnabled) addVoiceForReply(ziMessage);
   } catch {
     document.querySelector(`#${typingId}`)?.remove();
     const ziMessage = VOICE_ONLY_MODE ? addVoiceOnlyReply(chooseReply(text)) : addMessage('zi', chooseReply(text));
     setConnectionState('API 连不上 已用本地回复');
-    addVoiceForReply(ziMessage);
+    if (shouldUseVoiceReply()) addVoiceForReply(ziMessage);
   } finally {
     isSending = false;
     els.chatForm.classList.remove('is-sending');
