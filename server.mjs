@@ -8,6 +8,7 @@ import socialPulseHistoryHandler from './api/socialpulse/history.js';
 import socialPulseLatestHandler from './api/socialpulse/latest.js';
 import socialPulseSyncHandler from './api/socialpulse/sync.js';
 import feedbackHandler from './api/submit-feedback/index.js';
+import ziStyleReplyChatHandler from './api/zi-style-reply/chat.js';
 import ziyinVoiceoverGenerateHandler from './api/ziyin-voiceover/generate.js';
 import { findRouteAlias } from './site-routes.mjs';
 
@@ -85,6 +86,7 @@ app.all('/api/socialpulse/latest', wrapHandler(socialPulseLatestHandler));
 app.all('/api/socialpulse/sync', wrapHandler(socialPulseSyncHandler));
 app.all('/api/submit-feedback', wrapHandler(feedbackHandler));
 app.all('/api/submit-feedback/index.js', wrapHandler(feedbackHandler));
+app.all('/api/zi-style-reply/chat', wrapHandler(ziStyleReplyChatHandler));
 app.all('/api/ziyin-voiceover/generate', wrapHandler(ziyinVoiceoverGenerateHandler));
 
 app.use((req, res, next) => {

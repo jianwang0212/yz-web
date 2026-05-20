@@ -28,6 +28,7 @@ const API_URL = 'http://localhost:8005/v1/chat/completions';
 const API_URL_FALLBACK = 'http://127.0.0.1:8005/v1/chat/completions';
 const TTS_URL = 'http://localhost:8005/v1/audio/speech';
 const TTS_URL_FALLBACK = 'http://127.0.0.1:8005/v1/audio/speech';
+const PRODUCTION_CHAT_PATH = '/api/zi-style-reply/chat';
 const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
 const VOICE_ONLY_MODE = false;
 
@@ -148,6 +149,10 @@ function shouldUseVoiceReply() {
 
 function productionTtsUrl() {
   return new URL(PRODUCTION_TTS_PATH, window.location.origin).href;
+}
+
+function productionChatUrl() {
+  return new URL(PRODUCTION_CHAT_PATH, window.location.origin).href;
 }
 
 function updatePromptPreview(latestText = '') {
@@ -299,6 +304,17 @@ async function requestApiReply(text) {
     top_p: 0.7,
     max_tokens: 160
   });
+  if (!useLocalApi()) {
+    const response = await fetch(productionChatUrl(), {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body
+    });
+    if (!response.ok) throw new Error(`API ${response.status}`);
+    const payload = await response.json();
+    return payload?.choices?.[0]?.message?.content?.trim() || '';
+  }
+
   const request = (url) => fetch(url, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
