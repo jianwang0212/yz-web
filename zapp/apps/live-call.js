@@ -40,7 +40,11 @@ let listenTimeout = null;
 let actionToken = 0;
 
 function isLocalMode() {
-  return ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname) || window.location.protocol === 'file:';
+  return (
+    ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname) ||
+    window.location.protocol === 'file:' ||
+    /^192\.168\.|^10\.|^172\.(1[6-9]|2\d|3[0-1])\./.test(window.location.hostname)
+  );
 }
 
 function modeLabel() {
@@ -69,6 +73,13 @@ function clearListenTimeout() {
 
 function productionUrl(path) {
   return new URL(path, window.location.origin).href;
+}
+
+function localApiUrl(path) {
+  if (window.location.protocol === 'file:' || ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname)) {
+    return `http://localhost:8005${path}`;
+  }
+  return `http://${window.location.hostname}:8005${path}`;
 }
 
 function loadMessages() {
@@ -125,9 +136,13 @@ async function postJson(url, body) {
 
 async function requestLocalChat(body) {
   try {
-    return await postJson(LOCAL_CHAT_URL, body);
+    return await postJson(localApiUrl('/v1/chat/completions'), body);
   } catch {
-    return postJson(LOCAL_CHAT_FALLBACK_URL, body);
+    try {
+      return await postJson(LOCAL_CHAT_URL, body);
+    } catch {
+      return postJson(LOCAL_CHAT_FALLBACK_URL, body);
+    }
   }
 }
 
@@ -160,9 +175,13 @@ async function requestVoice(text) {
   };
   let response;
   try {
-    response = await postJson(LOCAL_TTS_URL, body);
+    response = await postJson(localApiUrl('/v1/audio/speech'), body);
   } catch {
-    response = await postJson(LOCAL_TTS_FALLBACK_URL, body);
+    try {
+      response = await postJson(LOCAL_TTS_URL, body);
+    } catch {
+      response = await postJson(LOCAL_TTS_FALLBACK_URL, body);
+    }
   }
   if (!response.ok) throw new Error(`local tts ${response.status}`);
   return response.blob();
