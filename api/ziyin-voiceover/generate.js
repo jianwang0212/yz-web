@@ -195,7 +195,10 @@ async function requestElevenLabs(text) {
   const voiceId = process.env.ZIYIN_ELEVENLABS_VOICE_ID || DEFAULT_VOICE_ID;
   const modelId = process.env.ZIYIN_ELEVENLABS_MODEL_ID || DEFAULT_MODEL_ID;
   const outputFormat = process.env.ZIYIN_ELEVENLABS_OUTPUT_FORMAT || DEFAULT_OUTPUT_FORMAT;
-  const url = `${ELEVENLABS_API_BASE}/text-to-speech/${encodeURIComponent(voiceId)}?output_format=${encodeURIComponent(outputFormat)}`;
+  const url = `${ELEVENLABS_API_BASE}/text-to-speech/${encodeURIComponent(voiceId)}?${new URLSearchParams({
+    output_format: outputFormat,
+    optimize_streaming_latency: process.env.ZIYIN_ELEVENLABS_OPTIMIZE_STREAMING_LATENCY || '3'
+  })}`;
 
   const response = await fetch(url, {
     method: 'POST',
@@ -211,7 +214,7 @@ async function requestElevenLabs(text) {
         stability: 0.25,
         similarity_boost: 0.98,
         style: 0.35,
-        use_speaker_boost: true
+        use_speaker_boost: process.env.ZIYIN_ELEVENLABS_SPEAKER_BOOST === '1'
       }
     }),
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)

@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v68-20260520-speech-diagnostics";
+const CACHE_VERSION = "zapp-store-v69-20260520-continuous-call";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",

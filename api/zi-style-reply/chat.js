@@ -91,7 +91,7 @@ export default async function handler(req, res) {
     messages: body.messages,
     temperature: Number.isFinite(body.temperature) ? body.temperature : 0.55,
     top_p: Number.isFinite(body.top_p) ? body.top_p : 0.7,
-    max_tokens: Number.isFinite(body.max_tokens) ? body.max_tokens : 160
+    max_tokens: Number.isFinite(body.max_tokens) ? body.max_tokens : 64
   };
 
   try {

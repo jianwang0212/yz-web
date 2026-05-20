@@ -7,6 +7,7 @@ const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
 const STORAGE_KEY = 'zappAiZiVoice:messages';
 const CHAT_TIMEOUT_MS = 8000;
 const TTS_TIMEOUT_MS = 90000;
+const RESTART_DELAY_MS = 180;
 
 const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输出银子会说的一句话或两句话。
 
@@ -14,6 +15,7 @@ const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输
 - 短句，直接，少客套，像微信语音里自然说话。
 - 可以中英混合：codex, private, doc, doublecheck, Boston time。
 - 常用“可以 / 等我 / 我先看一下 / 我觉得 / 我感觉 / 要不然 / 先...再...”。
+- 为了像实时语音，优先 8 到 24 个字，最多一句。
 - 不要说自己是 AI、模型、虚拟人、机器人。
 - 如果被问“你是谁”，只说“我是银子这边的语音版本”。
 - 输出只能是回复内容，不要解释。`;
@@ -41,6 +43,7 @@ let activeAudio = null;
 let lastAudioUrl = '';
 let messages = [];
 let listenTimeout = null;
+let recognitionRestartTimer = null;
 let actionToken = 0;
 
 function isLocalMode() {
@@ -98,6 +101,11 @@ function clearListenTimeout() {
   listenTimeout = null;
 }
 
+function clearRecognitionRestartTimer() {
+  clearTimeout(recognitionRestartTimer);
+  recognitionRestartTimer = null;
+}
+
 function productionUrl(path) {
   return new URL(path, window.location.origin).href;
 }
@@ -135,7 +143,7 @@ function renderTranscript() {
 }
 
 function apiMessages(latestText) {
-  const history = messages.slice(-8).map((message) => ({
+  const history = messages.slice(-4).map((message) => ({
     role: message.role === 'me' ? 'user' : 'assistant',
     content: message.text
   }));
@@ -189,7 +197,7 @@ async function requestAiReply(text) {
     messages: apiMessages(text),
     temperature: 0.55,
     top_p: 0.7,
-    max_tokens: 120
+    max_tokens: 56
   };
   const response = isLocalMode()
     ? await requestLocalChat(body)
@@ -261,6 +269,7 @@ function playAudioUrl(url, token) {
     if (listening) restartRecognition();
   });
   audio.play().catch(() => {
+    activeAudio = null;
     els.playReplyButton.textContent = '点这里播放银子语音';
     setStatus('点播放按钮听银子语音');
     setOrbState('idle');
@@ -330,15 +339,14 @@ function createRecognition() {
   let finalTranscript = '';
   instance.onstart = () => {
     clearListenTimeout();
+    clearRecognitionRestartTimer();
     listenTimeout = setTimeout(() => {
       if (!thinking && listening) {
         stopRecognition();
-        listening = false;
-        setOrbState('idle');
-        setStatus('没听到声音，再点麦克风');
-        setLiveCaption(`${modeLabel()} · 等待重新开始`);
+        setStatus('继续听你说');
+        setLiveCaption(`${modeLabel()} · 继续听`);
       }
-    }, 12000);
+    }, 15000);
     setOrbState('listening');
     setStatus('正在听你说');
   };
@@ -353,10 +361,17 @@ function createRecognition() {
   };
   instance.onerror = (event) => {
     clearListenTimeout();
-    listening = false;
-    setStatus(speechUnavailableMessage(event?.error));
-    setLiveCaption(speechUnavailableCaption(event?.error));
-    setOrbState('idle');
+    const error = event?.error || '';
+    const fatal = error === 'not-allowed' || error === 'service-not-allowed' || error === 'audio-capture';
+    if (fatal || isInsecureLanMode()) {
+      listening = false;
+      setStatus(speechUnavailableMessage(error));
+      setLiveCaption(speechUnavailableCaption(error));
+      setOrbState('idle');
+      return;
+    }
+    setStatus(error === 'no-speech' ? '继续听你说' : speechUnavailableMessage(error));
+    setLiveCaption(error === 'no-speech' ? `${modeLabel()} · 继续听` : speechUnavailableCaption(error));
   };
   instance.onend = () => {
     clearListenTimeout();
@@ -367,15 +382,16 @@ function createRecognition() {
       return;
     }
     if (listening && !thinking && !activeAudio) {
-      listening = false;
-      setStatus('没听清，再点麦克风');
-      setOrbState('idle');
+      setStatus('继续听你说');
+      setOrbState('listening');
+      restartRecognition();
     }
   };
   return instance;
 }
 
 function startRecognition() {
+  clearRecognitionRestartTimer();
   if (isInsecureLanMode()) {
     listening = false;
     clearListenTimeout();
@@ -395,8 +411,12 @@ function startRecognition() {
   try {
     recognition.start();
   } catch {
-    listening = false;
     clearListenTimeout();
+    if (listening && !thinking && !activeAudio) {
+      setStatus('继续听你说');
+      recognitionRestartTimer = setTimeout(startRecognition, 500);
+      return;
+    }
     setOrbState('idle');
     setStatus('语音识别没有启动，再点一次');
   }
@@ -410,7 +430,8 @@ function stopRecognition() {
 
 function restartRecognition() {
   if (!listening || thinking || activeAudio) return;
-  setTimeout(startRecognition, 300);
+  clearRecognitionRestartTimer();
+  recognitionRestartTimer = setTimeout(startRecognition, RESTART_DELAY_MS);
 }
 
 function startVoiceMode() {
@@ -426,6 +447,7 @@ function endVoiceMode() {
   listening = false;
   thinking = false;
   clearListenTimeout();
+  clearRecognitionRestartTimer();
   stopRecognition();
   if (activeAudio) {
     activeAudio.pause();

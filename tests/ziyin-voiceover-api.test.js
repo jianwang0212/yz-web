@@ -93,7 +93,7 @@ test('returns generated mp3 audio from the configured ZiYin PVC voice', async ()
       stability: 0.25,
       similarity_boost: 0.98,
       style: 0.35,
-      use_speaker_boost: true
+      use_speaker_boost: false
     });
 
     return new Response(Uint8Array.from([1, 2, 3]), {
