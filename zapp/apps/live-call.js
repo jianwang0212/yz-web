@@ -48,6 +48,7 @@ let lastAudioUrl = '';
 let messages = [];
 let listenTimeout = null;
 let recognitionRestartTimer = null;
+let ignoreRecognitionEnd = false;
 let actionToken = 0;
 
 function isLocalMode() {
@@ -73,16 +74,16 @@ function modeLabel() {
 function speechUnavailableMessage(error = '') {
   if (isInsecureLanMode()) return '当前是 HTTP 局域网地址，浏览器不允许接入麦克风';
   if (error === 'not-allowed' || error === 'service-not-allowed') return '麦克风权限被浏览器拒绝';
-  if (error === 'no-speech') return '没有听到声音，再点麦克风';
+  if (error === 'no-speech' || error === 'aborted') return '继续听你说';
   if (error === 'audio-capture') return '没有检测到可用麦克风';
-  if (error === 'network') return '语音识别服务连接失败';
-  return '语音识别失败，可以打字';
+  if (error === 'network') return '语音识别在重连';
+  return '继续听你说';
 }
 
 function speechUnavailableCaption(error = '') {
   if (isInsecureLanMode()) return '本地语音输入要用 http://localhost 或 HTTPS；192.168 的 HTTP 只能打字。';
   if (error === 'not-allowed' || error === 'service-not-allowed') return '请在浏览器地址栏允许麦克风权限后再试。';
-  return `${modeLabel()} · 识别失败，按钮可重新开始`;
+  return `${modeLabel()} · 继续听`;
 }
 
 function setStatus(text) {
@@ -165,6 +166,14 @@ function fallbackReply(text) {
   return '我先想一下 你继续说';
 }
 
+function quickReply(text) {
+  if (/听到|听得见|听见|可以说话|可以打电话|能说话|电话/.test(text)) return '可以 我能听到 你继续说';
+  if (/还在|继续|在听|没听到|听不到/.test(text)) return '在 我听着 你继续说';
+  if (/速度|太慢|有点慢|卡/.test(text)) return '有点慢 我再优化一下';
+  if (/总结|小结|归纳/.test(text)) return '我先总结一下';
+  return '';
+}
+
 async function postJson(url, body, timeoutMs = CHAT_TIMEOUT_MS) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -196,6 +205,9 @@ async function requestLocalChat(body) {
 }
 
 async function requestAiReply(text) {
+  const instantReply = quickReply(text);
+  if (instantReply) return instantReply;
+
   const body = {
     model: 'gpt-3.5-turbo',
     messages: apiMessages(text),
@@ -349,7 +361,7 @@ async function sendMessage(text) {
   thinking = true;
   listening = false;
   clearListenTimeout();
-  stopRecognition();
+  stopRecognition({ ignoreEnd: true });
   setOrbState('thinking');
   setStatus(isLocalMode() ? '正在问本地 WeClone' : '正在问 Zi style clone');
   setLiveCaption(`你：${text}`);
@@ -385,6 +397,7 @@ function createRecognition() {
 
   let finalTranscript = '';
   instance.onstart = () => {
+    ignoreRecognitionEnd = false;
     clearListenTimeout();
     clearRecognitionRestartTimer();
     listenTimeout = setTimeout(() => {
@@ -410,6 +423,7 @@ function createRecognition() {
     clearListenTimeout();
     const error = event?.error || '';
     const fatal = error === 'not-allowed' || error === 'service-not-allowed' || error === 'audio-capture';
+    if (ignoreRecognitionEnd) return;
     if (fatal || isInsecureLanMode()) {
       listening = false;
       setStatus(speechUnavailableMessage(error));
@@ -417,13 +431,17 @@ function createRecognition() {
       setOrbState('idle');
       return;
     }
-    setStatus(error === 'no-speech' ? '继续听你说' : speechUnavailableMessage(error));
-    setLiveCaption(error === 'no-speech' ? `${modeLabel()} · 继续听` : speechUnavailableCaption(error));
+    setStatus(speechUnavailableMessage(error));
+    setLiveCaption(speechUnavailableCaption(error));
   };
   instance.onend = () => {
     clearListenTimeout();
     const text = finalTranscript.trim();
     finalTranscript = '';
+    if (ignoreRecognitionEnd) {
+      ignoreRecognitionEnd = false;
+      return;
+    }
     if (text && listening) {
       sendMessage(text);
       return;
@@ -454,7 +472,7 @@ function startRecognition() {
     setOrbState('idle');
     return;
   }
-  recognition = recognition || createRecognition();
+  recognition = createRecognition();
   try {
     recognition.start();
   } catch {
@@ -469,7 +487,8 @@ function startRecognition() {
   }
 }
 
-function stopRecognition() {
+function stopRecognition({ ignoreEnd = false } = {}) {
+  if (ignoreEnd) ignoreRecognitionEnd = true;
   try {
     recognition?.stop();
   } catch {}
@@ -496,7 +515,7 @@ function endVoiceMode() {
   thinking = false;
   clearListenTimeout();
   clearRecognitionRestartTimer();
-  stopRecognition();
+  stopRecognition({ ignoreEnd: true });
   if (activeAudio) {
     activeAudio.pause();
     activeAudio.currentTime = 0;
