@@ -16,15 +16,19 @@ function expectIncludes(source, value, message) {
 
 test('snow white archive page and assets are tracked together', () => {
   expectIncludes(snowWhiteHtml, 'Snow White / 白雪公主');
-  expectIncludes(snowWhiteHtml, 'assets/snow-white/snow-white-rough-mix.mp3');
+  expectIncludes(snowWhiteHtml, 'assets/snow-white/snow-white-mastered.mp3');
+  expectIncludes(snowWhiteHtml, 'assets/snow-white/snow-white-mastered.wav');
   expectIncludes(snowWhiteHtml, 'snow-white.css');
   expectIncludes(snowWhiteHtml, 'snow-white.js');
 
-  const audioFile = new URL('../assets/snow-white/snow-white-rough-mix.mp3', import.meta.url);
+  const audioFile = new URL('../assets/snow-white/snow-white-mastered.mp3', import.meta.url);
+  const losslessAudioFile = new URL('../assets/snow-white/snow-white-mastered.wav', import.meta.url);
   const fullScorePreview = new URL('../assets/snow-white/thumbs/snow-white-full-score.pdf.png', import.meta.url);
   assert.equal(existsSync(audioFile), true);
+  assert.equal(existsSync(losslessAudioFile), true);
   assert.equal(existsSync(fullScorePreview), true);
-  assert.ok(statSync(audioFile).size > 1_000_000, 'Expected the Snow White audio file to be present');
+  assert.ok(statSync(audioFile).size > 10_000_000, 'Expected the mastered Snow White MP3 file to be present');
+  assert.ok(statSync(losslessAudioFile).size > 70_000_000, 'Expected the mastered Snow White WAV file to be present');
 });
 
 test('berklee course page is restored with its scripts and stylesheet', () => {
