@@ -293,10 +293,6 @@ function chooseReply(text) {
 }
 
 async function requestApiReply(text) {
-  if (!useLocalApi()) {
-    return chooseReply(text);
-  }
-
   const body = JSON.stringify({
     model: 'gpt-3.5-turbo',
     messages: apiMessages(text),

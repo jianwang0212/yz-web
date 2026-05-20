@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v55-20260520-zi-style-model-proxy";
+const CACHE_VERSION = "zapp-store-v56-20260520-zi-style-model-fix";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
