@@ -55,8 +55,27 @@ function isLoopbackOrFileMode() {
   return window.location.protocol === 'file:' || ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
 }
 
+function isInsecureLanMode() {
+  return window.location.protocol === 'http:' && !isLoopbackOrFileMode() && !window.isSecureContext;
+}
+
 function modeLabel() {
   return isLocalMode() ? '本地 WeClone 8005' : 'thisisyz Zi style + ElevenLabs';
+}
+
+function speechUnavailableMessage(error = '') {
+  if (isInsecureLanMode()) return '当前是 HTTP 局域网地址，浏览器不允许接入麦克风';
+  if (error === 'not-allowed' || error === 'service-not-allowed') return '麦克风权限被浏览器拒绝';
+  if (error === 'no-speech') return '没有听到声音，再点麦克风';
+  if (error === 'audio-capture') return '没有检测到可用麦克风';
+  if (error === 'network') return '语音识别服务连接失败';
+  return '语音识别失败，可以打字';
+}
+
+function speechUnavailableCaption(error = '') {
+  if (isInsecureLanMode()) return '本地语音输入要用 http://localhost 或 HTTPS；192.168 的 HTTP 只能打字。';
+  if (error === 'not-allowed' || error === 'service-not-allowed') return '请在浏览器地址栏允许麦克风权限后再试。';
+  return `${modeLabel()} · 识别失败，按钮可重新开始`;
 }
 
 function setStatus(text) {
@@ -332,11 +351,11 @@ function createRecognition() {
     }
     if (interim) setLiveCaption(interim);
   };
-  instance.onerror = () => {
+  instance.onerror = (event) => {
     clearListenTimeout();
     listening = false;
-    setStatus('语音识别失败，可以打字');
-    setLiveCaption(`${modeLabel()} · 识别失败，按钮可重新开始`);
+    setStatus(speechUnavailableMessage(event?.error));
+    setLiveCaption(speechUnavailableCaption(event?.error));
     setOrbState('idle');
   };
   instance.onend = () => {
@@ -357,6 +376,14 @@ function createRecognition() {
 }
 
 function startRecognition() {
+  if (isInsecureLanMode()) {
+    listening = false;
+    clearListenTimeout();
+    setStatus(speechUnavailableMessage());
+    setLiveCaption(speechUnavailableCaption());
+    setOrbState('idle');
+    return;
+  }
   if (!SpeechRecognition) {
     listening = false;
     setStatus('当前浏览器不支持语音识别，可以打字');
