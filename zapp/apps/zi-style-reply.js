@@ -276,7 +276,7 @@ function chooseReply(text) {
   } else if (hints.hasQuestion) {
     replies = ['我觉得可以', '可以 先这样', '要不然先试一下?'];
   } else {
-    replies = ['可以的', '我觉得可以先这样', '好 我先看一下'];
+    replies = ['我先想一下', '等我看一下', '这个我再确认一下'];
   }
 
   if (tone === 'soft') {
@@ -542,8 +542,9 @@ async function sendMessage(text) {
     if (voiceEnabled) addVoiceForReply(ziMessage);
   } catch {
     document.querySelector(`#${typingId}`)?.remove();
-    const ziMessage = VOICE_ONLY_MODE ? addVoiceOnlyReply(chooseReply(text)) : addMessage('zi', chooseReply(text));
-    setConnectionState('API 连不上 已用本地回复');
+    const fallback = '模型没连上 我先不乱回';
+    const ziMessage = VOICE_ONLY_MODE ? addVoiceOnlyReply(fallback) : addMessage('zi', fallback);
+    setConnectionState('API 连不上 请用 localhost:4173 或检查 8005');
     if (shouldUseVoiceReply()) addVoiceForReply(ziMessage);
   } finally {
     isSending = false;
