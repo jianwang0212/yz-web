@@ -67,6 +67,14 @@ function isInsecureLanMode() {
   return window.location.protocol === 'http:' && !isLoopbackOrFileMode() && !window.isSecureContext;
 }
 
+function isIphoneMode() {
+  return /iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function isMobileVoiceMode() {
+  return isIphoneMode() || (navigator.maxTouchPoints > 0 && window.innerWidth < 900);
+}
+
 function modeLabel() {
   return isLocalMode() ? '本地 WeClone 8005' : 'thisisyz Zi style + ElevenLabs';
 }
@@ -366,9 +374,11 @@ async function sendMessage(text) {
   const token = ++actionToken;
   const resumeAfterReply = listening;
   thinking = true;
-  listening = false;
+  listening = isMobileVoiceMode() ? resumeAfterReply : false;
   clearListenTimeout();
-  stopRecognition({ ignoreEnd: true });
+  if (!isMobileVoiceMode()) {
+    stopRecognition({ ignoreEnd: true });
+  }
   setOrbState('thinking');
   setStatus(isLocalMode() ? '正在问本地 WeClone' : '正在问 Zi style clone');
   setLiveCaption(`你：${text}`);
@@ -400,7 +410,7 @@ function createRecognition() {
   const instance = new SpeechRecognition();
   instance.lang = 'zh-CN';
   instance.interimResults = true;
-  instance.continuous = false;
+  instance.continuous = isMobileVoiceMode();
 
   let finalTranscript = '';
   instance.onstart = () => {
@@ -418,11 +428,18 @@ function createRecognition() {
     setStatus('正在听你说');
   };
   instance.onresult = (event) => {
+    if (thinking || activeAudio) return;
     let interim = '';
     for (let index = event.resultIndex; index < event.results.length; index += 1) {
       const transcript = event.results[index][0].transcript.trim();
       if (event.results[index].isFinal) finalTranscript += transcript;
       else interim += transcript;
+    }
+    if (isMobileVoiceMode() && finalTranscript.trim()) {
+      const text = finalTranscript.trim();
+      finalTranscript = '';
+      sendMessage(text);
+      return;
     }
     if (interim) setLiveCaption(interim);
   };
@@ -449,6 +466,7 @@ function createRecognition() {
       ignoreRecognitionEnd = false;
       return;
     }
+    if (isMobileVoiceMode() && (thinking || activeAudio)) return;
     if (text && listening) {
       sendMessage(text);
       return;
