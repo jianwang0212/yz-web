@@ -83,6 +83,17 @@ textarea {
   margin: 0;
 }
 
+.play-reply-button {
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0 18px;
+  color: #111;
+  background: #fff;
+  font-weight: 760;
+  touch-action: manipulation;
+}
+
 .voice-header h1 {
   font-size: 1.38rem;
   font-weight: 760;
@@ -330,6 +341,12 @@ textarea {
   .reply-caption {
     min-height: 44px;
     font-size: 0.98rem;
+  }
+
+  .play-reply-button {
+    min-height: 38px;
+    padding-inline: 15px;
+    font-size: 0.9rem;
   }
 
   .live-caption {

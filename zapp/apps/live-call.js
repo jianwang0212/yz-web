@@ -24,6 +24,7 @@ const els = {
   messageInput: document.querySelector('#messageInput'),
   micButton: document.querySelector('#micButton'),
   orb: document.querySelector('#callButton'),
+  playReplyButton: document.querySelector('#playReplyButton'),
   replyCaption: document.querySelector('#replyCaption'),
   resetButton: document.querySelector('#resetButton'),
   statusText: document.querySelector('#statusText'),
@@ -35,6 +36,7 @@ let recognition = null;
 let listening = false;
 let thinking = false;
 let activeAudio = null;
+let lastAudioUrl = '';
 let messages = [];
 let listenTimeout = null;
 let actionToken = 0;
@@ -187,27 +189,45 @@ async function requestVoice(text) {
   return response.blob();
 }
 
-function playBlob(blob, token) {
+function showPlayButton(blob, token) {
+  if (token !== actionToken) return null;
+  if (lastAudioUrl) URL.revokeObjectURL(lastAudioUrl);
+  lastAudioUrl = URL.createObjectURL(blob);
+  els.playReplyButton.hidden = false;
+  els.playReplyButton.textContent = '播放银子语音';
+  return lastAudioUrl;
+}
+
+function playAudioUrl(url, token) {
+  if (!url || token !== actionToken) return;
   if (token !== actionToken) return;
   if (activeAudio) {
     activeAudio.pause();
     activeAudio.currentTime = 0;
   }
-  const audio = new Audio(URL.createObjectURL(blob));
+  const audio = new Audio(url);
   activeAudio = audio;
   setOrbState('speaking');
   setStatus('银子正在说');
+  els.playReplyButton.textContent = '正在播放';
   audio.addEventListener('ended', () => {
     if (token !== actionToken) return;
     activeAudio = null;
+    els.playReplyButton.textContent = '重播银子语音';
     setOrbState(listening ? 'listening' : 'idle');
     setStatus(listening ? '继续说，我在听' : '点麦克风开始说话');
     if (listening) restartRecognition();
   });
   audio.play().catch(() => {
-    setStatus('点屏幕播放语音');
+    els.playReplyButton.textContent = '点这里播放银子语音';
+    setStatus('点播放按钮听银子语音');
     setOrbState('idle');
   });
+}
+
+function playBlob(blob, token) {
+  const url = showPlayButton(blob, token);
+  playAudioUrl(url, token);
 }
 
 async function speakReply(text, token) {
@@ -388,7 +408,12 @@ els.resetButton.addEventListener('click', () => {
   saveMessages();
   renderTranscript();
   els.replyCaption.textContent = '';
+  els.playReplyButton.hidden = true;
   setLiveCaption(`${modeLabel()} · 对话已清空`);
+});
+
+els.playReplyButton.addEventListener('click', () => {
+  playAudioUrl(lastAudioUrl, actionToken);
 });
 
 els.chatForm.addEventListener('submit', (event) => {
