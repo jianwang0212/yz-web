@@ -7,7 +7,7 @@ const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
 const STORAGE_KEY = 'zappAiZiVoice:messages';
 const CHAT_TIMEOUT_MS = 8000;
 const TTS_TIMEOUT_MS = 90000;
-const RESTART_DELAY_MS = 180;
+const RESTART_DELAY_MS = 900;
 const SILENT_AUDIO_URL =
   'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
 
@@ -312,6 +312,9 @@ function playAudioUrl(url, token) {
   audio.onended = () => {
     if (token !== actionToken) return;
     activeAudio = null;
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
     els.playReplyButton.textContent = '重播银子语音';
     setOrbState(listening ? 'listening' : 'idle');
     setStatus(listening ? '继续说，我在听' : '点麦克风开始说话');
@@ -320,6 +323,8 @@ function playAudioUrl(url, token) {
   audio.onerror = () => {
     if (token !== actionToken) return;
     activeAudio = null;
+    audio.removeAttribute('src');
+    audio.load();
     els.playReplyButton.textContent = '点这里播放银子语音';
     setStatus('音频加载失败，点播放重试');
     setOrbState(listening ? 'listening' : 'idle');
@@ -328,6 +333,8 @@ function playAudioUrl(url, token) {
   audio.play().catch(() => {
     if (token !== actionToken) return;
     activeAudio = null;
+    audio.removeAttribute('src');
+    audio.load();
     els.playReplyButton.textContent = '点这里播放银子语音';
     setStatus('点播放按钮听银子语音');
     setOrbState(listening ? 'listening' : 'idle');

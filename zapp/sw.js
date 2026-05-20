@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v71-20260520-five-turn-listening";
+const CACHE_VERSION = "zapp-store-v72-20260520-iphone-audio-release";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
