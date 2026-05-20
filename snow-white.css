@@ -1674,16 +1674,27 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 }
 
 .cover-runway {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    display: flex;
     gap: 14px;
     margin-top: 22px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(199, 91, 149, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .cover-card {
     position: relative;
+    flex: 0 0 clamp(220px, 22vw, 320px);
+    min-width: 0;
     margin: 0;
     overflow: hidden;
+    scroll-snap-align: start;
     border: 1px solid rgba(9, 21, 38, 0.12);
     border-radius: 8px;
     background: #07101d;
@@ -1692,7 +1703,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 
 .cover-card img {
     width: 100%;
-    height: clamp(500px, 34vw, 640px);
+    height: clamp(360px, 38vw, 540px);
     display: block;
     object-fit: cover;
 }
@@ -1786,8 +1797,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
         min-height: 620px;
     }
 
-    .overview-grid,
-    .cover-runway {
+    .overview-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -1831,8 +1841,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     }
 
     .snow-meta-grid,
-    .overview-grid,
-    .cover-runway {
+    .overview-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1886,6 +1895,10 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
         bottom: 12px;
         padding: 14px;
     }
+
+    .cover-card {
+        flex-basis: min(72vw, 330px);
+    }
 }
 
 @media (max-width: 480px) {
@@ -1906,7 +1919,8 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     }
 
     .cover-card img {
-        aspect-ratio: 0.78;
+        min-height: 0;
+        height: clamp(350px, 62vw, 430px);
     }
 }
 
@@ -2231,7 +2245,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     }
 
     .cover-card img {
-        min-height: 430px;
+        min-height: 0;
     }
 }
 
