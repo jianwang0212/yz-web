@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#eef3f0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="实时通话" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/live-call.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="live-call.css?v=1" />
+    <title>实时通话</title>
+  </head>
+  <body>
+    <main class="phone-shell">
+      <section class="chat-frame" aria-label="实时聊天和语音通话">
+        <header class="chat-header">
+          <a class="back-button" href="../" aria-label="返回 Zapp Store">‹</a>
+          <div class="contact">
+            <div class="avatar" aria-hidden="true">通</div>
+            <div>
+              <h1>实时通话</h1>
+              <p id="statusText">连接中</p>
+            </div>
+          </div>
+          <button class="icon-button call-button" id="callButton" type="button" aria-label="发起语音通话">
+            <span aria-hidden="true">☎</span>
+          </button>
+        </header>
+
+        <section class="room-strip">
+          <div>
+            <span>Room</span>
+            <strong id="roomLabel">----</strong>
+          </div>
+          <button type="button" id="copyLinkButton">复制链接</button>
+        </section>
+
+        <section class="call-panel" id="callPanel" hidden>
+          <div>
+            <p id="callState">等待接通</p>
+            <strong id="callTimer">00:00</strong>
+          </div>
+          <div class="call-actions">
+            <button type="button" id="muteButton">静音</button>
+            <button type="button" class="danger-button" id="hangupButton">挂断</button>
+          </div>
+        </section>
+
+        <section class="incoming-panel" id="incomingPanel" hidden>
+          <div>
+            <p>语音通话</p>
+            <strong id="incomingName">对方</strong>
+          </div>
+          <div class="call-actions">
+            <button type="button" id="acceptButton">接听</button>
+            <button type="button" class="danger-button" id="declineButton">拒绝</button>
+          </div>
+        </section>
+
+        <section class="chat-log" id="chatLog" aria-live="polite"></section>
+
+        <form class="chat-composer" id="chatForm">
+          <textarea id="messageInput" rows="1" maxlength="1200" placeholder="发消息" required></textarea>
+          <button class="send-button" type="submit">发送</button>
+        </form>
+      </section>
+      <audio id="remoteAudio" autoplay playsinline></audio>
+    </main>
+
+    <script type="module" src="live-call.js?v=1"></script>
+  </body>
+</html>

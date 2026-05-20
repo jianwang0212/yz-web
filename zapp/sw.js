@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v57-20260520-zi-style-fallback-visible";
+const CACHE_VERSION = "zapp-store-v58-20260520-live-call";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -16,6 +16,10 @@ const STATIC_ASSETS = [
   "icons/apps/moments-memory.svg",
   "icons/apps/zi-health.svg",
   "icons/apps/ziyin-voiceover.svg",
+  "icons/apps/live-call.svg",
+  "apps/live-call.html",
+  "apps/live-call.css",
+  "apps/live-call.js",
   "icons/apps/zi-style-reply.svg",
   "apps/zi-style-reply.html",
   "apps/zi-style-reply.css",
@@ -78,6 +82,10 @@ self.addEventListener("fetch", (event) => {
 
   if (request.method !== "GET" || url.origin !== location.origin) return;
 
+  if (url.pathname.startsWith("/api/")) {
+    return;
+  }
+
   if (url.pathname.endsWith("/apps.json")) {
     event.respondWith(networkFirst(request));
     return;
@@ -88,6 +96,8 @@ self.addEventListener("fetch", (event) => {
       ? "apps/moments-memory.html"
       : url.pathname.endsWith("/apps/friend-crm.html")
       ? "apps/friend-crm.html"
+      : url.pathname.endsWith("/apps/live-call.html")
+      ? "apps/live-call.html"
       : url.pathname.endsWith("/apps/zi-style-reply.html")
       ? "apps/zi-style-reply.html"
       : url.pathname.endsWith("/apps/ziyin-voiceover.html")
