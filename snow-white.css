@@ -1538,17 +1538,29 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 }
 
 .visual-feature-grid {
-    display: grid;
-    grid-template-columns: 1.18fr 0.82fr;
+    display: flex;
     gap: 16px;
     margin-top: 34px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(199, 91, 149, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .visual-feature-card {
     position: relative;
-    min-height: 330px;
+    flex: 0 0 min(86vw, 860px);
+    aspect-ratio: 3 / 2;
+    min-width: 0;
+    min-height: 0;
     margin: 0;
     overflow: hidden;
+    scroll-snap-align: start;
     border: 1px solid rgba(9, 21, 38, 0.12);
     border-radius: 8px;
     background: #07101d;
@@ -1556,8 +1568,7 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
 }
 
 .visual-feature-large {
-    grid-row: span 2;
-    min-height: 680px;
+    min-height: 0;
 }
 
 .visual-feature-card img {
@@ -1781,12 +1792,12 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     }
 
     .visual-feature-grid {
-        grid-template-columns: 1fr;
+        gap: 14px;
     }
 
+    .visual-feature-card,
     .visual-feature-large {
-        grid-row: auto;
-        min-height: 520px;
+        min-height: 0;
     }
 }
 
@@ -1859,11 +1870,21 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
         font-size: 2.25rem;
     }
 
-    .visual-feature-card,
-    .visual-feature-large,
     .poster-showcase,
     .poster-showcase img {
         min-height: 390px;
+    }
+
+    .visual-feature-card {
+        flex-basis: min(88vw, 640px);
+        aspect-ratio: 4 / 3;
+    }
+
+    .visual-feature-card figcaption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 14px;
     }
 }
 
