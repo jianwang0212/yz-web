@@ -4,10 +4,13 @@ const LOCAL_TTS_URL = 'http://localhost:8005/v1/audio/speech';
 const LOCAL_TTS_FALLBACK_URL = 'http://127.0.0.1:8005/v1/audio/speech';
 const PRODUCTION_CHAT_PATH = '/api/zi-style-reply/chat';
 const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
+const PRODUCTION_TRANSCRIBE_PATH = '/api/live-call/transcribe';
 const STORAGE_KEY = 'zappAiZiVoice:messages';
 const CHAT_TIMEOUT_MS = 8000;
+const TRANSCRIBE_TIMEOUT_MS = 30000;
 const TTS_TIMEOUT_MS = 90000;
 const RESTART_DELAY_MS = 900;
+const RECORDER_MAX_MS = 5500;
 const SILENT_AUDIO_URL =
   'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
 
@@ -49,6 +52,10 @@ let messages = [];
 let listenTimeout = null;
 let recognitionRestartTimer = null;
 let ignoreRecognitionEnd = false;
+let recorderStream = null;
+let recorder = null;
+let recorderTimer = null;
+let recorderStarting = false;
 let actionToken = 0;
 
 function isLocalMode() {
@@ -117,6 +124,11 @@ function clearListenTimeout() {
 function clearRecognitionRestartTimer() {
   clearTimeout(recognitionRestartTimer);
   recognitionRestartTimer = null;
+}
+
+function clearRecorderTimer() {
+  clearTimeout(recorderTimer);
+  recorderTimer = null;
 }
 
 function productionUrl(path) {
@@ -230,6 +242,35 @@ async function requestAiReply(text) {
   if (!response.ok) throw new Error(`chat ${response.status}`);
   const payload = await response.json();
   return payload?.choices?.[0]?.message?.content?.trim() || '';
+}
+
+function preferredAudioMimeType() {
+  const types = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/mpeg'];
+  return types.find((type) => window.MediaRecorder?.isTypeSupported?.(type)) || '';
+}
+
+async function blobToBase64(blob) {
+  const dataUrl = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ''));
+    reader.onerror = () => reject(reader.error || new Error('audio read failed'));
+    reader.readAsDataURL(blob);
+  });
+  return dataUrl.includes(',') ? dataUrl.split(',').pop() : dataUrl;
+}
+
+async function requestTranscription(blob) {
+  const response = await postJson(
+    productionUrl(PRODUCTION_TRANSCRIBE_PATH),
+    {
+      audioBase64: await blobToBase64(blob),
+      mimeType: blob.type || 'audio/webm'
+    },
+    TRANSCRIBE_TIMEOUT_MS
+  );
+  if (!response.ok) throw new Error(`transcribe ${response.status}`);
+  const payload = await response.json();
+  return payload?.text?.trim() || '';
 }
 
 async function requestVoice(text) {
@@ -369,6 +410,71 @@ async function speakReply(text, token) {
   }
 }
 
+async function startRecorderMode() {
+  if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+    startRecognition();
+    return;
+  }
+  if (recorderStarting || recorder?.state === 'recording') return;
+  recorderStarting = true;
+  try {
+    recorderStream =
+      recorderStream ||
+      (await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        }
+      }));
+    if (!listening || thinking || activeAudio) return;
+
+    const chunks = [];
+    const mimeType = preferredAudioMimeType();
+    recorder = new MediaRecorder(recorderStream, mimeType ? { mimeType } : undefined);
+    recorder.ondataavailable = (event) => {
+      if (event.data?.size) chunks.push(event.data);
+    };
+    recorder.onstop = async () => {
+      clearRecorderTimer();
+      if (!listening || thinking || activeAudio || !chunks.length) {
+        if (listening && !thinking && !activeAudio) restartRecognition();
+        return;
+      }
+      const token = actionToken;
+      const blob = new Blob(chunks, { type: recorder.mimeType || mimeType || 'audio/webm' });
+      setStatus('正在转写你说的话');
+      try {
+        const text = await requestTranscription(blob);
+        if (token !== actionToken || !listening) return;
+        if (text) {
+          sendMessage(text);
+          return;
+        }
+        setStatus('没听清，继续说');
+      } catch {
+        if (token !== actionToken || !listening) return;
+        setStatus('手机转写未配置，切回浏览器识别');
+        startRecognition();
+        return;
+      }
+      if (listening && !thinking && !activeAudio) restartRecognition();
+    };
+    recorder.start();
+    setOrbState('listening');
+    setStatus('正在听你说');
+    setLiveCaption(`${modeLabel()} · 手机录音转写`);
+    recorderTimer = setTimeout(() => {
+      if (recorder?.state === 'recording') recorder.stop();
+    }, RECORDER_MAX_MS);
+  } catch {
+    setStatus('手机录音启动失败，切回浏览器识别');
+    startRecognition();
+  } finally {
+    recorderStarting = false;
+  }
+}
+
 async function sendMessage(text) {
   if (thinking || !text.trim()) return;
   const token = ++actionToken;
@@ -481,6 +587,10 @@ function createRecognition() {
 }
 
 function startRecognition() {
+  if (isMobileVoiceMode() && !isLocalMode()) {
+    startRecorderMode();
+    return;
+  }
   clearRecognitionRestartTimer();
   if (isInsecureLanMode()) {
     listening = false;
@@ -513,6 +623,12 @@ function startRecognition() {
 }
 
 function stopRecognition({ ignoreEnd = false } = {}) {
+  clearRecorderTimer();
+  if (recorder?.state === 'recording') {
+    try {
+      recorder.stop();
+    } catch {}
+  }
   if (ignoreEnd) ignoreRecognitionEnd = true;
   try {
     recognition?.stop();
@@ -551,6 +667,8 @@ function endVoiceMode() {
     replyAudio.removeAttribute('src');
     replyAudio.load();
   }
+  recorderStream?.getTracks().forEach((track) => track.stop());
+  recorderStream = null;
   setOrbState('idle');
   setStatus('点麦克风开始说话');
   setLiveCaption(`${modeLabel()} · 已结束`);

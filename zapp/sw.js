@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v73-20260520-iphone-keep-recognition";
+const CACHE_VERSION = "zapp-store-v74-20260520-mobile-recorder-stt";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
