@@ -5,6 +5,8 @@ const LOCAL_TTS_FALLBACK_URL = 'http://127.0.0.1:8005/v1/audio/speech';
 const PRODUCTION_CHAT_PATH = '/api/zi-style-reply/chat';
 const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
 const STORAGE_KEY = 'zappAiZiVoice:messages';
+const CHAT_TIMEOUT_MS = 8000;
+const TTS_TIMEOUT_MS = 90000;
 
 const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输出银子会说的一句话或两句话。
 
@@ -47,6 +49,10 @@ function isLocalMode() {
     window.location.protocol === 'file:' ||
     /^192\.168\.|^10\.|^172\.(1[6-9]|2\d|3[0-1])\./.test(window.location.hostname)
   );
+}
+
+function isLoopbackOrFileMode() {
+  return window.location.protocol === 'file:' || ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
 }
 
 function modeLabel() {
@@ -128,22 +134,32 @@ function fallbackReply(text) {
   return '我先想一下 你继续说';
 }
 
-async function postJson(url, body) {
-  return fetch(url, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(body)
-  });
+async function postJson(url, body, timeoutMs = CHAT_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function requestLocalChat(body) {
+  if (!isLoopbackOrFileMode()) {
+    return postJson(localApiUrl('/v1/chat/completions'), body, CHAT_TIMEOUT_MS);
+  }
   try {
-    return await postJson(localApiUrl('/v1/chat/completions'), body);
+    return await postJson(localApiUrl('/v1/chat/completions'), body, CHAT_TIMEOUT_MS);
   } catch {
     try {
-      return await postJson(LOCAL_CHAT_URL, body);
+      return await postJson(LOCAL_CHAT_URL, body, CHAT_TIMEOUT_MS);
     } catch {
-      return postJson(LOCAL_CHAT_FALLBACK_URL, body);
+      return postJson(LOCAL_CHAT_FALLBACK_URL, body, CHAT_TIMEOUT_MS);
     }
   }
 }
@@ -156,7 +172,9 @@ async function requestAiReply(text) {
     top_p: 0.7,
     max_tokens: 120
   };
-  const response = isLocalMode() ? await requestLocalChat(body) : await postJson(productionUrl(PRODUCTION_CHAT_PATH), body);
+  const response = isLocalMode()
+    ? await requestLocalChat(body)
+    : await postJson(productionUrl(PRODUCTION_CHAT_PATH), body, CHAT_TIMEOUT_MS);
 
   if (!response.ok) throw new Error(`chat ${response.status}`);
   const payload = await response.json();
@@ -165,7 +183,7 @@ async function requestAiReply(text) {
 
 async function requestVoice(text) {
   if (!isLocalMode()) {
-    const response = await postJson(productionUrl(PRODUCTION_TTS_PATH), { text });
+    const response = await postJson(productionUrl(PRODUCTION_TTS_PATH), { text }, TTS_TIMEOUT_MS);
     if (!response.ok) throw new Error(`tts ${response.status}`);
     return response.blob();
   }
@@ -176,13 +194,18 @@ async function requestVoice(text) {
     input: text
   };
   let response;
+  if (!isLoopbackOrFileMode()) {
+    response = await postJson(localApiUrl('/v1/audio/speech'), body, TTS_TIMEOUT_MS);
+    if (!response.ok) throw new Error(`local tts ${response.status}`);
+    return response.blob();
+  }
   try {
-    response = await postJson(localApiUrl('/v1/audio/speech'), body);
+    response = await postJson(localApiUrl('/v1/audio/speech'), body, TTS_TIMEOUT_MS);
   } catch {
     try {
-      response = await postJson(LOCAL_TTS_URL, body);
+      response = await postJson(LOCAL_TTS_URL, body, TTS_TIMEOUT_MS);
     } catch {
-      response = await postJson(LOCAL_TTS_FALLBACK_URL, body);
+      response = await postJson(LOCAL_TTS_FALLBACK_URL, body, TTS_TIMEOUT_MS);
     }
   }
   if (!response.ok) throw new Error(`local tts ${response.status}`);
@@ -265,7 +288,7 @@ async function sendMessage(text) {
   } catch {
     if (token !== actionToken) return;
     reply = fallbackReply(text);
-    setLiveCaption(isLocalMode() ? '8005 没连上，用了本地 fallback' : '线上 clone 暂时没连上，用了 fallback');
+    setLiveCaption(isLocalMode() ? '8005 超时，用了本地 fallback' : '线上 clone 超时，用了 fallback');
   }
 
   if (token !== actionToken) return;
@@ -384,7 +407,7 @@ function endVoiceMode() {
   }
   setOrbState('idle');
   setStatus('点麦克风开始说话');
-    setLiveCaption(`${modeLabel()} · 已结束`);
+  setLiveCaption(`${modeLabel()} · 已结束`);
 }
 
 function autosizeInput() {

@@ -1,7 +1,7 @@
 import { endOptions, requireMethod, sendJson } from '../_lib/http.js';
 
 const DEFAULT_MODEL_API_URL = 'http://127.0.0.1:8005/v1/chat/completions';
-const REQUEST_TIMEOUT_MS = 120000;
+const REQUEST_TIMEOUT_MS = 5000;
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_CHARS = 4000;
 
