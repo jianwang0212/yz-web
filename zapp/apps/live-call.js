@@ -11,6 +11,10 @@ const TRANSCRIBE_TIMEOUT_MS = 30000;
 const TTS_TIMEOUT_MS = 90000;
 const RESTART_DELAY_MS = 900;
 const RECORDER_MAX_MS = 5500;
+const RECORDER_MIN_MS = 700;
+const RECORDER_SILENCE_STOP_MS = 650;
+const RECORDER_VAD_INTERVAL_MS = 80;
+const RECORDER_SPEECH_RMS = 0.026;
 const SILENT_AUDIO_URL =
   'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
 
@@ -55,6 +59,10 @@ let ignoreRecognitionEnd = false;
 let recorderStream = null;
 let recorder = null;
 let recorderTimer = null;
+let recorderVadTimer = null;
+let recorderAudioContext = null;
+let recorderAnalyser = null;
+let recorderAudioBuffer = null;
 let recorderStarting = false;
 let actionToken = 0;
 
@@ -129,6 +137,11 @@ function clearRecognitionRestartTimer() {
 function clearRecorderTimer() {
   clearTimeout(recorderTimer);
   recorderTimer = null;
+}
+
+function clearRecorderVadTimer() {
+  clearInterval(recorderVadTimer);
+  recorderVadTimer = null;
 }
 
 function productionUrl(path) {
@@ -247,6 +260,67 @@ async function requestAiReply(text) {
 function preferredAudioMimeType() {
   const types = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/mpeg'];
   return types.find((type) => window.MediaRecorder?.isTypeSupported?.(type)) || '';
+}
+
+async function ensureRecorderAnalyser(stream) {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return null;
+  recorderAudioContext = recorderAudioContext || new AudioContextClass();
+  if (recorderAudioContext.state === 'suspended') {
+    await recorderAudioContext.resume();
+  }
+  if (!recorderAnalyser) {
+    const source = recorderAudioContext.createMediaStreamSource(stream);
+    recorderAnalyser = recorderAudioContext.createAnalyser();
+    recorderAnalyser.fftSize = 2048;
+    source.connect(recorderAnalyser);
+    recorderAudioBuffer = new Uint8Array(recorderAnalyser.fftSize);
+  }
+  return recorderAnalyser;
+}
+
+function currentMicRms() {
+  if (!recorderAnalyser || !recorderAudioBuffer) return 0;
+  recorderAnalyser.getByteTimeDomainData(recorderAudioBuffer);
+  let sum = 0;
+  for (const value of recorderAudioBuffer) {
+    const centered = (value - 128) / 128;
+    sum += centered * centered;
+  }
+  return Math.sqrt(sum / recorderAudioBuffer.length);
+}
+
+function stopActiveRecorder() {
+  if (recorder?.state === 'recording') {
+    try {
+      recorder.stop();
+    } catch {}
+  }
+}
+
+function startRecorderVadStopper(startedAt) {
+  clearRecorderVadTimer();
+  let heardSpeech = false;
+  let lastSpeechAt = 0;
+  recorderVadTimer = setInterval(() => {
+    if (recorder?.state !== 'recording') {
+      clearRecorderVadTimer();
+      return;
+    }
+    const now = Date.now();
+    const rms = currentMicRms();
+    if (rms >= RECORDER_SPEECH_RMS) {
+      heardSpeech = true;
+      lastSpeechAt = now;
+    }
+    if (
+      heardSpeech &&
+      now - startedAt >= RECORDER_MIN_MS &&
+      now - lastSpeechAt >= RECORDER_SILENCE_STOP_MS
+    ) {
+      stopActiveRecorder();
+    }
+  }, RECORDER_VAD_INTERVAL_MS);
 }
 
 async function blobToBase64(blob) {
@@ -437,6 +511,7 @@ async function startRecorderMode() {
     };
     recorder.onstop = async () => {
       clearRecorderTimer();
+      clearRecorderVadTimer();
       if (!listening || thinking || activeAudio || !chunks.length) {
         if (listening && !thinking && !activeAudio) restartRecognition();
         return;
@@ -460,12 +535,15 @@ async function startRecorderMode() {
       }
       if (listening && !thinking && !activeAudio) restartRecognition();
     };
+    await ensureRecorderAnalyser(recorderStream);
+    const recorderStartedAt = Date.now();
     recorder.start();
     setOrbState('listening');
     setStatus('正在听你说');
     setLiveCaption(`${modeLabel()} · 手机录音转写`);
+    startRecorderVadStopper(recorderStartedAt);
     recorderTimer = setTimeout(() => {
-      if (recorder?.state === 'recording') recorder.stop();
+      stopActiveRecorder();
     }, RECORDER_MAX_MS);
   } catch {
     setStatus('手机录音启动失败，切回浏览器识别');
@@ -624,11 +702,8 @@ function startRecognition() {
 
 function stopRecognition({ ignoreEnd = false } = {}) {
   clearRecorderTimer();
-  if (recorder?.state === 'recording') {
-    try {
-      recorder.stop();
-    } catch {}
-  }
+  clearRecorderVadTimer();
+  stopActiveRecorder();
   if (ignoreEnd) ignoreRecognitionEnd = true;
   try {
     recognition?.stop();
@@ -669,6 +744,10 @@ function endVoiceMode() {
   }
   recorderStream?.getTracks().forEach((track) => track.stop());
   recorderStream = null;
+  recorderAnalyser = null;
+  recorderAudioBuffer = null;
+  recorderAudioContext?.close?.();
+  recorderAudioContext = null;
   setOrbState('idle');
   setStatus('点麦克风开始说话');
   setLiveCaption(`${modeLabel()} · 已结束`);
