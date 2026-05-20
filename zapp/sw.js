@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v40-20260519-store-faceid";
+const CACHE_VERSION = "zapp-store-v51-20260520-thisisyz-voice-reply";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -16,6 +16,10 @@ const STATIC_ASSETS = [
   "icons/apps/moments-memory.svg",
   "icons/apps/zi-health.svg",
   "icons/apps/ziyin-voiceover.svg",
+  "icons/apps/zi-style-reply.svg",
+  "apps/zi-style-reply.html",
+  "apps/zi-style-reply.css",
+  "apps/zi-style-reply.js",
   "apps/ziyin-voiceover.html",
   "apps/ziyin-voiceover.css",
   "apps/ziyin-voiceover.js",
@@ -84,6 +88,8 @@ self.addEventListener("fetch", (event) => {
       ? "apps/moments-memory.html"
       : url.pathname.endsWith("/apps/friend-crm.html")
       ? "apps/friend-crm.html"
+      : url.pathname.endsWith("/apps/zi-style-reply.html")
+      ? "apps/zi-style-reply.html"
       : url.pathname.endsWith("/apps/ziyin-voiceover.html")
       ? "apps/ziyin-voiceover.html"
       : url.pathname.endsWith("/apps/zi-health.html")

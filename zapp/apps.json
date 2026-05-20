@@ -2,10 +2,28 @@
   "store": {
     "name": "Zapp Store",
     "owner": "Zi's private app shelf",
-    "build": 27,
-    "updated": "2026-05-19"
+    "build": 31,
+    "updated": "2026-05-20"
   },
   "apps": [
+    {
+      "id": "zi-style-reply",
+      "name": "和银子聊天",
+      "subtitle": "Zi style chat",
+      "description": "A private WeChat-like chat prototype where messages to 银子 get ZiYin PVC voice-message replies without showing drafted reply text.",
+      "category": "微信",
+      "version": "0.1.0",
+      "build": 11,
+      "updated": "2026-05-20",
+      "status": "Prototype",
+      "scope": "Private prompt",
+      "featured": true,
+      "updateAvailable": false,
+      "icon": "icons/apps/zi-style-reply.svg",
+      "accent": "#2f6f63",
+      "accentStrong": "#1f4f48",
+      "url": "apps/zi-style-reply.html?v=11"
+    },
     {
       "id": "ziyin-voiceover",
       "name": "ZiYin Voiceover",
@@ -64,11 +82,11 @@
       "id": "friend-crm",
       "name": "人脉 CRM",
       "subtitle": "Encrypted contacts",
-      "description": "A private encrypted WeChat friend CRM that opens from the single Zapp Store Face ID session.",
+      "description": "A private encrypted WeChat friend CRM for structured profile lookup, cross-platform IDs, MBTI, locations, occupations, and applied WeChat remarks.",
       "category": "微信",
       "version": "0.1.0",
-      "build": 2,
-      "updated": "2026-05-19",
+      "build": 1,
+      "updated": "2026-05-15",
       "status": "Ready",
       "scope": "Encrypted JSON",
       "featured": true,
@@ -76,7 +94,7 @@
       "icon": "icons/apps/moments-memory.svg",
       "accent": "#2563eb",
       "accentStrong": "#1743a8",
-      "url": "apps/friend-crm.html?v=2"
+      "url": "apps/friend-crm.html?v=1"
     },
     {
       "id": "qhrb-net-worth",
@@ -85,7 +103,7 @@
       "description": "三次参赛的期货日报实盘大赛排行榜记录和累计净值曲线。",
       "category": "财务",
       "version": "0.1.0",
-      "build": 3,
+      "build": 2,
       "updated": "2026-05-19",
       "status": "Ready",
       "scope": "Local JSON",
@@ -94,7 +112,7 @@
       "icon": "icons/apps/finance.svg",
       "accent": "#d71920",
       "accentStrong": "#970e14",
-      "url": "apps/qhrb-net-worth.html?v=2026051905"
+      "url": "apps/qhrb-net-worth.html?v=20260519"
     },
     {
       "id": "gt",
@@ -118,10 +136,10 @@
       "id": "ly-fund",
       "name": "LY Fund",
       "subtitle": "Yuque fund curves",
-      "description": "A private encrypted LY Fund dashboard that opens from the single Zapp Store Face ID session.",
+      "description": "A private encrypted LY Fund dashboard built from the Yuque 总表-第三期 exports, with balance and profit curves, account comparison, cleaned row inspection, and Face ID unlock after setup.",
       "category": "财务",
       "version": "0.1.0",
-      "build": 4,
+      "build": 3,
       "updated": "2026-05-19",
       "status": "Ready",
       "scope": "Encrypted JSON",
@@ -130,17 +148,17 @@
       "icon": "icons/apps/finance.svg",
       "accent": "#245f87",
       "accentStrong": "#153a55",
-      "url": "apps/ly-fund.html?v=4"
+      "url": "apps/ly-fund.html"
     },
     {
       "id": "boa-finance",
       "name": "BOA Finance",
       "subtitle": "Bills & services",
-      "description": "A private encrypted 2023-2026 BOA spending, services, and transaction query dashboard that opens from the single Zapp Store Face ID session.",
+      "description": "A private encrypted 2023-2026 BOA spending, services, and transaction query dashboard.",
       "category": "财务",
       "version": "0.3.0",
-      "build": 5,
-      "updated": "2026-05-19",
+      "build": 4,
+      "updated": "2026-05-12",
       "status": "Ready",
       "scope": "Encrypted web",
       "featured": false,
@@ -148,7 +166,7 @@
       "icon": "icons/apps/finance.svg",
       "accent": "#2f6f63",
       "accentStrong": "#1f4f48",
-      "url": "apps/boa-finance.html?v=5"
+      "url": "apps/boa-finance.html"
     },
     {
       "id": "thisisyz",

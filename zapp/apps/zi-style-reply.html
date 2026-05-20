@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f2f2f2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="和银子聊天" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/zi-style-reply.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="zi-style-reply.css?v=5" />
+    <title>和银子聊天</title>
+  </head>
+  <body>
+    <main class="phone-shell">
+      <section class="chat-frame" aria-label="和银子聊天">
+        <header class="chat-header">
+          <a class="back-button" href="../" aria-label="返回 Zapp Store">‹</a>
+          <div class="contact">
+            <div class="avatar" aria-hidden="true">银</div>
+            <div>
+              <h1>银子</h1>
+              <p id="connectionState">Enter 发送 / Shift+Enter 换行</p>
+            </div>
+          </div>
+          <button class="icon-button" id="toolsButton" type="button" aria-label="打开工具">•••</button>
+        </header>
+
+        <section class="chat-log" id="chatLog" aria-live="polite"></section>
+
+        <form class="chat-composer" id="chatForm">
+          <button class="side-button" id="sampleButton" type="button">例</button>
+          <textarea id="messageInput" rows="1" maxlength="700" placeholder="跟银子说点什么" required></textarea>
+          <button class="send-button" type="submit">发送</button>
+        </form>
+      </section>
+
+      <aside class="drawer" id="toolDrawer" aria-label="Zi style tools" hidden>
+        <div class="drawer-card">
+          <div class="drawer-head">
+            <div>
+              <p>Local prototype</p>
+              <h2>风格控制</h2>
+            </div>
+            <button class="icon-button" id="closeToolsButton" type="button" aria-label="关闭">×</button>
+          </div>
+
+          <div class="select-grid">
+            <label>
+              <span>银子的意图</span>
+              <select id="intentSelect">
+                <option value="neutral">自然回复</option>
+                <option value="yes">答应 / 可以</option>
+                <option value="no">拒绝 / 暂时不行</option>
+                <option value="wait">等我 / 晚点</option>
+                <option value="ask">反问 / 确认</option>
+                <option value="thanks">感谢 / 收到</option>
+              </select>
+            </label>
+            <label>
+              <span>语气</span>
+              <select id="toneSelect">
+                <option value="plain">平常</option>
+                <option value="soft">软一点</option>
+                <option value="direct">更直接</option>
+                <option value="work">工作流</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="drawer-actions">
+            <button type="button" class="secondary-button" id="copyLastButton">复制银子上一句</button>
+            <button type="button" class="secondary-button" id="copyPromptButton">复制模型请求</button>
+            <button type="button" class="secondary-button" id="clearButton">清空聊天</button>
+          </div>
+
+          <pre id="promptPreview"></pre>
+          <p class="status-line" id="statusLine"></p>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="zi-style-reply.js?v=11"></script>
+  </body>
+</html>
