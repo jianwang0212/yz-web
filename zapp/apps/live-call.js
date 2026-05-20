@@ -8,6 +8,8 @@ const STORAGE_KEY = 'zappAiZiVoice:messages';
 const CHAT_TIMEOUT_MS = 8000;
 const TTS_TIMEOUT_MS = 90000;
 const RESTART_DELAY_MS = 180;
+const SILENT_AUDIO_URL =
+  'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
 
 const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输出银子会说的一句话或两句话。
 
@@ -40,6 +42,8 @@ let recognition = null;
 let listening = false;
 let thinking = false;
 let activeAudio = null;
+let replyAudio = null;
+let audioUnlocked = false;
 let lastAudioUrl = '';
 let messages = [];
 let listenTimeout = null;
@@ -248,6 +252,36 @@ function showPlayButton(blob, token) {
   return lastAudioUrl;
 }
 
+function getReplyAudio() {
+  if (replyAudio) return replyAudio;
+  replyAudio = new Audio();
+  replyAudio.preload = 'auto';
+  replyAudio.playsInline = true;
+  replyAudio.setAttribute('playsinline', '');
+  return replyAudio;
+}
+
+function unlockAudioPlayback() {
+  if (audioUnlocked) return;
+  const audio = getReplyAudio();
+  audio.pause();
+  audio.src = SILENT_AUDIO_URL;
+  audio.currentTime = 0;
+  audio.muted = false;
+  const playPromise = audio.play();
+  if (playPromise?.then) {
+    playPromise
+      .then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        audioUnlocked = true;
+      })
+      .catch(() => {});
+  } else {
+    audioUnlocked = true;
+  }
+}
+
 function playAudioUrl(url, token) {
   if (!url || token !== actionToken) return;
   if (token !== actionToken) return;
@@ -255,24 +289,37 @@ function playAudioUrl(url, token) {
     activeAudio.pause();
     activeAudio.currentTime = 0;
   }
-  const audio = new Audio(url);
+  const audio = getReplyAudio();
+  audio.muted = false;
+  audio.src = url;
+  audio.currentTime = 0;
   activeAudio = audio;
   setOrbState('speaking');
   setStatus('银子正在说');
   els.playReplyButton.textContent = '正在播放';
-  audio.addEventListener('ended', () => {
+  audio.onended = () => {
     if (token !== actionToken) return;
     activeAudio = null;
     els.playReplyButton.textContent = '重播银子语音';
     setOrbState(listening ? 'listening' : 'idle');
     setStatus(listening ? '继续说，我在听' : '点麦克风开始说话');
     if (listening) restartRecognition();
-  });
+  };
+  audio.onerror = () => {
+    if (token !== actionToken) return;
+    activeAudio = null;
+    els.playReplyButton.textContent = '点这里播放银子语音';
+    setStatus('音频加载失败，点播放重试');
+    setOrbState(listening ? 'listening' : 'idle');
+    if (listening) restartRecognition();
+  };
   audio.play().catch(() => {
+    if (token !== actionToken) return;
     activeAudio = null;
     els.playReplyButton.textContent = '点这里播放银子语音';
     setStatus('点播放按钮听银子语音');
-    setOrbState('idle');
+    setOrbState(listening ? 'listening' : 'idle');
+    if (listening) restartRecognition();
   });
 }
 
@@ -438,6 +485,7 @@ function startVoiceMode() {
   if (thinking) return;
   actionToken += 1;
   listening = true;
+  unlockAudioPlayback();
   setLiveCaption(`${modeLabel()} · 正在听`);
   startRecognition();
 }
@@ -453,6 +501,11 @@ function endVoiceMode() {
     activeAudio.pause();
     activeAudio.currentTime = 0;
     activeAudio = null;
+  }
+  if (replyAudio) {
+    replyAudio.pause();
+    replyAudio.removeAttribute('src');
+    replyAudio.load();
   }
   setOrbState('idle');
   setStatus('点麦克风开始说话');
@@ -485,6 +538,7 @@ els.resetButton.addEventListener('click', () => {
 });
 
 els.playReplyButton.addEventListener('click', () => {
+  audioUnlocked = true;
   playAudioUrl(lastAudioUrl, actionToken);
 });
 
