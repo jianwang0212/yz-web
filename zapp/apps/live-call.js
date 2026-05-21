@@ -5,8 +5,9 @@ const LOCAL_TTS_FALLBACK_URL = 'http://127.0.0.1:8005/v1/audio/speech';
 const PRODUCTION_CHAT_PATH = '/api/zi-style-reply/chat';
 const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
 const PRODUCTION_TRANSCRIBE_PATH = '/api/live-call/transcribe';
+const MEMORY_URL = 'zi-style-reply-memory.json?v=1';
 const STORAGE_KEY = 'zappAiZiVoice:messages';
-const CHAT_TIMEOUT_MS = 8000;
+const CHAT_TIMEOUT_MS = 45000;
 const TRANSCRIBE_TIMEOUT_MS = 30000;
 const TTS_TIMEOUT_MS = 90000;
 const RESTART_DELAY_MS = 900;
@@ -18,13 +19,16 @@ const RECORDER_SPEECH_RMS = 0.026;
 const SILENT_AUDIO_URL =
   'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
 
-const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输出银子会说的一句话或两句话。
+const STYLE_SYSTEM_PROMPT = `你正在代写银子的微信语音回复。只输出银子会说的一条语音回复。
 
 风格规则：
-- 短句，直接，少客套，像微信语音里自然说话。
+- 先回答对方真实问题，再模仿 Zi 的语气；不要为了“像”而空泛。
+- 语音场景优先 1-3 个短句，允许有内容，但不要长篇。
+- 每次回复必须包含至少一个具体判断、动作、理由、问题或下一步。
 - 可以中英混合：codex, private, doc, doublecheck, Boston time。
 - 常用“可以 / 等我 / 我先看一下 / 我觉得 / 我感觉 / 要不然 / 先...再...”。
-- 为了像实时语音，优先 8 到 24 个字，最多一句。
+- 中文可以用空格切分思路，不追求完整标点。
+- 如果对方说“太空/太傻/没内容/没信息量”，是在说回复信息密度低，不是在说速度或性能。
 - 不要说自己是 AI、模型、虚拟人、机器人。
 - 如果被问“你是谁”，只说“我是银子这边的语音版本”。
 - 输出只能是回复内容，不要解释。`;
@@ -65,6 +69,8 @@ let recorderAnalyser = null;
 let recorderAudioBuffer = null;
 let recorderStarting = false;
 let actionToken = 0;
+let styleMemory = null;
+let styleMemoryPromise = null;
 
 function isLocalMode() {
   return (
@@ -180,14 +186,127 @@ function renderTranscript() {
   els.transcriptPanel.scrollTop = els.transcriptPanel.scrollHeight;
 }
 
-function apiMessages(latestText) {
-  const history = messages.slice(-4).map((message) => ({
-    role: message.role === 'me' ? 'user' : 'assistant',
-    content: message.text
-  }));
+function transcriptForMemory() {
+  return messages
+    .slice(-8)
+    .map((message) => `${message.role === 'me' ? '我' : '银子'}：${message.text}`)
+    .join('\n');
+}
+
+function contextHints(text) {
+  return {
+    hasQuestion: /[?？]|能不能|可不可以|要不要|什么时候|几点|咋样/.test(text),
+    hasLater: /晚点|等|迟|明天|周|时间|几点|下午|晚上|早上|到/.test(text),
+    hasWork: /项目|文档|doc|codex|测试|网站|工具|数据|private|发版|发布|app|prompt/i.test(text),
+    hasThanks: /谢谢|感谢|辛苦|麻烦/.test(text),
+    hasCheck: /看一下|检查|查一下|确认|doublecheck/i.test(text)
+  };
+}
+
+function tokenizeForMemory(text) {
+  const lowered = String(text || '').toLowerCase();
+  const tokens = new Set(lowered.match(/[a-z0-9][a-z0-9_+-]{1,24}/g) || []);
+  const chinese = lowered.match(/[\u4e00-\u9fff]/g) || [];
+  chinese.forEach((char) => tokens.add(char));
+  for (let index = 0; index < chinese.length - 1; index += 1) {
+    tokens.add(`${chinese[index]}${chinese[index + 1]}`);
+  }
+  return tokens;
+}
+
+function inputCategories(text) {
+  const hints = contextHints(text);
+  const categories = [];
+  if (hints.hasWork) categories.push('work');
+  if (hints.hasLater) categories.push('time');
+  if (hints.hasQuestion) categories.push('question');
+  if (hints.hasThanks) categories.push('care');
+  if (/喜欢|想你|见面|出来|吃饭|喝|朋友|关系|聊天|哈哈/.test(text)) categories.push('social');
+  if (/可以|不行|要不要|怎么办|怎么弄|怎么搞|为什么|我觉得|我感觉/.test(text)) categories.push('decision');
+  return categories.length ? categories : ['general'];
+}
+
+async function loadStyleMemory() {
+  if (styleMemory) return styleMemory;
+  if (!styleMemoryPromise) {
+    styleMemoryPromise = fetch(MEMORY_URL)
+      .then((response) => {
+        if (!response.ok) throw new Error(`memory ${response.status}`);
+        return response.json();
+      })
+      .then((payload) => {
+        styleMemory = Array.isArray(payload.examples) ? payload.examples : [];
+        return styleMemory;
+      })
+      .catch(() => {
+        styleMemory = [];
+        return styleMemory;
+      });
+  }
+  return styleMemoryPromise;
+}
+
+async function selectMemoryExamples(latestText) {
+  const examples = await loadStyleMemory();
+  if (!examples.length) return [];
+
+  const queryTokens = tokenizeForMemory(`${transcriptForMemory()}\n${latestText}`);
+  const categories = inputCategories(latestText);
+  const scored = examples
+    .map((example) => {
+      const tokenHits = (example.tokens || []).reduce((count, token) => count + (queryTokens.has(token) ? 1 : 0), 0);
+      const categoryHits = (example.categories || []).reduce(
+        (count, category) => count + (categories.includes(category) ? 1 : 0),
+        0
+      );
+      const length = String(example.text || '').length;
+      const lengthScore = length >= 10 && length <= 120 ? 2 : 0;
+      return {
+        example,
+        score: tokenHits * 2 + categoryHits * 5 + lengthScore
+      };
+    })
+    .filter((item) => item.score > 3)
+    .sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, 6).map((item) => item.example);
+}
+
+function formatMemoryExamples(examples) {
+  if (!examples.length) return '暂无';
+  return examples.map((example, index) => `${index + 1}. ${example.text}`).join('\n');
+}
+
+function clarifyLatestText(text) {
+  if (/太空|空泛|没内容|没信息量|太傻|傻逼|智障/.test(text)) {
+    return `${text}\n（这里是在说回复内容太空泛、信息密度低，不是在说速度、性能或加载问题。）`;
+  }
+  return text;
+}
+
+function apiMessages(latestText, examples = []) {
+  const history = [];
+  for (const message of messages.slice(-8)) {
+    const role = message.role === 'me' ? 'user' : 'assistant';
+    if (!history.length && role !== 'user') continue;
+    if (history.at(-1)?.role === role) {
+      history[history.length - 1].content = `${history.at(-1).content}\n${message.text}`;
+    } else {
+      history.push({ role, content: message.text });
+    }
+  }
   if (history.at(-1)?.role === 'user') history.pop();
-  history.push({ role: 'user', content: latestText });
-  return [{ role: 'system', content: STYLE_SYSTEM_PROMPT }, ...history];
+  history.push({ role: 'user', content: clarifyLatestText(latestText) });
+  return [
+    {
+      role: 'system',
+      content: `${STYLE_SYSTEM_PROMPT}
+
+类似历史 Zi 回复，只参考语气和内容密度，不要照抄：
+${formatMemoryExamples(examples)}`
+    },
+    ...history
+  ];
 }
 
 function fallbackReply(text) {
@@ -241,12 +360,13 @@ async function requestAiReply(text) {
   const instantReply = quickReply(text);
   if (instantReply) return instantReply;
 
+  const examples = await selectMemoryExamples(text);
   const body = {
     model: 'gpt-3.5-turbo',
-    messages: apiMessages(text),
-    temperature: 0.55,
-    top_p: 0.7,
-    max_tokens: 56
+    messages: apiMessages(text, examples),
+    temperature: 0.72,
+    top_p: 0.88,
+    max_tokens: 220
   };
   const response = isLocalMode()
     ? await requestLocalChat(body)
