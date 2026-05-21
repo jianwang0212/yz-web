@@ -99,20 +99,23 @@ test('home resume section appears before long-term records', () => {
   expectIncludes(i18nJs, "'homeResume.link': 'View Full Resume'");
 });
 
-test('home page features Snow White before resume records', () => {
+test('home page features music archives before resume records', () => {
   const snowIndex = indexHtml.indexOf('<section id="home-snow" class="home-snow-feature"');
   const resumeIndex = indexHtml.indexOf('<section id="home-resume" class="home-resume">');
   assert.ok(snowIndex > -1, 'Expected Snow White feature section');
-  assert.ok(resumeIndex > snowIndex, 'Expected Snow White feature before resume section');
+  assert.ok(resumeIndex > snowIndex, 'Expected music archive feature before resume section');
 
   expectIncludes(indexHtml, 'Snow White / 白雪公主');
+  expectIncludes(indexHtml, 'Mirror / 镜子');
   expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
   expectIncludes(indexHtml, '<article class="home-snow-card">');
   expectIncludes(indexHtml, 'href="/snow-white" class="home-snow-primary"');
+  expectIncludes(indexHtml, '<article class="home-snow-card home-mirror-card">');
+  expectIncludes(indexHtml, 'href="/mirror" class="home-snow-primary"');
   assert.equal(
     indexHtml.includes('class="home-snow-secondary"'),
     false,
-    'Home Snow White share card should expose only the Open Demo action'
+    'Home music share cards should expose only primary open actions'
   );
   assert.equal(
     indexHtml.includes('class="home-snow-preview"'),

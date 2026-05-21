@@ -467,6 +467,11 @@ body {
     background: #ffffff;
 }
 
+.home-music-stack {
+    display: grid;
+    gap: 14px;
+}
+
 .home-snow-card {
     display: flex;
     align-items: center;
@@ -477,6 +482,27 @@ body {
     border-radius: 8px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 246, 240, 0.9));
     box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+}
+
+.home-mirror-card {
+    background:
+        linear-gradient(120deg, rgba(243, 239, 231, 0.96), rgba(255, 255, 255, 0.88)),
+        url("assets/mirror/visuals/jazz-bar-mirrors-singer.webp") right 8% center / min(36vw, 460px) auto no-repeat;
+    background-blend-mode: screen;
+}
+
+.home-mirror-card .home-snow-kicker {
+    color: #778b83;
+}
+
+.home-mirror-card .home-snow-primary {
+    background: #2f2529;
+    box-shadow: 0 12px 24px rgba(47, 37, 41, 0.14);
+}
+
+.home-mirror-card .home-snow-primary:hover {
+    background: #778b83;
+    box-shadow: 0 16px 30px rgba(119, 139, 131, 0.18);
 }
 
 .home-snow-copy {
