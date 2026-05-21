@@ -1,4 +1,4 @@
-const STYLE_RULES = `你是一个写作风格转换器。你的任务不是冒充真人，也不要自动发送消息；只为 Zi 起草“像 Zi 微信说话风格”的候选回复。
+const STYLE_RULES = `你是一个微信回复起草器。你的任务不是冒充真人，也不要自动发送消息；只为 Zi 起草“像 Zi 微信说话风格”的候选回复。
 
 风格统计：
 - 样本数：163382
@@ -7,13 +7,15 @@ const STYLE_RULES = `你是一个写作风格转换器。你的任务不是冒�
 - 标点/混合习惯：问号 15254，感叹号 8090，中英混合 41077，中文空格切分 33654
 
 Zi 微信风格规则：
-1. 短句，直接，少客套；通常 1-3 个短分句。
-2. 先说动作、状态、约束，少写解释。
-3. 中文里可以自然夹 English 工作流词：codex, private, doc, conf, doublecheck, Boston time。
-4. 常用“我觉得 / 我感觉 / 可以 / 不然 / 要不然 / 等我 / 我现在 / 先...再...”。
-5. 中文可以用空格切分思路，不追求完整标点。
-6. 可以轻微俏皮，但不要客服腔、公众号腔、过度礼貌或长篇解释。
-7. 不要声称自己就是 Zi；输出只是“候选回复草稿”，必须由 Zi 人工确认后再发送。
+1. 先回答对方真实问题，再模仿 Zi 的语气；不要为了“像”而空泛。
+2. 如果问题需要内容，允许 2-5 个短句；不要被压成一句“可以/好的/我看一下”。
+3. 每次回复必须包含至少一个具体判断、动作、理由、问题或下一步。
+4. 先说动作、状态、约束，解释可以短，但要有信息量。
+5. 中文里可以自然夹 English 工作流词：codex, private, doc, conf, doublecheck, Boston time。
+6. 常用“我觉得 / 我感觉 / 可以 / 不然 / 要不然 / 等我 / 我现在 / 先...再...”。
+7. 中文可以用空格切分思路，不追求完整标点。
+8. 可以轻微俏皮，但不要客服腔、公众号腔、过度礼貌或长篇解释。
+9. 不要声称自己就是 Zi；输出只是“候选回复草稿”，必须由 Zi 人工确认后再发送。
 
 输出格式：
 只输出银子这一条回复。不要解释。`;
@@ -28,6 +30,7 @@ const API_URL = 'http://localhost:8005/v1/chat/completions';
 const API_URL_FALLBACK = 'http://127.0.0.1:8005/v1/chat/completions';
 const TTS_URL = 'http://localhost:8005/v1/audio/speech';
 const TTS_URL_FALLBACK = 'http://127.0.0.1:8005/v1/audio/speech';
+const MEMORY_URL = 'zi-style-reply-memory.json?v=1';
 const PRODUCTION_CHAT_PATH = '/api/zi-style-reply/chat';
 const PRODUCTION_TTS_PATH = '/api/ziyin-voiceover/generate';
 const VOICE_ONLY_MODE = false;
@@ -54,6 +57,9 @@ let messages = [];
 let lastZiReply = '';
 let isSending = false;
 let activeAudio = null;
+let styleMemory = null;
+let styleMemoryPromise = null;
+let lastMatchedExamples = [];
 
 function intentLabel(value) {
   return {
@@ -82,6 +88,88 @@ function transcript() {
     .join('\n');
 }
 
+function tokenizeForMemory(text) {
+  const lowered = String(text || '').toLowerCase();
+  const tokens = new Set(lowered.match(/[a-z0-9][a-z0-9_+-]{1,24}/g) || []);
+  const chinese = lowered.match(/[\u4e00-\u9fff]/g) || [];
+  chinese.forEach((char) => tokens.add(char));
+  for (let index = 0; index < chinese.length - 1; index += 1) {
+    tokens.add(`${chinese[index]}${chinese[index + 1]}`);
+  }
+  return tokens;
+}
+
+function inputCategories(text) {
+  const hints = contextHints(text);
+  const categories = [];
+  if (hints.hasWork) categories.push('work');
+  if (hints.hasLater) categories.push('time');
+  if (hints.hasQuestion) categories.push('question');
+  if (hints.hasThanks) categories.push('care');
+  if (/喜欢|想你|见面|出来|吃饭|喝|朋友|关系|聊天|哈哈/.test(text)) categories.push('social');
+  if (/可以|不行|要不要|怎么办|怎么弄|怎么搞|为什么|我觉得|我感觉/.test(text)) categories.push('decision');
+  return categories.length ? categories : ['general'];
+}
+
+async function loadStyleMemory() {
+  if (styleMemory) return styleMemory;
+  if (!styleMemoryPromise) {
+    styleMemoryPromise = fetch(MEMORY_URL)
+      .then((response) => {
+        if (!response.ok) throw new Error(`memory ${response.status}`);
+        return response.json();
+      })
+      .then((payload) => {
+        styleMemory = Array.isArray(payload.examples) ? payload.examples : [];
+        return styleMemory;
+      })
+      .catch(() => {
+        styleMemory = [];
+        return styleMemory;
+      });
+  }
+  return styleMemoryPromise;
+}
+
+async function selectMemoryExamples(latestText) {
+  const examples = await loadStyleMemory();
+  if (!examples.length) return [];
+
+  const queryText = `${transcript()}\n${latestText}`;
+  const queryTokens = tokenizeForMemory(queryText);
+  const categories = inputCategories(latestText);
+  const scored = examples
+    .map((example) => {
+      const tokenHits = (example.tokens || []).reduce((count, token) => count + (queryTokens.has(token) ? 1 : 0), 0);
+      const categoryHits = (example.categories || []).reduce(
+        (count, category) => count + (categories.includes(category) ? 1 : 0),
+        0
+      );
+      const length = String(example.text || '').length;
+      const lengthScore = length >= 10 && length <= 120 ? 2 : 0;
+      return {
+        example,
+        score: tokenHits * 2 + categoryHits * 5 + lengthScore
+      };
+    })
+    .filter((item) => item.score > 3)
+    .sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, 7).map((item) => item.example);
+}
+
+function formatMemoryExamples(examples) {
+  if (!examples.length) return '暂无';
+  return examples.map((example, index) => `${index + 1}. ${example.text}`).join('\n');
+}
+
+function clarifyLatestText(text) {
+  if (/太空|空泛|没内容|没信息量|太傻|傻逼|智障/.test(text)) {
+    return `${text}\n（这里是在说回复内容太空泛、信息密度低，不是在说速度、性能或加载问题。）`;
+  }
+  return text;
+}
+
 function buildPrompt(latestText = '') {
   const history = transcript() || '暂无历史';
   const latest = latestText || messages.filter((message) => message.role === 'me').at(-1)?.text || '帮我回一句';
@@ -93,13 +181,16 @@ ${history}
 对方刚说：
 ${latest}
 
+相似历史 Zi 回复：
+${formatMemoryExamples(lastMatchedExamples)}
+
 银子的表达意图：${intentLabel(els.intent.value)}
 语气：${toneLabel(els.tone.value)}
 
-请按上面的 Zi 微信风格输出银子在聊天框里会发的一条回复。`;
+请按上面的 Zi 微信风格输出银子在聊天框里会发的一条回复。先有内容，再像 Zi。`;
 }
 
-function apiMessages(latestText) {
+function apiMessages(latestText, examples = []) {
   const history = [];
   for (const message of messages.slice(-8)) {
     const role = message.role === 'me' ? 'user' : 'assistant';
@@ -111,12 +202,14 @@ function apiMessages(latestText) {
     }
   }
   if (history.at(-1)?.role === 'user') history.pop();
-  history.push({ role: 'user', content: latestText });
+  history.push({ role: 'user', content: clarifyLatestText(latestText) });
   return [
     {
       role: 'system',
-      content:
-        '你正在代写银子的微信回复草稿。只输出银子会发的一条消息。短句，直接，少客套，可以中英混合。禁止说自己是 AI、模型、虚拟存在、分身、机器人。被问喜欢谁这类暧昧问题时，回“这个问题有点危险”。'
+      content: `你正在代写银子的微信回复草稿。只输出银子会发的一条消息。先回答对方真实问题，再模仿 Zi 的微信语气。不要只回“可以/好的/我看一下”这类空话。回复必须包含具体判断、动作、理由、问题或下一步；上下文很少时，就给一个具体追问或具体下一步。需要内容时允许 2-5 个短句，可以中英混合，可以有 Zi 的空格节奏。如果对方说“太空/太傻/没内容/没信息量”，是在说回复信息密度低，不是在说速度或性能。不要写“提高用户体验/优化性能/你看如何”这种泛泛助手腔，要像真人微信里给具体判断。禁止说自己是 AI、模型、虚拟存在、分身、机器人。被问喜欢谁这类暧昧问题时，不要直接表白，轻轻躲开。
+
+类似历史 Zi 回复，只参考语气和内容密度，不要照抄：
+${formatMemoryExamples(examples)}`
     },
     ...history
   ];
@@ -293,12 +386,14 @@ function chooseReply(text) {
 }
 
 async function requestApiReply(text) {
+  lastMatchedExamples = await selectMemoryExamples(text);
+  updatePromptPreview(text);
   const body = JSON.stringify({
     model: 'gpt-3.5-turbo',
-    messages: apiMessages(text),
-    temperature: 0.55,
-    top_p: 0.7,
-    max_tokens: 160
+    messages: apiMessages(text, lastMatchedExamples),
+    temperature: 0.72,
+    top_p: 0.88,
+    max_tokens: 360
   });
   if (!useLocalApi()) {
     const response = await fetch(productionChatUrl(), {

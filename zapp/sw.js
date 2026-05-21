@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v76-20260520-zi-style-iphone-fit";
+const CACHE_VERSION = "zapp-store-v77-20260521-zi-style-retrieval";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -24,6 +24,7 @@ const STATIC_ASSETS = [
   "apps/zi-style-reply.html",
   "apps/zi-style-reply.css",
   "apps/zi-style-reply.js",
+  "apps/zi-style-reply-memory.json",
   "apps/ziyin-voiceover.html",
   "apps/ziyin-voiceover.css",
   "apps/ziyin-voiceover.js",
