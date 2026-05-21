@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
+    "deploy:zapp": "node scripts/deploy-zapp.mjs",
     "routes:sync": "node scripts/generate-vercel-config.mjs",
     "lint": "node scripts/check-js-syntax.mjs",
     "test": "node --test tests/*.test.js",
