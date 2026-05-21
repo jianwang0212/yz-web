@@ -1,0 +1,545 @@
+.mirror-page {
+    --snow-ink: #2f2529;
+    --snow-muted: #756f68;
+    --snow-paper: #f3efe7;
+    --snow-cream: #e4ded3;
+    --snow-red: #a98c81;
+    --snow-green: #778b83;
+    --snow-gold: #b5a27c;
+    --snow-line: rgba(47, 37, 41, 0.13);
+    --snow-shadow: 0 24px 82px rgba(72, 65, 58, 0.14);
+    background: var(--snow-paper);
+    overflow-x: hidden;
+}
+
+.mirror-page .mirror-nav {
+    background: rgba(243, 239, 231, 0.92);
+}
+
+.mirror-page .snow-kicker {
+    color: var(--snow-green);
+}
+
+.mirror-hero {
+    background:
+        linear-gradient(120deg, rgba(243, 239, 231, 0.97) 0%, rgba(243, 239, 231, 0.88) 42%, rgba(243, 239, 231, 0.48) 100%),
+        var(--snow-paper);
+}
+
+.mirror-hero::before {
+    inset: -24px;
+    opacity: 0.44;
+    filter: blur(5px) saturate(0.78) sepia(0.08);
+    transform: scale(1.04);
+    background: url("assets/mirror/visuals/jazz-bar-mirrors-singer.webp") center / cover no-repeat;
+}
+
+.mirror-hero::after {
+    opacity: 0.2;
+    background:
+        linear-gradient(rgba(45, 119, 111, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(169, 84, 60, 0.08) 1px, transparent 1px);
+}
+
+.mirror-hero h1 span {
+    color: var(--snow-green);
+}
+
+.mirror-page .snow-subtitle {
+    overflow-wrap: anywhere;
+}
+
+.mirror-page .snow-section {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+    scroll-margin-top: 24px;
+}
+
+.mirror-page .snow-hero-cta a {
+    color: #f8f5ee;
+    background: linear-gradient(135deg, #778b83, #a98c81);
+    box-shadow: 0 18px 54px rgba(119, 139, 131, 0.2);
+}
+
+.mirror-page .snow-hero-cta a + a {
+    color: var(--snow-ink);
+    border-color: rgba(119, 139, 131, 0.18);
+    background: rgba(243, 239, 231, 0.78);
+    box-shadow: none;
+}
+
+.mirror-meta-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mirror-meta-grid span {
+    white-space: nowrap;
+    font-size: 0.68rem;
+}
+
+#mirror-visualizer {
+    width: 100%;
+    height: 128px;
+    display: block;
+    margin: 10px 0 12px;
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(119, 139, 131, 0.08), rgba(169, 140, 129, 0.05)),
+        repeating-linear-gradient(90deg, rgba(29, 24, 20, 0.06) 0, rgba(29, 24, 20, 0.06) 1px, transparent 1px, transparent 32px);
+}
+
+.mirror-page .snow-audio-panel {
+    background:
+        linear-gradient(135deg, rgba(243, 239, 231, 0.88), rgba(229, 223, 213, 0.76)),
+        url("assets/mirror/visuals/mirror-ai-cover.webp") center / cover;
+    background-blend-mode: screen;
+}
+
+.mirror-page .snow-audio-panel::before {
+    background: radial-gradient(circle at 12% 18%, rgba(119, 139, 131, 0.12), transparent 18rem);
+}
+
+.mirror-hero-art {
+    min-height: 620px;
+}
+
+.mirror-hero-art::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 58%;
+    height: 74%;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 8px;
+    transform: rotate(3deg);
+    background:
+        linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.34) 46%, transparent 56%);
+    animation: mirror-glint 7.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.mirror-animated-still img {
+    transform: scale(1.04);
+    animation: mirror-drift 16s ease-in-out infinite;
+}
+
+.mirror-video-card video,
+.mirror-video-card > video,
+.mirror-video-card figure video,
+.season-feature-media video,
+.lyrics-visual video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.01);
+    filter: saturate(0.78) contrast(1.02) sepia(0.05);
+}
+
+.mirror-video-card:hover video {
+    transform: scale(1.05);
+}
+
+.mirror-video-card video {
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.mirror-poster-showcase {
+    background: #2f3433;
+}
+
+.mirror-poster-showcase > div {
+    background: rgba(243, 239, 231, 0.9);
+}
+
+.mirror-motion-grid .visual-feature-card::before,
+.mirror-poster-showcase::before {
+    background: linear-gradient(180deg, rgba(119, 139, 131, 0.06), rgba(169, 140, 129, 0.08));
+}
+
+.mirror-page .snow-section h2 {
+    max-width: 980px;
+    color: var(--snow-ink);
+    font-size: clamp(2.15rem, 5vw, 4.7rem);
+}
+
+.mirror-lyrics .lyrics-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.lyric-imagery-grid {
+    display: flex;
+    gap: 14px;
+    margin-top: 26px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(119, 139, 131, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 clamp(18px, 4vw, 44px), #000 calc(100% - clamp(18px, 4vw, 44px)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 clamp(18px, 4vw, 44px), #000 calc(100% - clamp(18px, 4vw, 44px)), transparent 100%);
+}
+
+.lyric-image-card {
+    flex: 0 0 clamp(260px, 30vw, 380px);
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    border: 1px solid var(--snow-line);
+    border-radius: 8px;
+    background: rgba(243, 239, 231, 0.84);
+    box-shadow: var(--snow-shadow);
+}
+
+.lyric-image-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    display: block;
+    object-fit: cover;
+    filter: saturate(0.78) contrast(1.02) sepia(0.04);
+}
+
+.lyric-image-card figcaption {
+    padding: 16px;
+}
+
+.lyric-image-card span {
+    color: var(--snow-green);
+    font-size: 0.72rem;
+    font-weight: 850;
+    text-transform: uppercase;
+}
+
+.lyric-image-card strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--snow-ink);
+    font-size: 1.08rem;
+    line-height: 1.36;
+}
+
+.lyric-image-card p {
+    margin-top: 10px;
+    color: var(--snow-muted);
+    line-height: 1.58;
+}
+
+.mirror-lyrics .lyrics-grid article {
+    min-height: 0;
+}
+
+.mirror-lyrics .lyrics-grid article p strong {
+    color: var(--snow-green);
+    font-size: 0.86rem;
+    letter-spacing: 0;
+}
+
+.mirror-lyrics .lyrics-visual {
+    min-height: 100%;
+}
+
+.mirror-lyrics .lyrics-visual video {
+    min-height: 420px;
+}
+
+.mirror-story {
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.mirror-story .story-copy {
+    max-width: 860px;
+}
+
+.participant-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0 14px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(119, 139, 131, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 clamp(18px, 4vw, 44px), #000 calc(100% - clamp(18px, 4vw, 44px)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 clamp(18px, 4vw, 44px), #000 calc(100% - clamp(18px, 4vw, 44px)), transparent 100%);
+}
+
+.participant-card {
+    flex: 0 0 clamp(228px, 25vw, 310px);
+    min-width: 0;
+    border: 1px solid var(--snow-line);
+    border-radius: 8px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: rgba(243, 239, 231, 0.84);
+    box-shadow: var(--snow-shadow);
+}
+
+.participant-media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: rgba(83, 96, 91, 0.18);
+}
+
+.participant-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(112deg, transparent 0%, rgba(255, 255, 255, 0.22) 45%, transparent 58%),
+        linear-gradient(180deg, transparent 58%, rgba(47, 37, 41, 0.24) 100%);
+    mix-blend-mode: screen;
+    opacity: 0.42;
+    transform: translateX(-24%);
+    animation: mirror-portrait-light 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.participant-card video,
+.participant-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(0.74) contrast(1.02) sepia(0.04);
+    transform: scale(1.01);
+    transition: transform 0.55s ease, filter 0.55s ease;
+}
+
+.participant-card:hover video,
+.participant-card:hover img {
+    filter: saturate(0.84) contrast(1.05) sepia(0.03);
+    transform: scale(1.035);
+}
+
+.participant-card span,
+.participant-card strong,
+.participant-card p {
+    display: block;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+
+.participant-card span {
+    margin-top: 16px;
+    color: var(--snow-green);
+    font-size: 0.72rem;
+    font-weight: 850;
+    text-transform: uppercase;
+}
+
+.participant-card strong {
+    margin-top: 6px;
+    color: var(--snow-ink);
+    font-size: 1.1rem;
+}
+
+.participant-card p {
+    margin-top: 10px;
+    margin-bottom: 18px;
+    color: var(--snow-muted);
+    line-height: 1.55;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.mirror-videos .season-feature,
+.mirror-videos .episode-card {
+    flex: 0 0 clamp(248px, 30vw, 360px);
+    cursor: default;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.mirror-videos .season-layout {
+    display: flex;
+    gap: 14px;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0 14px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(119, 139, 131, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 clamp(18px, 4vw, 44px), #000 calc(100% - clamp(18px, 4vw, 44px)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 clamp(18px, 4vw, 44px), #000 calc(100% - clamp(18px, 4vw, 44px)), transparent 100%);
+}
+
+.mirror-videos .season-feature {
+    grid-template-rows: 160px auto;
+}
+
+.mirror-videos .season-feature-media,
+.mirror-videos .episode-card figure {
+    min-height: 0;
+    height: 160px;
+}
+
+.mirror-videos .episode-grid {
+    display: contents;
+}
+
+.mirror-videos .episode-card {
+    grid-template-rows: 160px auto auto minmax(0, 1fr);
+}
+
+.mirror-videos .season-feature-copy {
+    padding: 18px;
+}
+
+.mirror-videos .season-feature-copy small,
+.mirror-videos .episode-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.mirror-videos .season-feature:hover,
+.mirror-videos .episode-card:hover {
+    box-shadow: 0 30px 84px rgba(48, 34, 24, 0.2);
+}
+
+.mirror-download-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.mirror-footer {
+    background: #2f2529;
+}
+
+@media (max-width: 980px) {
+    .mirror-hero-shell {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .mirror-hero {
+        background:
+            linear-gradient(180deg, rgba(243, 239, 231, 0.98), rgba(243, 239, 231, 0.9)),
+            var(--snow-paper);
+    }
+
+    .mirror-hero::before {
+        inset: -18px;
+        opacity: 0.42;
+        filter: blur(4px) saturate(0.76) sepia(0.08);
+        transform: scale(1.05);
+        background: url("assets/mirror/visuals/jazz-bar-mirrors-singer.webp") center top / cover no-repeat;
+    }
+
+    .mirror-lyrics .lyrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mirror-lyrics .lyrics-visual video {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mirror-meta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mirror-page .snow-audio-header {
+        display: grid;
+    }
+
+    .mirror-page .snow-audio-actions {
+        justify-content: flex-start;
+    }
+
+    .mirror-page .snow-subtitle {
+        max-width: 300px;
+    }
+
+    .mirror-hero-art {
+        min-height: 390px;
+    }
+}
+
+@media (max-width: 560px) {
+    .mirror-page .snow-audio-actions a {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+    }
+
+    .lyric-image-card {
+        flex-basis: min(78vw, 320px);
+    }
+}
+
+@media (max-width: 480px) {
+    #mirror-visualizer {
+        height: 96px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mirror-animated-still img,
+    .mirror-hero-art::before {
+        animation: none;
+    }
+
+    .mirror-video-card:hover video {
+        transform: none;
+    }
+}
+
+@keyframes mirror-drift {
+    0%, 100% {
+        transform: scale(1.04) translate3d(0, 0, 0);
+    }
+    50% {
+        transform: scale(1.09) translate3d(-1.8%, -1.4%, 0);
+    }
+}
+
+@keyframes mirror-glint {
+    0%, 36% {
+        opacity: 0;
+        transform: translateX(-8%) rotate(3deg);
+    }
+    54% {
+        opacity: 0.85;
+    }
+    72%, 100% {
+        opacity: 0;
+        transform: translateX(10%) rotate(3deg);
+    }
+}
+
+@keyframes mirror-portrait-light {
+    0%, 100% {
+        opacity: 0.26;
+        transform: translateX(-36%);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(24%);
+    }
+}

@@ -24,6 +24,7 @@ const projectScripts = [
 
 const standalonePages = [
   ['snow-white', 'snow-white.html'],
+  ['mirror', 'mirror.html'],
   ['berklee', 'berklee.html'],
   ['works', 'works.html'],
   ['projects', 'projects.html'],
