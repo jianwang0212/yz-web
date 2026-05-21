@@ -58,7 +58,7 @@ test('credential cards have expected content and explicit link semantics', () =>
   const credentialCards = indexHtml.match(/class="metric-row(?: hero-identity)? credential-card credential-card-link"/g) || [];
   assert.equal(credentialCards.length, 5);
 
-  for (const href of ['https://www.a47g.com/', '/projects/dockingtech', 'https://www.citadelsecurities.com/', 'https://www.ox.ac.uk/', '/berklee']) {
+  for (const href of ['https://www.a47g.com/', '/projects/dockingtech', 'https://www.citadelsecurities.com/', '/images/credentials/oxford-mphil.jpg', '/berklee']) {
     expectIncludes(indexHtml, `href="${href}"`);
   }
 
