@@ -82,8 +82,11 @@ test('credential cards have expected content and explicit link semantics', () =>
 
   expectIncludes(indexHtml, '前 Citadel Securities (London)');
   expectIncludes(indexHtml, '牛津大学');
+  expectIncludes(indexHtml, '计量经济学研究生');
   expectIncludes(i18nJs, "'hero.experience.left': '前 Citadel Securities (London)'");
   expectIncludes(i18nJs, "'hero.oxford.left': '牛津大学'");
+  expectIncludes(i18nJs, "'hero.oxford.right': '计量经济学研究生'");
+  expectIncludes(i18nJs, "'hero.oxford.right': 'Econometrics Graduate Student'");
 });
 
 test('home resume section appears before long-term records', () => {
