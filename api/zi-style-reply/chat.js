@@ -1,7 +1,7 @@
 import { endOptions, requireMethod, sendJson } from '../_lib/http.js';
 
 const DEFAULT_MODEL_API_URL = 'http://127.0.0.1:8005/v1/chat/completions';
-const REQUEST_TIMEOUT_MS = 5000;
+const REQUEST_TIMEOUT_MS = 45000;
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_CHARS = 4000;
 
@@ -91,7 +91,7 @@ export default async function handler(req, res) {
     messages: body.messages,
     temperature: Number.isFinite(body.temperature) ? body.temperature : 0.55,
     top_p: Number.isFinite(body.top_p) ? body.top_p : 0.7,
-    max_tokens: Number.isFinite(body.max_tokens) ? body.max_tokens : 64
+    max_tokens: Number.isFinite(body.max_tokens) ? body.max_tokens : 360
   };
 
   try {
