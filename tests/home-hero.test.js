@@ -80,6 +80,9 @@ test('credential cards have expected content and explicit link semantics', () =>
     expectIncludes(indexHtml, `data-i18n="${key}"`);
   }
 
+  expectIncludes(indexHtml, 'A47G私募基金');
+  expectIncludes(i18nJs, "'hero.identity.left': 'A47G私募基金'");
+  expectIncludes(i18nJs, "'hero.identity.left': 'A47G Private Fund'");
   expectIncludes(indexHtml, '前 Citadel Securities (London)');
   expectIncludes(indexHtml, '美股量化交易员');
   expectIncludes(indexHtml, '牛津大学');
