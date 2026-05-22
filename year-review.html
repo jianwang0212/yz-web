@@ -75,7 +75,7 @@
                 <div class="review-card overview-card">
                     <h3>
                         <span data-i18n="yearReview.overview.title">总体概览</span>
-                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" data-i18n="yearReview.overview.hoursNote" style="font-size: 0.7rem; font-weight: 400; color: var(--text-secondary); margin-left: 0.5rem; cursor: pointer; text-decoration: underline; vertical-align: middle;">
+                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" role="button" tabindex="0" aria-label="打开小时数记录说明" title="打开小时数记录说明" data-i18n="yearReview.overview.hoursNote">
                             💡 为什么要记小时数？
                         </span>
                     </h3>
@@ -85,7 +85,7 @@
                                 <span data-i18n="yearReview.music.label">音乐</span>
                                 <span class="distribution-hours">2,570 <span data-i18n="common.hours">小时</span></span>
                             </div>
-                            <div class="distribution-bar-container clickable-distribution-bar" data-modal-target="music-calendar-modal">
+                            <div class="distribution-bar-container clickable-distribution-bar" data-modal-target="music-calendar-modal" role="button" tabindex="0" aria-label="打开音乐练习日历" title="打开音乐练习日历">
                                 <div class="distribution-bar" style="width: 44%; background: linear-gradient(135deg, #6366f1, #8b5cf6); cursor: pointer;">
                                     <span>44%</span>
                                 </div>
@@ -145,27 +145,27 @@
                         <span class="category-percentage" data-i18n="yearReview.music.percentage">44% 时间投入</span>
                     </div>
                     <div class="achievements-grid">
-                        <div class="achievement-item clickable-achievement" data-modal-target="gpa-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="gpa-modal" role="button" tabindex="0" aria-label="打开 GPA 详情" title="打开 GPA 详情" style="cursor: pointer;">
                             <div class="achievement-number">GPA 4.0</div>
                             <div class="achievement-desc" data-i18n="yearReview.music.gpa.desc">伯克利音乐学院 音乐制作和爵士作曲专业第二年顺利读过</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="mixing-works-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="mixing-works-modal" role="button" tabindex="0" aria-label="打开混音作品详情" title="打开混音作品详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.mixing.number">28</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.mixing.desc">混音作品<br>SoundGym百万分</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="recording-sessions-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="recording-sessions-modal" role="button" tabindex="0" aria-label="打开录音 session 详情" title="打开录音 session 详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.recording.number">37</span> <span data-i18n="common.items">个</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.recording.desc">录音 session</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="original-compositions-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="original-compositions-modal" role="button" tabindex="0" aria-label="打开原创作曲详情" title="打开原创作曲详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.original.number">16</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.original.desc">原创作曲</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="arrangement-works-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="arrangement-works-modal" role="button" tabindex="0" aria-label="打开编曲作品详情" title="打开编曲作品详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.arrangement.number">9</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.arrangement.desc">编曲作品</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="piano-performances-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="piano-performances-modal" role="button" tabindex="0" aria-label="打开钢琴演奏详情" title="打开钢琴演奏详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.piano.number">23</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.piano.desc">钢琴演奏</div>
                         </div>
@@ -183,7 +183,7 @@
                             <h4 data-i18n="yearReview.work.ly.name">LY 私募基金</h4>
                             <p data-i18n="yearReview.work.ly.desc">年化收益 15% · AUM 翻倍</p>
                         </div>
-                        <div class="work-item clickable-work-item" data-modal-target="docking-tech-modal" style="cursor: pointer;">
+                        <div class="work-item clickable-work-item" data-modal-target="docking-tech-modal" role="button" tabindex="0" aria-label="打开入坞科技详情" title="打开入坞科技详情" style="cursor: pointer;">
                             <h4 data-i18n="yearReview.work.docking.name">入坞科技</h4>
                             <p data-i18n="yearReview.work.docking.desc">炼刀 AI · 年营业额到千万</p>
                         </div>
@@ -594,13 +594,13 @@
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <h3 data-i18n="yearReview.timeline.title">📅 月度大事件</h3>
                         <div class="timeline-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <button class="clickable-timeline-link" data-modal-target="daily-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="daily-plan-modal">
                                 📝 查看每日计划
                             </button>
-                            <button class="clickable-timeline-link" data-modal-target="monthly-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="monthly-plan-modal">
                                 📋 查看月度计划
                             </button>
-                            <button class="clickable-timeline-link" data-modal-target="weekly-review-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="weekly-review-modal">
                                 📊 查看每周回顾记录
                             </button>
                         </div>
@@ -1430,21 +1430,34 @@
                 }
             });
 
+            function openModalFromTrigger(trigger) {
+                const modalTarget = trigger.getAttribute('data-modal-target');
+                const modal = document.getElementById(modalTarget);
+                if (modal) {
+                    if (modalTarget === 'docking-tech-modal') {
+                        resetDockingTechFinancialGate();
+                    }
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            }
+
             // Get all clickable distribution bars, achievement items, work items, and timeline links
             const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item, .clickable-timeline-link');
 
             clickableElements.forEach(element => {
                 element.addEventListener('click', function() {
-                    const modalTarget = this.getAttribute('data-modal-target');
-                    const modal = document.getElementById(modalTarget);
-                    if (modal) {
-                        if (modalTarget === 'docking-tech-modal') {
-                            resetDockingTechFinancialGate();
-                        }
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                    }
+                    openModalFromTrigger(this);
                 });
+
+                if (element.tagName !== 'BUTTON') {
+                    element.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openModalFromTrigger(this);
+                        }
+                    });
+                }
             });
 
             // Close modal functionality

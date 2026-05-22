@@ -1551,16 +1551,22 @@ section {
     font-weight: 600;
     color: #ffffff;
     background: var(--primary-color);
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.26);
     transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 16px 34px rgba(99, 102, 241, 0.32);
+}
+
+.submit-btn:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 4px;
 }
 
 .submit-btn:disabled {
@@ -2482,18 +2488,61 @@ section {
 }
 
 .clickable-timeline-link {
-    background: none;
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: 8px;
     color: var(--primary-color);
-    text-decoration: underline;
+    font-family: inherit;
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 0.55rem 0.85rem;
+    text-decoration: none;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    vertical-align: middle;
+}
+
+.clickable-timeline-link::after {
+    content: "↗";
+    display: inline-grid;
+    place-items: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.14);
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1;
 }
 
 .clickable-timeline-link:hover {
-    opacity: 0.7;
+    background: rgba(99, 102, 241, 0.16);
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.18);
+    transform: translateY(-1px);
+}
+
+.clickable-timeline-link:active,
+.clickable-distribution-bar:active,
+.clickable-achievement:active,
+.clickable-work-item:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.clickable-timeline-link:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 3px;
+}
+
+.hours-note-link {
+    margin-left: 0.75rem;
+    font-size: 0.78rem;
+    transform: translateY(-0.12rem);
 }
 
 .category-percentage {
@@ -2544,19 +2593,66 @@ section {
     border-radius: 8px;
     height: 60px;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .clickable-distribution-bar {
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    border: 2px solid rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12), 0 12px 26px rgba(99, 102, 241, 0.16);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .clickable-distribution-bar:hover {
-    opacity: 0.85;
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(79, 70, 229, 0.9);
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.16), 0 16px 34px rgba(99, 102, 241, 0.22);
+    transform: translateY(-2px);
+}
+
+.clickable-distribution-bar:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 4px;
+}
+
+.clickable-distribution-bar::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.clickable-distribution-bar .distribution-bar::after {
+    content: "↗";
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.96);
+    color: #4f46e5;
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: none;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.28);
+    pointer-events: none;
+    z-index: 3;
 }
 
 .clickable-distribution-bar .distribution-bar {
     cursor: pointer;
+    gap: 0.65rem;
+    padding-right: 0.95rem;
+}
+
+.clickable-distribution-bar:hover .distribution-bar,
+.clickable-distribution-bar:focus-visible .distribution-bar {
+    filter: brightness(1.08);
 }
 
 .distribution-bar {
@@ -2627,12 +2723,22 @@ section {
 }
 
 .clickable-achievement {
+    position: relative;
+    border: 2px solid rgba(99, 102, 241, 0.42);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+    box-sizing: border-box;
     cursor: pointer;
 }
 
 .clickable-achievement:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-lg);
+    border-color: rgba(99, 102, 241, 0.72);
+    box-shadow: 0 12px 28px rgba(99, 102, 241, 0.18);
+}
+
+.clickable-achievement:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 4px;
 }
 
 .achievement-number {
@@ -2669,12 +2775,53 @@ section {
 }
 
 .clickable-work-item {
+    position: relative;
+    padding-right: 2.75rem;
+    border: 2px solid rgba(99, 102, 241, 0.42);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+    box-sizing: border-box;
     cursor: pointer;
 }
 
 .clickable-work-item:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--shadow-lg);
+    border-color: rgba(99, 102, 241, 0.72);
+    border-left-color: var(--primary-color);
+    box-shadow: 0 12px 28px rgba(99, 102, 241, 0.18);
+}
+
+.clickable-work-item:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 4px;
+}
+
+.clickable-achievement::after,
+.clickable-work-item::after {
+    content: "↗";
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 6px 14px rgba(99, 102, 241, 0.25);
+    pointer-events: none;
+}
+
+.clickable-achievement:hover::after,
+.clickable-achievement:focus-visible::after,
+.clickable-work-item:hover::after,
+.clickable-work-item:focus-visible::after {
+    background: #111827;
+    box-shadow: 0 8px 18px rgba(17, 24, 39, 0.24);
 }
 
 .work-item h4 {
@@ -3838,8 +3985,8 @@ section {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: none;
-    border: none;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.14);
     font-size: 2rem;
     color: var(--text-secondary);
     cursor: pointer;
@@ -3849,12 +3996,62 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
     transition: all 0.2s ease;
 }
 
 .modal-close:hover {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
+    background: #111827;
+    border-color: #111827;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.modal-close:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 3px;
+}
+
+.modal a[href] {
+    border: 2px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.24) !important;
+    font-weight: 700 !important;
+}
+
+.modal a[href]:hover,
+.modal a[href]:focus-visible {
+    background: var(--primary-dark) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 15px 32px rgba(99, 102, 241, 0.32) !important;
+}
+
+.modal a[href]:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 4px;
+}
+
+#financial-password-submit,
+#docking-tech-password-submit {
+    border: 2px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.26) !important;
+    font-weight: 700 !important;
+}
+
+#financial-password-submit:hover,
+#financial-password-submit:focus-visible,
+#docking-tech-password-submit:hover,
+#docking-tech-password-submit:focus-visible {
+    background: var(--primary-dark) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 16px 34px rgba(99, 102, 241, 0.32) !important;
+}
+
+#financial-password-submit:focus-visible,
+#docking-tech-password-submit:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline-offset: 4px;
 }
 
 .modal-title {
