@@ -123,9 +123,9 @@ for (const contact of contacts) delete contact.allMoments;
 const dates = allMoments.map((item) => item.date).filter(Boolean).sort();
 const payload = {
   meta: {
-    build: "2026.05.24.2",
+    build: "2026.05.24.4",
     generatedAt: new Date().toISOString(),
-    source: "wechatDatabase friend_moments.sqlite + pilot manifest",
+    source: "wechatDatabase friend_moments.sqlite + pilot/latest batch manifests",
     sourceRoot,
     contactCount: contacts.length,
     doneCount: contacts.filter((item) => item.status === "done").length,
@@ -161,18 +161,33 @@ function detectSourceRoot() {
 }
 
 function loadManifest() {
-  const exact = path.join(exportsDir, "moments_pilot_10_20260524_142818.json");
-  const manifestPath = fs.existsSync(exact)
-    ? exact
-    : fs
-        .readdirSync(exportsDir)
-        .filter((name) => /^moments_pilot_10_.*\.json$/.test(name))
-        .sort()
-        .map((name) => path.join(exportsDir, name))
-        .at(-1);
-  if (!manifestPath) return [];
-  const payload = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-  return Array.isArray(payload) ? payload : payload.contacts || payload.targets || [];
+  if (!fs.existsSync(exportsDir)) return [];
+  const names = fs.readdirSync(exportsDir);
+  const manifests = [
+    latestManifest(names, /^moments_pilot_10_.*\.json$/),
+    latestManifest(names, /^moments_wx_cli_batch_\d+_.*\.json$/),
+  ].filter(Boolean);
+  const seen = new Set();
+  const merged = [];
+  for (const manifestPath of manifests) {
+    const payload = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    const rows = Array.isArray(payload) ? payload : payload.contacts || payload.targets || [];
+    for (const row of rows) {
+      const username = row.username || row.wxid || row.id || "";
+      if (!username || seen.has(username)) continue;
+      seen.add(username);
+      merged.push({ ...row, rank: merged.length + 1 });
+    }
+  }
+  return merged;
+}
+
+function latestManifest(names, pattern) {
+  const match = names
+    .filter((name) => pattern.test(name))
+    .sort()
+    .at(-1);
+  return match ? path.join(exportsDir, match) : "";
 }
 
 function tableExists(database, table) {

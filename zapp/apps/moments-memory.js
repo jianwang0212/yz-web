@@ -1,4 +1,4 @@
-const DATA_URL = "moments-memory-data.json?v=20260524b";
+const DATA_URL = "moments-memory-data.json?v=20260524d";
 
 const state = {
   view: "overview",
@@ -8,6 +8,9 @@ const state = {
   friendSort: "count",
   timelineSearch: "",
   contactFilter: "all",
+  typeFilter: "all",
+  monthFilter: "all",
+  detailTypeFilter: "all",
   question: "",
 };
 
@@ -31,12 +34,15 @@ const els = {
   monthWindow: document.querySelector("#monthWindow"),
   monthChart: document.querySelector("#monthChart"),
   rankGrid: document.querySelector("#rankGrid"),
+  summaryCards: [...document.querySelectorAll(".summary-grid article")],
   friendSearch: document.querySelector("#friendSearch"),
   friendSort: document.querySelector("#friendSort"),
   friendList: document.querySelector("#friendList"),
   friendDetail: document.querySelector("#friendDetail"),
   timelineSearch: document.querySelector("#timelineSearch"),
   contactFilter: document.querySelector("#contactFilter"),
+  typeFilter: document.querySelector("#typeFilter"),
+  monthFilter: document.querySelector("#monthFilter"),
   timelineList: document.querySelector("#timelineList"),
   questionInput: document.querySelector("#questionInput"),
   askButton: document.querySelector("#askButton"),
@@ -59,7 +65,8 @@ async function init() {
     const response = await fetch(DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.data = await response.json();
-    state.selectedContact = state.data.contacts[0]?.id || "";
+    applyHashState();
+    if (!state.selectedContact) state.selectedContact = state.data.contacts[0]?.id || "";
     render();
   } catch (error) {
     els.dataBadge.textContent = "Load failed";
@@ -74,6 +81,32 @@ function bindEvents() {
   els.tabs.forEach((button) => {
     button.addEventListener("click", () => {
       state.view = button.dataset.view;
+      writeHash();
+      render();
+    });
+  });
+
+  els.summaryCards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      if (index === 0) {
+        state.view = "friends";
+      } else if (index === 1) {
+        state.view = "timeline";
+        state.contactFilter = "all";
+        state.typeFilter = "all";
+        state.monthFilter = "all";
+      } else if (index === 2) {
+        state.view = "timeline";
+        state.contactFilter = "all";
+        state.typeFilter = "media";
+        state.monthFilter = "all";
+      } else {
+        state.view = "timeline";
+        state.contactFilter = "all";
+        state.typeFilter = "link";
+        state.monthFilter = "all";
+      }
+      writeHash();
       render();
     });
   });
@@ -95,6 +128,19 @@ function bindEvents() {
 
   els.contactFilter.addEventListener("change", () => {
     state.contactFilter = els.contactFilter.value;
+    writeHash();
+    renderTimeline();
+  });
+
+  els.typeFilter.addEventListener("change", () => {
+    state.typeFilter = els.typeFilter.value;
+    writeHash();
+    renderTimeline();
+  });
+
+  els.monthFilter.addEventListener("change", () => {
+    state.monthFilter = els.monthFilter.value;
+    writeHash();
     renderTimeline();
   });
 
@@ -108,6 +154,12 @@ function bindEvents() {
       state.question = els.questionInput.value.trim();
       renderAnswer();
     }
+  });
+
+  window.addEventListener("hashchange", () => {
+    if (!state.data) return;
+    applyHashState();
+    render();
   });
 }
 
@@ -153,6 +205,16 @@ function renderOverview() {
       const label = document.createElement("span");
       label.textContent = item.month.slice(2);
       node.append(bar, label);
+      node.tabIndex = 0;
+      node.setAttribute("role", "button");
+      node.setAttribute("aria-label", `${item.month} ${item.count} 条`);
+      node.addEventListener("click", () => openMonth(item.month));
+      node.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openMonth(item.month);
+        }
+      });
       return node;
     }),
   );
@@ -177,10 +239,22 @@ function renderTimeline() {
       ...state.data.contacts.map((contact) => option(contact.id, contact.name)),
     );
   }
+  if (!els.monthFilter.options.length) {
+    els.monthFilter.replaceChildren(
+      option("all", "全部月份"),
+      ...state.data.months.slice().reverse().map((item) => option(item.month, item.month)),
+    );
+  }
+  els.contactFilter.value = state.contactFilter;
+  els.typeFilter.value = state.typeFilter;
+  els.monthFilter.value = state.monthFilter;
+
   const rows = state.data.moments
     .filter((item) => state.contactFilter === "all" || item.contactId === state.contactFilter)
+    .filter((item) => state.monthFilter === "all" || String(item.date || "").startsWith(state.monthFilter))
+    .filter((item) => momentMatchesType(item, state.typeFilter))
     .filter((item) => !state.timelineSearch || haystack(item).includes(state.timelineSearch))
-    .slice(0, 160);
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
   els.timelineList.replaceChildren(...rows.map(momentCard), rows.length ? "" : empty("没有匹配记录。"));
 }
@@ -220,6 +294,9 @@ function filteredContacts() {
 function contactCard(contact, selectable = false) {
   const card = document.createElement("article");
   card.className = `friend-card rich ${contact.status}${contact.id === state.selectedContact ? " active" : ""}`;
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `${contact.name} ${contact.count} 条朋友圈`);
   card.innerHTML = `
     <div class="friend-topline">
       <span>${escapeHtml(contact.visibleStart || "未开始")} - ${escapeHtml(contact.visibleEnd || "无可见日期")}</span>
@@ -235,27 +312,69 @@ function contactCard(contact, selectable = false) {
     ${linkStrip(contact.links, 3)}
     <div class="tags">${contact.topCategories.slice(0, 3).map((tag) => `<i>${escapeHtml(tag)}</i>`).join("") || "<i>未归类</i>"}</div>
   `;
-  if (selectable) {
-    card.addEventListener("click", (event) => {
-      if (event.target.closest("a")) return;
-      state.selectedContact = contact.id;
-      renderFriends();
-    });
-  }
+  const open = (event) => {
+    if (event?.target?.closest("a")) return;
+    openContact(contact.id, selectable ? "friends" : "friends");
+  };
+  card.addEventListener("click", open);
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      open(event);
+    }
+  });
   return card;
 }
 
 function renderFriendDetail(contact) {
-  const recent = contact.moments.slice(0, 8).map(momentCard);
+  const moments = contactMoments(contact.id).filter((item) => momentMatchesType(item, state.detailTypeFilter));
   els.friendDetail.replaceChildren(
     htmlNode("h2", contact.name),
     detailStats(contact),
     coverageNode(contact),
+    detailToolbar(contact, moments.length),
     galleryNode(contact.mediaPreviews),
     linkListNode(contact.links),
     tagsNode(contact.topCategories.slice(0, 7)),
-    ...recent,
+    sectionTitle("全部记录", `${moments.length}/${contact.count}`),
+    ...moments.map(momentCard),
+    moments.length ? "" : empty("没有匹配记录。"),
   );
+}
+
+function detailToolbar(contact, visibleCount) {
+  const wrap = document.createElement("div");
+  wrap.className = "detail-toolbar";
+  const select = document.createElement("select");
+  select.setAttribute("aria-label", "详情筛选");
+  [
+    ["all", "全部"],
+    ["link", "链接"],
+    ["media", "媒体"],
+    ["text", "文字"],
+    ["2026", "2026"],
+  ].forEach(([value, label]) => select.append(option(value, label)));
+  select.value = state.detailTypeFilter;
+  select.addEventListener("change", () => {
+    state.detailTypeFilter = select.value;
+    renderFriendDetail(contact);
+  });
+
+  const timelineButton = document.createElement("button");
+  timelineButton.type = "button";
+  timelineButton.textContent = "时间线";
+  timelineButton.addEventListener("click", () => {
+    state.view = "timeline";
+    state.contactFilter = contact.id;
+    state.typeFilter = state.detailTypeFilter;
+    writeHash();
+    render();
+  });
+
+  const count = document.createElement("span");
+  count.textContent = `${formatNumber(visibleCount)} 条`;
+  wrap.append(select, timelineButton, count);
+  return wrap;
 }
 
 function detailStats(contact) {
@@ -303,7 +422,19 @@ function linkListNode(links) {
 function tagsNode(tags) {
   const wrap = document.createElement("div");
   wrap.className = "tags";
-  wrap.innerHTML = tags.map((tag) => `<i>${escapeHtml(tag)}</i>`).join("");
+  tags.forEach((tag) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = tag;
+    button.addEventListener("click", () => {
+      state.view = "timeline";
+      state.timelineSearch = String(tag).toLowerCase();
+      els.timelineSearch.value = tag;
+      writeHash();
+      render();
+    });
+    wrap.append(button);
+  });
   return wrap;
 }
 
@@ -326,6 +457,19 @@ function momentCard(item) {
       ${(item.categories || []).slice(0, 3).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
     </footer>
   `;
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `${item.contactName || ""} ${item.date || ""}`);
+  card.addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+    openContact(item.contactId, "friends");
+  });
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openContact(item.contactId, "friends");
+    }
+  });
   return card;
 }
 
@@ -397,6 +541,75 @@ function matchScore(item, terms, question) {
   });
   if (question && item.contactName.toLowerCase().includes(question)) score += 1;
   return score;
+}
+
+function openContact(contactId, view = "friends") {
+  if (!contactId) return;
+  state.selectedContact = contactId;
+  state.view = view;
+  state.contactFilter = contactId;
+  writeHash();
+  render();
+}
+
+function openMonth(month) {
+  state.view = "timeline";
+  state.contactFilter = "all";
+  state.monthFilter = month || "all";
+  writeHash();
+  render();
+}
+
+function contactMoments(contactId) {
+  return state.data.moments
+    .filter((item) => item.contactId === contactId)
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
+function momentMatchesType(item, type) {
+  if (!type || type === "all") return true;
+  if (type === "2026") return Number(item.year) === 2026 || String(item.date || "").startsWith("2026");
+  if (type === "link") return Boolean((item.links || []).length || item.linkMissing || String(item.kind || "").includes("链接"));
+  if (type === "media") return Number(item.mediaCount || 0) > 0 || ["图片", "视频"].some((kind) => String(item.kind || "").includes(kind));
+  if (type === "text") return Boolean(String(item.text || "").trim());
+  return true;
+}
+
+function sectionTitle(title, meta) {
+  const node = document.createElement("div");
+  node.className = "detail-section-title";
+  node.innerHTML = `<h3>${escapeHtml(title)}</h3><span>${escapeHtml(meta)}</span>`;
+  return node;
+}
+
+function applyHashState() {
+  const params = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const view = params.get("view");
+  const contact = params.get("contact");
+  const type = params.get("type");
+  const month = params.get("month");
+  if (view && els.views[view]) state.view = view;
+  if (state.data && contact && state.data.contacts.some((item) => item.id === contact)) {
+    state.selectedContact = contact;
+    state.contactFilter = contact;
+  }
+  if (type) {
+    state.typeFilter = type;
+    state.detailTypeFilter = type;
+  }
+  if (month) state.monthFilter = month;
+}
+
+function writeHash() {
+  const params = new URLSearchParams();
+  params.set("view", state.view);
+  if (state.selectedContact && (state.view === "friends" || state.contactFilter !== "all")) {
+    params.set("contact", state.selectedContact);
+  }
+  if (state.view === "timeline" && state.typeFilter !== "all") params.set("type", state.typeFilter);
+  if (state.view === "timeline" && state.monthFilter !== "all") params.set("month", state.monthFilter);
+  const next = `#${params.toString()}`;
+  if (location.hash !== next) history.replaceState(null, "", next);
 }
 
 function probabilityNode(result) {

@@ -10,7 +10,7 @@
     <link rel="manifest" href="../manifest.webmanifest" />
     <link rel="icon" href="../icons/apps/moments-memory.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icons/icon-192.png" />
-    <link rel="stylesheet" href="moments-memory.css?v=20260524b" />
+    <link rel="stylesheet" href="moments-memory.css?v=20260524d" />
     <title>朋友圈记忆</title>
   </head>
   <body>
@@ -94,6 +94,14 @@
             <input id="timelineSearch" type="search" autocomplete="off" placeholder="搜索文字 / 地点 / 主题" />
           </label>
           <select id="contactFilter" aria-label="筛选好友"></select>
+          <select id="typeFilter" aria-label="筛选类型">
+            <option value="all">全部类型</option>
+            <option value="link">链接</option>
+            <option value="media">媒体</option>
+            <option value="text">文字</option>
+            <option value="2026">2026</option>
+          </select>
+          <select id="monthFilter" aria-label="筛选月份"></select>
         </section>
         <div class="timeline-list" id="timelineList"></div>
       </section>
@@ -110,6 +118,6 @@
       </section>
     </main>
 
-    <script type="module" src="moments-memory.js?v=20260524b"></script>
+    <script type="module" src="moments-memory.js?v=20260524d"></script>
   </body>
 </html>
