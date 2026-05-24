@@ -10,7 +10,7 @@
     <link rel="manifest" href="../manifest.webmanifest" />
     <link rel="icon" href="../icons/apps/moments-memory.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icons/icon-192.png" />
-    <link rel="stylesheet" href="friend-crm.css?v=20260519store1" />
+    <link rel="stylesheet" href="friend-crm.css?v=20260524explore1" />
     <title>人脉 CRM</title>
   </head>
   <body>
@@ -21,22 +21,15 @@
           <p>Private People Database</p>
           <h1>人脉 CRM</h1>
         </div>
-        <span class="data-badge" id="dataBadge">Encrypted</span>
+        <span class="data-badge" id="dataBadge">Public JSON</span>
       </header>
 
-      <section class="unlock-panel" id="unlockPanel" aria-label="Unlock encrypted friend CRM data">
+      <section class="unlock-panel" id="statusPanel" aria-label="Load friend CRM data">
         <div>
-          <p>Encrypted WeChat CRM</p>
-          <h2>由 Zapp Store 解锁联系人资料</h2>
+          <p>WeChat CRM</p>
+          <h2>正在载入联系人资料</h2>
         </div>
-        <form id="unlockForm">
-          <label>
-            <span>Zapp Store 会话</span>
-            <input id="unlockPassword" type="password" autocomplete="current-password" required />
-          </label>
-          <button type="submit">打开</button>
-        </form>
-        <small id="unlockStatus">公开站点只保存加密数据包，明文资料会使用 Zapp Store 的 Face ID 会话在浏览器里解密。</small>
+        <small id="dataStatus">直接读取 Zapp 里的联系人资料，不再需要密码。</small>
       </section>
 
       <section class="summary-grid hidden" id="summaryGrid" aria-label="CRM summary">
@@ -44,6 +37,16 @@
           <span>联系人</span>
           <strong id="profileCount">--</strong>
           <small>已结构化入库</small>
+        </article>
+        <article>
+          <span>标签匹配</span>
+          <strong id="tagMatchCount">--</strong>
+          <small>05-24 分析覆盖</small>
+        </article>
+        <article>
+          <span>需跟进</span>
+          <strong id="followupCount">--</strong>
+          <small>标签推荐</small>
         </article>
         <article>
           <span>微信备注</span>
@@ -62,13 +65,67 @@
         </article>
       </section>
 
+      <section class="report-panel hidden" id="reportPanel" aria-label="CRM reports">
+        <div class="section-head">
+          <div>
+            <p>Tag Taxonomy</p>
+            <h2>标签分层视图</h2>
+          </div>
+          <span id="reportSource">05-24 14:44</span>
+        </div>
+        <p class="report-copy" id="reportMeta">正在读取 5月24日标签分析</p>
+        <a class="report-link" href="wechat_contact_tag_taxonomy_20260524_144423.html?v=20260524">打开报告</a>
+      </section>
+
+      <section class="explore-panel hidden" id="explorePanel" aria-label="CRM relationship exploration">
+        <div class="section-head">
+          <div>
+            <p>Explore</p>
+            <h2>关系探索</h2>
+          </div>
+          <button class="ghost-button hidden" id="clearRelation" type="button">清除</button>
+        </div>
+        <div class="explore-grid">
+          <div>
+            <h3>快捷入口</h3>
+            <div class="chip-row" id="quickFilters"></div>
+          </div>
+          <div>
+            <h3>热门标签</h3>
+            <div class="chip-row" id="topTags"></div>
+          </div>
+          <div>
+            <h3>热门主题</h3>
+            <div class="chip-row" id="topThemes"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="related-panel hidden" id="relatedPanel" aria-label="Related people">
+        <div class="section-head">
+          <div>
+            <p id="relatedType">Related People</p>
+            <h2 id="relatedTitle">相关联系人</h2>
+          </div>
+          <span id="relatedCount">--</span>
+        </div>
+        <p class="report-copy" id="relatedMeta">点击标签或主题查看同类联系人。</p>
+        <div class="related-list" id="relatedList"></div>
+      </section>
+
       <section class="control-panel hidden" id="controlPanel" aria-label="CRM controls">
         <label class="search-field">
           <span>⌕</span>
-          <input id="searchInput" type="search" autocomplete="off" placeholder="搜索姓名 / 城市 / 职业 / MBTI / 社交账号" />
+          <input id="searchInput" type="search" autocomplete="off" placeholder="搜索姓名 / 城市 / 职业 / MBTI / 标签 / 主题" />
         </label>
         <select id="mbtiFilter" aria-label="筛选 MBTI">
           <option value="all">全部 MBTI</option>
+        </select>
+        <select id="sortFilter" aria-label="排序">
+          <option value="priority">推荐优先</option>
+          <option value="recent">最近互动</option>
+          <option value="messages">消息量</option>
+          <option value="name">姓名</option>
         </select>
       </section>
 
@@ -90,6 +147,8 @@
                 <th>地点</th>
                 <th>职业</th>
                 <th>MBTI</th>
+                <th>标签建议</th>
+                <th>最近互动</th>
                 <th>社交账号</th>
                 <th>微信备注</th>
               </tr>
@@ -100,6 +159,6 @@
       </section>
     </main>
 
-    <script type="module" src="friend-crm.js?v=20260519store1"></script>
+    <script type="module" src="friend-crm.js?v=20260524explore1"></script>
   </body>
 </html>

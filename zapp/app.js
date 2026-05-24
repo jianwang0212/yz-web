@@ -37,10 +37,24 @@ const VIEW_MODES = [
 const CATEGORY_ORDER = ["财务", "微信", "其他"];
 const STORE_BIOMETRIC_UNLOCK_KEY = "zappStore.biometricUnlock.v1";
 const STORE_SESSION_PASSWORD_KEY = "zappStore.sessionUnlockPassword.v1";
+const STORE_UNLOCK_VERIFY_URL = "apps/store-unlock-check.enc.json?v=20260524a";
+const FINANCE_PREWARM_PACKAGES = [
+  {
+    label: "BOA Finance",
+    url: "apps/boa-finance-data.enc.json?v=20260512bio2",
+    cacheKey: "boaFinance.decryptedPayload.v1",
+  },
+  {
+    label: "LY Fund",
+    url: "apps/ly-fund-data.enc.json?v=20260519enc1",
+    cacheKey: "lyFund.decryptedPayload.v1",
+  },
+];
 
 let activeView = "all";
 let catalog = { store: {}, apps: [] };
 let deferredInstallPrompt = null;
+let financePrewarmPromise = null;
 
 const formatter = new Intl.DateTimeFormat("zh-CN", {
   month: "short",
@@ -82,6 +96,7 @@ function setStoreUnlocked(password) {
   storeUnlock.hidden = true;
   appShell.classList.remove("locked");
   appShell.removeAttribute("aria-hidden");
+  scheduleFinancePrewarm(password);
 }
 
 function updateStoreUnlockUI(message = "") {
@@ -139,7 +154,7 @@ async function unlockStoreWithPassword(password) {
 
 async function validateStorePassword(password) {
   try {
-    const response = await fetch("apps/boa-finance-data.enc.json?v=20260512bio2", { cache: "no-store" });
+    const response = await fetch(STORE_UNLOCK_VERIFY_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const packageData = await response.json();
     await decryptPackageWithPassword(packageData, password);
@@ -150,7 +165,77 @@ async function validateStorePassword(password) {
   }
 }
 
-async function decryptPackageWithPassword(packageData, password) {
+function scheduleFinancePrewarm(password) {
+  if (!password || financePrewarmPromise) return;
+  const run = () => {
+    financePrewarmPromise = prewarmFinancePackages(password).finally(() => {
+      financePrewarmPromise = null;
+    });
+  };
+  window.setTimeout(run, 80);
+}
+
+async function prewarmFinancePackages(password) {
+  for (const item of FINANCE_PREWARM_PACKAGES) {
+    try {
+      const response = await fetch(item.url, { cache: "force-cache" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const packageData = await response.json();
+      if (readCachedPayload(item.cacheKey, packageData)) continue;
+      const payload = await decryptPackageWithPassword(packageData, password, { parseJson: true });
+      writeCachedPayload(item.cacheKey, packageData, payload);
+    } catch (error) {
+      console.warn(`Finance prewarm skipped for ${item.label}`, error);
+    }
+  }
+}
+
+function readCachedPayload(cacheKey, packageData) {
+  try {
+    const raw = sessionStorage.getItem(cacheKey);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    return matchesPackageSignature(cached?.package, packageData) ? cached.payload : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeCachedPayload(cacheKey, packageData, payload) {
+  try {
+    sessionStorage.setItem(
+      cacheKey,
+      JSON.stringify({
+        version: 1,
+        package: packageSignature(packageData),
+        payload,
+        cachedAt: new Date().toISOString(),
+      }),
+    );
+  } catch (error) {
+    console.warn("Finance session cache skipped", error);
+  }
+}
+
+function packageSignature(packageData) {
+  return {
+    version: packageData.version,
+    label: packageData.label || "",
+    iterations: packageData.iterations,
+    hash: packageData.hash || "SHA-256",
+    salt: packageData.salt,
+    iv: packageData.iv,
+    ciphertextLength: String(packageData.ciphertext || "").length,
+  };
+}
+
+function matchesPackageSignature(signature, packageData) {
+  if (!signature || !packageData) return false;
+  const current = packageSignature(packageData);
+  return Object.keys(current).every((key) => signature[key] === current[key]);
+}
+
+async function decryptPackageWithPassword(packageData, password, options = {}) {
   const salt = base64ToBytes(packageData.salt);
   const iv = base64ToBytes(packageData.iv);
   const ciphertext = base64ToBytes(packageData.ciphertext);
@@ -169,7 +254,11 @@ async function decryptPackageWithPassword(packageData, password) {
     false,
     ["decrypt"],
   );
-  await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+  const plainBuffer = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+  if (options.parseJson) {
+    return JSON.parse(new TextDecoder().decode(plainBuffer));
+  }
+  return true;
 }
 
 async function unlockStoreWithBiometric() {
@@ -197,6 +286,7 @@ async function unlockStoreWithBiometric() {
 function resetStoreBiometric() {
   localStorage.removeItem(STORE_BIOMETRIC_UNLOCK_KEY);
   sessionStorage.removeItem(STORE_SESSION_PASSWORD_KEY);
+  FINANCE_PREWARM_PACKAGES.forEach((item) => sessionStorage.removeItem(item.cacheKey));
   storeUnlock.hidden = false;
   appShell.classList.add("locked");
   appShell.setAttribute("aria-hidden", "true");

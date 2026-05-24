@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v82-20260524-gt";
+const CACHE_VERSION = "zapp-store-v91-20260524-crm-explore";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -36,7 +36,9 @@ const STATIC_ASSETS = [
   "apps/friend-crm.html",
   "apps/friend-crm.css",
   "apps/friend-crm.js",
-  "apps/friend-crm-data.enc.json",
+  "apps/friend-crm-data.json",
+  "apps/store-unlock-check.enc.json",
+  "apps/wechat_contact_tag_taxonomy_20260524_144423.html",
   "icons/apps/gt.svg",
   "apps/qhrb-net-worth.html",
   "apps/qhrb-net-worth.css",
@@ -97,6 +99,8 @@ self.addEventListener("fetch", (event) => {
       ? "apps/moments-memory.html"
       : url.pathname.endsWith("/apps/friend-crm.html")
       ? "apps/friend-crm.html"
+      : url.pathname.endsWith("/apps/wechat_contact_tag_taxonomy_20260524_144423.html")
+      ? "apps/wechat_contact_tag_taxonomy_20260524_144423.html"
       : url.pathname.endsWith("/apps/live-call.html")
       ? "apps/live-call.html"
       : url.pathname.endsWith("/apps/zi-style-reply.html")

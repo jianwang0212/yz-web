@@ -19,6 +19,7 @@
 html,
 body {
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -45,6 +46,7 @@ select {
   min-height: 100vh;
   margin: 0 auto;
   padding: max(18px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+  overflow-x: hidden;
 }
 
 .topbar {
@@ -268,7 +270,7 @@ select {
 
 .rank-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 14px;
 }
@@ -280,9 +282,41 @@ select {
   cursor: pointer;
 }
 
+.friend-card.rich {
+  align-content: start;
+}
+
 .friend-card.active {
   border-color: color-mix(in srgb, var(--accent) 54%, var(--line));
   box-shadow: 0 16px 42px rgba(47, 111, 99, 0.14);
+}
+
+.friend-card.blank {
+  border-color: color-mix(in srgb, var(--warm) 46%, var(--line));
+}
+
+.friend-topline,
+.card-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.friend-topline i {
+  padding: 4px 7px;
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 9%, #fff);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.friend-card.blank .friend-topline i {
+  color: #9a3f2f;
+  background: color-mix(in srgb, var(--warm) 12%, #fff);
 }
 
 .friend-card h3,
@@ -301,6 +335,99 @@ select {
 .friend-card b {
   color: var(--accent-strong);
   font-size: 1.4rem;
+}
+
+.card-metrics span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.mini-gallery,
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.mini-gallery img,
+.media-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f3eee4;
+}
+
+.mini-gallery.empty-gallery,
+.media-gallery.empty-gallery,
+.link-list.empty-links {
+  display: block;
+  padding: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: #fbf8f1;
+  font-size: 0.78rem;
+}
+
+.mini-links,
+.link-list {
+  display: grid;
+  gap: 6px;
+}
+
+.mini-links a,
+.mini-links span,
+.link-list a,
+.link-list div,
+.moment-links a,
+.missing-url {
+  display: grid;
+  gap: 3px;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  background: #f8fbfb;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.mini-links a,
+.link-list a,
+.moment-links a {
+  border-color: color-mix(in srgb, #2f65a7 28%, var(--line));
+  background: color-mix(in srgb, #2f65a7 7%, #fff);
+}
+
+.mini-links span,
+.link-list div,
+.missing-url {
+  color: var(--muted);
+}
+
+.mini-links em,
+.link-list em {
+  color: var(--warm);
+  font-style: normal;
+  font-weight: 850;
+}
+
+.link-list time {
+  color: #2f65a7;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.coverage-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .tags {
@@ -460,6 +587,11 @@ select {
   overflow-wrap: anywhere;
 }
 
+.moment-links {
+  display: grid;
+  gap: 6px;
+}
+
 .moment-card footer {
   display: flex;
   flex-wrap: wrap;
@@ -519,7 +651,37 @@ select {
   }
 
   .data-badge {
-    max-width: 29%;
+    flex: 0 0 96px;
+    max-width: 96px;
+    padding-inline: 8px;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+
+  .summary-grid article {
+    min-height: 96px;
+    padding: 12px;
+  }
+
+  .summary-grid strong {
+    font-size: 1.42rem;
+  }
+
+  .summary-grid small {
+    overflow: visible;
+    line-height: 1.3;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .section-head {
+    align-items: start;
+  }
+
+  .section-head > span {
+    max-width: 45%;
+    overflow-wrap: anywhere;
+    text-align: right;
   }
 
   .summary-grid {
@@ -528,6 +690,11 @@ select {
 
   .month-chart {
     grid-template-columns: repeat(9, minmax(20px, 1fr));
+    gap: 6px;
+  }
+
+  .month-bar span {
+    font-size: 0.6rem;
   }
 
   .rank-grid,

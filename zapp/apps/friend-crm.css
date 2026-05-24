@@ -113,6 +113,9 @@ label span {
 }
 
 .unlock-panel,
+.report-panel,
+.explore-panel,
+.related-panel,
 .control-panel,
 .table-panel,
 .profile-card {
@@ -221,9 +224,97 @@ select:focus {
   white-space: nowrap;
 }
 
+.report-panel {
+  margin-bottom: 14px;
+  padding: 16px;
+}
+
+.report-copy {
+  margin: -4px 0 12px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.report-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--accent);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.explore-panel,
+.related-panel {
+  margin-bottom: 14px;
+  padding: 16px;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.explore-grid h3 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.relation-chip,
+.ghost-button {
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.relation-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  padding: 6px 9px;
+}
+
+.relation-chip span {
+  overflow-wrap: anywhere;
+}
+
+.relation-chip strong {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ghost-button {
+  padding: 0 12px;
+}
+
+.relation-chip.active,
+.pill.active,
+.table-chip.active {
+  border-color: rgba(37, 99, 235, 0.45);
+  color: #fff;
+  background: var(--accent);
+}
+
 .control-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(150px, 220px);
+  grid-template-columns: minmax(0, 1fr) minmax(140px, 200px) minmax(120px, 170px);
   gap: 12px;
   margin-bottom: 14px;
   padding: 12px;
@@ -307,6 +398,7 @@ select:focus {
 .pill {
   display: inline-flex;
   align-items: center;
+  border: 1px solid transparent;
   min-height: 26px;
   padding: 3px 8px;
   border-radius: 999px;
@@ -317,9 +409,92 @@ select:focus {
   overflow-wrap: anywhere;
 }
 
+button.pill {
+  cursor: pointer;
+}
+
 .pill.status {
   color: var(--green);
   background: #edf9f3;
+}
+
+.pill.signal {
+  color: #67410f;
+  background: #fff4dc;
+}
+
+.metric-line {
+  display: block;
+  color: #344054;
+}
+
+.reason-list {
+  display: grid;
+  gap: 5px;
+  margin: 12px 0 0;
+  padding: 10px 0 0 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.table-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  margin: 0 5px 5px 0;
+  padding: 2px 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #67410f;
+  background: #fff4dc;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.related-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.related-item {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.related-item header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.related-item h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.98rem;
+  letter-spacing: 0;
+}
+
+.related-item header strong {
+  flex: 0 0 auto;
+  color: var(--accent-strong);
+  font-size: 0.85rem;
+}
+
+.related-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .empty {
@@ -356,7 +531,7 @@ select:focus {
 
 table {
   width: 100%;
-  min-width: 860px;
+  min-width: 1120px;
   border-collapse: collapse;
   font-size: 0.84rem;
 }
@@ -390,6 +565,8 @@ tr:last-child td {
   }
 
   .control-panel,
+  .explore-grid,
+  .related-list,
   .profile-grid {
     grid-template-columns: 1fr;
   }
