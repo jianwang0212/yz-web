@@ -36,7 +36,8 @@ const standalonePages = [
   ['highlights', 'highlights.html'],
   ['interests', 'interests.html'],
   ['year-review', 'year-review.html'],
-  ['financial-dashboard', 'financial-dashboard.html']
+  ['financial-dashboard', 'financial-dashboard.html'],
+  ['song-leadsheet-database', 'song-leadsheet-database.html']
 ];
 
 export const routeAliases = [
