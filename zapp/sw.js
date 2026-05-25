@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v91-20260524-crm-explore";
+const CACHE_VERSION = "zapp-store-v95-20260524-moments-actions";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",

@@ -1,4 +1,4 @@
-const DATA_URL = "moments-memory-data.json?v=20260524d";
+const DATA_URL = "moments-memory-data.json?v=20260524e";
 
 const state = {
   view: "overview",
@@ -12,6 +12,7 @@ const state = {
   monthFilter: "all",
   detailTypeFilter: "all",
   question: "",
+  lightbox: null,
 };
 
 const els = {
@@ -161,6 +162,20 @@ function bindEvents() {
     applyHashState();
     render();
   });
+
+  window.addEventListener("keydown", (event) => {
+    if (!state.lightbox) return;
+    if (event.key === "Escape") {
+      state.lightbox = null;
+      renderLightbox();
+    } else if (event.key === "ArrowLeft") {
+      state.lightbox.index = (state.lightbox.index - 1 + state.lightbox.previews.length) % state.lightbox.previews.length;
+      renderLightbox();
+    } else if (event.key === "ArrowRight") {
+      state.lightbox.index = (state.lightbox.index + 1) % state.lightbox.previews.length;
+      renderLightbox();
+    }
+  });
 }
 
 function render() {
@@ -248,6 +263,7 @@ function renderTimeline() {
   els.contactFilter.value = state.contactFilter;
   els.typeFilter.value = state.typeFilter;
   els.monthFilter.value = state.monthFilter;
+  els.timelineSearch.value = state.timelineSearch;
 
   const rows = state.data.moments
     .filter((item) => state.contactFilter === "all" || item.contactId === state.contactFilter)
@@ -262,9 +278,7 @@ function renderTimeline() {
 function renderAnswer() {
   if (!state.question) {
     const recent = state.data.moments[0];
-    els.answerPanel.innerHTML = recent
-      ? `<h2>最近线索</h2>${momentCard(recent).outerHTML}`
-      : `<div class="empty-state">暂无数据。</div>`;
+    els.answerPanel.replaceChildren(recent ? htmlNode("h2", "最近线索") : empty("暂无数据。"), recent ? momentCard(recent) : "");
     return;
   }
 
@@ -336,6 +350,7 @@ function renderFriendDetail(contact) {
     galleryNode(contact.mediaPreviews),
     linkListNode(contact.links),
     tagsNode(contact.topCategories.slice(0, 7)),
+    relatedContactsNode(contact),
     sectionTitle("全部记录", `${moments.length}/${contact.count}`),
     ...moments.map(momentCard),
     moments.length ? "" : empty("没有匹配记录。"),
@@ -364,27 +379,50 @@ function detailToolbar(contact, visibleCount) {
   timelineButton.type = "button";
   timelineButton.textContent = "时间线";
   timelineButton.addEventListener("click", () => {
-    state.view = "timeline";
-    state.contactFilter = contact.id;
-    state.typeFilter = state.detailTypeFilter;
-    writeHash();
-    render();
+    openTimeline({ contactId: contact.id, type: state.detailTypeFilter });
   });
+
+  const askButton = document.createElement("button");
+  askButton.type = "button";
+  askButton.textContent = "问这个人";
+  askButton.addEventListener("click", () => askContact(contact));
+
+  const copyButton = document.createElement("button");
+  copyButton.type = "button";
+  copyButton.textContent = "复制链接";
+  copyButton.addEventListener("click", () => copyContactLink(contact));
+
+  const exportButton = document.createElement("button");
+  exportButton.type = "button";
+  exportButton.textContent = "导出";
+  exportButton.addEventListener("click", () => exportContactJson(contact));
 
   const count = document.createElement("span");
   count.textContent = `${formatNumber(visibleCount)} 条`;
-  wrap.append(select, timelineButton, count);
+  wrap.append(select, timelineButton, askButton, copyButton, exportButton, count);
   return wrap;
 }
 
 function detailStats(contact) {
   const wrap = document.createElement("div");
   wrap.className = "detail-stats";
-  wrap.innerHTML = `
-    <div><strong>${formatNumber(contact.count)}</strong><span>可见条目</span></div>
-    <div><strong>${formatNumber(contact.mediaPreviewCount)}</strong><span>图片预览</span></div>
-    <div><strong>${formatNumber(contact.resolvedLinkCount)}</strong><span>真实链接</span></div>
-  `;
+  const moments = contactMoments(contact.id);
+  [
+    ["all", moments.length || contact.count, "可见条目"],
+    ["media", moments.filter((item) => momentMatchesType(item, "media")).length, "媒体记录"],
+    ["link", moments.filter((item) => momentMatchesType(item, "link")).length, "链接记录"],
+    ["2026", moments.filter((item) => momentMatchesType(item, "2026")).length, "2026"],
+  ].forEach(([type, value, label]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = type === state.detailTypeFilter ? "active" : "";
+    button.innerHTML = `<strong>${formatNumber(value || 0)}</strong><span>${escapeHtml(label)}</span>`;
+    button.addEventListener("click", () => {
+      state.detailTypeFilter = type;
+      renderFriendDetail(contact);
+    });
+    wrap.append(button);
+  });
   return wrap;
 }
 
@@ -398,9 +436,18 @@ function coverageNode(contact) {
 function galleryNode(previews) {
   const wrap = document.createElement("div");
   wrap.className = previews?.length ? "media-gallery" : "media-gallery empty-gallery";
-  wrap.innerHTML = previews?.length
-    ? previews.map((item) => `<a href="${escapeAttr(item.src)}"><img src="${escapeAttr(item.src)}" alt="" loading="lazy" /></a>`).join("")
-    : "暂无图片预览";
+  if (!previews?.length) {
+    wrap.textContent = "暂无图片预览";
+    return wrap;
+  }
+  previews.forEach((item, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.setAttribute("aria-label", `查看第 ${index + 1} 张图片`);
+    button.innerHTML = `<img src="${escapeAttr(item.src)}" alt="" loading="lazy" />`;
+    button.addEventListener("click", () => openLightbox(previews, index));
+    wrap.append(button);
+  });
   return wrap;
 }
 
@@ -422,19 +469,32 @@ function linkListNode(links) {
 function tagsNode(tags) {
   const wrap = document.createElement("div");
   wrap.className = "tags";
+  if (!tags.length) {
+    wrap.append(tagButton("未归类", () => openTimeline({ search: "" })));
+    return wrap;
+  }
   tags.forEach((tag) => {
+    wrap.append(tagButton(tag, () => openTimeline({ search: tag })));
+  });
+  return wrap;
+}
+
+function relatedContactsNode(contact) {
+  const related = relatedContacts(contact);
+  const wrap = document.createElement("section");
+  wrap.className = "related-contacts";
+  wrap.append(sectionTitle("相关好友", related.length ? "点击跳转" : "暂无"));
+  if (!related.length) return wrap;
+  const list = document.createElement("div");
+  list.className = "related-list";
+  related.forEach((item) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = tag;
-    button.addEventListener("click", () => {
-      state.view = "timeline";
-      state.timelineSearch = String(tag).toLowerCase();
-      els.timelineSearch.value = tag;
-      writeHash();
-      render();
-    });
-    wrap.append(button);
+    button.innerHTML = `<strong>${escapeHtml(item.name)}</strong><span>${formatNumber(item.count)} 条 · ${escapeHtml(item.visibleEnd || "无日期")}</span>`;
+    button.addEventListener("click", () => openContact(item.id, "friends"));
+    list.append(button);
   });
+  wrap.append(list);
   return wrap;
 }
 
@@ -446,22 +506,42 @@ function momentCard(item) {
     .join("");
   card.innerHTML = `
     <header>
-      <h3>${escapeHtml(item.contactName || "")}</h3>
-      <time>${escapeHtml(item.date || "未知日期")}</time>
+      <button type="button" class="inline-action contact-action">${escapeHtml(item.contactName || "")}</button>
+      <button type="button" class="inline-action date-action">${escapeHtml(item.date || "未知日期")}</button>
     </header>
     <p>${escapeHtml(item.text || item.kind || "无文字")}</p>
     ${links ? `<div class="moment-links">${links}</div>` : item.linkMissing ? `<div class="missing-url">UI 未捕获 URL</div>` : ""}
     <footer>
-      <span>${escapeHtml(item.kind || "未知")}</span>
-      <span>${formatNumber(item.mediaCount || 0)} media</span>
-      ${(item.categories || []).slice(0, 3).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+      <button type="button" data-filter="${momentTypeForKind(item)}">${escapeHtml(item.kind || "未知")}</button>
+      <button type="button" data-filter="media">${formatNumber(item.mediaCount || 0)} media</button>
+      ${(item.categories || []).slice(0, 3).map((tag) => `<button type="button" data-tag="${escapeAttr(tag)}">${escapeHtml(tag)}</button>`).join("")}
     </footer>
   `;
+  card.querySelector(".contact-action")?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    openContact(item.contactId, "friends");
+  });
+  card.querySelector(".date-action")?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    openTimeline({ contactId: item.contactId, month: item.month || String(item.date || "").slice(0, 7) });
+  });
+  card.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openTimeline({ contactId: item.contactId, type: button.dataset.filter });
+    });
+  });
+  card.querySelectorAll("[data-tag]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openTimeline({ search: button.dataset.tag });
+    });
+  });
   card.tabIndex = 0;
   card.setAttribute("role", "button");
   card.setAttribute("aria-label", `${item.contactName || ""} ${item.date || ""}`);
   card.addEventListener("click", (event) => {
-    if (event.target.closest("a")) return;
+    if (event.target.closest("a, button")) return;
     openContact(item.contactId, "friends");
   });
   card.addEventListener("keydown", (event) => {
@@ -553,9 +633,16 @@ function openContact(contactId, view = "friends") {
 }
 
 function openMonth(month) {
+  openTimeline({ month: month || "all" });
+}
+
+function openTimeline({ contactId = "all", type = "all", month = "all", search = "" } = {}) {
   state.view = "timeline";
-  state.contactFilter = "all";
+  state.contactFilter = contactId || "all";
+  state.typeFilter = type || "all";
   state.monthFilter = month || "all";
+  state.timelineSearch = String(search || "").toLowerCase();
+  if (contactId && contactId !== "all") state.selectedContact = contactId;
   writeHash();
   render();
 }
@@ -573,6 +660,132 @@ function momentMatchesType(item, type) {
   if (type === "media") return Number(item.mediaCount || 0) > 0 || ["图片", "视频"].some((kind) => String(item.kind || "").includes(kind));
   if (type === "text") return Boolean(String(item.text || "").trim());
   return true;
+}
+
+function momentTypeForKind(item) {
+  if ((item.links || []).length || item.linkMissing || String(item.kind || "").includes("链接")) return "link";
+  if (Number(item.mediaCount || 0) > 0 || ["图片", "视频"].some((kind) => String(item.kind || "").includes(kind))) return "media";
+  return "text";
+}
+
+function relatedContacts(contact) {
+  const categories = new Set(contact.topCategories || []);
+  const endMonth = String(contact.visibleEnd || "").slice(0, 7);
+  return state.data.contacts
+    .filter((item) => item.id !== contact.id && item.count > 0)
+    .map((item) => {
+      const sharedCategories = (item.topCategories || []).filter((tag) => categories.has(tag)).length;
+      const sameEndMonth = endMonth && String(item.visibleEnd || "").startsWith(endMonth) ? 1 : 0;
+      const similarMedia = Math.min(item.mediaPreviewCount || 0, contact.mediaPreviewCount || 0) > 0 ? 1 : 0;
+      const similarLinks = Math.min(item.resolvedLinkCount || 0, contact.resolvedLinkCount || 0) > 0 ? 1 : 0;
+      const score = sharedCategories * 4 + sameEndMonth * 2 + similarMedia + similarLinks + Math.min(item.count, 5) / 10;
+      return { ...item, score };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || String(b.visibleEnd).localeCompare(String(a.visibleEnd)))
+    .slice(0, 4);
+}
+
+function askContact(contact) {
+  state.view = "clues";
+  state.question = `${contact.name} 最近有什么线索`;
+  els.questionInput.value = state.question;
+  writeHash();
+  render();
+}
+
+async function copyContactLink(contact) {
+  const base = location.origin === "null" ? location.href.split("#")[0] : `${location.origin}${location.pathname}`;
+  const url = `${base}#view=friends&contact=${encodeURIComponent(contact.id)}`;
+  try {
+    await navigator.clipboard.writeText(url);
+    showToast("已复制联系人深链");
+  } catch (error) {
+    const textarea = document.createElement("textarea");
+    textarea.value = url;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.append(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+    showToast("已复制联系人深链");
+  }
+}
+
+function exportContactJson(contact) {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    contact,
+    moments: contactMoments(contact.id),
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `moments-${contact.id || "contact"}.json`;
+  document.body.append(link);
+  link.click();
+  window.setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  link.remove();
+  showToast("已导出单联系人 JSON");
+}
+
+function openLightbox(previews, index) {
+  state.lightbox = { previews, index };
+  renderLightbox();
+}
+
+function renderLightbox() {
+  document.querySelector(".lightbox")?.remove();
+  if (!state.lightbox) return;
+  const { previews, index } = state.lightbox;
+  const item = previews[index];
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.innerHTML = `
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="媒体预览">
+      <div class="lightbox-toolbar">
+        <span>${index + 1}/${previews.length}</span>
+        <a href="${escapeAttr(item.src)}" target="_blank" rel="noreferrer">原图</a>
+        <button type="button" data-close>关闭</button>
+      </div>
+      <button type="button" class="lightbox-nav prev" aria-label="上一张">‹</button>
+      <img src="${escapeAttr(item.src)}" alt="" />
+      <button type="button" class="lightbox-nav next" aria-label="下一张">›</button>
+    </div>
+  `;
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay || event.target.closest("[data-close]")) {
+      state.lightbox = null;
+      renderLightbox();
+    }
+  });
+  overlay.querySelector(".prev")?.addEventListener("click", () => {
+    state.lightbox.index = (index - 1 + previews.length) % previews.length;
+    renderLightbox();
+  });
+  overlay.querySelector(".next")?.addEventListener("click", () => {
+    state.lightbox.index = (index + 1) % previews.length;
+    renderLightbox();
+  });
+  document.body.append(overlay);
+}
+
+function showToast(message) {
+  document.querySelector(".toast")?.remove();
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  document.body.append(toast);
+  window.setTimeout(() => toast.remove(), 1800);
+}
+
+function tagButton(label, onClick) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = label;
+  button.addEventListener("click", onClick);
+  return button;
 }
 
 function sectionTitle(title, meta) {
