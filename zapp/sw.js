@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v95-20260524-moments-actions";
+const CACHE_VERSION = "zapp-store-v39-20260604-gt";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
@@ -36,9 +36,10 @@ const STATIC_ASSETS = [
   "apps/friend-crm.html",
   "apps/friend-crm.css",
   "apps/friend-crm.js",
-  "apps/friend-crm-data.json",
+  "apps/contact-signal-reports/index.html",
   "apps/store-unlock-check.enc.json",
   "apps/wechat_contact_tag_taxonomy_20260524_144423.html",
+  "apps/wechat_contact_tag_taxonomy_latest.html",
   "icons/apps/gt.svg",
   "apps/qhrb-net-worth.html",
   "apps/qhrb-net-worth.css",
@@ -53,6 +54,10 @@ const STATIC_ASSETS = [
   "apps/ly-fund.css",
   "apps/ly-fund.js",
   "apps/ly-fund-data.enc.json",
+  "apps/yinzi-equity.html",
+  "apps/yinzi-equity.css",
+  "apps/yinzi-equity.js",
+  "apps/yinzi-equity-data.json",
   "apps/boa-finance.html",
   "apps/boa-finance.css",
   "apps/boa-finance.js",
@@ -99,8 +104,12 @@ self.addEventListener("fetch", (event) => {
       ? "apps/moments-memory.html"
       : url.pathname.endsWith("/apps/friend-crm.html")
       ? "apps/friend-crm.html"
+      : url.pathname.includes("/apps/contact-signal-reports/")
+      ? "apps/contact-signal-reports/index.html"
       : url.pathname.endsWith("/apps/wechat_contact_tag_taxonomy_20260524_144423.html")
       ? "apps/wechat_contact_tag_taxonomy_20260524_144423.html"
+      : url.pathname.endsWith("/apps/wechat_contact_tag_taxonomy_latest.html")
+      ? "apps/wechat_contact_tag_taxonomy_latest.html"
       : url.pathname.endsWith("/apps/live-call.html")
       ? "apps/live-call.html"
       : url.pathname.endsWith("/apps/zi-style-reply.html")
@@ -115,6 +124,8 @@ self.addEventListener("fetch", (event) => {
       ? "apps/qhrb-net-worth.html"
       : url.pathname.endsWith("/apps/ly-fund.html")
       ? "apps/ly-fund.html"
+      : url.pathname.endsWith("/apps/yinzi-equity.html")
+      ? "apps/yinzi-equity.html"
       : url.pathname.endsWith("/apps/boa-finance.html")
         ? "apps/boa-finance.html"
         : "index.html";

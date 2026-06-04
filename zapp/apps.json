@@ -2,8 +2,8 @@
   "store": {
     "name": "Zapp Store",
     "owner": "Zi's private app shelf",
-    "build": 73,
-    "updated": "2026-05-24"
+    "build": 82,
+    "updated": "2026-06-04"
   },
   "apps": [
     {
@@ -100,19 +100,19 @@
       "id": "friend-crm",
       "name": "人脉 CRM",
       "subtitle": "Contact lookup",
-      "description": "A WeChat friend CRM for structured profile lookup, May 24 aggregate tag/contact insights, clickable relationship exploration, and related people lists.",
+      "description": "A WeChat friend CRM for structured profile lookup, May 24 tag/contact insights, clickable relationship exploration, all private-chat signal reports, and monthly refreshable data.",
       "category": "微信",
-      "version": "0.4.0",
-      "build": 6,
-      "updated": "2026-05-24",
+      "version": "0.5.2",
+      "build": 9,
+      "updated": "2026-06-04",
       "status": "Ready",
-      "scope": "Public JSON + relation explorer",
+      "scope": "Public JSON + signal reports",
       "featured": true,
       "updateAvailable": false,
       "icon": "icons/apps/moments-memory.svg",
       "accent": "#2563eb",
       "accentStrong": "#1743a8",
-      "url": "apps/friend-crm.html?v=6"
+      "url": "apps/friend-crm.html?v=9"
     },
     {
       "id": "qhrb-net-worth",
@@ -121,8 +121,8 @@
       "description": "三次参赛的期货日报实盘大赛排行榜记录和累计净值曲线。",
       "category": "财务",
       "version": "0.1.0",
-      "build": 2,
-      "updated": "2026-05-19",
+      "build": 14,
+      "updated": "2026-06-03",
       "status": "Ready",
       "scope": "Local JSON",
       "featured": true,
@@ -130,7 +130,7 @@
       "icon": "icons/apps/finance.svg",
       "accent": "#d71920",
       "accentStrong": "#970e14",
-      "url": "apps/qhrb-net-worth.html?v=20260519"
+      "url": "apps/qhrb-net-worth.html?v=20260603"
     },
     {
       "id": "gt",
@@ -139,8 +139,8 @@
       "description": "A structured GT asset dashboard with net value, daily P/L, exchange snapshot, BTC comparison, remarks, and exported rows.",
       "category": "财务",
       "version": "0.1.2",
-      "build": 6,
-      "updated": "2026-05-24",
+      "build": 7,
+      "updated": "2026-06-04",
       "status": "Ready",
       "scope": "Local JSON",
       "featured": true,
@@ -148,7 +148,7 @@
       "icon": "icons/apps/gt.svg",
       "accent": "#2f6f63",
       "accentStrong": "#1f4f48",
-      "url": "apps/gt.html?v=6"
+      "url": "apps/gt.html?v=7"
     },
     {
       "id": "ly-fund",
@@ -167,6 +167,24 @@
       "accent": "#245f87",
       "accentStrong": "#153a55",
       "url": "apps/ly-fund.html?v=5"
+    },
+    {
+      "id": "yinzi-equity",
+      "name": "银子入股回款",
+      "subtitle": "Capital recovery",
+      "description": "A private capital-recovery dashboard with cumulative cash-flow curves, annual summaries, type breakdown, and row-level inspection for the 2021-2026 入股、分红、工资 records.",
+      "category": "财务",
+      "version": "0.1.0",
+      "build": 2,
+      "updated": "2026-06-02",
+      "status": "Ready",
+      "scope": "Local JSON",
+      "featured": false,
+      "updateAvailable": false,
+      "icon": "icons/apps/finance.svg",
+      "accent": "#176f69",
+      "accentStrong": "#0d4f4b",
+      "url": "apps/yinzi-equity.html?v=20260602b"
     },
     {
       "id": "boa-finance",
