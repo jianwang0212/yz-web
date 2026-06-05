@@ -24,6 +24,7 @@ test('projects index separates public work from internal operations', () => {
   expectIncludes(publicSection, 'href="/projects/vipassana"');
   expectIncludes(publicSection, 'href="/engineering"');
   expectIncludes(publicSection, 'href="/projects/chord-trainer"');
+  expectIncludes(publicSection, 'href="/projects/stem-splitter"');
   assert.equal(publicSection.includes('codex-monitor.html'), false);
   assert.equal(publicSection.includes('href="/projects/socialpulse"'), false);
 

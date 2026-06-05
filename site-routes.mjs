@@ -7,7 +7,8 @@ const projectPages = [
   ['degree-quiz', 'papers/degree-quiz.html'],
   ['chord-quiz', 'papers/chord-quiz.html'],
   ['chord-trainer', 'papers/chord-trainer.html'],
-  ['left-hand-voicing-trainer', 'papers/left-hand-voicing-trainer.html']
+  ['left-hand-voicing-trainer', 'papers/left-hand-voicing-trainer.html'],
+  ['stem-splitter', 'projects/stem-splitter.html']
 ];
 
 const essayPages = [

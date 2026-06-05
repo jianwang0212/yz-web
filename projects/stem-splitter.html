@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stem Splitter - 本地 Demucs vocal / BGM 分离工具。">
+    <meta property="og:title" content="Stem Splitter - Zi Yin">
+    <meta property="og:description" content="用本机 Demucs 服务把授权音频分离成 original、vocals 和 BGM。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thisisyz.com/projects/stem-splitter">
+    <meta property="og:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stem Splitter - Zi Yin">
+    <meta name="twitter:description" content="Local Demucs vocal / BGM splitter for authorized audio.">
+    <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <link rel="canonical" href="https://thisisyz.com/projects/stem-splitter">
+    <title>Stem Splitter - Zi Yin</title>
+    <link rel="stylesheet" href="/styles.css?v=20260513-main-perf">
+    <link rel="stylesheet" href="/projects/stem-splitter.css?v=20260605">
+</head>
+<body class="stem-project-page">
+    <nav class="navbar">
+        <div class="container">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </a>
+            <ul class="nav-menu" id="primary-navigation">
+                <li><a href="/index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="/year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="/works.html" data-i18n="nav.works">作品</a></li>
+                <li><a href="/contact.html" data-i18n="nav.contact">联系</a></li>
+                <li class="nav-menu-lang-item">
+                    <div class="nav-lang-toggle-mobile">
+                        <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                        <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+                    </div>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
+                    <div class="nav-dropdown">
+                        <a href="/projects.html" data-i18n="nav.projects" style="color: var(--primary-color);">项目</a>
+                        <a href="/engineering.html" data-i18n="nav.engineering">Engineering</a>
+                        <a href="/timeline.html" data-i18n="nav.timeline">时间线</a>
+                        <a href="/resume.html" data-i18n="nav.resume">简历</a>
+                        <a href="/financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
+                        <a href="/interests.html" data-i18n="nav.interests">兴趣爱好</a>
+                        <a href="/highlights.html" data-i18n="nav.highlights">主要亮点</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+            </div>
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="stem-shell">
+      <header class="stem-header">
+        <a href="/projects.html" class="back-button" aria-label="返回项目页">←</a>
+        <div class="stem-title">
+          <img src="/zapp/icons/apps/music-tool.svg" alt="" />
+          <div>
+            <p>Music Lab</p>
+            <h1>Stem Splitter</h1>
+          </div>
+        </div>
+      </header>
+
+      <section class="stem-meta" aria-label="Pipeline status">
+        <div>
+          <strong id="songMeta">喜剧之王</strong>
+          <span>Track</span>
+        </div>
+        <div>
+          <strong>Demucs v4</strong>
+          <span>Engine</span>
+        </div>
+        <div>
+          <strong id="engineState">Checking</strong>
+          <span>Local API</span>
+        </div>
+      </section>
+
+      <section class="stem-workspace">
+        <form class="input-panel" id="stemForm">
+          <div class="field-grid">
+            <label class="field">
+              <span>歌名</span>
+              <input id="songTitle" name="title" value="喜剧之王" autocomplete="off" required />
+            </label>
+            <label class="field">
+              <span>歌手</span>
+              <input id="artistName" name="artist" value="李荣浩" autocomplete="off" required />
+            </label>
+          </div>
+
+          <div class="source-actions">
+            <button class="secondary-button" id="youtubeButton" type="button">YouTube</button>
+            <a class="secondary-button" href="https://github.com/facebookresearch/demucs" target="_blank" rel="noreferrer">Demucs</a>
+          </div>
+
+          <label class="drop-zone" id="dropZone">
+            <input id="audioFile" type="file" accept="audio/*,.mp3,.wav,.m4a,.flac,.aac,.ogg" />
+            <span>Original audio</span>
+            <strong id="fileName">选择 MP3 / WAV / M4A</strong>
+            <small id="fileMeta">本地文件</small>
+          </label>
+
+          <section class="engine-panel" aria-label="Engine">
+            <div class="engine-card is-active">
+              <strong>Demucs</strong>
+              <span>vocals + no_vocals</span>
+            </div>
+            <div class="engine-card">
+              <strong>Audio Separator</strong>
+              <span>UVR models</span>
+            </div>
+            <div class="engine-card">
+              <strong>Open-Unmix</strong>
+              <span>4 stems</span>
+            </div>
+          </section>
+
+          <div class="action-row">
+            <button class="primary-button" id="splitButton" type="submit">分离 Stems</button>
+            <button class="secondary-button" id="resetButton" type="button">清空</button>
+          </div>
+
+          <p class="status-line" id="statusLine" aria-live="polite"></p>
+        </form>
+
+        <section class="output-panel" aria-label="Outputs">
+          <div class="output-heading">
+            <div>
+              <p>Output</p>
+              <h2 id="outputTitle">等待音频</h2>
+            </div>
+            <div class="output-tools">
+              <button class="secondary-button" id="openFolderButton" type="button" hidden>打开文件夹</button>
+              <span id="jobBadge">--</span>
+            </div>
+          </div>
+
+          <div class="global-seek" id="globalSeek" hidden>
+            <input id="globalSeekSlider" type="range" min="0" max="1000" value="0" step="1" aria-label="播放位置" />
+            <span id="globalSeekTime">0:00 / --</span>
+          </div>
+
+          <div class="stem-stack">
+            <article class="stem-track" data-state="empty" id="originalTrack">
+              <div>
+                <p>Original</p>
+                <h3>original.mp3</h3>
+              </div>
+              <audio id="originalAudio" preload="metadata" hidden></audio>
+              <button class="track-play-button secondary-button" id="originalPlay" type="button" hidden>播放</button>
+              <a class="download-button" id="originalDownload" href="#" download hidden>下载</a>
+            </article>
+
+            <article class="stem-track" data-state="empty" id="vocalTrack">
+              <div>
+                <p>Vocal</p>
+                <h3>vocals.mp3</h3>
+              </div>
+              <audio id="vocalAudio" preload="metadata" hidden></audio>
+              <button class="track-play-button secondary-button" id="vocalPlay" type="button" hidden>播放</button>
+              <a class="download-button" id="vocalDownload" href="#" download hidden>下载</a>
+            </article>
+
+            <article class="stem-track" data-state="empty" id="bgmTrack">
+              <div>
+                <p>BGM</p>
+                <h3>bgm.mp3</h3>
+              </div>
+              <audio id="bgmAudio" preload="metadata" hidden></audio>
+              <button class="track-play-button secondary-button" id="bgmPlay" type="button" hidden>播放</button>
+              <a class="download-button" id="bgmDownload" href="#" download hidden>下载</a>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/i18n.js?v=20260515-london-fix" defer></script>
+    <script src="/script.js?v=20260513-main-perf" defer></script>
+    <script type="module" src="/projects/stem-splitter.js?v=20260605"></script>
+</body>
+</html>
