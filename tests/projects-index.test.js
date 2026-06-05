@@ -20,6 +20,7 @@ test('projects index separates public work from internal operations', () => {
   const publicSection = projectsHtml.slice(publicStart, operationsStart);
   const operationsSection = projectsHtml.slice(operationsStart);
 
+  expectIncludes(publicSection, 'href="/projects/workout"');
   expectIncludes(publicSection, 'href="/projects/vipassana"');
   expectIncludes(publicSection, 'href="/engineering"');
   expectIncludes(publicSection, 'href="/projects/chord-trainer"');

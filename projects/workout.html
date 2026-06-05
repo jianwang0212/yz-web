@@ -1,0 +1,1708 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>健身记录与动作分析 · Zi Yin</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f3ee;
+      --surface: #ffffff;
+      --surface-soft: #faf8f3;
+      --ink: #1e2422;
+      --muted: #68716c;
+      --line: #ded8cd;
+      --green: #2f7d57;
+      --green-soft: #e7f1eb;
+      --amber: #b77722;
+      --amber-soft: #f4eadb;
+      --blue: #386f91;
+      --blue-soft: #e6eef3;
+      --red: #a5473a;
+      --shadow: 0 18px 40px rgba(34, 31, 24, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: -24px calc(50% - 50vw) 24px;
+      padding: 10px calc(50vw - min(590px, calc(50vw - 16px)));
+      background: rgba(246, 243, 238, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(222, 216, 205, 0.8);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 720;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      font-size: 16px;
+      flex: 0 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      white-space: nowrap;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--ink);
+      background: var(--surface);
+      outline: none;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+
+    .panel,
+    .card,
+    .metric,
+    .media-card,
+    .log-entry {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 720;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: clamp(36px, 7vw, 76px);
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 780;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 740;
+    }
+
+    .lead {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .intro-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .meta-item {
+      padding: 13px;
+      border-radius: 8px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .meta-value {
+      margin-top: 4px;
+      font-weight: 760;
+    }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      height: 100%;
+      min-height: 396px;
+    }
+
+    .cover-grid button {
+      display: block;
+      min-width: 0;
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .cover-grid button:first-child {
+      grid-row: span 2;
+    }
+
+    .cover-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .section {
+      margin-top: 18px;
+      scroll-margin-top: 78px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 12px;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 112px;
+      padding: 14px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric .value {
+      margin-top: 8px;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 810;
+    }
+
+    .metric .unit {
+      margin-left: 3px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 620;
+    }
+
+    .metric .hint {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric.green {
+      background: var(--green-soft);
+      border-color: #c9dfd2;
+    }
+
+    .metric.amber {
+      background: var(--amber-soft);
+      border-color: #e3cda8;
+    }
+
+    .metric.blue {
+      background: var(--blue-soft);
+      border-color: #c6dae6;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 720;
+      background: var(--surface-soft);
+    }
+
+    td strong {
+      font-weight: 770;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      background: var(--green-soft);
+      border-color: #c9dfd2;
+      color: var(--green);
+    }
+
+    .tag.amber {
+      background: var(--amber-soft);
+      border-color: #e3cda8;
+      color: var(--amber);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .media-card {
+      overflow: hidden;
+    }
+
+    .media-card .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border: 0;
+      padding: 0;
+      background: #ddd;
+      cursor: zoom-in;
+      overflow: hidden;
+    }
+
+    .media-card.wide .thumb {
+      aspect-ratio: 16 / 10;
+    }
+
+    .media-card .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-card video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .media-body {
+      padding: 12px;
+    }
+
+    .media-body p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .date-block {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .date-label {
+      position: sticky;
+      top: 72px;
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 720;
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 12px;
+    }
+
+    .doc-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border: 0;
+      padding: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ddd;
+      cursor: zoom-in;
+    }
+
+    .doc-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .note-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .note-list li {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+    }
+
+    .log-form {
+      display: grid;
+      grid-template-columns: 160px 140px minmax(0, 1fr) 132px;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .field {
+      display: grid;
+      gap: 5px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 720;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      padding: 9px 10px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 42px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      min-height: 42px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 720;
+    }
+
+    .btn.primary {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    .btn.warn {
+      color: var(--red);
+    }
+
+    .log-list {
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .finding-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .finding-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .finding-card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .finding-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .sheet-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .sheet-card button {
+      width: 100%;
+      border: 0;
+      padding: 0;
+      background: #111;
+      cursor: zoom-in;
+    }
+
+    .sheet-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .analysis-copy {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .log-entry {
+      display: grid;
+      grid-template-columns: 120px 90px minmax(0, 1fr) 64px;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+      box-shadow: none;
+    }
+
+    .log-date {
+      font-weight: 760;
+    }
+
+    .log-weight {
+      color: var(--blue);
+      font-weight: 760;
+    }
+
+    .log-text {
+      color: var(--muted);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      font-weight: 760;
+    }
+
+    details .table-wrap {
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(18, 21, 19, 0.86);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      width: min(1100px, 100%);
+      max-height: 94vh;
+      display: grid;
+      gap: 10px;
+    }
+
+    .lightbox img {
+      width: 100%;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #111;
+    }
+
+    .lightbox-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #fff;
+      align-items: center;
+    }
+
+    .lightbox-caption {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .lightbox-close {
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      min-width: 42px;
+      min-height: 38px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 980px) {
+      .intro,
+      .two-col,
+      .doc-grid,
+      .finding-grid,
+      .analysis-copy {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .media-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cover-grid {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      .topbar {
+        margin-top: -16px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+      }
+
+      .panel {
+        padding: 16px;
+      }
+
+      .intro-meta,
+      .metrics,
+      .media-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cover-grid {
+        grid-template-columns: 1fr 1fr;
+        min-height: 300px;
+      }
+
+      .date-block {
+        grid-template-columns: 1fr;
+      }
+
+      .date-label {
+        position: static;
+      }
+
+      .log-form,
+      .log-entry {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .section-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .intro-meta,
+      .metrics,
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">训</span>
+        <span>健身记录与动作分析 · Zi Yin</span>
+      </div>
+      <nav class="nav" aria-label="页面分区">
+        <a href="#analysis">分析</a>
+        <a href="#leg-day">练腿</a>
+        <a href="#baseline">基线</a>
+        <a href="#plan">课程</a>
+        <a href="#posture">体态</a>
+        <a href="#diet">饮食</a>
+        <a href="#videos">视频</a>
+        <a href="#log">后续</a>
+        <a href="#files">素材</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="panel">
+        <div class="eyebrow">Rongcheng Gym Archive</div>
+        <h1 id="page-title">健身记录</h1>
+        <p class="lead">从 `/Users/Zi/Downloads/健身/` 归档：课程价格、协议留档、体成分报告、围度基线、体态照片、饮食照片和训练短片。</p>
+        <div class="intro-meta">
+          <div class="meta-item">
+            <div class="meta-label">机构</div>
+            <div class="meta-value">荣成健身工作室 / 私教馆</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">素材日期</div>
+            <div class="meta-value">2026-06-01 至 2026-06-05</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">体成分报告</div>
+            <div class="meta-value">2026-05-31</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">本地素材</div>
+            <div class="meta-value">17 张图片 · 8 段视频</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-grid" aria-label="重点素材">
+        <button class="zoomable" data-full="workout-assets/media/微信图片_20260605063428.jpg" data-caption="体态基线 · 正面">
+          <img src="workout-assets/media/微信图片_20260605063428.jpg" alt="体态基线正面">
+        </button>
+        <button class="zoomable" data-full="workout-assets/media/微信图片_20260605063425.jpg" data-caption="体成分报告">
+          <img src="workout-assets/media/微信图片_20260605063425.jpg" alt="体成分报告">
+        </button>
+        <button class="zoomable" data-full="workout-assets/media/微信图片_20260601111832_43_741.jpg" data-caption="一对一私教价格表">
+          <img src="workout-assets/media/微信图片_20260601111832_43_741.jpg" alt="一对一私教价格表">
+        </button>
+      </div>
+    </section>
+
+    <section id="analysis" class="section" aria-labelledby="analysis-title">
+      <div class="section-head">
+        <h2 id="analysis-title">问题判断与动作分析</h2>
+        <p class="section-note">非医疗诊断；用于训练方向和动作修正</p>
+      </div>
+
+      <div class="finding-grid">
+        <div class="finding-card">
+          <strong>我的判断：主问题不是减脂</strong>
+          <p>176 cm、57.0 kg、BMI 18.4、体脂率 12.0%。当前更像是偏瘦和肌肉量不足，目标应是增肌、力量基础和体态控制，而不是继续压体重。</p>
+        </div>
+        <div class="finding-card">
+          <strong>静态照片：肩颈和肩胛控制弱</strong>
+          <p>侧面照可见头部略前伸、圆肩趋势；背面照可见肩背厚度不足、肩胛稳定性和左右对称性需要继续建立。</p>
+        </div>
+        <div class="finding-card">
+          <strong>视频动作：重量先让位给控制</strong>
+          <p>三段动作都有不同程度的耸肩、颈部代偿、躯干不稳或动作幅度不完整。短期不追重量，先把肩胛下沉、胸椎伸展和核心支撑练稳。</p>
+        </div>
+      </div>
+
+      <div class="analysis-copy">
+        <div class="table-wrap">
+          <table aria-label="静态照片分析">
+            <thead>
+              <tr>
+                <th>素材</th>
+                <th>看到的问题</th>
+                <th>训练含义</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>正面体态照</td>
+                <td>整体偏瘦，肩背和上肢肌肉量不足；站姿看起来不够“撑开”。</td>
+                <td>优先增肌：背、肩、胸、臀腿都要练，不只练腹或拉伸。</td>
+              </tr>
+              <tr>
+                <td>侧面体态照</td>
+                <td>头部略前伸、肩略向前卷，胸椎伸展能力和肩胛后收下沉控制不足。</td>
+                <td>每次训练前做胸椎伸展、下巴微收、肩胛下沉激活。</td>
+              </tr>
+              <tr>
+                <td>背面体态照</td>
+                <td>背阔肌、后三角、下斜方肌厚度还弱；肩胛左右控制可能不完全一致。</td>
+                <td>保留划船、下拉、面拉、反向飞鸟，但动作质量要优先。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table aria-label="执行指导">
+            <thead>
+              <tr>
+                <th>方向</th>
+                <th>怎么做</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>增重目标</td><td>每周体重增加 0.25-0.5 kg；连续 2 周没涨，就每天加 150-200 kcal。</td></tr>
+              <tr><td>蛋白质</td><td>按 57 kg 体重，每天先做到 90-115 g 蛋白质。</td></tr>
+              <tr><td>训练频率</td><td>每周 3 次全身训练；每个动作留 1-3 次余力，不练到动作变形。</td></tr>
+              <tr><td>复盘指标</td><td>每周拍一次同角度体态照；记录体重、主动作重量、肩颈是否紧。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-head section">
+        <h2>视频关键帧</h2>
+        <p class="section-note">每 0.5 秒抽一帧，用于观察动作路径</p>
+      </div>
+
+      <div class="sheet-grid">
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/c0f6e72af1f6c66476fc796029a8e10b_fullsheet.jpg" data-caption="下拉动作关键帧 · 0.5 秒取样">
+            <img src="workout-assets/analysis/c0f6e72af1f6c66476fc796029a8e10b_fullsheet.jpg" alt="下拉动作关键帧">
+          </button>
+          <div class="media-body">
+            <h3>下拉动作</h3>
+            <p>0.0-1.5s 顶端时肩容易上提、脖子向上找重量；2.0-6.0s 下拉时躯干后仰偏多；7.0-11.0s 重复周期里动作还算连续，但应减少借后仰完成下拉。</p>
+            <p><strong>修正：</strong>胸口打开但肋骨别顶出去，先“肩胛向下放进后裤袋”，再让手肘向肋骨走；上放 2-3 秒，不要让肩冲到耳朵。</p>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/24e2d82caad22c7481f240046b442aba_fullsheet.jpg" data-caption="直臂下压 / 髋铰链动作关键帧 · 0.5 秒取样">
+            <img src="workout-assets/analysis/24e2d82caad22c7481f240046b442aba_fullsheet.jpg" alt="直臂下压动作关键帧">
+          </button>
+          <div class="media-body">
+            <h3>直臂下压 / 髋铰链位</h3>
+            <p>0.0-1.0s 前伸时胸椎偏圆、头低；1.5-2.5s 结束位手拉到大腿附近，但肩颈和上背有代偿；7.5-17.0s 后半段骨盆和躯干位置不够稳定。</p>
+            <p><strong>修正：</strong>减一点重量，髋向后坐、脊柱拉长、下巴微收；手肘保持微弯固定，想象“腋下发力把手拉到裤兜”，底部停 1 秒。</p>
+          </div>
+        </article>
+
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/4719f86378c075f3c1898d0ebd8f9169_fullsheet.jpg" data-caption="反向飞鸟 / 肩背控制关键帧 · 0.5 秒取样">
+            <img src="workout-assets/analysis/4719f86378c075f3c1898d0ebd8f9169_fullsheet.jpg" alt="反向飞鸟动作关键帧">
+          </button>
+          <div class="media-body">
+            <h3>反向飞鸟 / 肩背控制</h3>
+            <p>从后方看，动作幅度偏小且像在终点附近做短程控制；肩膀有上提趋势，左右肩胛参与不完全一致。这个动作对后三角和下斜方肌很有用，但不能变成耸肩。</p>
+            <p><strong>修正：</strong>座椅调到把手约肩高，胸口贴稳，手肘微弯；想象“手肘向外打开”，顶端停 1 秒，回程慢到 3 秒。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="analysis-copy">
+        <div class="panel">
+          <h3>接下来 8 周训练重点</h3>
+          <ul class="note-list" style="margin-top: 12px;">
+            <li>每周 3 次：深蹲或腿举、罗马尼亚硬拉、卧推或俯卧撑、划船、下拉、反向飞鸟、核心抗旋转。</li>
+            <li>背部动作每组 8-12 次，节奏用 2 秒拉、1 秒停、3 秒还原；只在动作不变形时加重量。</li>
+            <li>训练前 8 分钟：胸椎伸展、肩胛下沉、死虫或平板支撑、髋铰链空杆练习。</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>饮食调整</h3>
+          <ul class="note-list" style="margin-top: 12px;">
+            <li>照片里的饭菜有碳水、蔬菜和蛋白质，但总量未必够增肌；先把总热量吃到体重稳定上涨。</li>
+            <li>每天 3-4 餐，每餐保证一掌心以上蛋白质；训练后 2 小时内补一餐含碳水和蛋白质的正餐。</li>
+            <li>不要用 1590 kcal 当增肌摄入，它更像低活动参考值；真实目标由体重增长速度校准。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="leg-day" class="section" aria-labelledby="leg-day-title">
+      <div class="section-head">
+        <h2 id="leg-day-title">2026-06-05 练腿分析</h2>
+        <p class="section-note">新导入 5 段视频；每 0.5 秒抽一帧</p>
+      </div>
+
+      <div class="finding-grid">
+        <div class="finding-card">
+          <strong>我的判断：动作库还可以，但主项偏少</strong>
+          <p>这次有腿屈伸、腿弯举、臀推、分腿蹲，能覆盖股四、腘绳、臀和单腿控制；但缺一个稳定的重主项，例如腿举、深蹲或罗马尼亚硬拉。</p>
+        </div>
+        <div class="finding-card">
+          <strong>最大问题：臀推用腰和脖子代偿</strong>
+          <p>顶部有明显仰头、肋骨上翻和腰椎伸展趋势。臀推目标是髋伸，不是把腰顶起来；这会让臀部刺激变少，腰背压力变大。</p>
+        </div>
+        <div class="finding-card">
+          <strong>训练质量：节奏偏快，离心不够</strong>
+          <p>腿屈伸和腿弯举都可以再慢一点。增肌阶段最值钱的是受控离心、底部不松、顶端停顿，而不是把器械快速甩完。</p>
+        </div>
+      </div>
+
+      <div class="analysis-copy">
+        <div class="table-wrap">
+          <table aria-label="练腿动作问题">
+            <thead>
+              <tr>
+                <th>动作</th>
+                <th>看到的问题</th>
+                <th>修正口令</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>坐姿腿屈伸</td>
+                <td>顶部接近锁膝，动作速度偏快；躯干和头颈有时跟着发力。</td>
+                <td>背贴稳，抓把手，脚尖自然回勾；上抬 1 秒、顶端停 1 秒、下放 3 秒，不要猛甩到锁死。</td>
+              </tr>
+              <tr>
+                <td>俯卧腿弯举</td>
+                <td>顶端容易用骨盆/腰部帮忙，脚踝晃动，离心阶段偏快。</td>
+                <td>髋压住垫子，肚脐轻收；小腿卷上来停 1 秒，下放 3 秒，重量宁可小一点。</td>
+              </tr>
+              <tr>
+                <td>史密斯卧推</td>
+                <td>这段不是腿部主项。脚放在凳上会牺牲稳定；手腕和肩胛需要更稳。</td>
+                <td>如果练胸：脚放地，肩胛后收下沉，手腕叠在手肘上，杠铃落到中下胸。</td>
+              </tr>
+              <tr>
+                <td>臀推</td>
+                <td>顶部仰头、肋骨上翻、腰椎代偿；看起来像在用腰顶高度。</td>
+                <td>下巴微收看前方，肋骨向下，骨盆后倾；顶端只到身体一条线，夹臀停 1 秒。</td>
+              </tr>
+              <tr>
+                <td>徒手分腿蹲 / 弓步</td>
+                <td>深度不错，但稳定性还要看膝盖是否一直对准脚尖；起身不要靠上半身甩。</td>
+                <td>前脚三点踩地，膝盖朝第二/三脚趾，身体微前倾但腰背长，底部停半秒再上。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h3>这次腿日建议排序</h3>
+          <ul class="note-list" style="margin-top: 12px;">
+            <li>先做主项：腿举或深蹲 3-4 组，每组 6-10 次。</li>
+            <li>再做臀推 3 组，每组 8-12 次，顶端停 1 秒。</li>
+            <li>然后腿弯举 3 组、腿屈伸 2-3 组，每组 10-15 次。</li>
+            <li>最后分腿蹲 2-3 组，每侧 8-10 次；如果膝盖乱跑，先减深度。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sheet-grid section">
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/legs-20260605/d4d5033319a12eed7f76106a8d5f1936_sheet.jpg" data-caption="坐姿腿屈伸关键帧 · 2026-06-05">
+            <img src="workout-assets/analysis/legs-20260605/d4d5033319a12eed7f76106a8d5f1936_sheet.jpg" alt="坐姿腿屈伸关键帧">
+          </button>
+          <div class="media-body">
+            <h3>坐姿腿屈伸</h3>
+            <p>股四头肌孤立动作。顶部避免猛锁膝，回程要慢；如果膝盖前侧不舒服，降低重量或缩小终末角度。</p>
+          </div>
+        </article>
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/legs-20260605/a4f2ed7ae03a80c83b696dbd7ac95463_sheet.jpg" data-caption="俯卧腿弯举关键帧 · 2026-06-05">
+            <img src="workout-assets/analysis/legs-20260605/a4f2ed7ae03a80c83b696dbd7ac95463_sheet.jpg" alt="俯卧腿弯举关键帧">
+          </button>
+          <div class="media-body">
+            <h3>俯卧腿弯举</h3>
+            <p>腘绳肌动作。重点是髋不要抬、腰不要拱；顶端停顿比追重量更重要。</p>
+          </div>
+        </article>
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/legs-20260605/d26fa84bc91d2394a5da52d719ccd55a_sheet.jpg" data-caption="史密斯卧推动作关键帧 · 2026-06-05">
+            <img src="workout-assets/analysis/legs-20260605/d26fa84bc91d2394a5da52d719ccd55a_sheet.jpg" alt="史密斯卧推动作关键帧">
+          </button>
+          <div class="media-body">
+            <h3>史密斯卧推</h3>
+            <p>这段更像上肢推，不是腿日核心。若只是穿插练胸，可以；若当天目标是练腿，建议把体力留给下肢主项。</p>
+          </div>
+        </article>
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/legs-20260605/7740eef93b8777f3dd76de9e3ccc42f3_sheet.jpg" data-caption="臀推关键帧 · 2026-06-05">
+            <img src="workout-assets/analysis/legs-20260605/7740eef93b8777f3dd76de9e3ccc42f3_sheet.jpg" alt="臀推关键帧">
+          </button>
+          <div class="media-body">
+            <h3>臀推</h3>
+            <p>最需要修正的一段：顶端下巴收、肋骨下压、骨盆后倾，只用臀把髋伸开，不用腰顶高度。</p>
+          </div>
+        </article>
+        <article class="sheet-card">
+          <button class="zoomable" data-full="workout-assets/analysis/legs-20260605/7721de30fc956872d4ef774a36fec340_sheet.jpg" data-caption="徒手分腿蹲 / 弓步关键帧 · 2026-06-05">
+            <img src="workout-assets/analysis/legs-20260605/7721de30fc956872d4ef774a36fec340_sheet.jpg" alt="徒手分腿蹲关键帧">
+          </button>
+          <div class="media-body">
+            <h3>徒手分腿蹲 / 弓步</h3>
+            <p>深度可以。下一步重点不是更深，而是膝盖轨迹、脚底压力和起身速度稳定。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="media-grid section">
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/d4d5033319a12eed7f76106a8d5f1936.jpg">
+            <source src="workout-assets/media/d4d5033319a12eed7f76106a8d5f1936.mp4" type="video/mp4">
+          </video>
+          <div class="media-body"><h3>坐姿腿屈伸</h3><p>8.4 秒 · 1280 × 720。</p></div>
+        </article>
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/a4f2ed7ae03a80c83b696dbd7ac95463.jpg">
+            <source src="workout-assets/media/a4f2ed7ae03a80c83b696dbd7ac95463.mp4" type="video/mp4">
+          </video>
+          <div class="media-body"><h3>俯卧腿弯举</h3><p>14.9 秒 · 1280 × 720。</p></div>
+        </article>
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/d26fa84bc91d2394a5da52d719ccd55a.jpg">
+            <source src="workout-assets/media/d26fa84bc91d2394a5da52d719ccd55a.mp4" type="video/mp4">
+          </video>
+          <div class="media-body"><h3>史密斯卧推</h3><p>17.4 秒 · 1280 × 720。</p></div>
+        </article>
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/7740eef93b8777f3dd76de9e3ccc42f3.jpg">
+            <source src="workout-assets/media/7740eef93b8777f3dd76de9e3ccc42f3.mp4" type="video/mp4">
+          </video>
+          <div class="media-body"><h3>臀推</h3><p>16.4 秒 · 1280 × 720。</p></div>
+        </article>
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/7721de30fc956872d4ef774a36fec340.jpg">
+            <source src="workout-assets/media/7721de30fc956872d4ef774a36fec340.mp4" type="video/mp4">
+          </video>
+          <div class="media-body"><h3>徒手分腿蹲 / 弓步</h3><p>13.8 秒 · 1280 × 720。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="baseline" class="section" aria-labelledby="baseline-title">
+      <div class="section-head">
+        <h2 id="baseline-title">身体基线</h2>
+        <p class="section-note">抄录自体成分报告和会员体测登记表</p>
+      </div>
+      <div class="metrics" aria-label="核心体测指标">
+        <div class="metric green">
+          <div class="label">身高</div>
+          <div class="value">176<span class="unit">cm</span></div>
+          <div class="hint">报告登记</div>
+        </div>
+        <div class="metric green">
+          <div class="label">体重</div>
+          <div class="value">57.0<span class="unit">kg</span></div>
+          <div class="hint">Body Weight</div>
+        </div>
+        <div class="metric blue">
+          <div class="label">骨骼肌</div>
+          <div class="value">27.9<span class="unit">kg</span></div>
+          <div class="hint">Skeletal Muscle Mass</div>
+        </div>
+        <div class="metric amber">
+          <div class="label">体脂率</div>
+          <div class="value">12.0<span class="unit">%</span></div>
+          <div class="hint">PBF</div>
+        </div>
+        <div class="metric">
+          <div class="label">BMI</div>
+          <div class="value">18.4</div>
+          <div class="hint">报告正常区间 18.5-25.0</div>
+        </div>
+        <div class="metric">
+          <div class="label">基础代谢</div>
+          <div class="value">1454<span class="unit">kcal</span></div>
+          <div class="hint">建议摄入 1590 kcal</div>
+        </div>
+      </div>
+
+      <div class="two-col section">
+        <div class="table-wrap">
+          <table aria-label="体成分详细数据">
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>数值</th>
+                <th>备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>年龄</td><td><strong>33</strong></td><td>报告登记</td></tr>
+              <tr><td>性别</td><td><strong>男</strong></td><td>报告登记</td></tr>
+              <tr><td>体脂肪</td><td><strong>6.8 kg</strong></td><td>Body Fat Mass</td></tr>
+              <tr><td>身体水分</td><td><strong>37.0 kg</strong></td><td>Total Body Water</td></tr>
+              <tr><td>去脂体重</td><td><strong>50.2 kg</strong></td><td>Fat Free Mass</td></tr>
+              <tr><td>腰臀比</td><td><strong>0.81</strong></td><td>WHR</td></tr>
+              <tr><td>肌肉控制</td><td><strong>+7.8 kg</strong></td><td>报告建议项</td></tr>
+              <tr><td>脂肪控制</td><td><strong>+3.4 kg</strong></td><td>报告建议项，按截图抄录</td></tr>
+              <tr><td>健康评分</td><td><strong>69 分</strong></td><td>InBody 230 报告</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table aria-label="第一次围度记录">
+            <thead>
+              <tr>
+                <th>围度项目</th>
+                <th>第一次</th>
+                <th>单位</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>右上臂</td><td><strong>26</strong></td><td>cm</td></tr>
+              <tr><td>左上臂</td><td><strong>25.5</strong></td><td>cm</td></tr>
+              <tr><td>胸围</td><td><strong>104</strong></td><td>cm</td></tr>
+              <tr><td>腰围</td><td><strong>69</strong></td><td>cm</td></tr>
+              <tr><td>臀围</td><td><strong>90</strong></td><td>cm</td></tr>
+              <tr><td>右大腿</td><td><strong>48</strong></td><td>cm</td></tr>
+              <tr><td>左大腿</td><td><strong>46.5</strong></td><td>cm</td></tr>
+              <tr><td>小腿</td><td><span class="tag">未记录</span></td><td>cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan" class="section" aria-labelledby="plan-title">
+      <div class="section-head">
+        <h2 id="plan-title">课程与协议</h2>
+        <p class="section-note">价格表来自荣成健身私教馆“一对一精准训练课程”</p>
+      </div>
+      <div class="doc-grid">
+        <div class="table-wrap">
+          <table aria-label="私教课程价格表">
+            <thead>
+              <tr>
+                <th>时长</th>
+                <th>课时</th>
+                <th>单价</th>
+                <th>总价</th>
+                <th>备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1 个月</strong></td>
+                <td>12 节课</td>
+                <td>206 元</td>
+                <td><strong>2480 元</strong></td>
+                <td><span class="tag">体验入门</span></td>
+              </tr>
+              <tr>
+                <td><strong>3 个月</strong></td>
+                <td>36 节课</td>
+                <td>191 元</td>
+                <td><strong>6880 元</strong></td>
+                <td><span class="tag green">性价比首选</span></td>
+              </tr>
+              <tr>
+                <td><strong>6 个月</strong></td>
+                <td>70 节课</td>
+                <td>184 元</td>
+                <td><strong>12888 元</strong></td>
+                <td><span class="tag amber">长期稳定</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h3>协议留档</h3>
+          <ul class="note-list" style="margin-top: 12px;">
+            <li>图片为《私人教练课程购买协议》空白/待填写版。</li>
+            <li>有效期选项包括 12 节 30 天、40 节 90 天、70 节 180 天、144 节 365 天、300-399 节 720 天、400 节以上 1000 天。</li>
+            <li>协议图已归档，可在下方素材清单打开原图。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="media-grid section">
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601111832_43_741.jpg" data-caption="价格表 · 一对一精准训练">
+            <img src="workout-assets/media/微信图片_20260601111832_43_741.jpg" alt="一对一私教价格表">
+          </button>
+          <div class="media-body">
+            <h3>价格表</h3>
+            <p>12 / 36 / 70 节课程三档。</p>
+          </div>
+        </article>
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601110652_39_741.jpg" data-caption="私人教练课程购买协议">
+            <img src="workout-assets/media/微信图片_20260601110652_39_741.jpg" alt="私人教练课程购买协议">
+          </button>
+          <div class="media-body">
+            <h3>协议模板</h3>
+            <p>合同条款和有效期选项留档。</p>
+          </div>
+        </article>
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063419.jpg" data-caption="会员基本信息与围度登记表">
+            <img src="workout-assets/media/微信图片_20260605063419.jpg" alt="会员基本信息与围度登记表">
+          </button>
+          <div class="media-body">
+            <h3>围度表</h3>
+            <p>第一次围度已抄录到基线表。</p>
+          </div>
+        </article>
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063425.jpg" data-caption="体成分分析报告">
+            <img src="workout-assets/media/微信图片_20260605063425.jpg" alt="体成分分析报告">
+          </button>
+          <div class="media-body">
+            <h3>体成分报告</h3>
+            <p>InBody 230，报告日期 2026-05-31。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="posture" class="section" aria-labelledby="posture-title">
+      <div class="section-head">
+        <h2 id="posture-title">体态基线</h2>
+        <p class="section-note">2026-06-05 导入，正面 / 左侧 / 右侧 / 背面</p>
+      </div>
+      <div class="media-grid">
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063428.jpg" data-caption="体态基线 · 正面">
+            <img src="workout-assets/media/微信图片_20260605063428.jpg" alt="体态基线正面">
+          </button>
+          <div class="media-body"><h3>正面</h3><p>荣成健身工作室背景板。</p></div>
+        </article>
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063431.jpg" data-caption="体态基线 · 左侧">
+            <img src="workout-assets/media/微信图片_20260605063431.jpg" alt="体态基线左侧">
+          </button>
+          <div class="media-body"><h3>左侧</h3><p>侧面站姿记录。</p></div>
+        </article>
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063434.jpg" data-caption="体态基线 · 右侧">
+            <img src="workout-assets/media/微信图片_20260605063434.jpg" alt="体态基线右侧">
+          </button>
+          <div class="media-body"><h3>右侧</h3><p>侧面站姿记录。</p></div>
+        </article>
+        <article class="media-card">
+          <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063437.jpg" data-caption="体态基线 · 背面">
+            <img src="workout-assets/media/微信图片_20260605063437.jpg" alt="体态基线背面">
+          </button>
+          <div class="media-body"><h3>背面</h3><p>肩背与下肢对称性留档。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="diet" class="section" aria-labelledby="diet-title">
+      <div class="section-head">
+        <h2 id="diet-title">饮食记录</h2>
+        <p class="section-note">按文件名日期归组</p>
+      </div>
+      <div class="timeline">
+        <div class="date-block">
+          <div class="date-label">2026-06-01</div>
+          <div class="media-grid">
+            <article class="media-card wide">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123809_70_741.jpg" data-caption="6 月 1 日 · 外食家常菜">
+                <img src="workout-assets/media/微信图片_20260601123809_70_741.jpg" alt="6 月 1 日外食家常菜">
+              </button>
+              <div class="media-body"><h3>外食家常菜</h3><p>蔬菜、豆制品、肉类。</p></div>
+            </article>
+            <article class="media-card">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123809_71_741.jpg" data-caption="6 月 1 日 · 打包餐">
+                <img src="workout-assets/media/微信图片_20260601123809_71_741.jpg" alt="6 月 1 日打包餐">
+              </button>
+              <div class="media-body"><h3>打包餐</h3><p>紫米饭、肉菜、虾粉、青菜、汤。</p></div>
+            </article>
+            <article class="media-card">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123810_72_741.jpg" data-caption="6 月 1 日 · 打包餐组合">
+                <img src="workout-assets/media/微信图片_20260601123810_72_741.jpg" alt="6 月 1 日打包餐组合">
+              </button>
+              <div class="media-body"><h3>打包餐组合</h3><p>米饭、青菜、汤、鸡肉/豆腐/鸡蛋。</p></div>
+            </article>
+            <article class="media-card wide">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123811_73_741.jpg" data-caption="6 月 1 日 · 米饭与鱼">
+                <img src="workout-assets/media/微信图片_20260601123811_73_741.jpg" alt="6 月 1 日米饭与鱼">
+              </button>
+              <div class="media-body"><h3>米饭与鱼</h3><p>白米饭、紫米饭、蒸鱼、青菜、汤。</p></div>
+            </article>
+            <article class="media-card">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123811_74_741.jpg" data-caption="6 月 1 日 · 家常菜聚餐">
+                <img src="workout-assets/media/微信图片_20260601123811_74_741.jpg" alt="6 月 1 日家常菜聚餐">
+              </button>
+              <div class="media-body"><h3>家常菜聚餐</h3><p>鱼、肉类、蔬菜、汤。</p></div>
+            </article>
+            <article class="media-card">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123812_75_741.jpg" data-caption="6 月 1 日 · 打包餐复盘">
+                <img src="workout-assets/media/微信图片_20260601123812_75_741.jpg" alt="6 月 1 日打包餐复盘">
+              </button>
+              <div class="media-body"><h3>打包餐复盘</h3><p>紫米饭、青菜、鸡肉/豆腐、鸡蛋。</p></div>
+            </article>
+            <article class="media-card wide">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601124550_82_741.jpg" data-caption="6 月 1 日 · 家常菜">
+                <img src="workout-assets/media/微信图片_20260601124550_82_741.jpg" alt="6 月 1 日家常菜">
+              </button>
+              <div class="media-body"><h3>家常菜</h3><p>土豆排骨、绿叶菜、豆角、蛋白质菜。</p></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="date-block">
+          <div class="date-label">2026-06-04</div>
+          <div class="media-grid">
+            <article class="media-card wide">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260604141551_120_741.jpg" data-caption="6 月 4 日 · 外食聚餐">
+                <img src="workout-assets/media/微信图片_20260604141551_120_741.jpg" alt="6 月 4 日外食聚餐">
+              </button>
+              <div class="media-body"><h3>外食聚餐</h3><p>鱼、贝类、米饭等。</p></div>
+            </article>
+            <article class="media-card">
+              <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260604190734_129_741.jpg" data-caption="6 月 4 日 · 打包餐">
+                <img src="workout-assets/media/微信图片_20260604190734_129_741.jpg" alt="6 月 4 日打包餐">
+              </button>
+              <div class="media-body"><h3>打包餐</h3><p>白米/紫米、鱼、番茄、青菜、汤。</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos" class="section" aria-labelledby="videos-title">
+      <div class="section-head">
+        <h2 id="videos-title">训练视频</h2>
+        <p class="section-note">3 段 720p 短片，均已本地归档</p>
+      </div>
+      <div class="media-grid">
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/c0f6e72af1f6c66476fc796029a8e10b.jpg">
+            <source src="workout-assets/media/c0f6e72af1f6c66476fc796029a8e10b.mp4" type="video/mp4">
+          </video>
+          <div class="media-body">
+            <h3>下拉 / 拉背动作</h3>
+            <p>11.5 秒 · 1280 × 720。</p>
+          </div>
+        </article>
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/24e2d82caad22c7481f240046b442aba.jpg">
+            <source src="workout-assets/media/24e2d82caad22c7481f240046b442aba.mp4" type="video/mp4">
+          </video>
+          <div class="media-body">
+            <h3>髋铰链 / 划船类动作</h3>
+            <p>17.3 秒 · 1280 × 720。</p>
+          </div>
+        </article>
+        <article class="media-card wide">
+          <video controls preload="metadata" poster="workout-assets/posters/4719f86378c075f3c1898d0ebd8f9169.jpg">
+            <source src="workout-assets/media/4719f86378c075f3c1898d0ebd8f9169.mp4" type="video/mp4">
+          </video>
+          <div class="media-body">
+            <h3>飞鸟 / 肩背控制</h3>
+            <p>15.6 秒 · 1280 × 720。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="log" class="section" aria-labelledby="log-title">
+      <div class="section-head">
+        <h2 id="log-title">后续记录</h2>
+        <p class="section-note">保存到当前浏览器本地，可导出 CSV</p>
+      </div>
+      <div class="panel">
+        <form id="workout-form" class="log-form">
+          <div class="field">
+            <label for="entry-date">日期</label>
+            <input id="entry-date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="entry-weight">体重 kg</label>
+            <input id="entry-weight" type="number" step="0.1" min="0" inputmode="decimal" placeholder="57.0">
+          </div>
+          <div class="field">
+            <label for="entry-note">训练 / 饮食 / 体感</label>
+            <textarea id="entry-note" rows="1" placeholder="例如：背部训练，晚餐蛋白质充足"></textarea>
+          </div>
+          <button class="btn primary" type="submit">添加记录</button>
+        </form>
+        <div class="button-row">
+          <button id="export-log" class="btn" type="button">导出 CSV</button>
+          <button id="clear-log" class="btn warn" type="button">清空后续记录</button>
+        </div>
+        <div id="log-list" class="log-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="files" class="section" aria-labelledby="files-title">
+      <div class="section-head">
+        <h2 id="files-title">素材清单</h2>
+        <p class="section-note">复制到 `workout-assets/media/`，页面不依赖 Downloads 原目录</p>
+      </div>
+      <details open>
+        <summary>25 个本地素材</summary>
+        <div class="table-wrap">
+          <table aria-label="素材文件清单">
+            <thead>
+              <tr>
+                <th>文件</th>
+                <th>类型</th>
+                <th>尺寸 / 时长</th>
+                <th>归类</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="workout-assets/media/微信图片_20260601110652_39_741.jpg">微信图片_20260601110652_39_741.jpg</a></td><td>JPG</td><td>1080 × 1920</td><td>协议</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601111832_43_741.jpg">微信图片_20260601111832_43_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>价格</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601123809_70_741.jpg">微信图片_20260601123809_70_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601123809_71_741.jpg">微信图片_20260601123809_71_741.jpg</a></td><td>JPG</td><td>951 × 1128</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601123810_72_741.jpg">微信图片_20260601123810_72_741.jpg</a></td><td>JPG</td><td>1280 × 1587</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601123811_73_741.jpg">微信图片_20260601123811_73_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601123811_74_741.jpg">微信图片_20260601123811_74_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601123812_75_741.jpg">微信图片_20260601123812_75_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260601124550_82_741.jpg">微信图片_20260601124550_82_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260604141551_120_741.jpg">微信图片_20260604141551_120_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260604190734_129_741.jpg">微信图片_20260604190734_129_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>饮食</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260605063419.jpg">微信图片_20260605063419.jpg</a></td><td>JPG</td><td>1080 × 1920</td><td>围度</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260605063425.jpg">微信图片_20260605063425.jpg</a></td><td>JPG</td><td>810 × 1440</td><td>体成分</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260605063428.jpg">微信图片_20260605063428.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260605063431.jpg">微信图片_20260605063431.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260605063434.jpg">微信图片_20260605063434.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
+              <tr><td><a href="workout-assets/media/微信图片_20260605063437.jpg">微信图片_20260605063437.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
+              <tr><td><a href="workout-assets/media/c0f6e72af1f6c66476fc796029a8e10b.mp4">c0f6e72af1f6c66476fc796029a8e10b.mp4</a></td><td>MP4</td><td>11.5s · 1280 × 720</td><td>训练视频</td></tr>
+              <tr><td><a href="workout-assets/media/24e2d82caad22c7481f240046b442aba.mp4">24e2d82caad22c7481f240046b442aba.mp4</a></td><td>MP4</td><td>17.3s · 1280 × 720</td><td>训练视频</td></tr>
+              <tr><td><a href="workout-assets/media/4719f86378c075f3c1898d0ebd8f9169.mp4">4719f86378c075f3c1898d0ebd8f9169.mp4</a></td><td>MP4</td><td>15.6s · 1280 × 720</td><td>训练视频</td></tr>
+              <tr><td><a href="workout-assets/media/d4d5033319a12eed7f76106a8d5f1936.mp4">d4d5033319a12eed7f76106a8d5f1936.mp4</a></td><td>MP4</td><td>8.4s · 1280 × 720</td><td>练腿视频</td></tr>
+              <tr><td><a href="workout-assets/media/a4f2ed7ae03a80c83b696dbd7ac95463.mp4">a4f2ed7ae03a80c83b696dbd7ac95463.mp4</a></td><td>MP4</td><td>14.9s · 1280 × 720</td><td>练腿视频</td></tr>
+              <tr><td><a href="workout-assets/media/d26fa84bc91d2394a5da52d719ccd55a.mp4">d26fa84bc91d2394a5da52d719ccd55a.mp4</a></td><td>MP4</td><td>17.4s · 1280 × 720</td><td>卧推视频</td></tr>
+              <tr><td><a href="workout-assets/media/7740eef93b8777f3dd76de9e3ccc42f3.mp4">7740eef93b8777f3dd76de9e3ccc42f3.mp4</a></td><td>MP4</td><td>16.4s · 1280 × 720</td><td>练腿视频</td></tr>
+              <tr><td><a href="workout-assets/media/7721de30fc956872d4ef774a36fec340.mp4">7721de30fc956872d4ef774a36fec340.mp4</a></td><td>MP4</td><td>13.8s · 1280 × 720</td><td>练腿视频</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-bar">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        <button id="lightbox-close" class="lightbox-close" type="button" aria-label="关闭">×</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const lightboxClose = document.getElementById("lightbox-close");
+
+    document.querySelectorAll(".zoomable").forEach((button) => {
+      button.addEventListener("click", () => {
+        const full = button.dataset.full;
+        const caption = button.dataset.caption || button.querySelector("img")?.alt || "";
+        lightboxImg.src = full;
+        lightboxImg.alt = caption;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImg.src = "";
+    };
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
+    });
+
+    const STORAGE_KEY = "workout-record-2026-06";
+    const form = document.getElementById("workout-form");
+    const dateInput = document.getElementById("entry-date");
+    const weightInput = document.getElementById("entry-weight");
+    const noteInput = document.getElementById("entry-note");
+    const logList = document.getElementById("log-list");
+    const exportButton = document.getElementById("export-log");
+    const clearButton = document.getElementById("clear-log");
+
+    dateInput.valueAsDate = new Date();
+
+    const readRecords = () => {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch {
+        return [];
+      }
+    };
+
+    const writeRecords = (records) => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    };
+
+    const renderRecords = () => {
+      const records = readRecords().sort((a, b) => b.date.localeCompare(a.date));
+      logList.innerHTML = "";
+      if (!records.length) {
+        const empty = document.createElement("div");
+        empty.className = "log-entry";
+        empty.innerHTML = '<div class="log-date">暂无</div><div></div><div class="log-text">后续训练记录会显示在这里。</div><div></div>';
+        logList.appendChild(empty);
+        return;
+      }
+
+      records.forEach((record) => {
+        const row = document.createElement("article");
+        row.className = "log-entry";
+        row.innerHTML = `
+          <div class="log-date"></div>
+          <div class="log-weight"></div>
+          <div class="log-text"></div>
+          <button class="btn warn" type="button">删除</button>
+        `;
+        row.querySelector(".log-date").textContent = record.date;
+        row.querySelector(".log-weight").textContent = record.weight ? `${record.weight} kg` : "";
+        row.querySelector(".log-text").textContent = record.note || "";
+        row.querySelector("button").addEventListener("click", () => {
+          writeRecords(readRecords().filter((item) => item.id !== record.id));
+          renderRecords();
+        });
+        logList.appendChild(row);
+      });
+    };
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const records = readRecords();
+      records.push({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        date: dateInput.value,
+        weight: weightInput.value.trim(),
+        note: noteInput.value.trim(),
+      });
+      writeRecords(records);
+      weightInput.value = "";
+      noteInput.value = "";
+      renderRecords();
+    });
+
+    exportButton.addEventListener("click", () => {
+      const records = readRecords();
+      const header = ["date", "weight_kg", "note"];
+      const rows = records.map((record) => [record.date, record.weight, record.note]);
+      const csv = [header, ...rows]
+        .map((row) => row.map((cell) => `"${String(cell || "").replaceAll('"', '""')}"`).join(","))
+        .join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "workout-log-2026-06.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+    clearButton.addEventListener("click", () => {
+      if (!readRecords().length) return;
+      if (confirm("清空当前浏览器里的后续记录？")) {
+        writeRecords([]);
+        renderRecords();
+      }
+    });
+
+    renderRecords();
+  </script>
+</body>
+</html>

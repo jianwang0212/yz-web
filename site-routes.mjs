@@ -1,5 +1,6 @@
 const projectPages = [
   ['dockingtech', 'projects/dockingtech.html'],
+  ['workout', 'projects/workout.html'],
   ['vipassana', 'papers/vipassana.html'],
   ['apartment-sublet', 'papers/apartment-sublet.html'],
   ['interval-quiz', 'papers/interval-quiz.html'],
