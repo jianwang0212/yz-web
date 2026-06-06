@@ -1,5 +1,6 @@
 const projectPages = [
   ['codex-monthly-2026-06', 'projects/codex-monthly-2026-06.html'],
+  ['stock-research-dashboard', 'projects/stock-research-dashboard.html'],
   ['dockingtech', 'projects/dockingtech.html'],
   ['workout', 'projects/workout.html'],
   ['vipassana', 'papers/vipassana.html'],

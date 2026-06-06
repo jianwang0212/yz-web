@@ -1,0 +1,2653 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>金融研究工作台 - Mock 原型</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-2: #eef2f5;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d8dee6;
+      --line-strong: #b8c2cc;
+      --primary: #1f6f8b;
+      --primary-dark: #15566d;
+      --green: #18805f;
+      --red: #b4232f;
+      --amber: #ad6b00;
+      --purple: #6941c6;
+      --tag-bg: #e8f1f4;
+      --shadow: 0 8px 22px rgba(16, 24, 40, 0.08);
+      --radius: 8px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.5;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 248px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 22px 18px;
+      background: #202832;
+      color: #f8fafc;
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .nav a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 11px;
+      border-radius: 7px;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .nav .count {
+      min-width: 22px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      text-align: center;
+      font-size: 12px;
+      font-family: var(--mono);
+    }
+
+    .sidebar-note {
+      margin-top: 20px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius);
+      color: #dbe4ef;
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .main {
+      min-width: 0;
+      padding: 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 18px;
+      margin-bottom: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 880px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .risk-banner {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border: 1px solid #e7c56f;
+      border-left: 5px solid var(--amber);
+      border-radius: var(--radius);
+      background: #fff8e6;
+      color: #5c3d00;
+    }
+
+    .risk-banner strong {
+      font-size: 15px;
+    }
+
+    .risk-banner p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .module {
+      margin-bottom: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .module-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .module-title {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+
+    .module-desc {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .panel {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfd;
+    }
+
+    .panel-title {
+      margin: 0 0 10px;
+      color: #344054;
+      font-size: 15px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      color: #344054;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      background: #ffffff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .field input,
+    .field select {
+      height: 38px;
+      padding: 0 10px;
+    }
+
+    .field textarea {
+      min-height: 90px;
+      resize: vertical;
+      padding: 9px 10px;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(31, 111, 139, 0.14);
+    }
+
+    .span-2 {
+      grid-column: span 2;
+    }
+
+    .btn {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 7px;
+      background: var(--surface-2);
+      color: #24313d;
+      font-size: 13px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: #dfe7ee;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-danger {
+      background: #fff0f1;
+      color: var(--red);
+    }
+
+    .btn-danger:hover {
+      background: #ffe0e3;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .btn-small {
+      min-height: 30px;
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: #285066;
+      font-size: 12px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .tag.mock {
+      background: #f1eafa;
+      color: var(--purple);
+    }
+
+    .tag.high {
+      background: #ffe4e8;
+      color: var(--red);
+    }
+
+    .tag.medium {
+      background: #fff0cf;
+      color: var(--amber);
+    }
+
+    .tag.low {
+      background: #def7ec;
+      color: var(--green);
+    }
+
+    .tag.neutral {
+      background: #eef2f5;
+      color: #52606d;
+    }
+
+    .status {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 7px;
+      background: #edf6f8;
+      color: #15566d;
+      font-size: 13px;
+    }
+
+    .status.error {
+      background: #fff0f1;
+      color: var(--red);
+    }
+
+    .status.success {
+      background: #eaf7f1;
+      color: var(--green);
+    }
+
+    .status.warning {
+      background: #fff8e6;
+      color: #6f4b00;
+    }
+
+    .loading {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #cbd5e1;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 960px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 10px 9px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f8fafc;
+      color: #344054;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tbody tr:hover {
+      background: #fbfcfd;
+    }
+
+    .sortable {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .num {
+      font-family: var(--mono);
+      white-space: nowrap;
+    }
+
+    .up {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .down {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .empty {
+      display: grid;
+      gap: 8px;
+      justify-items: start;
+      padding: 22px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      background: #fbfcfd;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .report,
+    .research,
+    .brief {
+      display: grid;
+      gap: 12px;
+    }
+
+    .section-block {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .section-block h4 {
+      margin: 0 0 7px;
+      color: #24313d;
+      font-size: 15px;
+    }
+
+    .section-block p,
+    .section-block ul,
+    .section-block ol {
+      margin: 0;
+      color: #3f4f5f;
+      font-size: 13px;
+    }
+
+    .section-block ul,
+    .section-block ol {
+      padding-left: 20px;
+    }
+
+    .section-block li + li {
+      margin-top: 4px;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary-item {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .summary-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .summary-title {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .summary-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .watch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .watch-card {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .watch-card-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .stock-name {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .stock-code {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .metric {
+      padding: 9px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fbfcfd;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric-value {
+      margin-top: 3px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      width: min(420px, calc(100vw - 36px));
+      display: grid;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      color: #24313d;
+      font-size: 13px;
+    }
+
+    .toast-msg.error {
+      border-left-color: var(--red);
+    }
+
+    .toast-msg.success {
+      border-left-color: var(--green);
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    @media (max-width: 1080px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+      }
+
+      .nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .main {
+        padding: 18px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta {
+        justify-content: flex-start;
+      }
+
+      .grid-2,
+      .watch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .main {
+        padding: 12px;
+      }
+
+      .sidebar {
+        padding: 16px 12px;
+      }
+
+      .nav {
+        grid-template-columns: 1fr;
+      }
+
+      .module {
+        padding: 14px;
+      }
+
+      .module-header {
+        display: grid;
+      }
+
+      .form-grid,
+      .filter-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .span-2 {
+        grid-column: auto;
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar .btn,
+      .toolbar .field {
+        width: 100%;
+      }
+
+      .toolbar .btn {
+        justify-content: center;
+      }
+
+      .mobile-only {
+        display: inline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>金融研究工作台</h1>
+        <p>个股研报、筛选、深度研究、自选股追踪和财经早报的前端原型。</p>
+      </div>
+      <nav class="nav" aria-label="模块导航">
+        <a href="#report-module" class="active">个股研报 <span class="count">01</span></a>
+        <a href="#screener-module">股票筛选 <span class="count">02</span></a>
+        <a href="#research-module">深度研究 <span class="count">03</span></a>
+        <a href="#watchlist-module">自选追踪 <span class="count" id="watchlistNavCount">0</span></a>
+        <a href="#brief-module">财经早报 <span class="count">05</span></a>
+      </nav>
+      <div class="sidebar-note">
+        <strong>数据状态</strong>
+        <p>当前版本使用 mock 数据和浏览器本地存储，已预留真实财经数据 API 适配入口。</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <div>
+          <h2>多模块金融数据分析 Dashboard</h2>
+          <p>面向投研工作流的单页工具原型：快速生成个股研报、筛选股票池、拆解新行业和新技术、跟踪自选股新闻公告，并生成每日财经简报。</p>
+        </div>
+        <div class="hero-meta">
+          <span class="tag mock">Mock 数据</span>
+          <span class="tag neutral" id="storageStatus">localStorage 待检查</span>
+          <span class="tag neutral" id="clockLabel">--:--:--</span>
+        </div>
+      </section>
+
+      <section class="risk-banner" aria-label="合规与风险提示">
+        <strong>风险提示：本工具仅用于信息整理和研究辅助，不构成任何投资建议。</strong>
+        <p>页面数据可能存在延迟、错误或不完整；研报、摘要和风险等级均为 mock 逻辑生成。用户应自行核验信息、独立判断并承担投资风险。</p>
+      </section>
+
+      <section class="module" id="report-module">
+        <div class="module-header">
+          <div>
+            <h3 class="module-title">个股研报生成器</h3>
+            <p class="module-desc">输入公司基础信息后生成结构化研报，支持从筛选表一键带入 mock 股票资料。</p>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-ghost" id="fillReportSampleBtn" type="button">填入样例</button>
+            <button class="btn btn-primary" id="generateReportBtn" type="button">生成研报</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h4 class="panel-title">研报输入</h4>
+            <div class="form-grid">
+              <div class="field">
+                <label for="reportCode">股票代码</label>
+                <input id="reportCode" placeholder="例如 600519">
+              </div>
+              <div class="field">
+                <label for="reportName">股票名称</label>
+                <input id="reportName" placeholder="例如 贵州茅台">
+              </div>
+              <div class="field span-2">
+                <label for="reportIndustry">所属行业</label>
+                <input id="reportIndustry" placeholder="例如 食品饮料">
+              </div>
+              <div class="field span-2">
+                <label for="reportProfile">公司简介</label>
+                <textarea id="reportProfile" placeholder="主营业务、客户、区域、核心产品等"></textarea>
+              </div>
+              <div class="field span-2">
+                <label for="reportFinancials">财务数据摘要</label>
+                <textarea id="reportFinancials" placeholder="收入、利润、毛利率、现金流、资产负债等"></textarea>
+              </div>
+              <div class="field span-2">
+                <label for="reportNews">近期新闻</label>
+                <textarea id="reportNews" placeholder="近期公告、行业事件、产品进展、政策变化等"></textarea>
+              </div>
+              <div class="field span-2">
+                <label for="reportFocus">用户关注点</label>
+                <textarea id="reportFocus" placeholder="估值、增长持续性、技术壁垒、海外扩张、政策风险等"></textarea>
+              </div>
+            </div>
+            <div class="status warning" id="reportStatus">请至少填写股票代码或股票名称后生成研报。</div>
+          </div>
+          <div class="panel">
+            <h4 class="panel-title">研报输出</h4>
+            <div id="reportOutput" class="empty">
+              <strong>暂无研报</strong>
+              <span>填写左侧表单，或在股票筛选表点击“研报”。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="module" id="screener-module">
+        <div class="module-header">
+          <div>
+            <h3 class="module-title">股票筛选器</h3>
+            <p class="module-desc">基于 mock 股票池进行实时筛选、排序，并可加入自选股或跳转到研报和深度研究。</p>
+          </div>
+          <div class="toolbar">
+            <span class="tag mock">股票池 <span id="stockPoolCount">0</span></span>
+            <button class="btn btn-ghost" id="resetFiltersBtn" type="button">重置筛选</button>
+          </div>
+        </div>
+        <div class="filter-grid" id="filters">
+          <div class="field">
+            <label for="filterIndustry">行业</label>
+            <select id="filterIndustry">
+              <option value="">全部行业</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filterMarketMin">市值下限 亿元</label>
+            <input id="filterMarketMin" type="number" min="0" step="10" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterMarketMax">市值上限 亿元</label>
+            <input id="filterMarketMax" type="number" min="0" step="10" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterPeMin">PE 下限</label>
+            <input id="filterPeMin" type="number" step="1" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterPeMax">PE 上限</label>
+            <input id="filterPeMax" type="number" step="1" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterRoeMin">ROE 最小值 %</label>
+            <input id="filterRoeMin" type="number" step="0.5" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterRevenueMin">营收增速最小值 %</label>
+            <input id="filterRevenueMin" type="number" step="0.5" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterProfitMin">净利润增速最小值 %</label>
+            <input id="filterProfitMin" type="number" step="0.5" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterChangeMin">30 日涨跌幅下限 %</label>
+            <input id="filterChangeMin" type="number" step="0.5" placeholder="不限">
+          </div>
+          <div class="field">
+            <label for="filterChangeMax">30 日涨跌幅上限 %</label>
+            <input id="filterChangeMax" type="number" step="0.5" placeholder="不限">
+          </div>
+        </div>
+        <div class="status" id="screenerStatus">正在加载 mock 股票池...</div>
+        <div class="table-wrap" aria-label="股票筛选结果">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable" data-sort="code">代码</th>
+                <th class="sortable" data-sort="name">名称</th>
+                <th class="sortable" data-sort="industry">行业</th>
+                <th class="sortable" data-sort="marketCap">市值</th>
+                <th class="sortable" data-sort="pe">PE</th>
+                <th class="sortable" data-sort="roe">ROE</th>
+                <th class="sortable" data-sort="revenueGrowth">营收增速</th>
+                <th class="sortable" data-sort="profitGrowth">净利润增速</th>
+                <th class="sortable" data-sort="change30d">30 日涨跌</th>
+                <th>自选</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="stockTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="module" id="research-module">
+        <div class="module-header">
+          <div>
+            <h3 class="module-title">个股深度研究</h3>
+            <p class="module-desc">生成研究框架，覆盖行业、商业模式、关键技术、可验证问题和后续跟踪数据。</p>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-ghost" id="fillResearchSampleBtn" type="button">填入样例</button>
+            <button class="btn btn-primary" id="generateResearchBtn" type="button">生成深度研究</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h4 class="panel-title">研究对象</h4>
+            <div class="form-grid">
+              <div class="field">
+                <label for="researchStockSelect">从股票池选择</label>
+                <select id="researchStockSelect">
+                  <option value="">手动输入或选择股票</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="researchCode">股票代码</label>
+                <input id="researchCode" placeholder="例如 300750">
+              </div>
+              <div class="field">
+                <label for="researchName">股票名称</label>
+                <input id="researchName" placeholder="例如 宁德时代">
+              </div>
+              <div class="field">
+                <label for="researchIndustry">所属行业</label>
+                <input id="researchIndustry" placeholder="例如 电力设备">
+              </div>
+              <div class="field span-2">
+                <label for="researchTopic">关注主题</label>
+                <textarea id="researchTopic" placeholder="例如 新能源电池技术路线、海外产能、储能商业模式、行业价格战"></textarea>
+              </div>
+            </div>
+            <div class="status warning" id="researchStatus">请选择或输入一个研究对象。</div>
+          </div>
+          <div class="panel">
+            <h4 class="panel-title">深度研究输出</h4>
+            <div id="researchOutput" class="empty">
+              <strong>暂无深度研究</strong>
+              <span>选择股票后生成研究框架。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="module" id="watchlist-module">
+        <div class="module-header">
+          <div>
+            <h3 class="module-title">自选股追踪</h3>
+            <p class="module-desc">自选股保存在 localStorage；新闻、公告、风险等级和摘要由 mock 追踪数据刷新生成。</p>
+          </div>
+          <div class="toolbar">
+            <div class="field">
+              <label for="refreshInterval">自动刷新间隔</label>
+              <select id="refreshInterval">
+                <option value="5">5 分钟</option>
+                <option value="15">15 分钟</option>
+                <option value="30">30 分钟</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="refreshTrackingBtn" type="button">刷新追踪信息</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h4 class="panel-title">添加自选股</h4>
+            <div class="form-grid">
+              <div class="field">
+                <label for="watchSelect">从股票池选择</label>
+                <select id="watchSelect">
+                  <option value="">手动输入或选择股票</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="watchCode">股票代码</label>
+                <input id="watchCode" placeholder="例如 601318">
+              </div>
+              <div class="field">
+                <label for="watchName">股票名称</label>
+                <input id="watchName" placeholder="例如 中国平安">
+              </div>
+              <div class="field">
+                <label for="watchIndustry">行业</label>
+                <input id="watchIndustry" placeholder="例如 非银金融">
+              </div>
+            </div>
+            <div class="toolbar" style="margin-top: 12px;">
+              <button class="btn btn-primary" id="addManualWatchBtn" type="button">添加到自选股</button>
+              <button class="btn btn-ghost" id="clearWatchFormBtn" type="button">清空</button>
+            </div>
+            <div class="status" id="trackingStatus">下一次刷新时间：--</div>
+          </div>
+          <div class="panel">
+            <h4 class="panel-title">追踪摘要</h4>
+            <div id="trackingSummaryOutput" class="empty">
+              <strong>暂无追踪摘要</strong>
+              <span>添加自选股后点击“刷新追踪信息”。</span>
+            </div>
+          </div>
+        </div>
+        <div style="height: 12px;"></div>
+        <div id="watchlistContainer" class="watch-grid"></div>
+      </section>
+
+      <section class="module" id="brief-module">
+        <div class="module-header">
+          <div>
+            <h3 class="module-title">每日财经简报</h3>
+            <p class="module-desc">页面打开时检查设置时间；当天未生成且已到时间时提示生成。状态保存在 localStorage。</p>
+          </div>
+          <div class="toolbar">
+            <div class="field">
+              <label for="briefTime">每日简报时间</label>
+              <input id="briefTime" type="time" value="08:30">
+            </div>
+            <button class="btn btn-ghost" id="saveBriefTimeBtn" type="button">保存时间</button>
+            <button class="btn btn-primary" id="generateBriefBtn" type="button">立即生成早报</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <h4 class="panel-title">早报状态</h4>
+            <div class="grid-3">
+              <div class="metric">
+                <div class="metric-label">当前设置</div>
+                <div class="metric-value" id="briefTimeLabel">08:30</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">今日状态</div>
+                <div class="metric-value" id="briefStateLabel">未生成</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">媒体来源</div>
+                <div class="metric-value">7 类</div>
+              </div>
+            </div>
+            <div class="status warning" id="briefPrompt">页面打开后将按设置时间检查是否需要生成早报。</div>
+          </div>
+          <div class="panel">
+            <h4 class="panel-title">通用摘要格式</h4>
+            <div id="summaryDemo" class="summary-list"></div>
+          </div>
+        </div>
+        <div style="height: 12px;"></div>
+        <div class="panel">
+          <h4 class="panel-title">财经早报输出</h4>
+          <div id="briefOutput" class="empty">
+            <strong>暂无早报</strong>
+            <span>保存简报时间或点击“立即生成早报”。</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var STORAGE_KEYS = {
+        watchlist: "financeResearchDashboard.watchlist.v1",
+        briefTime: "financeResearchDashboard.briefTime.v1",
+        briefGeneratedDate: "financeResearchDashboard.briefGeneratedDate.v1",
+        refreshInterval: "financeResearchDashboard.refreshInterval.v1"
+      };
+
+      var MOCK_STOCKS = [
+        {
+          code: "600519",
+          name: "贵州茅台",
+          industry: "食品饮料",
+          marketCap: 18200,
+          pe: 25.8,
+          roe: 31.4,
+          revenueGrowth: 17.2,
+          profitGrowth: 18.6,
+          change30d: 3.8,
+          profile: "公司以高端白酒生产和销售为主，拥有强品牌、强渠道和较高现金流质量。",
+          financialSummary: "收入和归母净利润保持双位数增长，毛利率维持高位，经营现金流充沛，资产负债表稳健。",
+          business: "核心产品覆盖飞天茅台、系列酒和直营渠道扩张，品牌稀缺性支撑长期定价权。",
+          technology: "数字化渠道、供应链防伪、产能扩建和会员运营是近年经营效率提升的重点。"
+        },
+        {
+          code: "300750",
+          name: "宁德时代",
+          industry: "电力设备",
+          marketCap: 9200,
+          pe: 19.6,
+          roe: 24.2,
+          revenueGrowth: 22.5,
+          profitGrowth: 28.7,
+          change30d: -4.6,
+          profile: "全球动力电池和储能电池龙头，客户覆盖主流整车厂和储能集成商。",
+          financialSummary: "收入增速放缓但规模优势明显，利润率受原材料价格和竞争格局影响，现金流保持较强韧性。",
+          business: "动力电池、储能系统和电池材料构成主要收入，海外产能和储能订单是新增量。",
+          technology: "麒麟电池、钠离子电池、凝聚态电池、CTP 结构和电池回收构成技术观察重点。"
+        },
+        {
+          code: "688981",
+          name: "中芯国际",
+          industry: "半导体",
+          marketCap: 4100,
+          pe: 52.3,
+          roe: 7.8,
+          revenueGrowth: 11.4,
+          profitGrowth: -8.2,
+          change30d: 6.9,
+          profile: "大陆晶圆代工代表企业，覆盖成熟制程和部分先进制程制造服务。",
+          financialSummary: "资本开支强度较高，折旧压力影响短期利润，国产替代需求支撑中长期订单基础。",
+          business: "晶圆代工收入来自消费电子、通信、工业控制和汽车电子等客户。",
+          technology: "成熟制程扩产、特色工艺、先进封装协同和国产设备材料验证是关键技术线索。"
+        },
+        {
+          code: "000651",
+          name: "格力电器",
+          industry: "家用电器",
+          marketCap: 2300,
+          pe: 8.9,
+          roe: 23.1,
+          revenueGrowth: 7.5,
+          profitGrowth: 11.3,
+          change30d: 1.2,
+          profile: "空调龙头企业，业务覆盖家用空调、中央空调、生活电器和工业制品。",
+          financialSummary: "盈利能力稳定，分红率较高，渠道改革和多元化业务影响估值修复节奏。",
+          business: "空调主业贡献主要利润，新能源、工业装备和渠道效率是边际观察方向。",
+          technology: "变频节能、热泵技术、工业控制和智能制造能力是产品竞争力基础。"
+        },
+        {
+          code: "002594",
+          name: "比亚迪",
+          industry: "汽车",
+          marketCap: 7600,
+          pe: 21.4,
+          roe: 26.8,
+          revenueGrowth: 30.6,
+          profitGrowth: 44.2,
+          change30d: 8.4,
+          profile: "新能源汽车和动力电池综合制造商，垂直整合能力突出。",
+          financialSummary: "销量增长带动收入扩张，单车盈利受价格竞争、车型结构和出口占比影响。",
+          business: "整车、电池、电子和轨道交通多线布局，新能源乘用车贡献主要增长。",
+          technology: "刀片电池、DM-i 混动平台、e 平台、智能驾驶和海外车型适配是关键研究方向。"
+        },
+        {
+          code: "600276",
+          name: "恒瑞医药",
+          industry: "医药生物",
+          marketCap: 2800,
+          pe: 37.2,
+          roe: 13.5,
+          revenueGrowth: 12.1,
+          profitGrowth: 10.8,
+          change30d: -2.1,
+          profile: "创新药和仿制药龙头，管线覆盖肿瘤、麻醉、代谢和自身免疫等领域。",
+          financialSummary: "研发投入保持高强度，创新药放量和集采影响共同决定利润弹性。",
+          business: "创新药商业化、国际授权和仿制药存量业务构成主要收入结构。",
+          technology: "ADC、双抗、小分子靶向药、GLP-1 和临床数据读出是关键观察点。"
+        },
+        {
+          code: "601318",
+          name: "中国平安",
+          industry: "非银金融",
+          marketCap: 6800,
+          pe: 7.4,
+          roe: 12.4,
+          revenueGrowth: 4.6,
+          profitGrowth: 9.9,
+          change30d: 5.7,
+          profile: "综合金融集团，覆盖寿险、财险、银行、资管和医疗养老生态。",
+          financialSummary: "新业务价值修复是核心变量，投资端受权益市场和利率环境影响较大。",
+          business: "保险保障、财富管理和综合金融交叉销售是主要商业模式。",
+          technology: "金融科技、风控模型、医疗生态数据和智能客服提高运营效率。"
+        },
+        {
+          code: "600036",
+          name: "招商银行",
+          industry: "银行",
+          marketCap: 8400,
+          pe: 6.6,
+          roe: 15.8,
+          revenueGrowth: 2.9,
+          profitGrowth: 5.1,
+          change30d: 4.2,
+          profile: "零售银行标杆，财富管理和优质客户基础具备差异化优势。",
+          financialSummary: "息差承压但资产质量相对稳健，非息收入修复取决于资本市场活跃度。",
+          business: "零售金融、公司金融、财富管理和信用卡业务构成核心收入。",
+          technology: "数字银行、智能风控、客户分层运营和开放银行能力是竞争重点。"
+        },
+        {
+          code: "002415",
+          name: "海康威视",
+          industry: "计算机",
+          marketCap: 3200,
+          pe: 18.8,
+          roe: 16.6,
+          revenueGrowth: 8.8,
+          profitGrowth: 7.1,
+          change30d: -1.8,
+          profile: "视频物联和智能安防龙头，业务延伸至机器视觉、热成像和智能家居。",
+          financialSummary: "公共服务需求偏弱时影响收入弹性，企业端和创新业务提供结构性增长。",
+          business: "传统安防、企业数字化、机器人和智能家居构成多元收入。",
+          technology: "AI 视觉算法、边缘计算、物联网平台和大模型视频理解是关键技术变量。"
+        },
+        {
+          code: "603986",
+          name: "兆易创新",
+          industry: "半导体",
+          marketCap: 780,
+          pe: 46.5,
+          roe: 8.9,
+          revenueGrowth: 18.7,
+          profitGrowth: 21.5,
+          change30d: 9.6,
+          profile: "存储芯片、MCU 和传感器设计企业，受半导体周期影响明显。",
+          financialSummary: "库存周期改善带来收入弹性，价格修复和新品放量决定利润拐点。",
+          business: "NOR Flash、NAND、DRAM 和 MCU 产品面向消费、工控和汽车客户。",
+          technology: "车规 MCU、利基型存储、高可靠性工艺和国产替代客户认证是研究重点。"
+        },
+        {
+          code: "601899",
+          name: "紫金矿业",
+          industry: "有色金属",
+          marketCap: 4900,
+          pe: 15.7,
+          roe: 21.9,
+          revenueGrowth: 19.5,
+          profitGrowth: 23.4,
+          change30d: 12.3,
+          profile: "全球化矿业公司，覆盖金、铜、锂等资源开发和冶炼加工。",
+          financialSummary: "资源价格上行改善利润弹性，海外项目投产节奏影响产量兑现。",
+          business: "铜金矿产资源开发为核心，锂资源和新能源金属布局提供成长选项。",
+          technology: "低品位矿开发、绿色冶炼、智能矿山和海外大型项目管理是能力重点。"
+        },
+        {
+          code: "688111",
+          name: "金山办公",
+          industry: "软件服务",
+          marketCap: 1200,
+          pe: 65.2,
+          roe: 12.7,
+          revenueGrowth: 16.8,
+          profitGrowth: 15.9,
+          change30d: -6.5,
+          profile: "办公软件和云协作服务商，订阅化和 AI 办公是核心增长方向。",
+          financialSummary: "个人订阅和机构授权贡献稳定收入，AI 功能商业化节奏影响估值弹性。",
+          business: "WPS Office、云文档、政企授权和 AI 办公助手构成主要产品矩阵。",
+          technology: "文档大模型、多端协同、企业知识库和安全合规能力是技术路线重点。"
+        }
+      ];
+
+      var MOCK_NEWS = [
+        { title: "新能源汽车出口保持较高景气，欧洲和东南亚渠道扩张加速", source: "财经媒体", time: "09:05", keyInfo: "新能源整车出口和海外建厂成为行业增长焦点。", impact: "利好具备海外产品和渠道能力的汽车及电池企业。", relatedStocks: ["002594", "300750"], importance: "高" },
+        { title: "半导体设备国产验证进度加快，成熟制程产能利用率回升", source: "行业新闻", time: "10:20", keyInfo: "多家晶圆厂反馈成熟制程订单环比改善。", impact: "可能改善半导体设计、制造和设备材料链条预期。", relatedStocks: ["688981", "603986"], importance: "中" },
+        { title: "高端消费旺季备货启动，渠道库存维持健康水平", source: "财经媒体", time: "11:15", keyInfo: "白酒和高端消费品渠道价格保持平稳。", impact: "品牌力强、渠道控制能力高的公司更具防御属性。", relatedStocks: ["600519"], importance: "中" },
+        { title: "AI 办公产品进入付费转化观察期，企业知识库需求提升", source: "科技媒体", time: "12:30", keyInfo: "办公软件厂商加快 AI 功能商业化测试。", impact: "订阅转化率和 ARPU 是后续估值重估关键。", relatedStocks: ["688111"], importance: "高" },
+        { title: "险企负债端修复，权益市场波动仍影响投资收益", source: "财经媒体", time: "13:45", keyInfo: "保险新单和续期数据改善，但投资端仍有波动。", impact: "利好新业务价值改善，需关注利率和权益资产变化。", relatedStocks: ["601318"], importance: "中" },
+        { title: "有色金属价格延续强势，海外矿山项目投产节奏受关注", source: "海外市场", time: "14:10", keyInfo: "铜、金价格高位震荡，资源企业现金流弹性增强。", impact: "资源储量和项目执行能力强的公司更受关注。", relatedStocks: ["601899"], importance: "高" },
+        { title: "创新药临床数据密集披露，出海授权交易活跃", source: "行业新闻", time: "15:00", keyInfo: "肿瘤和代谢领域创新药管线更新较多。", impact: "研发质量、商业化能力和海外授权条款成为核心变量。", relatedStocks: ["600276"], importance: "中" },
+        { title: "银行息差压力仍在，财富管理业务边际修复", source: "财经媒体", time: "15:25", keyInfo: "优质零售银行资产质量和非息收入表现分化。", impact: "利率环境、资产质量和财富管理活跃度共同影响估值。", relatedStocks: ["600036"], importance: "中" },
+        { title: "视频物联企业加速接入大模型，多模态理解成为新卖点", source: "科技媒体", time: "16:00", keyInfo: "安防和企业视频数据智能分析需求提升。", impact: "具备场景数据和渠道基础的企业有望获得产品升级机会。", relatedStocks: ["002415"], importance: "中" }
+      ];
+
+      var MOCK_ANNOUNCEMENTS = [
+        { title: "关于年度权益分派实施的公告", source: "公司公告", time: "08:40", keyInfo: "公司披露分红实施安排。", impact: "影响短期股息率和除权除息交易节奏。", relatedStocks: ["600519", "000651", "600036"], importance: "中" },
+        { title: "关于海外生产基地建设进展的公告", source: "公司公告", time: "09:50", keyInfo: "海外产能建设按计划推进。", impact: "可能增强海外订单交付能力，但需关注资本开支和本地合规。", relatedStocks: ["002594", "300750"], importance: "高" },
+        { title: "关于获得客户项目定点的公告", source: "公司公告", time: "10:35", keyInfo: "公司获得重要客户新项目定点。", impact: "增强未来收入可见度，仍需观察量产和毛利率。", relatedStocks: ["300750", "603986"], importance: "高" },
+        { title: "关于研发项目临床进展的提示性公告", source: "公司公告", time: "11:45", keyInfo: "核心管线完成关键阶段研究。", impact: "对创新药估值和市场空间判断有直接影响。", relatedStocks: ["600276"], importance: "高" },
+        { title: "关于计提资产减值准备的公告", source: "公司公告", time: "12:10", keyInfo: "公司对部分资产计提减值。", impact: "短期影响利润，需判断是否为一次性出清。", relatedStocks: ["002415", "688981"], importance: "中" },
+        { title: "关于重大项目投资进展的公告", source: "交易所公告", time: "13:20", keyInfo: "资源项目取得阶段性审批或投产进展。", impact: "影响未来产量和资本开支节奏。", relatedStocks: ["601899"], importance: "中" },
+        { title: "关于 AI 产品商业化试点的公告", source: "公司公告", time: "14:45", keyInfo: "公司启动面向企业客户的 AI 产品付费试点。", impact: "可能提升订阅收入弹性，但需验证付费转化率。", relatedStocks: ["688111"], importance: "高" }
+      ];
+
+      var MOCK_MORNING_ITEMS = [
+        { title: "央行公开市场操作维持流动性合理充裕", source: "宏观经济数据", time: "07:45", keyInfo: "资金面总体平稳，市场关注后续利率政策信号。", impact: "对银行、非银和高估值成长板块的估值环境均有影响。", relatedStocks: ["600036", "601318"], importance: "中" },
+        { title: "海外主要股指分化，科技股波动加大", source: "海外市场", time: "07:55", keyInfo: "美股科技板块波动提升，美元和美债收益率变化影响风险偏好。", impact: "可能影响 A 股科技成长和港股互联网情绪。", relatedStocks: ["688111", "002415"], importance: "中" },
+        { title: "多地发布设备更新和消费促进政策细则", source: "政策动态", time: "08:05", keyInfo: "政策覆盖工业设备、家电消费和新能源汽车置换。", impact: "利好家电、汽车、工业设备链条，但兑现取决于地方执行。", relatedStocks: ["000651", "002594"], importance: "高" },
+        { title: "交易所披露并购重组和再融资审核动态", source: "交易所公告", time: "08:12", keyInfo: "资本市场工具支持产业整合，审核问询聚焦持续经营质量。", impact: "有助于提升行业龙头并购整合预期。", relatedStocks: [], importance: "中" },
+        { title: "白酒、医药、半导体进入密集调研期", source: "财经媒体", time: "08:18", keyInfo: "机构关注需求复苏、产品价格和研发数据。", impact: "短期可能提升相关板块交易活跃度。", relatedStocks: ["600519", "600276", "688981"], importance: "中" },
+        { title: "公司公告集中披露分红、回购和项目进展", source: "公司公告", time: "08:25", keyInfo: "多家公司发布资本回报和经营进展公告。", impact: "需重点跟踪自选股中高重要程度公告。", relatedStocks: ["600519", "300750", "688111"], importance: "高" },
+        { title: "铜、金、原油等大宗商品价格继续高位震荡", source: "行业新闻", time: "08:28", keyInfo: "资源品价格受供给约束和宏观预期共同驱动。", impact: "资源公司盈利弹性上升，同时输入型通胀风险需关注。", relatedStocks: ["601899"], importance: "中" }
+      ];
+
+      var state = {
+        stocks: [],
+        filteredStocks: [],
+        sortKey: "marketCap",
+        sortDir: "desc",
+        watchlist: [],
+        trackingData: {},
+        refreshIntervalMinutes: 5,
+        refreshTimer: null,
+        nextRefreshAt: null,
+        briefTime: "08:30",
+        todayBriefDate: "",
+        morningBrief: null,
+        loading: {
+          stocks: false,
+          tracking: false,
+          brief: false
+        }
+      };
+
+      var els = {};
+
+      var DataAdapter = {
+        fetchMarketData: function () {
+          return simulateDelay(MOCK_STOCKS.map(function (stock) {
+            return Object.assign({}, stock);
+          }), 260);
+        },
+        fetchNewsData: function (stockCode) {
+          return simulateDelay(MOCK_NEWS.filter(function (item) {
+            return !stockCode || item.relatedStocks.indexOf(stockCode) !== -1;
+          }).map(cloneItem), 220);
+        },
+        fetchAnnouncementData: function (stockCode) {
+          return simulateDelay(MOCK_ANNOUNCEMENTS.filter(function (item) {
+            return !stockCode || item.relatedStocks.indexOf(stockCode) !== -1;
+          }).map(cloneItem), 220);
+        },
+        fetchMorningBriefData: function () {
+          return simulateDelay(MOCK_MORNING_ITEMS.map(cloneItem), 280);
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", init);
+
+      function init() {
+        cacheElements();
+        bindEvents();
+        restoreStorage();
+        renderStorageStatus();
+        startClock();
+        loadStocks();
+        renderWatchlist();
+        renderTrackingStatus();
+        renderBriefState();
+        renderSummaryDemo();
+        scheduleAutoRefresh();
+        checkMorningBriefReminder();
+      }
+
+      function cacheElements() {
+        els.storageStatus = document.getElementById("storageStatus");
+        els.clockLabel = document.getElementById("clockLabel");
+        els.watchlistNavCount = document.getElementById("watchlistNavCount");
+        els.stockPoolCount = document.getElementById("stockPoolCount");
+        els.stockTableBody = document.getElementById("stockTableBody");
+        els.screenerStatus = document.getElementById("screenerStatus");
+        els.filterIndustry = document.getElementById("filterIndustry");
+        els.filterMarketMin = document.getElementById("filterMarketMin");
+        els.filterMarketMax = document.getElementById("filterMarketMax");
+        els.filterPeMin = document.getElementById("filterPeMin");
+        els.filterPeMax = document.getElementById("filterPeMax");
+        els.filterRoeMin = document.getElementById("filterRoeMin");
+        els.filterRevenueMin = document.getElementById("filterRevenueMin");
+        els.filterProfitMin = document.getElementById("filterProfitMin");
+        els.filterChangeMin = document.getElementById("filterChangeMin");
+        els.filterChangeMax = document.getElementById("filterChangeMax");
+        els.resetFiltersBtn = document.getElementById("resetFiltersBtn");
+        els.reportCode = document.getElementById("reportCode");
+        els.reportName = document.getElementById("reportName");
+        els.reportIndustry = document.getElementById("reportIndustry");
+        els.reportProfile = document.getElementById("reportProfile");
+        els.reportFinancials = document.getElementById("reportFinancials");
+        els.reportNews = document.getElementById("reportNews");
+        els.reportFocus = document.getElementById("reportFocus");
+        els.reportStatus = document.getElementById("reportStatus");
+        els.reportOutput = document.getElementById("reportOutput");
+        els.generateReportBtn = document.getElementById("generateReportBtn");
+        els.fillReportSampleBtn = document.getElementById("fillReportSampleBtn");
+        els.researchStockSelect = document.getElementById("researchStockSelect");
+        els.researchCode = document.getElementById("researchCode");
+        els.researchName = document.getElementById("researchName");
+        els.researchIndustry = document.getElementById("researchIndustry");
+        els.researchTopic = document.getElementById("researchTopic");
+        els.researchStatus = document.getElementById("researchStatus");
+        els.researchOutput = document.getElementById("researchOutput");
+        els.generateResearchBtn = document.getElementById("generateResearchBtn");
+        els.fillResearchSampleBtn = document.getElementById("fillResearchSampleBtn");
+        els.refreshInterval = document.getElementById("refreshInterval");
+        els.refreshTrackingBtn = document.getElementById("refreshTrackingBtn");
+        els.watchSelect = document.getElementById("watchSelect");
+        els.watchCode = document.getElementById("watchCode");
+        els.watchName = document.getElementById("watchName");
+        els.watchIndustry = document.getElementById("watchIndustry");
+        els.addManualWatchBtn = document.getElementById("addManualWatchBtn");
+        els.clearWatchFormBtn = document.getElementById("clearWatchFormBtn");
+        els.trackingStatus = document.getElementById("trackingStatus");
+        els.trackingSummaryOutput = document.getElementById("trackingSummaryOutput");
+        els.watchlistContainer = document.getElementById("watchlistContainer");
+        els.briefTime = document.getElementById("briefTime");
+        els.saveBriefTimeBtn = document.getElementById("saveBriefTimeBtn");
+        els.generateBriefBtn = document.getElementById("generateBriefBtn");
+        els.briefTimeLabel = document.getElementById("briefTimeLabel");
+        els.briefStateLabel = document.getElementById("briefStateLabel");
+        els.briefPrompt = document.getElementById("briefPrompt");
+        els.summaryDemo = document.getElementById("summaryDemo");
+        els.briefOutput = document.getElementById("briefOutput");
+        els.toast = document.getElementById("toast");
+      }
+
+      function bindEvents() {
+        document.querySelectorAll(".nav a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            document.querySelectorAll(".nav a").forEach(function (item) {
+              item.classList.remove("active");
+            });
+            link.classList.add("active");
+          });
+        });
+
+        document.querySelectorAll("#filters input, #filters select").forEach(function (input) {
+          input.addEventListener("input", applyFiltersAndRender);
+          input.addEventListener("change", applyFiltersAndRender);
+        });
+
+        document.querySelectorAll("th.sortable").forEach(function (th) {
+          th.addEventListener("click", function () {
+            setSort(th.getAttribute("data-sort"));
+          });
+        });
+
+        els.resetFiltersBtn.addEventListener("click", resetFilters);
+        els.generateReportBtn.addEventListener("click", generateReportFromForm);
+        els.fillReportSampleBtn.addEventListener("click", function () {
+          fillReportForm(state.stocks[0] || MOCK_STOCKS[0], true);
+        });
+        els.generateResearchBtn.addEventListener("click", generateResearchFromForm);
+        els.fillResearchSampleBtn.addEventListener("click", function () {
+          fillResearchForm(state.stocks[1] || MOCK_STOCKS[1], true);
+        });
+        els.researchStockSelect.addEventListener("change", function () {
+          var stock = findStockByCode(els.researchStockSelect.value);
+          if (stock) {
+            fillResearchForm(stock, false);
+          }
+        });
+        els.watchSelect.addEventListener("change", function () {
+          var stock = findStockByCode(els.watchSelect.value);
+          if (stock) {
+            els.watchCode.value = stock.code;
+            els.watchName.value = stock.name;
+            els.watchIndustry.value = stock.industry;
+          }
+        });
+        els.addManualWatchBtn.addEventListener("click", addManualWatch);
+        els.clearWatchFormBtn.addEventListener("click", clearWatchForm);
+        els.refreshTrackingBtn.addEventListener("click", function () {
+          refreshTrackingInfo(false);
+        });
+        els.refreshInterval.addEventListener("change", function () {
+          state.refreshIntervalMinutes = Number(els.refreshInterval.value) || 5;
+          saveStorage(STORAGE_KEYS.refreshInterval, String(state.refreshIntervalMinutes));
+          scheduleAutoRefresh();
+          renderTrackingStatus();
+          toast("已保存自动刷新间隔：" + state.refreshIntervalMinutes + " 分钟", "success");
+        });
+        els.saveBriefTimeBtn.addEventListener("click", saveBriefTime);
+        els.generateBriefBtn.addEventListener("click", function () {
+          generateMorningBrief(false);
+        });
+      }
+
+      function restoreStorage() {
+        state.watchlist = readJsonStorage(STORAGE_KEYS.watchlist, []);
+        state.watchlist = state.watchlist.filter(function (item) {
+          return item && item.code && item.name;
+        });
+        state.briefTime = localStorage.getItem(STORAGE_KEYS.briefTime) || "08:30";
+        state.todayBriefDate = localStorage.getItem(STORAGE_KEYS.briefGeneratedDate) || "";
+        state.refreshIntervalMinutes = Number(localStorage.getItem(STORAGE_KEYS.refreshInterval)) || 5;
+        els.briefTime.value = state.briefTime;
+        els.refreshInterval.value = String(state.refreshIntervalMinutes);
+      }
+
+      function renderStorageStatus() {
+        try {
+          var testKey = "financeResearchDashboard.storage.test";
+          localStorage.setItem(testKey, "1");
+          localStorage.removeItem(testKey);
+          els.storageStatus.textContent = "localStorage 可用";
+          els.storageStatus.className = "tag low";
+        } catch (error) {
+          els.storageStatus.textContent = "localStorage 不可用";
+          els.storageStatus.className = "tag high";
+          toast("localStorage 不可用，设置和自选股无法持久保存。", "error");
+        }
+      }
+
+      function startClock() {
+        updateClock();
+        setInterval(updateClock, 1000);
+      }
+
+      function updateClock() {
+        els.clockLabel.textContent = formatDateTime(new Date());
+      }
+
+      function loadStocks() {
+        state.loading.stocks = true;
+        renderScreenerLoading();
+        DataAdapter.fetchMarketData()
+          .then(function (stocks) {
+            state.stocks = stocks;
+            state.loading.stocks = false;
+            populateStockSelects();
+            applyFiltersAndRender();
+          })
+          .catch(function () {
+            state.loading.stocks = false;
+            els.screenerStatus.className = "status error";
+            els.screenerStatus.textContent = "mock 股票池加载失败，请刷新页面重试。";
+          });
+      }
+
+      function renderScreenerLoading() {
+        els.screenerStatus.className = "status";
+        els.screenerStatus.innerHTML = '<span class="spinner"></span><span>正在加载 mock 股票池...</span>';
+      }
+
+      function populateStockSelects() {
+        var industries = unique(state.stocks.map(function (stock) {
+          return stock.industry;
+        })).sort();
+        els.filterIndustry.innerHTML = '<option value="">全部行业</option>' + industries.map(function (industry) {
+          return '<option value="' + escapeAttr(industry) + '">' + escapeHtml(industry) + '</option>';
+        }).join("");
+
+        var options = '<option value="">手动输入或选择股票</option>' + state.stocks.map(function (stock) {
+          return '<option value="' + escapeAttr(stock.code) + '">' + escapeHtml(stock.code + " " + stock.name + " / " + stock.industry) + '</option>';
+        }).join("");
+        els.researchStockSelect.innerHTML = options;
+        els.watchSelect.innerHTML = options;
+        els.stockPoolCount.textContent = String(state.stocks.length);
+      }
+
+      function applyFiltersAndRender() {
+        if (state.loading.stocks) {
+          return;
+        }
+        var filters = getFilters();
+        var result = state.stocks.filter(function (stock) {
+          return matchesFilters(stock, filters);
+        });
+        result.sort(compareStocks);
+        state.filteredStocks = result;
+        renderStockTable();
+        els.screenerStatus.className = "status success";
+        els.screenerStatus.textContent = "筛选结果：" + result.length + " / " + state.stocks.length + "。点击表头可排序，当前排序：" + getSortLabel() + "。";
+      }
+
+      function getFilters() {
+        return {
+          industry: els.filterIndustry.value,
+          marketMin: parseMaybeNumber(els.filterMarketMin.value),
+          marketMax: parseMaybeNumber(els.filterMarketMax.value),
+          peMin: parseMaybeNumber(els.filterPeMin.value),
+          peMax: parseMaybeNumber(els.filterPeMax.value),
+          roeMin: parseMaybeNumber(els.filterRoeMin.value),
+          revenueMin: parseMaybeNumber(els.filterRevenueMin.value),
+          profitMin: parseMaybeNumber(els.filterProfitMin.value),
+          changeMin: parseMaybeNumber(els.filterChangeMin.value),
+          changeMax: parseMaybeNumber(els.filterChangeMax.value)
+        };
+      }
+
+      function matchesFilters(stock, filters) {
+        return (!filters.industry || stock.industry === filters.industry) &&
+          passMin(stock.marketCap, filters.marketMin) &&
+          passMax(stock.marketCap, filters.marketMax) &&
+          passMin(stock.pe, filters.peMin) &&
+          passMax(stock.pe, filters.peMax) &&
+          passMin(stock.roe, filters.roeMin) &&
+          passMin(stock.revenueGrowth, filters.revenueMin) &&
+          passMin(stock.profitGrowth, filters.profitMin) &&
+          passMin(stock.change30d, filters.changeMin) &&
+          passMax(stock.change30d, filters.changeMax);
+      }
+
+      function compareStocks(a, b) {
+        var key = state.sortKey;
+        var aValue = a[key];
+        var bValue = b[key];
+        var direction = state.sortDir === "asc" ? 1 : -1;
+        if (typeof aValue === "number" && typeof bValue === "number") {
+          return (aValue - bValue) * direction;
+        }
+        return String(aValue).localeCompare(String(bValue), "zh-CN") * direction;
+      }
+
+      function setSort(key) {
+        if (state.sortKey === key) {
+          state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+        } else {
+          state.sortKey = key;
+          state.sortDir = "desc";
+        }
+        applyFiltersAndRender();
+      }
+
+      function getSortLabel() {
+        var labels = {
+          code: "代码",
+          name: "名称",
+          industry: "行业",
+          marketCap: "市值",
+          pe: "PE",
+          roe: "ROE",
+          revenueGrowth: "营收增速",
+          profitGrowth: "净利润增速",
+          change30d: "30 日涨跌幅"
+        };
+        return (labels[state.sortKey] || state.sortKey) + (state.sortDir === "asc" ? "升序" : "降序");
+      }
+
+      function renderStockTable() {
+        if (!state.filteredStocks.length) {
+          els.stockTableBody.innerHTML = '<tr><td colspan="11"><div class="empty"><strong>没有符合条件的股票</strong><span>请调整筛选条件或点击重置筛选。</span></div></td></tr>';
+          return;
+        }
+        els.stockTableBody.innerHTML = state.filteredStocks.map(function (stock) {
+          var inWatch = isInWatchlist(stock.code);
+          return [
+            '<tr>',
+            '<td class="num">' + escapeHtml(stock.code) + '</td>',
+            '<td><strong>' + escapeHtml(stock.name) + '</strong></td>',
+            '<td><span class="tag neutral">' + escapeHtml(stock.industry) + '</span></td>',
+            '<td class="num">' + formatNumber(stock.marketCap) + ' 亿</td>',
+            '<td class="num">' + formatNumber(stock.pe) + '</td>',
+            '<td class="num">' + formatPercent(stock.roe) + '</td>',
+            '<td class="num">' + formatSignedPercent(stock.revenueGrowth) + '</td>',
+            '<td class="num">' + formatSignedPercent(stock.profitGrowth) + '</td>',
+            '<td class="num ' + trendClass(stock.change30d) + '">' + formatSignedPercent(stock.change30d) + '</td>',
+            '<td>' + (inWatch ? '<span class="tag low">已加入</span>' : '<span class="tag neutral">未加入</span>') + '</td>',
+            '<td>',
+            '<div class="toolbar">',
+            '<button class="btn btn-small ' + (inWatch ? 'btn-ghost' : 'btn-primary') + '" data-action="add-watch" data-code="' + escapeAttr(stock.code) + '">' + (inWatch ? "已自选" : "加自选") + '</button>',
+            '<button class="btn btn-small" data-action="report" data-code="' + escapeAttr(stock.code) + '">研报</button>',
+            '<button class="btn btn-small" data-action="research" data-code="' + escapeAttr(stock.code) + '">深研</button>',
+            '</div>',
+            '</td>',
+            '</tr>'
+          ].join("");
+        }).join("");
+
+        els.stockTableBody.querySelectorAll("button[data-action]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var code = button.getAttribute("data-code");
+            var action = button.getAttribute("data-action");
+            var stock = findStockByCode(code);
+            if (!stock) {
+              toast("未找到股票：" + code, "error");
+              return;
+            }
+            if (action === "add-watch") {
+              addToWatchlist(stock);
+            } else if (action === "report") {
+              fillReportForm(stock, true);
+              scrollToModule("report-module");
+            } else if (action === "research") {
+              fillResearchForm(stock, true);
+              scrollToModule("research-module");
+            }
+          });
+        });
+      }
+
+      function resetFilters() {
+        [
+          els.filterMarketMin,
+          els.filterMarketMax,
+          els.filterPeMin,
+          els.filterPeMax,
+          els.filterRoeMin,
+          els.filterRevenueMin,
+          els.filterProfitMin,
+          els.filterChangeMin,
+          els.filterChangeMax
+        ].forEach(function (input) {
+          input.value = "";
+        });
+        els.filterIndustry.value = "";
+        state.sortKey = "marketCap";
+        state.sortDir = "desc";
+        applyFiltersAndRender();
+        toast("已重置筛选条件", "success");
+      }
+
+      function fillReportForm(stock, autoGenerate) {
+        if (!stock) {
+          return;
+        }
+        els.reportCode.value = stock.code;
+        els.reportName.value = stock.name;
+        els.reportIndustry.value = stock.industry;
+        els.reportProfile.value = stock.profile;
+        els.reportFinancials.value = stock.financialSummary;
+        els.reportNews.value = buildStockNewsText(stock.code);
+        els.reportFocus.value = "估值合理性、增长持续性、行业竞争格局、现金流质量、政策和技术变化对公司中长期竞争力的影响。";
+        els.reportStatus.className = "status";
+        els.reportStatus.textContent = "已带入 " + stock.name + " 的 mock 资料。";
+        if (autoGenerate) {
+          generateReportFromForm();
+        }
+      }
+
+      function generateReportFromForm() {
+        var input = {
+          code: trimValue(els.reportCode),
+          name: trimValue(els.reportName),
+          industry: trimValue(els.reportIndustry),
+          profile: trimValue(els.reportProfile),
+          financials: trimValue(els.reportFinancials),
+          news: trimValue(els.reportNews),
+          focus: trimValue(els.reportFocus)
+        };
+        if (!input.code && !input.name) {
+          setStatus(els.reportStatus, "error", "请至少填写股票代码或股票名称。");
+          els.reportOutput.innerHTML = emptyHtml("无法生成研报", "缺少研究对象。");
+          return;
+        }
+        var matchedStock = findStockByCode(input.code) || findStockByName(input.name);
+        var stock = matchedStock || {
+          code: input.code || "未填写",
+          name: input.name || "未命名公司",
+          industry: input.industry || "未填写行业",
+          profile: input.profile || "暂无公司简介，建议补充主营产品、客户结构、区域分布和管理层信息。",
+          financialSummary: input.financials || "暂无财务摘要，建议补充收入、利润、毛利率、费用率、现金流和负债水平。",
+          business: "基于用户输入拆解核心业务，后续可接入真实分部收入和产品结构数据。",
+          technology: "暂未接入真实技术路线数据，后续可补充专利、研发投入和产品迭代信息。",
+          revenueGrowth: 0,
+          profitGrowth: 0,
+          pe: 0,
+          roe: 0,
+          change30d: 0
+        };
+
+        var report = buildReport(stock, input);
+        els.reportOutput.className = "report";
+        els.reportOutput.innerHTML = report.map(renderSectionBlock).join("");
+        setStatus(els.reportStatus, "success", "已生成 " + (input.name || stock.name) + " 的结构化 mock 研报。");
+      }
+
+      function buildReport(stock, input) {
+        var news = input.news || buildStockNewsText(stock.code) || "近期缺少明确新闻，建议跟踪公司公告、行业政策和主要客户订单。";
+        var focus = input.focus || "估值、增长、风险和可验证数据。";
+        var conclusion = buildInitialConclusion(stock);
+        return [
+          {
+            title: "公司概况",
+            body: (input.name || stock.name) + "（" + (input.code || stock.code) + "）属于" + (input.industry || stock.industry) + "行业。" + (input.profile || stock.profile)
+          },
+          {
+            title: "核心业务",
+            body: stock.business || "核心业务需要结合主营收入、产品结构和客户结构继续拆分。"
+          },
+          {
+            title: "行业位置",
+            body: "从 mock 股票池看，公司所处行业为" + (input.industry || stock.industry) + "。研究时应比较市场份额、品牌或技术壁垒、渠道能力、成本曲线和行业周期位置。"
+          },
+          {
+            title: "财务表现",
+            body: (input.financials || stock.financialSummary) + " mock 指标显示：PE " + formatNumber(stock.pe || 0) + " 倍、ROE " + formatPercent(stock.roe || 0) + "、营收增速 " + formatSignedPercent(stock.revenueGrowth || 0) + "、净利润增速 " + formatSignedPercent(stock.profitGrowth || 0) + "。"
+          },
+          {
+            title: "近期催化因素",
+            body: news + " 重点判断这些事件是否会改变收入确认、利润率、估值中枢或市场预期。"
+          },
+          {
+            title: "主要风险",
+            list: [
+              "行业需求低于预期，导致收入增速或产能利用率下降。",
+              "竞争加剧或价格战压缩毛利率。",
+              "政策、监管、海外贸易限制或供应链波动影响经营节奏。",
+              "估值已提前反映乐观预期，业绩验证不及预期时可能出现回撤。"
+            ]
+          },
+          {
+            title: "初步结论",
+            body: conclusion + " 该结论仅来自 mock 数据和用户输入，不能作为买卖建议。"
+          },
+          {
+            title: "后续跟踪重点",
+            list: [
+              "关注点：" + focus,
+              "下一期财报中的收入增速、毛利率、费用率、现金流和订单变化。",
+              "核心公告、行业政策、竞争对手价格动作和重要客户变化。",
+              "估值水平与业绩增速是否匹配，以及风险事件是否改变中长期假设。"
+            ]
+          }
+        ];
+      }
+
+      function buildInitialConclusion(stock) {
+        var growthScore = (stock.revenueGrowth || 0) + (stock.profitGrowth || 0);
+        if (growthScore > 45 && (stock.roe || 0) > 15) {
+          return "公司具备较强增长和盈利质量特征，适合进入重点观察清单，但仍需验证增长来源是否可持续。";
+        }
+        if ((stock.pe || 0) < 12 && (stock.roe || 0) > 12) {
+          return "公司估值相对偏低且盈利能力尚可，研究重点应放在基本面是否修复和估值陷阱风险。";
+        }
+        if ((stock.profitGrowth || 0) < 0) {
+          return "公司短期利润承压，研究重点应放在周期拐点、费用控制和资产减值风险。";
+        }
+        return "公司具备一定研究价值，当前更适合作为跟踪对象，需继续验证财务趋势和行业催化。";
+      }
+
+      function fillResearchForm(stock, autoGenerate) {
+        if (!stock) {
+          return;
+        }
+        els.researchStockSelect.value = stock.code;
+        els.researchCode.value = stock.code;
+        els.researchName.value = stock.name;
+        els.researchIndustry.value = stock.industry;
+        els.researchTopic.value = stock.technology + " 同时关注商业模式、竞争格局和财务指标验证。";
+        els.researchStatus.className = "status";
+        els.researchStatus.textContent = "已带入 " + stock.name + " 的 mock 研究资料。";
+        if (autoGenerate) {
+          generateResearchFromForm();
+        }
+      }
+
+      function generateResearchFromForm() {
+        var input = {
+          code: trimValue(els.researchCode),
+          name: trimValue(els.researchName),
+          industry: trimValue(els.researchIndustry),
+          topic: trimValue(els.researchTopic)
+        };
+        if (!input.code && !input.name) {
+          setStatus(els.researchStatus, "error", "请选择或输入股票代码、股票名称。");
+          els.researchOutput.innerHTML = emptyHtml("无法生成深度研究", "缺少研究对象。");
+          return;
+        }
+        var stock = findStockByCode(input.code) || findStockByName(input.name) || {
+          code: input.code || "未填写",
+          name: input.name || "未命名公司",
+          industry: input.industry || "未填写行业",
+          profile: "需要补充公司简介。",
+          business: "需要补充主营业务、产品结构、客户结构和收入拆分。",
+          technology: "需要补充关键技术、研发路线和替代方案。",
+          revenueGrowth: 0,
+          profitGrowth: 0,
+          roe: 0,
+          pe: 0
+        };
+        var research = buildResearch(stock, input);
+        els.researchOutput.className = "research";
+        els.researchOutput.innerHTML = research.map(renderSectionBlock).join("");
+        setStatus(els.researchStatus, "success", "已生成 " + (input.name || stock.name) + " 的深度研究框架。");
+      }
+
+      function buildResearch(stock, input) {
+        var industry = input.industry || stock.industry;
+        var topic = input.topic || stock.technology || "行业新技术、新商业模式和可验证经营数据。";
+        return [
+          {
+            title: "公司业务拆解",
+            list: [
+              "主营业务：" + (stock.business || stock.profile),
+              "收入拆解：按产品、区域、客户类型和渠道拆分，识别利润贡献最高的业务线。",
+              "经营指标：订单、销量、价格、产能利用率、留存率或单客户价值应与行业属性匹配。"
+            ]
+          },
+          {
+            title: "行业背景",
+            body: industry + "行业的研究起点应包括需求来源、供给约束、政策周期、技术替代和资本开支节奏。新进入者需要先理解行业利润池在哪里，以及公司处在产业链的哪个环节。"
+          },
+          {
+            title: "行业规模与增长逻辑",
+            list: [
+              "估算总市场规模：用销量、单价、渗透率、替换周期或客户预算建立量价模型。",
+              "判断增长驱动：政策刺激、技术降本、消费升级、国产替代、海外扩张或库存周期。",
+              "验证景气度：跟踪高频价格、招投标、排产、渠道库存、出口数据和竞争对手指引。"
+            ]
+          },
+          {
+            title: "商业模式分析",
+            body: "重点比较一次性销售、订阅服务、耗材复购、平台抽佣、项目制交付和资源品价格弹性等模式。对 " + stock.name + " 而言，应判断收入是否可重复、毛利率是否可稳定、客户转换成本是否足够高。"
+          },
+          {
+            title: "竞争格局",
+            list: [
+              "竞争维度：成本、品牌、渠道、技术、产能、客户认证和资金实力。",
+              "格局变化：价格战、并购整合、海外限制、新玩家进入和替代技术成熟度。",
+              "公司位置：把 " + stock.name + " 与行业龙头、追赶者和上下游议价方放在同一张竞争地图上。"
+            ]
+          },
+          {
+            title: "技术路线或关键技术",
+            body: topic + " 研究时应拆成技术原理、成熟度、成本曲线、量产难度、客户验证周期和替代路线六个层级，避免只看概念。"
+          },
+          {
+            title: "新技术趋势",
+            list: [
+              "关注能否带来成本下降、效率提升、体验改善或监管合规优势。",
+              "识别技术扩散速度：实验室成果、试点项目、量产订单、行业标准和主流客户采用。",
+              "跟踪研发投入、专利、产品发布、供应商变化和第三方测试数据。"
+            ]
+          },
+          {
+            title: "新商业模式机会",
+            list: [
+              "从卖产品转向卖服务、从项目交付转向订阅、从硬件利润转向数据或生态利润。",
+              "通过海外渠道、行业解决方案、上下游一体化或金融化服务扩大利润池。",
+              "评估商业模式变化是否真正改善现金流，而不是只提高收入规模。"
+            ]
+          },
+          {
+            title: "可验证的研究问题清单",
+            list: [
+              "未来 4 个季度收入增长来自价格、销量、份额还是并表？",
+              "毛利率变化是否由产品结构、成本下降或竞争压力驱动？",
+              "核心客户是否集中，订单能见度是否足够覆盖产能扩张？",
+              "新技术是否已有真实客户、真实订单和可量产成本？",
+              "当前 PE、ROE 和增长速度是否匹配行业阶段？"
+            ]
+          },
+          {
+            title: "需要继续跟踪的数据和事件",
+            list: [
+              "财报：收入、净利润、毛利率、经营现金流、研发费用和资产负债变化。",
+              "公告：订单、定点、回购、分红、减值、诉讼、产能和股权激励。",
+              "行业：政策、价格、库存、出口、竞品发布、招投标和技术标准。",
+              "市场：估值分位、机构调研、交易拥挤度和主要股东变化。"
+            ]
+          },
+          {
+            title: "风险点",
+            list: [
+              "行业景气度下行或政策变化导致需求低于预期。",
+              "技术路线变化造成现有投入沉没或产品竞争力下降。",
+              "新商业模式付费转化不足，收入增长无法转化为利润。",
+              "估值过高、市场风格切换或流动性收紧导致股价波动。"
+            ]
+          }
+        ];
+      }
+
+      function addManualWatch() {
+        var code = trimValue(els.watchCode);
+        var name = trimValue(els.watchName);
+        var industry = trimValue(els.watchIndustry);
+        if (!code || !name) {
+          toast("添加自选股需要填写股票代码和股票名称。", "error");
+          return;
+        }
+        addToWatchlist({
+          code: code,
+          name: name,
+          industry: industry || "手动添加",
+          marketCap: 0,
+          pe: 0,
+          roe: 0,
+          revenueGrowth: 0,
+          profitGrowth: 0,
+          change30d: 0
+        });
+      }
+
+      function addToWatchlist(stock) {
+        if (isInWatchlist(stock.code)) {
+          toast(stock.name + " 已在自选股中。", "error");
+          return;
+        }
+        state.watchlist.push({
+          code: stock.code,
+          name: stock.name,
+          industry: stock.industry || "未分类",
+          addedAt: new Date().toISOString()
+        });
+        persistWatchlist();
+        renderWatchlist();
+        renderStockTable();
+        toast("已添加到自选股：" + stock.name, "success");
+      }
+
+      function removeFromWatchlist(code) {
+        var item = state.watchlist.find(function (stock) {
+          return stock.code === code;
+        });
+        state.watchlist = state.watchlist.filter(function (stock) {
+          return stock.code !== code;
+        });
+        delete state.trackingData[code];
+        persistWatchlist();
+        renderWatchlist();
+        renderStockTable();
+        renderTrackingSummary();
+        toast("已删除自选股：" + (item ? item.name : code), "success");
+      }
+
+      function persistWatchlist() {
+        saveStorage(STORAGE_KEYS.watchlist, JSON.stringify(state.watchlist));
+      }
+
+      function clearWatchForm() {
+        els.watchSelect.value = "";
+        els.watchCode.value = "";
+        els.watchName.value = "";
+        els.watchIndustry.value = "";
+      }
+
+      function renderWatchlist() {
+        els.watchlistNavCount.textContent = String(state.watchlist.length);
+        if (!state.watchlist.length) {
+          els.watchlistContainer.innerHTML = emptyHtml("暂无自选股", "可从筛选表点击“加自选”，或在上方手动添加。");
+          return;
+        }
+        els.watchlistContainer.innerHTML = state.watchlist.map(function (stock) {
+          var tracking = state.trackingData[stock.code] || {};
+          var risk = tracking.risk || "未刷新";
+          var riskClass = risk === "高" ? "high" : risk === "中" ? "medium" : risk === "低" ? "low" : "neutral";
+          return [
+            '<article class="watch-card">',
+            '<div class="watch-card-head">',
+            '<div>',
+            '<h4 class="stock-name">' + escapeHtml(stock.name) + '</h4>',
+            '<div class="stock-code">' + escapeHtml(stock.code) + ' / ' + escapeHtml(stock.industry || "未分类") + '</div>',
+            '</div>',
+            '<button class="btn btn-small btn-danger" data-remove-watch="' + escapeAttr(stock.code) + '">删除</button>',
+            '</div>',
+            '<div class="metric-row">',
+            '<div class="metric"><div class="metric-label">新闻数量</div><div class="metric-value">' + String(tracking.newsCount || 0) + '</div></div>',
+            '<div class="metric"><div class="metric-label">公告数量</div><div class="metric-value">' + String(tracking.announcementCount || 0) + '</div></div>',
+            '<div class="metric"><div class="metric-label">关注等级</div><div class="metric-value"><span class="tag ' + riskClass + '">' + escapeHtml(risk) + '</span></div></div>',
+            '</div>',
+            '<div class="muted">最近更新时间：' + escapeHtml(tracking.updatedAt || "尚未刷新") + '</div>',
+            '</article>'
+          ].join("");
+        }).join("");
+        els.watchlistContainer.querySelectorAll("button[data-remove-watch]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            removeFromWatchlist(button.getAttribute("data-remove-watch"));
+          });
+        });
+      }
+
+      function refreshTrackingInfo(isAuto) {
+        if (!state.watchlist.length) {
+          setStatus(els.trackingStatus, "warning", "自选股为空，无法刷新追踪信息。");
+          renderTrackingSummary();
+          return Promise.resolve();
+        }
+        state.loading.tracking = true;
+        els.refreshTrackingBtn.disabled = true;
+        setStatus(els.trackingStatus, "", "正在刷新 mock 新闻和公告...");
+        els.trackingStatus.innerHTML = '<span class="spinner"></span><span>正在刷新 mock 新闻和公告...</span>';
+
+        var jobs = state.watchlist.map(function (stock) {
+          return Promise.all([
+            DataAdapter.fetchNewsData(stock.code),
+            DataAdapter.fetchAnnouncementData(stock.code)
+          ]).then(function (result) {
+            var news = ensureStockItems(result[0], stock, "news");
+            var announcements = ensureStockItems(result[1], stock, "announcement");
+            var summaries = news.concat(announcements).map(summarizeItem);
+            state.trackingData[stock.code] = {
+              news: news,
+              announcements: announcements,
+              summaries: summaries,
+              newsCount: news.length,
+              announcementCount: announcements.length,
+              risk: calculateRiskLevel(summaries),
+              updatedAt: formatDateTime(new Date())
+            };
+          });
+        });
+
+        return Promise.all(jobs)
+          .then(function () {
+            state.loading.tracking = false;
+            els.refreshTrackingBtn.disabled = false;
+            state.nextRefreshAt = addMinutes(new Date(), state.refreshIntervalMinutes);
+            renderWatchlist();
+            renderTrackingSummary();
+            renderTrackingStatus();
+            toast((isAuto ? "已自动刷新" : "已手动刷新") + "自选股追踪信息。", "success");
+          })
+          .catch(function () {
+            state.loading.tracking = false;
+            els.refreshTrackingBtn.disabled = false;
+            setStatus(els.trackingStatus, "error", "追踪信息刷新失败，请稍后重试。");
+            toast("追踪信息刷新失败。", "error");
+          });
+      }
+
+      function ensureStockItems(items, stock, type) {
+        if (items.length) {
+          return items;
+        }
+        var title = type === "news" ? "暂无直接相关新闻，生成行业观察占位" : "暂无直接公告，生成公告观察占位";
+        return [{
+          title: stock.name + "：" + title,
+          source: type === "news" ? "财经媒体" : "公司公告",
+          time: formatTime(new Date()),
+          keyInfo: "mock 数据中未匹配到该股票的直接信息，建议后续接入真实新闻和交易所公告 API。",
+          impact: "当前影响不明确，需等待真实数据验证。",
+          relatedStocks: [stock.code],
+          importance: "低"
+        }];
+      }
+
+      function calculateRiskLevel(summaries) {
+        var high = summaries.filter(function (item) {
+          return item.importance === "高";
+        }).length;
+        var medium = summaries.filter(function (item) {
+          return item.importance === "中";
+        }).length;
+        if (high >= 2) {
+          return "高";
+        }
+        if (high === 1 || medium >= 2) {
+          return "中";
+        }
+        return "低";
+      }
+
+      function renderTrackingSummary() {
+        if (!state.watchlist.length) {
+          els.trackingSummaryOutput.className = "empty";
+          els.trackingSummaryOutput.innerHTML = "<strong>暂无自选股</strong><span>添加自选股后可生成追踪摘要。</span>";
+          return;
+        }
+        var allSummaries = [];
+        state.watchlist.forEach(function (stock) {
+          var tracking = state.trackingData[stock.code];
+          if (tracking && tracking.summaries) {
+            allSummaries = allSummaries.concat(tracking.summaries);
+          }
+        });
+        if (!allSummaries.length) {
+          els.trackingSummaryOutput.className = "empty";
+          els.trackingSummaryOutput.innerHTML = "<strong>尚未刷新追踪信息</strong><span>点击“刷新追踪信息”后会生成新闻、公告和风险摘要。</span>";
+          return;
+        }
+
+        var highItems = allSummaries.filter(function (item) {
+          return item.importance === "高";
+        });
+        var announcements = allSummaries.filter(function (item) {
+          return item.source.indexOf("公告") !== -1 || item.source.indexOf("交易所") !== -1;
+        });
+        var sections = [
+          {
+            title: "今日重点新闻",
+            list: listFromSummaries(allSummaries.filter(function (item) {
+              return item.source.indexOf("媒体") !== -1 || item.source.indexOf("新闻") !== -1 || item.source.indexOf("市场") !== -1;
+            }), 3)
+          },
+          {
+            title: "今日重要公告",
+            list: listFromSummaries(announcements, 3)
+          },
+          {
+            title: "可能影响股价的因素",
+            list: listFromSummaries(highItems.length ? highItems : allSummaries, 4, "impact")
+          },
+          {
+            title: "需要重点关注的问题",
+            list: [
+              "高重要程度事件是否改变盈利预测、估值中枢或行业景气判断。",
+              "公告事项是否涉及订单兑现、资本开支、减值、监管或股东回报。",
+              "自选股之间是否暴露在同一个行业、政策或海外市场风险下。"
+            ]
+          },
+          {
+            title: "风险提示",
+            body: "追踪摘要由 mock 新闻和公告生成，只用于信息整理。任何高关注等级都不代表买入或卖出建议，应结合真实公告原文和财务数据复核。"
+          }
+        ];
+        els.trackingSummaryOutput.className = "report";
+        els.trackingSummaryOutput.innerHTML = sections.map(renderSectionBlock).join("");
+      }
+
+      function renderTrackingStatus() {
+        if (!state.nextRefreshAt) {
+          state.nextRefreshAt = addMinutes(new Date(), state.refreshIntervalMinutes);
+        }
+        setStatus(els.trackingStatus, "", "下一次刷新时间：" + formatDateTime(state.nextRefreshAt));
+      }
+
+      function scheduleAutoRefresh() {
+        if (state.refreshTimer) {
+          clearInterval(state.refreshTimer);
+        }
+        state.nextRefreshAt = addMinutes(new Date(), state.refreshIntervalMinutes);
+        state.refreshTimer = setInterval(function () {
+          state.nextRefreshAt = addMinutes(new Date(), state.refreshIntervalMinutes);
+          refreshTrackingInfo(true);
+        }, state.refreshIntervalMinutes * 60 * 1000);
+        renderTrackingStatus();
+      }
+
+      function saveBriefTime() {
+        var value = els.briefTime.value || "08:30";
+        state.briefTime = value;
+        saveStorage(STORAGE_KEYS.briefTime, value);
+        renderBriefState();
+        checkMorningBriefReminder();
+        toast("已保存每日简报时间：" + value, "success");
+      }
+
+      function renderBriefState() {
+        var today = dateKey(new Date());
+        els.briefTime.value = state.briefTime;
+        els.briefTimeLabel.textContent = state.briefTime;
+        var generated = state.todayBriefDate === today;
+        els.briefStateLabel.textContent = generated ? "已生成" : "未生成";
+        els.briefStateLabel.className = "metric-value " + (generated ? "up" : "");
+      }
+
+      function checkMorningBriefReminder() {
+        var today = dateKey(new Date());
+        var shouldGenerate = isNowAfterTime(state.briefTime) && state.todayBriefDate !== today;
+        if (shouldGenerate) {
+          setStatus(els.briefPrompt, "warning", "当前已达到或超过 " + state.briefTime + "，且今天尚未生成早报。");
+        } else if (state.todayBriefDate === today) {
+          setStatus(els.briefPrompt, "success", "今天已生成财经早报。");
+        } else {
+          setStatus(els.briefPrompt, "", "尚未到达今日设置时间 " + state.briefTime + "。");
+        }
+      }
+
+      function generateMorningBrief(isAuto) {
+        state.loading.brief = true;
+        els.generateBriefBtn.disabled = true;
+        els.briefOutput.className = "brief";
+        els.briefOutput.innerHTML = '<div class="loading"><span class="spinner"></span><span>正在汇总 mock 媒体来源...</span></div>';
+
+        return DataAdapter.fetchMorningBriefData()
+          .then(function (items) {
+            var summaries = items.map(summarizeItem);
+            state.morningBrief = buildMorningBrief(summaries);
+            state.todayBriefDate = dateKey(new Date());
+            saveStorage(STORAGE_KEYS.briefGeneratedDate, state.todayBriefDate);
+            renderBriefOutput(state.morningBrief);
+            renderBriefState();
+            checkMorningBriefReminder();
+            state.loading.brief = false;
+            els.generateBriefBtn.disabled = false;
+            toast((isAuto ? "已自动生成" : "已生成") + "今日财经早报。", "success");
+          })
+          .catch(function () {
+            state.loading.brief = false;
+            els.generateBriefBtn.disabled = false;
+            els.briefOutput.className = "empty";
+            els.briefOutput.innerHTML = "<strong>早报生成失败</strong><span>请稍后重试。</span>";
+            toast("财经早报生成失败。", "error");
+          });
+      }
+
+      function buildMorningBrief(summaries) {
+        var watchCodes = state.watchlist.map(function (stock) {
+          return stock.code;
+        });
+        var watchRelated = summaries.filter(function (item) {
+          return item.relatedStocks.some(function (code) {
+            return watchCodes.indexOf(code) !== -1;
+          });
+        });
+        return [
+          {
+            title: "宏观市场概览",
+            list: listFromSummaries(summaries.filter(function (item) {
+              return item.source.indexOf("宏观") !== -1 || item.source.indexOf("政策") !== -1;
+            }), 3)
+          },
+          {
+            title: "A 股 / 港股 / 美股市场要点",
+            list: [
+              "A 股：政策和行业景气方向仍是盘前关注重点，需结合成交量验证风险偏好。",
+              "港股：海外利率和互联网、医药、消费板块情绪影响较大。",
+              "美股：科技股波动和美债收益率变化可能影响全球成长资产估值。"
+            ]
+          },
+          {
+            title: "重点行业动态",
+            list: listFromSummaries(summaries.filter(function (item) {
+              return item.source.indexOf("行业") !== -1 || item.source.indexOf("财经") !== -1;
+            }), 4)
+          },
+          {
+            title: "重要公司新闻",
+            list: listFromSummaries(summaries.filter(function (item) {
+              return item.source.indexOf("公司") !== -1 || item.relatedStocks.length;
+            }), 4)
+          },
+          {
+            title: "重要公告摘要",
+            list: listFromSummaries(summaries.filter(function (item) {
+              return item.source.indexOf("公告") !== -1 || item.source.indexOf("交易所") !== -1;
+            }), 4)
+          },
+          {
+            title: "风险事件提醒",
+            list: [
+              "海外市场波动可能传导至高估值成长股。",
+              "政策预期落地低于预期时，主题交易可能回撤。",
+              "公告密集期需警惕减值、监管问询、业绩不达预期和大股东减持。"
+            ]
+          },
+          {
+            title: "今日重点关注日历",
+            list: [
+              "09:15-09:25 集合竞价观察：自选股是否出现异常高开低开。",
+              "10:00 宏观与行业新闻二次更新：确认政策细则和产业链反馈。",
+              "15:00 收盘后：复盘自选股涨跌原因并检查公告。",
+              "20:00 晚间公告：跟踪业绩预告、回购、分红、重大合同和风险提示。"
+            ]
+          },
+          {
+            title: "与用户自选股相关的信息",
+            list: watchRelated.length ? listFromSummaries(watchRelated, 6) : ["当前自选股暂无直接匹配的 mock 早报信息；接入真实 API 后可按股票代码和公司简称匹配。"]
+          }
+        ];
+      }
+
+      function renderBriefOutput(brief) {
+        els.briefOutput.className = "brief";
+        els.briefOutput.innerHTML = brief.map(renderSectionBlock).join("");
+      }
+
+      function renderSummaryDemo() {
+        var item = summarizeItem(MOCK_MORNING_ITEMS[0]);
+        els.summaryDemo.innerHTML = renderSummaryItem(item);
+      }
+
+      function summarizeItem(item) {
+        return {
+          title: item.title || "未命名信息",
+          source: item.source || "未知来源",
+          time: item.time || formatTime(new Date()),
+          keyInfo: item.keyInfo || "缺少关键信息，需补充原始内容。",
+          impact: item.impact || "影响暂不明确，需要结合行业和公司基本面判断。",
+          relatedStocks: Array.isArray(item.relatedStocks) ? item.relatedStocks : [],
+          importance: normalizeImportance(item.importance)
+        };
+      }
+
+      function renderSummaryItem(item) {
+        var importanceClass = item.importance === "高" ? "high" : item.importance === "中" ? "medium" : "low";
+        return [
+          '<article class="summary-item">',
+          '<div class="summary-head">',
+          '<h4 class="summary-title">' + escapeHtml(item.title) + '</h4>',
+          '<span class="tag ' + importanceClass + '">' + escapeHtml(item.importance) + '</span>',
+          '</div>',
+          '<div class="summary-meta">',
+          '<span>来源：' + escapeHtml(item.source) + '</span>',
+          '<span>时间：' + escapeHtml(item.time) + '</span>',
+          '<span>相关股票：' + escapeHtml(item.relatedStocks.length ? item.relatedStocks.join(", ") : "无") + '</span>',
+          '</div>',
+          '<p><strong>关键信息：</strong>' + escapeHtml(item.keyInfo) + '</p>',
+          '<p><strong>可能影响：</strong>' + escapeHtml(item.impact) + '</p>',
+          '</article>'
+        ].join("");
+      }
+
+      function renderSectionBlock(section) {
+        var body = "";
+        if (section.list) {
+          body = "<ul>" + section.list.map(function (item) {
+            return "<li>" + escapeHtml(item) + "</li>";
+          }).join("") + "</ul>";
+        } else {
+          body = "<p>" + escapeHtml(section.body || "") + "</p>";
+        }
+        return '<section class="section-block"><h4>' + escapeHtml(section.title) + '</h4>' + body + '</section>';
+      }
+
+      function emptyHtml(title, detail) {
+        return '<div class="empty"><strong>' + escapeHtml(title) + '</strong><span>' + escapeHtml(detail) + '</span></div>';
+      }
+
+      function setStatus(el, type, text) {
+        el.className = "status" + (type ? " " + type : "");
+        el.textContent = text;
+      }
+
+      function buildStockNewsText(code) {
+        var news = MOCK_NEWS.concat(MOCK_ANNOUNCEMENTS).filter(function (item) {
+          return item.relatedStocks.indexOf(code) !== -1;
+        });
+        if (!news.length) {
+          return "";
+        }
+        return news.slice(0, 4).map(function (item) {
+          return item.source + "：" + item.title + "。" + item.keyInfo;
+        }).join("\n");
+      }
+
+      function listFromSummaries(items, limit, field) {
+        var source = items.slice(0, limit);
+        if (!source.length) {
+          return ["暂无匹配的 mock 信息，接入真实 API 后可自动补全。"];
+        }
+        return source.map(function (item) {
+          var text = field === "impact" ? item.impact : item.keyInfo;
+          return item.title + "（" + item.source + "，" + item.importance + "）：" + text;
+        });
+      }
+
+      function normalizeImportance(value) {
+        return value === "高" || value === "中" || value === "低" ? value : "中";
+      }
+
+      function isInWatchlist(code) {
+        return state.watchlist.some(function (stock) {
+          return stock.code === code;
+        });
+      }
+
+      function findStockByCode(code) {
+        if (!code) {
+          return null;
+        }
+        return state.stocks.find(function (stock) {
+          return stock.code === code;
+        }) || MOCK_STOCKS.find(function (stock) {
+          return stock.code === code;
+        }) || null;
+      }
+
+      function findStockByName(name) {
+        if (!name) {
+          return null;
+        }
+        return state.stocks.find(function (stock) {
+          return stock.name === name;
+        }) || MOCK_STOCKS.find(function (stock) {
+          return stock.name === name;
+        }) || null;
+      }
+
+      function passMin(value, min) {
+        return min === null || value >= min;
+      }
+
+      function passMax(value, max) {
+        return max === null || value <= max;
+      }
+
+      function parseMaybeNumber(value) {
+        if (value === "" || value === null || value === undefined) {
+          return null;
+        }
+        var number = Number(value);
+        return Number.isFinite(number) ? number : null;
+      }
+
+      function trimValue(input) {
+        return String(input.value || "").trim();
+      }
+
+      function saveStorage(key, value) {
+        try {
+          localStorage.setItem(key, value);
+        } catch (error) {
+          toast("localStorage 保存失败：" + key, "error");
+        }
+      }
+
+      function readJsonStorage(key, fallback) {
+        try {
+          var raw = localStorage.getItem(key);
+          return raw ? JSON.parse(raw) : fallback;
+        } catch (error) {
+          return fallback;
+        }
+      }
+
+      function cloneItem(item) {
+        return Object.assign({}, item, {
+          relatedStocks: item.relatedStocks.slice()
+        });
+      }
+
+      function simulateDelay(data, ms) {
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve(data);
+          }, ms);
+        });
+      }
+
+      function unique(values) {
+        return values.filter(function (value, index, arr) {
+          return arr.indexOf(value) === index;
+        });
+      }
+
+      function formatNumber(value) {
+        if (!Number.isFinite(Number(value))) {
+          return "--";
+        }
+        return Number(value).toLocaleString("zh-CN", {
+          maximumFractionDigits: 1
+        });
+      }
+
+      function formatPercent(value) {
+        return formatNumber(value) + "%";
+      }
+
+      function formatSignedPercent(value) {
+        var number = Number(value) || 0;
+        return (number > 0 ? "+" : "") + formatNumber(number) + "%";
+      }
+
+      function trendClass(value) {
+        var number = Number(value) || 0;
+        if (number > 0) {
+          return "up";
+        }
+        if (number < 0) {
+          return "down";
+        }
+        return "";
+      }
+
+      function formatDateTime(date) {
+        return date.getFullYear() + "-" + pad2(date.getMonth() + 1) + "-" + pad2(date.getDate()) + " " + formatTime(date);
+      }
+
+      function formatTime(date) {
+        return pad2(date.getHours()) + ":" + pad2(date.getMinutes()) + ":" + pad2(date.getSeconds());
+      }
+
+      function dateKey(date) {
+        return date.getFullYear() + "-" + pad2(date.getMonth() + 1) + "-" + pad2(date.getDate());
+      }
+
+      function pad2(number) {
+        return String(number).padStart(2, "0");
+      }
+
+      function addMinutes(date, minutes) {
+        return new Date(date.getTime() + minutes * 60 * 1000);
+      }
+
+      function isNowAfterTime(timeText) {
+        var parts = String(timeText || "08:30").split(":");
+        var hour = Number(parts[0]) || 0;
+        var minute = Number(parts[1]) || 0;
+        var now = new Date();
+        var target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0, 0);
+        return now.getTime() >= target.getTime();
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function escapeAttr(value) {
+        return escapeHtml(value);
+      }
+
+      function scrollToModule(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      function toast(message, type) {
+        var node = document.createElement("div");
+        node.className = "toast-msg" + (type ? " " + type : "");
+        node.textContent = message;
+        els.toast.appendChild(node);
+        setTimeout(function () {
+          node.remove();
+        }, 3200);
+      }
+    })();
+  </script>
+</body>
+</html>
