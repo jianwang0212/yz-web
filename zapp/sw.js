@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v41-20260605-gt";
+const CACHE_VERSION = "zapp-store-v42-20260606-taxonomy-copy";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",

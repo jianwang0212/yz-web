@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, basename, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,6 +11,7 @@ const zappRoot = resolve(scriptDir, "..");
 const defaults = {
   db: "/Users/ziyin/Code/CodexWorkspace/projects/wechatDatabase/data/wechat_memory.sqlite",
   tagReport: "/Users/ziyin/Code/CodexWorkspace/reports/wechat_contact_tag_recommendations_20260524_125813.json",
+  signalData: resolve(zappRoot, "apps/friend-crm-signal-data.json"),
   output: resolve(zappRoot, "apps/friend-crm-data.json"),
 };
 
@@ -20,6 +22,7 @@ for (let index = 2; index < process.argv.length; index += 2) {
 
 const dbPath = args.get("--db") || defaults.db;
 const tagReportPath = args.get("--tag-report") || defaults.tagReport;
+const signalDataPath = args.get("--signal-data") || defaults.signalData;
 const outputPath = resolve(args.get("--output") || defaults.output);
 
 function parseJson(value, fallback) {
@@ -125,16 +128,59 @@ function maxString(values) {
   return values.filter(Boolean).sort().at(-1) || "";
 }
 
-function buildPayload(profiles, tagReport) {
-  const insights = (tagReport.contacts || []).map(normalizeInsight);
+function contactRefForUsername(username) {
+  if (!username) return "";
+  return createHash("sha256").update(username, "utf8").digest("hex").slice(0, 10);
+}
+
+function normalizeSignalContact(contact) {
+  if (!contact?.contact_ref) return null;
+  return {
+    contactRef: contact.contact_ref,
+    displayName: contact.display_name || "",
+    reportUrl: contact.reportUrl || "",
+    indexRank: contact.index_rank || null,
+    evidenceScore: Number(contact.evidence_score || 0),
+    evidenceLevel: contact.evidence_level || "",
+    readFirst: contact.read_first || "",
+    total: Number(contact.total || 0),
+    activeDays: Number(contact.active_days || 0),
+  };
+}
+
+function stripEmbeddedSignal(insight) {
+  if (!insight) return null;
+  const { signalInsight, ...leanInsight } = insight;
+  return leanInsight;
+}
+
+function buildPayload(profiles, tagReport, signalData) {
+  const signalContacts = (signalData.contacts || []).map(normalizeSignalContact).filter(Boolean);
+  const signalByRef = new Map(signalContacts.map((contact) => [contact.contactRef, contact]));
+  const insights = (tagReport.contacts || []).map((contact) => {
+    const insight = normalizeInsight(contact);
+    const contactRef = contactRefForUsername(insight.username);
+    return {
+      ...insight,
+      contactRef,
+      signalInsight: signalByRef.get(contactRef) || null,
+    };
+  });
   const insightsByProfileId = new Map(
     insights.filter((insight) => insight.crmProfileId).map((insight) => [insight.crmProfileId, insight]),
   );
-  const enrichedProfiles = profiles.map((profile) => ({
-    ...profile,
-    tagInsight: insightsByProfileId.get(profile.id) || null,
-  }));
+  const enrichedProfiles = profiles.map((profile) => {
+    const contactRef = contactRefForUsername(profile.sourceUsername);
+    const tagInsight = insightsByProfileId.get(profile.id) || null;
+    return {
+      ...profile,
+      contactRef,
+      tagInsight: stripEmbeddedSignal(tagInsight),
+      signalInsight: signalByRef.get(contactRef) || tagInsight?.signalInsight || null,
+    };
+  });
   const matchedProfileCount = enrichedProfiles.filter((profile) => profile.tagInsight).length;
+  const signalMatchedProfileCount = enrichedProfiles.filter((profile) => profile.signalInsight).length;
   const topRecommendedLabels = (tagReport.recommended_label_counts || [])
     .slice(0, 40)
     .map(([label, count]) => ({ label, count }));
@@ -156,8 +202,13 @@ function buildPayload(profiles, tagReport) {
       needsFollowupCount: insights.filter((insight) => insight.needsFollowup).length,
       highConfidenceInsightCount: insights.filter((insight) => insight.confidence === "high").length,
       currentContactUniverseCount: tagReport.summary?.current_contact_universe_count || null,
+      signalAnalysisGeneratedAt: signalData.meta?.generatedAt || "",
+      signalSourceDb: signalData.meta?.sourceDbLabel || "",
+      signalContactCount: signalContacts.length,
+      signalMatchedProfileCount,
+      signalLatestMessageAt: signalData.meta?.messageMaxAt || "",
       privacyScope: "public_zapp_json_at_user_request",
-      sourceNote: "CRM profiles are enriched with aggregate-only May 24 tag recommendations; no raw chat snippets are included.",
+      sourceNote: "CRM profiles are enriched with aggregate-only May 24 tag recommendations and signal reports; raw chat snippets are not included in Zapp reports.",
     },
     tagSummary: {
       generatedAt: tagReport.generated_at || "",
@@ -169,6 +220,15 @@ function buildPayload(profiles, tagReport) {
       summary: tagReport.summary || {},
       topRecommendedLabels,
     },
+    signalSummary: {
+      meta: {
+        generatedAt: signalData.meta?.generatedAt || "",
+        sourceDbLabel: signalData.meta?.sourceDbLabel || "",
+        messageMaxAt: signalData.meta?.messageMaxAt || "",
+      },
+      topContacts: signalContacts.slice(0, 40),
+      formula: signalData.meta?.formula || {},
+    },
     profiles: enrichedProfiles,
     tagInsights: insights,
   };
@@ -176,14 +236,19 @@ function buildPayload(profiles, tagReport) {
 
 if (!existsSync(dbPath)) throw new Error(`Missing CRM database: ${dbPath}`);
 if (!existsSync(tagReportPath)) throw new Error(`Missing tag report JSON: ${tagReportPath}`);
+if (!existsSync(signalDataPath)) throw new Error(`Missing signal data JSON: ${signalDataPath}`);
 
 const profiles = queryProfiles(dbPath);
 const tagReport = JSON.parse(readFileSync(tagReportPath, "utf8"));
-const payload = buildPayload(profiles, tagReport);
+const signalData = JSON.parse(readFileSync(signalDataPath, "utf8"));
+const payload = buildPayload(profiles, tagReport, signalData);
 
 mkdirSync(dirname(outputPath), { recursive: true });
-writeFileSync(outputPath, `${JSON.stringify(payload, null, 2)}\n`);
+writeFileSync(outputPath, `${JSON.stringify(payload)}\n`);
 console.log(`Wrote ${payload.meta.profileCount} CRM profiles -> ${outputPath}`);
 console.log(
   `Merged ${payload.meta.tagInsightCount} tag insights; matched ${payload.meta.tagMatchedProfileCount} CRM profiles`,
+);
+console.log(
+  `Merged ${payload.meta.signalContactCount} signal reports; matched ${payload.meta.signalMatchedProfileCount} CRM profiles`,
 );

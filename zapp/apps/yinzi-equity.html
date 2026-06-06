@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f8f7" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="入股回款" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="yinzi-equity.css?v=20260602b" />
+    <title>银子入股回款</title>
+  </head>
+  <body>
+    <main class="equity-shell">
+      <header class="topbar">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>Capital Recovery</p>
+          <h1>银子入股回款</h1>
+        </div>
+        <span class="data-badge" id="dataBadge">Loading</span>
+      </header>
+
+      <nav class="view-tabs" aria-label="入股回款视图">
+        <button type="button" class="active" data-view="overview">总览</button>
+        <button type="button" data-view="years">年度</button>
+        <button type="button" data-view="data">明细</button>
+      </nav>
+
+      <section class="metric-grid" aria-label="现金流摘要">
+        <article>
+          <span>最新累计</span>
+          <strong id="latestCumulative">--</strong>
+          <small id="breakEvenGap">--</small>
+        </article>
+        <article>
+          <span>总投入</span>
+          <strong id="totalInvested">--</strong>
+          <small id="stakeLabel">10% 入股记录</small>
+        </article>
+        <article>
+          <span>已回款</span>
+          <strong id="totalRecovered">--</strong>
+          <small id="recoveryRate">--</small>
+        </article>
+        <article>
+          <span>数据范围</span>
+          <strong id="dateRange">--</strong>
+          <small id="recordCount">--</small>
+        </article>
+      </section>
+
+      <section class="view-section" id="overviewView" aria-label="总览">
+        <section class="panel chart-panel" aria-label="累计金额折线图">
+          <div class="section-head">
+            <div>
+              <p>Cumulative</p>
+              <h2>累计金额折线图</h2>
+            </div>
+            <span id="chartWindow">--</span>
+          </div>
+          <div class="chart-wrap large" id="cumulativeChart"></div>
+        </section>
+
+        <section class="two-column">
+          <section class="panel" aria-label="类型拆分">
+            <div class="section-head">
+              <div>
+                <p>Types</p>
+                <h2>类型拆分</h2>
+              </div>
+              <span id="typeCount">--</span>
+            </div>
+            <div class="breakdown-list" id="typeBreakdown"></div>
+          </section>
+
+          <section class="panel" aria-label="关键节点">
+            <div class="section-head">
+              <div>
+                <p>Milestones</p>
+                <h2>关键节点</h2>
+              </div>
+              <span id="latestDate">--</span>
+            </div>
+            <div class="record-list" id="milestoneList"></div>
+          </section>
+        </section>
+      </section>
+
+      <section class="view-section hidden" id="yearsView" aria-label="年度">
+        <section class="panel chart-panel" aria-label="年度现金流">
+          <div class="section-head">
+            <div>
+              <p>Annual Flow</p>
+              <h2>年度现金流</h2>
+            </div>
+            <span id="yearSummary">--</span>
+          </div>
+          <div class="chart-wrap" id="yearChart"></div>
+        </section>
+
+        <section class="panel table-panel" aria-label="年度汇总表">
+          <div class="section-head">
+            <div>
+              <p>Years</p>
+              <h2>年度汇总</h2>
+            </div>
+          </div>
+          <div class="table-wrap" id="yearTable"></div>
+        </section>
+      </section>
+
+      <section class="view-section hidden" id="dataView" aria-label="明细">
+        <section class="filters" aria-label="明细筛选">
+          <label>
+            <span>类型</span>
+            <select id="typeFilter"></select>
+          </label>
+          <label>
+            <span>搜索</span>
+            <input id="searchFilter" type="search" autocomplete="off" placeholder="日期 / 备注" />
+          </label>
+        </section>
+
+        <section class="panel table-panel" aria-label="现金流明细">
+          <div class="section-head">
+            <div>
+              <p>Rows</p>
+              <h2>现金流明细</h2>
+            </div>
+            <span id="tableCount">--</span>
+          </div>
+          <div class="table-wrap" id="cashflowTable"></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="yinzi-equity.js?v=20260602b"></script>
+  </body>
+</html>

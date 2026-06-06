@@ -1,12 +1,25 @@
-const DATA_URL = "friend-crm-data.json?v=20260524explore1";
+const DATA_URL = "friend-crm-data.json?v=20260604perf1";
+const DESKTOP_CARD_BATCH_SIZE = 24;
+const MOBILE_CARD_BATCH_SIZE = 8;
+const DESKTOP_TABLE_BATCH_SIZE = 48;
+const MOBILE_TABLE_BATCH_SIZE = 8;
+const RELATED_RENDER_LIMIT = 80;
+const SEARCH_DEBOUNCE_MS = 120;
+const COMPACT_MEDIA_QUERY = "(max-width: 640px)";
+const compactMedia = window.matchMedia(COMPACT_MEDIA_QUERY);
 
 const state = {
   data: null,
   profileById: new Map(),
+  quickFilters: [],
+  topCounts: { tag: [], theme: [] },
   query: "",
+  queryTimer: 0,
   mbti: "all",
   relation: null,
   sort: "priority",
+  visibleCards: currentCardBatchSize(),
+  visibleRows: currentTableBatchSize(),
 };
 
 const els = {
@@ -15,6 +28,7 @@ const els = {
   dataStatus: document.querySelector("#dataStatus"),
   summaryGrid: document.querySelector("#summaryGrid"),
   reportPanel: document.querySelector("#reportPanel"),
+  signalPanel: document.querySelector("#signalPanel"),
   explorePanel: document.querySelector("#explorePanel"),
   quickFilters: document.querySelector("#quickFilters"),
   topTags: document.querySelector("#topTags"),
@@ -28,16 +42,23 @@ const els = {
   relatedList: document.querySelector("#relatedList"),
   controlPanel: document.querySelector("#controlPanel"),
   profileGrid: document.querySelector("#profileGrid"),
+  cardMorePanel: document.querySelector("#cardMorePanel"),
+  loadMoreCards: document.querySelector("#loadMoreCards"),
   tablePanel: document.querySelector("#tablePanel"),
   profileRows: document.querySelector("#profileRows"),
+  rowMorePanel: document.querySelector("#rowMorePanel"),
+  loadMoreRows: document.querySelector("#loadMoreRows"),
   profileCount: document.querySelector("#profileCount"),
   tagMatchCount: document.querySelector("#tagMatchCount"),
   followupCount: document.querySelector("#followupCount"),
   remarkCount: document.querySelector("#remarkCount"),
+  signalCount: document.querySelector("#signalCount"),
   mbtiCount: document.querySelector("#mbtiCount"),
   socialCount: document.querySelector("#socialCount"),
   reportMeta: document.querySelector("#reportMeta"),
   reportSource: document.querySelector("#reportSource"),
+  signalMeta: document.querySelector("#signalMeta"),
+  signalSource: document.querySelector("#signalSource"),
   searchInput: document.querySelector("#searchInput"),
   mbtiFilter: document.querySelector("#mbtiFilter"),
   sortFilter: document.querySelector("#sortFilter"),
@@ -52,20 +73,37 @@ async function init() {
 }
 
 function bindEvents() {
-  els.searchInput.addEventListener("input", () => {
-    state.query = els.searchInput.value.trim().toLowerCase();
-    renderProfiles();
-  });
+  if (compactMedia.addEventListener) {
+    compactMedia.addEventListener("change", handleCompactLayoutChange);
+  } else if (compactMedia.addListener) {
+    compactMedia.addListener(handleCompactLayoutChange);
+  }
+
+  els.searchInput.addEventListener("input", scheduleQueryRender);
+  els.searchInput.addEventListener("search", scheduleQueryRender);
+  els.searchInput.addEventListener("change", scheduleQueryRender);
 
   els.mbtiFilter.addEventListener("change", () => {
     state.mbti = els.mbtiFilter.value;
+    resetProfileWindow();
     renderProfiles();
   });
 
   els.sortFilter.addEventListener("change", () => {
     state.sort = els.sortFilter.value;
+    resetProfileWindow();
     renderProfiles();
     renderRelatedPanel();
+  });
+
+  els.loadMoreCards.addEventListener("click", () => {
+    state.visibleCards += currentCardBatchSize();
+    renderProfiles();
+  });
+
+  els.loadMoreRows.addEventListener("click", () => {
+    state.visibleRows += currentTableBatchSize();
+    renderProfiles();
   });
 
   els.clearRelation.addEventListener("click", clearRelation);
@@ -83,17 +121,17 @@ async function loadData() {
     const response = await fetch(DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.data = await response.json();
+    prepareData();
     state.profileById = new Map(state.data.profiles.map((profile) => [profile.id, profile]));
     els.statusPanel.classList.add("hidden");
     els.summaryGrid.classList.remove("hidden");
     els.reportPanel.classList.remove("hidden");
+    els.signalPanel.classList.remove("hidden");
     els.explorePanel.classList.remove("hidden");
     els.controlPanel.classList.remove("hidden");
     els.profileGrid.classList.remove("hidden");
     els.tablePanel.classList.remove("hidden");
-    els.dataBadge.textContent = `${formatNumber(state.data.meta.profileCount)} CRM · ${formatNumber(
-      state.data.meta.tagInsightCount,
-    )} tags`;
+    renderDataBadge();
     populateMbtiFilter();
     render();
   } catch (error) {
@@ -122,12 +160,34 @@ function render() {
   renderRelatedPanel();
 }
 
+function scheduleQueryRender() {
+  clearTimeout(state.queryTimer);
+  state.queryTimer = window.setTimeout(() => {
+    state.query = normalizeSearchText(els.searchInput.value.trim());
+    resetProfileWindow();
+    renderProfiles();
+  }, SEARCH_DEBOUNCE_MS);
+}
+
+function prepareData() {
+  for (const profile of state.data.profiles) {
+    profile.searchText = profileHaystack(profile);
+    profile.sortName = displayName(profile);
+  }
+  state.quickFilters = buildQuickFilters();
+  state.topCounts = {
+    tag: buildTopInsightCounts("tag"),
+    theme: buildTopInsightCounts("theme"),
+  };
+}
+
 function renderSummary() {
   const meta = state.data.meta;
   els.profileCount.textContent = formatNumber(meta.profileCount);
   els.tagMatchCount.textContent = `${formatNumber(meta.tagMatchedProfileCount)}/${formatNumber(meta.profileCount)}`;
   els.followupCount.textContent = formatNumber(meta.needsFollowupCount);
   els.remarkCount.textContent = `${formatNumber(meta.remarkAppliedCount)}/${formatNumber(meta.profileCount)}`;
+  els.signalCount.textContent = `${formatNumber(meta.signalMatchedProfileCount)}/${formatNumber(meta.signalContactCount)}`;
   els.mbtiCount.textContent = formatNumber(meta.mbtiCount);
   els.socialCount.textContent = formatNumber(meta.socialCount);
   els.reportMeta.textContent = `${formatNumber(meta.tagInsightCount)} 个标签联系人 · 最新互动 ${formatDateTime(
@@ -136,40 +196,45 @@ function renderSummary() {
   els.reportSource.textContent = `${formatDateTime(meta.tagAnalysisGeneratedAt)} · ${formatNumber(
     meta.highConfidenceInsightCount,
   )} high confidence`;
+  els.signalMeta.textContent = `${formatNumber(meta.signalContactCount)} 个私聊联系人 · CRM 匹配 ${formatNumber(
+    meta.signalMatchedProfileCount,
+  )} · 最新文本 ${formatDateTime(meta.signalLatestMessageAt)}`;
+  els.signalSource.textContent = formatSignalSource(meta.signalSourceDb);
 }
 
 function renderProfiles() {
   const profiles = sortProfiles(filteredProfiles());
   const relationSuffix = state.relation ? ` · ${state.relation.label}` : "";
-  els.tableCount.textContent = `${profiles.length} / ${state.data.profiles.length}${relationSuffix}`;
-  els.profileGrid.replaceChildren(...profiles.map(profileCard));
-  els.profileRows.replaceChildren(...profiles.map(profileRow));
+  const cardProfiles = profiles.slice(0, state.visibleCards);
+  const rowProfiles = profiles.slice(0, state.visibleRows);
+  els.tableCount.textContent = `${formatNumber(profiles.length)} / ${formatNumber(
+    state.data.profiles.length,
+  )}${relationSuffix} · 卡片 ${formatNumber(cardProfiles.length)} · 表格 ${formatNumber(rowProfiles.length)}`;
+  els.profileGrid.replaceChildren(...cardProfiles.map(profileCard));
+  els.profileRows.replaceChildren(...rowProfiles.map(profileRow));
+  updateLoadMoreControls(profiles.length, cardProfiles.length, rowProfiles.length);
 }
 
 function filteredProfiles() {
   return state.data.profiles.filter((profile) => {
     const matchesMbti = state.mbti === "all" || profile.mbti === state.mbti;
-    const matchesQuery = !state.query || profileHaystack(profile).includes(state.query);
+    const matchesQuery = !state.query || profile.searchText.includes(state.query);
     const matchesRelation = !state.relation || profileMatchesRelation(profile, state.relation);
     return matchesMbti && matchesQuery && matchesRelation;
   });
 }
 
 function renderExplorePanel() {
-  const insights = state.data.tagInsights || [];
-  const profileCount = state.data.profiles.length;
-  const quickFilters = [
-    ["flag", "needsFollowup", "需跟进", insights.filter((insight) => insight.needsFollowup).length],
-    ["flag", "recentActive", "最近活跃", insights.filter((insight) => insight.recentActive).length],
-    ["flag", "highInteraction", "高互动", insights.filter((insight) => insight.highInteraction).length],
-    ["flag", "important", "重要/亲密", insights.filter((insight) => insight.important).length],
-    ["flag", "notInCrm", "未入 CRM", insights.filter((insight) => !insight.crmProfileId).length],
-    ["flag", "missingInsight", "缺标签分析", profileCount - state.data.meta.tagMatchedProfileCount],
-  ];
-  els.quickFilters.replaceChildren(...quickFilters.map(([type, value, label, count]) => chip(type, value, label, count)));
-  els.topTags.replaceChildren(...topInsightCounts("tag", 16).map(({ label, count }) => chip("tag", label, label, count)));
+  els.quickFilters.replaceChildren(
+    ...state.quickFilters.map(([type, value, label, count]) => chip(type, value, label, count)),
+  );
+  els.topTags.replaceChildren(
+    ...topInsightCounts("tag", isCompactLayout() ? 10 : 16).map(({ label, count }) => chip("tag", label, label, count)),
+  );
   els.topThemes.replaceChildren(
-    ...topInsightCounts("theme", 12).map(({ label, count }) => chip("theme", label, label, count)),
+    ...topInsightCounts("theme", isCompactLayout() ? 8 : 12).map(({ label, count }) =>
+      chip("theme", label, label, count),
+    ),
   );
   els.clearRelation.classList.toggle("hidden", !state.relation);
 }
@@ -182,16 +247,21 @@ function renderRelatedPanel() {
 
   if (state.relation.type === "flag" && state.relation.value === "missingInsight") {
     const missingProfiles = sortProfiles(state.data.profiles.filter((profile) => !profile.tagInsight));
+    const visibleProfiles = missingProfiles.slice(0, RELATED_RENDER_LIMIT);
     els.relatedPanel.classList.remove("hidden");
     els.relatedType.textContent = "Data Quality";
     els.relatedTitle.textContent = state.relation.label;
     els.relatedCount.textContent = `${formatNumber(missingProfiles.length)} 人`;
-    els.relatedMeta.textContent = "这些结构化 CRM 联系人还没有匹配到 05-24 标签分析。";
-    els.relatedList.replaceChildren(...missingProfiles.map(relatedProfileItem));
+    els.relatedMeta.textContent = `这些结构化 CRM 联系人还没有匹配到 05-24 标签分析。${visibleLimitText(
+      missingProfiles.length,
+      visibleProfiles.length,
+    )}`;
+    els.relatedList.replaceChildren(...visibleProfiles.map(relatedProfileItem));
     return;
   }
 
   const related = relatedInsights(state.relation);
+  const visibleRelated = related.slice(0, RELATED_RENDER_LIMIT);
   const crmCount = related.filter((insight) => insight.crmProfileId).length;
   els.relatedPanel.classList.remove("hidden");
   els.relatedType.textContent = relationTypeLabel(state.relation.type);
@@ -199,8 +269,8 @@ function renderRelatedPanel() {
   els.relatedCount.textContent = `${formatNumber(related.length)} 人`;
   els.relatedMeta.textContent = `${formatNumber(crmCount)} 人已入 CRM · ${formatNumber(
     related.length - crmCount,
-  )} 人来自 05-24 标签分析`;
-  els.relatedList.replaceChildren(...related.map(relatedItem));
+  )} 人来自 05-24 标签分析${visibleLimitText(related.length, visibleRelated.length)}`;
+  els.relatedList.replaceChildren(...visibleRelated.map(relatedItem));
 }
 
 function chip(type, value, label, count) {
@@ -216,6 +286,7 @@ function chip(type, value, label, count) {
 
 function selectRelation(type, value, label) {
   state.relation = { type, value, label: label || value };
+  resetProfileWindow();
   renderExplorePanel();
   renderProfiles();
   renderRelatedPanel();
@@ -224,6 +295,7 @@ function selectRelation(type, value, label) {
 
 function clearRelation() {
   state.relation = null;
+  resetProfileWindow();
   renderExplorePanel();
   renderProfiles();
   renderRelatedPanel();
@@ -255,6 +327,23 @@ function relatedInsights(relation) {
 }
 
 function topInsightCounts(kind, limit) {
+  return (state.topCounts[kind] || []).slice(0, limit);
+}
+
+function buildQuickFilters() {
+  const insights = state.data.tagInsights || [];
+  const profileCount = state.data.profiles.length;
+  return [
+    ["flag", "needsFollowup", "需跟进", insights.filter((insight) => insight.needsFollowup).length],
+    ["flag", "recentActive", "最近活跃", insights.filter((insight) => insight.recentActive).length],
+    ["flag", "highInteraction", "高互动", insights.filter((insight) => insight.highInteraction).length],
+    ["flag", "important", "重要/亲密", insights.filter((insight) => insight.important).length],
+    ["flag", "notInCrm", "未入 CRM", insights.filter((insight) => !insight.crmProfileId).length],
+    ["flag", "missingInsight", "缺标签分析", profileCount - state.data.meta.tagMatchedProfileCount],
+  ];
+}
+
+function buildTopInsightCounts(kind) {
   const counts = new Map();
   for (const insight of state.data.tagInsights || []) {
     const values =
@@ -266,12 +355,13 @@ function topInsightCounts(kind, limit) {
   return [...counts.entries()]
     .filter(([label]) => label && label !== "CRM已记录")
     .map(([label, count]) => ({ label, count }))
-    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "zh-CN"))
-    .slice(0, limit);
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "zh-CN"));
 }
 
 function sortProfiles(profiles) {
-  return [...profiles].sort((a, b) => compareInsights(a.tagInsight, b.tagInsight) || displayName(a).localeCompare(displayName(b), "zh-CN"));
+  return [...profiles].sort(
+    (a, b) => compareInsights(a.tagInsight, b.tagInsight) || a.sortName.localeCompare(b.sortName, "zh-CN"),
+  );
 }
 
 function sortInsights(insights) {
@@ -302,23 +392,82 @@ function relationTypeLabel(type) {
 }
 
 function profileHaystack(profile) {
-  return [
-    profile.originalDisplayName,
-    profile.chineseName,
-    profile.englishName,
-    profile.preferredName,
-    profile.locations.join(" "),
-    profile.occupation,
-    profile.mbti,
-    profile.wechatRemark,
-    ...(profile.tagInsight?.recommendedTags || []),
-    ...(profile.tagInsight?.crmLabels || []),
-    ...(profile.tagInsight?.recommendationReasons || []),
-    ...(profile.tagInsight?.themes || []).map((theme) => theme.theme),
-    ...Object.entries(profile.socialIds).flat(),
-  ]
-    .join(" ")
-    .toLowerCase();
+  return normalizeSearchText(
+    [
+      profile.originalDisplayName,
+      profile.chineseName,
+      profile.englishName,
+      profile.preferredName,
+      (profile.locations || []).join(" "),
+      profile.occupation,
+      profile.mbti,
+      profile.wechatRemark,
+      ...(profile.tagInsight?.recommendedTags || []),
+      ...(profile.tagInsight?.crmLabels || []),
+      ...(profile.tagInsight?.recommendationReasons || []),
+      ...(profile.tagInsight?.themes || []).map((theme) => theme.theme),
+      profile.signalInsight?.readFirst,
+      profile.signalInsight?.evidenceLevel,
+      ...Object.entries(profile.socialIds || {}).flat(),
+    ]
+      .join(" "),
+  );
+}
+
+function resetProfileWindow() {
+  state.visibleCards = currentCardBatchSize();
+  state.visibleRows = currentTableBatchSize();
+}
+
+function updateLoadMoreControls(total, visibleCards, visibleRows) {
+  const cardBatchSize = currentCardBatchSize();
+  const tableBatchSize = currentTableBatchSize();
+  const remainingCards = Math.max(total - visibleCards, 0);
+  const remainingRows = Math.max(total - visibleRows, 0);
+  els.cardMorePanel.classList.toggle("hidden", remainingCards === 0);
+  els.rowMorePanel.classList.toggle("hidden", remainingRows === 0);
+  if (remainingCards) {
+    els.loadMoreCards.textContent = `再显示 ${formatNumber(Math.min(cardBatchSize, remainingCards))} 个联系人`;
+  }
+  if (remainingRows) {
+    els.loadMoreRows.textContent = `再显示 ${formatNumber(Math.min(tableBatchSize, remainingRows))} 行`;
+  }
+}
+
+function visibleLimitText(total, visible) {
+  return total > visible ? ` · 当前先显示 ${formatNumber(visible)} 人` : "";
+}
+
+function normalizeSearchText(value) {
+  return String(value || "").toLocaleLowerCase("zh-CN");
+}
+
+function isCompactLayout() {
+  return compactMedia.matches;
+}
+
+function currentCardBatchSize() {
+  return isCompactLayout() ? MOBILE_CARD_BATCH_SIZE : DESKTOP_CARD_BATCH_SIZE;
+}
+
+function currentTableBatchSize() {
+  return isCompactLayout() ? MOBILE_TABLE_BATCH_SIZE : DESKTOP_TABLE_BATCH_SIZE;
+}
+
+function handleCompactLayoutChange() {
+  resetProfileWindow();
+  if (!state.data) return;
+  renderDataBadge();
+  renderExplorePanel();
+  renderProfiles();
+  renderRelatedPanel();
+}
+
+function renderDataBadge() {
+  const meta = state.data.meta;
+  els.dataBadge.textContent = isCompactLayout()
+    ? `${formatNumber(meta.profileCount)} · ${formatNumber(meta.tagInsightCount)}`
+    : `${formatNumber(meta.profileCount)} CRM · ${formatNumber(meta.tagInsightCount)} tags`;
 }
 
 function profileCard(profile) {
@@ -345,6 +494,8 @@ function profileCard(profile) {
       <dd>${tagPills(profile.tagInsight?.recommendedTags)}</dd>
       <dt>互动</dt>
       <dd>${interactionSummary(profile.tagInsight)}</dd>
+      <dt>信号</dt>
+      <dd>${signalBlock(profile.signalInsight || profile.tagInsight?.signalInsight)}</dd>
       <dt>主题</dt>
       <dd>${themePills(profile.tagInsight?.themes)}</dd>
       <dt>备注</dt>
@@ -358,14 +509,15 @@ function profileCard(profile) {
 function profileRow(profile) {
   const row = document.createElement("tr");
   row.innerHTML = `
-    <td>${escapeHtml(displayName(profile))}</td>
-    <td>${escapeHtml(joinOrEmpty(profile.locations))}</td>
-    <td>${escapeHtml(profile.occupation || "未提供")}</td>
-    <td>${escapeHtml(profile.mbti || "未提供")}</td>
-    <td>${tagText(profile.tagInsight?.recommendedTags)}</td>
-    <td>${escapeHtml(interactionText(profile.tagInsight))}</td>
-    <td>${socialText(profile.socialIds)}</td>
-    <td>${escapeHtml(profile.wechatRemark || "未设置")}</td>
+    <td data-label="姓名">${escapeHtml(displayName(profile))}</td>
+    <td data-label="地点">${escapeHtml(joinOrEmpty(profile.locations))}</td>
+    <td data-label="职业">${escapeHtml(profile.occupation || "未提供")}</td>
+    <td data-label="MBTI">${escapeHtml(profile.mbti || "未提供")}</td>
+    <td data-label="标签">${tagText(profile.tagInsight?.recommendedTags)}</td>
+    <td data-label="信号">${signalText(profile.signalInsight || profile.tagInsight?.signalInsight)}</td>
+    <td data-label="互动">${escapeHtml(interactionText(profile.tagInsight))}</td>
+    <td data-label="社交">${socialText(profile.socialIds)}</td>
+    <td data-label="备注">${escapeHtml(profile.wechatRemark || "未设置")}</td>
   `;
   return row;
 }
@@ -381,9 +533,11 @@ function joinOrEmpty(items) {
 function socialPills(socialIds) {
   const entries = Object.entries(socialIds || {});
   if (!entries.length) return `<span class="empty">未提供</span>`;
-  return `<span class="pill-row">${entries
+  const visibleEntries = entries.slice(0, isCompactLayout() ? 1 : entries.length);
+  const hiddenCount = entries.length - visibleEntries.length;
+  return `<span class="pill-row">${visibleEntries
     .map(([platform, id]) => `<i class="pill">${escapeHtml(platform)}: ${escapeHtml(String(id))}</i>`)
-    .join("")}</span>`;
+    .join("")}${hiddenCount ? `<i class="pill">+${formatNumber(hiddenCount)}</i>` : ""}</span>`;
 }
 
 function socialText(socialIds) {
@@ -393,7 +547,7 @@ function socialText(socialIds) {
 }
 
 function tagPills(tags) {
-  const visibleTags = (tags || []).slice(0, 8);
+  const visibleTags = (tags || []).slice(0, isCompactLayout() ? 3 : 8);
   if (!visibleTags.length) return `<span class="empty">暂无匹配</span>`;
   return `<span class="pill-row">${visibleTags
     .map((tag) => relationButton("tag", tag, tag, "pill signal"))
@@ -401,7 +555,9 @@ function tagPills(tags) {
 }
 
 function themePills(themes) {
-  const visibleThemes = (themes || []).filter((theme) => theme.hits > 0).slice(0, 3);
+  const visibleThemes = (themes || [])
+    .filter((theme) => theme.hits > 0)
+    .slice(0, isCompactLayout() ? 2 : 3);
   if (!visibleThemes.length) return `<span class="empty">暂无主题</span>`;
   return `<span class="pill-row">${visibleThemes
     .map((theme) => relationButton("theme", theme.theme, `${theme.theme} ${formatNumber(theme.hits)}`, "pill"))
@@ -409,7 +565,7 @@ function themePills(themes) {
 }
 
 function reasonBlock(insight) {
-  const reasons = (insight?.recommendationReasons || []).slice(0, 3);
+  const reasons = (insight?.recommendationReasons || []).slice(0, isCompactLayout() ? 1 : 3);
   if (!reasons.length) return "";
   return `<ul class="reason-list">${reasons.map((reason) => `<li>${escapeHtml(reason)}</li>`).join("")}</ul>`;
 }
@@ -435,14 +591,15 @@ function interactionText(insight) {
 
 function tagText(tags) {
   if (!tags?.length) return "暂无匹配";
-  return tags
-    .slice(0, 6)
+  return `<span class="table-chip-row">${tags
+    .slice(0, isCompactLayout() ? 4 : 6)
     .map((tag) => relationButton("tag", tag, tag, "table-chip"))
-    .join("");
+    .join("")}</span>`;
 }
 
 function relatedItem(insight) {
   const profile = insight.crmProfileId ? state.profileById.get(insight.crmProfileId) : null;
+  const signal = profile?.signalInsight || insight.signalInsight;
   const item = document.createElement("article");
   item.className = "related-item";
   item.innerHTML = `
@@ -458,22 +615,25 @@ function relatedItem(insight) {
       <span>${formatNumber(insight.activeMonths)} 月</span>
       <span>最近 ${escapeHtml(formatDateTime(insight.lastNonCrmAt || insight.lastAt))}</span>
       <span>${escapeHtml(insight.confidence || "unknown")}</span>
+      ${signal ? `<span>证据 #${formatNumber(signal.indexRank)} · ${formatNumber(signal.evidenceScore)}</span>` : ""}
     </div>
     <div class="pill-row">${(insight.recommendedTags || [])
-      .slice(0, 7)
+      .slice(0, isCompactLayout() ? 4 : 7)
       .map((tag) => relationButton("tag", tag, tag, "pill signal"))
       .join("")}</div>
     <div class="pill-row">${(insight.themes || [])
       .filter((theme) => theme.hits > 0)
-      .slice(0, 4)
+      .slice(0, isCompactLayout() ? 2 : 4)
       .map((theme) => relationButton("theme", theme.theme, `${theme.theme} ${formatNumber(theme.hits)}`, "pill"))
       .join("")}</div>
+    ${signalLink(signal)}
     ${reasonBlock(insight)}
   `;
   return item;
 }
 
 function relatedProfileItem(profile) {
+  const signal = profile.signalInsight;
   const item = document.createElement("article");
   item.className = "related-item";
   item.innerHTML = `
@@ -488,7 +648,9 @@ function relatedProfileItem(profile) {
       <span>${escapeHtml(joinOrEmpty(profile.locations))}</span>
       <span>${escapeHtml(profile.occupation || "未提供职业")}</span>
       <span>${escapeHtml(profile.mbti || "未提供 MBTI")}</span>
+      ${signal ? `<span>证据 #${formatNumber(signal.indexRank)} · ${formatNumber(signal.evidenceScore)}</span>` : ""}
     </div>
+    ${signalLink(signal)}
     <p class="report-copy">${escapeHtml(profile.wechatRemark || profile.originalDisplayName || "未设置备注")}</p>
   `;
   return item;
@@ -502,6 +664,44 @@ function relationButton(type, value, label, className) {
 
 function insightName(insight) {
   return insight.displayName || insight.remark || insight.nickname || insight.alias || insight.username || "未命名";
+}
+
+function signalBlock(signal) {
+  if (!signal) return `<span class="empty">暂无报告</span>`;
+  if (isCompactLayout()) {
+    return `
+      <span class="metric-line">#${formatNumber(signal.indexRank)} · ${formatNumber(signal.evidenceScore)} · ${escapeHtml(
+        signal.evidenceLevel,
+      )}</span>
+      ${signalLink(signal)}
+    `;
+  }
+  return `
+    <span class="metric-line">#${formatNumber(signal.indexRank)} · 总证据 ${formatNumber(signal.evidenceScore)} · ${escapeHtml(
+      signal.evidenceLevel,
+    )}</span>
+    <span class="metric-line">${escapeHtml(signal.readFirst || "先看证据")} · ${formatNumber(
+      signal.total,
+    )} 条 · ${formatNumber(signal.activeDays)} 天</span>
+    ${signalLink(signal)}
+  `;
+}
+
+function signalText(signal) {
+  if (!signal) return "暂无报告";
+  return `<a class="text-link" href="${escapeHtml(signal.reportUrl)}">#${formatNumber(signal.indexRank)} / ${formatNumber(
+    signal.evidenceScore,
+  )} / ${escapeHtml(signal.evidenceLevel)}</a>`;
+}
+
+function signalLink(signal) {
+  if (!signal?.reportUrl) return "";
+  return `<a class="mini-link" href="${escapeHtml(signal.reportUrl)}">打开信号报告</a>`;
+}
+
+function formatSignalSource(value) {
+  if (!value) return "05-24 signal";
+  return String(value).replace(/^wechat_memory_/, "wechat · ").replace(/_message0.*$/, "");
 }
 
 function formatNumber(value) {

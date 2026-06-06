@@ -21,6 +21,7 @@ HTML_PATH = ROOT / "apps" / "qhrb-net-worth.html"
 APPS_PATH = ROOT / "apps.json"
 SW_PATH = ROOT / "sw.js"
 LOG_LIMIT = 288
+REQUIRED_CATALOG_APP_IDS = ("live-call", "zi-style-reply", "qhrb-net-worth")
 
 
 def get_json(path: str, params: dict[str, object] | None = None) -> dict:
@@ -59,6 +60,16 @@ def load_json(path: Path, fallback):
         return fallback
     with path.open() as f:
         return json.load(f)
+
+
+def assert_catalog_has_required_apps(apps_json: dict) -> None:
+    app_ids = {app.get("id") for app in apps_json.get("apps", [])}
+    missing = [app_id for app_id in REQUIRED_CATALOG_APP_IDS if app_id not in app_ids]
+    if missing:
+        raise RuntimeError(
+            "Refusing to update Zapp catalog because apps.json is missing required app(s): "
+            + ", ".join(missing)
+        )
 
 
 def snapshot(data: dict) -> dict:
@@ -119,6 +130,10 @@ def write_log(entry: dict) -> None:
 
 
 def main() -> None:
+    with APPS_PATH.open() as f:
+        apps_json = json.load(f)
+    assert_catalog_has_required_apps(apps_json)
+
     old_data = load_json(DATA_PATH, None)
     latest_date = ymd(get_json("/spsread2026/adm/getLastDayFront")["dataPoints"])
     fetched_at = datetime.now().replace(microsecond=0).isoformat()
@@ -172,16 +187,14 @@ def main() -> None:
         "summary": snapshot(output),
         "changes": changes,
     }
-    write_log(log_entry)
-
     if not changed and old_data and meaningful_data(old_data) == meaningful_data(output):
         print(json.dumps(log_entry, ensure_ascii=False, indent=2))
         return
 
+    write_log(log_entry)
+
     DATA_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
 
-    with APPS_PATH.open() as f:
-        apps_json = json.load(f)
     apps_json["store"]["build"] = int(apps_json["store"].get("build", 0)) + 1
     apps_json["store"]["updated"] = latest_date
     for app in apps_json["apps"]:

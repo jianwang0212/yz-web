@@ -10,7 +10,7 @@
     <link rel="manifest" href="../manifest.webmanifest" />
     <link rel="icon" href="../icons/apps/moments-memory.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icons/icon-192.png" />
-    <link rel="stylesheet" href="friend-crm.css?v=20260524explore1" />
+    <link rel="stylesheet" href="friend-crm.css?v=20260605mobile1" />
     <title>人脉 CRM</title>
   </head>
   <body>
@@ -54,6 +54,11 @@
           <small>已同步</small>
         </article>
         <article>
+          <span>信号报告</span>
+          <strong id="signalCount">--</strong>
+          <small>证据密度</small>
+        </article>
+        <article>
           <span>MBTI</span>
           <strong id="mbtiCount">--</strong>
           <small>可检索字段</small>
@@ -74,7 +79,24 @@
           <span id="reportSource">05-24 14:44</span>
         </div>
         <p class="report-copy" id="reportMeta">正在读取 5月24日标签分析</p>
-        <a class="report-link" href="wechat_contact_tag_taxonomy_20260524_144423.html?v=20260524">打开报告</a>
+        <a class="report-link" href="wechat_contact_tag_taxonomy_latest.html">打开报告</a>
+      </section>
+
+      <section class="signal-panel hidden" id="signalPanel" aria-label="Signal reports">
+        <div class="section-head">
+          <div>
+            <p>Signal Reports</p>
+            <h2>证据密度报告</h2>
+          </div>
+          <span id="signalSource">05-24</span>
+        </div>
+        <p class="report-copy" id="signalMeta">正在读取全体私聊联系人信号报告</p>
+        <div class="method-grid">
+          <article><strong>实力</strong><span>依赖、闭环、判断、解释、复杂问题</span></article>
+          <article><strong>价值观</strong><span>责任、边界、互惠、钱/公平、冲突场景</span></article>
+          <article><strong>变化</strong><span>2021-2023 对比 2025-2026</span></article>
+        </div>
+        <a class="report-link" href="contact-signal-reports/index.html">打开全体信号索引</a>
       </section>
 
       <section class="explore-panel hidden" id="explorePanel" aria-label="CRM relationship exploration">
@@ -130,6 +152,9 @@
       </section>
 
       <section class="profile-grid hidden" id="profileGrid" aria-label="Friend profiles"></section>
+      <div class="load-more-row hidden" id="cardMorePanel">
+        <button id="loadMoreCards" type="button">显示更多联系人</button>
+      </div>
 
       <section class="table-panel hidden" id="tablePanel" aria-label="Friend profile table">
         <div class="section-head">
@@ -148,6 +173,7 @@
                 <th>职业</th>
                 <th>MBTI</th>
                 <th>标签建议</th>
+                <th>信号</th>
                 <th>最近互动</th>
                 <th>社交账号</th>
                 <th>微信备注</th>
@@ -156,9 +182,12 @@
             <tbody id="profileRows"></tbody>
           </table>
         </div>
+        <div class="load-more-row hidden" id="rowMorePanel">
+          <button id="loadMoreRows" type="button">显示更多行</button>
+        </div>
       </section>
     </main>
 
-    <script type="module" src="friend-crm.js?v=20260524explore1"></script>
+    <script type="module" src="friend-crm.js?v=20260605mobile1"></script>
   </body>
 </html>
