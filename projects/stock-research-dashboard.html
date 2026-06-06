@@ -544,6 +544,76 @@
       gap: 12px;
     }
 
+    .report-output-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .html-output {
+      width: 100%;
+      min-height: 260px;
+      padding: 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: #101820;
+      color: #d7f7ef;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.55;
+      resize: vertical;
+      white-space: pre;
+      overflow: auto;
+    }
+
+    .report-preview {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .report-cover {
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+    }
+
+    .report-cover h4 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .report-cover p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .report-table {
+      width: 100%;
+      min-width: 0;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .report-table th,
+    .report-table td {
+      padding: 9px;
+      border: 1px solid var(--line);
+    }
+
+    .report-table th {
+      position: static;
+      background: #f8fafc;
+    }
+
     .section-block {
       padding: 12px;
       border: 1px solid var(--line);
@@ -829,53 +899,40 @@
         <div class="module-header">
           <div>
             <h3 class="module-title">个股研报生成器</h3>
-            <p class="module-desc">输入公司基础信息后生成结构化研报，支持从筛选表一键带入 mock 股票资料。</p>
+            <p class="module-desc">输入股票名称后，直接生成一份参考“全景研究报告”结构的完整 HTML 研报。</p>
           </div>
           <div class="toolbar">
-            <button class="btn btn-ghost" id="fillReportSampleBtn" type="button">填入样例</button>
-            <button class="btn btn-primary" id="generateReportBtn" type="button">生成研报</button>
+            <button class="btn btn-ghost" id="fillReportSampleBtn" type="button">示例：亿纬锂能</button>
+            <button class="btn btn-primary" id="generateReportBtn" type="button">生成 HTML</button>
+            <button class="btn" id="copyReportHtmlBtn" type="button" disabled>复制 HTML</button>
+            <button class="btn" id="downloadReportHtmlBtn" type="button" disabled>下载 HTML</button>
           </div>
         </div>
         <div class="grid-2">
           <div class="panel">
             <h4 class="panel-title">研报输入</h4>
             <div class="form-grid">
-              <div class="field">
-                <label for="reportCode">股票代码</label>
-                <input id="reportCode" placeholder="例如 600519">
-              </div>
-              <div class="field">
+              <div class="field span-2">
                 <label for="reportName">股票名称</label>
-                <input id="reportName" placeholder="例如 贵州茅台">
-              </div>
-              <div class="field span-2">
-                <label for="reportIndustry">所属行业</label>
-                <input id="reportIndustry" placeholder="例如 食品饮料">
-              </div>
-              <div class="field span-2">
-                <label for="reportProfile">公司简介</label>
-                <textarea id="reportProfile" placeholder="主营业务、客户、区域、核心产品等"></textarea>
-              </div>
-              <div class="field span-2">
-                <label for="reportFinancials">财务数据摘要</label>
-                <textarea id="reportFinancials" placeholder="收入、利润、毛利率、现金流、资产负债等"></textarea>
-              </div>
-              <div class="field span-2">
-                <label for="reportNews">近期新闻</label>
-                <textarea id="reportNews" placeholder="近期公告、行业事件、产品进展、政策变化等"></textarea>
-              </div>
-              <div class="field span-2">
-                <label for="reportFocus">用户关注点</label>
-                <textarea id="reportFocus" placeholder="估值、增长持续性、技术壁垒、海外扩张、政策风险等"></textarea>
+                <input id="reportName" placeholder="例如 亿纬锂能、宁德时代、贵州茅台">
               </div>
             </div>
-            <div class="status warning" id="reportStatus">请至少填写股票代码或股票名称后生成研报。</div>
+            <input id="reportCode" type="hidden">
+            <input id="reportIndustry" type="hidden">
+            <textarea id="reportProfile" hidden></textarea>
+            <textarea id="reportFinancials" hidden></textarea>
+            <textarea id="reportNews" hidden></textarea>
+            <textarea id="reportFocus" hidden></textarea>
+            <div class="status warning" id="reportStatus">请输入股票名称。当前 HTML 研报结构参考“亿纬锂能全景研究报告@20260328.pdf”。</div>
           </div>
           <div class="panel">
-            <h4 class="panel-title">研报输出</h4>
-            <div id="reportOutput" class="empty">
-              <strong>暂无研报</strong>
-              <span>填写左侧表单，或在股票筛选表点击“研报”。</span>
+            <h4 class="panel-title">HTML 输出</h4>
+            <div class="report-output-grid">
+              <textarea id="reportHtmlCode" class="html-output" readonly placeholder="生成后这里会出现完整 HTML。"></textarea>
+              <div id="reportOutput" class="empty">
+                <strong>暂无研报</strong>
+                <span>输入股票名称后点击“生成 HTML”，下方会同步显示预览。</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1164,6 +1221,22 @@
           technology: "麒麟电池、钠离子电池、凝聚态电池、CTP 结构和电池回收构成技术观察重点。"
         },
         {
+          code: "300014",
+          name: "亿纬锂能",
+          industry: "电力设备",
+          marketCap: 1502,
+          pe: 40.6,
+          roe: 10.5,
+          revenueGrowth: 26.44,
+          profitGrowth: 1.44,
+          change30d: 6.4,
+          latestPrice: 72.40,
+          profile: "公司是平台型锂电企业，覆盖消费电池、动力电池和储能电池三大场景，具备方形、圆柱、软包等多形态路线。",
+          financialSummary: "2025 年营收 614.70 亿元，同比增长 26.44%；归母净利润 41.34 亿元，同比增长 1.44%；剔除激励费用后归母净利润 50.02 亿元，同比增长 24.76%；经营现金流净额 74.92 亿元，同比增长 68.98%。",
+          business: "动力电池、储能电池和消费电池形成三足鼎立结构，大圆柱电池、储能大电芯和全球化 CLS 模式是核心观察点。",
+          technology: "46 系大圆柱电池、628Ah 储能大电芯、固态电池“龙泉”系列、轻资产全球化 CLS 模式是关键技术和模式变量。"
+        },
+        {
           code: "688981",
           name: "中芯国际",
           industry: "半导体",
@@ -1360,6 +1433,8 @@
         briefTime: "08:30",
         todayBriefDate: "",
         morningBrief: null,
+        currentReportHtml: "",
+        currentReportFileName: "stock-research-report.html",
         loading: {
           stocks: false,
           tracking: false,
@@ -1434,8 +1509,11 @@
         els.reportFocus = document.getElementById("reportFocus");
         els.reportStatus = document.getElementById("reportStatus");
         els.reportOutput = document.getElementById("reportOutput");
+        els.reportHtmlCode = document.getElementById("reportHtmlCode");
         els.generateReportBtn = document.getElementById("generateReportBtn");
         els.fillReportSampleBtn = document.getElementById("fillReportSampleBtn");
+        els.copyReportHtmlBtn = document.getElementById("copyReportHtmlBtn");
+        els.downloadReportHtmlBtn = document.getElementById("downloadReportHtmlBtn");
         els.researchStockSelect = document.getElementById("researchStockSelect");
         els.researchCode = document.getElementById("researchCode");
         els.researchName = document.getElementById("researchName");
@@ -1491,8 +1569,10 @@
         els.resetFiltersBtn.addEventListener("click", resetFilters);
         els.generateReportBtn.addEventListener("click", generateReportFromForm);
         els.fillReportSampleBtn.addEventListener("click", function () {
-          fillReportForm(state.stocks[0] || MOCK_STOCKS[0], true);
+          fillReportForm(findStockByName("亿纬锂能") || MOCK_STOCKS[2], true);
         });
+        els.copyReportHtmlBtn.addEventListener("click", copyReportHtml);
+        els.downloadReportHtmlBtn.addEventListener("click", downloadReportHtml);
         els.generateResearchBtn.addEventListener("click", generateResearchFromForm);
         els.fillResearchSampleBtn.addEventListener("click", function () {
           fillResearchForm(state.stocks[1] || MOCK_STOCKS[1], true);
@@ -1764,9 +1844,9 @@
         els.reportProfile.value = stock.profile;
         els.reportFinancials.value = stock.financialSummary;
         els.reportNews.value = buildStockNewsText(stock.code);
-        els.reportFocus.value = "估值合理性、增长持续性、行业竞争格局、现金流质量、政策和技术变化对公司中长期竞争力的影响。";
+        els.reportFocus.value = "商业模式、行业阶段、财务质量、管理层、估值和风险。";
         els.reportStatus.className = "status";
-        els.reportStatus.textContent = "已带入 " + stock.name + " 的 mock 资料。";
+        els.reportStatus.textContent = "已带入 " + stock.name + "，可生成完整 HTML 研报。";
         if (autoGenerate) {
           generateReportFromForm();
         }
@@ -1775,88 +1855,539 @@
       function generateReportFromForm() {
         var input = {
           code: trimValue(els.reportCode),
-          name: trimValue(els.reportName),
-          industry: trimValue(els.reportIndustry),
-          profile: trimValue(els.reportProfile),
-          financials: trimValue(els.reportFinancials),
-          news: trimValue(els.reportNews),
-          focus: trimValue(els.reportFocus)
+          name: trimValue(els.reportName)
         };
-        if (!input.code && !input.name) {
-          setStatus(els.reportStatus, "error", "请至少填写股票代码或股票名称。");
-          els.reportOutput.innerHTML = emptyHtml("无法生成研报", "缺少研究对象。");
+        if (!input.name) {
+          state.currentReportHtml = "";
+          state.currentReportFileName = "stock-research-report.html";
+          els.reportHtmlCode.value = "";
+          els.copyReportHtmlBtn.disabled = true;
+          els.downloadReportHtmlBtn.disabled = true;
+          setStatus(els.reportStatus, "error", "请输入股票名称。");
+          els.reportOutput.innerHTML = emptyHtml("无法生成 HTML", "缺少股票名称。");
           return;
         }
-        var matchedStock = findStockByCode(input.code) || findStockByName(input.name);
+        var matchedStock = findStockByName(input.name) || findStockByCode(input.code);
         var stock = matchedStock || {
           code: input.code || "未填写",
           name: input.name || "未命名公司",
-          industry: input.industry || "未填写行业",
-          profile: input.profile || "暂无公司简介，建议补充主营产品、客户结构、区域分布和管理层信息。",
-          financialSummary: input.financials || "暂无财务摘要，建议补充收入、利润、毛利率、费用率、现金流和负债水平。",
-          business: "基于用户输入拆解核心业务，后续可接入真实分部收入和产品结构数据。",
-          technology: "暂未接入真实技术路线数据，后续可补充专利、研发投入和产品迭代信息。",
-          revenueGrowth: 0,
-          profitGrowth: 0,
+          industry: "待识别行业",
+          profile: "暂未匹配到内置 mock 股票。当前先生成可直接复制的 HTML 研报框架，后续可在 DataAdapter 中接入真实公司资料、年报、行情和公告数据。",
+          financialSummary: "暂无真实财务摘要。建议接入年报、三季报、行情和估值 API 后自动补全营收、利润、现金流、ROE、毛利率和资产负债率。",
+          business: "待通过真实数据拆解主营业务、收入结构、客户结构和产品路线。",
+          technology: "待补充关键技术、商业模式、行业趋势和竞争格局。",
+          marketCap: 0,
           pe: 0,
           roe: 0,
+          revenueGrowth: 0,
+          profitGrowth: 0,
           change30d: 0
         };
 
-        var report = buildReport(stock, input);
-        els.reportOutput.className = "report";
-        els.reportOutput.innerHTML = report.map(renderSectionBlock).join("");
-        setStatus(els.reportStatus, "success", "已生成 " + (input.name || stock.name) + " 的结构化 mock 研报。");
+        var reportData = buildPanoramicReportData(stock);
+        state.currentReportHtml = buildStandaloneReportHtml(reportData);
+        state.currentReportFileName = slugifyFileName(stock.name || input.name) + "-panoramic-research-report.html";
+        els.reportHtmlCode.value = state.currentReportHtml;
+        els.copyReportHtmlBtn.disabled = false;
+        els.downloadReportHtmlBtn.disabled = false;
+        els.reportOutput.className = "report-preview";
+        els.reportOutput.innerHTML = renderReportPreview(reportData);
+        setStatus(els.reportStatus, "success", "已生成 " + stock.name + " 的完整 HTML 研报。可直接复制或下载。");
       }
 
-      function buildReport(stock, input) {
-        var news = input.news || buildStockNewsText(stock.code) || "近期缺少明确新闻，建议跟踪公司公告、行业政策和主要客户订单。";
-        var focus = input.focus || "估值、增长、风险和可验证数据。";
+      function buildPanoramicReportData(stock) {
+        if (stock.code === "300014" || stock.name === "亿纬锂能") {
+          return buildEveEnergyReportData(stock);
+        }
+        return buildGenericPanoramicReportData(stock);
+      }
+
+      function buildEveEnergyReportData(stock) {
+        return {
+          company: "亿纬锂能",
+          code: "300014",
+          industry: "电力设备 / 锂电池",
+          title: "亿纬锂能（300014）全景研究报告",
+          subtitle: "基于 2025 年年度报告的六维框架分析",
+          analysisDate: "2026-03-28",
+          dataCutoff: "2025 年 12 月 31 日（年报） / 2026 年 3 月 28 日（行情）",
+          sourceNote: "参考模板：亿纬锂能全景研究报告@20260328.pdf；当前页面为前端 HTML 生成原型。",
+          snapshot: [
+            ["最新股价", "72.40 元", "2026 年 3 月 28 日"],
+            ["总市值", "约 1,502 亿元", "行情口径"],
+            ["PE（TTM）", "约 40.6 倍", "表观利润口径"],
+            ["2025 年营收", "614.70 亿元", "+26.44%"],
+            ["归母净利润", "41.34 亿元", "+1.44%（表观）"],
+            ["剔除激励后归母", "50.02 亿元", "+24.76%（实质）"],
+            ["扣非净利润", "30.96 亿元", "-2.09%"],
+            ["ROE", "10.50%", "-0.80pp"],
+            ["综合毛利率", "16.17%", "-1.24pp"],
+            ["经营现金流净额", "74.92 亿元", "+68.98%"]
+          ],
+          businessSegments: [
+            ["动力电池", "258.58 亿元", "42.07%", "+34.91%"],
+            ["储能电池", "244.41 亿元", "39.76%", "+28.45%"],
+            ["消费电池", "110.75 亿元", "18.02%", "+7.29%"],
+            ["合计", "614.70 亿元", "100%", "+26.44%"]
+          ],
+          marginRows: [
+            ["消费电池", "25.65%", "-1.93pp", "高毛利但增速放缓"],
+            ["动力电池", "15.50%", "+1.29pp", "改善中，国际客户起量"],
+            ["储能电池", "12.28%", "-2.44pp", "承压，Q4 边际改善"],
+            ["综合", "16.17%", "-1.24pp", "结构性拖累"]
+          ],
+          riskRows: [
+            ["储能价格战加剧，毛利率无法如期修复", "高", "中", "行业产能过剩，2025 年储能毛利率仅 12.28%"],
+            ["资本开支过大，财务杠杆过高", "高", "中高", "资产负债率约 64%，年 capex 超 100 亿"],
+            ["大圆柱电池放量不及预期", "中高", "中", "宝马需求受欧洲电动车市场影响"],
+            ["港股 IPO 进度不确定", "中", "中", "已递交申请但审批进程未定"],
+            ["地缘政治风险", "中", "中低", "匈牙利工厂、中美贸易摩擦"],
+            ["应收账款回收风险", "中", "中低", "下游集中度风险仍需持续跟踪"],
+            ["固态电池等新技术路线颠覆", "低", "低", "公司自身也在布局，短期不构成威胁"]
+          ],
+          scenarios: [
+            ["乐观", "35%", "Q1/Q2 超预期，储能涨价传导顺利，宝马放量，港股 IPO 推进。归母 75-83 亿。", "85-95 元"],
+            ["中性", "45%", "业绩稳步释放，储能毛利率改善有限，大圆柱产能爬坡符合预期。归母 65-75 亿。", "65-80 元"],
+            ["悲观", "20%", "储能价格战恶化，海外需求放缓，港股受阻，杠杆风险暴露。归母低于 60 亿。", "55-62 元"]
+          ],
+          sections: [
+            {
+              title: "一、商业模式与竞争优势",
+              blocks: [
+                {
+                  heading: "1.1 收入结构",
+                  paragraphs: [
+                    "2025 年收入形成“三足鼎立”格局：动力电池、储能电池、消费电池分别贡献 42.07%、39.76%、18.02%。与宁德时代偏重动力、比亚迪偏重自供不同，亿纬锂能的“全场景、全技术路线”定位使其在不同下游周期中具备缓冲能力。",
+                    "从区域看，境内收入 469.87 亿元，占 76.44%；境外收入 144.83 亿元，占 23.56%，海外占比仍有提升空间。"
+                  ]
+                },
+                {
+                  heading: "1.2 护城河判断",
+                  paragraphs: [
+                    "公司的护城河属于技术壁垒、规模经济与客户黏性的复合型。核心证据包括：同时覆盖方形、圆柱、软包三种形态，三元、磷酸铁锂两大体系，以及消费、动力、储能三大应用场景；专利总量 14,725 项，研发人员 6,597 人。",
+                    "大圆柱电池具备先发优势：国内首家量产交付 46 系大圆柱电池，已装车超 9 万台，并成为宝马下一代电动车首发供应商。储能端，628Ah 大电芯全球首家量产，全球出货量排名前二。"
+                  ]
+                },
+                {
+                  heading: "1.3 护城河趋势",
+                  paragraphs: [
+                    "护城河判断为正在加宽：大圆柱电池从量产验证期进入放量期，储能大电芯具备代际领先，CLS 轻资产全球化模式打开新增长维度，固态电池“龙泉”系列持续迭代。",
+                    "“100 亿元复制”测试下，短期很难复制亿纬锂能。核心壁垒不是单纯产能，而是圆柱电池工艺 know-how、顶级客户认证周期，以及全技术路线并行研发体系。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "二、行业分析",
+              blocks: [
+                {
+                  heading: "2.1 行业生命周期",
+                  paragraphs: [
+                    "锂电池行业整体处于成长期中后段向成熟期过渡阶段。动力电池在中国市场从政策驱动转向需求驱动；储能电池仍处于高速成长期；消费电池进入稳态增长，但 AI 终端、机器人、低空经济带来新增量。"
+                  ]
+                },
+                {
+                  heading: "2.2 关键驱动力",
+                  paragraphs: [
+                    "储能由双碳政策、容量补偿机制、电力现货市场化和 AI 数据中心备电需求共同驱动。动力电池仍有渗透率提升空间，商用车、重卡和工程机械是下一阶段观察点。消费电池则看 AI 终端、人形机器人、低空经济和医疗电池国产替代。"
+                  ]
+                },
+                {
+                  heading: "2.3 竞争格局",
+                  paragraphs: [
+                    "宁德时代与比亚迪双寡头格局稳固，亿纬锂能定位“第二梯队领头羊”。行业正在从产能规模比拼，转向场景化解决方案与全球化服务能力竞争，这对亿纬锂能的平台型布局相对有利。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "三、财务质量分析",
+              blocks: [
+                {
+                  heading: "3.1 盈利能力深度拆解",
+                  paragraphs: [
+                    "2025 年表观数据呈现“增收不增利”：营收增长 26.44%，归母净利润仅增长 1.44%。但该数字被股权激励费用和政府补助下降严重扭曲。",
+                    "剔除股权激励费用后，归母净利润 50.02 亿元，同比增长 24.76%；扣非净利润 39.64 亿元，同比增长 28.04%。这更接近主业经营实质。"
+                  ]
+                },
+                {
+                  heading: "3.2 现金流与资产负债表",
+                  paragraphs: [
+                    "经营现金流净额 74.92 亿元，同比增长 68.98%，经营现金流/净利润约 181%，现金创造能力优于报表利润。",
+                    "风险在于资本开支高企和杠杆偏高：投资现金流净流出 126.16 亿元，购建固定资产支出 104.46 亿元，资产负债率约 64%，自由现金流仍为负。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "四、管理层评估",
+              blocks: [
+                {
+                  heading: "4.1 战略判断与执行",
+                  paragraphs: [
+                    "管理层在关键路线选择上具备前瞻性：2018-2019 年布局大圆柱电池，2022 年率先发布 628Ah 储能大电芯，CLS 轻资产全球化模式是对传统重资产出海的补充。",
+                    "执行层面，储能和动力出货目标完成度较高，管理层“说到做到”的记录总体良好。但 2026 年营收 2000 亿股权激励目标已被证明过度乐观，需要对未来指引保持折扣。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "五、估值分析",
+              blocks: [
+                {
+                  heading: "5.1 当前估值水平",
+                  paragraphs: [
+                    "当前 72.40 元对应 PE（TTM）约 40.6 倍，基于 2025 年表观利润看不便宜。但 2025 年利润受激励费用和政府补助下降扭曲，不能完全代表真实盈利能力。",
+                    "若按 2026 年归母净利润中性假设 75 亿元测算，对应当前 PE 约 20 倍；若按保守 65 亿元测算，对应约 23.1 倍。当前价格大致处于中性偏合理区间。"
+                  ]
+                }
+              ]
+            }
+          ],
+          keyFindings: [
+            "利润拐点已确认：Q4 扣非净利润 11.58 亿，同比增长 75%，主业利润增速有望在 2026 年修复。",
+            "动储双轮驱动进入放量期：储能满产满销，动力电池出货翻倍式增长，宝马大圆柱和海外储能是关键增量。",
+            "全球化布局开始兑现：匈牙利工厂、马来西亚工厂与 CLS 模式共同支撑海外扩张。",
+            "主要约束在于储能毛利率、资本开支和杠杆水平，财务安全边际需要持续验证。"
+          ],
+          followUps: [
+            "2026 年 Q1 业绩：验证 Q4 盈利改善趋势是否持续。",
+            "储能电池价格和毛利率变化：决定利润弹性上限。",
+            "宝马大圆柱电池交付节奏：影响动力板块增量兑现。",
+            "港股 IPO 进展：影响融资能力和资本市场信心。",
+            "匈牙利、马来西亚工厂投产进度：验证全球化战略兑现节点。"
+          ],
+          infoGaps: [
+            "股权激励费用的 2026 年具体摊销计划。",
+            "分客户收入数据、前五大客户占比和宝马订单具体金额。",
+            "CLS 业务收入和利润贡献。",
+            "审计报告中收入确认、关联交易、减值等关键审计事项。",
+            "可转债转股进度及其对股本稀释的影响。"
+          ]
+        };
+      }
+
+      function buildGenericPanoramicReportData(stock) {
         var conclusion = buildInitialConclusion(stock);
+        var today = dateKey(new Date());
+        var knownDataNote = stock.marketCap ? "内置 mock 股票池" : "待接入真实 API";
+        return {
+          company: stock.name,
+          code: stock.code || "待补充",
+          industry: stock.industry || "待识别行业",
+          title: stock.name + "（" + (stock.code || "待补充") + "）全景研究报告",
+          subtitle: "参考亿纬锂能样例的六维框架 HTML 研报",
+          analysisDate: today,
+          dataCutoff: knownDataNote + " / 页面生成时间 " + today,
+          sourceNote: "当前为前端 mock 生成结果，后续应由年报、公告、行情、新闻和研究数据库补全。",
+          snapshot: [
+            ["股票代码", stock.code || "待补充", "基础信息"],
+            ["所属行业", stock.industry || "待识别", "行业分类"],
+            ["总市值", stock.marketCap ? "约 " + formatNumber(stock.marketCap) + " 亿元" : "待接入行情", knownDataNote],
+            ["PE", stock.pe ? formatNumber(stock.pe) + " 倍" : "待接入估值", knownDataNote],
+            ["ROE", stock.roe ? formatPercent(stock.roe) : "待接入财务", knownDataNote],
+            ["营收增速", formatSignedPercent(stock.revenueGrowth || 0), knownDataNote],
+            ["净利润增速", formatSignedPercent(stock.profitGrowth || 0), knownDataNote],
+            ["近 30 日涨跌幅", formatSignedPercent(stock.change30d || 0), knownDataNote]
+          ],
+          businessSegments: [
+            ["核心业务一", "待补充分部收入", "待补充", "待补充"],
+            ["核心业务二", "待补充分部收入", "待补充", "待补充"],
+            ["新增长业务", "待补充分部收入", "待补充", "待补充"]
+          ],
+          marginRows: [
+            ["主业毛利率", "待补充", "待补充", "判断盈利质量和价格竞争压力"],
+            ["费用率", "待补充", "待补充", "判断规模效应和经营杠杆"],
+            ["现金流", "待补充", "待补充", "判断利润含金量"]
+          ],
+          riskRows: [
+            ["行业需求低于预期", "高", "中", "收入增速、订单和库存数据需要持续验证"],
+            ["竞争加剧或价格战", "高", "中", "毛利率和市场份额可能承压"],
+            ["财务质量不达预期", "中高", "中", "现金流、应收账款、负债率和资本开支需跟踪"],
+            ["估值提前反映乐观预期", "中", "中", "业绩验证不及预期时可能出现估值回撤"]
+          ],
+          scenarios: [
+            ["乐观", "30%", "行业景气改善，收入和利润增速超预期，估值中枢上移。", "待估算"],
+            ["中性", "50%", "业绩稳步释放，估值保持当前中枢。", "待估算"],
+            ["悲观", "20%", "需求走弱或竞争加剧，利润率和估值同步承压。", "待估算"]
+          ],
+          sections: [
+            {
+              title: "一、商业模式与竞争优势",
+              blocks: [
+                {
+                  heading: "1.1 收入结构",
+                  paragraphs: [
+                    stock.business || "需要先按产品、区域、客户类型和渠道拆解收入结构。",
+                    "参考样例报告的做法，应判断公司是否具备多业务缓冲、平台化能力或单一业务高弹性，并识别最大利润池来自哪里。"
+                  ]
+                },
+                {
+                  heading: "1.2 护城河判断",
+                  paragraphs: [
+                    "护城河建议从技术壁垒、规模经济、客户黏性、品牌渠道、成本曲线和资源禀赋六个角度判断。",
+                    "当前初步结论：" + conclusion
+                  ]
+                }
+              ]
+            },
+            {
+              title: "二、行业分析",
+              blocks: [
+                {
+                  heading: "2.1 行业生命周期",
+                  paragraphs: [
+                    stock.industry + "行业需要判断当前处于导入期、成长期、成熟期还是周期下行阶段。核心证据包括需求增速、渗透率、价格变化、产能利用率和政策强度。"
+                  ]
+                },
+                {
+                  heading: "2.2 关键驱动力",
+                  paragraphs: [
+                    "建议拆分为政策驱动、技术降本、消费升级、国产替代、海外扩张、库存周期和资本开支周期，并为每个驱动因素设置可验证指标。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "三、财务质量分析",
+              blocks: [
+                {
+                  heading: "3.1 盈利能力",
+                  paragraphs: [
+                    stock.financialSummary || "需要补充收入、归母净利润、扣非净利润、毛利率、费用率和 ROE。",
+                    "仅看表观利润容易被一次性因素扭曲，应进一步拆分非经常性损益、股权激励、减值、政府补助和会计政策变化。"
+                  ]
+                },
+                {
+                  heading: "3.2 现金流与资产负债表",
+                  paragraphs: [
+                    "重点比较经营现金流与净利润、资本开支与自由现金流、应收账款与收入增速、负债率与融资能力。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "四、管理层评估",
+              blocks: [
+                {
+                  heading: "4.1 战略与执行",
+                  paragraphs: [
+                    "管理层评估应关注战略路线选择、目标兑现率、资本配置、信息披露质量和股东回报。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "五、估值分析",
+              blocks: [
+                {
+                  heading: "5.1 当前估值水平",
+                  paragraphs: [
+                    "当前 mock 指标显示 PE 为 " + formatNumber(stock.pe || 0) + " 倍，ROE 为 " + formatPercent(stock.roe || 0) + "。真实估值应结合未来 1-2 年盈利预测、行业阶段和可比公司估值重算。"
+                  ]
+                }
+              ]
+            }
+          ],
+          keyFindings: [
+            conclusion,
+            "该 HTML 使用前端 mock 数据生成，适合作为报告骨架，不应直接作为投资结论。",
+            "后续接入真实 API 后，应优先补充分部收入、现金流、估值情景和风险证据。"
+          ],
+          followUps: [
+            "下一期财报的收入、利润、毛利率、费用率和经营现金流。",
+            "行业价格、订单、库存、产能利用率和政策变化。",
+            "公司公告中的订单、回购、分红、减值、诉讼和资本开支。",
+            "竞争对手价格动作、产品迭代和客户变化。"
+          ],
+          infoGaps: [
+            "分部收入、毛利率和客户结构。",
+            "未来盈利预测和估值参数。",
+            "管理层指引与历史兑现率。",
+            "关键风险的量化证据。"
+          ]
+        };
+      }
+
+      function renderReportPreview(reportData) {
         return [
-          {
-            title: "公司概况",
-            body: (input.name || stock.name) + "（" + (input.code || stock.code) + "）属于" + (input.industry || stock.industry) + "行业。" + (input.profile || stock.profile)
-          },
-          {
-            title: "核心业务",
-            body: stock.business || "核心业务需要结合主营收入、产品结构和客户结构继续拆分。"
-          },
-          {
-            title: "行业位置",
-            body: "从 mock 股票池看，公司所处行业为" + (input.industry || stock.industry) + "。研究时应比较市场份额、品牌或技术壁垒、渠道能力、成本曲线和行业周期位置。"
-          },
-          {
-            title: "财务表现",
-            body: (input.financials || stock.financialSummary) + " mock 指标显示：PE " + formatNumber(stock.pe || 0) + " 倍、ROE " + formatPercent(stock.roe || 0) + "、营收增速 " + formatSignedPercent(stock.revenueGrowth || 0) + "、净利润增速 " + formatSignedPercent(stock.profitGrowth || 0) + "。"
-          },
-          {
-            title: "近期催化因素",
-            body: news + " 重点判断这些事件是否会改变收入确认、利润率、估值中枢或市场预期。"
-          },
-          {
-            title: "主要风险",
-            list: [
-              "行业需求低于预期，导致收入增速或产能利用率下降。",
-              "竞争加剧或价格战压缩毛利率。",
-              "政策、监管、海外贸易限制或供应链波动影响经营节奏。",
-              "估值已提前反映乐观预期，业绩验证不及预期时可能出现回撤。"
-            ]
-          },
-          {
-            title: "初步结论",
-            body: conclusion + " 该结论仅来自 mock 数据和用户输入，不能作为买卖建议。"
-          },
-          {
-            title: "后续跟踪重点",
-            list: [
-              "关注点：" + focus,
-              "下一期财报中的收入增速、毛利率、费用率、现金流和订单变化。",
-              "核心公告、行业政策、竞争对手价格动作和重要客户变化。",
-              "估值水平与业绩增速是否匹配，以及风险事件是否改变中长期假设。"
-            ]
-          }
-        ];
+          '<div class="report-cover">',
+          '<span class="tag mock">HTML 研报预览</span>',
+          '<h4>' + escapeHtml(reportData.title) + '</h4>',
+          '<p>' + escapeHtml(reportData.subtitle) + '</p>',
+          '<p>分析日期：' + escapeHtml(reportData.analysisDate) + ' ｜ 数据截止：' + escapeHtml(reportData.dataCutoff) + '</p>',
+          '</div>',
+          renderReportTable("基本信息快照", ["指标", "数值", "备注"], reportData.snapshot),
+          reportData.sections.map(renderReportSection).join(""),
+          renderReportTable("毛利率结构", ["项目", "数值", "变化", "判断"], reportData.marginRows),
+          renderReportTable("风险清单", ["风险项", "影响", "概率", "依据"], reportData.riskRows),
+          renderReportList("关键发现摘要", reportData.keyFindings),
+          renderReportTable("情景推演", ["情景", "概率", "核心假设", "目标区间"], reportData.scenarios),
+          renderReportList("需持续跟踪的关键变量", reportData.followUps),
+          renderReportList("信息缺口清单", reportData.infoGaps)
+        ].join("");
+      }
+
+      function buildStandaloneReportHtml(reportData) {
+        var body = [
+          '<header class="cover">',
+          '<p class="eyebrow">Panoramic Equity Research</p>',
+          '<h1>' + escapeHtml(reportData.title) + '</h1>',
+          '<p class="subtitle">' + escapeHtml(reportData.subtitle) + '</p>',
+          '<div class="meta">',
+          '<span>分析日期：' + escapeHtml(reportData.analysisDate) + '</span>',
+          '<span>数据截止：' + escapeHtml(reportData.dataCutoff) + '</span>',
+          '<span>来源说明：' + escapeHtml(reportData.sourceNote) + '</span>',
+          '</div>',
+          '<p class="disclaimer">免责声明：本报告仅用于信息整理和研究辅助，不构成任何投资建议。数据可能存在延迟、错误或不完整，投资决策由用户自行判断并承担风险。</p>',
+          '</header>',
+          renderStandaloneTable("基本信息快照", ["指标", "数值", "备注"], reportData.snapshot),
+          renderStandaloneTable("收入结构", ["业务板块", "营收", "占比", "同比增速"], reportData.businessSegments),
+          reportData.sections.map(renderStandaloneSection).join(""),
+          renderStandaloneTable("毛利率结构", ["项目", "数值", "变化", "判断"], reportData.marginRows),
+          renderStandaloneTable("风险清单", ["风险项", "影响", "概率", "依据"], reportData.riskRows),
+          renderStandaloneList("关键发现摘要", reportData.keyFindings),
+          renderStandaloneTable("情景推演", ["情景", "概率", "核心假设", "目标区间"], reportData.scenarios),
+          renderStandaloneList("需持续跟踪的关键变量", reportData.followUps),
+          renderStandaloneList("信息缺口清单", reportData.infoGaps),
+          '<footer>— 报告完 —</footer>'
+        ].join("\\n");
+
+        return [
+          '<!doctype html>',
+          '<html lang="zh-CN">',
+          '<head>',
+          '  <meta charset="utf-8">',
+          '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+          '  <title>' + escapeHtml(reportData.title) + '</title>',
+          '  <style>',
+          '    :root { color-scheme: light; --ink:#17202a; --muted:#667085; --line:#d9e0e8; --soft:#f5f7fa; --accent:#1f6f8b; --danger:#b4232f; }',
+          '    * { box-sizing: border-box; }',
+          '    body { margin:0; background:#eef2f5; color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif; line-height:1.65; }',
+          '    main { width:min(980px, calc(100% - 28px)); margin:24px auto; padding:24px; background:#fff; border:1px solid var(--line); box-shadow:0 10px 28px rgba(16,24,40,.08); }',
+          '    .cover { padding:28px; border:1px solid var(--line); background:linear-gradient(180deg,#f8fafc,#fff); }',
+          '    .eyebrow { margin:0 0 8px; color:var(--accent); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }',
+          '    h1 { margin:0; font-size:30px; line-height:1.25; letter-spacing:0; }',
+          '    .subtitle { margin:10px 0 0; color:var(--muted); font-size:16px; }',
+          '    .meta { display:grid; gap:6px; margin-top:18px; color:var(--muted); font-size:13px; }',
+          '    .disclaimer { margin:18px 0 0; padding:12px 14px; border-left:4px solid #ad6b00; background:#fff8e6; color:#5c3d00; font-size:13px; }',
+          '    section { margin-top:22px; }',
+          '    h2 { margin:0 0 12px; padding-bottom:8px; border-bottom:2px solid var(--line); font-size:21px; }',
+          '    h3 { margin:16px 0 8px; font-size:16px; }',
+          '    p { margin:8px 0; }',
+          '    table { width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; }',
+          '    th, td { padding:9px 10px; border:1px solid var(--line); text-align:left; vertical-align:top; }',
+          '    th { background:var(--soft); font-weight:700; }',
+          '    ul { margin:8px 0 0; padding-left:20px; }',
+          '    li + li { margin-top:5px; }',
+          '    footer { margin-top:28px; padding-top:16px; border-top:1px solid var(--line); text-align:center; color:var(--muted); }',
+          '    @media (max-width: 720px) { main { width:100%; margin:0; padding:14px; border:0; } h1 { font-size:24px; } .cover { padding:18px; } table { display:block; overflow-x:auto; white-space:nowrap; } }',
+          '  </style>',
+          '</head>',
+          '<body>',
+          '<main>',
+          body,
+          '</main>',
+          '</body>',
+          '</html>'
+        ].join("\\n");
+      }
+
+      function renderReportSection(section) {
+        return '<section class="section-block"><h4>' + escapeHtml(section.title) + '</h4>' + section.blocks.map(function (block) {
+          return '<h4>' + escapeHtml(block.heading) + '</h4>' + block.paragraphs.map(function (paragraph) {
+            return '<p>' + escapeHtml(paragraph) + '</p>';
+          }).join("");
+        }).join("") + '</section>';
+      }
+
+      function renderStandaloneSection(section) {
+        return '<section><h2>' + escapeHtml(section.title) + '</h2>' + section.blocks.map(function (block) {
+          return '<h3>' + escapeHtml(block.heading) + '</h3>' + block.paragraphs.map(function (paragraph) {
+            return '<p>' + escapeHtml(paragraph) + '</p>';
+          }).join("");
+        }).join("") + '</section>';
+      }
+
+      function renderReportTable(title, headers, rows) {
+        return '<section class="section-block"><h4>' + escapeHtml(title) + '</h4>' + renderTableMarkup(headers, rows, "report-table") + '</section>';
+      }
+
+      function renderStandaloneTable(title, headers, rows) {
+        return '<section><h2>' + escapeHtml(title) + '</h2>' + renderTableMarkup(headers, rows, "") + '</section>';
+      }
+
+      function renderTableMarkup(headers, rows, className) {
+        return [
+          '<div class="table-wrap">',
+          '<table' + (className ? ' class="' + className + '"' : '') + '>',
+          '<thead><tr>' + headers.map(function (header) {
+            return '<th>' + escapeHtml(header) + '</th>';
+          }).join("") + '</tr></thead>',
+          '<tbody>' + rows.map(function (row) {
+            return '<tr>' + row.map(function (cell) {
+              return '<td>' + escapeHtml(cell) + '</td>';
+            }).join("") + '</tr>';
+          }).join("") + '</tbody>',
+          '</table>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderReportList(title, items) {
+        return '<section class="section-block"><h4>' + escapeHtml(title) + '</h4><ul>' + items.map(function (item) {
+          return '<li>' + escapeHtml(item) + '</li>';
+        }).join("") + '</ul></section>';
+      }
+
+      function renderStandaloneList(title, items) {
+        return '<section><h2>' + escapeHtml(title) + '</h2><ul>' + items.map(function (item) {
+          return '<li>' + escapeHtml(item) + '</li>';
+        }).join("") + '</ul></section>';
+      }
+
+      function copyReportHtml() {
+        if (!state.currentReportHtml) {
+          toast("请先生成 HTML 研报。", "error");
+          return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(state.currentReportHtml).then(function () {
+            toast("HTML 已复制到剪贴板。", "success");
+          }).catch(function () {
+            fallbackCopyReportHtml();
+          });
+        } else {
+          fallbackCopyReportHtml();
+        }
+      }
+
+      function fallbackCopyReportHtml() {
+        els.reportHtmlCode.focus();
+        els.reportHtmlCode.select();
+        try {
+          document.execCommand("copy");
+          toast("HTML 已复制到剪贴板。", "success");
+        } catch (error) {
+          toast("复制失败，请手动全选 HTML 输出框。", "error");
+        }
+      }
+
+      function downloadReportHtml() {
+        if (!state.currentReportHtml) {
+          toast("请先生成 HTML 研报。", "error");
+          return;
+        }
+        var blob = new Blob([state.currentReportHtml], { type: "text/html;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = state.currentReportFileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        toast("已下载 HTML 文件。", "success");
       }
 
       function buildInitialConclusion(stock) {
@@ -2629,6 +3160,15 @@
 
       function escapeAttr(value) {
         return escapeHtml(value);
+      }
+
+      function slugifyFileName(value) {
+        return String(value || "stock-report")
+          .trim()
+          .replace(/[\\/:*?"<>|]+/g, "-")
+          .replace(/\s+/g, "-")
+          .replace(/-+/g, "-")
+          .replace(/^-|-$/g, "") || "stock-report";
       }
 
       function scrollToModule(id) {
