@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我的 Codex 最近一个月项目小结</title>
+  <style>
+    :root {
+      --page: #f7f1e8;
+      --ink: #27211b;
+      --muted: #766b60;
+      --card: #fffaf2;
+      --card-strong: #fff3dd;
+      --line: #eadcc8;
+      --accent: #2f7d74;
+      --accent-soft: #dceee8;
+      --sun: #f3a83b;
+      --rose: #d96b6b;
+      --blue: #5578b7;
+      --shadow: 0 18px 45px rgba(78, 58, 35, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(243, 168, 59, 0.16), transparent 28rem),
+        linear-gradient(180deg, #fbf4ea 0%, var(--page) 38%, #f3eadf 100%);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.75;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .newsletter {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 32px 18px 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(234, 220, 200, 0.9);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(47, 125, 116, 0.95), rgba(45, 81, 116, 0.9)),
+        #2f7d74;
+      color: #fffdf7;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -52px;
+      top: -62px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .hero-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 13px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 12px;
+      font-size: clamp(32px, 6vw, 54px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      max-width: 720px;
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0;
+      color: rgba(255, 253, 247, 0.86);
+      font-size: 18px;
+    }
+
+    .week-badge {
+      position: relative;
+      z-index: 1;
+      min-width: 150px;
+      padding: 13px 14px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .week-badge span {
+      display: block;
+      color: rgba(255, 253, 247, 0.74);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .intro {
+      margin: 22px 0 0;
+      padding: 24px 26px;
+      border-radius: var(--radius);
+      background: rgba(255, 250, 242, 0.92);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(78, 58, 35, 0.08);
+      font-size: 16px;
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.22;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card,
+    .panel,
+    .highlight,
+    .plan-item,
+    .gain-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 12px 30px rgba(78, 58, 35, 0.08);
+    }
+
+    .project-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .visual-placeholder {
+      position: relative;
+      min-height: 162px;
+      padding: 16px;
+      background:
+        linear-gradient(135deg, rgba(47, 125, 116, 0.14), rgba(243, 168, 59, 0.19)),
+        var(--card-strong);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .visual-placeholder.has-image {
+      min-height: 190px;
+      padding: 0;
+      background: #17130f;
+    }
+
+    .preview-image {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .preview-image.is-top {
+      object-position: top;
+    }
+
+    .image-caption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      max-width: calc(100% - 20px);
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(28, 22, 16, 0.72);
+      color: #fffaf2;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .placeholder-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 130px;
+      border: 1px dashed rgba(47, 125, 116, 0.58);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.48);
+      color: #346960;
+      text-align: center;
+      font-weight: 750;
+    }
+
+    .placeholder-frame small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .project-body {
+      padding: 18px;
+      flex: 1;
+    }
+
+    .project-meta {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #23645d;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .project-card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .project-card p {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .detail-list li {
+      padding-left: 12px;
+      border-left: 3px solid var(--line);
+    }
+
+    .detail-list strong {
+      display: block;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 10px;
+      border: 1px solid #cfded8;
+      border-radius: 999px;
+      background: #f6fffb;
+      color: #245f58;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .link-pill.is-local {
+      border-color: #ead9bc;
+      background: #fff6e7;
+      color: #79542b;
+    }
+
+    .demo-grid,
+    .site-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .demo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .demo-card,
+    .site-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 12px 30px rgba(78, 58, 35, 0.08);
+      overflow: hidden;
+    }
+
+    .demo-card img {
+      display: block;
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background: #17130f;
+    }
+
+    .demo-card-body,
+    .site-card {
+      padding: 15px;
+    }
+
+    .demo-card h3,
+    .site-card h3 {
+      margin-bottom: 5px;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .demo-card p,
+    .site-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .site-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .site-card {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-card strong {
+      display: inline-flex;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .highlight {
+      padding: 17px;
+      min-height: 142px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::after {
+      content: attr(data-mark);
+      position: absolute;
+      right: 12px;
+      bottom: 4px;
+      color: rgba(47, 125, 116, 0.09);
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .highlight-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 12px;
+      border-radius: var(--radius);
+      background: #fff0cf;
+      font-size: 20px;
+    }
+
+    .highlight strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+
+    .highlight span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: 16px;
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .panel h2 {
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    .gains {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gain-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 13px;
+      background: #fffdf8;
+      box-shadow: none;
+    }
+
+    .gain-card b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius);
+      background: #e8f1ff;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .gain-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .plan-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plan-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      background: #fffdf8;
+      box-shadow: none;
+    }
+
+    .plan-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #f5e6cf;
+      color: #6c5132;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .closing {
+      margin-top: 34px;
+      padding: 25px 26px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(217, 107, 107, 0.12), rgba(47, 125, 116, 0.12)),
+        #fffaf2;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(78, 58, 35, 0.08);
+    }
+
+    .closing p {
+      margin-bottom: 0;
+    }
+
+    .footer-note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 820px) {
+      .projects,
+      .demo-grid,
+      .site-grid,
+      .highlights,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .newsletter {
+        padding: 18px 12px 40px;
+      }
+
+      .hero {
+        padding: 25px 18px;
+      }
+
+      .hero-top,
+      .section-header {
+        display: block;
+      }
+
+      .week-badge {
+        width: 100%;
+        margin-top: 16px;
+        text-align: left;
+      }
+
+      .intro,
+      .panel,
+      .closing {
+        padding: 18px;
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="newsletter">
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <div class="kicker">☕ 给朋友看的 Codex 近况</div>
+          <h1>我的 Codex 最近一个月项目小结</h1>
+          <p class="subtitle">从 Slack 里的 coding agent，到 Zapp 小工具、音乐站、健身报告和远程 Codex 主机，这个月基本都在把自己的工作流一点点变成可复用的工具。</p>
+        </div>
+        <div class="week-badge">
+          <span>整理范围</span>
+          2026.05.06 - 2026.06.06
+        </div>
+      </div>
+    </header>
+
+    <section class="intro" aria-label="开场文字">
+      <p>
+        这个月 Codex 基本像一个跟在旁边的工程搭子：有时候帮我写代码，有时候帮我查问题，有时候只是把一堆散乱的素材整理成能继续推进的项目。回头看，最有意思的不是某一个功能突然做完了，而是很多小工具开始接到我的真实生活里：音乐、健身、发视频、远程机器、微信资料、Zapp 小应用。下面我把最近推进过的项目挑几个出来，按“朋友能看懂”的方式整理一下。
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="projects-title">
+      <div class="section-header">
+        <div>
+          <h2 id="projects-title" class="section-title">最近推进的项目</h2>
+          <p class="section-note">这些是从最近一个月 Codex 工作流里整理出来的项目级别记录，隐私和凭证细节都已省略。</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <article class="project-card">
+          <div class="visual-placeholder" aria-label="项目截图占位">
+            <div class="placeholder-frame">
+              🤖 Slack Agent 流程图
+              <small>#codexdemo / PR 审批 / QA 检查</small>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta">Agent Workflow</span>
+            <h3>SlackBasedMultiAgent</h3>
+            <p>把 Slack 变成一个可以指挥 Codex 做 coding task 的入口，而不是只停留在“聊天机器人”。</p>
+            <ul class="detail-list">
+              <li><strong>完成了什么</strong>从空 repo 规划到 Slack app、任务队列、审批流、中文 PR/Slack 输出，再用 `CodexTest` 跑通了一个计算器 demo 和 PR 合并。</li>
+              <li><strong>遇到的挑战</strong>Slack worker 健康、目标 repo patch 失败、人工审批、GitHub PR 状态和环境变量安全是几条完全不同的线，不能混在一起判断。</li>
+              <li><strong>下一步计划</strong>把 demo 原型继续收窄：补更清楚的状态面板、失败恢复和真实 repo 的稳定演示。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="visual-placeholder has-image" aria-label="QHRB Zapp 净值看板截图">
+            <img class="preview-image is-top" src="codex-monthly-2026-assets/qhrb-net-worth-preview.jpg" alt="QHRB Zapp 净值看板预览">
+            <span class="image-caption">QHRB Zapp 净值看板</span>
+          </div>
+          <div class="project-body">
+            <span class="project-meta">Zapp Apps</span>
+            <h3>Zapp 应用与财务看板</h3>
+            <p>把一些本来分散在表格、JSON 和本地页面里的信息，做成更像“自己用的小应用”。</p>
+            <ul class="detail-list">
+              <li><strong>完成了什么</strong>做了 `LY Fund / 银子入股回款` 看板，推进 QHRB 净值安全检查数据，也修了 `人脉 CRM` 在手机上的可读性。</li>
+              <li><strong>遇到的挑战</strong>直接打开 app、Zapp 安全目录解锁、生产已更新但 Git 仍然 dirty、以及 Friend CRM 的隐私边界，都要分开处理。</li>
+              <li><strong>下一步计划</strong>继续整理 Zapp 的“单一输入点”，补 CSV 导出和更清楚的部署/提交节奏。</li>
+            </ul>
+            <div class="project-links" aria-label="Zapp 项目入口">
+              <a class="link-pill" href="https://thisisyz.com/zapp/" target="_blank" rel="noopener">打开 Zapp</a>
+              <a class="link-pill" href="https://thisisyz.com/zapp/apps/qhrb-net-worth.html" target="_blank" rel="noopener">QHRB 页面</a>
+              <span class="link-pill is-local">本地开发文件已归档</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="visual-placeholder has-image" aria-label="Zi Yin 作品页封面截图">
+            <img class="preview-image" src="codex-monthly-2026-assets/ziyin-live-session.jpg" alt="The Way You Make Me Feel Berklee Live Session 封面">
+            <span class="image-caption">Zi Yin 作品页新视频</span>
+          </div>
+          <div class="project-body">
+            <span class="project-meta">Music & Demo</span>
+            <h3>Zi Yin 网站与产品 Demo</h3>
+            <p>一边维护音乐作品页，一边把 Zapp 里的小工具包装成能发出去看的 demo。</p>
+            <ul class="detail-list">
+              <li><strong>完成了什么</strong>更新了 `works.html`，加入 Berklee live session；也整理了 `ziyin-voiceover-demo`、`yinzi-dialogue-demo` 和 `zi-style-reply-demo` 的视频/封面/发布信息。</li>
+              <li><strong>遇到的挑战</strong>“视频已上传”和“元数据已填完”不是一回事；Bilibili 表单自动化还会遇到焦点、点击、粘贴这些很现实的小问题。</li>
+              <li><strong>下一步计划</strong>把每个 demo 的发布状态单独收口：标题、封面、描述、标签、AI 内容声明和是否真正投稿。</li>
+            </ul>
+            <div class="project-links" aria-label="Zi Yin 网站入口">
+              <a class="link-pill" href="https://thisisyz.com/works.html" target="_blank" rel="noopener">作品页</a>
+              <span class="link-pill is-local">Demo MP4 在本机发布包</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="visual-placeholder has-image" aria-label="健身视频 contact sheet 截图">
+            <img class="preview-image" src="codex-monthly-2026-assets/workout-leg-contact-sheet.jpg" alt="练腿视频 contact sheet">
+            <span class="image-caption">Workout contact sheet</span>
+          </div>
+          <div class="project-body">
+            <span class="project-meta">Personal Report</span>
+            <h3>健身记录 HTML 报告</h3>
+            <p>把健身素材、身体指标、视频和后续分析计划整理成一个本地可打开的报告。</p>
+            <ul class="detail-list">
+              <li><strong>完成了什么</strong>生成并更新了本地 Workout HTML 报告，接入健身素材资产，还把 5 个新 720p 健身视频做成 contact sheets 和 poster 预览。</li>
+              <li><strong>遇到的挑战</strong>当前“报告已经存在”和未来“从视频抽帧做动作/体态分析”要分清，不能把计划误写成已经完成。</li>
+              <li><strong>下一步计划</strong>继续做 `analysis_frames`，把视频里的动作变化变成更容易对比的图片证据。</li>
+            </ul>
+            <div class="project-links" aria-label="健身报告入口">
+              <span class="link-pill is-local">本地 Workout 报告</span>
+              <span class="link-pill is-local">练腿分析图已归档</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="visual-placeholder" aria-label="项目截图占位">
+            <div class="placeholder-frame">
+              🖥️ 远程 Codex 主机
+              <small>Mac mini / Tailscale / mobile Codex</small>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta">Infra</span>
+            <h3>Mac mini 远程 Codex 工作站</h3>
+            <p>尝试把 Mac mini 变成长期跑 Codex 的远程工作站，让移动端也能接进来。</p>
+            <ul class="detail-list">
+              <li><strong>完成了什么</strong>规划了选择性迁移 `.codex` 状态、打通 SSH/Tailscale/屏幕共享，并排查 remote control、模型配置和 iPhone Mirroring。</li>
+              <li><strong>遇到的挑战</strong>网络能通不等于 Codex 设备发现可用；旧线程里的模型设置、daemon 状态和镜像连接要分别诊断。</li>
+              <li><strong>下一步计划</strong>从干净的新线程验证 mobile Codex 路径，再把可复用配置沉淀成 Mac mini 专用操作规则。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="visual-placeholder" aria-label="项目截图占位">
+            <div class="placeholder-frame">
+              📚 Canvas 归档地图
+              <small>Berklee / course archive / inline preview</small>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta">Archive</span>
+            <h3>Berklee Canvas 课程归档</h3>
+            <p>把课程资料从 Canvas 里尽量完整地救出来，变成本地可预览、可继续交接的归档。</p>
+            <ul class="detail-list">
+              <li><strong>完成了什么</strong>推进 ZhuYuHeng / YuhengZhu 课程归档，记录真实 `Zi-T9` 项目路径、课程状态、教授资源恢复坑，以及 PDF/音频 inline preview 修复。</li>
+              <li><strong>遇到的挑战</strong>Canvas files API 看起来空，不代表没有教授资源；模块、页面、作业、quiz 和讨论里的文件链接都要扫。</li>
+              <li><strong>下一步计划</strong>继续按课程状态推进，尤其保留 `35662` 教授资源和 `35783` 浏览器注入这类未完线索。</li>
+            </ul>
+            <div class="project-links" aria-label="Canvas 归档入口">
+              <span class="link-pill is-local">本地预览入口仅在工作站可用</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="demo-title">
+      <div class="section-header">
+        <div>
+          <h2 id="demo-title" class="section-title">Demo 图片与网站入口</h2>
+          <p class="section-note">这几张是真实 demo / 网站素材。公开页面只保留线上入口；本机归档不放可点击路径。</p>
+        </div>
+      </div>
+
+      <div class="demo-grid">
+        <article class="demo-card">
+          <img src="codex-monthly-2026-assets/zi-style-reply-demo.jpg" alt="Zi style reply demo 封面">
+          <div class="demo-card-body">
+            <h3>和银子聊天</h3>
+            <p>把对方的话起草成候选回复，再生成 ZiYin WeChat PVC 语音泡泡。</p>
+          </div>
+        </article>
+        <article class="demo-card">
+          <img src="codex-monthly-2026-assets/ziyin-voiceover-demo.jpg" alt="ZiYin Voiceover demo 页面截图">
+          <div class="demo-card-body">
+            <h3>ZiYin Voiceover</h3>
+            <p>输入中文旁白，用自己的声音生成可保存、分享、放进视频里的 MP3。</p>
+          </div>
+        </article>
+        <article class="demo-card">
+          <img src="codex-monthly-2026-assets/yinzi-dialogue-demo.jpg" alt="Yinzi dialogue demo 封面">
+          <div class="demo-card-body">
+            <h3>Yinzi Dialogue Demo</h3>
+            <p>一个已经整理成 Bilibili 发布包的 Zapp 对话类 demo。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="site-grid" aria-label="网站入口列表">
+        <a class="site-card" href="https://thisisyz.com/works.html" target="_blank" rel="noopener">
+          <strong>Website</strong>
+          <h3>Zi Yin 作品页</h3>
+          <p>最近更新了 Berklee live session 作品封面和入口。</p>
+        </a>
+        <a class="site-card" href="https://thisisyz.com/zapp/" target="_blank" rel="noopener">
+          <strong>Zapp</strong>
+          <h3>Zapp Store</h3>
+          <p>个人工具入口，包括财务、CRM、语音、训练类小应用。</p>
+        </a>
+        <a class="site-card" href="https://thisisyz.com/zapp/apps/qhrb-net-worth.html" target="_blank" rel="noopener">
+          <strong>Dashboard</strong>
+          <h3>QHRB 净值页</h3>
+          <p>已验证线上页面可访问；图里展示的是本地预览截图。</p>
+        </a>
+        <div class="site-card">
+          <strong>Local</strong>
+          <h3>Workout Report</h3>
+          <p>本机健身报告已经归档；公开页只展示 contact sheet，不暴露本地路径。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="highlights-title">
+      <div class="section-header">
+        <div>
+          <h2 id="highlights-title" class="section-title">这个月的几个亮点</h2>
+          <p class="section-note">不算 KPI，只是我自己觉得“噢，工作流真的变顺了”的几个瞬间。</p>
+        </div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight" data-mark="01">
+          <div class="highlight-icon">🚀</div>
+          <strong>6 条</strong>
+          <span>不同方向的项目线都推进到了可复盘状态：agent、Zapp、音乐、健身、远程主机、课程归档。</span>
+        </div>
+        <div class="highlight" data-mark="02">
+          <div class="highlight-icon">🛠️</div>
+          <strong>多次</strong>
+          <span>验证不再只看“页面能打开”，而是把测试、HTTP、console、PR、发布状态拆开确认。</span>
+        </div>
+        <div class="highlight" data-mark="03">
+          <div class="highlight-icon">💡</div>
+          <strong>几个</strong>
+          <span>原本零散的个人资料库，开始变成 Zapp app、HTML report、demo package 这样的具体形态。</span>
+        </div>
+        <div class="highlight" data-mark="04">
+          <div class="highlight-icon">📌</div>
+          <strong>一条</strong>
+          <span>越来越清楚的判断：自动化不是替我乱跑，而是把每个状态边界记清楚。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-column" aria-label="技术收获和下周计划">
+      <div class="panel">
+        <h2>技术收获</h2>
+        <ul class="gains">
+          <li class="gain-card">
+            <b>1</b>
+            <span>复杂工作流最怕“看起来都通了”。Slack health、GT credential、远程 daemon、浏览器 unlock 都要分开验。</span>
+          </li>
+          <li class="gain-card">
+            <b>2</b>
+            <span>本地 HTML 报告很适合个人资料整理：不用上云，也能把素材、状态和下一步放在同一个地方。</span>
+          </li>
+          <li class="gain-card">
+            <b>3</b>
+            <span>部署和 Git 提交是两件事。生产更新了，不代表 repo 干净；这点在 Zapp 里特别明显。</span>
+          </li>
+          <li class="gain-card">
+            <b>4</b>
+            <span>给朋友看的项目总结不需要列所有文件，保留项目名、卡点和下一步，反而更像真实近况。</span>
+          </li>
+        </ul>
+        <div class="tag-row" aria-label="技术标签">
+          <span class="tag">Agent Workflow</span>
+          <span class="tag">Zapp</span>
+          <span class="tag">Local HTML</span>
+          <span class="tag">Demo Publishing</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>下周计划</h2>
+        <ul class="plan-list">
+          <li class="plan-item">
+            <span class="plan-number">1</span>
+            <span>把 `SlackBasedMultiAgent` 做成一个更稳的演示：失败状态、审批、PR 和 worker health 都要更直观。</span>
+          </li>
+          <li class="plan-item">
+            <span class="plan-number">2</span>
+            <span>整理 Zapp 的 app catalog 和数据输入方式，特别是 QHRB、LY Fund、人脉 CRM 这些有真实用途的页面。</span>
+          </li>
+          <li class="plan-item">
+            <span class="plan-number">3</span>
+            <span>收口 demo 发布包：每个视频都明确是“已渲染”“已上传”“元数据完成”还是“已投稿”。</span>
+          </li>
+          <li class="plan-item">
+            <span class="plan-number">4</span>
+            <span>继续把个人生活资料做成可看的本地报告，比如健身视频分析和音乐练习记录。</span>
+          </li>
+          <li class="plan-item">
+            <span class="plan-number">5</span>
+            <span>远程 Codex 主机先做小而稳定的验证，不急着把所有历史状态一次性搬过去。</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="closing" aria-label="结尾">
+      <p>
+        差不多就是这一个月的 Codex 近况。写完发现，其实我不是在追求“多自动化一点”，更像是在给自己的生活和工作做一套小型基础设施：音乐、健身、发布、归档、远程机器都能慢慢接进来。你要是对哪一个项目有兴趣，或者觉得哪个方向最值得先做扎实，可以直接回我，我们就当边聊天边帮我排优先级。
+      </p>
+    </section>
+
+    <p class="footer-note">Made with Codex · Published on thisisyz.com as a public project note</p>
+  </main>
+</body>
+</html>
