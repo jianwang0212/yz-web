@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v42-20260606-taxonomy-copy";
+const CACHE_VERSION = "zapp-store-v43-20260606-report-mobile-numbers";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
