@@ -1,7 +1,7 @@
 import { endOptions, requireMethod, sendJson } from '../_lib/http.js';
 
 const OPENAI_RESPONSES_URL = 'https://api.openai.com/v1/responses';
-const DEFAULT_MODEL = 'gpt-5.5';
+const DEFAULT_MODEL = 'gpt-5-mini';
 const REQUEST_TIMEOUT_MS = 90000;
 const MAX_QUERY_CHARS = 80;
 
