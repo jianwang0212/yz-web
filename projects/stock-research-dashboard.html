@@ -904,6 +904,7 @@
           <div class="toolbar">
             <button class="btn btn-ghost" id="fillReportSampleBtn" type="button">PDF示例：亿纬锂能</button>
             <button class="btn btn-ghost" id="fillMoutaiReportSampleBtn" type="button">Research示例：贵州茅台</button>
+            <button class="btn btn-ghost" id="fillPddReportSampleBtn" type="button">Research示例：拼多多</button>
             <button class="btn btn-primary" id="generateReportBtn" type="button">生成 HTML</button>
             <button class="btn" id="copyReportHtmlBtn" type="button" disabled>复制 HTML</button>
             <button class="btn" id="downloadReportHtmlBtn" type="button" disabled>下载 HTML</button>
@@ -915,7 +916,7 @@
             <div class="form-grid">
               <div class="field span-2">
                 <label for="reportName">股票名称</label>
-                <input id="reportName" placeholder="例如 亿纬锂能、宁德时代、贵州茅台">
+                <input id="reportName" placeholder="例如 亿纬锂能、贵州茅台、拼多多、PDD">
               </div>
             </div>
             <input id="reportCode" type="hidden">
@@ -924,7 +925,7 @@
             <textarea id="reportFinancials" hidden></textarea>
             <textarea id="reportNews" hidden></textarea>
             <textarea id="reportFocus" hidden></textarea>
-            <div class="status warning" id="reportStatus">请输入股票名称。亿纬锂能来自 PDF 样例；贵州茅台来自 ChatGPT research 数据包。</div>
+            <div class="status warning" id="reportStatus">请输入任意股票名称。亿纬锂能来自 PDF 样例；贵州茅台、拼多多来自 ChatGPT research 数据包；其他股票会生成待接入 research 的完整 HTML。</div>
           </div>
           <div class="panel">
             <h4 class="panel-title">HTML 输出</h4>
@@ -1515,6 +1516,7 @@
         els.generateReportBtn = document.getElementById("generateReportBtn");
         els.fillReportSampleBtn = document.getElementById("fillReportSampleBtn");
         els.fillMoutaiReportSampleBtn = document.getElementById("fillMoutaiReportSampleBtn");
+        els.fillPddReportSampleBtn = document.getElementById("fillPddReportSampleBtn");
         els.copyReportHtmlBtn = document.getElementById("copyReportHtmlBtn");
         els.downloadReportHtmlBtn = document.getElementById("downloadReportHtmlBtn");
         els.researchStockSelect = document.getElementById("researchStockSelect");
@@ -1576,6 +1578,9 @@
         });
         els.fillMoutaiReportSampleBtn.addEventListener("click", function () {
           fillReportForm(findStockByName("贵州茅台") || MOCK_STOCKS[0], true);
+        });
+        els.fillPddReportSampleBtn.addEventListener("click", function () {
+          fillReportForm(buildResearchStockFromQuery("拼多多"), true);
         });
         els.copyReportHtmlBtn.addEventListener("click", copyReportHtml);
         els.downloadReportHtmlBtn.addEventListener("click", downloadReportHtml);
@@ -1873,7 +1878,7 @@
           els.reportOutput.innerHTML = emptyHtml("无法生成 HTML", "缺少股票名称。");
           return;
         }
-        var matchedStock = findStockByName(input.name) || findStockByCode(input.code);
+        var matchedStock = findStockByName(input.name) || findStockByCode(input.code) || buildResearchStockFromQuery(input.name || input.code);
         var stock = matchedStock || {
           code: input.code || "未填写",
           name: input.name || "未命名公司",
@@ -1887,7 +1892,8 @@
           roe: 0,
           revenueGrowth: 0,
           profitGrowth: 0,
-          change30d: 0
+          change30d: 0,
+          isFallbackReport: true
         };
 
         var reportData = buildPanoramicReportData(stock);
@@ -1898,7 +1904,37 @@
         els.downloadReportHtmlBtn.disabled = false;
         els.reportOutput.className = "report-preview";
         els.reportOutput.innerHTML = renderReportPreview(reportData);
-        setStatus(els.reportStatus, "success", "已生成 " + stock.name + " 的完整 HTML 研报。可直接复制或下载。");
+        if (stock.isFallbackReport) {
+          setStatus(els.reportStatus, "warning", "已生成 " + stock.name + " 的完整 HTML 研报框架；该股票尚未内置 research 数据包，后续可由 ChatGPT/API 自动补全。");
+        } else {
+          setStatus(els.reportStatus, "success", "已生成 " + stock.name + " 的完整 HTML 研报。可直接复制或下载。");
+        }
+      }
+
+      function buildResearchStockFromQuery(query) {
+        var normalized = normalizeStockQuery(query);
+        if (["拼多多", "pdd", "pddholdings", "pinduoduo", "pinduoduoinc"].indexOf(normalized) >= 0) {
+          return {
+            code: "PDD",
+            name: "拼多多",
+            industry: "互联网电商 / 平台经济",
+            marketCap: 0,
+            pe: 0,
+            roe: 0,
+            revenueGrowth: 10,
+            profitGrowth: -13,
+            change30d: 0,
+            profile: "PDD Holdings 旗下核心业务包括中国电商平台拼多多和跨境电商平台 Temu，商业模式以交易撮合、在线营销、交易服务和商家生态服务为主。",
+            financialSummary: "2025 年总收入 4,318.46 亿元，同比增长 10%；净利润 978.43 亿元，同比下降 13%；经营现金流净额 1,069.39 亿元。2026Q1 收入 1,062.29 亿元，同比增长 11%；净利润 125.47 亿元，同比下降 15%。",
+            business: "国内拼多多承担高频消费和性价比电商流量，Temu 承担跨境电商增长，平台通过在线营销、交易服务、履约生态和商家工具变现。",
+            technology: "关键能力集中在推荐算法、供需匹配、商家运营系统、跨境履约网络、风控和数据驱动的价格/补贴效率。"
+          };
+        }
+        return null;
+      }
+
+      function normalizeStockQuery(value) {
+        return String(value || "").trim().toLowerCase().replace(/\s+/g, "");
       }
 
       function buildPanoramicReportData(stock) {
@@ -1907,6 +1943,9 @@
         }
         if (stock.code === "600519" || stock.name === "贵州茅台") {
           return buildMoutaiReportData(stock);
+        }
+        if (stock.code === "PDD" || stock.name === "拼多多") {
+          return buildPinduoduoReportData(stock);
         }
         return buildGenericPanoramicReportData(stock);
       }
@@ -2262,6 +2301,195 @@
             "i 茅台平台 GMV、用户活跃和利润贡献。",
             "经销商回款节奏、返利政策和库存天数。",
             "2026 年全年经营目标的执行进度和管理层最新指引。"
+          ]
+        };
+      }
+
+      function buildPinduoduoReportData(stock) {
+        return {
+          company: "拼多多",
+          code: "PDD",
+          industry: "互联网电商 / 平台经济 / 跨境电商",
+          title: "拼多多（PDD）全景研究报告",
+          subtitle: "ChatGPT research 样例：基于 PDD Holdings 年度业绩、季度业绩和平台商业模式的六维框架分析",
+          analysisDate: "2026-06-07",
+          dataCutoff: "2025 年全年业绩 / 2026 年一季度业绩 / 行情需接入实时数据源",
+          sourceNote: "ChatGPT research 样例：参考 PDD Holdings 2025 年全年业绩、2026 年一季度业绩及公司投资者关系披露；当前页面为前端 HTML 生成原型。",
+          snapshot: [
+            ["上市代码", "NASDAQ: PDD", "PDD Holdings Inc. ADS"],
+            ["所属行业", "互联网电商 / 跨境电商", "平台经济"],
+            ["市值和股价", "待接入实时行情", "美股行情需由 Nasdaq/行情 API 补全"],
+            ["2025 年收入", "4,318.46 亿元", "+10%"],
+            ["2025 年净利润", "978.43 亿元", "-13%"],
+            ["2025 年经营利润", "931.02 亿元", "-14%"],
+            ["2025 年经营现金流", "1,069.39 亿元", "仍高于净利润"],
+            ["2026Q1 收入", "1,062.29 亿元", "+11%"],
+            ["2026Q1 归属普通股东净利润", "125.47 亿元", "-15%"],
+            ["2026Q1 非 GAAP 净利润", "140.71 亿元", "-17%"],
+            ["现金和短期投资", "4,361 亿元", "2026Q1 末口径"]
+          ],
+          businessSegments: [
+            ["在线营销服务及其他", "2,177.83 亿元", "50.43%", "2025 年口径"],
+            ["交易服务", "2,140.63 亿元", "49.57%", "2025 年口径"],
+            ["2026Q1 在线营销服务及其他", "499.36 亿元", "47.01%", "季度口径"],
+            ["2026Q1 交易服务", "562.93 亿元", "52.99%", "季度口径"],
+            ["国内拼多多", "待拆分", "核心流量与商家生态", "公司未直接披露完整分部"],
+            ["Temu 跨境业务", "待拆分", "全球增长变量", "收入、履约和合规成本需继续跟踪"]
+          ],
+          marginRows: [
+            ["2025 年毛利率", "56.28%", "-4.66pp", "成本增长快于收入，平台投资和履约生态压力上升"],
+            ["2025 年经营利润率", "21.56%", "-5.97pp", "利润率从高位回落"],
+            ["2025 年净利率", "22.66%", "-5.89pp", "仍高于多数电商平台，但边际承压"],
+            ["2026Q1 毛利率", "55.86%", "同比约 -1.34pp", "跨境和商家支持投入影响毛利"],
+            ["2026Q1 经营利润率", "18.42%", "同比约 +1.61pp", "费用控制部分抵消毛利压力"],
+            ["2026Q1 净利率", "11.81%", "同比约 -3.60pp", "利润波动需要结合投资节奏判断"]
+          ],
+          riskRows: [
+            ["Temu 面临关税、海外监管和低价跨境模式审查", "高", "中高", "跨境电商增长越快，合规和履约成本越需要验证"],
+            ["国内电商竞争加剧", "高", "中高", "淘宝天猫、京东、抖音电商、快手电商均在争夺低价心智和商家预算"],
+            ["利润率继续下行", "高", "中", "2025 和 2026Q1 已体现收入增长但净利润下降"],
+            ["商家生态和消费者体验压力", "中高", "中", "低价模式需要在商家利润、质量控制、售后体验之间平衡"],
+            ["平台监管、数据合规和 VIE 架构风险", "中高", "中", "中概股和平台经济公司具备结构性监管风险"],
+            ["汇率和地缘政治风险", "中", "中", "Temu 海外业务暴露于美元、欧元和多国政策环境"],
+            ["增长预期过高导致估值波动", "中", "中", "市场会在增长和利润再投资之间快速切换定价逻辑"]
+          ],
+          scenarios: [
+            ["乐观", "25%", "Temu 海外增长延续，国内主站保持高频流量，商家服务收入增长，利润率企稳。", "95-115 美元"],
+            ["中性", "50%", "收入保持低双位数增长，利润继续投入但现金流稳健，估值维持平台公司折价区间。", "75-95 美元"],
+            ["悲观", "25%", "海外政策或关税冲击 Temu，国内竞争迫使补贴加码，净利润继续下滑。", "55-75 美元"]
+          ],
+          sections: [
+            {
+              title: "一、商业模式与竞争优势",
+              blocks: [
+                {
+                  heading: "1.1 收入结构",
+                  paragraphs: [
+                    "PDD Holdings 的收入主要来自两类：在线营销服务及其他、交易服务。2025 年在线营销服务及其他收入 2,177.83 亿元，占比 50.43%；交易服务收入 2,140.63 亿元，占比 49.57%。这说明公司已经从单一广告变现，转向广告和交易服务并重的双引擎模式。",
+                    "从业务形态看，国内拼多多提供高频消费、低价心智和商家流量入口；Temu 提供跨境电商增长弹性。公司并未在公开口径中完整拆分国内与 Temu 的收入和利润，因此研究时必须把披露口径和实际经营口径分开。"
+                  ]
+                },
+                {
+                  heading: "1.2 护城河判断",
+                  paragraphs: [
+                    "拼多多的护城河主要来自用户低价心智、商家供给密度、推荐算法、平台补贴效率和交易履约生态。与传统货架电商相比，拼多多更依赖算法分发和价格/转化效率；与内容电商相比，它的核心优势在于商品供给、转化链路和商家运营工具。",
+                    "Temu 的潜在护城河在于中国供应链组织能力、跨境流量投放、履约网络和平台治理。但 Temu 仍处于高投入和高不确定阶段，护城河需要通过复购、商家留存、物流效率和合规成本继续验证。"
+                  ]
+                },
+                {
+                  heading: "1.3 护城河趋势",
+                  paragraphs: [
+                    "护城河短期处于“加深但成本上升”的状态。收入继续增长，现金储备充足，但 2025 年和 2026Q1 的利润下滑说明公司正在用更高投入换取商家生态、供应链能力和海外市场份额。",
+                    "研究重点不是简单判断拼多多是否仍有增长，而是判断新增投入是否能形成更高质量的复购、商家服务收入和长期利润率。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "二、行业分析",
+              blocks: [
+                {
+                  heading: "2.1 行业生命周期",
+                  paragraphs: [
+                    "中国电商行业已经进入成熟期，用户规模红利接近尾声，竞争从拉新转向用户时长、价格心智、履约体验和商家预算。低价和性价比在宏观消费偏谨慎阶段仍然有效，但平台之间的补贴和价格竞争会压缩利润弹性。",
+                    "跨境电商仍处成长期，但不再是低监管成本的自由扩张阶段。美国、欧洲和其他市场对小包裹、关税、产品安全、数据合规和平台责任的关注上升，Temu 的增长质量要和合规成本一起评估。"
+                  ]
+                },
+                {
+                  heading: "2.2 关键驱动力",
+                  paragraphs: [
+                    "国内业务的关键驱动力包括用户复购、商家投放 ROI、百亿补贴效率、农产品和白牌供给、退货售后体验。海外业务的关键驱动力包括获客成本、履约成本、关税政策、商家供给质量和本地化运营能力。",
+                    "财务上要重点看收入增速、交易服务占比、销售费用率、毛利率、经营现金流和现金储备。若收入增长来自高成本补贴，质量低于来自商家服务能力提升的增长。"
+                  ]
+                },
+                {
+                  heading: "2.3 竞争格局",
+                  paragraphs: [
+                    "国内竞争对手包括阿里、京东、抖音电商、快手电商和垂直平台。拼多多的差异化仍是低价心智和高转化交易场，但阿里和京东都在强化低价策略，内容电商也在切走部分消费决策链路。",
+                    "海外竞争对手包括 Amazon、Shein、AliExpress、TikTok Shop 和本地零售平台。Temu 的优势是供应链和价格，短板是品牌信任、履约体验、监管不确定和本地化服务。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "三、财务质量分析",
+              blocks: [
+                {
+                  heading: "3.1 盈利能力深度拆解",
+                  paragraphs: [
+                    "2025 年公司收入 4,318.46 亿元，同比增长约 10%；净利润 978.43 亿元，同比下降约 13%。这组数据说明公司已经进入“增长仍在、利润再投资加大”的阶段，不能只看收入增长，也不能只因利润下滑否定长期价值。",
+                    "2026Q1 收入 1,062.29 亿元，同比增长 11%；净利润 125.47 亿元，同比下降 15%；非 GAAP 净利润 140.71 亿元，同比下降 17%。季度利润弹性弱于收入，说明市场费用、履约生态投入和跨境业务成本仍是核心变量。"
+                  ]
+                },
+                {
+                  heading: "3.2 现金流与资产负债表",
+                  paragraphs: [
+                    "2025 年经营现金流净额 1,069.39 亿元，仍高于当期净利润；2026Q1 末现金、现金等价物和短期投资约 4,361 亿元。现金储备是 PDD 抵御竞争、投入 Temu 和应对监管冲击的重要安全垫。",
+                    "但高现金储备不等于没有风险。若跨境监管或国内竞争使投入回报下降，市场会重新评估这部分现金能否转化为长期利润。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "四、管理层评估",
+              blocks: [
+                {
+                  heading: "4.1 战略与执行",
+                  paragraphs: [
+                    "管理层近年的核心战略是从流量平台走向供应链和商家生态平台，愿意牺牲短期利润支持商家、履约和海外扩张。这个策略的好处是延长增长曲线，风险是利润率波动加大，投资者短期可见度下降。",
+                    "判断管理层执行质量，应看三个指标：国内主站是否保持用户心智和商家 ROI，Temu 是否在合规压力下保持增长，新增投入是否带来更稳定的复购和交易服务收入。"
+                  ]
+                },
+                {
+                  heading: "4.2 数据披露质量",
+                  paragraphs: [
+                    "PDD 的公开披露不直接拆分拼多多国内业务和 Temu 的收入、利润、GMV、履约成本，这会增加外部研究难度。对这种公司，研究者应把已披露财务数据和经营推断明确区分。",
+                    "后续如果接入真实 API，应优先补全 ADS 股价、市值、分析师预期、各地区监管事件、Temu 下载和流量数据，以及商家端费用变化。"
+                  ]
+                }
+              ]
+            },
+            {
+              title: "五、估值分析",
+              blocks: [
+                {
+                  heading: "5.1 当前估值框架",
+                  paragraphs: [
+                    "PDD 的估值不能只用传统电商 PE 看。国内业务更像高现金流平台，Temu 更像高不确定的全球扩张期业务。合理框架应拆成：国内电商现金流价值、Temu 增长期权价值、现金资产和监管/地缘政治折价。",
+                    "如果市场相信 Temu 投入能形成长期利润，PDD 估值会获得增长期权溢价；如果市场认为海外监管和履约成本会吞噬利润，估值会回到低倍数现金流资产。"
+                  ]
+                },
+                {
+                  heading: "5.2 估值敏感性",
+                  paragraphs: [
+                    "中性情景下，收入保持低双位数增长、净利润阶段性承压但现金流稳定，估值可以维持在平台公司折价但具备现金流支撑的区间。乐观情景看 Temu 单位经济模型改善；悲观情景看关税、监管或补贴竞争导致利润率继续下探。",
+                    "本报告的初步结论是：拼多多仍是高效率电商平台和跨境增长标的，但短期研究重点必须从“收入增长”转向“增长质量、利润率和监管风险”。"
+                  ]
+                }
+              ]
+            }
+          ],
+          keyFindings: [
+            "PDD 已从单一广告变现平台转向在线营销和交易服务并重，2025 年两类收入占比接近均衡。",
+            "2025 年收入增长约 10%，但净利润下降约 13%；2026Q1 收入增长 11%，净利润下降 15%，说明公司处在利润再投资阶段。",
+            "现金储备和经营现金流仍强，是国内竞争和 Temu 海外扩张的重要缓冲。",
+            "Temu 是最大增长变量，也是最大不确定来源，核心风险来自关税、监管、履约成本和海外消费者体验。",
+            "估值应拆成国内现金流、Temu 增长期权、现金资产和监管折价，而不是只看单一 PE。"
+          ],
+          followUps: [
+            "Temu 主要市场的关税、小包政策、产品合规和平台责任变化。",
+            "国内拼多多用户复购、商家投放 ROI、百亿补贴效率和售后体验。",
+            "交易服务收入占比、毛利率、销售费用率和经营利润率的季度变化。",
+            "现金储备、经营现金流和资本配置政策。",
+            "公司是否提升国内业务与 Temu 的分部披露透明度。",
+            "竞争对手低价策略、内容电商转化效率和商家预算迁移。"
+          ],
+          infoGaps: [
+            "拼多多国内业务和 Temu 的收入、利润、GMV、履约成本拆分。",
+            "Temu 各区域获客成本、复购率、退货率和单位经济模型。",
+            "实时 ADS 股价、市值、远期 PE 和分析师一致预期。",
+            "商家数量、活跃买家、订单量等运营指标。",
+            "不同监管情景下的关税和履约成本敏感性。"
           ]
         };
       }
