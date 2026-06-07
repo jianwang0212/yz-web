@@ -899,7 +899,7 @@
         <div class="module-header">
           <div>
             <h3 class="module-title">个股研报生成器</h3>
-            <p class="module-desc">输入股票名称后，直接生成一份参考“全景研究报告”结构的完整 HTML 研报。</p>
+            <p class="module-desc">输入股票名称后，优先调用服务端实时 research，检索最新公告、财报、行情和新闻，再生成完整 HTML 研报。</p>
           </div>
           <div class="toolbar">
             <button class="btn btn-ghost" id="fillReportSampleBtn" type="button">PDF示例：亿纬锂能</button>
@@ -925,7 +925,7 @@
             <textarea id="reportFinancials" hidden></textarea>
             <textarea id="reportNews" hidden></textarea>
             <textarea id="reportFocus" hidden></textarea>
-            <div class="status warning" id="reportStatus">请输入任意股票名称。亿纬锂能来自 PDF 样例；贵州茅台、拼多多来自 ChatGPT research 数据包；其他股票会生成待接入 research 的完整 HTML。</div>
+            <div class="status warning" id="reportStatus">请输入任意股票名称。系统会优先使用实时 research API；如果服务端未配置 OPENAI_API_KEY，则退回本地样例或待接入框架。</div>
           </div>
           <div class="panel">
             <h4 class="panel-title">HTML 输出</h4>
@@ -1863,7 +1863,7 @@
         }
       }
 
-      function generateReportFromForm() {
+      async function generateReportFromForm() {
         var input = {
           code: trimValue(els.reportCode),
           name: trimValue(els.reportName)
@@ -1878,6 +1878,22 @@
           els.reportOutput.innerHTML = emptyHtml("无法生成 HTML", "缺少股票名称。");
           return;
         }
+
+        els.generateReportBtn.disabled = true;
+        els.copyReportHtmlBtn.disabled = true;
+        els.downloadReportHtmlBtn.disabled = true;
+        els.reportOutput.className = "empty";
+        els.reportOutput.innerHTML = '<strong>正在实时 research</strong><span>正在检索最新公开资料、公告、财报、行情和新闻。</span>';
+        setStatus(els.reportStatus, "loading", "正在对 " + input.name + " 进行实时 research...");
+
+        var liveReportData = null;
+        var fallbackReason = "";
+        try {
+          liveReportData = await fetchLiveReportData(input.name);
+        } catch (error) {
+          fallbackReason = error.message || "实时 research 暂不可用。";
+        }
+
         var matchedStock = findStockByName(input.name) || findStockByCode(input.code) || buildResearchStockFromQuery(input.name || input.code);
         var stock = matchedStock || {
           code: input.code || "未填写",
@@ -1896,19 +1912,40 @@
           isFallbackReport: true
         };
 
-        var reportData = buildPanoramicReportData(stock);
+        var reportData = liveReportData || buildPanoramicReportData(stock);
         state.currentReportHtml = buildStandaloneReportHtml(reportData);
-        state.currentReportFileName = slugifyFileName(stock.name || input.name) + "-panoramic-research-report.html";
+        state.currentReportFileName = slugifyFileName(reportData.company || stock.name || input.name) + "-panoramic-research-report.html";
         els.reportHtmlCode.value = state.currentReportHtml;
+        els.generateReportBtn.disabled = false;
         els.copyReportHtmlBtn.disabled = false;
         els.downloadReportHtmlBtn.disabled = false;
         els.reportOutput.className = "report-preview";
         els.reportOutput.innerHTML = renderReportPreview(reportData);
-        if (stock.isFallbackReport) {
-          setStatus(els.reportStatus, "warning", "已生成 " + stock.name + " 的完整 HTML 研报框架；该股票尚未内置 research 数据包，后续可由 ChatGPT/API 自动补全。");
+        if (liveReportData) {
+          setStatus(els.reportStatus, "success", "已完成 " + reportData.company + " 的实时 research，并生成完整 HTML 研报。");
+        } else if (stock.isFallbackReport) {
+          setStatus(els.reportStatus, "warning", "实时 research 暂不可用：" + fallbackReason + " 已生成 " + stock.name + " 的完整 HTML 研报框架。");
         } else {
-          setStatus(els.reportStatus, "success", "已生成 " + stock.name + " 的完整 HTML 研报。可直接复制或下载。");
+          setStatus(els.reportStatus, "warning", "实时 research 暂不可用：" + fallbackReason + " 已使用本地样例生成 " + stock.name + " 的完整 HTML 研报。");
         }
+      }
+
+      async function fetchLiveReportData(stockName) {
+        var response = await fetch("/api/stock-research", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: stockName })
+        });
+        var payload = await response.json().catch(function () {
+          return {};
+        });
+        if (!response.ok || !payload.ok) {
+          throw new Error(payload.error || "服务端 research API 请求失败。");
+        }
+        if (!payload.reportData || !payload.reportData.title) {
+          throw new Error("服务端 research API 未返回有效研报。");
+        }
+        return payload.reportData;
       }
 
       function buildResearchStockFromQuery(query) {
@@ -2651,7 +2688,8 @@
           renderReportList("关键发现摘要", reportData.keyFindings),
           renderReportTable("情景推演", ["情景", "概率", "核心假设", "目标区间"], reportData.scenarios),
           renderReportList("需持续跟踪的关键变量", reportData.followUps),
-          renderReportList("信息缺口清单", reportData.infoGaps)
+          renderReportList("信息缺口清单", reportData.infoGaps),
+          renderReportSources(reportData.sources)
         ].join("");
       }
 
@@ -2677,6 +2715,7 @@
           renderStandaloneTable("情景推演", ["情景", "概率", "核心假设", "目标区间"], reportData.scenarios),
           renderStandaloneList("需持续跟踪的关键变量", reportData.followUps),
           renderStandaloneList("信息缺口清单", reportData.infoGaps),
+          renderStandaloneSources(reportData.sources),
           '<footer>— 报告完 —</footer>'
         ].join("\\n");
 
@@ -2770,6 +2809,33 @@
       function renderStandaloneList(title, items) {
         return '<section><h2>' + escapeHtml(title) + '</h2><ul>' + items.map(function (item) {
           return '<li>' + escapeHtml(item) + '</li>';
+        }).join("") + '</ul></section>';
+      }
+
+      function renderReportSources(sources) {
+        if (!Array.isArray(sources) || !sources.length) {
+          return "";
+        }
+        return renderReportTable("实时 research 来源", ["标题", "来源", "日期"], sources.map(function (source) {
+          return [
+            source.title || "未命名来源",
+            source.publisher || source.url || "待补充",
+            source.date || "待补充"
+          ];
+        }));
+      }
+
+      function renderStandaloneSources(sources) {
+        if (!Array.isArray(sources) || !sources.length) {
+          return "";
+        }
+        return '<section><h2>实时 research 来源</h2><ul>' + sources.map(function (source) {
+          var title = escapeHtml(source.title || "未命名来源");
+          var publisher = escapeHtml(source.publisher || "待补充来源");
+          var date = escapeHtml(source.date || "待补充日期");
+          var summary = escapeHtml(source.summary || "");
+          var url = escapeAttr(source.url || "#");
+          return '<li><a href="' + url + '" target="_blank" rel="noreferrer">' + title + '</a> - ' + publisher + ' / ' + date + (summary ? '<br>' + summary : '') + '</li>';
         }).join("") + '</ul></section>';
       }
 
