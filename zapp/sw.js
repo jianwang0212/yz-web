@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v43-20260606-report-mobile-numbers";
+const CACHE_VERSION = "zapp-store-v37-20260608-qhrb-monitor";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",
