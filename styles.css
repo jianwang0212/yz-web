@@ -4655,6 +4655,41 @@ section {
     box-shadow: none;
 }
 
+.works-kiwi-feature {
+    background:
+        linear-gradient(120deg, rgba(24, 15, 10, 0.9), rgba(24, 15, 10, 0.6) 48%, rgba(24, 15, 10, 0.16)),
+        url("images/works/kiwi-tears-hero.webp") right center / cover no-repeat,
+        #180f0a;
+}
+
+.works-kiwi-feature .works-snow-copy h2,
+.works-kiwi-feature .works-snow-copy p:not(.works-snow-kicker) {
+    color: #fff3dd;
+}
+
+.works-kiwi-feature .works-snow-kicker {
+    color: #d3983c;
+}
+
+.works-kiwi-feature .works-snow-meta span {
+    color: #fff3dd;
+    border-color: rgba(255, 243, 221, 0.2);
+    background: rgba(24, 15, 10, 0.42);
+}
+
+.works-kiwi-feature .works-snow-actions a {
+    color: #180f0a;
+    background: #f6d084;
+    box-shadow: 0 14px 30px rgba(211, 152, 60, 0.2);
+}
+
+.works-kiwi-feature .works-snow-actions a + a {
+    color: #fff3dd;
+    border-color: rgba(255, 243, 221, 0.2);
+    background: rgba(24, 15, 10, 0.5);
+    box-shadow: none;
+}
+
 .hero-training-program {
     display: block;
     margin-top: 0.34rem;
