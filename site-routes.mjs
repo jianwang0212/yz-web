@@ -29,8 +29,7 @@ const projectScripts = [
 const standalonePages = [
   ['snow-white', 'snow-white.html'],
   ['mirror', 'mirror.html'],
-  ['vocal-class-comedy-king', 'kiwi-tears.html'],
-  ['kiwi-tears', 'kiwi-tears.html'],
+  ['vocal-class-comedy-king', 'vocal-class-comedy-king.html'],
   ['berklee', 'berklee.html'],
   ['works', 'works.html'],
   ['projects', 'projects.html'],

@@ -8,8 +8,8 @@ test('server route aliases cover clean project URLs', () => {
   assert.equal(findRouteAlias('/financial-dashboard'), 'financial-dashboard.html');
   assert.equal(findRouteAlias('/snow-white'), 'snow-white.html');
   assert.equal(findRouteAlias('/mirror'), 'mirror.html');
-  assert.equal(findRouteAlias('/vocal-class-comedy-king'), 'kiwi-tears.html');
-  assert.equal(findRouteAlias('/kiwi-tears'), 'kiwi-tears.html');
+  assert.equal(findRouteAlias('/vocal-class-comedy-king'), 'vocal-class-comedy-king.html');
+  assert.equal(findRouteAlias('/kiwi-tears'), null);
   assert.equal(findRouteAlias('/berklee'), 'berklee.html');
   assert.equal(findRouteAlias('/engineering'), 'engineering.html');
   assert.equal(findRouteAlias('/projects/dockingtech'), 'projects/dockingtech.html');
@@ -35,8 +35,8 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(rewrites.get('/projects/socialpulse'), '/projects/socialpulse.html');
   assert.equal(rewrites.get('/snow-white'), '/snow-white.html');
   assert.equal(rewrites.get('/mirror'), '/mirror.html');
-  assert.equal(rewrites.get('/vocal-class-comedy-king'), '/kiwi-tears.html');
-  assert.equal(rewrites.get('/kiwi-tears'), '/kiwi-tears.html');
+  assert.equal(rewrites.get('/vocal-class-comedy-king'), '/vocal-class-comedy-king.html');
+  assert.equal(rewrites.has('/kiwi-tears'), false);
   assert.equal(rewrites.get('/berklee'), '/berklee.html');
   assert.equal(rewrites.get('/engineering'), '/engineering.html');
   assert.equal(rewrites.get('/projects/dockingtech'), '/projects/dockingtech.html');
