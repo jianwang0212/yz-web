@@ -304,6 +304,111 @@
     font-weight: 850;
 }
 
+.kiwi-lyrics-workspace {
+    width: min(100%, 1080px);
+    margin: 18px auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    gap: 16px;
+}
+
+.kiwi-lyrics-editor,
+.kiwi-lyrics-reader {
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--kiwi-line);
+    border-radius: 8px;
+    background: rgba(255, 250, 241, 0.82);
+    box-shadow: 0 18px 50px rgba(112, 64, 20, 0.1);
+}
+
+.kiwi-lyrics-editor label {
+    display: block;
+    color: var(--kiwi-ink);
+    font-size: 1.08rem;
+    font-weight: 850;
+}
+
+.kiwi-lyrics-editor textarea {
+    width: 100%;
+    min-height: 420px;
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px solid rgba(24, 15, 10, 0.16);
+    border-radius: 8px;
+    color: var(--kiwi-ink);
+    background: #fffaf1;
+    font: inherit;
+    line-height: 1.82;
+    resize: vertical;
+}
+
+.kiwi-lyrics-editor textarea:focus {
+    outline: 3px solid rgba(211, 152, 60, 0.24);
+    border-color: rgba(141, 29, 20, 0.34);
+}
+
+.kiwi-lyrics-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.kiwi-lyrics-actions button {
+    min-height: 40px;
+    padding: 0.62rem 0.86rem;
+    border: 1px solid rgba(24, 15, 10, 0.14);
+    border-radius: 8px;
+    color: #fffaf1;
+    background: var(--kiwi-ink);
+    font: inherit;
+    font-weight: 850;
+    cursor: pointer;
+}
+
+.kiwi-lyrics-actions button + button {
+    color: var(--kiwi-ink);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.kiwi-lyrics-actions button:hover,
+.kiwi-lyrics-actions button:focus-visible {
+    border-color: rgba(141, 29, 20, 0.34);
+    background: var(--kiwi-crimson);
+}
+
+.kiwi-lyrics-actions button + button:hover,
+.kiwi-lyrics-actions button + button:focus-visible {
+    color: #fffaf1;
+}
+
+#lyrics-status {
+    color: var(--kiwi-muted);
+    font-size: 0.92rem;
+    font-weight: 750;
+}
+
+.kiwi-lyrics-preview {
+    margin-top: 14px;
+    padding: 2px 0;
+}
+
+.kiwi-lyrics-preview p {
+    margin: 0;
+    padding: 13px 0;
+    border-top: 1px solid rgba(24, 15, 10, 0.1);
+    color: var(--kiwi-ink);
+    font-size: 1.1rem;
+    line-height: 1.86;
+    overflow-wrap: anywhere;
+}
+
+.kiwi-lyrics-preview p:first-child {
+    border-top: 0;
+}
+
 .kiwi-footer {
     background: #120b08;
 }
@@ -337,6 +442,14 @@
 
     .kiwi-method-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .kiwi-lyrics-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .kiwi-lyrics-editor textarea {
+        min-height: 340px;
     }
 }
 
@@ -372,7 +485,9 @@
 
     .kiwi-practice-card,
     .kiwi-lyrics-note,
-    .kiwi-check-card {
+    .kiwi-check-card,
+    .kiwi-lyrics-editor,
+    .kiwi-lyrics-reader {
         padding: 20px;
     }
 
@@ -383,5 +498,14 @@
 
     .kiwi-method-grid {
         grid-template-columns: 1fr;
+    }
+
+    .kiwi-lyrics-editor textarea {
+        min-height: 300px;
+        padding: 14px;
+    }
+
+    .kiwi-lyrics-actions button {
+        flex: 1 1 120px;
     }
 }

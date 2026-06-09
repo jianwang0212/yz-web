@@ -19,7 +19,7 @@
     <link rel="preload" as="image" href="images/works/kiwi-tears-hero.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="audio" href="assets/vocal-class/comedy-king-practice-001-20260609.mp3" type="audio/mpeg">
     <link rel="stylesheet" href="styles.css?v=20260507-consistent-nav">
-    <link rel="stylesheet" href="vocal-class-comedy-king.css?v=20260609-vocal-method2">
+    <link rel="stylesheet" href="vocal-class-comedy-king.css?v=20260609-private-lyrics">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -138,12 +138,31 @@
         <section id="lyrics" class="kiwi-section kiwi-lyrics-section" aria-labelledby="lyrics-title">
             <div class="kiwi-section-header">
                 <p class="kiwi-kicker">Lyrics / 歌词</p>
-                <h2 id="lyrics-title">课堂读词入口</h2>
+                <h2 id="lyrics-title">私人读词区</h2>
             </div>
 
             <div class="kiwi-lyrics-note">
-                <p>上课读词时，把授权音乐平台或课堂材料里的完整歌词打开，对照这页的音频和练习流程使用。</p>
+                <p>把授权歌词或课堂材料粘贴到这里，页面会在本机浏览器保存一份，练习时可以直接对照音频读词。</p>
                 <p class="kiwi-short-quote">定位短句：我看着颗猕猴桃</p>
+            </div>
+
+            <div class="kiwi-lyrics-workspace">
+                <div class="kiwi-lyrics-editor">
+                    <label for="private-lyrics">本机歌词输入</label>
+                    <textarea id="private-lyrics" rows="18" autocomplete="off" spellcheck="false" placeholder="把授权歌词或课堂材料粘贴到这里。内容只保存在这台浏览器。"></textarea>
+                    <div class="kiwi-lyrics-actions">
+                        <button type="button" id="save-lyrics">保存到本机</button>
+                        <button type="button" id="clear-lyrics">清空</button>
+                        <span id="lyrics-status" role="status" aria-live="polite">未保存</span>
+                    </div>
+                </div>
+
+                <div class="kiwi-lyrics-reader">
+                    <span class="kiwi-card-label">Reading sheet</span>
+                    <div id="lyrics-preview" class="kiwi-lyrics-preview" aria-label="歌词预览">
+                        <p>粘贴并保存后，这里会显示读词卡。</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -159,5 +178,65 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    (() => {
+        const storageKey = 'zi:vocal-class-comedy-king:private-lyrics';
+        const textarea = document.getElementById('private-lyrics');
+        const preview = document.getElementById('lyrics-preview');
+        const status = document.getElementById('lyrics-status');
+        const saveButton = document.getElementById('save-lyrics');
+        const clearButton = document.getElementById('clear-lyrics');
+        let saveTimer;
+
+        if (!textarea || !preview || !status || !saveButton || !clearButton) {
+            return;
+        }
+
+        function renderLyrics(text) {
+            const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+            preview.replaceChildren();
+
+            if (!lines.length) {
+                const empty = document.createElement('p');
+                empty.textContent = '粘贴并保存后，这里会显示读词卡。';
+                preview.append(empty);
+                return;
+            }
+
+            for (const line of lines) {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = line;
+                preview.append(paragraph);
+            }
+        }
+
+        function saveLyrics(message = '已保存到本机') {
+            localStorage.setItem(storageKey, textarea.value);
+            renderLyrics(textarea.value);
+            status.textContent = message;
+        }
+
+        const savedLyrics = localStorage.getItem(storageKey) || '';
+        textarea.value = savedLyrics;
+        renderLyrics(savedLyrics);
+        status.textContent = savedLyrics ? '已从本机读取' : '未保存';
+
+        textarea.addEventListener('input', () => {
+            renderLyrics(textarea.value);
+            status.textContent = '编辑中';
+            window.clearTimeout(saveTimer);
+            saveTimer = window.setTimeout(() => saveLyrics(), 600);
+        });
+
+        saveButton.addEventListener('click', () => saveLyrics());
+
+        clearButton.addEventListener('click', () => {
+            textarea.value = '';
+            localStorage.removeItem(storageKey);
+            renderLyrics('');
+            status.textContent = '已清空';
+        });
+    })();
+    </script>
 </body>
 </html>
