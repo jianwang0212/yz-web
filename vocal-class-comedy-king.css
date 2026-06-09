@@ -309,6 +309,109 @@
     font-weight: 850;
 }
 
+.kiwi-pronunciation-sheet {
+    width: min(100%, 1080px);
+    margin: 18px auto 0;
+    padding: 28px;
+    border: 1px solid var(--kiwi-line);
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(255, 250, 241, 0.97), rgba(255, 246, 226, 0.92)),
+        repeating-linear-gradient(90deg, rgba(141, 29, 20, 0.05) 0, rgba(141, 29, 20, 0.05) 1px, transparent 1px, transparent 32px);
+    box-shadow: 0 24px 80px rgba(112, 64, 20, 0.12);
+    scroll-margin-top: 124px;
+}
+
+.kiwi-pronunciation-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(24, 15, 10, 0.1);
+}
+
+.kiwi-pronunciation-header h3 {
+    margin: 8px 0 0;
+    color: var(--kiwi-ink);
+    font-size: 1.68rem;
+    line-height: 1.18;
+}
+
+.kiwi-pronunciation-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    color: var(--kiwi-muted);
+    font-size: 0.92rem;
+    font-weight: 850;
+    white-space: nowrap;
+}
+
+.kiwi-pronunciation-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.kiwi-pronunciation-legend i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.kiwi-pronunciation-sheet .kiwi-initial {
+    color: #bf2b1f;
+    font-weight: 900;
+}
+
+.kiwi-pronunciation-sheet .kiwi-final {
+    color: #1f5fbf;
+    font-weight: 850;
+}
+
+.kiwi-pronunciation-lines {
+    display: grid;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.kiwi-pronunciation-lines p {
+    margin: 0;
+    color: var(--kiwi-ink);
+    font-size: 1.95rem;
+    font-weight: 760;
+    line-height: 1.46;
+    overflow-wrap: anywhere;
+}
+
+.kiwi-pronunciation-lines ruby {
+    display: inline-flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 1.08em;
+    margin-right: 0.02em;
+    vertical-align: bottom;
+}
+
+.kiwi-pronunciation-lines rt {
+    min-height: 1.52em;
+    font-size: 0.42em;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.kiwi-pinyin-gap {
+    display: inline-block;
+    width: 0.72em;
+}
+
 .kiwi-lyrics-workspace {
     width: min(100%, 1080px);
     margin: 18px auto 0;
@@ -491,6 +594,7 @@
     .kiwi-practice-card,
     .kiwi-lyrics-note,
     .kiwi-check-card,
+    .kiwi-pronunciation-sheet,
     .kiwi-lyrics-editor,
     .kiwi-lyrics-reader {
         padding: 20px;
@@ -512,5 +616,23 @@
 
     .kiwi-lyrics-actions button {
         flex: 1 1 120px;
+    }
+
+    .kiwi-pronunciation-header {
+        display: grid;
+        gap: 12px;
+    }
+
+    .kiwi-pronunciation-legend {
+        justify-content: flex-start;
+    }
+
+    .kiwi-pronunciation-lines {
+        gap: 14px;
+    }
+
+    .kiwi-pronunciation-lines p {
+        font-size: 1.42rem;
+        line-height: 1.58;
     }
 }
