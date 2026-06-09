@@ -132,6 +132,83 @@
         #fbf2df;
 }
 
+.kiwi-practice-section {
+    background:
+        linear-gradient(180deg, #fbf2df 0%, #fffaf1 100%),
+        #fbf2df;
+}
+
+.kiwi-practice-card,
+.kiwi-reading-card {
+    width: min(100%, 920px);
+    margin: 0 auto;
+    padding: 28px;
+    border: 1px solid var(--kiwi-line);
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(255, 246, 226, 0.9)),
+        repeating-linear-gradient(90deg, rgba(141, 29, 20, 0.06) 0, rgba(141, 29, 20, 0.06) 1px, transparent 1px, transparent 32px);
+    box-shadow: 0 24px 80px rgba(112, 64, 20, 0.12);
+}
+
+.kiwi-practice-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.kiwi-card-label,
+.kiwi-meta-row span,
+.kiwi-reading-grid span {
+    color: var(--kiwi-gold);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.kiwi-practice-copy h3 {
+    margin: 8px 0 0;
+    color: var(--kiwi-ink);
+    font-size: 1.6rem;
+    line-height: 1.18;
+}
+
+.kiwi-practice-copy p,
+.kiwi-reading-note {
+    margin: 14px 0 0;
+    color: var(--kiwi-muted);
+    line-height: 1.72;
+}
+
+.kiwi-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.kiwi-meta-row span {
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.36rem 0.58rem;
+    border: 1px solid rgba(24, 15, 10, 0.12);
+    border-radius: 999px;
+    color: var(--kiwi-muted);
+    background: rgba(255, 255, 255, 0.62);
+}
+
+.kiwi-audio-panel {
+    min-width: 0;
+}
+
+.kiwi-audio-panel audio {
+    width: 100%;
+    display: block;
+}
+
 .kiwi-lyrics {
     width: min(100%, 920px);
     margin: 0 auto;
@@ -169,6 +246,48 @@
 .kiwi-lyrics .kiwi-la span {
     color: var(--kiwi-crimson);
     font-weight: 850;
+}
+
+.kiwi-reading-card {
+    margin-bottom: 18px;
+}
+
+.kiwi-short-quote {
+    display: inline-flex;
+    margin: 18px 0 0;
+    padding: 0.68rem 0.86rem;
+    border: 1px solid rgba(141, 29, 20, 0.16);
+    border-radius: 8px;
+    color: var(--kiwi-crimson);
+    background: rgba(255, 255, 255, 0.58);
+    font-weight: 850;
+}
+
+.kiwi-reading-grid {
+    width: min(100%, 920px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.kiwi-reading-grid article {
+    padding: 20px;
+    border: 1px solid rgba(24, 15, 10, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 250, 241, 0.76);
+}
+
+.kiwi-reading-grid h3 {
+    margin: 20px 0 0;
+    color: var(--kiwi-ink);
+    font-size: 1.18rem;
+}
+
+.kiwi-reading-grid p {
+    margin: 10px 0 0;
+    color: var(--kiwi-muted);
+    line-height: 1.68;
 }
 
 .kiwi-motifs {
@@ -243,6 +362,14 @@
         padding: 26px;
     }
 
+    .kiwi-practice-card {
+        grid-template-columns: 1fr;
+    }
+
+    .kiwi-reading-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .kiwi-motif-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -278,9 +405,18 @@
         padding: 20px;
     }
 
+    .kiwi-practice-card,
+    .kiwi-reading-card {
+        padding: 20px;
+    }
+
     .kiwi-lyrics span {
         font-size: 1rem;
         line-height: 1.82;
+    }
+
+    .kiwi-reading-grid {
+        grid-template-columns: 1fr;
     }
 
     .kiwi-motif-grid {
