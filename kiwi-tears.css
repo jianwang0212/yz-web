@@ -110,7 +110,8 @@
 }
 
 .kiwi-section {
-    padding: 72px 24px;
+    padding: 104px 24px 72px;
+    scroll-margin-top: 124px;
 }
 
 .kiwi-section-header {
@@ -139,7 +140,8 @@
 }
 
 .kiwi-practice-card,
-.kiwi-reading-card {
+.kiwi-lyrics-note,
+.kiwi-check-card {
     width: min(100%, 920px);
     margin: 0 auto;
     padding: 28px;
@@ -160,7 +162,7 @@
 
 .kiwi-card-label,
 .kiwi-meta-row span,
-.kiwi-reading-grid span {
+.kiwi-method-grid span {
     color: var(--kiwi-gold);
     font-size: 0.72rem;
     font-weight: 900;
@@ -176,7 +178,8 @@
 }
 
 .kiwi-practice-copy p,
-.kiwi-reading-note {
+.kiwi-lyrics-note p,
+.kiwi-check-card p {
     margin: 14px 0 0;
     color: var(--kiwi-muted);
     line-height: 1.72;
@@ -248,8 +251,46 @@
     font-weight: 850;
 }
 
-.kiwi-reading-card {
-    margin-bottom: 18px;
+.kiwi-method-section {
+    background:
+        linear-gradient(180deg, #fffaf1 0%, #f4e3bd 100%),
+        #fffaf1;
+}
+
+.kiwi-method-grid {
+    width: min(100%, 1080px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.kiwi-method-grid article {
+    padding: 22px;
+    border: 1px solid rgba(24, 15, 10, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 250, 241, 0.78);
+    box-shadow: 0 16px 42px rgba(112, 64, 20, 0.08);
+}
+
+.kiwi-method-grid h3 {
+    margin: 22px 0 0;
+    color: var(--kiwi-ink);
+    font-size: 1.22rem;
+}
+
+.kiwi-method-grid p {
+    margin: 12px 0 0;
+    color: var(--kiwi-muted);
+    line-height: 1.68;
+}
+
+.kiwi-check-card {
+    margin-top: 16px;
+}
+
+.kiwi-lyrics-note {
+    box-shadow: 0 18px 50px rgba(112, 64, 20, 0.1);
 }
 
 .kiwi-short-quote {
@@ -261,78 +302,6 @@
     color: var(--kiwi-crimson);
     background: rgba(255, 255, 255, 0.58);
     font-weight: 850;
-}
-
-.kiwi-reading-grid {
-    width: min(100%, 920px);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-}
-
-.kiwi-reading-grid article {
-    padding: 20px;
-    border: 1px solid rgba(24, 15, 10, 0.12);
-    border-radius: 8px;
-    background: rgba(255, 250, 241, 0.76);
-}
-
-.kiwi-reading-grid h3 {
-    margin: 20px 0 0;
-    color: var(--kiwi-ink);
-    font-size: 1.18rem;
-}
-
-.kiwi-reading-grid p {
-    margin: 10px 0 0;
-    color: var(--kiwi-muted);
-    line-height: 1.68;
-}
-
-.kiwi-motifs {
-    background:
-        linear-gradient(120deg, rgba(24, 15, 10, 0.96), rgba(64, 32, 18, 0.94)),
-        #180f0a;
-    color: #fff3dd;
-}
-
-.kiwi-motifs .kiwi-section-header h2 {
-    color: #fff8ea;
-}
-
-.kiwi-motif-grid {
-    width: min(100%, 1080px);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-}
-
-.kiwi-motif-grid article {
-    min-height: 220px;
-    padding: 22px;
-    border: 1px solid rgba(255, 243, 221, 0.16);
-    border-radius: 8px;
-    background: rgba(255, 243, 221, 0.07);
-}
-
-.kiwi-motif-grid span {
-    color: var(--kiwi-gold);
-    font-size: 0.74rem;
-    font-weight: 900;
-}
-
-.kiwi-motif-grid h3 {
-    margin: 22px 0 0;
-    color: #fff8ea;
-    font-size: 1.3rem;
-}
-
-.kiwi-motif-grid p {
-    margin: 12px 0 0;
-    color: rgba(255, 243, 221, 0.78);
-    line-height: 1.72;
 }
 
 .kiwi-footer {
@@ -351,7 +320,7 @@
     }
 
     .kiwi-section {
-        padding: 56px 20px;
+        padding: 88px 20px 56px;
     }
 
     .kiwi-section-header h2 {
@@ -366,11 +335,7 @@
         grid-template-columns: 1fr;
     }
 
-    .kiwi-reading-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .kiwi-motif-grid {
+    .kiwi-method-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
@@ -394,7 +359,7 @@
     }
 
     .kiwi-section {
-        padding: 46px 16px;
+        padding: 80px 16px 46px;
     }
 
     .kiwi-section-header h2 {
@@ -406,7 +371,8 @@
     }
 
     .kiwi-practice-card,
-    .kiwi-reading-card {
+    .kiwi-lyrics-note,
+    .kiwi-check-card {
         padding: 20px;
     }
 
@@ -415,11 +381,7 @@
         line-height: 1.82;
     }
 
-    .kiwi-reading-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .kiwi-motif-grid {
+    .kiwi-method-grid {
         grid-template-columns: 1fr;
     }
 }
