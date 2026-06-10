@@ -122,6 +122,11 @@ test('home page features music archives before resume records', () => {
   expectIncludes(indexHtml, '<article class="home-snow-card home-mirror-card">');
   expectIncludes(indexHtml, 'href="/mirror" class="home-snow-primary"');
   assert.equal(
+    indexHtml.includes('Kevin Yuen 制作的中文 Jazz ballad'),
+    false,
+    'Home Mirror card should not show the producer line'
+  );
+  assert.equal(
     indexHtml.includes('class="home-snow-secondary"'),
     false,
     'Home music share cards should expose only primary open actions'
