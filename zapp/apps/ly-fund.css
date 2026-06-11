@@ -349,6 +349,33 @@ button {
   white-space: nowrap;
 }
 
+.chart-select {
+  display: grid;
+  gap: 6px;
+  min-width: 210px;
+  margin-left: auto;
+}
+
+.chart-select span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chart-select select {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 10px;
+  color: var(--ink);
+  background: #fff;
+  font-weight: 800;
+}
+
 .two-column {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
@@ -611,6 +638,16 @@ th.num {
 
   .section-head > span {
     max-width: 100%;
+    text-align: left;
+  }
+
+  .chart-select {
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+  }
+
+  .chart-select span {
     text-align: left;
   }
 

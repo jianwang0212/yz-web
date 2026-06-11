@@ -10,7 +10,7 @@
     <link rel="manifest" href="../manifest.webmanifest" />
     <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../icons/icon-192.png" />
-    <link rel="stylesheet" href="ly-fund.css?v=20260523fast1" />
+    <link rel="stylesheet" href="ly-fund.css?v=20260611overview1" />
     <title>LY Fund</title>
   </head>
   <body>
@@ -30,17 +30,6 @@
         <button type="button" data-view="data">数据</button>
         <button type="button" data-view="downloads">文件</button>
       </nav>
-
-      <section class="unlock-panel" id="unlockPanel" aria-label="Unlock encrypted LY Fund data">
-        <div>
-          <p>Encrypted LY Fund Data</p>
-          <h2>由 Zapp Store 解锁基金数据</h2>
-        </div>
-        <form id="unlockForm">
-          <button type="submit">回到 Zapp Store</button>
-        </form>
-        <small id="unlockStatus">公开站点只保存加密数据包，基金明细会使用 Zapp Store 的 Face ID 会话在浏览器里解密。</small>
-      </section>
 
       <section class="summary-grid" aria-label="LY Fund summary">
         <article>
@@ -70,9 +59,15 @@
           <div class="section-head">
             <div>
               <p>Total</p>
-              <h2>基金总余额折线图</h2>
+              <h2 id="overviewChartTitle">基金总余额折线图</h2>
             </div>
-            <span id="overviewRange">--</span>
+            <label class="chart-select">
+              <span id="overviewRange">--</span>
+              <select id="overviewSeriesSelect" aria-label="总览曲线">
+                <option value="fund-balance">基金总余额</option>
+                <option value="yjj-yz-balance">银键键+银子净值</option>
+              </select>
+            </label>
           </div>
           <div class="chart-wrap large" id="totalBalanceChart"></div>
         </section>
@@ -188,6 +183,6 @@
       </section>
     </main>
 
-    <script type="module" src="ly-fund.js?v=20260523fast1"></script>
+    <script type="module" src="ly-fund.js?v=20260611overview1"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@ const SESSION_PAYLOAD_CACHE_KEY = "lyFund.decryptedPayload.v1";
 
 const state = {
   view: "overview",
+  overviewSeries: "fund-balance",
   metric: "balance",
   account: "all",
   month: "all",
@@ -15,9 +16,6 @@ const state = {
 let encryptedPackage = null;
 
 const els = {
-  unlockPanel: document.querySelector("#unlockPanel"),
-  unlockForm: document.querySelector("#unlockForm"),
-  unlockStatus: document.querySelector("#unlockStatus"),
   dataBadge: document.querySelector("#dataBadge"),
   summaryGrid: document.querySelector(".summary-grid"),
   tabs: [...document.querySelectorAll("[data-view]")],
@@ -35,6 +33,8 @@ const els = {
   recordCount: document.querySelector("#recordCount"),
   sheetCount: document.querySelector("#sheetCount"),
   accountCount: document.querySelector("#accountCount"),
+  overviewChartTitle: document.querySelector("#overviewChartTitle"),
+  overviewSeriesSelect: document.querySelector("#overviewSeriesSelect"),
   overviewRange: document.querySelector("#overviewRange"),
   profitRange: document.querySelector("#profitRange"),
   totalBalanceChart: document.querySelector("#totalBalanceChart"),
@@ -101,21 +101,14 @@ async function loadEncryptedPackage() {
     const response = await fetch(ENCRYPTED_DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     encryptedPackage = await response.json();
-    els.unlockStatus.textContent = `加密数据包已载入：${encryptedPackage.label || "LY Fund"}。正在使用 Zapp Store 会话打开。`;
     await unlockData(getStoreUnlockPassword());
   } catch (error) {
     els.dataBadge.textContent = "Load failed";
-    els.unlockStatus.textContent = `加密数据包加载失败：${error.message}`;
+    console.error(error);
   }
 }
 
 async function unlockData(password) {
-  if (!password) {
-    requireStoreUnlock();
-    return;
-  }
-  els.unlockStatus.textContent = "正在解密...";
-
   try {
     if (!encryptedPackage) {
       await loadEncryptedPackage();
@@ -125,40 +118,37 @@ async function unlockData(password) {
     }
 
     const cachedPayload = readCachedPayload(encryptedPackage);
+    if (!cachedPayload && !password) {
+      returnStoreForUnlock();
+      return;
+    }
     state.data = cachedPayload || (await decryptPackage(encryptedPackage, password));
     if (!cachedPayload) {
       writeCachedPayload(encryptedPackage, state.data);
     }
     state.filtersReady = false;
-    els.unlockStatus.textContent = cachedPayload
-      ? `已从 Zapp Store 会话缓存打开 ${state.data.summary.recordCount} 条记录。`
-      : `已解锁 ${state.data.summary.recordCount} 条记录。`;
-    els.unlockPanel.classList.add("hidden");
     populateFilters();
     render();
   } catch (error) {
     state.data = null;
-    els.unlockStatus.textContent = "Zapp Store 会话无效，或数据包已损坏。请回到 Zapp Store 重新打开。";
+    els.dataBadge.textContent = "Unlock needed";
     console.error(error);
+    returnStoreForUnlock();
   }
 }
 
 function bindEvents() {
-  els.unlockForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const password = getStoreUnlockPassword();
-    if (!password) {
-      window.location.href = "../";
-      return;
-    }
-    unlockData(password);
-  });
-
   els.tabs.forEach((button) => {
     button.addEventListener("click", () => {
       state.view = button.dataset.view;
       renderShell();
     });
+  });
+
+  els.overviewSeriesSelect.addEventListener("change", () => {
+    if (!state.data) return;
+    state.overviewSeries = els.overviewSeriesSelect.value;
+    renderOverview();
   });
 
   els.metricSelect.addEventListener("change", () => {
@@ -244,15 +234,17 @@ function renderSummary() {
 }
 
 function renderOverview() {
-  const totalRows = state.data.series["总表"] || [];
-  const range = seriesRange(totalRows);
+  const chartConfig = overviewChartConfig();
+  const range = seriesRange(chartConfig.rows);
+  els.overviewSeriesSelect.value = state.overviewSeries;
+  els.overviewChartTitle.textContent = chartConfig.title;
   els.overviewRange.textContent = range;
   els.profitRange.textContent = range;
   els.totalBalanceChart.innerHTML = lineChart(
-    [{ name: "基金总余额", color: accountColors["总表"], rows: totalRows }],
+    [{ name: chartConfig.name, color: chartConfig.color, rows: chartConfig.rows }],
     "balance",
     {
-      id: "total-balance",
+      id: chartConfig.id,
       height: 400,
       valueFormat: (value) => `${formatCompact(value)} U`,
     },
@@ -268,6 +260,42 @@ function renderOverview() {
   );
   renderAccountList();
   renderDownloadCards(els.quickDownloads, true);
+}
+
+function overviewChartConfig() {
+  if (state.overviewSeries === "yjj-yz-balance") {
+    return {
+      id: "yjj-yz-balance",
+      title: "银键键+银子净值折线图",
+      name: "银键键+银子",
+      color: "#7a5c2e",
+      rows: combineAccountBalances(["银键键 银铮铮", "银子"]),
+    };
+  }
+  const rows = state.data.series["总表"] || [];
+  return {
+    id: "total-balance",
+    title: "基金总余额折线图",
+    name: "基金总余额",
+    color: accountColors["总表"],
+    rows,
+  };
+}
+
+function combineAccountBalances(accounts) {
+  const byDate = new Map();
+  accounts.forEach((account) => {
+    (state.data.series[account] || []).forEach((row) => {
+      const balance = numberOrNull(row.balance);
+      if (!row.date || balance === null) return;
+      const current = byDate.get(row.date) || { date: row.date, balance: 0, profit: 0, principal: 0 };
+      current.balance += balance;
+      current.profit += numberOrNull(row.profit) || 0;
+      current.principal += numberOrNull(row.principal) || 0;
+      byDate.set(row.date, current);
+    });
+  });
+  return [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
 }
 
 function renderAccountList() {
@@ -436,9 +464,9 @@ function getStoreUnlockPassword() {
   return sessionStorage.getItem(STORE_SESSION_PASSWORD_KEY) || "";
 }
 
-function requireStoreUnlock() {
-  els.unlockForm.querySelector("button").textContent = "回到 Zapp Store";
-  els.unlockStatus.textContent = "请先在 Zapp Store 用 Face ID 打开一次；LY Fund 会直接继承 Store 会话。";
+function returnStoreForUnlock() {
+  els.dataBadge.textContent = "Opening Store";
+  window.location.replace("../");
 }
 
 function readCachedPayload(packageData) {
