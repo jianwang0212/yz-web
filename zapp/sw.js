@@ -1,4 +1,4 @@
-const CACHE_VERSION = "zapp-store-v40-20260611-ly-fund-overview";
+const CACHE_VERSION = "zapp-store-v41-20260611-ly-fund-crashfix";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STATIC_ASSETS = [
   "./",

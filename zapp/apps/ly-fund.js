@@ -92,7 +92,12 @@ init();
 
 async function init() {
   bindEvents();
-  renderShell();
+  const cachedPayload = readCachedPayloadSnapshot();
+  if (cachedPayload) {
+    state.data = cachedPayload;
+    populateFilters();
+  }
+  render();
   await loadEncryptedPackage();
 }
 
@@ -119,6 +124,7 @@ async function unlockData(password) {
 
     const cachedPayload = readCachedPayload(encryptedPackage);
     if (!cachedPayload && !password) {
+      if (state.data) return;
       returnStoreForUnlock();
       return;
     }
@@ -130,10 +136,12 @@ async function unlockData(password) {
     populateFilters();
     render();
   } catch (error) {
-    state.data = null;
-    els.dataBadge.textContent = "Unlock needed";
     console.error(error);
-    returnStoreForUnlock();
+    if (!state.data) {
+      state.data = null;
+      els.dataBadge.textContent = "Unlock needed";
+      returnStoreForUnlock();
+    }
   }
 }
 
@@ -142,6 +150,7 @@ function bindEvents() {
     button.addEventListener("click", () => {
       state.view = button.dataset.view;
       renderShell();
+      renderCurrentView();
     });
   });
 
@@ -194,13 +203,23 @@ function option(value, label) {
 }
 
 function render() {
-  if (!state.data) return;
   renderShell();
+  if (!state.data) return;
   renderSummary();
-  renderOverview();
-  renderAccounts();
-  renderDataTable();
-  renderDownloads();
+  renderCurrentView();
+}
+
+function renderCurrentView() {
+  if (!state.data) return;
+  if (state.view === "overview") {
+    renderOverview();
+  } else if (state.view === "accounts") {
+    renderAccounts();
+  } else if (state.view === "data") {
+    renderDataTable();
+  } else if (state.view === "downloads") {
+    renderDownloads();
+  }
 }
 
 function renderShell() {
@@ -234,6 +253,7 @@ function renderSummary() {
 }
 
 function renderOverview() {
+  const totalRows = state.data.series["总表"] || [];
   const chartConfig = overviewChartConfig();
   const range = seriesRange(chartConfig.rows);
   els.overviewSeriesSelect.value = state.overviewSeries;
@@ -465,8 +485,7 @@ function getStoreUnlockPassword() {
 }
 
 function returnStoreForUnlock() {
-  els.dataBadge.textContent = "Opening Store";
-  window.location.replace("../");
+  els.dataBadge.textContent = "Unlock in Store";
 }
 
 function readCachedPayload(packageData) {
@@ -475,6 +494,17 @@ function readCachedPayload(packageData) {
     if (!raw) return null;
     const cached = JSON.parse(raw);
     return matchesPackageSignature(cached?.package, packageData) ? cached.payload : null;
+  } catch {
+    return null;
+  }
+}
+
+function readCachedPayloadSnapshot() {
+  try {
+    const raw = sessionStorage.getItem(SESSION_PAYLOAD_CACHE_KEY);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    return cached?.version === 1 && cached.payload?.summary ? cached.payload : null;
   } catch {
     return null;
   }
