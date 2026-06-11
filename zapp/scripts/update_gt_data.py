@@ -20,6 +20,7 @@ GT_ORIGIN = "http://47.242.15.127:9999"
 GT_API_BASE = "http://47.242.15.127:5777"
 DEFAULT_ACCOUNT = "yinzi"
 DEFAULT_LEVELDB = pathlib.Path.home() / "Library/Application Support/Google/Chrome/Default/Local Storage/leveldb"
+DEFAULT_ENV_FILE = pathlib.Path(__file__).resolve().parents[2] / ".env.gt.local"
 ENV_BEARER_TOKEN = "GT_BEARER_TOKEN"
 ENV_LOGIN_NAME = "GT_LOGIN_NAME"
 ENV_PASSWORD = "GT_PASSWORD"
@@ -43,6 +44,11 @@ def parse_args() -> argparse.Namespace:
         help="Chrome local storage LevelDB directory",
     )
     parser.add_argument(
+        "--env-file",
+        default=str(DEFAULT_ENV_FILE),
+        help="Optional local env file for GT_LOGIN_NAME/GT_PASSWORD. Existing environment variables win.",
+    )
+    parser.add_argument(
         "--leveldbutil",
         default=os.environ.get("LEVELDBUTIL", "/opt/homebrew/bin/leveldbutil"),
         help="Path to leveldbutil",
@@ -58,6 +64,21 @@ def parse_args() -> argparse.Namespace:
         help="Print normalized JSON to stdout instead of writing a file",
     )
     return parser.parse_args()
+
+
+def load_env_file(path: pathlib.Path) -> None:
+    if not path.exists():
+        return
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in raw_line:
+            continue
+        key, value = raw_line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        os.environ.setdefault(key, value)
 
 
 def decode_leveldb_value(encoded: str) -> str:
@@ -286,6 +307,7 @@ def build_payload(account: str, today: dict[str, Any], daily_rows: list[dict[str
 
 def main() -> int:
     args = parse_args()
+    load_env_file(pathlib.Path(args.env_file))
     token = resolve_token(args)
     today = fetch_json(f"/api/UserAsset/getTodayAsset?username={args.account}", token)
     daily_rows = normalize_rows(fetch_json(f"/api/UserAsset/getAssetLine?username={args.account}&interval=day", token))
