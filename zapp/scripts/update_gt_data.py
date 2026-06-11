@@ -8,7 +8,9 @@ import json
 import os
 import pathlib
 import subprocess
+import sys
 import tempfile
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from typing import Any
@@ -18,11 +20,23 @@ GT_ORIGIN = "http://47.242.15.127:9999"
 GT_API_BASE = "http://47.242.15.127:5777"
 DEFAULT_ACCOUNT = "yinzi"
 DEFAULT_LEVELDB = pathlib.Path.home() / "Library/Application Support/Google/Chrome/Default/Local Storage/leveldb"
+ENV_BEARER_TOKEN = "GT_BEARER_TOKEN"
+ENV_LOGIN_NAME = "GT_LOGIN_NAME"
+ENV_PASSWORD = "GT_PASSWORD"
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Refresh GT data from Chrome local storage token + GT API.")
+    parser = argparse.ArgumentParser(description="Refresh GT data from GT login env, bearer token env, or Chrome local storage token.")
     parser.add_argument("--account", default=DEFAULT_ACCOUNT)
+    parser.add_argument(
+        "--auth-source",
+        choices=("auto", "env-login", "env-token", "chrome"),
+        default="auto",
+        help=(
+            "Token source. auto uses GT_BEARER_TOKEN, then GT_LOGIN_NAME/GT_PASSWORD, "
+            "then Chrome local storage."
+        ),
+    )
     parser.add_argument(
         "--leveldb-dir",
         default=str(DEFAULT_LEVELDB),
@@ -80,13 +94,75 @@ def load_gt_token(leveldbutil: str, leveldb_dir: pathlib.Path) -> str:
         temp_path.unlink(missing_ok=True)
 
 
+def login_gt_token(login_name: str, password: str) -> str:
+    payload = json.dumps({"loginName": login_name, "password": password}).encode("utf-8")
+    request = urllib.request.Request(
+        f"{GT_API_BASE}/api/Login/login",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            result = json.load(response)
+    except urllib.error.HTTPError as error:
+        body = error.read().decode("utf-8", errors="replace")
+        try:
+            result = json.loads(body) if body else {}
+        except json.JSONDecodeError:
+            result = {}
+        message = result.get("message") or error.reason or f"HTTP {error.code}"
+        raise RuntimeError(f"GT login failed for {login_name}: {message}") from error
+
+    if not result.get("success"):
+        message = result.get("message") or "login response did not report success"
+        raise RuntimeError(f"GT login failed for {login_name}: {message}")
+    token = result.get("data")
+    if not isinstance(token, str) or not token:
+        raise RuntimeError(f"GT login for {login_name} succeeded but response did not include a token")
+    return token
+
+
+def resolve_token(args: argparse.Namespace) -> str:
+    if args.auth_source in {"auto", "env-token"}:
+        token = os.environ.get(ENV_BEARER_TOKEN)
+        if token:
+            return token
+        if args.auth_source == "env-token":
+            raise RuntimeError(f"{ENV_BEARER_TOKEN} is not set")
+
+    if args.auth_source in {"auto", "env-login"}:
+        password = os.environ.get(ENV_PASSWORD)
+        login_name = os.environ.get(ENV_LOGIN_NAME) or args.account
+        if password:
+            return login_gt_token(login_name, password)
+        if args.auth_source == "env-login":
+            raise RuntimeError(f"{ENV_PASSWORD} is not set")
+
+    if args.auth_source in {"auto", "chrome"}:
+        return load_gt_token(args.leveldbutil, pathlib.Path(args.leveldb_dir))
+
+    raise RuntimeError(f"Unsupported auth source: {args.auth_source}")
+
+
 def fetch_json(path: str, token: str) -> Any:
     request = urllib.request.Request(
         f"{GT_API_BASE}{path}",
         headers={"Authorization": f"Bearer {token}"},
     )
-    with urllib.request.urlopen(request, timeout=20) as response:
-        return json.load(response)
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            return json.load(response)
+    except urllib.error.HTTPError as error:
+        body = error.read().decode("utf-8", errors="replace")
+        message = error.reason or f"HTTP {error.code}"
+        if body:
+            try:
+                message = json.loads(body).get("message") or message
+            except json.JSONDecodeError:
+                pass
+        endpoint = path.split("?", 1)[0]
+        raise RuntimeError(f"GT API request failed for {endpoint}: HTTP {error.code} {message}") from error
 
 
 def coerce_number(value: Any) -> Any:
@@ -210,7 +286,7 @@ def build_payload(account: str, today: dict[str, Any], daily_rows: list[dict[str
 
 def main() -> int:
     args = parse_args()
-    token = load_gt_token(args.leveldbutil, pathlib.Path(args.leveldb_dir))
+    token = resolve_token(args)
     today = fetch_json(f"/api/UserAsset/getTodayAsset?username={args.account}", token)
     daily_rows = normalize_rows(fetch_json(f"/api/UserAsset/getAssetLine?username={args.account}&interval=day", token))
     weekly_rows = normalize_rows(fetch_json(f"/api/UserAsset/getAssetLine?username={args.account}&interval=week", token))
@@ -227,4 +303,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except RuntimeError as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        raise SystemExit(1)
