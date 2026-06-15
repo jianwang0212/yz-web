@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-06-15T16:14:19.471Z",
+  "syncedAt": "2026-06-15T16:21:39.099Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
+    "activeAgents": 18,
     "todayTokens": 0,
     "weekTokens": 0,
     "totalTokens": 0,
     "estimatedCostUsd": 0,
-    "cpu": 9.276425256805055,
-    "memoryBytes": 3571941376
+    "cpu": 27.955671808383755,
+    "memoryBytes": 3724001280
   },
   "agents": [
     {
@@ -24,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.7706254307890557,
-      "memoryBytes": 340148224,
+      "cpu": 0.770017348796267,
+      "memoryBytes": 340115456,
       "confidence": "low"
     },
     {
@@ -35,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "1.0.809",
-      "cpu": 0.9211098383606975,
+      "cpu": 0.921153689856957,
       "memoryBytes": 31277056,
       "confidence": "low"
     },
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 0.000007032002644032994,
+      "cpu": 0.000007010361314022125,
       "memoryBytes": 10190848,
       "confidence": "low"
     },
@@ -57,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.8242552735838954,
-      "memoryBytes": 137232384,
+      "cpu": 0.8336910146464085,
+      "memoryBytes": 137265152,
       "confidence": "low"
     },
     {
@@ -68,8 +68,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.017440514231200275,
+      "cpu": 0.017442102295572925,
       "memoryBytes": 37748736,
+      "confidence": "low"
+    },
+    {
+      "agentId": "835d1a1134b9b613",
+      "processName": "npm exec ccusage-codex session --json",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 18.666666666666668,
+      "memoryBytes": 151748608,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ai-router",
-      "cpu": 0.000007041807209402221,
+      "cpu": 0.000007020105582387959,
       "memoryBytes": 10190848,
       "confidence": "low"
     },
@@ -90,18 +101,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ai-router",
-      "cpu": 0.000007043394352606408,
-      "memoryBytes": 10190848,
-      "confidence": "low"
-    },
-    {
-      "agentId": "ee0ed1f17d210ad6",
-      "processName": "SkyComputerUseClient",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 0.000014098506263261408,
+      "cpu": 0.000007021682956971126,
       "memoryBytes": 10190848,
       "confidence": "low"
     }
@@ -112,5 +112,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-06-15T16:14:24.780Z"
+  "receivedAt": "2026-06-15T16:21:46.241Z"
 }
