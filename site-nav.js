@@ -8,12 +8,12 @@
     const primaryItems = [
         { key: 'nav.home', label: '首页', href: '/index.html', match: ['/index.html', '/'] },
         { key: 'nav.yearReview', label: '年度总结', href: '/year-review.html', match: ['/year-review.html'] },
-        { key: 'nav.works', label: '作品', href: '/works.html', match: ['/works.html', '/snow-white.html'] },
+        { key: 'nav.works', label: '作品', href: '/works.html', match: ['/works.html', '/works/snow-white', '/works/mirror', '/works/vocal-class-comedy-king'] },
         { key: 'nav.contact', label: '联系', href: '/contact.html', match: ['/contact.html'] }
     ];
 
     const moreItems = [
-        { key: 'nav.projects', label: '项目', href: '/projects.html', match: ['/projects.html', '/projects/socialpulse.html', '/codex-monitor.html'] },
+        { key: 'nav.projects', label: '项目', href: '/projects.html', match: ['/projects.html', '/projects/socialpulse', '/projects/codex-monitor', '/projects/song-leadsheet-database'] },
         { key: 'nav.engineering', label: '工程 / GitHub', href: '/engineering.html', match: ['/engineering.html', '/engineering'] },
         { key: 'nav.timeline', label: '时间线', href: '/timeline.html', match: ['/timeline.html'] },
         { key: 'nav.resume', label: '简历', href: '/resume.html', match: ['/resume.html', '/berklee.html'] },

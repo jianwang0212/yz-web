@@ -29,7 +29,7 @@ test('projects index separates public work from internal operations', () => {
   assert.equal(publicSection.includes('codex-monitor.html'), false);
   assert.equal(publicSection.includes('href="/projects/socialpulse"'), false);
 
-  expectIncludes(operationsSection, 'href="codex-monitor.html"');
+  expectIncludes(operationsSection, 'href="/projects/codex-monitor"');
   expectIncludes(operationsSection, 'href="/projects/socialpulse"');
   expectIncludes(operationsSection, 'data-i18n="projects.operations.title"');
 });

@@ -12,7 +12,7 @@ import feedbackHandler from './api/submit-feedback/index.js';
 import liveCallTranscribeHandler from './api/live-call/transcribe.js';
 import ziStyleReplyChatHandler from './api/zi-style-reply/chat.js';
 import ziyinVoiceoverGenerateHandler from './api/ziyin-voiceover/generate.js';
-import { findRouteAlias } from './site-routes.mjs';
+import { findRouteAlias, findRedirect } from './site-routes.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -92,6 +92,16 @@ app.all('/api/submit-feedback/index.js', wrapHandler(feedbackHandler));
 app.all('/api/live-call/transcribe', wrapHandler(liveCallTranscribeHandler));
 app.all('/api/zi-style-reply/chat', wrapHandler(ziStyleReplyChatHandler));
 app.all('/api/ziyin-voiceover/generate', wrapHandler(ziyinVoiceoverGenerateHandler));
+
+app.use((req, res, next) => {
+  const redirectTarget = findRedirect(req.path);
+  if (redirectTarget) {
+    const query = req.originalUrl.includes('?') ? `?${req.originalUrl.split('?')[1]}` : '';
+    res.redirect(301, `${redirectTarget}${query}`);
+    return;
+  }
+  next();
+});
 
 app.use((req, res, next) => {
   const resolved = resolveAliasedPath(req.path);
