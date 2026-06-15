@@ -100,9 +100,9 @@ test('berklee course page is restored with its scripts and stylesheet', () => {
 
 test('public entry points link to recovered pages', () => {
   expectIncludes(worksHtml, 'class="works-snow-feature"');
-  expectIncludes(worksHtml, 'href="/snow-white"');
+  expectIncludes(worksHtml, 'href="/works/snow-white"');
   expectIncludes(worksHtml, 'class="works-snow-feature works-mirror-feature"');
-  expectIncludes(worksHtml, 'href="/mirror"');
+  expectIncludes(worksHtml, 'href="/works/mirror"');
   expectIncludes(indexHtml, 'href="/berklee"');
   expectIncludes(indexHtml, 'href="/projects/dockingtech"');
   expectIncludes(resumeHtml, 'href="/berklee"');
