@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="BOA Finance" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="boa-finance.css?v=20260523fast1" />
+    <title>BOA Finance</title>
+  </head>
+  <body>
+    <main class="finance-shell">
+      <header class="topbar">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>Private BOA Console</p>
+          <h1>BOA Finance</h1>
+        </div>
+        <span class="source-badge" id="sourceBadge">Local</span>
+      </header>
+
+      <nav class="view-tabs" aria-label="Finance views">
+        <button type="button" class="active" data-view="overview">总览</button>
+        <button type="button" data-view="services">服务</button>
+        <button type="button" data-view="transactions">表格</button>
+      </nav>
+
+      <section class="unlock-panel" id="unlockPanel" aria-label="Unlock encrypted finance data">
+        <div>
+          <p>Encrypted BOA Data</p>
+          <h2>由 Zapp Store 解锁本机数据</h2>
+        </div>
+        <form id="unlockForm">
+          <button type="submit">回到 Zapp Store</button>
+        </form>
+        <small id="unlockStatus">公开站点只保存加密数据包，交易明细会使用 Zapp Store 的 Face ID 会话在浏览器里解密。</small>
+      </section>
+
+      <section class="summary-grid" aria-label="Finance summary">
+        <article>
+          <span>总支出</span>
+          <strong id="totalSpend">$0.00</strong>
+          <small id="totalMeta">0 笔</small>
+        </article>
+        <article>
+          <span>吃饭</span>
+          <strong id="foodSpend">$0.00</strong>
+          <small>Dining + groceries</small>
+        </article>
+        <article>
+          <span>订阅/服务</span>
+          <strong id="serviceSpend">$0.00</strong>
+          <small>软件、数字、网络、手机</small>
+        </article>
+        <article>
+          <span>检测到服务</span>
+          <strong id="serviceCount">0</strong>
+          <small id="pendingMeta">含 pending</small>
+        </article>
+      </section>
+
+      <section class="query-panel" aria-label="Quick finance question">
+        <form id="questionForm">
+          <label>
+            <span>问一句</span>
+            <input
+              id="questionInput"
+              type="search"
+              autocomplete="off"
+              placeholder="比如：4月吃饭花了多少钱 / 最大支出 / 按分类汇总 / OpenAI"
+            />
+          </label>
+          <button type="submit">查</button>
+        </form>
+        <div class="query-chips" aria-label="Common questions">
+          <button type="button" data-question="4月吃饭花了多少钱">4月吃饭</button>
+          <button type="button" data-question="5月服务和订阅">5月服务</button>
+          <button type="button" data-question="OpenAI">OpenAI</button>
+          <button type="button" data-question="按分类汇总">分类汇总</button>
+          <button type="button" data-question="最大支出">最大支出</button>
+        </div>
+        <p id="answerLine">数据已载入，可以直接问 2023-2026、任意月份、吃饭、OpenAI、最大支出或按分类汇总。</p>
+        <div class="answer-results" id="answerResults" aria-live="polite"></div>
+      </section>
+
+      <section class="view-section" id="overviewView" aria-label="Overview">
+        <div class="month-grid" id="monthCards"></div>
+        <div class="analysis-grid">
+          <section class="panel" aria-label="Category breakdown">
+            <div class="section-head">
+              <div>
+                <p>Breakdown</p>
+                <h2>分类支出</h2>
+              </div>
+              <span id="categoryTotal">$0.00</span>
+            </div>
+            <div class="bar-list" id="categoryBars"></div>
+          </section>
+          <section class="panel" aria-label="Recent transactions">
+            <div class="section-head">
+              <div>
+                <p>Recent</p>
+                <h2>最近交易</h2>
+              </div>
+              <button type="button" class="text-button" data-jump="transactions">全部</button>
+            </div>
+            <div class="compact-list" id="recentList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view-section hidden" id="servicesView" aria-label="Services">
+        <div class="service-status" id="serviceStatus"></div>
+        <div class="section-head service-head">
+          <div>
+            <p>Detected</p>
+            <h2>银行数据检测到的服务</h2>
+          </div>
+          <span id="serviceWindowTotal">$0.00</span>
+        </div>
+        <div class="service-grid" id="detectedServices"></div>
+
+        <div class="section-head service-head manual-title">
+          <div>
+            <p>Watchlist</p>
+            <h2>待确认服务</h2>
+          </div>
+        </div>
+        <form class="manual-service-form" id="manualServiceForm">
+          <label>
+            <span>名称</span>
+            <input name="name" type="text" placeholder="Pro Tools / Notability" required />
+          </label>
+          <label>
+            <span>月费</span>
+            <input name="monthly" type="number" min="0" step="0.01" placeholder="可选" />
+          </label>
+          <label class="wide-field">
+            <span>备注</span>
+            <input name="note" type="text" placeholder="例如：换卡后确认扣款来源" />
+          </label>
+          <button type="submit">添加</button>
+        </form>
+        <div class="manual-list" id="manualServices"></div>
+      </section>
+
+      <section class="view-section hidden" id="transactionsView" aria-label="Transactions">
+        <div class="filters">
+          <label>
+            <span>月份</span>
+            <select id="monthFilter"></select>
+          </label>
+          <label>
+            <span>类别</span>
+            <select id="categoryFilter"></select>
+          </label>
+          <label>
+            <span>状态</span>
+            <select id="statusFilter">
+              <option value="all">全部</option>
+              <option value="posted">Posted</option>
+              <option value="pending_observed">Pending</option>
+            </select>
+          </label>
+          <label>
+            <span>搜索</span>
+            <input id="searchFilter" type="search" placeholder="merchant / account" />
+          </label>
+        </div>
+        <section class="panel table-panel" aria-label="Categorized summary table">
+          <div class="section-head">
+            <div>
+              <p>Category Table</p>
+              <h2>分类汇总表</h2>
+            </div>
+            <span id="categoryTableTotal">$0.00</span>
+          </div>
+          <div class="data-table-wrap" id="categorySummaryTable"></div>
+        </section>
+        <div class="transaction-summary" id="transactionSummary"></div>
+        <div class="transaction-list" id="transactionList"></div>
+      </section>
+    </main>
+
+    <script type="module" src="boa-finance.js?v=20260523fast1"></script>
+  </body>
+</html>

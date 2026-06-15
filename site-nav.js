@@ -8,18 +8,14 @@
     const primaryItems = [
         { key: 'nav.home', label: '首页', href: '/index.html', match: ['/index.html', '/'] },
         { key: 'nav.yearReview', label: '年度总结', href: '/year-review.html', match: ['/year-review.html'] },
-        { key: 'nav.works', label: '作品', href: '/works.html', match: ['/works.html', '/snow-white.html'] },
-        { key: 'nav.contact', label: '联系', href: '/contact.html', match: ['/contact.html'] }
+        { key: 'nav.works', label: '作品', href: '/works.html', match: ['/works.html', '/works/snow-white', '/works/mirror', '/works/vocal-class-comedy-king'] }
     ];
 
     const moreItems = [
-        { key: 'nav.projects', label: '项目', href: '/projects.html', match: ['/projects.html', '/projects/socialpulse.html', '/codex-monitor.html'] },
+        { key: 'nav.projects', label: '项目', href: '/projects.html', match: ['/projects.html', '/projects/socialpulse', '/projects/codex-monitor', '/projects/song-leadsheet-database'] },
         { key: 'nav.engineering', label: '工程 / GitHub', href: '/engineering.html', match: ['/engineering.html', '/engineering'] },
         { key: 'nav.timeline', label: '时间线', href: '/timeline.html', match: ['/timeline.html'] },
-        { key: 'nav.resume', label: '简历', href: '/resume.html', match: ['/resume.html', '/berklee.html'] },
-        { key: 'nav.finance', label: '财务仪表盘', href: '/financial-dashboard.html', match: ['/financial-dashboard.html'] },
-        { key: 'nav.interests', label: '兴趣爱好', href: '/interests.html', match: ['/interests.html'] },
-        { key: 'nav.highlights', label: '主要亮点', href: '/highlights.html', match: ['/highlights.html'] }
+        { key: 'nav.resume', label: '简历', href: '/resume.html', match: ['/resume.html', '/berklee.html'] }
     ];
 
     function isActive(item) {
@@ -42,7 +38,7 @@
 
     nav.innerHTML = `
         <div class="container">
-            <a class="nav-brand site-title" href="/index.html" aria-label="Back to Zi Yin homepage">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zi Yin (银子) 的个人网站：量化研究、创业、Berklee 音乐制作、原创歌曲 Snow White、项目工具与长期记录。">
+    <meta property="og:title" content="Zi Yin (银子) - Quant Research, Music, Engineering">
+    <meta property="og:description" content="量化研究、创业、音乐制作与工程项目的个人作品站。">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://thisisyz.com/">
+    <meta property="og:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zi Yin (银子)">
+    <meta name="twitter:description" content="量化研究、创业、音乐制作与工程项目的个人作品站。">
+    <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
+    <link rel="canonical" href="https://thisisyz.com/">
+    <title>Zi Yin (银子) - Quant Research, Music, Engineering</title>
+    <link rel="preload" href="images/AuMusicBest.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="images/photos/academic-presentation.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=20260513-main-perf">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Zi Yin",
+        "alternateName": "银子",
+        "url": "https://thisisyz.com/",
+        "image": "https://thisisyz.com/images/hero-bg.jpg",
+        "jobTitle": ["Quantitative Researcher", "Founder", "Music Producer"],
+        "sameAs": [
+            "https://www.linkedin.com/in/zi-yin-96a61772/",
+            "https://github.com/jianwang0212"
+        ],
+        "knowsAbout": ["Quantitative trading", "Music production", "Jazz composition", "AI tools", "Entrepreneurship"]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand site-title">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
+            </div>
+            <ul class="nav-menu" id="primary-navigation">
+                <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a></li>
+                <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
+                <li><a href="works.html" data-i18n="nav.works">作品</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+                <li class="nav-menu-lang-item">
+                    <div class="nav-lang-toggle-mobile">
+                        <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                        <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+                    </div>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
+                    <div class="nav-dropdown">
+                        <a href="projects.html" data-i18n="nav.projects">项目</a>
+                        <a href="engineering.html" data-i18n="nav.engineering">Engineering</a>
+                        <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
+                        <a href="resume.html" data-i18n="nav.resume">简历</a>
+                        <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
+                        <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
+                        <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-lang-toggle">
+                <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+            </div>
+            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero hero--bg">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-avatar">
+                    <img
+                        src="images/photos/academic-presentation.webp"
+                        alt="Zi Yin"
+                        loading="eager"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+                </div>
+                <h1 class="hero-title" aria-label="量化研究员、创业者、音乐人" data-i18n-aria-label="hero.title.aria">
+                    <span class="hero-role-token" data-role-token="quant" data-i18n="hero.role.quant">量化研究员</span>
+                    <span class="hero-role-separator" aria-hidden="true">·</span>
+                    <span class="hero-role-token" data-role-token="founder" data-i18n="hero.role.founder">创业者</span>
+                    <span class="hero-role-separator" aria-hidden="true">·</span>
+                    <span class="hero-role-token" data-role-token="musician" data-i18n="hero.role.musician">音乐人</span>
+                </h1>
+                <h2 class="hero-subtitle" data-i18n="hero.subtitle">市场训练直觉，数据塑造纪律，音乐完善判断。</h2>
+
+                <div class="hero-cta" aria-label="Primary actions">
+                    <a href="mailto:silver.ziyin@gmail.com" class="cta-email cta-email-primary" data-i18n="hero.cta">联系合作</a>
+                    <a href="works.html" class="cta-secondary" data-i18n="hero.cta.secondary">查看作品</a>
+                    <a href="mailto:silver.ziyin@gmail.com" class="cta-email-mobile" data-i18n="hero.cta.mobile">联系合作</a>
+                </div>
+                
+                <div class="hero-metrics">
+                    <a class="metric-row hero-identity credential-card credential-card-link" href="https://www.a47g.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 A47G 基金详情">
+                        <div class="metric-left"><strong><span data-i18n="hero.identity.left">A47G 基金创始人</span></strong></div>
+                        <div class="metric-separator">｜</div>
+                        <div class="metric-right"><span class="metric-light" data-i18n="hero.identity.right">牛津大学量化研究员</span></div>
+                        <span class="credential-card-cta" aria-hidden="true">查看详情</span>
+                    </a>
+                    <a class="metric-row credential-card credential-card-link" href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 Citadel Securities 经历详情">
+                        <div class="metric-left"><strong><span data-i18n="hero.experience.left">Citadel Securities</span></strong></div>
+                        <div class="metric-separator">｜</div>
+                        <div class="metric-right"><span class="metric-light" data-i18n="hero.experience.right">量化交易员</span></div>
+                        <span class="credential-card-cta" aria-hidden="true">查看详情</span>
+                    </a>
+                    <a class="metric-row credential-card credential-card-link" href="/berklee" aria-label="查看 Berklee 课程详情">
+                        <div class="metric-left"><strong><span data-i18n="hero.training.left">伯克利音乐学院</span></strong></div>
+                        <div class="metric-separator">｜</div>
+                        <div class="metric-right"><strong data-i18n="hero.training.right">Music Production and Engineering; Jazz Composition<br>GPA 4.0</strong></div>
+                        <span class="credential-card-cta" aria-hidden="true">查看详情</span>
+                    </a>
+                </div>
+
+                <p class="hero-value">
+                    <span class="value-zh" data-i18n="hero.value.zh" data-lang="zh">我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。</span>
+                    <span class="value-en" data-i18n="hero.value.en" data-lang="en">I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Music Demo -->
+    <section id="home-snow" class="home-snow-feature" aria-labelledby="home-snow-title">
+        <div class="container">
+            <article class="home-snow-card">
+                <div class="home-snow-copy">
+                    <p class="home-snow-kicker">New music demo / 新作品 Demo</p>
+                    <h2 id="home-snow-title">Snow White / 白雪公主</h2>
+                    <p>银子演唱、作曲并制作的中文电影感流行 Demo。这里收录试听、歌词、曲谱、制作名单和写歌故事。</p>
+                </div>
+                <div class="home-snow-actions" role="group" aria-label="Snow White links">
+                    <a href="/snow-white" class="home-snow-primary">打开 Demo / Open</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="home-resume" class="home-resume">
+        <div class="container">
+            <div class="home-resume-layout">
+                <div class="home-resume-copy">
+                    <p class="home-resume-kicker" data-i18n="homeResume.kicker">简历</p>
+                    <h2 class="home-resume-title" data-i18n="homeResume.title">量化交易、创业与音乐创作的交叉履历</h2>
+                    <p class="home-resume-desc" data-i18n="homeResume.desc">系统化交易员、量化研究员与创业者背景；现于 Berklee 深造 Music Production and Engineering 与 Jazz Composition，GPA 4.0。</p>
+                    <a href="resume.html" class="home-resume-link" data-i18n="homeResume.link">查看完整简历</a>
+                </div>
+                <div class="home-resume-facts" aria-label="Resume highlights">
+                    <div class="home-resume-fact">
+                        <span data-i18n="homeResume.fact1.label">职业</span>
+                        <strong data-i18n="homeResume.fact1.value">Citadel Securities 量化交易员</strong>
+                    </div>
+                    <div class="home-resume-fact">
+                        <span data-i18n="homeResume.fact2.label">学术</span>
+                        <strong data-i18n="homeResume.fact2.value">Oxford MPhil · UQ 学术奖章</strong>
+                    </div>
+                    <div class="home-resume-fact">
+                        <span data-i18n="homeResume.fact3.label">音乐</span>
+                        <strong data-i18n="homeResume.fact3.value">Berklee · GPA 4.0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entry Section -->
+    <section id="entry" class="entry">
+        <div class="container">
+            <h2 class="entry-title" data-i18n="entry.title">探索不同维度的长期记录</h2>
+            <div class="entry-grid">
+                <a href="timeline.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.timeline.title">人生时间线</h3>
+                    <p class="entry-card-desc" data-i18n="entry.timeline.desc">长期决策与阶段反思记录</p>
+                    <span class="entry-card-link" data-i18n="entry.timeline.link">→ 查看时间线</span>
+                </a>
+                <a href="highlights.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.highlights.title">主要亮点</h3>
+                    <p class="entry-card-desc" data-i18n="entry.highlights.desc">学术、职业、音乐与其他成就</p>
+                    <span class="entry-card-link" data-i18n="entry.highlights.link">→ 查看亮点</span>
+                </a>
+                <a href="works.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.works.title">音乐与作品</h3>
+                    <p class="entry-card-desc" data-i18n="entry.works.desc">创作、演出与训练记录</p>
+                    <span class="entry-card-link" data-i18n="entry.works.link">→ 查看作品</span>
+                </a>
+                <a href="/essays/" class="entry-card entry-card-garden">
+                    <h3 class="entry-card-title" data-i18n="entry.essays.title">Essays / 音乐花园</h3>
+                    <p class="entry-card-desc" data-i18n="entry.essays.desc">按知识关联组织的公开文章、作品笔记和长期学习节点</p>
+                    <span class="entry-card-link" data-i18n="entry.essays.link">→ 进入音乐花园</span>
+                </a>
+                <a href="engineering.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.engineering.title">Engineering / GitHub</h3>
+                    <p class="entry-card-desc" data-i18n="entry.engineering.desc">网站架构、AI 工作流与工具系统</p>
+                    <span class="entry-card-link" data-i18n="entry.engineering.link">→ 查看工程展示</span>
+                </a>
+                <a href="year-review.html" class="entry-card">
+                    <h3 class="entry-card-title" data-i18n="entry.review.title">年度总结</h3>
+                    <p class="entry-card-desc" data-i18n="entry.review.desc">目标、复盘与偏差校正</p>
+                    <span class="entry-card-link" data-i18n="entry.review.link">→ 阅读年度总结</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlights -->
+    <section id="highlights" class="highlights" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="highlights.title">主要亮点</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3 data-i18n="highlights.academic.title">学术</h3>
+                    <ul>
+                        <li><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer" data-i18n="highlights.academic.1">昆士兰大学经济系研究助理和助教</a></li>
+                        <li><a href="https://www.ox.ac.uk/" target="_blank" rel="noopener noreferrer" data-i18n="highlights.academic.2">牛津大学疫情大数据研究项目研究员</a></li>
+                        <li><a href="https://my.uq.edu.au/information-and-services/manage-my-program/academic-progress-and-final-results/university-medals" target="_blank" rel="noopener noreferrer" data-i18n="highlights.academic.3">本科优秀毕业生，获得学术奖章</a></li>
+                    </ul>
+                </div>
+                <div class="highlight-card">
+                    <h3 data-i18n="highlights.professional.title">职业</h3>
+                    <ul>
+                        <li><a href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer" data-i18n="highlights.professional.1">Citadel Securities 量化交易员</a></li>
+                        <li><a href="https://blog.csdn.net/AIchmrobot/article/details/152118949" target="_blank" rel="noopener noreferrer" data-i18n="highlights.professional.2">入坞科技联合创始人</a></li>
+                        <li><a href="https://www.a47g.com/" target="_blank" rel="noopener noreferrer" data-i18n="highlights.professional.3">A47G 基金创始人</a></li>
+                        <li><a href="https://www.binance.com/zh-CN/about" target="_blank" rel="noopener noreferrer" data-i18n="highlights.professional.4">曾管理500万美金加密货币量化投资，年化收益120%+</a></li>
+                    </ul>
+                </div>
+                <div class="highlight-card">
+                    <h3 data-i18n="highlights.music.title">音乐</h3>
+                    <ul>
+                        <li><a href="https://www.bilibili.com/video/BV1x14y1d7qB/?share_source=copy_web&vd_source=d88d67c2553e1b5d83b3f734b0b40834" target="_blank" rel="noopener noreferrer" data-i18n="highlights.music.1">三岁起学习钢琴，通过最高等级考试</a></li>
+                        <li><a href="https://www.bilibili.com/video/BV1kc3izmELy/?share_source=copy_web&vd_source=d88d67c2553e1b5d83b3f734b0b40834" target="_blank" rel="noopener noreferrer" data-i18n="highlights.music.2">多年坚持原创音乐创作</a></li>
+                        <li><a href="https://www.berklee.edu/" target="_blank" rel="noopener noreferrer" data-i18n="highlights.music.3">现于伯克利音乐学院深造音乐制作与作曲</a></li>
+                    </ul>
+                </div>
+                <div class="highlight-card">
+                    <h3 data-i18n="highlights.other.title">其他</h3>
+                    <ul>
+                        <li><a href="https://aiesec.org/" target="_blank" rel="noopener noreferrer" data-i18n="highlights.other.1">热心参与国际志愿活动（曾赴罗马尼亚支教）</a></li>
+                        <li data-i18n="highlights.other.2">注重健身与健康（2021年体脂降至9%）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section with Toggle -->
+    <section id="experience" class="experience" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="experience.title">人生时间线</h2>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="timeline" data-i18n="experience.timeline">时间线</button>
+                    <button class="toggle-btn" data-view="theme" data-i18n="experience.theme">按主题</button>
+                    <button class="toggle-btn" data-view="articles" data-i18n="experience.articles">文章</button>
+                </div>
+            </div>
+
+            <!-- Timeline View -->
+            <div id="timeline-view" class="view-content active">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2009-2012</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2009.title">高中</h3>
+                            <p data-i18n="timeline.2009.desc">就读于长沙长郡中学（本部理科班）</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012-2016</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2012.title">大学</h3>
+                            <p data-i18n="timeline.2012.desc">就读山东大学，与澳大利亚昆士兰大学2+2联合培养，获得计量经济学学士学位</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016-2018</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2016.title">博士研究 & 创业</h3>
+                            <p data-i18n="timeline.2016.desc">获昆士兰大学计量经济学全额奖学金攻读博士（研二辍学）。联合创办 Alfie Trading，担任 CTO 兼策略开发主管</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018-2020</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2018.title">深造（学术硕士）</h3>
+                            <p data-i18n="timeline.2018.desc">就读英国牛津大学，攻读经济学哲学硕士学位。参与牛津大学新冠病毒大数据研究项目。2018年以最优成绩从昆士兰大学毕业（学术奖章）</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020-2023</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2020.title">对冲基金量化交易</h3>
+                            <p data-i18n="timeline.2020.desc">就职于 Citadel Securities（城堡证券），担任量化股票分析师和期货交易员</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023-至今</div>
+                        <div class="timeline-content">
+                            <h3 data-i18n="timeline.2023.title">创业与音乐并行</h3>
+                            <p data-i18n="timeline.2023.desc">联合创始成都入坞科技；创建 A47G 私募基金；赴伯克利音乐学院攻读音乐制作与工程、当代写作与制作以及爵士作曲方向硕士，GPA 4.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme View -->
+            <div id="theme-view" class="view-content">
+                <div class="theme-grid">
+                    <div class="theme-category">
+                        <h3 data-i18n="theme.academic.title">学术</h3>
+                        <ul>
+                            <li data-i18n="theme.academic.1">昆士兰大学经济系研究助理和助教</li>
+                            <li data-i18n="theme.academic.2">牛津大学疫情大数据研究项目研究员</li>
+                            <li data-i18n="theme.academic.3">本科优秀毕业生，获得学术奖章</li>
+                            <li data-i18n="theme.academic.4">牛津大学经济学哲学硕士学位</li>
+                        </ul>
+                    </div>
+                    <div class="theme-category">
+                        <h3 data-i18n="theme.professional.title">职业</h3>
+                        <ul>
+                            <li data-i18n="theme.professional.1">Citadel Securities 量化分析师/交易员</li>
+                            <li data-i18n="theme.professional.2">Alfie Trading 联合创始人、CTO</li>
+                            <li data-i18n="theme.professional.3">入坞科技联合创始人</li>
+                            <li data-i18n="theme.professional.4">A47G 私募基金创始人</li>
+                        </ul>
+                    </div>
+                    <div class="theme-category">
+                        <h3 data-i18n="theme.music.title">音乐</h3>
+                        <ul>
+                            <li data-i18n="theme.music.1">三岁起学习钢琴，通过最高等级考试</li>
+                            <li data-i18n="theme.music.2">多年坚持原创音乐创作</li>
+                            <li data-i18n="theme.music.3">伯克利音乐学院音乐制作与工程硕士，GPA 4.0</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles View -->
+            <div id="articles-view" class="view-content">
+                <div class="articles-container">
+                    <div class="articles-list" id="articles-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="article-detail" id="article-detail">
+                        <div class="article-placeholder">
+                            <p>请选择一篇文章查看完整内容</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Data Visualization -->
+    <section id="financial" class="financial" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="financial.title">财务概览</h2>
+            <p class="section-subtitle" data-i18n="financial.subtitle">近10年财务数据可视化（数据已脱敏处理）</p>
+            
+            <div class="financial-controls">
+                <button class="chart-btn active" data-chart="summary" data-i18n="financial.summary">摘要</button>
+                <button class="chart-btn" data-chart="trend" data-i18n="financial.trend">趋势图</button>
+                <button class="chart-btn" data-chart="table" data-i18n="financial.table">数据表</button>
+            </div>
+
+            <div id="chart-container" class="chart-container">
+                <div id="summary-view" class="chart-view active">
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <h4 data-i18n="financial.summary.1.title">投资表现</h4>
+                            <p data-i18n="financial.summary.1.desc">加密货币量化投资年化收益率超过120%</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4 data-i18n="financial.summary.2.title">基金规模</h4>
+                            <p data-i18n="financial.summary.2.desc">A47G 基金持续增长</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4 data-i18n="financial.summary.3.title">风险控制</h4>
+                            <p data-i18n="financial.summary.3.desc">严格的风险管理体系，回撤控制在合理范围</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="trend-view" class="chart-view">
+                    <canvas id="financial-chart"></canvas>
+                </div>
+                <div id="table-view" class="chart-view">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="financial.table.year">年份</th>
+                                <th data-i18n="financial.table.category">类别</th>
+                                <th data-i18n="financial.table.performance">表现</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financial-table-body">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests & Hobbies -->
+    <section id="interests" class="interests" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="interests.title">兴趣爱好</h2>
+            
+            <div class="interests-grid">
+                <div class="interest-category">
+                    <h3 data-i18n="interests.music.title">音乐</h3>
+                    <ul>
+                        <li data-i18n="interests.music.piano">钢琴：三岁起学习古典钢琴，12岁考取钢琴十级</li>
+                        <li data-i18n="interests.music.guitar">吉他：自高中起练习木吉他弹唱，曾组建/加入多个乐队</li>
+                        <li data-i18n="interests.music.drums">架子鼓：2018年开始自学架子鼓</li>
+                        <li data-i18n="interests.music.other">其他：略懂小提琴，热爱唱歌，擅长词曲创作</li>
+                    </ul>
+                </div>
+                <div class="interest-category">
+                    <h3 data-i18n="interests.sports.title">运动</h3>
+                    <ul>
+                        <li data-i18n="interests.sports.fitness">健身：自2014年开始坚持力量训练（2021年体脂率9%）</li>
+                        <li data-i18n="interests.sports.tennis">网球：2016年起开始练习网球</li>
+                        <li data-i18n="interests.sports.other">其他：游泳、滑冰、滑雪、骑行</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works & Media -->
+    <section id="works" class="works" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="works.title">作品与社交媒体</h2>
+            
+            <!-- Music Player -->
+            <div class="music-player-section">
+                <h3 data-i18n="works.music.title">音乐作品</h3>
+                <div class="music-player">
+                    <div class="player-controls">
+                        <button class="play-btn" id="play-btn">▶</button>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <span class="time" id="current-time">0:00</span>
+                        <span class="time" id="total-time">0:00</span>
+                    </div>
+                    <div class="playlist" id="playlist">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Works Links -->
+            <div class="works-grid">
+                <a href="https://zhuanlan.zhihu.com/p/411636643" target="_blank" rel="noopener noreferrer" class="work-link">
+                    <div class="work-icon">📝</div>
+                    <h4 data-i18n="works.zhihu.title">知乎专栏</h4>
+                    <p data-i18n="works.zhihu.desc">《为什么当一名交易员会累》</p>
+                </a>
+                <a href="https://music.163.com/#/song?id=1921358902" target="_blank" rel="noopener noreferrer" class="work-link" id="netease-link">
+                    <div class="work-icon">🎵</div>
+                    <h4 data-i18n="works.netease.title">网易云音乐</h4>
+                    <p data-i18n="works.netease.desc">原创歌曲及电台节目</p>
+                </a>
+                <a href="https://www.youtube.com/channel/UCMmj3zBve9CXt5V46Wyy2aQ" target="_blank" rel="noopener noreferrer" class="work-link" id="youtube-link">
+                    <div class="work-icon">📺</div>
+                    <h4 data-i18n="works.youtube.title">YouTube</h4>
+                    <p data-i18n="works.youtube.desc">个人频道/视频</p>
+                </a>
+                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer" class="work-link" id="linkedin-link">
+                    <div class="work-icon">💼</div>
+                    <h4 data-i18n="works.linkedin.title">LinkedIn</h4>
+                    <p data-i18n="works.linkedin.desc">职业档案</p>
+                </a>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <h3 data-i18n="works.download.title">作品下载</h3>
+                <div class="download-grid" id="download-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Plans -->
+    <section id="future" class="future" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="future.title">未来展望</h2>
+            <div class="future-content">
+                <div class="future-item">
+                    <h3 data-i18n="future.career.title">职业愿景</h3>
+                    <p data-i18n="future.career.desc">在科技金融领域继续创新，推动创业项目取得阶段性成果</p>
+                </div>
+                <div class="future-item">
+                    <h3 data-i18n="future.music.title">音乐目标</h3>
+                    <p data-i18n="future.music.desc">发行个人音乐作品，尝试将科技和音乐融合</p>
+                </div>
+                <div class="future-item">
+                    <h3 data-i18n="future.personal.title">个人发展</h3>
+                    <p data-i18n="future.personal.desc">继续挑战自我，在多元领域保持平衡发展</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" style="display: none;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact.title">联系方式</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p data-i18n="contact.message">有任何交流或合作意向，欢迎发送邮件联系</p>
+                    <div class="contact-links">
+                        <a href="mailto:silver.ziyin@gmail.com" class="contact-link">
+                            <span>📧</span> silver.ziyin@gmail.com
+                        </a>
+                    </div>
+                    <p class="contact-signature" data-i18n="contact.signature">期待您的来信，欢迎交流，共同探讨有趣的话题</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Zi Yin</p>
+            <div class="footer-links">
+                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
+                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="i18n.js?v=20260513-main-perf" defer></script>
+    <script src="script.js?v=20260513-main-perf" defer></script>
+</body>
+</html>

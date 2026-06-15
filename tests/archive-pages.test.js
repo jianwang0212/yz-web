@@ -34,7 +34,7 @@ test('berklee course page is restored with its scripts and stylesheet', () => {
 
 test('public entry points link to recovered pages', () => {
   expectIncludes(worksHtml, 'class="works-snow-feature"');
-  expectIncludes(worksHtml, 'href="/snow-white"');
+  expectIncludes(worksHtml, 'href="/works/snow-white"');
   expectIncludes(indexHtml, 'href="/berklee"');
   expectIncludes(resumeHtml, 'href="/berklee"');
 });

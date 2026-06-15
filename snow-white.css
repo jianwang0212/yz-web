@@ -410,6 +410,11 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     padding: 78px 0;
 }
 
+.snow-section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: 900px;
+}
+
 .snow-section-header {
     max-width: 740px;
     margin-bottom: 28px;
@@ -1156,5 +1161,1699 @@ html[lang="en"] .snow-white-page [lang="zh-Hant"] {
     }
     50% {
         transform: translateY(-8px);
+    }
+}
+
+/* 2026 cyber-fairytale visual refresh */
+.snow-white-page {
+    --snow-ink: #07101d;
+    --snow-muted: #5f6f86;
+    --snow-paper: #f7fbff;
+    --snow-cream: #eaf4ff;
+    --snow-red: #ff6f9f;
+    --snow-green: #2ed5c0;
+    --snow-gold: #e8c46a;
+    --snow-blue: #72ddff;
+    --snow-violet: #6f7dff;
+    --snow-midnight: #081322;
+    --snow-line: rgba(9, 21, 38, 0.12);
+    --snow-shadow: 0 24px 80px rgba(11, 24, 44, 0.16);
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 8% 2%, rgba(255, 138, 183, 0.22), transparent 30rem),
+        radial-gradient(circle at 88% 8%, rgba(114, 221, 255, 0.2), transparent 34rem),
+        linear-gradient(180deg, #f9fcff 0%, #eef7ff 42%, #fff8fb 100%);
+    color: var(--snow-ink);
+    font-family: "Inter", "Noto Serif SC", sans-serif;
+}
+
+.snow-white-page .snow-nav {
+    border-bottom: 1px solid rgba(234, 247, 255, 0.16);
+    background: rgba(7, 16, 29, 0.78);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(18px);
+}
+
+.snow-white-page .snow-nav a,
+.snow-white-page .snow-brand,
+.snow-white-page .name-en,
+.snow-white-page .name-zh,
+.snow-white-page .name-sep {
+    color: #eef8ff;
+}
+
+.snow-white-page .hamburger span {
+    background: #eef8ff;
+}
+
+.snow-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    padding: 124px 24px 76px;
+    overflow: hidden;
+    color: #f6fbff;
+    background: var(--snow-midnight);
+}
+
+.snow-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(90deg, rgba(5, 11, 22, 0.94) 0%, rgba(8, 19, 34, 0.78) 38%, rgba(8, 19, 34, 0.2) 70%, rgba(8, 19, 34, 0.5) 100%),
+        radial-gradient(circle at 78% 22%, rgba(255, 124, 174, 0.26), transparent 22rem),
+        radial-gradient(circle at 22% 76%, rgba(114, 221, 255, 0.18), transparent 24rem),
+        url("assets/snow-white/covers/optimized/visual-07-dream-closeup-900.webp") center right 12% / min(48rem, 78vw) auto no-repeat,
+        #081322;
+}
+
+.snow-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.34;
+    background:
+        linear-gradient(rgba(234, 247, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 247, 255, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.7) 48%, transparent 100%);
+}
+
+.snow-hero-shell {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1320px);
+    min-height: calc(100vh - 200px);
+    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+    gap: 54px;
+}
+
+.snow-hero-copy {
+    max-width: 780px;
+}
+
+.snow-kicker {
+    color: var(--snow-green);
+    letter-spacing: 0;
+}
+
+.snow-hero h1,
+.snow-section h2,
+.cover-runway-heading h3 {
+    font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+    letter-spacing: 0;
+}
+
+.snow-hero h1 {
+    max-width: 760px;
+    color: #f8fcff;
+    font-size: 6.4rem;
+    line-height: 0.9;
+    font-weight: 700;
+    text-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.snow-hero h1 span {
+    margin-top: 0.16em;
+    color: #ffd9e8;
+    font-size: 4.2rem;
+    font-family: "Noto Serif SC", serif;
+    font-weight: 900;
+}
+
+.snow-subtitle {
+    max-width: 720px;
+    color: rgba(239, 248, 255, 0.84);
+}
+
+.snow-release-strip span {
+    border-color: rgba(234, 247, 255, 0.22);
+    border-radius: 8px;
+    color: #d9f3ff;
+    background: rgba(234, 247, 255, 0.08);
+}
+
+.snow-hero-cta a {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #06101e;
+    background: linear-gradient(135deg, #f8fcff, #ffd9e8);
+    box-shadow: 0 18px 46px rgba(255, 111, 159, 0.28);
+}
+
+.snow-hero-cta a + a {
+    color: #f6fbff;
+    border-color: rgba(234, 247, 255, 0.22);
+    background: rgba(234, 247, 255, 0.1);
+    box-shadow: none;
+}
+
+.snow-hero-cta a:hover,
+.snow-hero-cta a:focus-visible {
+    color: #06101e;
+    background: var(--snow-blue);
+    box-shadow: 0 20px 60px rgba(114, 221, 255, 0.28);
+}
+
+.snow-meta-grid {
+    max-width: 800px;
+}
+
+.snow-meta-grid div,
+.snow-audio-panel {
+    border-color: rgba(234, 247, 255, 0.16);
+    background: rgba(8, 19, 34, 0.56);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(18px);
+}
+
+.snow-meta-grid span,
+.snow-audio-header span {
+    color: rgba(216, 239, 255, 0.7);
+}
+
+.snow-meta-grid strong,
+.snow-audio-header strong {
+    color: #f7fbff;
+}
+
+.snow-audio-header a {
+    border-color: rgba(114, 221, 255, 0.32);
+    color: #d9f3ff;
+    background: rgba(114, 221, 255, 0.08);
+}
+
+#snow-visualizer {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255, 111, 159, 0.26), transparent 18rem),
+        linear-gradient(180deg, rgba(234, 247, 255, 0.1), rgba(8, 19, 34, 0.46)),
+        repeating-linear-gradient(90deg, rgba(234, 247, 255, 0.1) 0, rgba(234, 247, 255, 0.1) 1px, transparent 1px, transparent 34px);
+}
+
+.snow-hero-art {
+    position: relative;
+    min-height: 680px;
+    perspective: 1200px;
+}
+
+.hero-cover-card {
+    position: absolute;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(234, 247, 255, 0.22);
+    border-radius: 8px;
+    background: rgba(8, 19, 34, 0.72);
+    box-shadow: 0 36px 110px rgba(0, 0, 0, 0.38);
+}
+
+.hero-cover-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-cover-main {
+    top: 4px;
+    right: 9%;
+    width: min(64%, 420px);
+    aspect-ratio: 0.64;
+    transform: rotate(2deg) translateZ(24px);
+}
+
+.hero-cover-main::after,
+.visual-feature-card::after,
+.poster-showcase::after,
+.cover-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.24) 46%, transparent 62%);
+    transform: translateX(-125%);
+    animation: snow-shimmer 8s ease-in-out infinite;
+}
+
+.hero-cover-main figcaption {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px;
+    border: 1px solid rgba(234, 247, 255, 0.2);
+    border-radius: 8px;
+    color: #f6fbff;
+    background: rgba(5, 11, 22, 0.62);
+    backdrop-filter: blur(16px);
+}
+
+.hero-cover-main figcaption span,
+.poster-showcase span,
+.cover-runway-heading span,
+.cover-card span {
+    display: block;
+    color: var(--snow-blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.hero-cover-main figcaption strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.2rem;
+}
+
+.hero-cover-side {
+    width: min(36%, 250px);
+}
+
+.hero-cover-side-a {
+    left: 0;
+    top: 16%;
+    aspect-ratio: 1.36;
+    transform: rotate(-5deg);
+}
+
+.hero-cover-side-b {
+    right: 0;
+    bottom: 16%;
+    aspect-ratio: 0.8;
+    transform: rotate(6deg);
+}
+
+.hero-season-card {
+    left: 5%;
+    right: auto;
+    bottom: 5%;
+    width: min(58%, 360px);
+    border-color: rgba(234, 247, 255, 0.2);
+    color: #f6fbff;
+    background:
+        linear-gradient(135deg, rgba(8, 19, 34, 0.82), rgba(255, 111, 159, 0.16)),
+        repeating-linear-gradient(90deg, rgba(114, 221, 255, 0.14) 0, rgba(114, 221, 255, 0.14) 1px, transparent 1px, transparent 18px);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.hero-season-card span,
+.hero-season-card small {
+    color: rgba(234, 247, 255, 0.72);
+}
+
+.hero-season-card strong {
+    color: #f8fcff;
+}
+
+.snow-section {
+    width: min(100% - 48px, 1240px);
+    padding: 88px 0;
+}
+
+.snow-section-header {
+    max-width: 860px;
+}
+
+.snow-section h2 {
+    color: var(--snow-ink);
+    font-size: 3.4rem;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.section-lede {
+    color: var(--snow-muted);
+}
+
+.section-lede span,
+.snow-section h2 span {
+    display: block;
+}
+
+.overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.overview-grid article,
+.notes-grid article,
+.season-feature,
+.episode-card,
+.credits-card,
+.story-stats,
+.resource-list,
+.resource-feature {
+    border-color: var(--snow-line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: var(--snow-shadow);
+    backdrop-filter: blur(18px);
+}
+
+.overview-grid article {
+    min-height: 250px;
+}
+
+.overview-grid article span {
+    color: var(--snow-red);
+    font-weight: 900;
+}
+
+.overview-grid article h3,
+.notes-grid article h3,
+.credits-card h3 {
+    color: var(--snow-ink);
+}
+
+.overview-grid article p,
+.notes-grid article p,
+.credits-card dd,
+.musician-list strong {
+    color: var(--snow-muted);
+}
+
+.snow-visuals {
+    width: min(100% - 48px, 1320px);
+}
+
+.visual-feature-grid {
+    display: flex;
+    gap: 16px;
+    margin-top: 34px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(199, 91, 149, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.visual-feature-card {
+    position: relative;
+    flex: 0 0 min(86vw, 860px);
+    aspect-ratio: 3 / 2;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border: 1px solid rgba(9, 21, 38, 0.12);
+    border-radius: 8px;
+    background: #07101d;
+    box-shadow: var(--snow-shadow);
+}
+
+.visual-feature-large {
+    min-height: 0;
+}
+
+.visual-feature-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.visual-feature-card figcaption {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 16px;
+    border: 1px solid rgba(234, 247, 255, 0.18);
+    border-radius: 8px;
+    color: #f6fbff;
+    background: linear-gradient(135deg, rgba(5, 11, 22, 0.72), rgba(8, 19, 34, 0.42));
+    backdrop-filter: blur(16px);
+}
+
+.visual-feature-card figcaption span {
+    color: var(--snow-blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.visual-feature-card figcaption strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.16rem;
+}
+
+.visual-feature-card figcaption p {
+    margin: 8px 0 0;
+    color: rgba(234, 247, 255, 0.72);
+    line-height: 1.6;
+}
+
+.poster-showcase {
+    position: relative;
+    min-height: 520px;
+    margin-top: 16px;
+    overflow: hidden;
+    border: 1px solid var(--snow-line);
+    border-radius: 8px;
+    background: #07101d;
+    box-shadow: var(--snow-shadow);
+}
+
+.poster-showcase img {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.poster-showcase > div {
+    position: absolute;
+    left: 22px;
+    bottom: 22px;
+    width: min(440px, calc(100% - 44px));
+    padding: 18px;
+    border: 1px solid rgba(234, 247, 255, 0.18);
+    border-radius: 8px;
+    color: #f6fbff;
+    background: rgba(5, 11, 22, 0.7);
+    backdrop-filter: blur(18px);
+}
+
+.poster-showcase strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 1.35rem;
+}
+
+.poster-showcase p {
+    margin: 9px 0 0;
+    color: rgba(234, 247, 255, 0.78);
+    line-height: 1.65;
+}
+
+.cover-runway-heading {
+    max-width: 760px;
+    margin-top: 52px;
+}
+
+.cover-runway-heading h3 {
+    margin: 8px 0 10px;
+    font-size: 2.4rem;
+    line-height: 1.02;
+}
+
+.cover-runway-heading p {
+    margin: 0;
+    color: var(--snow-muted);
+    line-height: 1.7;
+}
+
+.cover-runway {
+    display: flex;
+    gap: 14px;
+    margin-top: 22px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-color: rgba(199, 91, 149, 0.42) transparent;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cover-card {
+    position: relative;
+    flex: 0 0 clamp(220px, 22vw, 320px);
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border: 1px solid rgba(9, 21, 38, 0.12);
+    border-radius: 8px;
+    background: #07101d;
+    box-shadow: 0 20px 54px rgba(11, 24, 44, 0.14);
+}
+
+.cover-card img {
+    width: 100%;
+    height: clamp(360px, 38vw, 540px);
+    display: block;
+    object-fit: cover;
+}
+
+.cover-card figcaption {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px;
+    border: 1px solid rgba(234, 247, 255, 0.16);
+    border-radius: 8px;
+    color: #f6fbff;
+    background: rgba(5, 11, 22, 0.68);
+    backdrop-filter: blur(14px);
+}
+
+.cover-card strong,
+.cover-card small {
+    display: block;
+}
+
+.cover-card strong {
+    margin-top: 4px;
+    font-size: 0.95rem;
+}
+
+.cover-card small {
+    margin-top: 2px;
+    color: rgba(234, 247, 255, 0.66);
+}
+
+.cover-card-final {
+    outline: 2px solid rgba(255, 111, 159, 0.52);
+    outline-offset: -2px;
+}
+
+.story-copy h2,
+.snow-story h2 {
+    font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+}
+
+.story-stats {
+    background:
+        linear-gradient(135deg, rgba(8, 19, 34, 0.92), rgba(255, 111, 159, 0.14)),
+        url("assets/snow-white/covers/optimized/visual-03-snow-castle-1200.webp") center / cover;
+    color: #f6fbff;
+}
+
+.story-stats span {
+    color: rgba(234, 247, 255, 0.74);
+}
+
+.season-feature-media,
+.episode-card figure {
+    background: #07101d;
+}
+
+.season-feature-media img,
+.episode-card figure img {
+    object-fit: cover;
+}
+
+.play-mark {
+    border-color: rgba(234, 247, 255, 0.34);
+    background: rgba(5, 11, 22, 0.58);
+}
+
+.resource-preview img {
+    background: #eef7ff;
+}
+
+.snow-footer {
+    background:
+        radial-gradient(circle at 20% 0%, rgba(255, 111, 159, 0.22), transparent 24rem),
+        #07101d;
+}
+
+.snow-footer a,
+.snow-footer p {
+    color: #eef8ff;
+}
+
+@media (max-width: 1080px) {
+    .snow-hero-shell {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .snow-hero-art {
+        min-height: 620px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-feature-grid {
+        gap: 14px;
+    }
+
+    .visual-feature-card,
+    .visual-feature-large {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .snow-hero {
+        min-height: 0;
+        padding: 104px 18px 58px;
+    }
+
+    .snow-hero::before {
+        background:
+            linear-gradient(180deg, rgba(5, 11, 22, 0.82) 0%, rgba(8, 19, 34, 0.74) 52%, rgba(8, 19, 34, 0.9) 100%),
+            url("assets/snow-white/covers/optimized/visual-07-dream-closeup-900.webp") center top / cover no-repeat,
+            #081322;
+    }
+
+    .snow-hero-shell {
+        min-height: 0;
+    }
+
+    .snow-hero h1 {
+        font-size: 3.7rem;
+    }
+
+    .snow-hero h1 span {
+        font-size: 2.45rem;
+    }
+
+    .snow-subtitle {
+        font-size: 1rem;
+    }
+
+    .snow-meta-grid,
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .snow-hero-art {
+        min-height: 500px;
+    }
+
+    .hero-cover-main {
+        right: 4%;
+        width: 64%;
+    }
+
+    .hero-cover-side-a {
+        left: 0;
+        top: 19%;
+        width: 42%;
+    }
+
+    .hero-cover-side-b {
+        display: none;
+    }
+
+    .hero-season-card {
+        left: 0;
+        bottom: 0;
+        width: 78%;
+    }
+
+    .snow-section {
+        width: min(100% - 28px, 1240px);
+        padding: 64px 0;
+    }
+
+    .snow-section h2 {
+        font-size: 2.25rem;
+    }
+
+    .poster-showcase,
+    .poster-showcase img {
+        min-height: 390px;
+    }
+
+    .visual-feature-card {
+        flex-basis: min(88vw, 640px);
+        aspect-ratio: 4 / 3;
+    }
+
+    .visual-feature-card figcaption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 14px;
+    }
+
+    .cover-card {
+        flex-basis: min(72vw, 330px);
+    }
+}
+
+@media (max-width: 480px) {
+    .snow-hero h1 {
+        font-size: 3.1rem;
+    }
+
+    .snow-hero h1 span {
+        font-size: 2.05rem;
+    }
+
+    .snow-hero-art {
+        min-height: 430px;
+    }
+
+    .hero-season-card {
+        width: 88%;
+    }
+
+    .cover-card img {
+        min-height: 0;
+        height: clamp(350px, 62vw, 430px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-cover-main::after,
+    .visual-feature-card::after,
+    .poster-showcase::after,
+    .cover-card::after {
+        animation: none;
+    }
+}
+
+/* Light Snow White refinement */
+.snow-white-page {
+    --snow-ink: #301926;
+    --snow-muted: #7b6674;
+    --snow-paper: #fff8fc;
+    --snow-cream: #fff1f7;
+    --snow-red: #d85f9d;
+    --snow-green: #9f6b84;
+    --snow-gold: #d5a86e;
+    --snow-blue: #9fd8f5;
+    --snow-violet: #b9a8ff;
+    --snow-midnight: #fff8fc;
+    --snow-line: rgba(216, 95, 157, 0.18);
+    --snow-shadow: 0 24px 80px rgba(184, 92, 139, 0.16);
+    background:
+        radial-gradient(circle at 13% 4%, rgba(255, 189, 218, 0.52), transparent 28rem),
+        radial-gradient(circle at 86% 12%, rgba(208, 236, 255, 0.72), transparent 30rem),
+        linear-gradient(180deg, #fffafd 0%, #fff1f7 36%, #f6fbff 68%, #fffafd 100%);
+}
+
+.snow-white-page .snow-nav {
+    border-bottom: 1px solid rgba(216, 95, 157, 0.14);
+    background: rgba(255, 250, 253, 0.82);
+    box-shadow: 0 14px 50px rgba(184, 92, 139, 0.12);
+}
+
+.snow-white-page .snow-nav a,
+.snow-white-page .snow-brand,
+.snow-white-page .name-en,
+.snow-white-page .name-zh,
+.snow-white-page .name-sep {
+    color: #301926;
+}
+
+.snow-white-page .hamburger span {
+    background: #301926;
+}
+
+.snow-hero {
+    color: #301926;
+    background: #fff8fc;
+}
+
+.snow-hero::before {
+    background:
+        linear-gradient(90deg, rgba(255, 250, 253, 0.98) 0%, rgba(255, 246, 251, 0.9) 42%, rgba(255, 246, 251, 0.52) 72%, rgba(255, 250, 253, 0.84) 100%),
+        radial-gradient(circle at 24% 16%, rgba(255, 190, 219, 0.56), transparent 24rem),
+        radial-gradient(circle at 78% 14%, rgba(210, 237, 255, 0.62), transparent 28rem),
+        url("assets/snow-white/covers/optimized/visual-07-dream-closeup-900.webp") center right 7% / min(48rem, 76vw) auto no-repeat,
+        #fff8fc;
+}
+
+.snow-hero::after {
+    opacity: 0.36;
+    background:
+        linear-gradient(rgba(216, 95, 157, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(216, 95, 157, 0.08) 1px, transparent 1px);
+    mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.82) 55%, transparent 100%);
+}
+
+.snow-kicker {
+    color: #c75b95;
+}
+
+.snow-hero h1 {
+    color: #321526;
+    text-shadow: 0 18px 50px rgba(216, 95, 157, 0.18);
+}
+
+.snow-hero h1 span {
+    color: #d85f9d;
+}
+
+.snow-subtitle {
+    color: rgba(48, 25, 38, 0.76);
+}
+
+.snow-hero-cta a {
+    border-color: rgba(216, 95, 157, 0.2);
+    color: #fffafd;
+    background: linear-gradient(135deg, #d85f9d, #ff9fca);
+    box-shadow: 0 18px 46px rgba(216, 95, 157, 0.25);
+}
+
+.snow-hero-cta a + a {
+    color: #4b2437;
+    border-color: rgba(216, 95, 157, 0.24);
+    background: rgba(255, 255, 255, 0.62);
+    box-shadow: 0 14px 42px rgba(184, 92, 139, 0.1);
+}
+
+.snow-hero-cta a:hover,
+.snow-hero-cta a:focus-visible {
+    color: #301926;
+    background: #fce8f2;
+    box-shadow: 0 18px 54px rgba(216, 95, 157, 0.22);
+}
+
+.snow-meta-grid div,
+.snow-audio-panel {
+    border-color: rgba(216, 95, 157, 0.18);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 24px 80px rgba(184, 92, 139, 0.13);
+}
+
+.snow-meta-grid span,
+.snow-audio-header span,
+.hero-season-card span,
+.hero-season-card small {
+    color: rgba(89, 54, 73, 0.72);
+}
+
+.snow-meta-grid strong,
+.snow-audio-header strong,
+.hero-season-card strong {
+    color: #301926;
+}
+
+.snow-audio-header a {
+    border-color: rgba(216, 95, 157, 0.24);
+    color: #9d3d72;
+    background: rgba(255, 238, 247, 0.74);
+}
+
+#snow-visualizer {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255, 159, 202, 0.32), transparent 18rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 238, 247, 0.72)),
+        repeating-linear-gradient(90deg, rgba(216, 95, 157, 0.12) 0, rgba(216, 95, 157, 0.12) 1px, transparent 1px, transparent 34px);
+}
+
+.hero-cover-card,
+.visual-feature-card,
+.poster-showcase,
+.cover-card {
+    border-color: rgba(216, 95, 157, 0.18);
+    background-color: #fffafd;
+    box-shadow: 0 28px 80px rgba(184, 92, 139, 0.16);
+}
+
+.hero-cover-main figcaption,
+.visual-feature-card figcaption,
+.poster-showcase > div,
+.cover-card figcaption {
+    border-color: rgba(216, 95, 157, 0.18);
+    color: #301926;
+    background: rgba(255, 250, 253, 0.78);
+    box-shadow: 0 18px 50px rgba(184, 92, 139, 0.13);
+}
+
+.hero-cover-main figcaption span,
+.poster-showcase span,
+.cover-runway-heading span,
+.cover-card span,
+.visual-feature-card figcaption span {
+    color: #c75b95;
+}
+
+.hero-cover-main figcaption strong,
+.visual-feature-card figcaption strong,
+.poster-showcase strong,
+.cover-card strong,
+.cover-card small {
+    color: #301926;
+}
+
+.visual-feature-card figcaption p,
+.poster-showcase p {
+    color: rgba(48, 25, 38, 0.72);
+}
+
+.hero-season-card {
+    border-color: rgba(216, 95, 157, 0.2);
+    color: #301926;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 253, 0.88), rgba(255, 229, 241, 0.78)),
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center / cover;
+    background-blend-mode: screen;
+    box-shadow: 0 24px 70px rgba(184, 92, 139, 0.18);
+}
+
+.overview-grid article,
+.notes-grid article,
+.season-feature,
+.episode-card,
+.credits-card,
+.story-stats,
+.resource-list,
+.resource-feature {
+    border-color: rgba(216, 95, 157, 0.16);
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: var(--snow-shadow);
+}
+
+.snow-section h2,
+.cover-runway-heading h3,
+.story-copy h2,
+.snow-story h2 {
+    color: #301926;
+}
+
+.story-stats {
+    background:
+        linear-gradient(135deg, rgba(255, 250, 253, 0.9), rgba(255, 229, 241, 0.72)),
+        url("assets/snow-white/covers/optimized/visual-03-snow-castle-1200.webp") center / cover;
+    background-blend-mode: screen;
+    color: #301926;
+}
+
+.story-stats span {
+    color: rgba(48, 25, 38, 0.7);
+}
+
+.notes-grid article {
+    position: relative;
+    min-height: 290px;
+    overflow: hidden;
+}
+
+.notes-grid article::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    background-position: center;
+    background-size: cover;
+}
+
+.notes-grid article::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 250, 253, 0.88), rgba(255, 250, 253, 0.62));
+}
+
+.notes-grid article > * {
+    position: relative;
+    z-index: 1;
+}
+
+.notes-grid article:nth-child(1)::before {
+    background-image: url("assets/snow-white/covers/optimized/visual-05-mirror-1100.webp");
+}
+
+.notes-grid article:nth-child(2)::before {
+    background-image: url("assets/snow-white/covers/optimized/visual-02-empty-room-1100.webp");
+}
+
+.notes-grid article:nth-child(3)::before {
+    background-image: url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp");
+}
+
+.season-feature-media,
+.episode-card figure,
+.play-mark {
+    background: #fff1f7;
+}
+
+.play-mark {
+    border-color: rgba(216, 95, 157, 0.32);
+}
+
+.cover-card {
+    background-position: center;
+    background-size: cover;
+}
+
+.cover-card img {
+    min-height: 320px;
+    background: transparent;
+}
+
+.cover-card-final {
+    outline-color: rgba(216, 95, 157, 0.62);
+}
+
+.resource-preview {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 253, 0.82), rgba(255, 229, 241, 0.5)),
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center / cover;
+    background-blend-mode: screen;
+}
+
+.resource-preview img {
+    min-height: 420px;
+    object-fit: cover;
+    background: #fff1f7;
+}
+
+.snow-footer {
+    background:
+        radial-gradient(circle at 22% 0%, rgba(255, 189, 218, 0.64), transparent 24rem),
+        linear-gradient(135deg, #fff8fc, #ffeef6);
+    border-top: 1px solid rgba(216, 95, 157, 0.14);
+}
+
+.snow-footer a,
+.snow-footer p {
+    color: #301926;
+}
+
+@media (max-width: 760px) {
+    .snow-hero::before {
+        background:
+            linear-gradient(180deg, rgba(255, 250, 253, 0.78) 0%, rgba(255, 246, 251, 0.82) 50%, rgba(255, 250, 253, 0.96) 100%),
+            url("assets/snow-white/covers/optimized/visual-07-dream-closeup-900.webp") center top / cover no-repeat,
+            #fff8fc;
+    }
+
+    .cover-card img {
+        min-height: 0;
+    }
+}
+
+/* Premium Snow White polish */
+.snow-white-page {
+    --snow-ink: #2b1720;
+    --snow-muted: #755f69;
+    --snow-paper: #fffaf8;
+    --snow-cream: #fbf1f2;
+    --snow-red: #a95f73;
+    --snow-green: #8f6571;
+    --snow-gold: #b99462;
+    --snow-blue: #d8ebf0;
+    --snow-violet: #c9b6bd;
+    --snow-line: rgba(115, 65, 80, 0.16);
+    --snow-shadow: 0 26px 90px rgba(99, 54, 68, 0.14);
+    background:
+        radial-gradient(circle at 12% 2%, rgba(236, 210, 216, 0.58), transparent 30rem),
+        radial-gradient(circle at 92% 12%, rgba(216, 235, 240, 0.78), transparent 34rem),
+        linear-gradient(180deg, #fffaf8 0%, #fbf1f2 44%, #f7fbfc 100%);
+}
+
+.snow-white-page .snow-nav {
+    background: rgba(255, 250, 248, 0.88);
+    box-shadow: 0 16px 50px rgba(99, 54, 68, 0.1);
+}
+
+.snow-kicker {
+    color: #a95f73;
+    font-size: 0.74rem;
+}
+
+.snow-hero {
+    background: #fffaf8;
+}
+
+.snow-hero::before {
+    background:
+        linear-gradient(90deg, rgba(255, 250, 248, 0.98) 0%, rgba(255, 250, 248, 0.9) 42%, rgba(255, 250, 248, 0.54) 100%),
+        radial-gradient(circle at 20% 20%, rgba(225, 190, 199, 0.4), transparent 26rem),
+        url("assets/snow-white/covers/optimized/visual-07-dream-closeup-900.webp") center right / cover no-repeat,
+        #fffaf8;
+}
+
+.snow-hero::after {
+    opacity: 0.18;
+    background:
+        linear-gradient(rgba(115, 65, 80, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(115, 65, 80, 0.08) 1px, transparent 1px);
+}
+
+.snow-hero h1,
+.snow-section h2,
+.cover-runway-heading h3,
+.story-copy h2,
+.snow-story h2 {
+    font-family: "Noto Serif SC", "Songti SC", serif;
+}
+
+.snow-hero h1 {
+    color: #2b1720;
+    font-size: 6.1rem;
+    font-weight: 900;
+    line-height: 0.94;
+    text-shadow: 0 22px 70px rgba(99, 54, 68, 0.14);
+}
+
+.snow-hero h1 span {
+    color: #a95f73;
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: 4.55rem;
+    font-weight: 700;
+}
+
+.snow-subtitle {
+    max-width: 660px;
+    color: rgba(43, 23, 32, 0.72);
+    font-size: 1.08rem;
+}
+
+.snow-hero-cta a {
+    color: #fffaf8;
+    background: linear-gradient(135deg, #8f4e62, #b97888);
+    box-shadow: 0 18px 54px rgba(143, 78, 98, 0.24);
+}
+
+.snow-hero-cta a + a {
+    color: #3a202a;
+    border-color: rgba(115, 65, 80, 0.16);
+    background: rgba(255, 250, 248, 0.74);
+}
+
+.snow-meta-grid div,
+.snow-audio-panel,
+.overview-grid article,
+.notes-grid article,
+.season-feature,
+.episode-card,
+.credits-card,
+.resource-list,
+.resource-feature,
+.lyrics-grid article {
+    border-color: rgba(115, 65, 80, 0.14);
+    background: rgba(255, 250, 248, 0.8);
+    box-shadow: var(--snow-shadow);
+}
+
+.snow-hero-art {
+    min-height: 650px;
+}
+
+.hero-cover-main {
+    top: 18px;
+    right: 2%;
+    width: min(58%, 430px);
+    aspect-ratio: 0.8;
+    transform: rotate(1.2deg);
+}
+
+.hero-cover-main img {
+    object-position: center;
+}
+
+.hero-cover-main figcaption,
+.hero-season-card,
+.hero-cover-side-a {
+    display: none;
+}
+
+.hero-cover-side-b {
+    left: 3%;
+    right: auto;
+    bottom: 8%;
+    width: min(34%, 250px);
+    aspect-ratio: 0.8;
+    transform: rotate(-4deg);
+}
+
+.hero-cover-card {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow:
+        0 34px 90px rgba(77, 43, 55, 0.18),
+        0 0 0 1px rgba(115, 65, 80, 0.08);
+}
+
+.snow-section h2,
+.cover-runway-heading h3 {
+    font-size: 3.15rem;
+    color: #2b1720;
+}
+
+.visual-feature-card figcaption,
+.poster-showcase > div,
+.cover-card figcaption {
+    background: rgba(255, 250, 248, 0.82);
+}
+
+.snow-notes {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: min(100% - 48px, 1280px);
+    padding: 104px 24px;
+    border-radius: 8px;
+}
+
+.snow-notes::before {
+    content: "";
+    position: absolute;
+    inset: 34px 0;
+    z-index: -2;
+    border-radius: 8px;
+    opacity: 0.18;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 248, 0.28), rgba(255, 250, 248, 0.72)),
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center / cover;
+}
+
+.snow-notes::after {
+    content: "";
+    position: absolute;
+    inset: 34px 0;
+    z-index: -1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255, 250, 248, 0.64), rgba(251, 241, 242, 0.42));
+}
+
+.notes-grid article::before {
+    opacity: 0.24;
+}
+
+.notes-grid article::after {
+    background: linear-gradient(135deg, rgba(255, 250, 248, 0.76), rgba(255, 250, 248, 0.48));
+}
+
+.lyrics-grid {
+    grid-template-columns: minmax(0, 0.96fr) minmax(320px, 0.78fr);
+    align-items: stretch;
+}
+
+.lyrics-visual {
+    position: relative;
+    min-height: 680px;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(115, 65, 80, 0.14);
+    border-radius: 8px;
+    background: #fffaf8;
+    box-shadow: var(--snow-shadow);
+}
+
+.lyrics-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 680px;
+    display: block;
+    object-fit: cover;
+    object-position: 28% center;
+}
+
+.lyrics-visual figcaption {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    color: #2b1720;
+    background: rgba(255, 250, 248, 0.78);
+    backdrop-filter: blur(16px);
+}
+
+.lyrics-visual span {
+    display: block;
+    color: #a95f73;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.lyrics-visual strong {
+    display: block;
+    margin-top: 6px;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: 1.25rem;
+}
+
+.resource-preview {
+    background: #fff;
+}
+
+.resource-preview img {
+    width: 100%;
+    min-height: 420px;
+    padding: 18px;
+    object-fit: contain;
+    background: #fff;
+}
+
+.resource-preview > div {
+    background: rgba(255, 250, 248, 0.86);
+}
+
+.resource-preview span {
+    color: #a95f73;
+}
+
+.resource-preview strong {
+    color: #2b1720;
+}
+
+@media (max-width: 980px) {
+    .lyrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lyrics-visual,
+    .lyrics-visual img {
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 760px) {
+    .snow-hero::before {
+        background:
+            linear-gradient(180deg, rgba(255, 250, 248, 0.78), rgba(255, 250, 248, 0.96)),
+            url("assets/snow-white/covers/optimized/visual-07-dream-closeup-900.webp") center top / cover no-repeat,
+            #fffaf8;
+    }
+
+    .snow-hero h1 {
+        font-size: 3.35rem;
+    }
+
+    .snow-hero h1 span {
+        font-size: 2.65rem;
+    }
+
+    .snow-hero-art {
+        min-height: 470px;
+    }
+
+    .hero-cover-main {
+        right: 2%;
+        width: 62%;
+    }
+
+    .hero-cover-side-b {
+        display: block;
+        left: 2%;
+        bottom: 3%;
+        width: 42%;
+    }
+
+    .cover-runway-heading > span {
+        display: none;
+    }
+}
+
+/* Detail pass: image-backed panels and softer hero edges */
+.snow-audio-panel {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 248, 0.86), rgba(255, 250, 248, 0.7)),
+        url("assets/snow-white/covers/optimized/visual-02-empty-room-1100.webp") center / cover;
+    background-blend-mode: screen;
+}
+
+.snow-audio-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 12% 18%, rgba(169, 95, 115, 0.12), transparent 18rem);
+}
+
+.snow-audio-panel > * {
+    position: relative;
+    z-index: 1;
+}
+
+#snow-visualizer {
+    background:
+        linear-gradient(90deg, rgba(255, 250, 248, 0.86), rgba(255, 250, 248, 0.46)),
+        url("assets/snow-white/covers/optimized/visual-02-empty-room-1100.webp") center / cover;
+    background-blend-mode: screen;
+}
+
+.hero-cover-card {
+    border: 0;
+    overflow: hidden;
+    box-shadow:
+        0 38px 90px rgba(77, 43, 55, 0.14),
+        inset 0 0 50px rgba(255, 250, 248, 0.42);
+}
+
+.hero-cover-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: inset 0 0 34px rgba(255, 250, 248, 0.86);
+}
+
+.hero-cover-main,
+.hero-cover-side-b {
+    background: transparent;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 56%, rgba(0, 0, 0, 0.86) 76%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, #000 56%, rgba(0, 0, 0, 0.86) 76%, transparent 100%);
+}
+
+.hero-cover-main img,
+.hero-cover-side-b img {
+    filter: saturate(0.96) contrast(0.98);
+}
+
+.hero-cover-square {
+    aspect-ratio: 1;
+}
+
+.snow-story {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: min(100% - 48px, 1280px);
+    padding: 104px 24px;
+    border-radius: 8px;
+}
+
+.snow-story::before {
+    content: "";
+    position: absolute;
+    inset: 12px 0;
+    z-index: -2;
+    border-radius: 8px;
+    opacity: 0.38;
+    background:
+        linear-gradient(105deg, rgba(255, 250, 248, 0.72) 0%, rgba(255, 250, 248, 0.42) 48%, rgba(255, 250, 248, 0.68) 100%),
+        url("assets/snow-white/covers/optimized/visual-06-spring-room-1200.webp") center 46% / cover;
+    background-blend-mode: screen;
+}
+
+.snow-story::after {
+    content: "";
+    position: absolute;
+    inset: 24px 0;
+    z-index: -1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255, 250, 248, 0.44), rgba(247, 251, 252, 0.2));
+}
+
+.resource-list {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 248, 0.88), rgba(255, 250, 248, 0.68)),
+        url("assets/snow-white/covers/optimized/visual-05-mirror-1100.webp") center / cover;
+    background-blend-mode: screen;
+}
+
+.resource-list::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.38;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255, 250, 248, 0.88), rgba(255, 250, 248, 0.58));
+}
+
+.resource-list > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Gallery polish: image-first mobile swipe details */
+.visual-feature-grid,
+.cover-runway {
+    --gallery-edge-fade: clamp(18px, 4vw, 46px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--gallery-edge-fade), #000 calc(100% - var(--gallery-edge-fade)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 var(--gallery-edge-fade), #000 calc(100% - var(--gallery-edge-fade)), transparent 100%);
+}
+
+.visual-feature-card,
+.cover-card,
+.poster-showcase {
+    isolation: isolate;
+    transform: translateZ(0);
+}
+
+.visual-feature-card,
+.cover-card {
+    scroll-snap-stop: always;
+}
+
+.visual-feature-card img,
+.cover-card img,
+.poster-showcase img {
+    transition: transform 700ms cubic-bezier(0.2, 0.72, 0.18, 1), filter 700ms ease;
+}
+
+.visual-feature-card::before,
+.cover-card::before,
+.poster-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.26), transparent 21rem),
+        linear-gradient(135deg, rgba(255, 250, 248, 0.18), rgba(199, 91, 149, 0.08) 46%, rgba(8, 19, 34, 0.18));
+    transition: opacity 520ms ease;
+}
+
+.visual-feature-card::after,
+.cover-card::after,
+.poster-showcase::after {
+    z-index: 2;
+}
+
+.visual-feature-card figcaption,
+.cover-card figcaption,
+.poster-showcase > div {
+    z-index: 3;
+    transition: transform 520ms cubic-bezier(0.2, 0.72, 0.18, 1), background-color 520ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .visual-feature-card img,
+    .cover-card img,
+    .poster-showcase img {
+        will-change: transform;
+    }
+
+    .visual-feature-card:hover img,
+    .cover-card:hover img,
+    .poster-showcase:hover img {
+        transform: scale(1.035) translateY(-1.2%);
+        filter: saturate(1.06) contrast(1.03);
+    }
+
+    .visual-feature-card:hover::before,
+    .cover-card:hover::before,
+    .poster-showcase:hover::before {
+        opacity: 1;
+    }
+
+    .visual-feature-card:hover figcaption,
+    .cover-card:hover figcaption,
+    .poster-showcase:hover > div {
+        transform: translateY(-4px);
+        background-color: rgba(255, 250, 248, 0.88);
+    }
+}
+
+.visual-feature-card:active img,
+.cover-card:active img {
+    transform: scale(1.018);
+}
+
+@keyframes snow-gallery-reveal {
+    from {
+        opacity: 0.01;
+        transform: translateY(22px);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes snow-image-parallax {
+    from {
+        transform: scale(1.035) translateY(14px);
+    }
+
+    to {
+        transform: scale(1.035) translateY(-14px);
+    }
+}
+
+@supports (animation-timeline: view()) {
+    @media (hover: hover) and (pointer: fine) and (min-width: 900px) {
+        .poster-showcase,
+        .visual-feature-grid,
+        .snow-lyrics,
+        .cover-runway-heading,
+        .cover-runway {
+            animation: snow-gallery-reveal both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 30%;
+        }
+
+        .poster-showcase img {
+            animation: snow-image-parallax both linear;
+            animation-timeline: view();
+            animation-range: entry -10% exit 90%;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .visual-feature-card img,
+    .cover-card img,
+    .poster-showcase img,
+    .visual-feature-card figcaption,
+    .cover-card figcaption,
+    .poster-showcase > div {
+        transition: none;
+    }
+
+    .poster-showcase,
+    .visual-feature-grid,
+    .snow-lyrics,
+    .cover-runway-heading,
+    .cover-runway,
+    .poster-showcase img {
+        animation: none;
+    }
+}
+
+@supports (content-visibility: auto) {
+    .snow-lyrics,
+    .snow-cover-studies,
+    .snow-story,
+    .snow-notes,
+    .snow-videos,
+    .snow-credits,
+    .snow-resources {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 900px;
+    }
+
+    .snow-lyrics {
+        contain-intrinsic-size: auto 1180px;
+    }
+
+    .snow-cover-studies,
+    .snow-videos {
+        contain-intrinsic-size: auto 720px;
     }
 }

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f2ea" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="朋友圈记忆" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/moments-memory.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="moments-memory.css?v=20260524e" />
+    <title>朋友圈记忆</title>
+  </head>
+  <body>
+    <main class="moments-shell">
+      <header class="topbar">
+        <a class="back-button" href="../" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>Private Social Memory</p>
+          <h1>朋友圈记忆</h1>
+        </div>
+        <span class="data-badge" id="dataBadge">Loading</span>
+      </header>
+
+      <nav class="view-tabs" aria-label="Moments views">
+        <button type="button" class="active" data-view="overview">总览</button>
+        <button type="button" data-view="friends">好友</button>
+        <button type="button" data-view="timeline">时间线</button>
+        <button type="button" data-view="clues">线索</button>
+      </nav>
+
+      <section class="summary-grid" aria-label="Moments summary">
+        <article>
+          <span>好友</span>
+          <strong id="contactCount">--</strong>
+          <small id="contactMeta">--</small>
+        </article>
+        <article>
+          <span>朋友圈</span>
+          <strong id="momentCount">--</strong>
+          <small id="rangeMeta">--</small>
+        </article>
+        <article>
+          <span>媒体</span>
+          <strong id="mediaCount">--</strong>
+          <small id="mediaMeta">--</small>
+        </article>
+        <article>
+          <span>链接</span>
+          <strong id="linkCount">--</strong>
+          <small id="linkMeta">--</small>
+        </article>
+      </section>
+
+      <section class="view-section" id="overviewView" aria-label="Overview">
+        <section class="panel chart-panel" aria-label="Monthly moments">
+          <div class="section-head">
+            <div>
+              <p>Visible Timeline</p>
+              <h2>每月记录</h2>
+            </div>
+            <span id="monthWindow">--</span>
+          </div>
+          <div class="month-chart" id="monthChart"></div>
+        </section>
+
+        <section class="rank-grid" id="rankGrid" aria-label="Contact ranks"></section>
+      </section>
+
+      <section class="view-section hidden" id="friendsView" aria-label="Friends">
+        <section class="control-panel">
+          <label class="search-field">
+            <span>⌕</span>
+            <input id="friendSearch" type="search" autocomplete="off" placeholder="搜索好友 / 主题" />
+          </label>
+          <select id="friendSort" aria-label="好友排序">
+            <option value="count">条目</option>
+            <option value="recent">最近</option>
+            <option value="media">媒体</option>
+          </select>
+        </section>
+        <section class="friend-layout">
+          <div class="friend-list" id="friendList"></div>
+          <article class="friend-detail" id="friendDetail"></article>
+        </section>
+      </section>
+
+      <section class="view-section hidden" id="timelineView" aria-label="Timeline">
+        <section class="control-panel">
+          <label class="search-field">
+            <span>⌕</span>
+            <input id="timelineSearch" type="search" autocomplete="off" placeholder="搜索文字 / 地点 / 主题" />
+          </label>
+          <select id="contactFilter" aria-label="筛选好友"></select>
+          <select id="typeFilter" aria-label="筛选类型">
+            <option value="all">全部类型</option>
+            <option value="link">链接</option>
+            <option value="media">媒体</option>
+            <option value="text">文字</option>
+            <option value="2026">2026</option>
+          </select>
+          <select id="monthFilter" aria-label="筛选月份"></select>
+        </section>
+        <div class="timeline-list" id="timelineList"></div>
+      </section>
+
+      <section class="view-section hidden" id="cluesView" aria-label="Clues">
+        <section class="question-panel">
+          <label class="search-field wide">
+            <span>?</span>
+            <input id="questionInput" type="search" autocomplete="off" placeholder="吴涛结婚了吗 / 最近谁在聊 AI" />
+          </label>
+          <button type="button" id="askButton">查</button>
+        </section>
+        <section class="answer-panel" id="answerPanel"></section>
+      </section>
+    </main>
+
+    <script type="module" src="moments-memory.js?v=20260524e"></script>
+  </body>
+</html>

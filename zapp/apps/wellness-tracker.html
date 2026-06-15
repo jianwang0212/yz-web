@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Wellness Log" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/wellness.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="wellness-tracker.css" />
+    <title>Wellness Log</title>
+  </head>
+  <body>
+    <main class="wellness-shell">
+      <header class="topbar">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div>
+          <p>Health / Training / Meditation</p>
+          <h1>Wellness Log</h1>
+        </div>
+      </header>
+
+      <section class="stats" aria-label="Wellness stats">
+        <div><strong id="weekTrain">0</strong><span>7 天训练</span></div>
+        <div><strong id="weekMeditation">0</strong><span>7 天冥想分钟</span></div>
+        <div><strong id="streak">0</strong><span>连续记录</span></div>
+        <div><strong id="energyAvg">--</strong><span>平均能量</span></div>
+      </section>
+
+      <section class="entry-surface">
+        <form id="entryForm" class="entry-form">
+          <label>
+            <span>日期</span>
+            <input name="date" type="date" required />
+          </label>
+          <label>
+            <span>今天重点</span>
+            <select name="focus">
+              <option>Training</option>
+              <option>Meditation</option>
+              <option>Recovery</option>
+              <option>Mixed</option>
+            </select>
+          </label>
+          <label>
+            <span>训练内容</span>
+            <input name="training" type="text" placeholder="Push, legs, run, mobility..." />
+          </label>
+          <label>
+            <span>训练分钟</span>
+            <input name="trainingMinutes" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="45" />
+          </label>
+          <label>
+            <span>冥想分钟</span>
+            <input name="meditationMinutes" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="20" />
+          </label>
+          <label>
+            <span>睡眠小时</span>
+            <input name="sleepHours" type="text" inputmode="decimal" placeholder="7.5" />
+          </label>
+          <label>
+            <span>能量</span>
+            <select name="energy">
+              <option value="5">5 - High</option>
+              <option value="4">4 - Good</option>
+              <option value="3" selected>3 - Steady</option>
+              <option value="2">2 - Low</option>
+              <option value="1">1 - Drained</option>
+            </select>
+          </label>
+          <label class="wide-field">
+            <span>身体/情绪备注</span>
+            <textarea name="note" placeholder="疼痛、心情、饮食、练习后的感觉"></textarea>
+          </label>
+          <div class="actions">
+            <button type="submit">Save</button>
+            <button type="button" id="exportButton">Export</button>
+          </div>
+        </form>
+
+        <section class="timeline" id="timeline" aria-label="Wellness entries"></section>
+      </section>
+    </main>
+
+    <script type="module" src="wellness-tracker.js"></script>
+  </body>
+</html>

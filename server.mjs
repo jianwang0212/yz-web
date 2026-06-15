@@ -7,8 +7,12 @@ import latestHandler from './api/codex-monitor/latest.js';
 import socialPulseHistoryHandler from './api/socialpulse/history.js';
 import socialPulseLatestHandler from './api/socialpulse/latest.js';
 import socialPulseSyncHandler from './api/socialpulse/sync.js';
+import stockResearchHandler from './api/stock-research/index.js';
 import feedbackHandler from './api/submit-feedback/index.js';
-import { findRouteAlias } from './site-routes.mjs';
+import liveCallTranscribeHandler from './api/live-call/transcribe.js';
+import ziStyleReplyChatHandler from './api/zi-style-reply/chat.js';
+import ziyinVoiceoverGenerateHandler from './api/ziyin-voiceover/generate.js';
+import { findRouteAlias, findRedirect } from './site-routes.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -66,7 +70,7 @@ function wrapHandler(handler) {
 }
 
 app.disable('x-powered-by');
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: '8mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 app.get('/healthz', (_req, res) => {
@@ -82,8 +86,22 @@ app.all('/api/codex-monitor/latest', wrapHandler(latestHandler));
 app.all('/api/socialpulse/history', wrapHandler(socialPulseHistoryHandler));
 app.all('/api/socialpulse/latest', wrapHandler(socialPulseLatestHandler));
 app.all('/api/socialpulse/sync', wrapHandler(socialPulseSyncHandler));
+app.all('/api/stock-research', wrapHandler(stockResearchHandler));
 app.all('/api/submit-feedback', wrapHandler(feedbackHandler));
 app.all('/api/submit-feedback/index.js', wrapHandler(feedbackHandler));
+app.all('/api/live-call/transcribe', wrapHandler(liveCallTranscribeHandler));
+app.all('/api/zi-style-reply/chat', wrapHandler(ziStyleReplyChatHandler));
+app.all('/api/ziyin-voiceover/generate', wrapHandler(ziyinVoiceoverGenerateHandler));
+
+app.use((req, res, next) => {
+  const redirectTarget = findRedirect(req.path);
+  if (redirectTarget) {
+    const query = req.originalUrl.includes('?') ? `?${req.originalUrl.split('?')[1]}` : '';
+    res.redirect(301, `${redirectTarget}${query}`);
+    return;
+  }
+  next();
+});
 
 app.use((req, res, next) => {
   const resolved = resolveAliasedPath(req.path);
@@ -99,6 +117,12 @@ app.use(
     extensions: ['html'],
     index: ['index.html'],
     setHeaders(res, filePath) {
+      const normalizedPath = filePath.split(path.sep).join('/');
+      if (normalizedPath.endsWith('/zapp/sw.js') || normalizedPath.endsWith('/zapp/apps.json')) {
+        res.setHeader('Cache-Control', 'no-cache');
+        return;
+      }
+
       if (/\.(html?)$/i.test(filePath)) {
         res.setHeader('Cache-Control', 'no-cache');
         return;

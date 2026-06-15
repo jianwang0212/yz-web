@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8f4ef" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="期货净值" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/finance.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="qhrb-net-worth.css?v=20260522" />
+    <title>三次参赛净值</title>
+  </head>
+  <body>
+    <main class="qhrb-shell">
+      <header class="topbar">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>QHRB Sim Trading</p>
+          <h1 id="playerName">三次参赛</h1>
+        </div>
+        <span class="data-badge" id="dataBadge">Loading</span>
+      </header>
+
+      <section class="metric-grid" aria-label="Ranking summary">
+        <article>
+          <span>组别 / 排名</span>
+          <strong id="rankLabel">--</strong>
+          <small id="tradeDate">--</small>
+        </article>
+        <article>
+          <span>最新净值</span>
+          <strong id="latestNetWorth">--</strong>
+          <small id="netWorthRange">--</small>
+        </article>
+        <article>
+          <span>当日权益</span>
+          <strong id="equity">--</strong>
+          <small id="company">--</small>
+        </article>
+        <article>
+          <span>净利润</span>
+          <strong id="netProfit">--</strong>
+          <small id="score">--</small>
+        </article>
+      </section>
+
+      <section class="panel chart-panel" aria-label="Net worth chart">
+        <div class="section-head">
+          <div>
+            <p>Net Worth</p>
+            <h2>累计净值曲线</h2>
+          </div>
+          <span id="chartWindow">--</span>
+        </div>
+        <div class="chart-wrap" id="netWorthChart"></div>
+      </section>
+
+      <section class="two-column">
+        <section class="panel" aria-label="Ranking record">
+          <div class="section-head">
+            <div>
+              <p>Record</p>
+              <h2>排行榜记录</h2>
+            </div>
+            <span id="playerId">--</span>
+          </div>
+          <div class="record-list" id="recordList"></div>
+        </section>
+
+        <section class="panel" aria-label="Basic data">
+          <div class="section-head">
+            <div>
+              <p>Profile</p>
+              <h2>账户指标</h2>
+            </div>
+            <span id="matchDate">--</span>
+          </div>
+          <div class="record-list" id="profileList"></div>
+        </section>
+      </section>
+
+      <section class="panel" aria-label="Fetch update log">
+        <div class="section-head">
+          <div>
+            <p>Monitor</p>
+            <h2>抓取更新记录</h2>
+          </div>
+          <span id="updateLogStatus">Loading</span>
+        </div>
+        <div class="update-log" id="updateLogList"></div>
+      </section>
+
+      <section class="panel table-panel" aria-label="Net worth rows">
+        <div class="section-head">
+          <div>
+            <p>Rows</p>
+            <h2>净值明细</h2>
+          </div>
+          <span id="rowCount">--</span>
+        </div>
+        <div class="table-wrap" id="netWorthTable"></div>
+      </section>
+    </main>
+
+    <script type="module" src="qhrb-net-worth.js?v=20260522"></script>
+  </body>
+</html>

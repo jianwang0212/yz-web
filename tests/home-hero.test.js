@@ -98,7 +98,7 @@ test('home page features Snow White before resume records', () => {
   expectIncludes(indexHtml, 'Snow White / 白雪公主');
   expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
   expectIncludes(indexHtml, '<article class="home-snow-card">');
-  expectIncludes(indexHtml, 'href="/snow-white" class="home-snow-primary"');
+  expectIncludes(indexHtml, 'href="/works/snow-white" class="home-snow-primary"');
   assert.equal(
     indexHtml.includes('class="home-snow-secondary"'),
     false,

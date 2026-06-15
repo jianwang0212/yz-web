@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f8f5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="GT" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/gt.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="gt.css?v=20260512" />
+    <title>GT</title>
+  </head>
+  <body>
+    <main class="gt-shell">
+      <header class="topbar">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div class="title-block">
+          <p>Strategy Asset Console</p>
+          <h1>GT</h1>
+        </div>
+        <span class="data-badge" id="dataBadge">Loading</span>
+      </header>
+
+      <nav class="view-tabs" aria-label="GT views">
+        <button type="button" class="active" data-view="overview">总览</button>
+        <button type="button" data-view="history">曲线</button>
+        <button type="button" data-view="remarks">备注</button>
+        <button type="button" data-view="data">数据</button>
+      </nav>
+
+      <section class="summary-grid" aria-label="GT summary">
+        <article>
+          <span>总资产</span>
+          <strong id="totalAsset">--</strong>
+          <small id="assetDate">--</small>
+        </article>
+        <article>
+          <span>基金净值</span>
+          <strong id="netValue">--</strong>
+          <small id="netMeta">--</small>
+        </article>
+        <article>
+          <span>最近 60 天</span>
+          <strong id="sixtyChange">--</strong>
+          <small id="sixtyMeta">--</small>
+        </article>
+        <article>
+          <span>今日盈亏</span>
+          <strong id="todayProfit">--</strong>
+          <small id="profitMeta">--</small>
+        </article>
+      </section>
+
+      <section class="view-section" id="overviewView" aria-label="Overview">
+        <section class="panel chart-panel" aria-label="Recent net value chart">
+          <div class="section-head">
+            <div>
+              <p>Last 60 Days</p>
+              <h2>净值与每日变化</h2>
+            </div>
+            <span id="overviewWindow">--</span>
+          </div>
+          <div class="chart-wrap" id="overviewLineChart"></div>
+          <div class="chart-wrap compact" id="overviewChangeChart"></div>
+        </section>
+
+        <div class="two-column">
+          <section class="panel" aria-label="Exchange allocation">
+            <div class="section-head">
+              <div>
+                <p>Current Snapshot</p>
+                <h2>交易所资产</h2>
+              </div>
+              <span id="exchangeTotal">--</span>
+            </div>
+            <div class="allocation-list" id="allocationList"></div>
+          </section>
+
+          <section class="panel" aria-label="Latest remarks">
+            <div class="section-head">
+              <div>
+                <p>Capital Events</p>
+                <h2>最近备注</h2>
+              </div>
+              <span id="remarkCount">--</span>
+            </div>
+            <div class="remark-list compact-list" id="latestRemarks"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view-section hidden" id="historyView" aria-label="History">
+        <section class="control-panel" aria-label="Chart controls">
+          <div class="segmented" id="intervalButtons" role="tablist" aria-label="Interval">
+            <button type="button" class="active" data-interval="daily">日</button>
+            <button type="button" data-interval="weekly">周</button>
+            <button type="button" data-interval="monthly">月</button>
+          </div>
+          <label>
+            <span>指标</span>
+            <select id="metricSelect">
+              <option value="assetNetValue">基金净值</option>
+              <option value="totalAsset">总资产</option>
+              <option value="todayProfit">当期盈亏</option>
+              <option value="btcAssetNetValue">BTC 净值</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="panel chart-panel" aria-label="Historical chart">
+          <div class="section-head">
+            <div>
+              <p id="historyLabel">Daily</p>
+              <h2 id="historyTitle">基金净值</h2>
+            </div>
+            <span id="historyRange">--</span>
+          </div>
+          <div class="chart-wrap large" id="historyChart"></div>
+        </section>
+
+        <section class="panel table-panel" aria-label="History table">
+          <div class="section-head">
+            <div>
+              <p>Rows</p>
+              <h2>历史明细</h2>
+            </div>
+            <label class="search-field">
+              <span>⌕</span>
+              <input id="historySearch" type="search" autocomplete="off" placeholder="日期 / 备注" />
+            </label>
+          </div>
+          <div class="data-table-wrap" id="historyTable"></div>
+        </section>
+      </section>
+
+      <section class="view-section hidden" id="remarksView" aria-label="Remarks">
+        <div class="two-column">
+          <section class="panel" aria-label="All remarks">
+            <div class="section-head">
+              <div>
+                <p>Remarks</p>
+                <h2>资金出入记录</h2>
+              </div>
+              <span id="remarksTotal">--</span>
+            </div>
+            <div class="remark-list" id="allRemarks"></div>
+          </section>
+
+          <section class="panel" aria-label="Monthly export rows">
+            <div class="section-head">
+              <div>
+                <p>Excel Export</p>
+                <h2>2026-05 导出表</h2>
+              </div>
+              <span id="exportCount">--</span>
+            </div>
+            <div class="data-table-wrap" id="exportTable"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view-section hidden" id="dataView" aria-label="Structured data">
+        <section class="panel coverage-panel">
+          <div class="section-head">
+            <div>
+              <p>Dataset</p>
+              <h2>结构化数据覆盖</h2>
+            </div>
+            <span id="structuredAt">--</span>
+          </div>
+          <div class="coverage-grid" id="coverageGrid"></div>
+        </section>
+
+        <section class="panel table-panel" aria-label="Current exchange table">
+          <div class="section-head">
+            <div>
+              <p>Snapshot</p>
+              <h2>当前交易所明细</h2>
+            </div>
+          </div>
+          <div class="data-table-wrap" id="exchangeTable"></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="gt.js?v=20260512"></script>
+  </body>
+</html>

@@ -1,11 +1,25 @@
 const projectPages = [
+  ['codex-monthly-2026-06', 'projects/codex-monthly-2026-06.html'],
+  ['stock-research-dashboard', 'projects/stock-research-dashboard.html'],
+  ['dockingtech', 'projects/dockingtech.html'],
+  ['workout', 'projects/workout.html'],
   ['vipassana', 'papers/vipassana.html'],
   ['apartment-sublet', 'papers/apartment-sublet.html'],
   ['interval-quiz', 'papers/interval-quiz.html'],
   ['degree-quiz', 'papers/degree-quiz.html'],
   ['chord-quiz', 'papers/chord-quiz.html'],
   ['chord-trainer', 'papers/chord-trainer.html'],
-  ['left-hand-voicing-trainer', 'papers/left-hand-voicing-trainer.html']
+  ['left-hand-voicing-trainer', 'papers/left-hand-voicing-trainer.html'],
+  ['stem-splitter', 'projects/stem-splitter.html'],
+  ['codex-monitor', 'codex-monitor.html'],
+  ['song-leadsheet-database', 'song-leadsheet-database.html']
+];
+
+const essayPages = [
+  ['long-term-plans', 'essays/long-term-plans.html'],
+  ['vocal-training-system', 'essays/vocal-training-system.html'],
+  ['why-berklee', 'essays/why-berklee.html'],
+  ['why-mpe', 'essays/why-mpe.html']
 ];
 
 const projectScripts = [
@@ -14,14 +28,19 @@ const projectScripts = [
   ['chord-quiz.js', 'papers/chord-quiz.js']
 ];
 
-const standalonePages = [
+const workPages = [
   ['snow-white', 'snow-white.html'],
+  ['mirror', 'mirror.html'],
+  ['vocal-class-comedy-king', 'vocal-class-comedy-king.html']
+];
+
+const standalonePages = [
   ['berklee', 'berklee.html'],
   ['works', 'works.html'],
   ['projects', 'projects.html'],
   ['engineering', 'engineering.html'],
+  ['plans', 'plans.html'],
   ['resume', 'resume.html'],
-  ['contact', 'contact.html'],
   ['timeline', 'timeline.html'],
   ['highlights', 'highlights.html'],
   ['interests', 'interests.html'],
@@ -31,6 +50,16 @@ const standalonePages = [
 
 export const routeAliases = [
   ['/projects/socialpulse', 'projects/socialpulse.html'],
+  ['/essays', 'essays/index.html'],
+  ['/essays/', 'essays/index.html'],
+  ...essayPages.flatMap(([slug, destination]) => [
+    [`/essays/${slug}`, destination],
+    [`/essays/${slug}.html`, destination]
+  ]),
+  ...workPages.flatMap(([slug, destination]) => [
+    [`/works/${slug}`, destination],
+    [`/works/${slug}.html`, destination]
+  ]),
   ...standalonePages.flatMap(([slug, destination]) => [
     [`/${slug}`, destination],
     [`/${slug}.html`, destination]
@@ -59,6 +88,43 @@ export const legacyRedirects = [
   ['/papers/left-hand-voicing-trainer', '/projects/left-hand-voicing-trainer'],
   ['/papers/left-hand-voicing-trainer.html', '/projects/left-hand-voicing-trainer']
 ];
+
+// Project pages whose files physically live under papers/ are exposed only at
+// /projects/<slug>; redirect both legacy /papers/<slug> forms to kill duplicate URLs.
+const papersRedirects = projectPages
+  .filter(([, destination]) => destination.startsWith('papers/'))
+  .flatMap(([slug, destination]) => {
+    const physical = `/${destination.replace(/\.html$/, '')}`;
+    return [
+      [physical, `/projects/${slug}`],
+      [`${physical}.html`, `/projects/${slug}`]
+    ];
+  });
+
+// Permanent (301) redirects applied by the live Express server (server.mjs).
+// Works were promoted from the site root to /works/<slug>; projects/tools were
+// consolidated under /projects/<slug>; keep every old URL alive.
+export const pageRedirects = [
+  ...workPages.flatMap(([slug]) => [
+    [`/${slug}`, `/works/${slug}`],
+    [`/${slug}.html`, `/works/${slug}`]
+  ]),
+  ...papersRedirects,
+  ['/codex-monitor', '/projects/codex-monitor'],
+  ['/codex-monitor.html', '/projects/codex-monitor'],
+  ['/song-leadsheet-database', '/projects/song-leadsheet-database'],
+  ['/song-leadsheet-database.html', '/projects/song-leadsheet-database'],
+  ['/plans', '/essays/long-term-plans'],
+  ['/plans.html', '/essays/long-term-plans']
+];
+
+export function findRedirect(urlPath) {
+  const cleaned = cleanRoutePath(urlPath);
+  const hit =
+    pageRedirects.find(([source]) => source === cleaned) ||
+    legacyRedirects.find(([source]) => source === cleaned);
+  return hit ? hit[1] : null;
+}
 
 export const cacheHeaders = [
   {
@@ -144,6 +210,11 @@ export function buildVercelConfig() {
       }))
     ],
     redirects: [
+      ...pageRedirects.map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true
+      })),
       ...legacyRedirects.map(([source, destination]) => ({
         source,
         destination,

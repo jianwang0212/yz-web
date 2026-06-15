@@ -1,40 +1,30 @@
 const snowCopy = {
     zh: {
-        '.snow-hero .snow-kicker': '原创制作档案',
+        '.snow-hero .snow-kicker': '原创音乐作品',
         '#snow-title': '白雪公主 <span>Snow White</span>',
-        '.snow-release-strip span:nth-child(1)': 'Demo 档案',
-        '.snow-release-strip span:nth-child(2)': '4:35 粗混',
-        '.snow-release-strip span:nth-child(3)': 'Berklee Studio 1',
-        '.snow-release-strip span:nth-child(4)': 'B站制作合集',
         '.snow-hero-cta a:nth-child(1)': '试听',
-        '.snow-hero-cta a:nth-child(2)': '创作故事',
+        '.snow-hero-cta a:nth-child(2)': '视觉世界',
         '.snow-hero-cta a:nth-child(3)': '资料包',
         '.snow-meta-grid div:nth-child(1) span': '演唱',
         '.snow-meta-grid div:nth-child(2) span': '作曲',
         '.snow-meta-grid div:nth-child(3) span': '作词',
-        '.snow-meta-grid div:nth-child(4) span': '母带',
-        '.snow-audio-header > div:first-child span': '粗混',
-        '.snow-audio-actions a:first-child': '下载 MP3',
-        '.snow-audio-actions a:nth-child(2)': 'B站合集',
+        '.snow-audio-header > div:first-child span': '母带',
+        '.snow-audio-actions a:first-child': 'MP3',
+        '.snow-audio-actions a:nth-child(2)': 'WAV',
+        '.snow-audio-actions a:nth-child(3)': 'B站合集',
         '.hero-season-card span': 'B站合集',
         '.hero-season-card small': '3 个视频 · 05-01 更新',
-        '.snow-overview .snow-kicker': '公开资料',
-        '#overview-title': '作品资料集中在这里。',
-        '.snow-overview article h3': '资料',
-        '.snow-overview article p': '曲谱只公开第一页预览；完整总谱与分谱需要访问密码下载。歌词、制作名单、制作笔记、预算和 B站制作合集仍在页面下方公开。',
         '.snow-story .snow-kicker': '创作故事',
-        '#story-title': '白雪、公主、白裙，与没有说出口的诺言。',
+        '#story-title': '我耳朵里的白色长什么样子？',
         '.story-stats div:nth-child(1) span': '份曲谱与分谱',
         '.story-stats div:nth-child(2) span': '项目预算',
         '.story-stats div:nth-child(3) span': '录音与母带',
         '.snow-notes .snow-kicker': '制作笔记',
-        '#notes-title': '从情绪路径到钢琴编配。',
-        '.notes-grid article:nth-child(1) h3': '情绪路径',
-        '.notes-grid article:nth-child(1) p': '笔记把每个段落标成不同强度：第一段更平静，第二段逐渐增加动态，副歌和桥段把故事推到更高张力。',
-        '.notes-grid article:nth-child(2) h3': '钢琴编配',
-        '.notes-grid article:nth-child(2) p': '钢琴草稿强调固定动机、弱拍强化、左手切拍、经过低音、副旋律线，以及 16 分音符和三连音带来的情绪推动。',
-        '.notes-grid article:nth-child(3) h3': '混音复盘',
-        '.notes-grid article:nth-child(3) p': '后期笔记提醒先把 vocal、drums、piano 的基本平衡做好，再处理 reverb、compression、panning 和 guitar focal points。',
+        '#notes-title': '从钢琴编配开始。',
+        '.notes-grid article:nth-child(1) h3': '钢琴编配',
+        '.notes-grid article:nth-child(1) p': '钢琴草稿强调固定动机、弱拍强化、左手切拍、经过低音、副旋律线，以及 16 分音符和三连音带来的情绪推动。',
+        '.notes-grid article:nth-child(2) h3': '混音复盘',
+        '.notes-grid article:nth-child(2) p': '后期笔记提醒先把 vocal、drums、piano 的基本平衡做好，再处理 reverb、compression、panning 和 guitar focal points。',
         '.snow-videos .snow-kicker': '视频合集',
         '#videos-title': '原创-白雪公主的制作',
         '.snow-videos .section-lede': 'B站合集目前有 3 个视频，更新到 2026-05-01。这个模块把每集内容按创作顺序整理出来，点击卡片可打开对应视频。',
@@ -77,41 +67,31 @@ const snowCopy = {
         '.snow-footer .footer-links a:first-child': '首页'
     },
     en: {
-        '.snow-hero .snow-kicker': 'Original production archive',
+        '.snow-hero .snow-kicker': 'Original music work',
         '#snow-title': 'Snow White <span>白雪公主</span>',
-        '.snow-release-strip span:nth-child(1)': 'Demo archive',
-        '.snow-release-strip span:nth-child(2)': '4:35 rough mix',
-        '.snow-release-strip span:nth-child(3)': 'Berklee Studio 1',
-        '.snow-release-strip span:nth-child(4)': 'Making season on Bilibili',
         '.snow-hero-cta a:nth-child(1)': 'Listen',
-        '.snow-hero-cta a:nth-child(2)': 'Story',
+        '.snow-hero-cta a:nth-child(2)': 'Visuals',
         '.snow-hero-cta a:nth-child(3)': 'Files',
         '.snow-meta-grid div:nth-child(1) span': 'Artist',
         '.snow-meta-grid div:nth-child(2) span': 'Composer',
         '.snow-meta-grid div:nth-child(3) span': 'Lyrics',
-        '.snow-meta-grid div:nth-child(4) span': 'Mastered',
-        '.snow-audio-header > div:first-child span': 'Rough mix',
-        '.snow-audio-actions a:first-child': 'Download MP3',
-        '.snow-audio-actions a:nth-child(2)': 'Bilibili season',
+        '.snow-audio-header > div:first-child span': 'Mastered',
+        '.snow-audio-actions a:first-child': 'MP3',
+        '.snow-audio-actions a:nth-child(2)': 'WAV',
+        '.snow-audio-actions a:nth-child(3)': 'Bilibili season',
         '.hero-season-card span': 'Bilibili Season',
         '.hero-season-card small': '3 videos · updated 05-01',
-        '.snow-overview .snow-kicker': 'Public release files',
-        '#overview-title': 'Song materials, collected in one place.',
-        '.snow-overview article h3': 'Files',
-        '.snow-overview article p': 'Only the first score page is public. Full score and parts require an access code to download. Lyrics, credits, production notes, budget, and the Bilibili making-of season remain available below.',
         '.snow-story .snow-kicker': 'Song story',
-        '#story-title': 'Snow White, a white dress, and the promises left unsaid.',
+        '#story-title': 'What does white look like to my ears?',
         '.story-stats div:nth-child(1) span': 'score files and parts',
         '.story-stats div:nth-child(2) span': 'project budget',
         '.story-stats div:nth-child(3) span': 'recording and mastering',
         '.snow-notes .snow-kicker': 'Production notes',
-        '#notes-title': 'From emotional path to piano arranging.',
-        '.notes-grid article:nth-child(1) h3': 'Emotional path',
-        '.notes-grid article:nth-child(1) p': 'The notes map each section by emotional intensity: the first verse stays calmer, the second verse grows dynamically, and the chorus and bridge push the story toward greater tension.',
-        '.notes-grid article:nth-child(2) h3': 'Piano arranging',
-        '.notes-grid article:nth-child(2) p': 'The piano sketch focuses on fixed motifs, offbeat emphasis, left-hand syncopation, passing bass motion, countermelody, and 16th-note or triplet motion for emotional lift.',
-        '.notes-grid article:nth-child(3) h3': 'Mixing review',
-        '.notes-grid article:nth-child(3) p': 'The later mixing notes return to the core balance of vocal, drums, and piano before refining reverb, compression, panning, and guitar focal points.',
+        '#notes-title': 'Starting from piano arranging.',
+        '.notes-grid article:nth-child(1) h3': 'Piano arranging',
+        '.notes-grid article:nth-child(1) p': 'The piano sketch focuses on fixed motifs, offbeat emphasis, left-hand syncopation, passing bass motion, countermelody, and 16th-note or triplet motion for emotional lift.',
+        '.notes-grid article:nth-child(2) h3': 'Mixing review',
+        '.notes-grid article:nth-child(2) p': 'The later mixing notes return to the core balance of vocal, drums, and piano before refining reverb, compression, panning, and guitar focal points.',
         '.snow-videos .snow-kicker': 'Video season',
         '#videos-title': 'Making Snow White',
         '.snow-videos .section-lede': 'The Bilibili season currently has 3 videos, updated through 2026-05-01. Each card below links to the original episode.',
@@ -152,6 +132,37 @@ const snowCopy = {
         'label[for="snow-download-password"]': 'Access code',
         '.snow-download-submit': 'Download',
         '.snow-footer .footer-links a:first-child': 'Homepage'
+    }
+};
+
+const snowNavCopy = {
+    zh: {
+        'nav.home': '首页',
+        'nav.yearReview': '年度总结',
+        'nav.works': '作品',
+        'nav.contact': '联系',
+        'nav.more': '更多',
+        'nav.projects': '项目',
+        'nav.engineering': '工程 / GitHub',
+        'nav.timeline': '时间线',
+        'nav.resume': '简历',
+        'nav.finance': '财务仪表盘',
+        'nav.interests': '兴趣爱好',
+        'nav.highlights': '主要亮点'
+    },
+    en: {
+        'nav.home': 'Home',
+        'nav.yearReview': 'Year Review',
+        'nav.works': 'Works',
+        'nav.contact': 'Contact',
+        'nav.more': 'More',
+        'nav.projects': 'Projects',
+        'nav.engineering': 'Engineering / GitHub',
+        'nav.timeline': 'Timeline',
+        'nav.resume': 'Resume',
+        'nav.finance': 'Finance Dashboard',
+        'nav.interests': 'Interests',
+        'nav.highlights': 'Highlights'
     }
 };
 
@@ -201,6 +212,22 @@ function applySnowLanguage() {
     const lang = getSnowLanguage();
     const translations = snowCopy[lang];
 
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        const value = snowNavCopy[lang][key];
+        if (value) {
+            element.textContent = value;
+        }
+    });
+
+    document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach((button) => {
+        const isActive = button.id.includes(lang);
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
     Object.entries(translations).forEach(([selector, value]) => {
         document.querySelectorAll(selector).forEach((element) => {
             if (value.includes('<')) {
@@ -222,6 +249,19 @@ function applySnowLanguage() {
 function initSnowLanguage() {
     applySnowLanguage();
     window.addEventListener('site-language-change', applySnowLanguage);
+
+    document.addEventListener('click', (event) => {
+        const button = event.target.closest('#lang-zh, #lang-en, #lang-zh-mobile, #lang-en-mobile, .lang-btn, .lang-btn-mobile');
+        if (!button) return;
+
+        const text = button.textContent.trim().toLowerCase();
+        const lang = button.id.includes('en') || text === 'english' ? 'en' : 'zh';
+        event.preventDefault();
+        event.stopPropagation();
+        localStorage.setItem('language', lang);
+        applySnowLanguage();
+        window.dispatchEvent(new CustomEvent('site-language-change', { detail: { language: lang } }));
+    });
 }
 
 if (document.readyState === 'loading') {
@@ -241,9 +281,11 @@ if (audio && canvas) {
     let source;
     let dataArray;
     let animationFrame;
+    let idleDrawTime = 0;
+    let isCanvasVisible = true;
     let seeded = 0;
 
-    const palette = ['#b7372b', '#1e6f61', '#c08a2d', '#171311'];
+    const palette = ['#ff8ab7', '#72ddff', '#eaf7ff', '#14243d'];
 
     function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
@@ -301,14 +343,30 @@ if (audio && canvas) {
         analyser.connect(audioContext.destination);
     }
 
-    function renderIdleLoop() {
-        if (!audio.paused) return;
-        drawIdle();
+    function renderIdleLoop(timestamp = 0) {
+        if (!audio.paused || !isCanvasVisible || document.hidden) return;
+        if (!idleDrawTime || timestamp - idleDrawTime > 80) {
+            drawIdle();
+            idleDrawTime = timestamp;
+        }
         animationFrame = requestAnimationFrame(renderIdleLoop);
     }
 
     resizeCanvas();
-    renderIdleLoop();
+    drawIdle();
+
+    if ('IntersectionObserver' in window) {
+        const visualizerObserver = new IntersectionObserver((entries) => {
+            isCanvasVisible = entries.some((entry) => entry.isIntersecting);
+            cancelAnimationFrame(animationFrame);
+            if (audio.paused && isCanvasVisible) {
+                renderIdleLoop();
+            }
+        }, { threshold: 0.12 });
+        visualizerObserver.observe(canvas);
+    } else {
+        renderIdleLoop();
+    }
 
     audio.addEventListener('play', async () => {
         bootAudioGraph();
@@ -335,6 +393,13 @@ if (audio && canvas) {
     window.addEventListener('resize', () => {
         resizeCanvas();
         if (audio.paused) drawIdle();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        cancelAnimationFrame(animationFrame);
+        if (!document.hidden && audio.paused && isCanvasVisible) {
+            renderIdleLoop();
+        }
     });
 }
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zi Yin (银子) 的个人网站：量化研究、创业、Berklee 音乐制作、原创歌曲 Snow White、项目工具与长期记录。">
+    <meta name="description" content="Zi Yin (银子) 的个人网站：量化研究、创业、Berklee 音乐制作、原创歌曲 Snow White 与 Mirror、项目工具与长期记录。">
     <meta property="og:title" content="Zi Yin (银子) - Quant Research, Music, Engineering">
     <meta property="og:description" content="量化研究、创业、音乐制作与工程项目的个人作品站。">
     <meta property="og:type" content="profile">
@@ -15,10 +15,9 @@
     <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
     <link rel="canonical" href="https://thisisyz.com/">
     <title>Zi Yin (银子) - Quant Research, Music, Engineering</title>
-    <link rel="stylesheet" href="styles.css?v=20260508-snow-card">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="images/AuMusicBest.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="images/photos/academic-presentation.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=20260520-home-mirror">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -40,16 +39,15 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand site-title">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
-            </div>
+            </a>
             <ul class="nav-menu" id="primary-navigation">
                 <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a></li>
                 <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
                 <li class="nav-menu-lang-item">
                     <div class="nav-lang-toggle-mobile">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
@@ -63,9 +61,6 @@
                         <a href="engineering.html" data-i18n="nav.engineering">Engineering</a>
                         <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
                         <a href="resume.html" data-i18n="nav.resume">简历</a>
-                        <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
-                        <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
-                        <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
                     </div>
                 </li>
             </ul>
@@ -110,16 +105,28 @@
                 </div>
                 
                 <div class="hero-metrics">
-                    <a class="metric-row hero-identity credential-card credential-card-link" href="https://www.a47g.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 A47G 基金详情">
-                        <div class="metric-left"><strong><span data-i18n="hero.identity.left">A47G 基金创始人</span></strong></div>
+                    <a class="metric-row hero-identity credential-card credential-card-link" href="https://www.a47g.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 A47G私募基金详情">
+                        <div class="metric-left"><strong><span data-i18n="hero.identity.left">A47G私募基金</span></strong></div>
                         <div class="metric-separator">｜</div>
-                        <div class="metric-right"><span class="metric-light" data-i18n="hero.identity.right">牛津大学量化研究员</span></div>
+                        <div class="metric-right"><span class="metric-light" data-i18n="hero.identity.right">创始人</span></div>
                         <span class="credential-card-cta" aria-hidden="true">查看详情</span>
                     </a>
-                    <a class="metric-row credential-card credential-card-link" href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 Citadel Securities 经历详情">
-                        <div class="metric-left"><strong><span data-i18n="hero.experience.left">Citadel Securities</span></strong></div>
+                    <a class="metric-row credential-card credential-card-link" href="/projects/dockingtech" aria-label="打开入坞科技 Dockingtech 经历详情">
+                        <div class="metric-left"><strong><span data-i18n="hero.docking.left">入坞科技 Dockingtech</span></strong></div>
                         <div class="metric-separator">｜</div>
-                        <div class="metric-right"><span class="metric-light" data-i18n="hero.experience.right">量化交易员</span></div>
+                        <div class="metric-right"><span class="metric-light" data-i18n="hero.docking.right">联合创始人</span></div>
+                        <span class="credential-card-cta" aria-hidden="true">查看详情</span>
+                    </a>
+                    <a class="metric-row credential-card credential-card-link" href="https://www.citadelsecurities.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 Citadel Securities (London) 经历详情">
+                        <div class="metric-left"><strong><span data-i18n="hero.experience.left">前 Citadel Securities (London)</span></strong></div>
+                        <div class="metric-separator">｜</div>
+                        <div class="metric-right"><span class="metric-light" data-i18n="hero.experience.right">美股量化交易员</span></div>
+                        <span class="credential-card-cta" aria-hidden="true">查看详情</span>
+                    </a>
+                    <a class="metric-row credential-card credential-card-link" href="/images/credentials/oxford-mphil.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看牛津大学毕业证书">
+                        <div class="metric-left"><strong><span data-i18n="hero.oxford.left">牛津大学</span></strong></div>
+                        <div class="metric-separator">｜</div>
+                        <div class="metric-right"><span class="metric-light" data-i18n="hero.oxford.right">计量经济学研究生</span></div>
                         <span class="credential-card-cta" aria-hidden="true">查看详情</span>
                     </a>
                     <a class="metric-row credential-card credential-card-link" href="/berklee" aria-label="查看 Berklee 课程详情">
@@ -139,18 +146,31 @@
     </section>
 
     <!-- Featured Music Demo -->
-    <section id="home-snow" class="home-snow-feature" aria-labelledby="home-snow-title">
+    <section id="home-snow" class="home-snow-feature" aria-label="Featured music archives">
         <div class="container">
-            <article class="home-snow-card">
-                <div class="home-snow-copy">
-                    <p class="home-snow-kicker">New music demo / 新作品 Demo</p>
-                    <h2 id="home-snow-title">Snow White / 白雪公主</h2>
-                    <p>银子演唱、作曲并制作的中文电影感流行 Demo。这里收录试听、歌词、曲谱、制作名单和写歌故事。</p>
-                </div>
-                <div class="home-snow-actions" role="group" aria-label="Snow White links">
-                    <a href="/snow-white" class="home-snow-primary">打开 Demo / Open</a>
-                </div>
-            </article>
+            <div class="home-music-stack">
+                <article class="home-snow-card">
+                    <div class="home-snow-copy">
+                        <p class="home-snow-kicker">New music / 新作品</p>
+                        <h2 id="home-snow-title">Snow White / 白雪公主</h2>
+                        <p>银子演唱、作曲并制作的中文电影感流行 Demo。这里收录试听、歌词、曲谱、制作名单和写歌故事。</p>
+                    </div>
+                    <div class="home-snow-actions" role="group" aria-label="Snow White links">
+                        <a href="/works/snow-white" class="home-snow-primary">打开作品页 / Open</a>
+                    </div>
+                </article>
+
+                <article class="home-snow-card home-mirror-card">
+                    <div class="home-snow-copy">
+                        <p class="home-snow-kicker">New music / 新作品</p>
+                        <h2 id="home-mirror-title">Mirror / 镜子</h2>
+                        <p>银子演唱、作曲的中文 Jazz ballad。这里收录试听、歌词、创作动机、录音现场动画、乐手展示和制作名单。</p>
+                    </div>
+                    <div class="home-snow-actions" role="group" aria-label="Mirror links">
+                        <a href="/works/mirror" class="home-snow-primary">打开作品页 / Open</a>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
@@ -192,15 +212,15 @@
                     <p class="entry-card-desc" data-i18n="entry.timeline.desc">长期决策与阶段反思记录</p>
                     <span class="entry-card-link" data-i18n="entry.timeline.link">→ 查看时间线</span>
                 </a>
-                <a href="highlights.html" class="entry-card">
-                    <h3 class="entry-card-title" data-i18n="entry.highlights.title">主要亮点</h3>
-                    <p class="entry-card-desc" data-i18n="entry.highlights.desc">学术、职业、音乐与其他成就</p>
-                    <span class="entry-card-link" data-i18n="entry.highlights.link">→ 查看亮点</span>
-                </a>
                 <a href="works.html" class="entry-card">
                     <h3 class="entry-card-title" data-i18n="entry.works.title">音乐与作品</h3>
                     <p class="entry-card-desc" data-i18n="entry.works.desc">创作、演出与训练记录</p>
                     <span class="entry-card-link" data-i18n="entry.works.link">→ 查看作品</span>
+                </a>
+                <a href="/essays/" class="entry-card entry-card-garden">
+                    <h3 class="entry-card-title" data-i18n="entry.essays.title">Essays / 音乐花园</h3>
+                    <p class="entry-card-desc" data-i18n="entry.essays.desc">按知识关联组织的公开文章、作品笔记和长期学习节点</p>
+                    <span class="entry-card-link" data-i18n="entry.essays.link">→ 进入音乐花园</span>
                 </a>
                 <a href="engineering.html" class="entry-card">
                     <h3 class="entry-card-title" data-i18n="entry.engineering.title">Engineering / GitHub</h3>
@@ -549,7 +569,7 @@
         </div>
     </footer>
 
-    <script src="i18n.js?v=20260505-home-resume" defer></script>
-    <script src="script.js" defer></script>
+    <script src="i18n.js?v=20260521-a47g-name" defer></script>
+    <script src="script.js?v=20260513-main-perf" defer></script>
 </body>
 </html>

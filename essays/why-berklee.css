@@ -1,0 +1,30 @@
+.berklee-essay-page .garden-hero-media {
+    background-image: url("/images/plans/berklee-stage.jpg");
+    background-position: center 48%;
+}
+
+.berklee-essay-page .garden-hero::before {
+    background:
+        linear-gradient(90deg, rgba(251, 252, 250, 0.97) 0%, rgba(251, 252, 250, 0.83) 41%, rgba(251, 252, 250, 0.2) 74%),
+        linear-gradient(0deg, rgba(23, 33, 33, 0.26), rgba(23, 33, 33, 0.04));
+}
+
+.berklee-essay-page .map-node-center {
+    background: #173f5f;
+}
+
+.berklee-essay-page .map-node-a,
+.berklee-essay-page .map-node-b {
+    background: #f8fbff;
+}
+
+.berklee-essay-page .map-node-c,
+.berklee-essay-page .map-node-d {
+    background: #fffaf7;
+}
+
+@media (max-width: 920px) {
+    .berklee-essay-page .garden-hero-media {
+        background-position: 58% center;
+    }
+}

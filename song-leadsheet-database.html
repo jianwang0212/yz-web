@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Song Leadsheet Database</title>
+  <link rel="canonical" href="https://thisisyz.com/projects/song-leadsheet-database">
+  <meta property="og:url" content="https://thisisyz.com/projects/song-leadsheet-database">
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --paper: #fffdf8;
+      --ink: #1d2320;
+      --muted: #68716b;
+      --line: #d9d4c9;
+      --accent: #0e6b63;
+      --accent-2: #8b3f47;
+      --high: #177245;
+      --medium: #9b6700;
+      --low: #a1372d;
+      --shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.5;
+    }
+    header {
+      padding: 28px 32px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      position: sticky;
+      top: 0;
+      z-index: 3;
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(24px, 4vw, 40px); line-height: 1.1; letter-spacing: 0; }
+    .meta { margin: 0; color: var(--muted); max-width: 980px; }
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      align-items: center;
+    }
+    input, select {
+      height: 40px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 0 12px;
+      font: inherit;
+    }
+    input { width: min(420px, 100%); }
+    main { padding: 24px 32px 48px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+      max-width: 980px;
+    }
+    .metric {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+    }
+    .metric strong { display: block; font-size: 24px; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 1280px; }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      position: sticky;
+      top: 0;
+      background: #f0ece2;
+      z-index: 1;
+      white-space: nowrap;
+    }
+    tbody tr:hover { background: #faf7ef; }
+    td.num { color: var(--muted); width: 44px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      min-width: 72px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .badge.high { background: var(--high); }
+    .badge.medium { background: var(--medium); }
+    .badge.low { background: var(--low); }
+    .details { margin-top: 28px; display: grid; gap: 18px; }
+    .song-detail {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 150px;
+    }
+    .section-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .eyebrow { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; }
+    h2 { margin: 0; font-size: 22px; letter-spacing: 0; }
+    .artist { margin: 4px 0 0; color: var(--muted); }
+    .facts { display: grid; grid-template-columns: repeat(4, minmax(180px, 1fr)); gap: 10px; margin: 16px 0; }
+    .facts div { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fff; }
+    dt { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    dd { margin: 4px 0 0; }
+    h3 { margin: 18px 0 6px; font-size: 15px; }
+    .leadsheet-block p, .notes-block p { margin: 0; }
+    .sources-block ol { margin: 8px 0 0 20px; padding: 0; }
+    .sources-block li { margin-bottom: 10px; }
+    .source-fields { color: var(--muted); font-size: 12px; margin-left: 6px; }
+    .sources-block p { margin: 3px 0 0; color: var(--muted); }
+    .hidden { display: none; }
+    footer { margin-top: 28px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) {
+      header, main { padding-left: 16px; padding-right: 16px; }
+      .summary, .facts { grid-template-columns: 1fr 1fr; }
+      .song-detail { scroll-margin-top: 190px; }
+    }
+    @media (max-width: 560px) {
+      .summary, .facts { grid-template-columns: 1fr; }
+      header { position: static; }
+      .song-detail { scroll-margin-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Song Leadsheet Database</h1>
+    <p class="meta">Generated 2026-05-25. Fields without sufficient evidence are marked UNKNOWN. Leadsheet content is an abbreviated chord-structure summary only.</p>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search title, artist, key, BPM, chords" aria-label="Search">
+      <select id="confidence" aria-label="Filter by confidence">
+        <option value="all">All confidence</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+  </header>
+  <main>
+    <section class="summary" aria-label="Summary">
+      <div class="metric"><strong>26</strong><span>Songs</span></div>
+      <div class="metric"><strong>11</strong><span>High confidence</span></div>
+      <div class="metric"><strong>10</strong><span>Medium confidence</span></div>
+      <div class="metric"><strong>5</strong><span>Low confidence</span></div>
+    </section>
+    <section class="table-wrap" aria-label="Database table">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Song Title</th>
+            <th>Artist</th>
+            <th>BPM / Tempo</th>
+            <th>Original Key / Tonality</th>
+            <th>Common Sheet Key</th>
+            <th>Time Signature</th>
+            <th>Leadsheet Summary</th>
+            <th>Confidence</th>
+          </tr>
+        </thead>
+        <tbody id="songRows">
+
+      <tr data-confidence="Low" data-search="时间煮雨 郁可唯 unknown unknown c major / 1=c verse: c-g-am-f-g-c; f-g-em-am-f-g-am. chorus: c-f-em-am-f-g-c; c-f-em-am-dm-g-c. bridge/tag: f-g-am; f-g-c; f-g-em-am; f-g-am.">
+        <td class="num">1</td>
+        <td><a href="#song-1">时间煮雨</a></td>
+        <td>郁可唯</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td>C major / 1=C</td>
+        <td>4/4 (Chord4); independent original-recording meter source not found</td>
+        <td>Verse: C-G-Am-F-G-C; F-G-Em-Am-F-G-Am. Chorus: C-F-Em-Am-F-G-C; C-F-Em-Am-Dm-G-C. Bridge/tag: F-G-Am; F-G-C; F-G-Em-Am; F-G-Am.</td>
+        <td><span class="badge low">Low</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="小幸运 田馥甄 78-80 bpm feel; 158 bpm double-time in songbpm f major (sheet consensus); songbpm reports c major f major, also common c-shape capo 5 verse: f-g-c-f; dm7-g-c-f. pre: f-c/e-bb-c; am-dm7; dm7-c-gm7-g-c. chorus: f-c-dm7-am-bb-f-g-c; repeat with cadence to f.">
+        <td class="num">2</td>
+        <td><a href="#song-2">小幸运</a></td>
+        <td>田馥甄</td>
+        <td>78-80 BPM feel; 158 BPM double-time in SongBPM</td>
+        <td>F major (sheet consensus); SongBPM reports C major</td>
+        <td>F major, also common C-shape Capo 5</td>
+        <td>4/4</td>
+        <td>Verse: F-G-C-F; Dm7-G-C-F. Pre: F-C/E-Bb-C; Am-Dm7; Dm7-C-Gm7-G-C. Chorus: F-C-Dm7-Am-Bb-F-G-C; repeat with cadence to F.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Low" data-search="还是会寂寞 陈绮贞 unknown unknown c-shape capo 6 in chord4; other sheet keys conflict verse: cadd9-g/b-g/bb-a; f-g-em-asus4-a; dm7-g-em-a; f-fm-am/d-g. chorus: fm7-em7; dm7-g-cm7-gm7-c7; fm7-em7; dm7-fm-ab-g; ending f-fm-g-cm7-fm7.">
+        <td class="num">3</td>
+        <td><a href="#song-3">还是会寂寞</a></td>
+        <td>陈绮贞</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td>C-shape Capo 6 in Chord4; other sheet keys conflict</td>
+        <td>UNKNOWN</td>
+        <td>Verse: Cadd9-G/B-G/Bb-A; F-G-Em-Asus4-A; Dm7-G-Em-A; F-Fm-Am/D-G. Chorus: Fm7-Em7; Dm7-G-Cm7-Gm7-C7; Fm7-Em7; Dm7-Fm-Ab-G; ending F-Fm-G-Cm7-Fm7.</td>
+        <td><span class="badge low">Low</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="太聪明 陈绮贞 109 bpm (single web-metadata source) e major preferred; musicstax/search metadata reports d#/eb major e major verse: e-eaug-e6-e7; a-am; g#m7-c#7; f#m7-f#m7b5; g#m7-c#7; f#m7-b7-e. chorus: a-g#m7-f#m7-f#m7/b-e-f#m7-g#m7-c#7; a-g#m7-c#7-f#m7-f#m7b5-f#m7/b-b7.">
+        <td class="num">4</td>
+        <td><a href="#song-4">太聪明</a></td>
+        <td>陈绮贞</td>
+        <td>109 BPM (single web-metadata source)</td>
+        <td>E major preferred; Musicstax/search metadata reports D#/Eb major</td>
+        <td>E major</td>
+        <td>4/4 reported by Musicstax/search metadata; not independently confirmed</td>
+        <td>Verse: E-Eaug-E6-E7; A-Am; G#m7-C#7; F#m7-F#m7b5; G#m7-C#7; F#m7-B7-E. Chorus: A-G#m7-F#m7-F#m7/B-E-F#m7-G#m7-C#7; A-G#m7-C#7-F#m7-F#m7b5-F#m7/B-B7.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="模特 李荣浩 130 bpm (or 65 bpm half-time practice feel) d major d major / no capo intro/verse vamp: gmaj7-f#m; em7-bm7; gmaj7-f#m; em7-a-d. pre/chorus: gmaj7-e-bm7-f#m; gmaj7-e-bm7-a; cadence bbaug-a-g-f#m-em7-a-d.">
+        <td class="num">5</td>
+        <td><a href="#song-5">模特</a></td>
+        <td>李荣浩</td>
+        <td>130 BPM (or 65 BPM half-time practice feel)</td>
+        <td>D major</td>
+        <td>D major / no capo</td>
+        <td>UNKNOWN</td>
+        <td>Intro/verse vamp: Gmaj7-F#m; Em7-Bm7; Gmaj7-F#m; Em7-A-D. Pre/chorus: Gmaj7-E-Bm7-F#m; Gmaj7-E-Bm7-A; cadence Bbaug-A-G-F#m-Em7-A-D.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="superman aga 81-82 bpm f minor / ab major relative-major reading ab major-relative shapes: cm7-dbmaj7-bbm7-dbm main loop: cm7-dbmaj7-bbm7-dbm; use as verse/chorus ostinato per chordify. treat tonality as f minor with ab relative-major ambiguity.">
+        <td class="num">6</td>
+        <td><a href="#song-6">Superman</a></td>
+        <td>AGA</td>
+        <td>81-82 BPM</td>
+        <td>F minor / Ab major relative-major reading</td>
+        <td>Ab major-relative shapes: Cm7-Dbmaj7-Bbm7-Dbm</td>
+        <td>4/4</td>
+        <td>Main loop: Cm7-Dbmaj7-Bbm7-Dbm; use as verse/chorus ostinato per Chordify. Treat tonality as F minor with Ab relative-major ambiguity.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="一厘米 aga 86 bpm ab major ab major verse: dbmaj7-cm7-bbm7-abmaj7/gbmaj7-ab; dbmaj7-cm7-fm7-bmaj7; bbm7-cm7-db/eb. chorus: dbmaj7-cm7-bbm7-eb7-abmaj7-cm7; dbmaj7-cm7-fm7-gb; bbm7-cm7-db/eb.">
+        <td class="num">7</td>
+        <td><a href="#song-7">一厘米</a></td>
+        <td>AGA</td>
+        <td>86 BPM</td>
+        <td>Ab major</td>
+        <td>Ab major</td>
+        <td>UNKNOWN</td>
+        <td>Verse: Dbmaj7-Cm7-Bbm7-Abmaj7/Gbmaj7-Ab; Dbmaj7-Cm7-Fm7-Bmaj7; Bbm7-Cm7-Db/Eb. Chorus: Dbmaj7-Cm7-Bbm7-Eb7-Abmaj7-Cm7; Dbmaj7-Cm7-Fm7-Gb; Bbm7-Cm7-Db/Eb.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="手望 王菀之 115 bpm for original-accompaniment/守望版; 120 bpm appears on live chordify result f major preferred; one chordify jyutping result reports c f major core progression from chordify sources: fmaj7-gm7-c7-c/f; variants include c-bb-f-fmaj7 in live result. use f-centered verse/chorus movement, verify exact version before performance.">
+        <td class="num">8</td>
+        <td><a href="#song-8">手望</a></td>
+        <td>王菀之</td>
+        <td>115 BPM for original-accompaniment/守望版; 120 BPM appears on live Chordify result</td>
+        <td>F major preferred; one Chordify Jyutping result reports C</td>
+        <td>F major</td>
+        <td>UNKNOWN</td>
+        <td>Core progression from Chordify sources: Fmaj7-Gm7-C7-C/F; variants include C-Bb-F-Fmaj7 in live result. Use F-centered verse/chorus movement, verify exact version before performance.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="梦中人 王菲 129-130 bpm e major (needs final audio confirmation) e major/common guitar chord pages main vamp: e-a-b-a. chorus/extension commonly moves through c#m-b-a-b before returning to e-a-b-a. treat as a concise summary pending a verified commercial/official score.">
+        <td class="num">9</td>
+        <td><a href="#song-9">梦中人</a></td>
+        <td>王菲</td>
+        <td>129-130 BPM</td>
+        <td>E major (needs final audio confirmation)</td>
+        <td>E major/common guitar chord pages</td>
+        <td>4/4 from GetSongBPM profile</td>
+        <td>Main vamp: E-A-B-A. Chorus/extension commonly moves through C#m-B-A-B before returning to E-A-B-A. Treat as a concise summary pending a verified commercial/official score.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Low" data-search="达尔文 蔡健雅 unknown unknown c major in chord4/common charts verse: c-g-am-em; f-c-am-g; f-g-am-em; f-c-g. chorus: c-g-am-em; f-c-g-am7; f-g-c-am; f-g-c.">
+        <td class="num">10</td>
+        <td><a href="#song-10">达尔文</a></td>
+        <td>蔡健雅</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td>C major in Chord4/common charts</td>
+        <td>UNKNOWN</td>
+        <td>Verse: C-G-Am-Em; F-C-Am-G; F-G-Am-Em; F-C-G. Chorus: C-G-Am-Em; F-C-G-Am7; F-G-C-Am; F-G-C.</td>
+        <td><span class="badge low">Low</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="小小虫 方大同 168 bpm metadata; likely 84 bpm half-time feel e major e major verse: e-g#m7-gm7-f#m7-b9sus. pre: b9sus-g#m7-c#m7-f#m7-b9sus-g#m7-c#m7-f#m7-g#m7-a7-b7. chorus: e-g#m7-c#m7-f#m7-b9sus; g#m7-db7sus2-f#m7-b7-e.">
+        <td class="num">11</td>
+        <td><a href="#song-11">小小虫</a></td>
+        <td>方大同</td>
+        <td>168 BPM metadata; likely 84 BPM half-time feel</td>
+        <td>E major</td>
+        <td>E major</td>
+        <td>4/4 from Musicstax/search metadata; not independently confirmed</td>
+        <td>Verse: E-G#m7-Gm7-F#m7-B9sus. Pre: B9sus-G#m7-C#m7-F#m7-B9sus-G#m7-C#m7-F#m7-G#m7-A7-B7. Chorus: E-G#m7-C#m7-F#m7-B9sus; G#m7-Db7sus2-F#m7-B7-E.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="红色高跟鞋 蔡健雅 88 bpm d major d major main/verse: g-a-bm repeated with d-a-bm entries. pre/turnaround: d-f#m-g-a. chorus/tag keeps g-a-bm with d/gm color at ending.">
+        <td class="num">12</td>
+        <td><a href="#song-12">红色高跟鞋</a></td>
+        <td>蔡健雅</td>
+        <td>88 BPM</td>
+        <td>D major</td>
+        <td>D major</td>
+        <td>UNKNOWN</td>
+        <td>Main/verse: G-A-Bm repeated with D-A-Bm entries. Pre/turnaround: D-F#m-G-A. Chorus/tag keeps G-A-Bm with D/Gm color at ending.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="月牙湾 f.i.r. 飞儿乐团 87 bpm feel; songbpm reports 174 bpm double-time d major d major verse/intro: d-bm-a-g/em. main chorus: d-bm-g-a; extension g-f#m-bm-em-a before cadence back to d.">
+        <td class="num">13</td>
+        <td><a href="#song-13">月牙湾</a></td>
+        <td>F.I.R. 飞儿乐团</td>
+        <td>87 BPM feel; SongBPM reports 174 BPM double-time</td>
+        <td>D major</td>
+        <td>D major</td>
+        <td>4/4</td>
+        <td>Verse/intro: D-Bm-A-G/Em. Main chorus: D-Bm-G-A; extension G-F#m-Bm-Em-A before cadence back to D.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="眼泪成诗 孙燕姿 69-70 bpm c major c major; some guitar arrangements use g-shape capo 5 verse: dm7-em7; dm7-a7sus4; dm7-em7-am7; bb-f/g-c. chorus: gm-c7-fmaj7-em-am7-dm7-f/g-cmaj7; repeat with a7 color.">
+        <td class="num">14</td>
+        <td><a href="#song-14">眼泪成诗</a></td>
+        <td>孙燕姿</td>
+        <td>69-70 BPM</td>
+        <td>C major</td>
+        <td>C major; some guitar arrangements use G-shape Capo 5</td>
+        <td>4/4, with one MIDI arrangement also marking 2/4 sections</td>
+        <td>Verse: Dm7-Em7; Dm7-A7sus4; Dm7-Em7-Am7; Bb-F/G-C. Chorus: Gm-C7-Fmaj7-Em-Am7-Dm7-F/G-Cmaj7; repeat with A7 color.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="一 aga 68 bpm bb major bb major core loop: bb-f-eb-cm7; use as verse/chorus summary from chordify. confirm detailed sectional extensions before performance.">
+        <td class="num">15</td>
+        <td><a href="#song-15">一</a></td>
+        <td>AGA</td>
+        <td>68 BPM</td>
+        <td>Bb major</td>
+        <td>Bb major</td>
+        <td>UNKNOWN</td>
+        <td>Core loop: Bb-F-Eb-Cm7; use as verse/chorus summary from Chordify. Confirm detailed sectional extensions before performance.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="Low" data-search="糖不甩 薛凯琪 unknown unknown unknown unknown">
+        <td class="num">16</td>
+        <td><a href="#song-16">糖不甩</a></td>
+        <td>薛凯琪</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td>UNKNOWN</td>
+        <td><span class="badge low">Low</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="1234567 方大同 107 bpm a major a major verse: amaj7-d-amaj7-d; c#m7-bm7-e-amaj7-e. pre: dmaj7-dmaj7-amaj7-amaj7; dmaj7-dmaj7-bm7-c#m7-dmaj7-e. chorus: amaj7-dmaj7; bm7-c#m7-dmaj7-e; cadence through bm7-c#m7-dm7-e-amaj7.">
+        <td class="num">17</td>
+        <td><a href="#song-17">1234567</a></td>
+        <td>方大同</td>
+        <td>107 BPM</td>
+        <td>A major</td>
+        <td>A major</td>
+        <td>UNKNOWN</td>
+        <td>Verse: Amaj7-D-Amaj7-D; C#m7-Bm7-E-Amaj7-E. Pre: Dmaj7-Dmaj7-Amaj7-Amaj7; Dmaj7-Dmaj7-Bm7-C#m7-Dmaj7-E. Chorus: Amaj7-Dmaj7; Bm7-C#m7-Dmaj7-E; cadence through Bm7-C#m7-Dm7-E-Amaj7.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="旅行的意义 陈绮贞 69-70 bpm for common single/album arrangements; one fingerstyle listing shows 130 bpm d major d major, also common c-shape capo 2 verse: d-bm-g-a. chorus/refrain keeps d-bm-g-a with d/f# or a/c# passing bass depending arrangement. simple folk version can be summarized as i-vi-iv-v in d.">
+        <td class="num">18</td>
+        <td><a href="#song-18">旅行的意义</a></td>
+        <td>陈绮贞</td>
+        <td>69-70 BPM for common single/album arrangements; one fingerstyle listing shows 130 BPM</td>
+        <td>D major</td>
+        <td>D major, also common C-shape Capo 2</td>
+        <td>4/4</td>
+        <td>Verse: D-Bm-G-A. Chorus/refrain keeps D-Bm-G-A with D/F# or A/C# passing bass depending arrangement. Simple folk version can be summarized as I-vi-IV-V in D.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="我不难过 孙燕姿 64 bpm feel; 127-128 bpm double-time eb major eb major verse: eb-gm-cm/bb-abm-bb; repeat with fm/cm colors. chorus: eb-gm-bbm-fm; abm-gm-cm; ab-abm-bb-eb. bridge: g7-cm-ab-bb style turnaround.">
+        <td class="num">19</td>
+        <td><a href="#song-19">我不难过</a></td>
+        <td>孙燕姿</td>
+        <td>64 BPM feel; 127-128 BPM double-time</td>
+        <td>Eb major</td>
+        <td>Eb major</td>
+        <td>4/4</td>
+        <td>Verse: Eb-Gm-Cm/Bb-Abm-Bb; repeat with Fm/Cm colors. Chorus: Eb-Gm-Bbm-Fm; Abm-Gm-Cm; Ab-Abm-Bb-Eb. Bridge: G7-Cm-Ab-Bb style turnaround.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="给我一个理由忘记 a-lin 67 bpm feel; 133-134 bpm double-time ab major; some chordu pages read f minor relative/sectional g-shape capo 1 / ab sounding common g-shape capo 1: verse g-d/f#-em-bm-c-g-c-d. pre: em-bm/d-cmaj7-c#m7b5-cmaj7-g/b-am7-d. chorus: em-c-d-g; em-c-d-g; em-c-d-g; em-c-dsus4-d.">
+        <td class="num">20</td>
+        <td><a href="#song-20">给我一个理由忘记</a></td>
+        <td>A-Lin</td>
+        <td>67 BPM feel; 133-134 BPM double-time</td>
+        <td>Ab major; some ChordU pages read F minor relative/sectional</td>
+        <td>G-shape Capo 1 / Ab sounding</td>
+        <td>4/4</td>
+        <td>Common G-shape Capo 1: Verse G-D/F#-Em-Bm-C-G-C-D. Pre: Em-Bm/D-Cmaj7-C#m7b5-Cmaj7-G/B-Am7-D. Chorus: Em-C-D-G; Em-C-D-G; Em-C-D-G; Em-C-Dsus4-D.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="Medium" data-search="逆光 孙燕姿 175 bpm double-time / about 87.5 bpm feel (needs final audio confirmation) a major g-shape capo 2 / a sounding common g-shape capo 2 summary: verse g-d/f#-em-bm-c-g-am-d; chorus g-d/f#-em-bm-c-g-am-d returning to a-sounding original key.">
+        <td class="num">21</td>
+        <td><a href="#song-21">逆光</a></td>
+        <td>孙燕姿</td>
+        <td>175 BPM double-time / about 87.5 BPM feel (needs final audio confirmation)</td>
+        <td>A major</td>
+        <td>G-shape Capo 2 / A sounding</td>
+        <td>4/4 from guitar-score context; not independently confirmed</td>
+        <td>Common G-shape Capo 2 summary: Verse G-D/F#-Em-Bm-C-G-Am-D; chorus G-D/F#-Em-Bm-C-G-Am-D returning to A-sounding original key.</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="光年之外 g.e.m. 邓紫棋 87.9 bpm feel; songbpm reports 176 bpm double-time c# minor / db minor c#m/dbm; common chord field dbm-a-e-abm verse: c#m-a-e-g#m; repeat. pre/chorus: c#m-a-e-g#m with passing eb/ab colors. bridge/tag: a-b-e-c#m; a-e-g#m-c#m before final chorus.">
+        <td class="num">22</td>
+        <td><a href="#song-22">光年之外</a></td>
+        <td>G.E.M. 邓紫棋</td>
+        <td>87.9 BPM feel; SongBPM reports 176 BPM double-time</td>
+        <td>C# minor / Db minor</td>
+        <td>C#m/Dbm; common chord field Dbm-A-E-Abm</td>
+        <td>4/4</td>
+        <td>Verse: C#m-A-E-G#m; repeat. Pre/chorus: C#m-A-E-G#m with passing Eb/Ab colors. Bridge/tag: A-B-E-C#m; A-E-G#m-C#m before final chorus.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="戒烟 李荣浩 120 bpm g major g major / no capo verse: g-bm7-em-c-cm-d7; cm-g-cm-g-am-g. chorus: c-d-bm7-em; am-d-g-g7; c-d-bm-em; am-d-g.">
+        <td class="num">23</td>
+        <td><a href="#song-23">戒烟</a></td>
+        <td>李荣浩</td>
+        <td>120 BPM</td>
+        <td>G major</td>
+        <td>G major / no capo</td>
+        <td>UNKNOWN</td>
+        <td>Verse: G-Bm7-Em-C-Cm-D7; Cm-G-Cm-G-Am-G. Chorus: C-D-Bm7-Em; Am-D-G-G7; C-D-Bm-Em; Am-D-G.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="唯一 g.e.m. 邓紫棋 72 bpm feel; songbpm reports 144 bpm double-time db major / c# major c-shape capo 1 / db sounding db-sounding summary: db-ab/c-bbm-ab-gb-db/f-ebm-ab. in common c-shape capo 1: c-g/b-am-g-f-c/e-dm-g; chorus extends f-g-em-am-dm-g-c.">
+        <td class="num">24</td>
+        <td><a href="#song-24">唯一</a></td>
+        <td>G.E.M. 邓紫棋</td>
+        <td>72 BPM feel; SongBPM reports 144 BPM double-time</td>
+        <td>Db major / C# major</td>
+        <td>C-shape Capo 1 / Db sounding</td>
+        <td>4/4</td>
+        <td>Db-sounding summary: Db-Ab/C-Bbm-Ab-Gb-Db/F-Ebm-Ab. In common C-shape Capo 1: C-G/B-Am-G-F-C/E-Dm-G; chorus extends F-G-Em-Am-Dm-G-C.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr data-confidence="Low" data-search="倾城 许美静 unknown g major g major; suggested male c / female g in 91pu chart intro: em-f-em-dm7-g; c-g/b-am-g-f-d. verse: g-bm-c-cm; g-bm-f-d; g-bm-c-cm; g-bm-am-d. chorus: g-bm-em-bm; c-g-am-a7-d; g-bm-em-dm7-g; c-cm-am-d-g.">
+        <td class="num">25</td>
+        <td><a href="#song-25">倾城</a></td>
+        <td>许美静</td>
+        <td>UNKNOWN</td>
+        <td>G major</td>
+        <td>G major; suggested male C / female G in 91pu chart</td>
+        <td>UNKNOWN</td>
+        <td>Intro: Em-F-Em-Dm7-G; C-G/B-Am-G-F-D. Verse: G-Bm-C-Cm; G-Bm-F-D; G-Bm-C-Cm; G-Bm-Am-D. Chorus: G-Bm-Em-Bm; C-G-Am-A7-D; G-Bm-Em-Dm7-G; C-Cm-Am-D-G.</td>
+        <td><span class="badge low">Low</span></td>
+      </tr>
+      <tr data-confidence="High" data-search="二十二 陶喆 93 bpm for album/common version; other arrangements list 76 or 100 bpm f major f major; common e-shape capo 1 or d-shape special-tuning arrangements exist verse: f-am-bb-am; bbm-gm-bbm-c; repeat. chorus: f-am-dm-am; gm-f-c-bb-c; tag bb-c-f. bridge: bb7-c7-am-d7; bb-am-eb-c-f.">
+        <td class="num">26</td>
+        <td><a href="#song-26">二十二</a></td>
+        <td>陶喆</td>
+        <td>93 BPM for album/common version; other arrangements list 76 or 100 BPM</td>
+        <td>F major</td>
+        <td>F major; common E-shape Capo 1 or D-shape special-tuning arrangements exist</td>
+        <td>4/4</td>
+        <td>Verse: F-Am-Bb-Am; Bbm-Gm-Bbm-C; repeat. Chorus: F-Am-Dm-Am; Gm-F-C-Bb-C; tag Bb-C-F. Bridge: Bb7-C7-Am-D7; Bb-Am-Eb-C-F.</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="details" aria-label="Song details">
+
+    <section class="song-detail" id="song-1">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01</p>
+          <h2>时间煮雨</h2>
+          <p class="artist">郁可唯</p>
+        </div>
+        <span class="badge low">Low</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Original Key</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>C major / 1=C</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4 (Chord4); independent original-recording meter source not found</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: C-G-Am-F-G-C; F-G-Em-Am-F-G-Am. Chorus: C-F-Em-Am-F-G-C; C-F-Em-Am-Dm-G-C. Bridge/tag: F-G-Am; F-G-C; F-G-Em-Am; F-G-Am.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Good chord source, but no reliable BPM source for the 郁可唯 recording and no independent original-key confirmation. A GuitarWorld result for 吴亦凡/other versions was not used as original-key evidence.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/7585" target="_blank" rel="noopener noreferrer">Chord4 时间煮雨</a>
+            <span class="source-fields">common_sheet_key, time_signature, leadsheet</span>
+            <p>Lists 1=C, 4/4 and chord chart.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q37019" target="_blank" rel="noopener noreferrer">吉他世界 时间煮雨 listing</a>
+            <span class="source-fields">common_sheet_key, time_signature, score_source</span>
+            <p>Commercial guitar-score listing; includes alternate versions and metadata but not used for 郁可唯 BPM.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-2">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02</p>
+          <h2>小幸运</h2>
+          <p class="artist">田馥甄</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>78-80 BPM feel; 158 BPM double-time in SongBPM</dd></div>
+        <div><dt>Original Key</dt><dd>F major (sheet consensus); SongBPM reports C major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>F major, also common C-shape Capo 5</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: F-G-C-F; Dm7-G-C-F. Pre: F-C/E-Bb-C; Am-Dm7; Dm7-C-Gm7-G-C. Chorus: F-C-Dm7-Am-Bb-F-G-C; repeat with cadence to F.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Tempo is a half-time/double-time conflict: SongBPM 158 equals about 79 BPM feel. Key conflicts: score sources say original F/C-shape capo5, SongBPM says C.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40hebe-tien/xiao-xing-yun" target="_blank" rel="noopener noreferrer">SongBPM 小幸運</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>158 BPM, key C, 4 beats per bar.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/3345" target="_blank" rel="noopener noreferrer">Chord4 小幸运 Key=F</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Key=F and full chord chart.</p>
+          </li>
+          <li>
+            <a href="https://www.jitatang.cn/pu/100915.html" target="_blank" rel="noopener noreferrer">吉他堂 小幸运</a>
+            <span class="source-fields">bpm, common_sheet_key, score_source</span>
+            <p>C 调, Capo 5, 78 BPM.</p>
+          </li>
+          <li>
+            <a href="https://www.yiqijita.com/pu/26864.html" target="_blank" rel="noopener noreferrer">一起吉他 小幸运功能谱</a>
+            <span class="source-fields">leadsheet, score_source</span>
+            <p>Summarizes verse and chorus harmonic motion.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-3">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03</p>
+          <h2>还是会寂寞</h2>
+          <p class="artist">陈绮贞</p>
+        </div>
+        <span class="badge low">Low</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Original Key</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>C-shape Capo 6 in Chord4; other sheet keys conflict</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: Cadd9-G/B-G/Bb-A; F-G-Em-Asus4-A; Dm7-G-Em-A; F-Fm-Am/D-G. Chorus: Fm7-Em7; Dm7-G-Cm7-Gm7-C7; Fm7-Em7; Dm7-Fm-Ab-G; ending F-Fm-G-Cm7-Fm7.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Chord chart is usable, but BPM/time signature and original key were not confirmed by two independent sources. Capo/common-key evidence conflicts with other commercial sheet snippets.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/12904" target="_blank" rel="noopener noreferrer">Chord4 还是会寂寞</a>
+            <span class="source-fields">common_sheet_key, leadsheet</span>
+            <p>Chord chart with Capo 6 and section chords.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/search?keyword=%E8%BF%98%E6%98%AF%E4%BC%9A%E5%AF%82%E5%AF%9E" target="_blank" rel="noopener noreferrer">吉他世界 还是会寂寞 search/listing</a>
+            <span class="source-fields">score_source</span>
+            <p>Commercial sheet listings located, but exact original-key/BPM not independently resolved.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-4">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04</p>
+          <h2>太聪明</h2>
+          <p class="artist">陈绮贞</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>109 BPM (single web-metadata source)</dd></div>
+        <div><dt>Original Key</dt><dd>E major preferred; Musicstax/search metadata reports D#/Eb major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>E major</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4 reported by Musicstax/search metadata; not independently confirmed</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: E-Eaug-E6-E7; A-Am; G#m7-C#7; F#m7-F#m7b5; G#m7-C#7; F#m7-B7-E. Chorus: A-G#m7-F#m7-F#m7/B-E-F#m7-G#m7-C#7; A-G#m7-C#7-F#m7-F#m7b5-F#m7/B-B7.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Chord/score sources agree on E; audio-feature metadata was one semitone lower. BPM has only one clear metadata source in the search results.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/35180" target="_blank" rel="noopener noreferrer">Chord4 太聪明</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Key=E with detailed chord chart.</p>
+          </li>
+          <li>
+            <a href="https://zh-hans.guitarians.com/g-chord-tell/search?keyword=%E5%A4%AA%E8%81%AA%E6%98%8E%20%E9%99%88%E7%BB%AE%E8%B4%9E" target="_blank" rel="noopener noreferrer">Guitarians/ChordTell 太聪明</a>
+            <span class="source-fields">score_source, common_sheet_key</span>
+            <p>Public score/search source for same ChordTell-family chart.</p>
+          </li>
+          <li>
+            <a href="https://musicstax.com/track/na/5DSF1VTSaaAFIesJLlltuM" target="_blank" rel="noopener noreferrer">Musicstax 太聪明</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>Search result reported about 109 BPM and D#/Eb major; direct fetch was blocked.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-5">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05</p>
+          <h2>模特</h2>
+          <p class="artist">李荣浩</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>130 BPM (or 65 BPM half-time practice feel)</dd></div>
+        <div><dt>Original Key</dt><dd>D major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>D major / no capo</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Intro/verse vamp: Gmaj7-F#m; Em7-Bm7; Gmaj7-F#m; Em7-A-D. Pre/chorus: Gmaj7-E-Bm7-F#m; Gmaj7-E-Bm7-A; cadence Bbaug-A-G-F#m-Em7-A-D.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>ChordU and Chord4 agree on key/chords; no second independent BPM source or explicit meter source found.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chordu.com/chords-tabs-%E6%9D%8E%E6%A6%AE%E6%B5%A9-%E6%A8%A1%E7%89%B9-m%C3%B3-t%C3%A8-model-pin-yin-lyrics-and-english-translation-id_GOFhfIvZvKM" target="_blank" rel="noopener noreferrer">ChordU Model</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>130.1 BPM, key D major, chord sequence.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/10977" target="_blank" rel="noopener noreferrer">Chord4 模特</a>
+            <span class="source-fields">common_sheet_key, leadsheet</span>
+            <p>Capo 0 chord chart in D-centered harmony.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-6">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06</p>
+          <h2>Superman</h2>
+          <p class="artist">AGA</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>81-82 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>F minor / Ab major relative-major reading</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>Ab major-relative shapes: Cm7-Dbmaj7-Bbm7-Dbm</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Main loop: Cm7-Dbmaj7-Bbm7-Dbm; use as verse/chorus ostinato per Chordify. Treat tonality as F minor with Ab relative-major ambiguity.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>SongBPM reports F minor, Chordify reports Ab; these are relative major/minor interpretations over the same chord field. BPM agrees within 1 BPM.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40aga/superman-Nn0g4t8Nqa" target="_blank" rel="noopener noreferrer">SongBPM Superman</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>82 BPM, F minor, 4 beats per bar.</p>
+          </li>
+          <li>
+            <a href="https://chordify.net/chords/aga-songs/superman-chords" target="_blank" rel="noopener noreferrer">Chordify Superman</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>81 BPM, Ab key, chords Cm7-Dbmaj7-Bbm7-Dbm.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-7">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">07</p>
+          <h2>一厘米</h2>
+          <p class="artist">AGA</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>86 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>Ab major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>Ab major</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: Dbmaj7-Cm7-Bbm7-Abmaj7/Gbmaj7-Ab; Dbmaj7-Cm7-Fm7-Bmaj7; Bbm7-Cm7-Db/Eb. Chorus: Dbmaj7-Cm7-Bbm7-Eb7-Abmaj7-Cm7; Dbmaj7-Cm7-Fm7-Gb; Bbm7-Cm7-Db/Eb.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Chordify lyric-video and Chord4 live chart agree on Ab. Chord4 page is for a live chart, so original-recording verification is not perfect; no explicit time-signature source.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chordify.net/es/chords/jiang-hai-jia-songs/yi-li-mi-chords" target="_blank" rel="noopener noreferrer">Chordify 一釐米</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>86 BPM, Ab major, chord list.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/36968" target="_blank" rel="noopener noreferrer">Chord4 一厘米 live</a>
+            <span class="source-fields">common_sheet_key, leadsheet</span>
+            <p>Key=Ab and sectional chord chart, marked live/source arrangement.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-8">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">08</p>
+          <h2>手望</h2>
+          <p class="artist">王菀之</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>115 BPM for original-accompaniment/守望版; 120 BPM appears on live Chordify result</dd></div>
+        <div><dt>Original Key</dt><dd>F major preferred; one Chordify Jyutping result reports C</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>F major</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Core progression from Chordify sources: Fmaj7-Gm7-C7-C/F; variants include C-Bb-F-Fmaj7 in live result. Use F-centered verse/chorus movement, verify exact version before performance.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Sources are Chordify variants of original accompaniment, Jyutping, and live versions. BPM/key differ by version; final value uses original-accompaniment listing.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chordify.net/chords/zhang-jing-xuan-wang-wan-zhi-songs/shou-wang-shou-wang-ban-chords" target="_blank" rel="noopener noreferrer">Chordify 手望 原版伴奏</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>115 BPM, F, chords Fmaj7-Gm7-C7-C.</p>
+          </li>
+          <li>
+            <a href="https://chordify.net/nl/chords/zhang-jing-xuan-wang-wan-zhi-songs/shou-wang-shou-wang-ban-chords" target="_blank" rel="noopener noreferrer">Chordify 手望 Jyutping</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>115 BPM, C key on a variant/Jyutping page.</p>
+          </li>
+          <li>
+            <a href="https://zh-hans.guitarians.com/g-chord-tell/5754-%E5%BC%B5%E6%95%AC%E8%BB%92%20Hins%20Cheung%20-%20%E7%8E%8B%E8%8F%80%E4%B9%8B%20Ivana%20Wong%20-%20%E6%89%8B%E6%9C%9B%20%28Hins%20Live%20in%20Passion%202014%29" target="_blank" rel="noopener noreferrer">ChordTell/Guitarians 手望 live</a>
+            <span class="source-fields">score_source</span>
+            <p>Public chord-chart source for live version; not used as original tempo.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-9">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">09</p>
+          <h2>梦中人</h2>
+          <p class="artist">王菲</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>129-130 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>E major (needs final audio confirmation)</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>E major/common guitar chord pages</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4 from GetSongBPM profile</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Main vamp: E-A-B-A. Chorus/extension commonly moves through C#m-B-A-B before returning to E-A-B-A. Treat as a concise summary pending a verified commercial/official score.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Tempo is cross-checked; chord/key source is weaker because some pages were only visible through search snippets or blocked pages. Verify against original recording before production use.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://getsongbpm.com/song/mengzhongren/" target="_blank" rel="noopener noreferrer">GetSongBPM 梦中人</a>
+            <span class="source-fields">bpm, time_signature</span>
+            <p>Search results showed about 129 BPM and profile data for Faye Wong track.</p>
+          </li>
+          <li>
+            <a href="https://chordify.net/search/%E7%8E%8B%E8%8F%B2%20%E6%A2%A6%E4%B8%AD%E4%BA%BA" target="_blank" rel="noopener noreferrer">Chordify 梦中人 search result</a>
+            <span class="source-fields">leadsheet, common_sheet_key</span>
+            <p>Chordify search/result snippets located chord pages; direct fetch may be blocked.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-10">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">10</p>
+          <h2>达尔文</h2>
+          <p class="artist">蔡健雅</p>
+        </div>
+        <span class="badge low">Low</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Original Key</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>C major in Chord4/common charts</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: C-G-Am-Em; F-C-Am-G; F-G-Am-Em; F-C-G. Chorus: C-G-Am-Em; F-C-G-Am7; F-G-C-Am; F-G-C.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Chord sources are usable, but reliable BPM and original-recording key sources were not found in the accessible results. Do not treat C as confirmed original key.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/4635" target="_blank" rel="noopener noreferrer">Chord4 达尔文</a>
+            <span class="source-fields">common_sheet_key, leadsheet</span>
+            <p>Chord chart in C-shape harmony.</p>
+          </li>
+          <li>
+            <a href="https://www.talkingchord.com/search?q=%E8%BE%BE%E5%B0%94%E6%96%87%20%E8%94%A1%E5%81%A5%E9%9B%85" target="_blank" rel="noopener noreferrer">TalkingChord/吉他谱 search for 达尔文</a>
+            <span class="source-fields">score_source</span>
+            <p>Supplementary chord-score search source; exact original key/BPM not confirmed.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-11">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">11</p>
+          <h2>小小虫</h2>
+          <p class="artist">方大同</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>168 BPM metadata; likely 84 BPM half-time feel</dd></div>
+        <div><dt>Original Key</dt><dd>E major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>E major</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4 from Musicstax/search metadata; not independently confirmed</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: E-G#m7-Gm7-F#m7-B9sus. Pre: B9sus-G#m7-C#m7-F#m7-B9sus-G#m7-C#m7-F#m7-G#m7-A7-B7. Chorus: E-G#m7-C#m7-F#m7-B9sus; G#m7-Db7sus2-F#m7-B7-E.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Key has chord-sheet support; BPM is from one metadata source and should be interpreted as double-time/half-time depending arrangement.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/547" target="_blank" rel="noopener noreferrer">Chord4 小小虫</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Key=E and detailed chord chart.</p>
+          </li>
+          <li>
+            <a href="https://musicstax.com/search/%E5%B0%8F%E5%B0%8F%E8%99%AB%20%E6%96%B9%E5%A4%A7%E5%90%8C" target="_blank" rel="noopener noreferrer">Musicstax 小小虫 search result</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>Search result reported 168 BPM and E major.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-12">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">12</p>
+          <h2>红色高跟鞋</h2>
+          <p class="artist">蔡健雅</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>88 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>D major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>D major</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Main/verse: G-A-Bm repeated with D-A-Bm entries. Pre/turnaround: D-F#m-G-A. Chorus/tag keeps G-A-Bm with D/Gm color at ending.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>ChordU and Chord4 agree strongly on D-centered harmony. BPM has one direct source; no explicit meter source found.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chordu.com/chords-tabs--vietsub%2Bkara-%E8%94%A1%E5%81%A5%E9%9B%85-th%C3%A1i-ki%E1%BB%87n-nh%C3%A3-%E7%BA%A2%E8%89%B2%E9%AB%98%E8%B7%9F%E9%9E%8B-gi%C3%A0y-cao-g%C3%B3t-m%C3%A0u-%C4%91%E1%BB%8F-id_muvNBWqtrv4" target="_blank" rel="noopener noreferrer">ChordU 红色高跟鞋</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>88.15 BPM, D major, chord sequence.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/4637" target="_blank" rel="noopener noreferrer">Chord4 红色高跟鞋</a>
+            <span class="source-fields">common_sheet_key, leadsheet</span>
+            <p>D/A/Bm/G/A chord chart.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-13">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">13</p>
+          <h2>月牙湾</h2>
+          <p class="artist">F.I.R. 飞儿乐团</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>87 BPM feel; SongBPM reports 174 BPM double-time</dd></div>
+        <div><dt>Original Key</dt><dd>D major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>D major</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse/intro: D-Bm-A-G/Em. Main chorus: D-Bm-G-A; extension G-F#m-Bm-Em-A before cadence back to D.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>SongBPM and ChordU agree once half-time/double-time is normalized; both support D major.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40f-i-r-/yue-ya-wan" target="_blank" rel="noopener noreferrer">SongBPM 月牙灣</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>174 BPM, D major, 4 beats per bar; half-time 87 BPM.</p>
+          </li>
+          <li>
+            <a href="https://chordu.com/chords-tabs-f-i-r-%E6%9C%88%E7%89%99%E6%B9%BE-%E6%AD%8C%E8%AF%8D-id_7lfeHHKL0fI" target="_blank" rel="noopener noreferrer">ChordU 月牙湾</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>87.05 BPM, D major, D/Bm/A/G/Em chord set.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-14">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">14</p>
+          <h2>眼泪成诗</h2>
+          <p class="artist">孙燕姿</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>69-70 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>C major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>C major; some guitar arrangements use G-shape Capo 5</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4, with one MIDI arrangement also marking 2/4 sections</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: Dm7-Em7; Dm7-A7sus4; Dm7-Em7-Am7; Bb-F/G-C. Chorus: Gm-C7-Fmaj7-Em-Am7-Dm7-F/G-Cmaj7; repeat with A7 color.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>GuitarWorld and MidiShow agree on C/4-4/around 70 BPM. One full MIDI arrangement has tempo variation and 2/4+4/4 markers, so final meter is listed as 4/4 with caveat.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q106805" target="_blank" rel="noopener noreferrer">吉他世界 眼泪成诗 q106805</a>
+            <span class="source-fields">bpm, original_key, common_sheet_key, time_signature, score_source</span>
+            <p>Original key C, 4/4, 70 BPM, G-shape Capo 5.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q44015" target="_blank" rel="noopener noreferrer">吉他世界 眼泪成诗 q44015</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>Original key C, 4/4, 70 BPM.</p>
+          </li>
+          <li>
+            <a href="https://www.midishow.com/en/midi/12719.html" target="_blank" rel="noopener noreferrer">MidiShow 眼泪成诗 12719</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>69 BPM, C major, 4/4 in MIDI metadata.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/12108" target="_blank" rel="noopener noreferrer">Chord4 眼泪成诗</a>
+            <span class="source-fields">leadsheet</span>
+            <p>Chord chart for verse/chorus summary.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-15">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">15</p>
+          <h2>一</h2>
+          <p class="artist">AGA</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>68 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>Bb major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>Bb major</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Core loop: Bb-F-Eb-Cm7; use as verse/chorus summary from Chordify. Confirm detailed sectional extensions before performance.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Chordify official-MV page supplies tempo/key/chords. Chord4 page exists but did not expose text chords in direct fetch, so independent lead-sheet support is weak.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chordify.net/chords/aga-mv-universalmusichk-1410952347" target="_blank" rel="noopener noreferrer">Chordify 一 Official MV</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>68 BPM, Bb, chords Bb-F-Eb-Cm7.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/28897" target="_blank" rel="noopener noreferrer">Chord4 一 AGA</a>
+            <span class="source-fields">score_source</span>
+            <p>Chord4 page located, but direct text extraction did not expose chart content.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-16">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">16</p>
+          <h2>糖不甩</h2>
+          <p class="artist">薛凯琪</p>
+        </div>
+        <span class="badge low">Low</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Original Key</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>UNKNOWN</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Required web searches did not surface reliable BPM/key/chord/score sources. No values were inferred.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://www.google.com/search?q=%E7%B3%96%E4%B8%8D%E7%94%A9+%E8%96%9B%E5%87%AF%E7%90%AA+BPM+Key+Chordify+%E5%90%89%E4%BB%96%E8%B0%B1" target="_blank" rel="noopener noreferrer">Search log - Chordify/ChordU/吉他谱 queries</a>
+            <span class="source-fields">search_log</span>
+            <p>No reliable field source found in search results.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-17">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">17</p>
+          <h2>1234567</h2>
+          <p class="artist">方大同</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>107 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>A major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>A major</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: Amaj7-D-Amaj7-D; C#m7-Bm7-E-Amaj7-E. Pre: Dmaj7-Dmaj7-Amaj7-Amaj7; Dmaj7-Dmaj7-Bm7-C#m7-Dmaj7-E. Chorus: Amaj7-Dmaj7; Bm7-C#m7-Dmaj7-E; cadence through Bm7-C#m7-Dm7-E-Amaj7.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Chordify and Chord4 agree on key/chords; Chordify supplies BPM. Time signature not explicitly confirmed.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/29210" target="_blank" rel="noopener noreferrer">Chord4 1234567</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Key=A and detailed 91pu chord chart.</p>
+          </li>
+          <li>
+            <a href="https://chordify.net/chords/fang-da-tong-songs/1234567-chords" target="_blank" rel="noopener noreferrer">Chordify 1234567</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>107 BPM, A major, Amaj7-Dmaj7-Bm7-C#m chord set.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-18">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">18</p>
+          <h2>旅行的意义</h2>
+          <p class="artist">陈绮贞</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>69-70 BPM for common single/album arrangements; one fingerstyle listing shows 130 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>D major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>D major, also common C-shape Capo 2</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: D-Bm-G-A. Chorus/refrain keeps D-Bm-G-A with D/F# or A/C# passing bass depending arrangement. Simple folk version can be summarized as I-vi-IV-V in D.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Multiple GuitarWorld listings agree on D, 4/4 and around 69-70 BPM for single/album arrangements. 130 BPM appears to be a doubled or arrangement-specific listing.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q31122" target="_blank" rel="noopener noreferrer">吉他世界 旅行的意义 q31122</a>
+            <span class="source-fields">bpm, original_key, time_signature, score_source</span>
+            <p>Original key D, 4/4, 70 BPM.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q64082" target="_blank" rel="noopener noreferrer">吉他世界 旅行的意义 q64082</a>
+            <span class="source-fields">bpm, original_key, common_sheet_key, time_signature</span>
+            <p>Original key D, C-shape Capo 2, 4/4, 69 BPM.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/1011" target="_blank" rel="noopener noreferrer">Chord4 旅行的意义</a>
+            <span class="source-fields">common_sheet_key, leadsheet</span>
+            <p>Key D / Capo 1 chart source, useful for chord summary but conflicts on capo/version.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-19">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">19</p>
+          <h2>我不难过</h2>
+          <p class="artist">孙燕姿</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>64 BPM feel; 127-128 BPM double-time</dd></div>
+        <div><dt>Original Key</dt><dd>Eb major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>Eb major</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: Eb-Gm-Cm/Bb-Abm-Bb; repeat with Fm/Cm colors. Chorus: Eb-Gm-Bbm-Fm; Abm-Gm-Cm; Ab-Abm-Bb-Eb. Bridge: G7-Cm-Ab-Bb style turnaround.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>GetSongBPM/ChordU give 127-128, Chordify gives 64. These are half/double-time readings of the same pulse. Key Eb agrees across chord sources.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://getsongbpm.com/song/wobu/lO35Jj" target="_blank" rel="noopener noreferrer">GetSongBPM 我不難過</a>
+            <span class="source-fields">bpm, time_signature</span>
+            <p>127 BPM, 4/4.</p>
+          </li>
+          <li>
+            <a href="https://chordu.com/chords-tabs-%E5%AD%AB%E7%87%95%E5%A7%BF-sun-yan-zi-%E6%88%91%E4%B8%8D%E9%9B%A3%E9%81%8E-i-am-fine-official-%E5%AE%98%E6%96%B9%E5%AE%8C%E6%95%B4%E7%89%88mv--id_GDsyUtdS1YM" target="_blank" rel="noopener noreferrer">ChordU 我不難過 official MV</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>127.5 BPM, Eb major, chord sequence.</p>
+          </li>
+          <li>
+            <a href="https://chordify.net/es/chords/sun-yan-zi-songs/wo-bu-nan-guo-chords" target="_blank" rel="noopener noreferrer">Chordify 我不難過</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>64 BPM, Eb key, chord set.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/9456" target="_blank" rel="noopener noreferrer">Chord4 我不难过</a>
+            <span class="source-fields">leadsheet</span>
+            <p>Chord chart in Eb.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-20">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">20</p>
+          <h2>给我一个理由忘记</h2>
+          <p class="artist">A-Lin</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>67 BPM feel; 133-134 BPM double-time</dd></div>
+        <div><dt>Original Key</dt><dd>Ab major; some ChordU pages read F minor relative/sectional</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>G-shape Capo 1 / Ab sounding</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Common G-shape Capo 1: Verse G-D/F#-Em-Bm-C-G-C-D. Pre: Em-Bm/D-Cmaj7-C#m7b5-Cmaj7-G/B-Am7-D. Chorus: Em-C-D-G; Em-C-D-G; Em-C-D-G; Em-C-Dsus4-D.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>SongBPM and ChordU agree after half/double-time normalization. Chord4 states original Ab with G-shape Capo 1. F minor readings are relative-minor/sectional interpretations.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40a-lin/gei-wo-yi-ge-li-you-wang-ji" target="_blank" rel="noopener noreferrer">SongBPM 给我一个理由忘记</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>133 BPM, Ab major, 4 beats per bar.</p>
+          </li>
+          <li>
+            <a href="https://chordu.com/chords-tabs-a-lin-%E7%BB%99%E6%88%91%E4%B8%80%E4%B8%AA%E7%90%86%E7%94%B1%E5%BF%98%E8%AE%B0-id_z_hff-jxNb8" target="_blank" rel="noopener noreferrer">ChordU A-Lin 给我一个理由忘记</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>134.3 BPM and F minor/key reading with Ab/Db/Eb/Fm chord field.</p>
+          </li>
+          <li>
+            <a href="https://chordu.com/chords-tabs-a-lin-%E7%B5%A6%E6%88%91%E4%B8%80%E5%80%8B%E7%90%86%E7%94%B1%E5%BF%98%E8%A8%98-give-me-a-reason-to-forget-english-subs-%2B-pinyin-%2B-chinese--id_o0qU9m4StrY" target="_blank" rel="noopener noreferrer">ChordU Give Me a Reason to Forget</a>
+            <span class="source-fields">bpm, original_key</span>
+            <p>67.025 BPM, Ab major.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/21956" target="_blank" rel="noopener noreferrer">Chord4 给我一个理由忘记 91pu</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>原Key=Ab, detailed 91pu chart.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/1879" target="_blank" rel="noopener noreferrer">Chord4 给我一个理由忘记 reecho</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Key=G# Play=G Capo=1.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-21">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">21</p>
+          <h2>逆光</h2>
+          <p class="artist">孙燕姿</p>
+        </div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>175 BPM double-time / about 87.5 BPM feel (needs final audio confirmation)</dd></div>
+        <div><dt>Original Key</dt><dd>A major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>G-shape Capo 2 / A sounding</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4 from guitar-score context; not independently confirmed</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Common G-shape Capo 2 summary: Verse G-D/F#-Em-Bm-C-G-Am-D; chorus G-D/F#-Em-Bm-C-G-Am-D returning to A-sounding original key.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>GuitarWorld confirms original key A and G-shape Capo 2. Tempo relies on search-result metadata around 175 BPM and should be verified with audio/Mixed In Key before production.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q61832" target="_blank" rel="noopener noreferrer">吉他世界 逆光</a>
+            <span class="source-fields">original_key, common_sheet_key, score_source</span>
+            <p>Original 1=A, G-shape arrangement, Capo 2.</p>
+          </li>
+          <li>
+            <a href="https://chordu.com/search?q=%E5%AD%99%E7%87%95%E5%A7%BF%20%E9%80%86%E5%85%89%20chords" target="_blank" rel="noopener noreferrer">ChordU 逆光 search/source</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>ChordU search/source indicated A-key chord pages; use as supplementary, not final.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-22">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">22</p>
+          <h2>光年之外</h2>
+          <p class="artist">G.E.M. 邓紫棋</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>87.9 BPM feel; SongBPM reports 176 BPM double-time</dd></div>
+        <div><dt>Original Key</dt><dd>C# minor / Db minor</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>C#m/Dbm; common chord field Dbm-A-E-Abm</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: C#m-A-E-G#m; repeat. Pre/chorus: C#m-A-E-G#m with passing Eb/Ab colors. Bridge/tag: A-B-E-C#m; A-E-G#m-C#m before final chorus.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>SongBPM and ChordU official-MV source agree after half/double-time normalization. Key is C#/Db minor, represented by Dbm-A-E-Abm chords.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40g-e-m-/guang-nian-zhi-wai-dian-ying-passengers-zhong-guo-qu-zhu-ti-qu" target="_blank" rel="noopener noreferrer">SongBPM 光年之外 Passengers</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>176 BPM, C#/Db minor, 4 beats per bar.</p>
+          </li>
+          <li>
+            <a href="https://chordu.com/chords-tabs-g-e-m-%E5%85%89%E5%B9%B4%E4%B9%8B%E5%A4%96-light-years-away-mv-%E9%9B%BB%E5%BD%B1-%E5%A4%AA%E7%A9%BA%E6%BD%9B%E8%88%AA%E8%80%85-passengers-%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A1%8C%E6%9B%B2-hd-%E9%84%A7%E7%B4%AB%E6%A3%8B-id_T4SimnaiktU" target="_blank" rel="noopener noreferrer">ChordU 光年之外 Official MV</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>87.9 BPM, chords Dbm-A-E-Abm.</p>
+          </li>
+          <li>
+            <a href="https://songbpm.com/%40gem/gem-snu2g" target="_blank" rel="noopener noreferrer">SongBPM 光年之外 重生版</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>176 BPM, C#/Db minor, 4 beats per bar for re-recording; used as secondary tempo/key comparison only.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-23">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">23</p>
+          <h2>戒烟</h2>
+          <p class="artist">李荣浩</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>120 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>G major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>G major / no capo</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: G-Bm7-Em-C-Cm-D7; Cm-G-Cm-G-Am-G. Chorus: C-D-Bm7-Em; Am-D-G-G7; C-D-Bm-Em; Am-D-G.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>ChordU and Chordify agree on 120 BPM/G-field; Chord4 agrees on original key G and detailed chords. Time signature was not explicitly sourced.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chordu.com/chords-tabs-%E6%9D%8E%E6%A6%AE%E6%B5%A9-ronghao-li-%E6%88%92%E8%8F%B8-quit-smoking-%E8%8F%AF%E7%B4%8D-official-hd-%E5%AE%98%E6%96%B9mv--id_V7hJgBcRDwM" target="_blank" rel="noopener noreferrer">ChordU Quit Smoking official MV</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>120 BPM, G major, chord set.</p>
+          </li>
+          <li>
+            <a href="https://chordify.net/chords/quit-smoking-li-ronghao-topic" target="_blank" rel="noopener noreferrer">Chordify Quit Smoking</a>
+            <span class="source-fields">bpm, original_key, leadsheet</span>
+            <p>120 BPM, G key, G/G#(Ab)/Cm/D chord field.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/27520" target="_blank" rel="noopener noreferrer">Chord4 戒烟</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>原调 1=G, 选调 1=G and detailed chart.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-24">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">24</p>
+          <h2>唯一</h2>
+          <p class="artist">G.E.M. 邓紫棋</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>72 BPM feel; SongBPM reports 144 BPM double-time</dd></div>
+        <div><dt>Original Key</dt><dd>Db major / C# major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>C-shape Capo 1 / Db sounding</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Db-sounding summary: Db-Ab/C-Bbm-Ab-Gb-Db/F-Ebm-Ab. In common C-shape Capo 1: C-G/B-Am-G-F-C/E-Dm-G; chorus extends F-G-Em-Am-Dm-G-C.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>SongBPM and guitar-score sources agree after half/double-time normalization. Multiple score listings report D♭ original and 4/4.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40g-e-m-/wei-yi-Qm2r1CmK6r" target="_blank" rel="noopener noreferrer">SongBPM 唯一</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>144 BPM, C#/Db major, 4 beats per bar.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q148010" target="_blank" rel="noopener noreferrer">吉他世界 唯一 q148010</a>
+            <span class="source-fields">bpm, original_key, common_sheet_key, time_signature, score_source</span>
+            <p>Original D♭, C-shape Capo 1, 4/4, 72 BPM.</p>
+          </li>
+          <li>
+            <a href="https://www.yuepugc.com/133804.html" target="_blank" rel="noopener noreferrer">乐谱工厂 唯一</a>
+            <span class="source-fields">original_key, common_sheet_key, time_signature, score_source</span>
+            <p>Original D♭, C-shape arrangement, 4/4.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-25">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">25</p>
+          <h2>倾城</h2>
+          <p class="artist">许美静</p>
+        </div>
+        <span class="badge low">Low</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>UNKNOWN</dd></div>
+        <div><dt>Original Key</dt><dd>G major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>G major; suggested male C / female G in 91pu chart</dd></div>
+        <div><dt>Time Signature</dt><dd>UNKNOWN</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Intro: Em-F-Em-Dm7-G; C-G/B-Am-G-F-D. Verse: G-Bm-C-Cm; G-Bm-F-D; G-Bm-C-Cm; G-Bm-Am-D. Chorus: G-Bm-Em-Bm; C-G-Am-A7-D; G-Bm-Em-Dm7-G; C-Cm-Am-D-G.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>Key/chords are well supported by Chord4/91pu, but reliable BPM and explicit time-signature sources were not found.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://chord4.com/tabs/19784" target="_blank" rel="noopener noreferrer">Chord4 倾城</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>原Key=G and detailed 91pu chart.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/zh-hant/tabs/19784" target="_blank" rel="noopener noreferrer">Chord4 傾城 traditional</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Traditional page mirrors 原Key=G and chord chart.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q16973" target="_blank" rel="noopener noreferrer">吉他世界 倾城 listing</a>
+            <span class="source-fields">score_source</span>
+            <p>Commercial score listing located; not enough accessible metadata for BPM.</p>
+          </li></ol>
+      </div>
+    </section>
+    <section class="song-detail" id="song-26">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">26</p>
+          <h2>二十二</h2>
+          <p class="artist">陶喆</p>
+        </div>
+        <span class="badge high">High</span>
+      </div>
+      <dl class="facts">
+        <div><dt>BPM / Tempo</dt><dd>93 BPM for album/common version; other arrangements list 76 or 100 BPM</dd></div>
+        <div><dt>Original Key</dt><dd>F major</dd></div>
+        <div><dt>Common Sheet Key</dt><dd>F major; common E-shape Capo 1 or D-shape special-tuning arrangements exist</dd></div>
+        <div><dt>Time Signature</dt><dd>4/4</dd></div>
+      </dl>
+      <div class="leadsheet-block">
+        <h3>Leadsheet Summary</h3>
+        <p>Verse: F-Am-Bb-Am; Bbm-Gm-Bbm-C; repeat. Chorus: F-Am-Dm-Am; Gm-F-C-Bb-C; tag Bb-C-F. Bridge: Bb7-C7-Am-D7; Bb-Am-Eb-C-F.</p>
+      </div>
+      <div class="notes-block">
+        <h3>Conflict / Rationale</h3>
+        <p>SongBPM, Chord4, and GuitarWorld album-version listings align on F major and about 93 BPM. Arrangement-specific scores list 76 or 100 BPM and are noted as non-final.</p>
+      </div>
+      <div class="sources-block">
+        <h3>Sources</h3>
+        <ol>
+          <li>
+            <a href="https://songbpm.com/%40david-tao/22" target="_blank" rel="noopener noreferrer">SongBPM 二十二</a>
+            <span class="source-fields">bpm, original_key, time_signature</span>
+            <p>93 BPM, F major, 4 beats per bar.</p>
+          </li>
+          <li>
+            <a href="https://chord4.com/tabs/760" target="_blank" rel="noopener noreferrer">Chord4 二十二</a>
+            <span class="source-fields">original_key, common_sheet_key, leadsheet</span>
+            <p>Key:F and detailed chart.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q37421" target="_blank" rel="noopener noreferrer">吉他世界 二十二 q37421</a>
+            <span class="source-fields">bpm, original_key, common_sheet_key, time_signature, score_source</span>
+            <p>Original F, E-shape Capo 1, 4/4, 93 BPM.</p>
+          </li>
+          <li>
+            <a href="https://www.guitarworld.com.cn/pu/q146321" target="_blank" rel="noopener noreferrer">吉他世界 二十二 q146321</a>
+            <span class="source-fields">bpm, original_key, time_signature, score_source</span>
+            <p>Original F, 4/4, 100 BPM in a special-tuning/fingerstyle arrangement; treated as version conflict.</p>
+          </li></ol>
+      </div>
+    </section>
+    </section>
+    <footer>
+      Self-contained HTML export generated from the local CSV, source JSON, and verification report on 2026-05-25.
+    </footer>
+  </main>
+  <script>
+    const searchInput = document.getElementById('search');
+    const confidenceSelect = document.getElementById('confidence');
+    const rows = Array.from(document.querySelectorAll('#songRows tr'));
+    const sections = Array.from(document.querySelectorAll('.song-detail'));
+
+    function applyFilters() {
+      const query = searchInput.value.trim().toLowerCase();
+      const confidence = confidenceSelect.value;
+      rows.forEach((row, index) => {
+        const matchesText = !query || row.dataset.search.includes(query);
+        const matchesConfidence = confidence === 'all' || row.dataset.confidence === confidence;
+        const visible = matchesText && matchesConfidence;
+        row.classList.toggle('hidden', !visible);
+        sections[index].classList.toggle('hidden', !visible);
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    confidenceSelect.addEventListener('change', applyFilters);
+  </script>
+</body>
+</html>

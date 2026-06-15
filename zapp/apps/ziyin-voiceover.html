@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" href="../icons/apps/ziyin-voiceover.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../icons/icon-192.png" />
+    <link rel="stylesheet" href="ziyin-voiceover.css?v=2" />
+    <title>ZiYin Voiceover</title>
+  </head>
+  <body>
+    <main class="voice-shell">
+      <header class="voice-header">
+        <a href="../" class="back-button" aria-label="返回 Zapp Store">←</a>
+        <div class="voice-title">
+          <img src="../icons/apps/ziyin-voiceover.svg" alt="" />
+          <div>
+            <p>ZiYin PVC</p>
+            <h1>Voiceover</h1>
+          </div>
+        </div>
+      </header>
+
+      <section class="voice-meta" aria-label="Voice settings">
+        <div>
+          <strong>WeChat PVC</strong>
+          <span>ZiYin Natural</span>
+        </div>
+        <div>
+          <strong>Multilingual v2</strong>
+          <span>Chinese first</span>
+        </div>
+        <div>
+          <strong id="connectionState">Ready</strong>
+          <span>Status</span>
+        </div>
+      </section>
+
+      <section class="voice-workspace">
+        <form class="compose-panel" id="voiceForm">
+          <label class="field">
+            <span>旁白文字</span>
+            <textarea
+              id="scriptText"
+              name="text"
+              maxlength="4500"
+              placeholder="把要说的话放在这里。"
+              rows="12"
+              required
+            ></textarea>
+          </label>
+
+          <div class="text-tools">
+            <span id="charCount">0 / 4500</span>
+            <button class="ghost-button" id="sampleButton" type="button">试一句</button>
+          </div>
+
+          <div class="action-row">
+            <button class="primary-button" id="generateButton" type="submit">生成音频</button>
+            <button class="secondary-button" id="clearButton" type="button">清空</button>
+          </div>
+        </form>
+
+        <section class="player-panel" aria-live="polite">
+          <div class="player-heading">
+            <div>
+              <p>Output</p>
+              <h2 id="outputTitle">等待生成</h2>
+            </div>
+            <span id="audioMeta">--</span>
+          </div>
+
+          <div class="player-empty" id="playerEmpty">
+            <span></span>
+          </div>
+
+          <audio id="audioPlayer" controls preload="metadata" hidden></audio>
+
+          <div class="player-actions">
+            <a class="secondary-button" id="downloadLink" href="#" download hidden>保存 MP3</a>
+            <button class="secondary-button" id="shareButton" type="button" hidden>分享</button>
+          </div>
+
+          <p class="status-line" id="statusLine"></p>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="ziyin-voiceover.js?v=2"></script>
+  </body>
+</html>

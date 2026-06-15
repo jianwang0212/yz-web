@@ -16,24 +16,20 @@
     <link rel="canonical" href="https://thisisyz.com/projects">
     <title>项目 - Zi Yin (银子)</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand site-title">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
-            </div>
+            </a>
             <ul id="primary-navigation" class="nav-menu">
                 <li><a href="index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
                 <li class="nav-menu-lang-item">
                     <div class="nav-lang-toggle-mobile">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active">中文</button>
@@ -47,9 +43,6 @@
                         <a href="engineering.html" data-i18n="nav.engineering">Engineering</a>
                         <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
                         <a href="resume.html" data-i18n="nav.resume">简历</a>
-                        <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
-                        <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
-                        <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
                     </div>
                 </li>
             </ul>
@@ -82,6 +75,37 @@
                 </div>
 
                 <div class="projects-grid">
+                    <a href="/projects/codex-monthly-2026-06" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag">Codex</span>
+                                <span class="tag">项目周报</span>
+                            </div>
+                            <h3 class="project-title">Codex 最近一个月项目小结</h3>
+                            <p class="project-description">Slack agent、Zapp、音乐 demo、健身报告、远程工作站和课程归档的图文复盘</p>
+                        </div>
+                    </a>
+                    <a href="/projects/stock-research-dashboard" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.finance_research">金融研究</span>
+                                <span class="tag" data-i18n="projects.tag.dashboard">仪表盘</span>
+                                <span class="tag" data-i18n="projects.tag.mock_data">Mock 数据</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.stock_research_title">金融研究工作台</h3>
+                            <p class="project-description" data-i18n="projects.stock_research_desc">个股研报、股票筛选、深度研究、自选股追踪和财经早报的单页原型</p>
+                        </div>
+                    </a>
+                    <a href="/projects/workout" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.health">健康记录</span>
+                                <span class="tag" data-i18n="projects.tag.analysis">动作分析</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.workout_title">健身记录与动作分析</h3>
+                            <p class="project-description" data-i18n="projects.workout_desc">体成分、围度、体态照片、饮食记录和训练视频逐帧复盘</p>
+                        </div>
+                    </a>
                     <a href="/projects/vipassana" class="project-card">
                         <div class="project-card-body">
                             <div class="project-tags" aria-label="Project tags">
@@ -150,6 +174,26 @@
                             <p class="project-description" data-i18n="projects.left_hand_desc">只练 maj7 / m7 · 按最低音区间匹配左手 voicing · MIDI 判题</p>
                         </div>
                     </a>
+                    <a href="/projects/stem-splitter" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
+                                <span class="tag" data-i18n="projects.tag.local_ai">本机 AI</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.stem_splitter_title">Stem Splitter</h3>
+                            <p class="project-description" data-i18n="projects.stem_splitter_desc">本机 Demucs vocal / BGM 分离台 · original、vocals、bgm 三轨输出</p>
+                        </div>
+                    </a>
+                    <a href="/projects/song-leadsheet-database" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag">音乐工具</span>
+                                <span class="tag">资料库</span>
+                            </div>
+                            <h3 class="project-title">歌曲 Leadsheet 数据库</h3>
+                            <p class="project-description">华语流行曲 lead sheet 合集：和弦、旋律与歌词对照，持续整理</p>
+                        </div>
+                    </a>
                 </div>
             </section>
 
@@ -161,7 +205,7 @@
                 </div>
 
                 <div class="projects-grid projects-grid-compact">
-                    <a href="codex-monitor.html" class="project-card">
+                    <a href="/projects/codex-monitor" class="project-card">
                         <div class="project-card-body">
                             <div class="project-tags" aria-label="Project tags">
                                 <span class="tag" data-i18n="projects.tag.operations">内部工具</span>

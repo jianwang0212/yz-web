@@ -15,10 +15,7 @@
     <meta name="twitter:image" content="https://thisisyz.com/images/music-calendar-example.jpg">
     <link rel="canonical" href="https://thisisyz.com/year-review">
     <title>2025 年度总结 - Zi Yin (银子)</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260522-clickable">
 </head>
 <body>
     <!-- Navigation -->
@@ -29,7 +26,6 @@
                 <li><a href="index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="year-review.html" data-i18n="nav.yearReview" style="color: var(--primary-color);">年度总结</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
                 <li class="nav-menu-lang-item">
                     <div class="nav-lang-toggle-mobile">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active">中文</button>
@@ -43,9 +39,6 @@
                         <a href="engineering.html" data-i18n="nav.engineering">Engineering</a>
                         <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
                         <a href="resume.html" data-i18n="nav.resume">简历</a>
-                        <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
-                        <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
-                        <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
                     </div>
                 </li>
             </ul>
@@ -78,7 +71,7 @@
                 <div class="review-card overview-card">
                     <h3>
                         <span data-i18n="yearReview.overview.title">总体概览</span>
-                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" data-i18n="yearReview.overview.hoursNote" style="font-size: 0.7rem; font-weight: 400; color: var(--text-secondary); margin-left: 0.5rem; cursor: pointer; text-decoration: underline; vertical-align: middle;">
+                        <span class="hours-note-link clickable-timeline-link" data-modal-target="hours-theory-modal" role="button" tabindex="0" aria-label="打开小时数记录说明" title="打开小时数记录说明" data-i18n="yearReview.overview.hoursNote">
                             💡 为什么要记小时数？
                         </span>
                     </h3>
@@ -88,7 +81,7 @@
                                 <span data-i18n="yearReview.music.label">音乐</span>
                                 <span class="distribution-hours">2,570 <span data-i18n="common.hours">小时</span></span>
                             </div>
-                            <div class="distribution-bar-container clickable-distribution-bar" data-modal-target="music-calendar-modal">
+                            <div class="distribution-bar-container clickable-distribution-bar" data-modal-target="music-calendar-modal" role="button" tabindex="0" aria-label="打开音乐练习日历" title="打开音乐练习日历">
                                 <div class="distribution-bar" style="width: 44%; background: linear-gradient(135deg, #6366f1, #8b5cf6); cursor: pointer;">
                                     <span>44%</span>
                                 </div>
@@ -148,27 +141,27 @@
                         <span class="category-percentage" data-i18n="yearReview.music.percentage">44% 时间投入</span>
                     </div>
                     <div class="achievements-grid">
-                        <div class="achievement-item clickable-achievement" data-modal-target="gpa-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="gpa-modal" role="button" tabindex="0" aria-label="打开 GPA 详情" title="打开 GPA 详情" style="cursor: pointer;">
                             <div class="achievement-number">GPA 4.0</div>
                             <div class="achievement-desc" data-i18n="yearReview.music.gpa.desc">伯克利音乐学院 音乐制作和爵士作曲专业第二年顺利读过</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="mixing-works-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="mixing-works-modal" role="button" tabindex="0" aria-label="打开混音作品详情" title="打开混音作品详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.mixing.number">28</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.mixing.desc">混音作品<br>SoundGym百万分</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="recording-sessions-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="recording-sessions-modal" role="button" tabindex="0" aria-label="打开录音 session 详情" title="打开录音 session 详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.recording.number">37</span> <span data-i18n="common.items">个</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.recording.desc">录音 session</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="original-compositions-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="original-compositions-modal" role="button" tabindex="0" aria-label="打开原创作曲详情" title="打开原创作曲详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.original.number">16</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.original.desc">原创作曲</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="arrangement-works-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="arrangement-works-modal" role="button" tabindex="0" aria-label="打开编曲作品详情" title="打开编曲作品详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.arrangement.number">9</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.arrangement.desc">编曲作品</div>
                         </div>
-                        <div class="achievement-item clickable-achievement" data-modal-target="piano-performances-modal" style="cursor: pointer;">
+                        <div class="achievement-item clickable-achievement" data-modal-target="piano-performances-modal" role="button" tabindex="0" aria-label="打开钢琴演奏详情" title="打开钢琴演奏详情" style="cursor: pointer;">
                             <div class="achievement-number"><span data-i18n="yearReview.music.piano.number">23</span> <span data-i18n="common.pieces">首</span></div>
                             <div class="achievement-desc" data-i18n="yearReview.music.piano.desc">钢琴演奏</div>
                         </div>
@@ -186,7 +179,7 @@
                             <h4 data-i18n="yearReview.work.ly.name">LY 私募基金</h4>
                             <p data-i18n="yearReview.work.ly.desc">年化收益 15% · AUM 翻倍</p>
                         </div>
-                        <div class="work-item clickable-work-item" data-modal-target="docking-tech-modal" style="cursor: pointer;">
+                        <div class="work-item clickable-work-item" data-modal-target="docking-tech-modal" role="button" tabindex="0" aria-label="打开入坞科技详情" title="打开入坞科技详情" style="cursor: pointer;">
                             <h4 data-i18n="yearReview.work.docking.name">入坞科技</h4>
                             <p data-i18n="yearReview.work.docking.desc">炼刀 AI · 年营业额到千万</p>
                         </div>
@@ -597,13 +590,13 @@
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <h3 data-i18n="yearReview.timeline.title">📅 月度大事件</h3>
                         <div class="timeline-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <button class="clickable-timeline-link" data-modal-target="daily-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="daily-plan-modal">
                                 📝 查看每日计划
                             </button>
-                            <button class="clickable-timeline-link" data-modal-target="monthly-plan-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="monthly-plan-modal">
                                 📋 查看月度计划
                             </button>
-                            <button class="clickable-timeline-link" data-modal-target="weekly-review-modal" style="cursor: pointer; background: none; border: none; color: var(--primary-color); text-decoration: underline; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            <button class="clickable-timeline-link" data-modal-target="weekly-review-modal">
                                 📊 查看每周回顾记录
                             </button>
                         </div>
@@ -1013,11 +1006,21 @@
             <button class="modal-close" aria-label="Close">&times;</button>
             <h3 class="modal-title">入坞科技 财务数据</h3>
             <div class="modal-body">
-                <p class="modal-description">入坞科技在时间线上的收入、支出和股东分红情况。图表显示了累积收入和分红强度的变化趋势。</p>
-                <div class="chart-modal-container">
-                    <canvas id="dockingTechChart"></canvas>
+                <div id="docking-tech-password-form" style="padding: 2rem; text-align: center;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;" data-i18n="yearReview.financial.password">此内容需要密码验证</p>
+                        <input type="password" id="docking-tech-password-input" data-i18n="yearReview.financial.passwordPlaceholder" placeholder="请输入密码" autocomplete="current-password" style="padding: 0.8rem 1.2rem; font-size: 1rem; border: 2px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 300px; outline: none; transition: border-color 0.3s ease;" />
+                        <p id="docking-tech-password-error" style="color: #ef4444; font-size: 0.9rem; margin-top: 0.5rem; display: none;" data-i18n="yearReview.financial.passwordError">密码错误，请重试</p>
+                    </div>
+                    <button id="docking-tech-password-submit" data-i18n="yearReview.financial.submit" style="padding: 0.8rem 2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s ease;">确认</button>
                 </div>
-                <p class="modal-note">注：数据来源自财务记录，包含收入、支出和股东分红等详细信息。</p>
+                <div id="docking-tech-financial-content" style="display: none;">
+                    <p class="modal-description">入坞科技在时间线上的收入、支出和股东分红情况。图表显示了累积收入和分红强度的变化趋势。</p>
+                    <div class="chart-modal-container">
+                        <canvas id="dockingTechChart"></canvas>
+                    </div>
+                    <p class="modal-note">注：数据来源自财务记录，包含收入、支出和股东分红等详细信息。</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1349,6 +1352,12 @@
             const financialPasswordSubmit = document.getElementById('financial-password-submit');
             const financialPasswordError = document.getElementById('financial-password-error');
             const FINANCIAL_PASSWORD = '106106';
+            const dockingTechModal = document.getElementById('docking-tech-modal');
+            const dockingTechPasswordForm = document.getElementById('docking-tech-password-form');
+            const dockingTechFinancialContent = document.getElementById('docking-tech-financial-content');
+            const dockingTechPasswordInput = document.getElementById('docking-tech-password-input');
+            const dockingTechPasswordSubmit = document.getElementById('docking-tech-password-submit');
+            const dockingTechPasswordError = document.getElementById('docking-tech-password-error');
 
             // Check if already authenticated
             if (localStorage.getItem('financial-authenticated') === 'true') {
@@ -1380,18 +1389,71 @@
                 }
             });
 
+            function resetDockingTechFinancialGate() {
+                dockingTechModal.dataset.financialUnlocked = 'false';
+                dockingTechPasswordForm.style.display = 'block';
+                dockingTechFinancialContent.style.display = 'none';
+                dockingTechPasswordError.style.display = 'none';
+                dockingTechPasswordInput.value = '';
+                document.dispatchEvent(new CustomEvent('docking-tech-financial-locked'));
+            }
+
+            function showDockingTechFinancialContent() {
+                dockingTechModal.dataset.financialUnlocked = 'true';
+                dockingTechPasswordForm.style.display = 'none';
+                dockingTechFinancialContent.style.display = 'block';
+                dockingTechPasswordError.style.display = 'none';
+                document.dispatchEvent(new CustomEvent('docking-tech-financial-unlocked'));
+            }
+
+            resetDockingTechFinancialGate();
+
+            function handleDockingTechPasswordSubmit() {
+                const inputPassword = dockingTechPasswordInput.value.trim();
+                if (inputPassword === FINANCIAL_PASSWORD) {
+                    showDockingTechFinancialContent();
+                } else {
+                    dockingTechPasswordError.style.display = 'block';
+                    dockingTechPasswordInput.value = '';
+                    dockingTechPasswordInput.focus();
+                }
+            }
+
+            dockingTechPasswordSubmit.addEventListener('click', handleDockingTechPasswordSubmit);
+            dockingTechPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleDockingTechPasswordSubmit();
+                }
+            });
+
+            function openModalFromTrigger(trigger) {
+                const modalTarget = trigger.getAttribute('data-modal-target');
+                const modal = document.getElementById(modalTarget);
+                if (modal) {
+                    if (modalTarget === 'docking-tech-modal') {
+                        resetDockingTechFinancialGate();
+                    }
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            }
+
             // Get all clickable distribution bars, achievement items, work items, and timeline links
             const clickableElements = document.querySelectorAll('.clickable-distribution-bar, .clickable-achievement, .clickable-work-item, .clickable-timeline-link');
 
             clickableElements.forEach(element => {
                 element.addEventListener('click', function() {
-                    const modalTarget = this.getAttribute('data-modal-target');
-                    const modal = document.getElementById(modalTarget);
-                    if (modal) {
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                    }
+                    openModalFromTrigger(this);
                 });
+
+                if (element.tagName !== 'BUTTON') {
+                    element.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openModalFromTrigger(this);
+                        }
+                    });
+                }
             });
 
             // Close modal functionality
@@ -1404,6 +1466,9 @@
                     closeBtn.addEventListener('click', () => {
                         modal.classList.remove('active');
                         document.body.style.overflow = ''; // Restore scrolling
+                        if (modal.id === 'docking-tech-modal') {
+                            resetDockingTechFinancialGate();
+                        }
                     });
                 }
 
@@ -1411,6 +1476,9 @@
                     overlay.addEventListener('click', () => {
                         modal.classList.remove('active');
                         document.body.style.overflow = ''; // Restore scrolling
+                        if (modal.id === 'docking-tech-modal') {
+                            resetDockingTechFinancialGate();
+                        }
                     });
                 }
             });
@@ -1422,6 +1490,9 @@
                         if (modal.classList.contains('active')) {
                             modal.classList.remove('active');
                             document.body.style.overflow = ''; // Restore scrolling
+                            if (modal.id === 'docking-tech-modal') {
+                                resetDockingTechFinancialGate();
+                            }
                         }
                     });
                 }
@@ -1436,148 +1507,166 @@
             const modal = document.getElementById('docking-tech-modal');
             const chartCanvas = document.getElementById('dockingTechChart');
             let chart = null;
+            let isRenderingChart = false;
 
-            // Load data when modal is opened
-            if (modal && chartCanvas) {
-                const observer = new MutationObserver(async (mutations) => {
-                    if (modal.classList.contains('active') && !chart) {
-                        await loadChartLibraries();
-                        const processedData = await loadDockingTechData();
+            function destroyDockingTechChart() {
+                if (chart) {
+                    chart.destroy();
+                    chart = null;
+                }
+            }
 
-                        if (processedData && processedData.dates.length > 0) {
-                            chart = new Chart(chartCanvas, {
-                                type: 'line',
-                                data: {
-                                    labels: processedData.dates,
-                                    datasets: [
-                                        {
-                                            label: '累积收入',
-                                            data: processedData.cumulativeIncome,
-                                            borderColor: '#2563eb',
-                                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                                            fill: true,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 3
-                                        },
-                                        {
-                                            label: '收入',
-                                            data: processedData.income,
-                                            borderColor: '#10b981',
-                                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                                            fill: false,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 2
-                                        },
-                                        {
-                                            label: '支出',
-                                            data: processedData.expense,
-                                            borderColor: '#ef4444',
-                                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                            fill: false,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 2
-                                        },
-                                        {
-                                            label: '股东分红',
-                                            data: processedData.dividend,
-                                            borderColor: '#f59e0b',
-                                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                                            fill: false,
-                                            yAxisID: 'y',
-                                            tension: 0.4,
-                                            borderWidth: 2,
-                                            pointRadius: 4
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    interaction: {
-                                        mode: 'index',
-                                        intersect: false,
+            async function renderDockingTechChartIfUnlocked() {
+                if (!modal || !chartCanvas || chart || isRenderingChart) return;
+                if (!modal.classList.contains('active')) return;
+                if (modal.dataset.financialUnlocked !== 'true') return;
+
+                isRenderingChart = true;
+                try {
+                    await loadChartLibraries();
+                    const processedData = await loadDockingTechData();
+
+                    if (processedData && processedData.dates.length > 0) {
+                        chart = new Chart(chartCanvas, {
+                            type: 'line',
+                            data: {
+                                labels: processedData.dates,
+                                datasets: [
+                                    {
+                                        label: '累积收入',
+                                        data: processedData.cumulativeIncome,
+                                        borderColor: '#2563eb',
+                                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                                        fill: true,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 3
                                     },
-                                    plugins: {
-                                        legend: {
-                                            position: 'top',
-                                        },
+                                    {
+                                        label: '收入',
+                                        data: processedData.income,
+                                        borderColor: '#10b981',
+                                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                                        fill: false,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 2
+                                    },
+                                    {
+                                        label: '支出',
+                                        data: processedData.expense,
+                                        borderColor: '#ef4444',
+                                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                        fill: false,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 2
+                                    },
+                                    {
+                                        label: '股东分红',
+                                        data: processedData.dividend,
+                                        borderColor: '#f59e0b',
+                                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                                        fill: false,
+                                        yAxisID: 'y',
+                                        tension: 0.4,
+                                        borderWidth: 2,
+                                        pointRadius: 4
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                interaction: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: '入坞科技财务时间序列',
+                                        font: {
+                                            size: 18
+                                        }
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                let label = context.dataset.label || '';
+                                                if (label) {
+                                                    label += ': ';
+                                                }
+                                                const roundedValue = Math.round(context.parsed.y * 10) / 10;
+                                                label += roundedValue.toLocaleString('zh-CN', {
+                                                    minimumFractionDigits: 1,
+                                                    maximumFractionDigits: 1
+                                                });
+                                                label += ' 万';
+                                                return label;
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        display: true,
                                         title: {
                                             display: true,
-                                            text: '入坞科技财务时间序列',
-                                            font: {
-                                                size: 18
-                                            }
-                                        },
-                                        tooltip: {
-                                            callbacks: {
-                                                label: function(context) {
-                                                    let label = context.dataset.label || '';
-                                                    if (label) {
-                                                        label += ': ';
-                                                    }
-                                                    // 确保数值四舍五入到1位小数
-                                                    const roundedValue = Math.round(context.parsed.y * 10) / 10;
-                                                    label += roundedValue.toLocaleString('zh-CN', {
-                                                        minimumFractionDigits: 1,
-                                                        maximumFractionDigits: 1
-                                                    });
-                                                    label += ' 万';
-                                                    return label;
-                                                }
-                                            }
+                                            text: '时间'
                                         }
                                     },
-                                    scales: {
-                                        x: {
+                                    y: {
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'left',
+                                        title: {
                                             display: true,
-                                            title: {
-                                                display: true,
-                                                text: '时间'
-                                            }
+                                            text: '金额 (万)'
                                         },
-                                        y: {
-                                            type: 'linear',
-                                            display: true,
-                                            position: 'left',
-                                            title: {
-                                                display: true,
-                                                text: '金额 (万)'
-                                            },
-                                            ticks: {
-                                                callback: function(value) {
-                                                    // 确保数值四舍五入到1位小数
-                                                    const roundedValue = Math.round(value * 10) / 10;
-                                                    return roundedValue.toLocaleString('zh-CN', {
-                                                        minimumFractionDigits: 1,
-                                                        maximumFractionDigits: 1
-                                                    });
-                                                }
+                                        ticks: {
+                                            callback: function(value) {
+                                                const roundedValue = Math.round(value * 10) / 10;
+                                                return roundedValue.toLocaleString('zh-CN', {
+                                                    minimumFractionDigits: 1,
+                                                    maximumFractionDigits: 1
+                                                });
                                             }
                                         }
                                     }
                                 }
-                            });
-                        }
+                            }
+                        });
                     }
+                } finally {
+                    isRenderingChart = false;
+                }
+            }
+
+            // Load data when modal is opened
+            if (modal && chartCanvas) {
+                const observer = new MutationObserver(async (mutations) => {
+                    if (!modal.classList.contains('active')) {
+                        destroyDockingTechChart();
+                        return;
+                    }
+                    await renderDockingTechChartIfUnlocked();
                 });
 
                 observer.observe(modal, {
                     attributes: true,
                     attributeFilter: ['class']
                 });
+                document.addEventListener('docking-tech-financial-unlocked', renderDockingTechChartIfUnlocked);
+                document.addEventListener('docking-tech-financial-locked', destroyDockingTechChart);
 
                 // Clean up chart when modal closes
                 const closeBtns = modal.querySelectorAll('.modal-close, .modal-overlay');
                 closeBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        if (chart) {
-                            chart.destroy();
-                            chart = null;
-                        }
-                    });
+                    btn.addEventListener('click', destroyDockingTechChart);
                 });
             }
         });

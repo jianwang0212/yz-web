@@ -1,0 +1,53 @@
+{
+  "id": "./",
+  "name": "Zapp Store",
+  "short_name": "Zapp",
+  "description": "A personal app store for private tools.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "background_color": "#f8f7f3",
+  "theme_color": "#f8f7f3",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "朋友圈记忆",
+      "short_name": "Moments",
+      "url": "apps/moments-memory.html",
+      "icons": [{ "src": "icons/apps/moments-memory.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Calculator",
+      "short_name": "Calc",
+      "url": "apps/calculator.html",
+      "icons": [{ "src": "icons/apps/calculator-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Workout Console",
+      "short_name": "Workout",
+      "url": "apps/workbench.html?app=workout",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Photo Food Log",
+      "short_name": "Food",
+      "url": "apps/workbench.html?app=food",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
