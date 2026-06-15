@@ -1,116 +1,116 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-05-08T19:34:17.597Z",
+  "syncedAt": "2026-06-15T01:51:35.051Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 6,
-    "todayTokens": 55258867,
-    "weekTokens": 380334627,
-    "totalTokens": 758461253,
-    "estimatedCostUsd": 596.8707771499999,
-    "cpu": 51.810709236713166,
-    "memoryBytes": 1485668352
+    "activeAgents": 16,
+    "todayTokens": 0,
+    "weekTokens": 0,
+    "totalTokens": 0,
+    "estimatedCostUsd": 0,
+    "cpu": 6.7960357541309335,
+    "memoryBytes": 3966877696
   },
   "agents": [
     {
-      "agentId": "00bb517cbca4fcf3",
+      "agentId": "63e4ccbb8abd5de3",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "019e0915-1c2e-7f31-a324-d2e1e9da5278",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 11.608695652173912,
-      "memoryBytes": 166854656,
-      "confidence": "high"
-    },
-    {
-      "agentId": "36b530d36a6d7ff0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019e0915-31f1-7480-956b-ec5dc93954e0",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 11.608695652173912,
-      "memoryBytes": 166854656,
-      "confidence": "high"
-    },
-    {
-      "agentId": "96ad8b999c9a4590",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "019e0915-1251-7e83-beb5-df2ea2a651d3",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 11.608695652173912,
-      "memoryBytes": 166854656,
-      "confidence": "high"
-    },
-    {
-      "agentId": "a2d98a463e045098",
-      "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.780",
-      "cpu": 1,
-      "memoryBytes": 35323904,
+      "workspaceLabel": "/",
+      "cpu": 0.715781777401515,
+      "memoryBytes": 797769728,
       "confidence": "low"
     },
     {
-      "agentId": "ba52e6aaa37b0969",
+      "agentId": "b2279f0ee7e08936",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.780",
-      "cpu": 1,
-      "memoryBytes": 35176448,
+      "workspaceLabel": "1.0.809",
+      "cpu": 0.915860668195761,
+      "memoryBytes": 34930688,
       "confidence": "low"
     },
     {
-      "agentId": "1fb6b38bf0114d41",
+      "agentId": "324aec53ca5ecdd1",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5,
+      "memoryBytes": 4112384,
+      "confidence": "low"
+    },
+    {
+      "agentId": "c19e93b4eeee49e0",
       "processName": "SkyComputerUseClient",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "1.0.780",
-      "cpu": 1.2,
-      "memoryBytes": 37634048,
+      "workspaceLabel": "ClaudeCodeWorkSpace",
+      "cpu": 0.000011046062078868885,
+      "memoryBytes": 12238848,
+      "confidence": "low"
+    },
+    {
+      "agentId": "5d97a3e1daf3b032",
+      "processName": "SkyComputerUseService",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.010049615507321313,
+      "memoryBytes": 158040064,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f472333eceac3d7d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.01698557747919419,
+      "memoryBytes": 39403520,
+      "confidence": "low"
+    },
+    {
+      "agentId": "60d89a19c16da1b7",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "ai-router",
+      "cpu": 0.000011070274099986715,
+      "memoryBytes": 12238848,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d91e0582595e0f9a",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "ai-router",
+      "cpu": 0.00001107419712070875,
+      "memoryBytes": 12238848,
       "confidence": "low"
     }
   ],
-  "models": [
-    {
-      "model": "gpt-5.5",
-      "totalTokens": 507188656,
-      "inputTokens": 505634257,
-      "outputTokens": 1554399,
-      "costUSD": 463.735031
-    },
-    {
-      "model": "gpt-5.4",
-      "totalTokens": 247759642,
-      "inputTokens": 246585543,
-      "outputTokens": 1174099,
-      "costUSD": 130.8375905
-    },
-    {
-      "model": "gpt-5.3-codex",
-      "totalTokens": 3512955,
-      "inputTokens": 3470723,
-      "outputTokens": 42232,
-      "costUSD": 2.29815565
-    }
-  ],
+  "models": [],
   "health": {
-    "parser": "ok",
+    "parser": "error",
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-05-08T19:34:18.605Z"
+  "receivedAt": "2026-06-15T01:53:28.928Z"
 }
