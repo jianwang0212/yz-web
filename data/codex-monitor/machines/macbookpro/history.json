@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-04-22T15:49:05.928Z",
-    "cpu": 46.69482205193671,
-    "memoryBytes": 2314551296,
-    "totalTokens": 614988134,
-    "todayTokens": 24698165,
-    "activeAgents": 8,
-    "estimatedCostUsd": 289.31431165,
-    "agents": [
-      {
-        "agentId": "daad37929a1419c6",
-        "processName": "codex",
-        "status": "running",
-        "sessionId": "019db073-6278-77c3-9dcb-43806ad097e7",
-        "sessionTitle": "搭建 Codex 监控后台",
-        "workspaceLabel": "CodexProject",
-        "cpu": 1.7355630306892107,
-        "memoryBytes": 484245504,
-        "confidence": "high"
-      },
-      {
-        "agentId": "0fceae72cff3e8cc",
-        "processName": "codex",
-        "status": "running",
-        "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
-        "sessionTitle": null,
-        "workspaceLabel": null,
-        "cpu": 1.7355630306892107,
-        "memoryBytes": 484245504,
-        "confidence": "high"
-      },
-      {
-        "agentId": "d632612dd586466b",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5571279916753382,
-        "memoryBytes": 17334272,
-        "confidence": "low"
-      },
-      {
-        "agentId": "0d374a41a4f2c111",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5797872340425533,
-        "memoryBytes": 20873216,
-        "confidence": "low"
-      },
-      {
-        "agentId": "c018f618f1a481b8",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5277799438552714,
-        "memoryBytes": 13598720,
-        "confidence": "low"
-      },
-      {
-        "agentId": "f8ebddbd4916a25e",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5286743131501734,
-        "memoryBytes": 21184512,
-        "confidence": "low"
-      },
-      {
-        "agentId": "ef72ffe187f067d2",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5703375591874141,
-        "memoryBytes": 17235968,
-        "confidence": "low"
-      },
-      {
-        "agentId": "3a517297ddfe325f",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5212789711070424,
-        "memoryBytes": 16367616,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-04-22T15:54:15.656Z",
     "cpu": 46.623844449555,
     "memoryBytes": 2718433280,
@@ -37527,6 +37428,105 @@
         "workspaceLabel": "ai-router",
         "cpu": 0.0000057698410408793236,
         "memoryBytes": 10108928,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-16T01:03:30.146Z",
+    "cpu": 34.461502269359144,
+    "memoryBytes": 4194992128,
+    "totalTokens": 0,
+    "todayTokens": 0,
+    "activeAgents": 24,
+    "estimatedCostUsd": 0,
+    "agents": [
+      {
+        "agentId": "8c2cdd0a6b5b9704",
+        "processName": "npm exec ccusage-codex session --json",
+        "status": "running",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "codex-monitor",
+        "cpu": 18.666666666666668,
+        "memoryBytes": 152371200,
+        "confidence": "low"
+      },
+      {
+        "agentId": "63e4ccbb8abd5de3",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.7581134507464261,
+        "memoryBytes": 383483904,
+        "confidence": "low"
+      },
+      {
+        "agentId": "b2279f0ee7e08936",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "1.0.809",
+        "cpu": 0.9233301047889102,
+        "memoryBytes": 32423936,
+        "confidence": "low"
+      },
+      {
+        "agentId": "c19e93b4eeee49e0",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "ClaudeCodeWorkSpace",
+        "cpu": 0.000005748613147078267,
+        "memoryBytes": 10108928,
+        "confidence": "low"
+      },
+      {
+        "agentId": "5d97a3e1daf3b032",
+        "processName": "SkyComputerUseService",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 1.4352488283444498,
+        "memoryBytes": 129777664,
+        "confidence": "low"
+      },
+      {
+        "agentId": "f472333eceac3d7d",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.01763955394417035,
+        "memoryBytes": 38191104,
+        "confidence": "low"
+      },
+      {
+        "agentId": "a38c164803ece35f",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "1.0.809",
+        "cpu": 0.9409115764418283,
+        "memoryBytes": 38715392,
+        "confidence": "low"
+      },
+      {
+        "agentId": "1a0af2acac872081",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "1.0.809",
+        "cpu": 0.9252418054809243,
+        "memoryBytes": 41304064,
         "confidence": "low"
       }
     ]
