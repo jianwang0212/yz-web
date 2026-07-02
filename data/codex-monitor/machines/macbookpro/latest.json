@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-06-27T18:38:09.137Z",
+  "syncedAt": "2026-07-02T08:42:30.595Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 15,
-    "todayTokens": 0,
-    "weekTokens": 0,
-    "totalTokens": 0,
-    "estimatedCostUsd": 0,
-    "cpu": 2.9718288315894554,
-    "memoryBytes": 3654303744
+    "activeAgents": 17,
+    "todayTokens": 37369163,
+    "weekTokens": 223216018,
+    "totalTokens": 4947398142,
+    "estimatedCostUsd": 4572.5697879,
+    "cpu": 8.722017789936196,
+    "memoryBytes": 2861105152
   },
   "agents": [
+    {
+      "agentId": "e858aaee9a576be6",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "1.0.857",
+      "cpu": 0.871370534113992,
+      "memoryBytes": 33734656,
+      "confidence": "low"
+    },
     {
       "agentId": "8c524f3198b63528",
       "processName": "SkyComputerUseClient",
@@ -24,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "eth-hl-research",
-      "cpu": 0.0000012279460882549413,
-      "memoryBytes": 376832,
+      "cpu": 8.260994557656786e-7,
+      "memoryBytes": 360448,
       "confidence": "low"
     },
     {
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 8.419443188544168e-7,
+      "cpu": 6.313661437481808e-7,
       "memoryBytes": 131072,
       "confidence": "low"
     },
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "eth-hl-research",
-      "cpu": 0.00000122800640528141,
-      "memoryBytes": 376832,
+      "cpu": 8.261267542801627e-7,
+      "memoryBytes": 360448,
       "confidence": "low"
     },
     {
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ai-router",
-      "cpu": 8.420846985631509e-7,
+      "cpu": 6.314450810112466e-7,
       "memoryBytes": 131072,
       "confidence": "low"
     },
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "eth-hl-research",
-      "cpu": 0.0000012280697445369317,
-      "memoryBytes": 376832,
+      "cpu": 8.261554196621685e-7,
+      "memoryBytes": 360448,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ai-router",
-      "cpu": 8.42107390587092e-7,
+      "cpu": 6.314578404015567e-7,
       "memoryBytes": 131072,
       "confidence": "low"
     },
@@ -90,27 +101,52 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 0.000001684382155992316,
+      "cpu": 0.0000012630097902203888,
       "memoryBytes": 131072,
-      "confidence": "low"
-    },
-    {
-      "agentId": "5409009326204355",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.39036741406281333,
-      "memoryBytes": 1293352960,
       "confidence": "low"
     }
   ],
-  "models": [],
+  "models": [
+    {
+      "model": "gpt-5.5",
+      "totalTokens": 4417360382,
+      "inputTokens": 341229253,
+      "outputTokens": 18378297,
+      "costUSD": 4286.3715909999955
+    },
+    {
+      "model": "gpt-5.4",
+      "totalTokens": 408043214,
+      "inputTokens": 26954994,
+      "outputTokens": 1840348,
+      "costUSD": 212.85558500000002
+    },
+    {
+      "model": "gpt-5.3-codex-spark",
+      "totalTokens": 116371572,
+      "inputTokens": 18145908,
+      "outputTokens": 473600,
+      "costUSD": 70.44248815
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "totalTokens": 3112951,
+      "inputTokens": 626891,
+      "outputTokens": 37420,
+      "costUSD": 2.04945125
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "totalTokens": 2510023,
+      "inputTokens": 830724,
+      "outputTokens": 22979,
+      "costUSD": 0.8506725
+    }
+  ],
   "health": {
-    "parser": "error",
+    "parser": "ok",
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-06-27T18:38:23.749Z"
+  "receivedAt": "2026-07-02T08:43:32.987Z"
 }
