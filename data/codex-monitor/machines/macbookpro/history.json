@@ -1,38 +1,5 @@
 [
   {
-    "timestamp": "2026-04-22T20:42:21.058Z",
-    "cpu": 61.097294664118124,
-    "memoryBytes": 9790488576,
-    "totalTokens": 624488917,
-    "todayTokens": 34198948,
-    "activeAgents": 2,
-    "estimatedCostUsd": 293.13595065,
-    "agents": [
-      {
-        "agentId": "cfaf884556a73bfb",
-        "processName": "codex",
-        "status": "running",
-        "sessionId": "019dad4b-3dcd-74f2-b95f-15d0387d1f41",
-        "sessionTitle": null,
-        "workspaceLabel": null,
-        "cpu": 1.444893187373791,
-        "memoryBytes": 6186336256,
-        "confidence": "high"
-      },
-      {
-        "agentId": "880be3d7322db60b",
-        "processName": "SkyComputerUseClient",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "1.0.755",
-        "cpu": 0.5188689273944934,
-        "memoryBytes": 33390592,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-04-22T20:47:29.081Z",
     "cpu": 62.390305979152174,
     "memoryBytes": 10652712960,
@@ -39265,6 +39232,105 @@
         "workspaceLabel": "/",
         "cpu": 0.03802469135802469,
         "memoryBytes": 75513856,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-07-02T13:15:54.559Z",
+    "cpu": 7.984684900399695,
+    "memoryBytes": 2859630592,
+    "totalTokens": 4968757472,
+    "todayTokens": 58728493,
+    "activeAgents": 15,
+    "estimatedCostUsd": 11378.0704128,
+    "agents": [
+      {
+        "agentId": "ca8edd308a70d689",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "019f226e-5331-7fb1-adf1-38a79442574c",
+        "sessionTitle": "/goal 我现在要开始把我之前 amenesia 的 VPN 也加到我的 clash 现有 config 里面. 我的目标如下跟 claude 相关的所有连接都用 UPDATED-awg_starvpn_jp ; 其余的都走 clash 的规则; 也就是国内走国内, 国外走我的手动选择. 你给我一个 proposal 我看看; 我已经确定 amn 可以单独用; clash 也可以单独用. 我现在的目标是. 我开了 tailscale, 也可以所有可以用. 之前是不能的; 因为会有 router 的问题. 你全部测试一边.\n\nReferenced image files:\n- [Image #1]: /Users/Zi/.codex/attachments/917803a1-b6c8-40f2-8c4e-03cdb93a8828/image-1.png",
+        "workspaceLabel": "zapp",
+        "cpu": 1.0372872872872874,
+        "memoryBytes": 676003840,
+        "confidence": "high"
+      },
+      {
+        "agentId": "8c524f3198b63528",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "eth-hl-research",
+        "cpu": 8.149852976652301e-7,
+        "memoryBytes": 360448,
+        "confidence": "low"
+      },
+      {
+        "agentId": "c19e93b4eeee49e0",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "ClaudeCodeWorkSpace",
+        "cpu": 6.248535499492306e-7,
+        "memoryBytes": 131072,
+        "confidence": "low"
+      },
+      {
+        "agentId": "f822be8039451421",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "eth-hl-research",
+        "cpu": 8.150118665727773e-7,
+        "memoryBytes": 360448,
+        "confidence": "low"
+      },
+      {
+        "agentId": "9d36a1435326939e",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.6222222222222222,
+        "memoryBytes": 75563008,
+        "confidence": "low"
+      },
+      {
+        "agentId": "60d89a19c16da1b7",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "ai-router",
+        "cpu": 6.249308670228356e-7,
+        "memoryBytes": 131072,
+        "confidence": "low"
+      },
+      {
+        "agentId": "f84f8b10b554c757",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "eth-hl-research",
+        "cpu": 8.15039765790173e-7,
+        "memoryBytes": 360448,
+        "confidence": "low"
+      },
+      {
+        "agentId": "d91e0582595e0f9a",
+        "processName": "SkyComputerUseClient",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "ai-router",
+        "cpu": 6.249433645075915e-7,
+        "memoryBytes": 131072,
         "confidence": "low"
       }
     ]
