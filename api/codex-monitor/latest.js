@@ -5,7 +5,7 @@ const AGENT_ACTIVITY_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 function isUsefulAgent(agent) {
   const haystack = [agent?.processName, agent?.sessionTitle, agent?.workspaceLabel].filter(Boolean).join(' ');
-  return !/skycomputeruseclient/i.test(haystack);
+  return !/skycomputeruse(?:client|service)/i.test(haystack);
 }
 
 function bestConfidence(current, next) {
