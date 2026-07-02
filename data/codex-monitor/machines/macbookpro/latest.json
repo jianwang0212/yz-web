@@ -1,31 +1,31 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-07-02T13:15:54.559Z",
+  "syncedAt": "2026-07-02T13:39:32.659Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 15,
-    "todayTokens": 58728493,
-    "weekTokens": 244575348,
-    "totalTokens": 4968757472,
-    "estimatedCostUsd": 11378.0704128,
-    "cpu": 7.984684900399695,
-    "memoryBytes": 2859630592
+    "activeAgents": 14,
+    "todayTokens": 59526533,
+    "weekTokens": 245373388,
+    "totalTokens": 4969555512,
+    "estimatedCostUsd": 11382.7297878,
+    "cpu": 9.228053076729736,
+    "memoryBytes": 2323677184
   },
   "agents": [
     {
-      "agentId": "ca8edd308a70d689",
+      "agentId": "c8a0cc00104b0a25",
       "processName": "codex",
-      "status": "running",
+      "status": "idle",
       "sessionId": "019f226e-5331-7fb1-adf1-38a79442574c",
       "sessionTitle": "/goal 我现在要开始把我之前 amenesia 的 VPN 也加到我的 clash 现有 config 里面. 我的目标如下跟 claude 相关的所有连接都用 UPDATED-awg_starvpn_jp ; 其余的都走 clash 的规则; 也就是国内走国内, 国外走我的手动选择. 你给我一个 proposal 我看看; 我已经确定 amn 可以单独用; clash 也可以单独用. 我现在的目标是. 我开了 tailscale, 也可以所有可以用. 之前是不能的; 因为会有 router 的问题. 你全部测试一边.\n\nReferenced image files:\n- [Image #1]: /Users/Zi/.codex/attachments/917803a1-b6c8-40f2-8c4e-03cdb93a8828/image-1.png",
       "workspaceLabel": "zapp",
-      "cpu": 1.0372872872872874,
-      "memoryBytes": 676003840,
+      "cpu": 1.8078512396694213,
+      "memoryBytes": 604225536,
       "confidence": "high"
     },
     {
@@ -35,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "eth-hl-research",
-      "cpu": 8.149852976652301e-7,
+      "cpu": 8.141903609631545e-7,
       "memoryBytes": 360448,
       "confidence": "low"
     },
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 6.248535499492306e-7,
+      "cpu": 6.243861503659215e-7,
       "memoryBytes": 131072,
       "confidence": "low"
     },
@@ -57,19 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "eth-hl-research",
-      "cpu": 8.150118665727773e-7,
+      "cpu": 8.142168780645088e-7,
       "memoryBytes": 360448,
-      "confidence": "low"
-    },
-    {
-      "agentId": "9d36a1435326939e",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.6222222222222222,
-      "memoryBytes": 75563008,
       "confidence": "low"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ai-router",
-      "cpu": 6.249308670228356e-7,
+      "cpu": 6.244633518070409e-7,
       "memoryBytes": 131072,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "eth-hl-research",
-      "cpu": 8.15039765790173e-7,
+      "cpu": 8.142447228799511e-7,
       "memoryBytes": 360448,
       "confidence": "low"
     },
@@ -101,7 +90,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "ai-router",
-      "cpu": 6.249433645075915e-7,
+      "cpu": 6.244758305996903e-7,
+      "memoryBytes": 131072,
+      "confidence": "low"
+    },
+    {
+      "agentId": "ee0ed1f17d210ad6",
+      "processName": "SkyComputerUseClient",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "ClaudeCodeWorkSpace",
+      "cpu": 0.0000012490437009164858,
       "memoryBytes": 131072,
       "confidence": "low"
     }
@@ -109,10 +109,10 @@
   "models": [
     {
       "model": "gpt-5.5",
-      "totalTokens": 4438719712,
-      "inputTokens": 343402076,
-      "outputTokens": 18534916,
-      "costUSD": 10778.62304999999
+      "totalTokens": 4439517752,
+      "inputTokens": 343669686,
+      "outputTokens": 18543746,
+      "costUSD": 10783.282424999989
     },
     {
       "model": "gpt-5.4",
@@ -148,5 +148,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-07-02T13:16:00.415Z"
+  "receivedAt": "2026-07-02T13:39:38.058Z"
 }
