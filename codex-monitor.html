@@ -474,20 +474,9 @@
         const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
         const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
         const percent = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
-        const officialCodexUsage = {
-            source: 'OpenAI Codex Settings',
-            capturedAt: '2026-05-03 02:00 ET',
-            fiveHourRemaining: 100,
-            weeklyRemaining: 72,
-            sparkFiveHourRemaining: 100,
-            sparkWeeklyRemaining: 100,
-            creditBalance: 0,
-            fiveHourReset: '暂未显示',
-            weeklyReset: 'May 5, 2026 2:02 AM',
-            monthThreads: 300,
-            monthTurns: 1732,
-            averageThreadsPerDay: 10.3,
-            averageTurnsPerDay: 59.7
+        const localUsageBenchmarks = {
+            highWeeklyTokens: 100_000_000,
+            veryHighWeeklyTokens: 200_000_000
         };
         const analysisEl = document.getElementById('cm-analysis');
 
@@ -639,22 +628,23 @@
 
         function renderUsageAnalysis(latest) {
             const summary = latest?.summary || {};
-            const usedTokens = Number(summary.totalTokens || summary.weekTokens || summary.todayTokens || 0);
+            const todayTokens = Number(summary.todayTokens || 0);
+            const weekTokens = Number(summary.weekTokens || 0);
+            const totalTokens = Number(summary.totalTokens || 0);
             const estimatedCost = Number(summary.estimatedCostUsd || 0);
-            const fiveHourUsed = 100 - officialCodexUsage.fiveHourRemaining;
-            const weeklyUsed = 100 - officialCodexUsage.weeklyRemaining;
-            const sparkFiveHourUsed = 100 - officialCodexUsage.sparkFiveHourRemaining;
-            const sparkWeeklyUsed = 100 - officialCodexUsage.sparkWeeklyRemaining;
-            const weeklyMeter = Math.max(0, Math.min(100, weeklyUsed));
-            const plusEquivalentWeeklyUse = weeklyUsed * 20 / 100;
-            const shouldKeepPro = weeklyUsed >= 50 || fiveHourUsed >= 50;
-            const conclusion = weeklyUsed >= 50 || fiveHourUsed >= 50
-                ? '不建议降级到 Plus。官方账户数据显示，你已经用掉了 Pro 的大部分 Codex 周额度。'
-                : '可以考虑降级到 Plus，但需要继续观察一周。';
-            const subscriptionAdvice = shouldKeepPro ? '保留 Pro' : '观察后再决定';
-            const subscriptionHint = shouldKeepPro
-                ? `官方 Pro 周额度已用 ${formatUsagePercent(weeklyUsed)}；按 Pro 约 20x Plus 估算，已经约等于 ${plusEquivalentWeeklyUse.toFixed(1)} 个 Plus 周额度。`
-                : `本周官方 Pro 周额度已用 ${formatUsagePercent(weeklyUsed)}，当前 5 小时额度已用 ${formatUsagePercent(fiveHourUsed)}。先继续观察这一周的峰值使用量。`;
+            const topModel = Array.isArray(latest?.models) ? latest.models[0] : null;
+            const health = latest?.health || {};
+            const healthText = [health.parser, health.processWatcher, health.logWatcher].filter(Boolean).join(' / ') || 'unknown';
+            const syncLabel = latest?.syncedAt ? `${clock(latest.syncedAt)} · ${relativeTime(latest.syncedAt)}` : '尚无同步';
+            const weeklyMeter = Math.max(0, Math.min(100, (weekTokens / localUsageBenchmarks.veryHighWeeklyTokens) * 100));
+            const isHeavyWeek = weekTokens >= localUsageBenchmarks.highWeeklyTokens;
+            const conclusion = isHeavyWeek
+                ? '这块之前是旧官方读数；现在应按本地实时用量判断，先不要直接降级。'
+                : '这块之前是旧官方读数；现在显示本地实时用量，官方额度需重新核对。';
+            const subscriptionAdvice = isHeavyWeek ? '先保留高额度' : '重新核对后再决定';
+            const subscriptionHint = isHeavyWeek
+                ? `最近 7 天本地已记录 ${formatLongNumber(weekTokens)} tokens。公开 API 不含官方 5 小时 / 周额度百分比，不能用旧 28% 判断。`
+                : `最近 7 天本地已记录 ${formatLongNumber(weekTokens)} tokens。下一步应打开 OpenAI Codex Settings 看当前官方额度。`;
 
             analysisEl.innerHTML = `
                 <article class="cm-panel cm-analysis-main">
@@ -662,41 +652,41 @@
                         <div class="cm-analysis-kicker">Usage Analysis</div>
                         <h2 class="cm-analysis-headline">${conclusion}</h2>
                         <p class="cm-analysis-body">
-                            主 Codex 额度：5 小时已用约 ${formatUsagePercent(fiveHourUsed)}，每周已用约 ${formatUsagePercent(weeklyUsed)}。
-                            Spark 专项额度：GPT-5.3-Codex-Spark 的 5 小时和每周额度都还剩 ${officialCodexUsage.sparkWeeklyRemaining}%。
-                            最近 1 个月活动：${officialCodexUsage.monthThreads} threads，${officialCodexUsage.monthTurns} turns，平均每天 ${officialCodexUsage.averageThreadsPerDay} threads / ${officialCodexUsage.averageTurnsPerDay} turns。
+                            本地监控已恢复：今日 ${formatLongNumber(todayTokens)} tokens，最近 7 天 ${formatLongNumber(weekTokens)} tokens，
+                            累计 ${formatLongNumber(totalTokens)} tokens，估算成本 ${formatMoney(estimatedCost)}。
+                            官方 5 小时额度、每周额度和 Spark 专项额度不会从公开同步 API 自动读取，需要到 OpenAI Codex Settings 重新核对。
                         </p>
                     </div>
                     <div>
                         <div class="cm-row cm-muted">
-                            <span>官方 Pro 周额度已用</span>
-                            <strong>${formatUsagePercent(weeklyUsed)}</strong>
+                            <span>本地 7 天用量强度</span>
+                            <strong>${formatUsagePercent(weeklyMeter)}</strong>
                         </div>
-                        <div class="cm-meter" aria-label="Official weekly Codex usage meter">
+                        <div class="cm-meter" aria-label="Local weekly Codex usage intensity meter">
                             <div class="cm-meter-fill" style="width: ${weeklyMeter}%"></div>
                         </div>
                     </div>
                 </article>
                 <article class="cm-panel">
                     <div class="cm-panel-header">
-                        <h2 class="cm-panel-title">官方账户读数</h2>
-                        <span class="cm-panel-subtitle">${officialCodexUsage.source} · ${officialCodexUsage.capturedAt}</span>
+                        <h2 class="cm-panel-title">本地实时读数</h2>
+                        <span class="cm-panel-subtitle">Codex Monitor API · ${syncLabel}</span>
                     </div>
                     <div class="cm-analysis-grid">
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">5 小时额度</div>
-                            <div class="cm-mini-value">${formatUsagePercent(fiveHourUsed)}</div>
-                            <div class="cm-mini-hint">剩 ${officialCodexUsage.fiveHourRemaining}% · 重置 ${officialCodexUsage.fiveHourReset}</div>
+                            <div class="cm-mini-label">今日 tokens</div>
+                            <div class="cm-mini-value">${formatNumber(todayTokens)}</div>
+                            <div class="cm-mini-hint">${formatLongNumber(todayTokens)} · 来自本机 session JSONL</div>
                         </div>
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">每周额度</div>
-                            <div class="cm-mini-value">${formatUsagePercent(weeklyUsed)}</div>
-                            <div class="cm-mini-hint">剩 ${officialCodexUsage.weeklyRemaining}% · 重置 ${officialCodexUsage.weeklyReset}</div>
+                            <div class="cm-mini-label">最近 7 天</div>
+                            <div class="cm-mini-value">${formatNumber(weekTokens)}</div>
+                            <div class="cm-mini-hint">${formatLongNumber(weekTokens)} · 本地 rolling 7 日累计</div>
                         </div>
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">Spark 专项</div>
-                            <div class="cm-mini-value">${officialCodexUsage.sparkWeeklyRemaining}% 剩余</div>
-                            <div class="cm-mini-hint">GPT-5.3-Codex-Spark：5 小时已用 ${formatUsagePercent(sparkFiveHourUsed)} · 周额度已用 ${formatUsagePercent(sparkWeeklyUsed)}</div>
+                            <div class="cm-mini-label">Top model</div>
+                            <div class="cm-mini-value">${topModel?.model || 'n/a'}</div>
+                            <div class="cm-mini-hint">${topModel ? `${formatLongNumber(topModel.totalTokens)} tokens · ${formatMoney(topModel.costUSD)}` : '暂无模型数据'}</div>
                         </div>
                         <div class="cm-mini-card">
                             <div class="cm-mini-label">订阅建议</div>
@@ -704,9 +694,14 @@
                             <div class="cm-mini-hint">${subscriptionHint}</div>
                         </div>
                         <div class="cm-mini-card">
-                            <div class="cm-mini-label">最近 1 个月活动</div>
-                            <div class="cm-mini-value">${officialCodexUsage.monthThreads} / ${officialCodexUsage.monthTurns}</div>
-                            <div class="cm-mini-hint">平均每天 ${officialCodexUsage.averageThreadsPerDay} threads / ${officialCodexUsage.averageTurnsPerDay} turns · 额外积分 ${officialCodexUsage.creditBalance}</div>
+                            <div class="cm-mini-label">官方额度</div>
+                            <div class="cm-mini-value">需手动核对</div>
+                            <div class="cm-mini-hint">OpenAI Codex Settings 的 5 小时 / 每周 / Spark 百分比不在此公开 API 中</div>
+                        </div>
+                        <div class="cm-mini-card">
+                            <div class="cm-mini-label">数据健康</div>
+                            <div class="cm-mini-value">${healthText}</div>
+                            <div class="cm-mini-hint">parser / process watcher / log watcher</div>
                         </div>
                     </div>
                 </article>
