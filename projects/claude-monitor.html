@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Claude Monitor - Claude Code 与 Codex 本地用量对比">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Claude Monitor · Zi Yin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    :root {
+      --cm-bg: #f7f8fb;
+      --cm-panel: #202838;
+      --cm-panel-2: #2b3446;
+      --cm-ink: #ffffff;
+      --cm-muted: rgba(255,255,255,0.62);
+      --cm-soft: rgba(255,255,255,0.1);
+      --cm-line: rgba(255,255,255,0.12);
+      --cm-cyan: #73d7ff;
+      --cm-green: #46d69a;
+      --cm-amber: #ffc857;
+      --cm-red: #ff7b8a;
+      --cm-violet: #b8a4ff;
+    }
+
+    body {
+      background: var(--cm-bg);
+    }
+
+    .claude-shell {
+      padding: 96px 0 72px;
+    }
+
+    .claude-wrap {
+      width: min(1440px, calc(100vw - 48px));
+      margin: 0 auto;
+    }
+
+    .claude-top {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(420px, 1.35fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(31,39,55,0.98), rgba(35,43,59,0.96));
+      color: var(--cm-ink);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(15,23,42,0.16);
+      padding: 24px;
+    }
+
+    .hero {
+      min-height: 344px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kicker {
+      color: var(--cm-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 72px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      max-width: 720px;
+    }
+
+    .hero-copy {
+      color: var(--cm-muted);
+      font-size: 17px;
+      line-height: 1.75;
+      margin-top: 18px;
+      max-width: 720px;
+    }
+
+    .status-row,
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .status-row {
+      color: var(--cm-muted);
+      font-size: 14px;
+      border-top: 1px solid var(--cm-line);
+      padding-top: 18px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--cm-line);
+      color: var(--cm-muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pill.online {
+      color: var(--cm-green);
+      border-color: rgba(70,214,154,0.34);
+      background: rgba(70,214,154,0.08);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid var(--cm-line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .label {
+      color: var(--cm-muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .value {
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .hint {
+      color: var(--cm-muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .panel-title {
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .panel-subtitle {
+      color: var(--cm-muted);
+      font-size: 13px;
+      text-align: right;
+      max-width: 380px;
+      line-height: 1.55;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1.15fr repeat(2, minmax(0, 1fr)) 0.9fr;
+      border: 1px solid var(--cm-line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .comparison div {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--cm-line);
+      border-right: 1px solid var(--cm-line);
+      min-width: 0;
+    }
+
+    .comparison div:nth-child(4n) {
+      border-right: 0;
+    }
+
+    .comparison div:nth-last-child(-n+4) {
+      border-bottom: 0;
+    }
+
+    .comparison .head {
+      color: var(--cm-muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .comparison .metric-name {
+      color: var(--cm-muted);
+      font-weight: 800;
+    }
+
+    .comparison strong {
+      font-size: 19px;
+      overflow-wrap: anywhere;
+    }
+
+    .delta.good {
+      color: var(--cm-green);
+    }
+
+    .delta.warn {
+      color: var(--cm-amber);
+    }
+
+    .meter {
+      height: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--cm-green), var(--cm-amber), var(--cm-red));
+      border-radius: inherit;
+      transition: width 280ms ease;
+    }
+
+    .list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--cm-line);
+    }
+
+    .item {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--cm-line);
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .item strong {
+      font-size: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: var(--cm-muted);
+    }
+
+    .tiny {
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .bar-chart {
+      display: grid;
+      grid-template-columns: repeat(14, minmax(18px, 1fr));
+      align-items: end;
+      gap: 8px;
+      min-height: 180px;
+      padding-top: 18px;
+      border-top: 1px solid var(--cm-line);
+    }
+
+    .bar {
+      min-height: 6px;
+      border-radius: 6px 6px 0 0;
+      background: linear-gradient(180deg, var(--cm-cyan), var(--cm-violet));
+      position: relative;
+    }
+
+    .bar::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      bottom: -24px;
+      transform: translateX(-50%);
+      color: var(--cm-muted);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .loading {
+      color: var(--cm-muted);
+      font-size: 16px;
+      padding: 24px 0;
+    }
+
+    .error {
+      color: var(--cm-red);
+    }
+
+    a.monitor-link {
+      color: var(--cm-cyan);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    @media (max-width: 980px) {
+      .claude-wrap {
+        width: min(100vw - 28px, 760px);
+      }
+
+      .claude-top,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison div,
+      .comparison div:nth-child(4n),
+      .comparison div:nth-last-child(-n+4) {
+        border-right: 0;
+        border-bottom: 1px solid var(--cm-line);
+      }
+
+      .comparison div:last-child {
+        border-bottom: 0;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="claude-shell">
+    <div class="claude-wrap">
+      <section class="claude-top">
+        <article class="panel hero">
+          <div>
+            <div class="kicker">Claude Usage Monitor</div>
+            <h1 id="hero-title">Claude vs Codex</h1>
+            <p class="hero-copy" id="hero-copy">
+              正在读取 Claude Code 与 Codex 的本地用量。这里的成本是 ccusage 的 API 等价估算，不是 Claude Max 或 Codex 订阅账单。
+            </p>
+          </div>
+          <div class="status-row">
+            <span id="sync-status" class="pill">loading</span>
+            <span id="sync-time">等待同步数据</span>
+            <a class="monitor-link" href="/projects/codex-monitor?machine=macbookpro">Codex Monitor</a>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">决策摘要</h2>
+            <span class="panel-subtitle">关注 Fable 占比、当前 5 小时 block、以及 Claude 与 Codex 的 7 天强度。</span>
+          </div>
+          <div class="metric-grid" id="summary-grid">
+            <div class="loading">加载中...</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-grid">
+        <article class="panel wide">
+          <div class="panel-head">
+            <h2 class="panel-title">Claude vs Codex</h2>
+            <span class="panel-subtitle">同一台 MacBookPro，本地 ccusage 口径；Claude 的缓存读写 token 会显著放大总量。</span>
+          </div>
+          <div id="comparison" class="comparison"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">当前 5 小时 Block</h2>
+            <span class="panel-subtitle">Claude Code billing block；用于观察当前速度，不等同于官方 Max 页面额度。</span>
+          </div>
+          <div id="block-panel"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">模型结构</h2>
+            <span class="panel-subtitle">最近 7 天模型分布；Fable 占比越高，越应该把长任务拆分和缓存复用做清楚。</span>
+          </div>
+          <div id="model-list" class="list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">最近 Sessions</h2>
+            <span class="panel-subtitle">只展示项目路径和 token 结构，不展示对话内容。</span>
+          </div>
+          <div id="session-list" class="list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">最近 14 天趋势</h2>
+            <span class="panel-subtitle">按天聚合 total tokens，用于看是否正在形成稳定高消耗。</span>
+          </div>
+          <div id="daily-bars" class="bar-chart"></div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const baseMachine = (params.get('machine') || 'macbookpro').replace(/^claude-/, '') || 'macbookpro';
+    const claudeMachine = params.get('claudeMachine') || `claude-${baseMachine}`;
+    const codexMachine = params.get('codexMachine') || baseMachine;
+
+    const number = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+    const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
+    const percent = new Intl.NumberFormat('zh-CN', { style: 'percent', maximumFractionDigits: 1 });
+    const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+    const summaryGrid = document.getElementById('summary-grid');
+    const comparisonEl = document.getElementById('comparison');
+    const blockPanel = document.getElementById('block-panel');
+    const modelList = document.getElementById('model-list');
+    const sessionList = document.getElementById('session-list');
+    const dailyBars = document.getElementById('daily-bars');
+    const syncStatus = document.getElementById('sync-status');
+    const syncTime = document.getElementById('sync-time');
+    const heroCopy = document.getElementById('hero-copy');
+
+    function fmt(value) {
+      return compact.format(Number(value || 0));
+    }
+
+    function fmtFull(value) {
+      return number.format(Math.round(Number(value || 0)));
+    }
+
+    function fmtMoney(value) {
+      return `${money.format(Number(value || 0))} est.`;
+    }
+
+    function fmtPct(value) {
+      return percent.format(Number(value || 0));
+    }
+
+    function clock(timestamp) {
+      if (!timestamp) return 'n/a';
+      return new Date(timestamp).toLocaleString('zh-CN', {
+        hour12: false,
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function relativeTime(timestamp) {
+      if (!timestamp) return 'n/a';
+      const diff = Date.now() - new Date(timestamp).getTime();
+      if (diff < 60000) return `${Math.max(1, Math.round(diff / 1000))} 秒前`;
+      if (diff < 3600000) return `${Math.round(diff / 60000)} 分钟前`;
+      if (diff < 86400000) return `${Math.round(diff / 3600000)} 小时前`;
+      return `${Math.round(diff / 86400000)} 天前`;
+    }
+
+    function durationMinutes(minutes) {
+      const safe = Math.max(0, Math.round(Number(minutes || 0)));
+      const hours = Math.floor(safe / 60);
+      const rest = safe % 60;
+      if (hours && rest) return `${hours} 小时 ${rest} 分`;
+      if (hours) return `${hours} 小时`;
+      return `${rest} 分钟`;
+    }
+
+    function row(label, value, hint = '') {
+      return `
+        <article class="metric">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="hint">${hint}</div>
+        </article>
+      `;
+    }
+
+    function renderSummary(claude) {
+      const summary = claude.summary || {};
+      const active = claude.claude?.activeBlock || null;
+      const projected = Number(summary.activeBlockProjectedTokens || 0);
+      const current = Number(summary.activeBlockTokens || 0);
+      const projectionHint = active
+        ? `当前 ${fmtFull(current)} tokens；按当前速度预计 ${fmtFull(projected)} tokens`
+        : '当前没有 active block';
+
+      summaryGrid.innerHTML = [
+        row('今日 Claude', fmt(summary.todayTokens), `${fmtMoney(summary.estimatedCostUsd)} all-time API 等价估算`),
+        row('Fable 今日占比', fmtPct(summary.todayFableShare), `${fmtFull(summary.todayFableTokens)} Fable tokens`),
+        row('当前 5h Block', active ? fmt(current) : 'inactive', projectionHint),
+        row('剩余时间', active ? durationMinutes(summary.activeBlockRemainingMinutes) : 'n/a', active ? `${clock(active.endTime)} 结束` : '等待下一段活跃使用')
+      ].join('');
+    }
+
+    function compareCell(label, claudeValue, codexValue, formatter, higherIsWarn = true) {
+      const c = Number(claudeValue || 0);
+      const x = Number(codexValue || 0);
+      const ratio = x > 0 ? c / x : 0;
+      const deltaClass = higherIsWarn && ratio > 1.2 ? 'warn' : 'good';
+      return [
+        `<div class="metric-name">${label}</div>`,
+        `<div><strong>${formatter(c)}</strong></div>`,
+        `<div><strong>${formatter(x)}</strong></div>`,
+        `<div class="delta ${deltaClass}">${x > 0 ? `${ratio.toFixed(1)}x Codex` : 'n/a'}</div>`
+      ].join('');
+    }
+
+    function renderComparison(claude, codex) {
+      const cs = claude.summary || {};
+      const xs = codex.summary || {};
+      comparisonEl.innerHTML = [
+        '<div class="head">Metric</div><div class="head">Claude</div><div class="head">Codex</div><div class="head">Ratio</div>',
+        compareCell('Today tokens', cs.todayTokens, xs.todayTokens, fmt),
+        compareCell('7-day tokens', cs.weekTokens, xs.weekTokens, fmt),
+        compareCell('All-time tokens', cs.totalTokens, xs.totalTokens, fmt),
+        compareCell('API-equivalent cost', cs.estimatedCostUsd, xs.estimatedCostUsd, fmtMoney),
+        compareCell('Visible active work', cs.activeAgents, xs.visibleActiveAgents ?? xs.activeAgents, (v) => String(Math.round(v)), false)
+      ].join('');
+    }
+
+    function renderBlock(claude) {
+      const summary = claude.summary || {};
+      const block = claude.claude?.activeBlock || null;
+      if (!block) {
+        blockPanel.innerHTML = '<div class="loading">暂无 active Claude block。</div>';
+        return;
+      }
+
+      const start = new Date(block.startTime).getTime();
+      const end = new Date(block.endTime).getTime();
+      const progress = Math.max(0, Math.min(100, ((Date.now() - start) / Math.max(end - start, 1)) * 100));
+      blockPanel.innerHTML = `
+        <div class="row">
+          <strong>${clock(block.startTime)} - ${clock(block.endTime)}</strong>
+          <span class="pill online">active</span>
+        </div>
+        <div class="meter" aria-label="Claude active block progress">
+          <div class="meter-fill" style="width:${progress}%"></div>
+        </div>
+        <div class="list" style="margin-top:18px">
+          <div class="item">
+            <div class="row"><strong>${fmtFull(block.totalTokens)} tokens</strong><span>${fmtMoney(block.costUSD)}</span></div>
+            <div class="hint">当前 block 实际已用；模型：${(block.models || []).join(', ') || 'n/a'}</div>
+          </div>
+          <div class="item">
+            <div class="row"><strong>${fmtFull(summary.activeBlockProjectedTokens)} projected</strong><span>${fmtMoney(summary.activeBlockProjectedCostUsd)}</span></div>
+            <div class="hint">按当前 burn rate 推算；剩余 ${durationMinutes(summary.activeBlockRemainingMinutes)}</div>
+          </div>
+          <div class="item">
+            <div class="row"><strong>${fmtFull(summary.activeBlockTokensPerMinute)} / min</strong><span>${fmtFull(summary.activeBlockIndicatorTokensPerMinute)} indicator / min</span></div>
+            <div class="hint">第一个含 cache read，第二个是 ccusage indicator 口径。</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModels(claude) {
+      const models = claude.claude?.weekModels || [];
+      if (!models.length) {
+        modelList.innerHTML = '<div class="loading">暂无模型数据。</div>';
+        return;
+      }
+
+      const total = models.reduce((sum, model) => sum + Number(model.totalTokens || 0), 0);
+      modelList.innerHTML = models.slice(0, 8).map((model) => {
+        const share = total > 0 ? Number(model.totalTokens || 0) / total : 0;
+        const cacheTokens = Number(model.cacheCreationTokens || 0) + Number(model.cacheReadTokens || 0);
+        return `
+          <div class="item">
+            <div class="row"><strong>${model.model}</strong><span>${fmtPct(share)}</span></div>
+            <div class="row muted tiny">
+              <span>${fmtFull(model.totalTokens)} tokens · cache ${fmt(cacheTokens)}</span>
+              <span>${fmtMoney(model.costUSD)}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderSessions(claude) {
+      const sessions = claude.claude?.recentSessions || [];
+      if (!sessions.length) {
+        sessionList.innerHTML = '<div class="loading">暂无 session 数据。</div>';
+        return;
+      }
+
+      sessionList.innerHTML = sessions.slice(0, 8).map((session) => `
+        <div class="item">
+          <div class="row"><strong>${session.projectLabel}</strong><span>${fmt(session.totalTokens)} tokens</span></div>
+          <div class="row muted tiny">
+            <span>${relativeTime(session.lastActivity)} · ${(session.modelsUsed || []).join(', ') || 'n/a'}</span>
+            <span>${fmtMoney(session.costUSD)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDaily(claude) {
+      const daily = (claude.claude?.daily || []).slice(-14);
+      if (!daily.length) {
+        dailyBars.innerHTML = '<div class="loading">暂无 daily 数据。</div>';
+        return;
+      }
+
+      const max = Math.max(...daily.map((row) => Number(row.totalTokens || 0)), 1);
+      dailyBars.innerHTML = daily.map((row) => {
+        const height = Math.max(6, (Number(row.totalTokens || 0) / max) * 160);
+        const date = String(row.date || '').slice(5);
+        return `<div class="bar" data-label="${date}" title="${row.date}: ${fmtFull(row.totalTokens)} tokens" style="height:${height}px"></div>`;
+      }).join('');
+    }
+
+    async function loadMachine(machine) {
+      const response = await fetch(`/api/codex-monitor/latest?machine=${encodeURIComponent(machine)}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const payload = await response.json();
+      if (!payload.latest) throw new Error(`No data for ${machine}`);
+      return payload.latest;
+    }
+
+    async function main() {
+      try {
+        const [claude, codex] = await Promise.all([
+          loadMachine(claudeMachine),
+          loadMachine(codexMachine)
+        ]);
+
+        syncStatus.textContent = claude.syncStatus === 'online' ? 'Claude online' : `Claude ${claude.syncStatus || 'unknown'}`;
+        syncStatus.className = `pill ${claude.syncStatus || ''}`;
+        syncTime.textContent = `Claude 同步：${clock(claude.syncedAt)} · ${relativeTime(claude.syncedAt)}`;
+        heroCopy.textContent = `Claude ${fmt(claude.summary?.todayTokens)} today / ${fmt(claude.summary?.weekTokens)} 7-day；Codex ${fmt(codex.summary?.todayTokens)} today / ${fmt(codex.summary?.weekTokens)} 7-day。成本均为 API 等价估算，不是订阅账单。`;
+        document.title = `Claude Monitor · ${claude.machine?.name || 'MacBookPro'} - Zi Yin`;
+
+        renderSummary(claude);
+        renderComparison(claude, codex);
+        renderBlock(claude);
+        renderModels(claude);
+        renderSessions(claude);
+        renderDaily(claude);
+      } catch (error) {
+        syncStatus.textContent = 'error';
+        syncStatus.className = 'pill error';
+        summaryGrid.innerHTML = `<div class="loading error">加载失败：${error instanceof Error ? error.message : String(error)}</div>`;
+      }
+    }
+
+    void main();
+  </script>
+</body>
+</html>
