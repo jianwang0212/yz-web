@@ -419,15 +419,15 @@
             <section class="cm-detail-grid">
                 <article class="cm-panel">
                     <div class="cm-panel-header">
-                        <h2 class="cm-panel-title">最近 1 天最活跃 Agent</h2>
-                        <span class="cm-panel-subtitle">已过滤 SkyComputerUseClient</span>
+                        <h2 class="cm-panel-title">最近 24 小时进程采样</h2>
+                        <span class="cm-panel-subtitle">按 5 分钟采样聚合，已过滤 SkyComputerUseClient</span>
                     </div>
                     <div id="cm-agents" class="cm-list"></div>
                 </article>
                 <article class="cm-panel">
                     <div class="cm-panel-header">
                         <h2 class="cm-panel-title">模型分布</h2>
-                        <span class="cm-panel-subtitle">来自本地 ccusage 汇总</span>
+                        <span class="cm-panel-subtitle">本地 ccusage 累计；成本为 API 等价估算</span>
                     </div>
                     <div id="cm-models" class="cm-list"></div>
                 </article>
@@ -807,15 +807,15 @@
                     <div class="cm-list-item">
                         <div class="cm-row">
                             <strong>${agent.sessionTitle || agent.processName || agent.agentId}</strong>
-                            <span class="cm-muted">${formatDuration(agent.approxActiveMinutes || 5)}</span>
+                            <span class="cm-muted">${agent.status || 'unknown'} · ${formatDuration(agent.approxActiveMinutes || 5)}</span>
                         </div>
                         <div class="cm-row cm-muted">
                             <span>${agent.workspaceLabel || '未标注项目'}</span>
-                            <span>均值 ${formatPercent(agent.avgCpu ?? agent.cpu)} · 峰值 ${formatPercent(agent.peakCpu ?? agent.cpu)}</span>
+                            <span>${agent.confidence || 'low'} confidence · 均值 ${formatPercent(agent.avgCpu ?? agent.cpu)} · 峰值 ${formatPercent(agent.peakCpu ?? agent.cpu)}</span>
                         </div>
                         <div class="cm-row cm-muted">
-                            <span>${relativeTime(agent.lastSeenAt || latest.syncedAt)}</span>
-                            <span>${formatBytes(agent.peakMemoryBytes ?? agent.memoryBytes)}</span>
+                            <span>最后出现 ${relativeTime(agent.lastSeenAt || latest.syncedAt)} · ${agent.snapshots || 1} 次采样</span>
+                            <span>峰值内存 ${formatBytes(agent.peakMemoryBytes ?? agent.memoryBytes)}</span>
                         </div>
                     </div>
                 `
@@ -828,10 +828,10 @@
                     <div class="cm-list-item">
                         <div class="cm-row">
                             <strong>${model.model}</strong>
-                            <span>${formatMoney(model.costUSD)}</span>
+                            <span>${formatMoney(model.costUSD)} est.</span>
                         </div>
                         <div class="cm-row cm-muted">
-                            <span>${formatNumber(model.totalTokens)} tokens</span>
+                            <span>${formatNumber(model.totalTokens)} tokens · 累计</span>
                             <span>${formatNumber(model.inputTokens)} in / ${formatNumber(model.outputTokens)} out</span>
                         </div>
                     </div>
