@@ -5,6 +5,7 @@ import { buildVercelConfig, findRouteAlias, findRedirect } from '../site-routes.
 
 test('server route aliases cover clean project URLs', () => {
   assert.equal(findRouteAlias('/year-review'), 'year-review.html');
+  assert.equal(findRouteAlias('/2026-h1-review'), '2026-h1-review.html');
   assert.equal(findRouteAlias('/financial-dashboard'), 'financial-dashboard.html');
   assert.equal(findRouteAlias('/works/snow-white'), 'snow-white.html');
   assert.equal(findRouteAlias('/works/mirror'), 'mirror.html');
@@ -54,6 +55,7 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(rewrites.has('/kiwi-tears'), false);
   assert.equal(rewrites.get('/berklee'), '/berklee.html');
   assert.equal(rewrites.get('/engineering'), '/engineering.html');
+  assert.equal(rewrites.get('/2026-h1-review'), '/2026-h1-review.html');
   assert.equal(rewrites.get('/projects/dockingtech'), '/projects/dockingtech.html');
   assert.equal(rewrites.get('/projects/stock-research-dashboard'), '/projects/stock-research-dashboard.html');
   assert.equal(rewrites.get('/projects/workout'), '/projects/workout.html');
