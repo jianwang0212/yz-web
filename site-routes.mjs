@@ -46,6 +46,7 @@ const standalonePages = [
   ['highlights', 'highlights.html'],
   ['interests', 'interests.html'],
   ['year-review', 'year-review.html'],
+  ['2026-h1-review', '2026-h1-review.html'],
   ['financial-dashboard', 'financial-dashboard.html']
 ];
 

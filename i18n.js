@@ -83,9 +83,9 @@ const translations = {
         'entry.engineering.title': '工程 / GitHub',
         'entry.engineering.desc': '网站架构、AI 工作流与工具系统',
         'entry.engineering.link': '→ 查看工程展示',
-        'entry.review.title': '年度总结',
-        'entry.review.desc': '目标、复盘与偏差校正',
-        'entry.review.link': '→ 阅读年度总结',
+        'entry.review.title': '2026 上半年',
+        'entry.review.desc': '音乐、工作、财务、关系与 AI 系统复盘',
+        'entry.review.link': '→ 阅读 2026 上半年',
 
         // Essays / Music Garden
         'essaysIndex.meta.title': 'Essays / 音乐花园 - Zi Yin',
@@ -1027,9 +1027,9 @@ const translations = {
         'entry.engineering.title': 'Engineering / GitHub',
         'entry.engineering.desc': 'Site architecture, AI workflows, and tool systems',
         'entry.engineering.link': '→ View Engineering',
-        'entry.review.title': 'Year Review',
-        'entry.review.desc': 'Goals, retrospectives, and course corrections',
-        'entry.review.link': '→ Read Year Review',
+        'entry.review.title': '2026 H1 Review',
+        'entry.review.desc': 'Music, work, finance, relationships, and AI systems',
+        'entry.review.link': '→ Read 2026 H1',
 
         // Essays / Music Garden
         'essaysIndex.meta.title': 'Essays / Music Garden - Zi Yin',
