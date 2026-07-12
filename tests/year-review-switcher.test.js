@@ -33,4 +33,5 @@ test('switcher supports pointer, keyboard, mobile, and reduced motion', () => {
   assert.match(script, /document\.addEventListener\('click'/);
   assert.match(styles, /@media \(max-width: 768px\)/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.doesNotMatch(styles, /\.review-switcher:(?:hover|focus-within) \.review-switcher-menu/);
 });
