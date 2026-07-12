@@ -16,6 +16,7 @@
     <link rel="canonical" href="https://thisisyz.com/year-review">
     <title>2025 年度总结 - Zi Yin (银子)</title>
     <link rel="stylesheet" href="styles.css?v=20260522-clickable">
+    <link rel="stylesheet" href="year-review-switcher.css?v=20260712">
 </head>
 <body>
     <!-- Navigation -->
@@ -24,7 +25,16 @@
             <div class="nav-brand"><a href="index.html" style="text-decoration: none; color: inherit;">Zi Yin</a></div>
             <ul class="nav-menu">
                 <li><a href="index.html" data-i18n="nav.home">首页</a></li>
-                <li><a href="year-review.html" data-i18n="nav.yearReview" style="color: var(--primary-color);">年度总结</a></li>
+                <li class="review-switcher" data-review-switcher data-review-current>
+                    <div class="review-switcher-trigger">
+                        <a class="review-switcher-link" href="year-review.html" data-i18n="nav.yearReview" aria-current="page">年度总结</a>
+                        <button class="review-switcher-toggle" type="button" aria-label="选择总结时间" aria-controls="review-switcher-menu" aria-expanded="false"><span aria-hidden="true">▼</span></button>
+                    </div>
+                    <div class="review-switcher-menu" id="review-switcher-menu">
+                        <a href="year-review.html" aria-current="page">2025 年度总结</a>
+                        <a href="2026-h1-review.html">2026 上半年</a>
+                    </div>
+                </li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
                 <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
                 <li class="nav-menu-lang-item">
@@ -1746,5 +1756,6 @@
             });
         });
     </script>
+    <script src="year-review-switcher.js?v=20260712"></script>
 </body>
 </html>
