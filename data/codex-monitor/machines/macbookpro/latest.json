@@ -1,146 +1,139 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-07-02T13:39:32.659Z",
+  "syncedAt": "2026-07-12T07:47:12.490Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 14,
-    "todayTokens": 59526533,
-    "weekTokens": 245373388,
-    "totalTokens": 4969555512,
-    "estimatedCostUsd": 11382.7297878,
-    "cpu": 9.228053076729736,
-    "memoryBytes": 2323677184
+    "activeAgents": 27,
+    "todayTokens": 25326795,
+    "weekTokens": 311293020,
+    "totalTokens": 311293020,
+    "estimatedCostUsd": 310.32045325,
+    "cpu": 9.07327727617021,
+    "memoryBytes": 4091297792
   },
   "agents": [
     {
-      "agentId": "c8a0cc00104b0a25",
+      "agentId": "e3bca1737aa65b5e",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "019f226e-5331-7fb1-adf1-38a79442574c",
-      "sessionTitle": "/goal 我现在要开始把我之前 amenesia 的 VPN 也加到我的 clash 现有 config 里面. 我的目标如下跟 claude 相关的所有连接都用 UPDATED-awg_starvpn_jp ; 其余的都走 clash 的规则; 也就是国内走国内, 国外走我的手动选择. 你给我一个 proposal 我看看; 我已经确定 amn 可以单独用; clash 也可以单独用. 我现在的目标是. 我开了 tailscale, 也可以所有可以用. 之前是不能的; 因为会有 router 的问题. 你全部测试一边.\n\nReferenced image files:\n- [Image #1]: /Users/Zi/.codex/attachments/917803a1-b6c8-40f2-8c4e-03cdb93a8828/image-1.png",
-      "workspaceLabel": "zapp",
-      "cpu": 1.8078512396694213,
-      "memoryBytes": 604225536,
-      "confidence": "high"
-    },
-    {
-      "agentId": "8c524f3198b63528",
-      "processName": "SkyComputerUseClient",
-      "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "eth-hl-research",
-      "cpu": 8.141903609631545e-7,
-      "memoryBytes": 360448,
+      "workspaceLabel": "/",
+      "cpu": 0.024749864111287826,
+      "memoryBytes": 32194560,
       "confidence": "low"
     },
     {
-      "agentId": "c19e93b4eeee49e0",
-      "processName": "SkyComputerUseClient",
+      "agentId": "5db0fc02775a2db7",
+      "processName": "Codex (Renderer)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 6.243861503659215e-7,
-      "memoryBytes": 131072,
+      "workspaceLabel": "/",
+      "cpu": 0.0018996200759848032,
+      "memoryBytes": 83984384,
       "confidence": "low"
     },
     {
-      "agentId": "f822be8039451421",
-      "processName": "SkyComputerUseClient",
+      "agentId": "92ac215507e01c79",
+      "processName": "browser_crashpad_handler",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "eth-hl-research",
-      "cpu": 8.142168780645088e-7,
-      "memoryBytes": 360448,
+      "workspaceLabel": "/",
+      "cpu": 0.000015203344735841885,
+      "memoryBytes": 8011776,
       "confidence": "low"
     },
     {
-      "agentId": "60d89a19c16da1b7",
-      "processName": "SkyComputerUseClient",
+      "agentId": "9cd84ccb78b71a12",
+      "processName": "browser_crashpad_handler",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "ai-router",
-      "cpu": 6.244633518070409e-7,
-      "memoryBytes": 131072,
+      "workspaceLabel": "/",
+      "cpu": 0.0000050677815786139615,
+      "memoryBytes": 7110656,
       "confidence": "low"
     },
     {
-      "agentId": "f84f8b10b554c757",
-      "processName": "SkyComputerUseClient",
+      "agentId": "1abb7dc35ed49354",
+      "processName": "Codex (Service)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "eth-hl-research",
-      "cpu": 8.142447228799511e-7,
-      "memoryBytes": 360448,
+      "workspaceLabel": "/",
+      "cpu": 1.041236747684012,
+      "memoryBytes": 156680192,
       "confidence": "low"
     },
     {
-      "agentId": "d91e0582595e0f9a",
-      "processName": "SkyComputerUseClient",
+      "agentId": "bf89c0738a75fcb2",
+      "processName": "Codex (Service)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "ai-router",
-      "cpu": 6.244758305996903e-7,
-      "memoryBytes": 131072,
+      "workspaceLabel": "/",
+      "cpu": 0.036077719892157065,
+      "memoryBytes": 88113152,
       "confidence": "low"
     },
     {
-      "agentId": "ee0ed1f17d210ad6",
-      "processName": "SkyComputerUseClient",
+      "agentId": "968ebc968fae9d18",
+      "processName": "Codex (Service)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "ClaudeCodeWorkSpace",
-      "cpu": 0.0000012490437009164858,
-      "memoryBytes": 131072,
+      "workspaceLabel": "/",
+      "cpu": 0.00465731487300075,
+      "memoryBytes": 67289088,
+      "confidence": "low"
+    },
+    {
+      "agentId": "440c145b173b2c08",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5708964489694561,
+      "memoryBytes": 913506304,
       "confidence": "low"
     }
   ],
   "models": [
     {
+      "model": "gpt-5.6-sol",
+      "totalTokens": 148570650,
+      "inputTokens": 7480320,
+      "outputTokens": 667418,
+      "costUSD": 144.794175
+    },
+    {
       "model": "gpt-5.5",
-      "totalTokens": 4439517752,
-      "inputTokens": 343669686,
-      "outputTokens": 18543746,
-      "costUSD": 10783.282424999989
+      "totalTokens": 101513289,
+      "inputTokens": 11067707,
+      "outputTokens": 723598,
+      "costUSD": 121.90746700000004
     },
     {
-      "model": "gpt-5.4",
-      "totalTokens": 408043214,
-      "inputTokens": 26954994,
-      "outputTokens": 1840348,
-      "costUSD": 448.762082
+      "model": "gpt-5.6-luna",
+      "totalTokens": 61115574,
+      "inputTokens": 2109870,
+      "outputTokens": 150792,
+      "costUSD": 43.26214300000001
     },
     {
-      "model": "gpt-5.3-codex-spark",
-      "totalTokens": 116371572,
-      "inputTokens": 18145908,
-      "outputTokens": 473600,
-      "costUSD": 144.88503330000003
-    },
-    {
-      "model": "gpt-5.3-codex",
-      "totalTokens": 3112951,
-      "inputTokens": 626891,
-      "outputTokens": 37420,
-      "costUSD": 4.0989025
-    },
-    {
-      "model": "gpt-5.4-mini",
-      "totalTokens": 2510023,
-      "inputTokens": 830724,
-      "outputTokens": 22979,
-      "costUSD": 1.701345
+      "model": "gpt-5",
+      "totalTokens": 93507,
+      "inputTokens": 41508,
+      "outputTokens": 6687,
+      "costUSD": 0.35666825
     }
   ],
   "health": {
@@ -148,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-07-02T13:39:38.058Z"
+  "receivedAt": "2026-07-12T07:47:21.354Z"
 }
