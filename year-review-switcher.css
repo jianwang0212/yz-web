@@ -54,9 +54,7 @@
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
 }
 
-.review-switcher[data-open="true"] .review-switcher-menu,
-.review-switcher:hover .review-switcher-menu,
-.review-switcher:focus-within .review-switcher-menu {
+.review-switcher[data-open="true"] .review-switcher-menu {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
@@ -119,11 +117,6 @@
   .review-switcher[data-open="true"] .review-switcher-menu {
     display: block;
     transform: none;
-  }
-
-  .review-switcher:hover:not([data-open="true"]) .review-switcher-menu,
-  .review-switcher:focus-within:not([data-open="true"]) .review-switcher-menu {
-    display: none;
   }
 
   .review-switcher-menu a {
