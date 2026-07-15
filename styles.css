@@ -505,6 +505,16 @@ body {
     box-shadow: 0 16px 30px rgba(119, 139, 131, 0.18);
 }
 
+.home-one-person-card {
+    background:
+        linear-gradient(105deg, rgba(244, 237, 223, 0.98) 0%, rgba(244, 237, 223, 0.91) 54%, rgba(244, 237, 223, 0.28) 100%),
+        url("assets/one-person/visuals/one-person-cover.webp") right center / min(46vw, 620px) auto no-repeat;
+}
+
+.home-one-person-card .home-snow-kicker { color: #8f2f2b; }
+.home-one-person-card .home-snow-primary { background: #8f2f2b; box-shadow: 0 12px 24px rgba(143, 47, 43, 0.18); }
+.home-one-person-card .home-snow-primary:hover { background: #bd8d45; box-shadow: 0 16px 30px rgba(189, 141, 69, 0.2); }
+
 .home-snow-copy {
     min-width: 0;
 }
@@ -4654,6 +4664,16 @@ section {
     background: rgba(255, 255, 255, 0.78);
     box-shadow: none;
 }
+
+.works-one-person-feature {
+    background:
+        linear-gradient(112deg, rgba(244, 237, 223, 0.97), rgba(255, 255, 255, 0.86)),
+        repeating-linear-gradient(90deg, rgba(143, 47, 43, 0.11) 0, rgba(143, 47, 43, 0.11) 1px, transparent 1px, transparent 24px);
+}
+
+.works-one-person-feature .works-snow-kicker { color: #8f2f2b; }
+.works-one-person-feature .works-snow-actions a { background: #8f2f2b; box-shadow: 0 14px 30px rgba(143, 47, 43, 0.2); }
+.works-one-person-feature .works-snow-actions a + a { color: #171311; background: rgba(255, 255, 255, 0.78); box-shadow: none; }
 
 .works-kiwi-feature {
     background:

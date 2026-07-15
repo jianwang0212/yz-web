@@ -29,6 +29,7 @@ const projectScripts = [
 ];
 
 const workPages = [
+  ['one-person', 'one-person.html'],
   ['snow-white', 'snow-white.html'],
   ['mirror', 'mirror.html'],
   ['vocal-class-comedy-king', 'vocal-class-comedy-king.html']

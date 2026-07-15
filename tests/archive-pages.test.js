@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 
 const snowWhiteHtml = readFileSync(new URL('../snow-white.html', import.meta.url), 'utf8');
 const mirrorHtml = readFileSync(new URL('../mirror.html', import.meta.url), 'utf8');
+const onePersonHtml = readFileSync(new URL('../one-person.html', import.meta.url), 'utf8');
 const berkleeHtml = readFileSync(new URL('../berklee.html', import.meta.url), 'utf8');
 const worksHtml = readFileSync(new URL('../works.html', import.meta.url), 'utf8');
 const indexHtml = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
@@ -91,6 +92,46 @@ test('mirror archive page and animated assets are tracked together', () => {
   assert.ok(statSync(reflectionImage).size > 10_000, 'Expected the Mirror A1 lyric image to be present');
 });
 
+test('one person graduation archive and web media are tracked together', () => {
+  expectIncludes(onePersonHtml, '一个人做不好');
+  expectIncludes(onePersonHtml, "document.createElement('base')");
+  expectIncludes(onePersonHtml, "window.location.protocol === 'file:'");
+  expectIncludes(onePersonHtml, 'assets/one-person/one-person-ziyin.mp3');
+  expectIncludes(onePersonHtml, 'assets/one-person/one-person-ziyin.wav');
+  expectIncludes(onePersonHtml, 'assets/one-person/visuals/one-person-cover.webp');
+  expectIncludes(onePersonHtml, 'assets/one-person/video/piano-loop.mp4');
+  expectIncludes(onePersonHtml, 'assets/one-person/video/drums-loop.mp4');
+  expectIncludes(onePersonHtml, 'assets/one-person/video/horn-loop.mp4');
+  expectIncludes(onePersonHtml, 'assets/one-person/video/session-loop.mp4');
+  expectIncludes(onePersonHtml, '写给 Berklee 同学和老师的毕业作品');
+  expectIncludes(onePersonHtml, 'Constant structure');
+  expectIncludes(onePersonHtml, 'id="one-person-play-toggle"');
+  expectIncludes(onePersonHtml, 'one-person.css');
+  expectIncludes(onePersonHtml, 'one-person.js');
+
+  const onePersonJs = readFileSync(new URL('../one-person.js', import.meta.url), 'utf8');
+  expectIncludes(onePersonJs, "matchMedia('(prefers-reduced-motion: reduce)')");
+  expectIncludes(onePersonJs, 'video.pause()');
+  expectIncludes(onePersonJs, "window.location.protocol === 'file:'");
+  expectIncludes(onePersonJs, 'await audio.play()');
+
+  const audioFile = new URL('../assets/one-person/one-person-ziyin.mp3', import.meta.url);
+  const losslessAudioFile = new URL('../assets/one-person/one-person-ziyin.wav', import.meta.url);
+  const coverFile = new URL('../assets/one-person/visuals/one-person-cover.webp', import.meta.url);
+  const pianoLoop = new URL('../assets/one-person/video/piano-loop.mp4', import.meta.url);
+  const drumsLoop = new URL('../assets/one-person/video/drums-loop.mp4', import.meta.url);
+  const hornLoop = new URL('../assets/one-person/video/horn-loop.mp4', import.meta.url);
+  const sessionLoop = new URL('../assets/one-person/video/session-loop.mp4', import.meta.url);
+
+  for (const file of [audioFile, losslessAudioFile, coverFile, pianoLoop, drumsLoop, hornLoop, sessionLoop]) {
+    assert.equal(existsSync(file), true, `Expected ${file.pathname} to exist`);
+  }
+  assert.ok(statSync(audioFile).size > 1_000_000, 'Expected the mastered MP3 to be present');
+  assert.ok(statSync(losslessAudioFile).size > 50_000_000, 'Expected the mastered WAV to be present');
+  assert.ok(statSync(coverFile).size > 20_000, 'Expected the session cover to be present');
+  assert.ok(statSync(sessionLoop).size > 100_000, 'Expected the web session loop to be present');
+});
+
 test('berklee course page is restored with its scripts and stylesheet', () => {
   expectIncludes(berkleeHtml, 'Berklee 课程概览');
   expectIncludes(berkleeHtml, 'berklee.css');
@@ -103,6 +144,8 @@ test('public entry points link to recovered pages', () => {
   expectIncludes(worksHtml, 'href="/works/snow-white"');
   expectIncludes(worksHtml, 'class="works-snow-feature works-mirror-feature"');
   expectIncludes(worksHtml, 'href="/works/mirror"');
+  expectIncludes(worksHtml, 'class="works-snow-feature works-one-person-feature"');
+  expectIncludes(worksHtml, 'href="/works/one-person"');
   expectIncludes(indexHtml, 'href="/berklee"');
   expectIncludes(indexHtml, 'href="/projects/dockingtech"');
   expectIncludes(resumeHtml, 'href="/berklee"');
