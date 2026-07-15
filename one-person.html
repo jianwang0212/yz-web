@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base id="site-base" href="/">
+    <script>
+    if (window.location.protocol === 'file:') {
+        document.getElementById('site-base').href = './';
+    }
+    </script>
     <meta name="description" content="《一个人做不好》：银子 Zi Yin 写给 Berklee 同学和老师的毕业作品，收录最终母带、完整歌词、录音影像、创作手记和制作名单。">
     <meta property="og:title" content="一个人做不好 - 银子 Zi Yin">
     <meta property="og:description" content="写给 Berklee 同学和老师的毕业作品：一个人做不好，还好你们都在。">
@@ -19,18 +25,12 @@
     <meta name="theme-color" content="#f4eddf">
     <link rel="canonical" href="https://thisisyz.com/works/one-person">
     <title>一个人做不好 - 银子 Zi Yin</title>
-    <script>
-    (() => {
-        const base = document.createElement('base');
-        base.href = window.location.protocol === 'file:' ? './' : '/';
-        document.head.append(base);
-    })();
-    </script>
     <link rel="preload" as="image" href="assets/one-person/visuals/one-person-cover.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="audio" href="assets/one-person/one-person-ziyin-stream-192.mp3" type="audio/mpeg">
     <link rel="stylesheet" href="styles.css?v=20260715-one-person">
     <link rel="stylesheet" href="snow-white.css?v=20260715-one-person">
     <link rel="stylesheet" href="mirror.css?v=20260715-one-person">
-    <link rel="stylesheet" href="one-person.css?v=20260715-one-person-2">
+    <link rel="stylesheet" href="one-person.css?v=20260715-speed-1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -98,27 +98,26 @@
 
                     <div class="snow-audio-panel" id="one-person-audio" aria-label="一个人做不好 audio player">
                         <div class="snow-audio-header">
-                            <div><span>Universal50 Safe master / 最终母带</span><strong>3:40</strong></div>
+                            <div><span>Universal50 Safe master · optimized stream / 最终母带优化流</span><strong>3:40</strong></div>
                             <div class="snow-audio-actions">
                                 <button id="one-person-play-toggle" type="button" aria-controls="one-person-audio-player" aria-pressed="false">播放母带 / Play master</button>
                                 <a href="assets/one-person/one-person-ziyin.mp3" download>MP3</a>
                                 <a href="assets/one-person/one-person-ziyin.wav" download>WAV</a>
                             </div>
                         </div>
-                        <canvas id="one-person-visualizer" width="960" height="180" aria-hidden="true"></canvas>
-                        <audio id="one-person-audio-player" controls preload="metadata" src="assets/one-person/one-person-ziyin.mp3"></audio>
+                        <audio id="one-person-audio-player" controls preload="auto" src="assets/one-person/one-person-ziyin-stream-192.mp3"></audio>
                     </div>
                 </div>
 
                 <div class="snow-hero-art mirror-hero-art one-person-hero-art" aria-label="Berklee recording session">
                     <figure class="hero-cover-card hero-cover-main one-person-hero-video">
-                        <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/visuals/one-person-cover.webp" aria-label="Berklee horn section recording loop">
-                            <source src="assets/one-person/video/session-loop.mp4" type="video/mp4">
+                        <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/visuals/one-person-cover.webp" aria-label="Berklee horn section recording loop">
+                            <source data-src="assets/one-person/video/session-loop.mp4" type="video/mp4">
                         </video>
                     </figure>
                     <figure class="hero-cover-card hero-cover-side hero-cover-side-b mirror-video-card">
-                        <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/producer.webp" aria-label="Production room loop">
-                            <source src="assets/one-person/video/producer-loop.mp4" type="video/mp4">
+                        <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/producer.webp" aria-label="Production room loop">
+                            <source data-src="assets/one-person/video/producer-loop.mp4" type="video/mp4">
                         </video>
                     </figure>
                 </div>
@@ -153,38 +152,38 @@
             </div>
             <div class="visual-feature-grid mirror-motion-grid one-person-session-grid">
                 <figure class="visual-feature-card visual-feature-large mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/horn.webp" aria-label="Horn section close recording">
-                        <source src="assets/one-person/video/horn-loop.mp4" type="video/mp4">
+                    <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/horn.webp" aria-label="Horn section close recording">
+                        <source data-src="assets/one-person/video/horn-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption><span>01 / Horn room</span><strong>Sax 与 trumpet 把 6/8 的推进变成会呼吸的 line。</strong><p>The horn line turns the pulse into a shared breath.</p></figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/piano.webp" aria-label="Piano recording">
-                        <source src="assets/one-person/video/piano-loop.mp4" type="video/mp4">
+                    <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/piano.webp" aria-label="Piano recording">
+                        <source data-src="assets/one-person/video/piano-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption><span>02 / Piano</span><strong>Rhodes 的想法，落在真实的手和触键里。</strong><p>Harmony becomes touch instead of notation.</p></figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/drums.webp" aria-label="Drum recording">
-                        <source src="assets/one-person/video/drums-loop.mp4" type="video/mp4">
+                    <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/drums.webp" aria-label="Drum recording">
+                        <source data-src="assets/one-person/video/drums-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption><span>03 / Drums</span><strong>不是把拍子打准，是把所有人带到一起。</strong><p>The groove is where separate parts become one song.</p></figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/bass.webp" aria-label="Bass recording">
-                        <source src="assets/one-person/video/bass-loop.mp4" type="video/mp4">
+                    <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/bass.webp" aria-label="Bass recording">
+                        <source data-src="assets/one-person/video/bass-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption><span>04 / Bass</span><strong>低频不是背景，是大家一起向前走的地面。</strong><p>The bass gives every departure somewhere to stand.</p></figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/guitar.webp" aria-label="Guitar recording">
-                        <source src="assets/one-person/video/guitar-loop.mp4" type="video/mp4">
+                    <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/guitar.webp" aria-label="Guitar recording">
+                        <source data-src="assets/one-person/video/guitar-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption><span>05 / Guitar</span><strong>切分、留白和回应，把律动留在句子之间。</strong><p>Syncopation leaves room for everyone else.</p></figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" poster="assets/one-person/posters/producer.webp" aria-label="Control room production session">
-                        <source src="assets/one-person/video/producer-loop.mp4" type="video/mp4">
+                    <video data-autoplay muted loop playsinline preload="none" poster="assets/one-person/posters/producer.webp" aria-label="Control room production session">
+                        <source data-src="assets/one-person/video/producer-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption><span>06 / Control room</span><strong>录音房替我们记得那些反复听、反复改的夜晚。</strong><p>The control room remembers every small decision.</p></figcaption>
                 </figure>
@@ -322,6 +321,6 @@
     </footer>
     <script src="site-nav.js?v=20260715-one-person" defer></script>
     <script src="script.js" defer></script>
-    <script src="one-person.js?v=20260715-one-person-3" defer></script>
+    <script src="one-person.js?v=20260715-speed-1" defer></script>
 </body>
 </html>

@@ -131,6 +131,15 @@ export function findRedirect(urlPath) {
 
 export const cacheHeaders = [
   {
+    source: '/assets/one-person/(.*)',
+    headers: [
+      {
+        key: 'Cache-Control',
+        value: 'public, max-age=604800, stale-while-revalidate=2592000'
+      }
+    ]
+  },
+  {
     source: '/(.*)\\.(css|js)',
     headers: [
       {
