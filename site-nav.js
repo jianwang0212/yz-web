@@ -8,7 +8,7 @@
     const primaryItems = [
         { key: 'nav.home', label: '首页', href: '/index.html', match: ['/index.html', '/'] },
         { key: 'nav.yearReview', label: '年度总结', href: '/year-review.html', match: ['/year-review.html'] },
-        { key: 'nav.works', label: '作品', href: '/works.html', match: ['/works.html', '/works/snow-white', '/works/mirror', '/works/vocal-class-comedy-king'] },
+        { key: 'nav.works', label: '作品', href: '/works.html', match: ['/works.html', '/works/one-person', '/works/snow-white', '/works/mirror', '/works/vocal-class-comedy-king'] },
         { key: 'nav.contact', label: '联系', href: '/contact.html', match: ['/contact.html'] }
     ];
 

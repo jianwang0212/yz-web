@@ -9,6 +9,7 @@ test('server route aliases cover clean project URLs', () => {
   assert.equal(findRouteAlias('/financial-dashboard'), 'financial-dashboard.html');
   assert.equal(findRouteAlias('/works/snow-white'), 'snow-white.html');
   assert.equal(findRouteAlias('/works/mirror'), 'mirror.html');
+  assert.equal(findRouteAlias('/works/one-person'), 'one-person.html');
   assert.equal(findRouteAlias('/works/vocal-class-comedy-king'), 'vocal-class-comedy-king.html');
   assert.equal(findRouteAlias('/kiwi-tears'), null);
   assert.equal(findRouteAlias('/berklee'), 'berklee.html');
@@ -31,6 +32,7 @@ test('legacy URLs 301-redirect to their canonical section locations', () => {
   assert.equal(findRedirect('/snow-white'), '/works/snow-white');
   assert.equal(findRedirect('/snow-white.html'), '/works/snow-white');
   assert.equal(findRedirect('/mirror'), '/works/mirror');
+  assert.equal(findRedirect('/one-person'), '/works/one-person');
   assert.equal(findRedirect('/vocal-class-comedy-king'), '/works/vocal-class-comedy-king');
   assert.equal(findRedirect('/codex-monitor'), '/projects/codex-monitor');
   assert.equal(findRedirect('/song-leadsheet-database'), '/projects/song-leadsheet-database');
@@ -51,6 +53,7 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(rewrites.get('/projects/socialpulse'), '/projects/socialpulse.html');
   assert.equal(rewrites.get('/works/snow-white'), '/snow-white.html');
   assert.equal(rewrites.get('/works/mirror'), '/mirror.html');
+  assert.equal(rewrites.get('/works/one-person'), '/one-person.html');
   assert.equal(rewrites.get('/works/vocal-class-comedy-king'), '/vocal-class-comedy-king.html');
   assert.equal(rewrites.has('/kiwi-tears'), false);
   assert.equal(rewrites.get('/berklee'), '/berklee.html');
@@ -65,6 +68,7 @@ test('vercel config is generated from the same project route table', () => {
 
   const redirects = new Map(config.redirects.map((redirect) => [redirect.source, redirect.destination]));
   assert.equal(redirects.get('/snow-white'), '/works/snow-white');
+  assert.equal(redirects.get('/one-person'), '/works/one-person');
   assert.equal(redirects.get('/codex-monitor'), '/projects/codex-monitor');
   assert.equal(redirects.get('/papers/vipassana.html'), '/projects/vipassana');
 });

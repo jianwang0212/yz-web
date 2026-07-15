@@ -116,11 +116,14 @@ test('home page features music archives before resume records', () => {
 
   expectIncludes(indexHtml, 'Snow White / 白雪公主');
   expectIncludes(indexHtml, 'Mirror / 镜子');
+  expectIncludes(indexHtml, '一个人做不好');
   expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
   expectIncludes(indexHtml, '<article class="home-snow-card">');
   expectIncludes(indexHtml, 'href="/works/snow-white" class="home-snow-primary"');
   expectIncludes(indexHtml, '<article class="home-snow-card home-mirror-card">');
   expectIncludes(indexHtml, 'href="/works/mirror" class="home-snow-primary"');
+  expectIncludes(indexHtml, '<article class="home-snow-card home-one-person-card">');
+  expectIncludes(indexHtml, 'href="/works/one-person" class="home-snow-primary"');
   assert.equal(
     indexHtml.includes('Kevin Yuen 制作的中文 Jazz ballad'),
     false,
