@@ -65,6 +65,12 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(rewrites.get('/projects/chord-quiz'), '/papers/chord-quiz.html');
   assert.equal(rewrites.get('/projects/chord-trainer-assets/(.*)'), '/papers/chord-trainer-assets/$1');
   assert.ok(config.headers.some((header) => header.source === '/(.*)'));
+  assert.ok(config.headers.some((header) => (
+    header.source === '/assets/one-person/(.*)' &&
+    header.headers.some(({ key, value }) => (
+      key === 'Cache-Control' && value === 'public, max-age=604800, stale-while-revalidate=2592000'
+    ))
+  )));
 
   const redirects = new Map(config.redirects.map((redirect) => [redirect.source, redirect.destination]));
   assert.equal(redirects.get('/snow-white'), '/works/snow-white');

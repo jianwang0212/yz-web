@@ -31,28 +31,71 @@ if (document.readyState === 'loading') {
     initOnePersonLanguage();
 }
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-function applyOnePersonMotionPreference() {
-    if (!reducedMotion.matches) return;
-    document.querySelectorAll('.one-person-page video').forEach((video) => video.pause());
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyOnePersonMotionPreference);
-} else {
-    applyOnePersonMotionPreference();
-}
-reducedMotion.addEventListener?.('change', applyOnePersonMotionPreference);
-
-window.addEventListener('load', () => {
-    if (!window.location.hash) return;
-    window.setTimeout(() => document.querySelector(window.location.hash)?.scrollIntoView({ block: 'start' }), 120);
-});
-
 const audio = document.getElementById('one-person-audio-player');
-const canvas = document.getElementById('one-person-visualizer');
 const playToggle = document.getElementById('one-person-play-toggle');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const sessionVideos = Array.from(document.querySelectorAll('.one-person-page video'));
+
+function videoSource(video) {
+    return video.querySelector('source[data-src]');
+}
+
+function unloadVideo(video) {
+    const source = videoSource(video);
+    video.pause();
+    if (!source?.hasAttribute('src')) return;
+    source.removeAttribute('src');
+    video.load();
+}
+
+function audioIsPlaying() {
+    return Boolean(audio && !audio.paused && !audio.ended);
+}
+
+function loadVisibleVideo(video) {
+    if (video.dataset.inView !== 'true' || reducedMotion.matches || audioIsPlaying()) return;
+    const source = videoSource(video);
+    if (!source) return;
+    if (!source.hasAttribute('src')) {
+        source.src = source.dataset.src;
+        video.load();
+    }
+    if (video.hasAttribute('data-autoplay')) {
+        video.play().catch(() => {});
+    }
+}
+
+function resumeVisibleVideos() {
+    sessionVideos.forEach(loadVisibleVideo);
+}
+
+if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            entry.target.dataset.inView = entry.isIntersecting ? 'true' : 'false';
+            if (entry.isIntersecting) {
+                loadVisibleVideo(entry.target);
+            } else {
+                unloadVideo(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sessionVideos.forEach((video) => videoObserver.observe(video));
+} else {
+    sessionVideos.forEach((video) => {
+        const bounds = video.getBoundingClientRect();
+        video.dataset.inView = bounds.bottom > 0 && bounds.top < window.innerHeight ? 'true' : 'false';
+    });
+    resumeVisibleVideos();
+}
+
+reducedMotion.addEventListener?.('change', () => {
+    if (reducedMotion.matches) {
+        sessionVideos.forEach(unloadVideo);
+    } else {
+        resumeVisibleVideos();
+    }
+});
 
 if (audio && playToggle) {
     const updatePlayToggle = () => {
@@ -76,106 +119,16 @@ if (audio && playToggle) {
     });
 
     audio.addEventListener('play', updatePlayToggle);
-    audio.addEventListener('pause', updatePlayToggle);
-    audio.addEventListener('ended', updatePlayToggle);
-}
-
-if (audio && canvas) {
-    const context = canvas.getContext('2d');
-    const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
-    const palette = ['#8f2f2b', '#bd8d45', '#6f4a36', '#d6ad6b'];
-    let audioContext;
-    let analyser;
-    let data;
-    let frame;
-    let canvasVisible = true;
-    let idlePhase = 0;
-
-    function resizeCanvas() {
-        const ratio = window.devicePixelRatio || 1;
-        const bounds = canvas.getBoundingClientRect();
-        canvas.width = Math.max(1, Math.floor(bounds.width * ratio));
-        canvas.height = Math.max(1, Math.floor(bounds.height * ratio));
-    }
-
-    function drawBars(values, count, active) {
-        const width = canvas.width;
-        const height = canvas.height;
-        const barWidth = width / count;
-        context.clearRect(0, 0, width, height);
-        for (let index = 0; index < count; index += 1) {
-            const value = values(index);
-            const barHeight = Math.max(3, value * height * (active ? 0.84 : 0.62));
-            context.fillStyle = palette[index % palette.length];
-            context.globalAlpha = active ? 0.34 + value * 0.54 : 0.26;
-            context.fillRect(index * barWidth, (height - barHeight) / 2, Math.max(2, barWidth - 3), barHeight);
-        }
-        context.globalAlpha = 1;
-    }
-
-    function drawIdle() {
-        drawBars((index) => 0.24 + Math.abs(Math.sin(index * 0.39 + idlePhase) * 0.34 + Math.cos(index * 0.15) * 0.16), 76, false);
-        idlePhase += 0.018;
-    }
-
-    function drawActive() {
-        if (!analyser || !data) return;
-        analyser.getByteFrequencyData(data);
-        const step = Math.max(1, Math.floor(data.length / 88));
-        drawBars((index) => Math.pow(data[index * step] / 255, 0.82), 88, true);
-        frame = requestAnimationFrame(drawActive);
-    }
-
-    function drawIdleLoop() {
-        if (!audio.paused || !canvasVisible || document.hidden || reducedMotion.matches) return;
-        drawIdle();
-        frame = window.setTimeout(() => requestAnimationFrame(drawIdleLoop), 80);
-    }
-
-    function bootAudioGraph() {
-        if (audioContext || !AudioContextCtor || window.location.protocol === 'file:') return;
-        audioContext = new AudioContextCtor();
-        analyser = audioContext.createAnalyser();
-        analyser.fftSize = 256;
-        data = new Uint8Array(analyser.frequencyBinCount);
-        const source = audioContext.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
-    }
-
-    resizeCanvas();
-    drawIdle();
-
-    if ('IntersectionObserver' in window) {
-        new IntersectionObserver((entries) => {
-            canvasVisible = entries.some((entry) => entry.isIntersecting);
-            cancelAnimationFrame(frame);
-            clearTimeout(frame);
-            if (canvasVisible && audio.paused) drawIdleLoop();
-        }, { threshold: 0.12 }).observe(canvas);
-    } else {
-        drawIdleLoop();
-    }
-
-    audio.addEventListener('play', async () => {
-        bootAudioGraph();
-        if (!audioContext) return;
-        if (audioContext.state === 'suspended') await audioContext.resume();
-        cancelAnimationFrame(frame);
-        clearTimeout(frame);
-        drawActive();
-    });
-
+    audio.addEventListener('play', () => sessionVideos.forEach(unloadVideo));
     for (const eventName of ['pause', 'ended']) {
         audio.addEventListener(eventName, () => {
-            cancelAnimationFrame(frame);
-            clearTimeout(frame);
-            drawIdleLoop();
+            updatePlayToggle();
+            resumeVisibleVideos();
         });
     }
-
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-        if (audio.paused) drawIdle();
-    });
 }
+
+window.addEventListener('load', () => {
+    if (!window.location.hash) return;
+    window.setTimeout(() => document.querySelector(window.location.hash)?.scrollIntoView({ block: 'start' }), 120);
+});

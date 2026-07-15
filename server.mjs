@@ -118,6 +118,11 @@ app.use(
     index: ['index.html'],
     setHeaders(res, filePath) {
       const normalizedPath = filePath.split(path.sep).join('/');
+      if (normalizedPath.includes('/assets/one-person/')) {
+        res.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=2592000');
+        return;
+      }
+
       if (normalizedPath.endsWith('/zapp/sw.js') || normalizedPath.endsWith('/zapp/apps.json')) {
         res.setHeader('Cache-Control', 'no-cache');
         return;

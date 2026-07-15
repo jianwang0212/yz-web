@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 const snowWhiteHtml = readFileSync(new URL('../snow-white.html', import.meta.url), 'utf8');
 const mirrorHtml = readFileSync(new URL('../mirror.html', import.meta.url), 'utf8');
 const onePersonHtml = readFileSync(new URL('../one-person.html', import.meta.url), 'utf8');
+const serverSource = readFileSync(new URL('../server.mjs', import.meta.url), 'utf8');
 const berkleeHtml = readFileSync(new URL('../berklee.html', import.meta.url), 'utf8');
 const worksHtml = readFileSync(new URL('../works.html', import.meta.url), 'utf8');
 const indexHtml = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
@@ -94,9 +95,10 @@ test('mirror archive page and animated assets are tracked together', () => {
 
 test('one person graduation archive and web media are tracked together', () => {
   expectIncludes(onePersonHtml, '一个人做不好');
-  expectIncludes(onePersonHtml, "document.createElement('base')");
+  expectIncludes(onePersonHtml, '<base id="site-base" href="/">');
   expectIncludes(onePersonHtml, "window.location.protocol === 'file:'");
   expectIncludes(onePersonHtml, 'assets/one-person/one-person-ziyin.mp3');
+  expectIncludes(onePersonHtml, 'assets/one-person/one-person-ziyin-stream-192.mp3');
   expectIncludes(onePersonHtml, 'assets/one-person/one-person-ziyin.wav');
   expectIncludes(onePersonHtml, 'assets/one-person/visuals/one-person-cover.webp');
   expectIncludes(onePersonHtml, 'assets/one-person/video/piano-loop.mp4');
@@ -106,16 +108,25 @@ test('one person graduation archive and web media are tracked together', () => {
   expectIncludes(onePersonHtml, '写给 Berklee 同学和老师的毕业作品');
   expectIncludes(onePersonHtml, 'Constant structure');
   expectIncludes(onePersonHtml, 'id="one-person-play-toggle"');
+  expectIncludes(onePersonHtml, 'rel="preload" as="audio"');
+  expectIncludes(onePersonHtml, 'data-src="assets/one-person/video/session-loop.mp4"');
+  assert.equal(onePersonHtml.includes('<source src="assets/one-person/video/'), false);
   expectIncludes(onePersonHtml, 'one-person.css');
   expectIncludes(onePersonHtml, 'one-person.js');
 
   const onePersonJs = readFileSync(new URL('../one-person.js', import.meta.url), 'utf8');
   expectIncludes(onePersonJs, "matchMedia('(prefers-reduced-motion: reduce)')");
   expectIncludes(onePersonJs, 'video.pause()');
-  expectIncludes(onePersonJs, "window.location.protocol === 'file:'");
+  expectIncludes(onePersonJs, 'source.dataset.src');
+  expectIncludes(onePersonJs, "source.removeAttribute('src')");
   expectIncludes(onePersonJs, 'await audio.play()');
+  assert.equal(onePersonJs.includes('AudioContext'), false);
+  assert.equal(onePersonJs.includes('one-person-visualizer'), false);
+  expectIncludes(serverSource, "normalizedPath.includes('/assets/one-person/')");
+  expectIncludes(serverSource, "public, max-age=604800, stale-while-revalidate=2592000");
 
   const audioFile = new URL('../assets/one-person/one-person-ziyin.mp3', import.meta.url);
+  const streamAudioFile = new URL('../assets/one-person/one-person-ziyin-stream-192.mp3', import.meta.url);
   const losslessAudioFile = new URL('../assets/one-person/one-person-ziyin.wav', import.meta.url);
   const coverFile = new URL('../assets/one-person/visuals/one-person-cover.webp', import.meta.url);
   const pianoLoop = new URL('../assets/one-person/video/piano-loop.mp4', import.meta.url);
@@ -123,10 +134,11 @@ test('one person graduation archive and web media are tracked together', () => {
   const hornLoop = new URL('../assets/one-person/video/horn-loop.mp4', import.meta.url);
   const sessionLoop = new URL('../assets/one-person/video/session-loop.mp4', import.meta.url);
 
-  for (const file of [audioFile, losslessAudioFile, coverFile, pianoLoop, drumsLoop, hornLoop, sessionLoop]) {
+  for (const file of [audioFile, streamAudioFile, losslessAudioFile, coverFile, pianoLoop, drumsLoop, hornLoop, sessionLoop]) {
     assert.equal(existsSync(file), true, `Expected ${file.pathname} to exist`);
   }
   assert.ok(statSync(audioFile).size > 1_000_000, 'Expected the mastered MP3 to be present');
+  assert.ok(statSync(streamAudioFile).size < statSync(audioFile).size * 0.7, 'Expected the web stream to be at least 30% smaller than the download master');
   assert.ok(statSync(losslessAudioFile).size > 50_000_000, 'Expected the mastered WAV to be present');
   assert.ok(statSync(coverFile).size > 20_000, 'Expected the session cover to be present');
   assert.ok(statSync(sessionLoop).size > 100_000, 'Expected the web session loop to be present');
