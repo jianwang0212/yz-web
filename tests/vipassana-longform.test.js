@@ -42,9 +42,10 @@ test("Vipassana longform removes credentials and stale private logistics", () =>
 });
 
 test("Vipassana assets cover responsive, accessible, print, and deep-link behavior", () => {
-    assert.match(html, /href="\/papers\/vipassana\.css\?v=20260716-3"/);
-    assert.match(html, /src="\/papers\/vipassana\.js\?v=20260716-3"/);
+    assert.match(html, /href="\/papers\/vipassana\.css\?v=20260716-4"/);
+    assert.match(html, /src="\/papers\/vipassana\.js\?v=20260716-4"/);
     assert.match(html, /rel="canonical"/);
+    assert.match(css, /@media \(min-width: 1280px\)/);
     assert.match(css, /@media \(max-width: 1024px\)/);
     assert.match(css, /@media \(max-width: 768px\)/);
     assert.match(css, /prefers-reduced-motion: reduce/);
@@ -53,4 +54,13 @@ test("Vipassana assets cover responsive, accessible, print, and deep-link behavi
     assert.match(js, /beforeprint/);
     assert.match(js, /openAncestors/);
     assert.match(js, /data-read-next/);
+});
+
+test("Vipassana desktop book layout uses two columns only for bounded sections", () => {
+    assert.ok((html.match(/class="book-spread book-spread--two/g) || []).length >= 6);
+    assert.match(html, /book-spread--paired/);
+    assert.match(css, /\.book-spread\s*\{\s*display: contents;/);
+    assert.match(css, /\.book-spread--two\s*\{[^}]*column-count: 2;/s);
+    assert.match(css, /\.chapter-body > :where\([^}]*width: min\(100%, 50rem\);/s);
+    assert.doesNotMatch(css, /\.chapter-body\s*\{[^}]*column-count:\s*2;/s);
 });
