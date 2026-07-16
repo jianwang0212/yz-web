@@ -1,886 +1,4608 @@
 <!DOCTYPE html>
-<html lang="zh" id="html-lang">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="一次10天静默内观课程：我做了哪些挑战、获得了什么变化，以及我对"觉察与平等心"的理解。">
-    <title>我如何接触到 Vipassana（内观）｜10天静默体验与收获 - Zi Yin (银子)</title>
-    <link rel="stylesheet" href="../../styles.css">
-    <style>
-        .article-container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .post {
-            line-height: 1.85;
-            color: var(--text-primary);
-        }
-        
-        .post-header {
-            margin-bottom: 3rem;
-        }
-        
-        .post h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            color: var(--text-primary);
-        }
-        
-        .post-meta {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-        
-        .intensity-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(106, 99, 255, 0.1);
-            border: 1px solid rgba(106, 99, 255, 0.2);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-        }
-        
-        .intensity-badge span {
-            font-weight: 500;
-        }
-        
-        .tldr-card {
-            background: rgba(0, 0, 0, 0.03);
-            border-left: 4px solid var(--primary-color);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 6px;
-        }
-        
-        .tldr-card strong {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        .tldr-card ul {
-            margin: 0;
-            padding-left: 1.5rem;
-        }
-        
-        .tldr-card li {
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        
-        .post section {
-            margin-top: 2.5rem;
-        }
-        
-        .post h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2.5rem;
-            margin-bottom: 1.25rem;
-            color: var(--text-primary);
-        }
-        
-        .post h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        
-        .post p {
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-        
-        .post ul {
-            margin-bottom: 1.5rem;
-            padding-left: 1.75rem;
-        }
-        
-        .post li {
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        
-        .post li strong {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        
-        .callout {
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 6px;
-            border-left: 4px solid;
-        }
-        
-        .callout-note {
-            background: rgba(59, 130, 246, 0.08);
-            border-left-color: #3b82f6;
-        }
-        
-        .callout-note strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #1e40af;
-        }
-        
-        .callout-warning {
-            background: rgba(239, 68, 68, 0.08);
-            border-left-color: #ef4444;
-        }
-        
-        .callout-warning strong {
-            display: block;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            color: #dc2626;
-        }
-        
-        .callout-warning ul {
-            margin: 0;
-            padding-left: 1.5rem;
-        }
-        
-        .callout-warning li {
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .post details {
-            margin: 1.5rem 0;
-            padding: 1.25rem;
-            background: rgba(0, 0, 0, 0.02);
-            border-radius: 6px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
-        
-        .post summary {
-            font-weight: 500;
-            cursor: pointer;
-            color: var(--primary-color);
-            padding: 0.5rem 0;
-            user-select: none;
-            font-size: 1.05rem;
-        }
-        
-        .post summary:hover {
-            color: var(--secondary-color);
-        }
-        
-        .post details[open] summary {
-            margin-bottom: 1rem;
-        }
-        
-        .post details ul {
-            margin-top: 0.75rem;
-        }
-        
-        .post h4 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        
-        .post h5 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-top: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .post table {
-            overflow-x: auto;
-            display: block;
-            width: 100%;
-        }
-        
-        @media (max-width: 768px) {
-            .post table {
-                font-size: 0.9rem;
-            }
-            
-            .post table th,
-            .post table td {
-                padding: 0.4rem;
-            }
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-        
-        .back-link:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .article-container {
-                padding: 1.5rem;
-                max-width: 100%;
-            }
-            
-            .post h1 {
-                font-size: 1.75rem;
-            }
-            
-            .post h2 {
-                font-size: 1.35rem;
-            }
-            
-            .post h3 {
-                font-size: 1.15rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
-                <span class="name-en">Zi Yin</span>
-                <span class="name-sep">·</span>
-                <span class="name-zh">银子</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="../../index.html" data-i18n="nav.home">首页</a></li>
-                <li><a href="../../year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
-                <li><a href="../../works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="../../contact.html" data-i18n="nav.contact">联系</a></li>
-                <li class="nav-menu-lang-item">
-                    <div class="nav-lang-toggle-mobile">
-                        <button id="lang-zh-mobile" class="lang-btn-mobile active">中文</button>
-                        <button id="lang-en-mobile" class="lang-btn-mobile">English</button>
-                    </div>
-                </li>
-                <li class="nav-menu-item">
-                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
-                    <div class="nav-dropdown">
-                        <a href="../../projects.html" data-i18n="nav.projects">项目</a>
-                        <a href="../../timeline.html" data-i18n="nav.timeline">时间线</a>
-                        <a href="../../resume.html" data-i18n="nav.resume">简历</a>
-                        <a href="../../financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
-                        <a href="../../interests.html" data-i18n="nav.interests">兴趣爱好</a>
-                        <a href="../../highlights.html" data-i18n="nav.highlights">主要亮点</a>
-                    </div>
-                </li>
+<html lang="zh-Hans">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="两次十日内观的完整个人记录：2022 年香港初次体验、参课前研究，以及 2024 年桂东重返日常后的练习日志。" name="description">
+  <meta content="两次内观：十天静默之后，我如何观察身与心" property="og:title">
+  <meta content="2022&mdash;2024，两次内观课程的体验、问题、推论和回到生活后的失败记录。" property="og:description">
+  <meta content="article" property="og:type">
+  <meta content="https://thisisyz.com/projects/vipassana" property="og:url">
+  <link href="https://thisisyz.com/projects/vipassana" rel="canonical">
+  <title>
+   两次内观：十天静默之后，我如何观察身与心｜Zi Yin
+  </title>
+  <link href="../../styles.css?v=20260716-3" rel="stylesheet">
+  <link href="/papers/vipassana.css?v=20260716-3" rel="stylesheet">
+ </head>
+ <body class="vipassana-page">
+  <a class="skip-link" href="#article">
+   跳到正文
+  </a>
+  <nav aria-label="主导航" class="navbar">
+   <div class="container">
+    <a aria-label="返回 Zi Yin 首页" class="nav-brand site-title" href="/">
+     <span class="name-en">
+      Zi Yin
+     </span>
+     <span class="name-sep">
+      &middot;
+     </span>
+     <span class="name-zh">
+      银子
+     </span>
+    </a>
+    <ul class="nav-menu">
+     <li>
+      <a href="../../index.html">
+       首页
+      </a>
+     </li>
+     <li>
+      <a href="../../year-review.html">
+       年度总结
+      </a>
+     </li>
+     <li>
+      <a href="../../works.html">
+       作品
+      </a>
+     </li>
+     <li class="nav-menu-item">
+      <a class="nav-dropdown-toggle" href="#">
+       更多
+       <span aria-hidden="true" style="font-size: 0.8em;">
+        ▼
+       </span>
+      </a>
+      <div class="nav-dropdown">
+       <a href="../../projects.html">
+        项目
+       </a>
+       <a href="../../timeline.html">
+        时间线
+       </a>
+       <a href="../../resume.html">
+        简历
+       </a>
+      </div>
+     </li>
+    </ul>
+    <div aria-label="打开导航" class="hamburger" role="button" tabindex="0">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </div>
+   </div>
+  </nav>
+  <main class="vipassana-main" id="article">
+   <div class="reading-shell">
+    <aside aria-label="文章目录" class="article-toc">
+     <p class="toc-label">
+      阅读路径
+     </p>
+     <ol>
+      <li>
+       <a href="#overview">
+        总述
+       </a>
+      </li>
+      <li>
+       <a href="#first-retreat">
+        01 &middot; 香港 2022
+       </a>
+      </li>
+      <li>
+       <a href="#pre-course">
+        参课前研究
+       </a>
+      </li>
+      <li>
+       <a href="#second-retreat">
+        02 &middot; 桂东 2024
+       </a>
+      </li>
+      <li>
+       <a href="#practice-log">
+        回到生活后
+       </a>
+      </li>
+     </ol>
+    </aside>
+    <div class="reading-column">
+     <a class="back-link" href="../../projects.html">
+      &larr; 返回项目
+     </a>
+     <details class="mobile-toc">
+      <summary>
+       文章目录
+      </summary>
+      <ol>
+       <li>
+        <a href="#overview">
+         总述
+        </a>
+       </li>
+       <li>
+        <a href="#first-retreat">
+         第一次内观 &middot; 香港 &middot; 2022
+        </a>
+       </li>
+       <li>
+        <a href="#pre-course">
+         参课前研究
+        </a>
+       </li>
+       <li>
+        <a href="#second-retreat">
+         第二次内观 &middot; 桂东 &middot; 2024
+        </a>
+       </li>
+      </ol>
+     </details>
+     <article class="post">
+      <header class="post-header">
+       <p class="eyebrow">
+        Vipassana &middot; 2022&mdash;2024
+       </p>
+       <h1>
+        两次内观：十天静默之后，我如何观察身与心
+       </h1>
+       <p class="dek">
+        第一次，我想知道十天不说话、不碰电子设备、每天长时间静坐，会把我变成什么样。第二次，我更想知道：离开那个环境以后，我到底能把什么带回生活。
+       </p>
+       <p class="post-meta">
+        初写于 2022-11-06 &middot; 最后记录于 2024-10-09 &middot; 长文，可分段阅读
+       </p>
+       <div aria-label="课程强度" class="intensity-row">
+        <span>
+         10 天静默
+        </span>
+        <span>
+         无电子设备
+        </span>
+        <span>
+         每日约 10 小时静坐
+        </span>
+        <span>
+         两次课程
+        </span>
+       </div>
+      </header>
+      <section class="overview-card" id="overview">
+       <h2>
+        总述｜这些文字是怎么产生的
+       </h2>
+       <p>
+        最开始接触到 Vipassana 是 2021 年 11 月。当时我在想，如果辞职，我要去干什么。看到一个从 Google 辞职、去寻找自我意识的朋友写下静坐对他的影响，我就在香港报了名。没想到需要等待，这一等就是一年。2022 年 10 月 26 日，我第一次参加十日课程。
+       </p>
+       <p>
+        第一次回来，我急着记录的是心、身体、注意力和情绪反应发生了什么。2024 年去桂东参加第二次课程，我的问题已经变成：脑和心是什么关系，平等心能不能被量化，以及回到复杂生活后，我到底还能不能坚持。
+       </p>
+       <p>
+        下面尽量保留我当时的结构、数字、比喻和自我纠正。它不是一篇把内观讲明白的教程，而是我在不同时间点留下的认识。
+       </p>
+       <p class="reading-note">
+        <strong>
+         阅读说明：
+        </strong>
+        文中会明确区分我的体验、我当时的推论、课程或书籍资料，以及第三方内容。健康相关记录只描述个人经历，不构成医疗建议。
+       </p>
+      </section>
+      <details class="story-chapter" id="first-retreat" open>
+       <summary>
+        <span class="chapter-number">
+         01
+        </span>
+        <span class="chapter-title">
+         第一次内观
+        </span>
+        <span class="chapter-meta">
+         香港 &middot; 2022｜参课后的体验，以及参课前的研究
+        </span>
+       </summary>
+       <div class="chapter-body">
+        <p class="chapter-intro">
+         这一篇先放我回来以后被问得最多的问题。参课前做的研究、课程资料和开示笔记放在后面的内层折叠里。
+        </p>
+        <h2>
+         我如何接触到vipassana（内观）的？
+        </h2>
+        <p>
+         最开始接触到vipassana是2021年11月。当时在想如果辞职，我要去干什么，然后看到一个从google辞职去寻求自我意识的朋友： &nbsp;
+         <a href="https://suketk.com/year-one-reflection" rel="noopener noreferrer" target="_blank">
+          https://suketk.com/year-one-reflection
+         </a>
+         静坐：
+         <a href="https://suketk.com/vipassana" rel="noopener noreferrer" target="_blank">
+          https://suketk.com/vipassana
+         </a>
+         他有提到vipassana对他的影响很大。于是当时就在香港想报名，没想到需要等待，这一等居然就是一年。终于排期到了2022年1026可以去当10天每天10小时静坐的僧人了。 我主要想要体验的，或者说想要挑战自己的就是
+        </p>
+        <ol start="1">
+         <li>
+          <p>
+           10天不说话 （从来没有坚持过3天不说话)
+          </p>
+         </li>
+         <li>
+          <p>
+           10天不用手机电脑手表任何电子设备，也接触不到任何网络（有尝试过，从来没有坚持过半天）
+          </p>
+         </li>
+         <li>
+          <p>
+           10天不吃肉（没有尝试过，也不想逼自己）
+          </p>
+         </li>
+         <li>
+          <p>
+           10天每天睡5个小时（11pm-4am）
+          </p>
+         </li>
+         <li>
+          <p>
+           10天每天打坐10小时（最长时间打坐冥想30分钟，并且是以舒服的坐姿坐在椅子上）
+          </p>
+         </li>
+         <li>
+          <p>
+           10天见不到任何女生（没有尝试过，也不想逼自己）
+          </p>
+         </li>
+         <li>
+          <p>
+           10天每天只做4件事情。1）睡觉 2）吃饭 3）打坐 4）上厕所
+          </p>
+         </li>
+        </ol>
+        <p>
+         并没有期望任何神奇的效果。
+        </p>
+        <h2>
+         参加完后最大的收获是什么？
+        </h2>
+        <p>
+         除了以上那些挑战全部完成以外，从第三天开始，我有了心灵上和身体上的修复。
+        </p>
+        <div class="callout">
+         <p>
+          警告：
+         </p>
+         <ol start="1">
+          <li>
+           <p>
+            这只是我的个人体验，不代表所有参加的人会有这样的体验。同行的人有些人就只有轻微的感受。
+           </p>
+          </li>
+          <li>
+           <p>
+            这是我在从第三天到第十天的体验，不代表接下来我能保持这样的修复能力（我会对自己的身体每天做实验，看是否vipassasna的影响对我来说是持续的）
+           </p>
+          </li>
+         </ol>
+        </div>
+        <h3>
+         心灵上（mind）的修复
+        </h3>
+        <ol start="1">
+         <li>
+          <p>
+           专注力和感受能力得到了巨大的提升。体现在
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             感受力：
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               感受的速度：之前我如果早上皮肤在不经意间划了一道伤口， 我在晚上洗澡眼睛才可能发觉有这个伤口，然后我去摸一下，发现还比较痛，然后这个痛可能会持续一段时间。现在的话不管是身心灵，也就是外部，内部，精神上，只要伤口出现，不管多么微细，我都会第一时间感受到
+              </p>
+             </li>
+             <li>
+              <p>
+               感受的强度：眼耳鼻舌身的感受能力都提升了。之前我听音乐音量调到90%还觉得不过瘾，现在只需要55%，并且我能清晰的感受到低音的震动。
+              </p>
+             </li>
+            </ol>
+           </li>
+           <li>
+            <p>
+             专注力：
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               我可以控制我的心灵随时移动注意力到我想要的身体上的任意部位，并且可以持续的观察这个部位（不会有焦虑或者无聊。从前的我会产生焦虑的情绪如果我没有达到我的目标 - 注意力移到那个部位，如果达到了我会觉得非常无聊 - 不能让心灵一直停留到那个部位。而是思绪不受控制的想到一些歌曲，美食，美女）
+              </p>
+             </li>
+             <li>
+              <p>
+               过去我会很讨厌夏天，因为夏天女生都穿的很清凉，而且相貌也很好看，于是我走在路上，坐在车上，或者在骑车的时候，很容易注意力被吸引，有可能是一个很美丽的女生经过我的身旁，有可能是大厦上面巨大的整容广告后的女生面容。当我在走路的时候本来专注于思考接下来的计划，突然看到了美丽的事物，然后我的注意力就完全跑到了这些食物上，我没有办法控制1）我的眼睛不往他们身上看2）即使这时候我会提醒自己这样不好，不要贪念美色，然后闭上眼睛，但是即使闭上眼睛她们美丽的形象依然会出现在我的想象中（imagination，visualization），我可以控制眼皮闭上，但是我无法控制自己的意念制造这些想象。然后我就会责备自己，你怎么这么垃圾，一点都不正人君子，为什么连这点诱惑都承受不住？开始自责，然后完全忘记我最开始在思考的未来的计划，而这一切全都是在潜意识里，别人看到我 - 这个人睁一下眼睛闭一下眼睛，还是在快速的走路，很忙，中环人，就是快节奏！ 现在我还没有解决这个问题 - 见到漂亮女生，即使是在路上，我会升起贪欲，我想跟他们交朋友，我想看着他们喝咖啡，跟他们聊天。但是经历完课程之后我可以感受到这些欲望，形象化的欲望像燃烧着的柴火，以前的我在不断地增添更多的木柴，现在的我只是静静地看着他燃烧，我知道这些柴火，如果我不一直添加，他自己就会消失。
+               <strong>
+                关于对于好看女生的执念，我现在需要好好觉悟。
+               </strong>
+              </p>
+             </li>
+             <li>
+              <p>
+               吃饭的时候一直专注在吃饭，打坐的时候一直专注在打坐，睡觉的时候一直专注在睡觉。我会意识到这件事情是因为之前有读过一个故事，一直不知道是什么意思， 现在明白了： 从前有个小和尚问老和尚：师父，你悟道前和悟道后都干些什么啊？老和尚回答他：悟道前吃饭挑水砍柴，悟道后还是吃饭挑水砍柴。小和尚一头雾水，再问：那有什么区别呢？老和尚说道：我悟道前吃饭想着挑水，挑水想着砍柴；悟道之后，我吃饭时只想吃饭，挑水时只想挑水，砍柴时只想砍柴。
+              </p>
+             </li>
+            </ol>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           情绪、感受升起后我只会意识到情绪，感受出现了，但不会去贪求更多（如果是开心的感受），也不会去想让他们赶紧消失（如果是悲伤愤怒的感受）。
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             快乐的例子：
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               从前的我如果吃到我喜欢吃的东西， 我会大口大口的赶紧满足我的味蕾的欲望。
+              </p>
+             </li>
+             <li>
+              <p>
+               但现在我会发觉 - 嗯，这是我喜欢吃的东西，有一种贪求更多的感受升起了，我观察它 （这时候我会闭上眼睛，嘴巴里面含着这个食物，用舌头去感受到舌头上每一个味蕾升起的感受，食物的味道，表面是否粗糙，我的嘴巴是否在分泌口水）观察了一阵子以后，这种贪求的欲望的感受就自己消失了，然后我就吞了这个食物，吃一口可能需要20s。
+              </p>
+             </li>
+            </ol>
+           </li>
+           <li>
+            <p>
+             愤怒的例子：
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               从前的我如果被别人骂了是笨蛋，傻逼。我的外在反应是微微一笑然后走开，但内在会不停地想为什么这个人要骂我？他今天情绪不太好想找人发火吗？我有什么地方做的不好吗？我如何才能改进自己不让这种事情发生？我好像内心充满了愤怒，我为什么会生气？我对会对这种事情生气的自己感到非常失望，我如何才能让自己变得更加平静呢？就是说我会问自己很多问题。
+              </p>
+             </li>
+             <li>
+              <p>
+               但现在我的外在反应还是微笑离开。但是同时我也会闭上双眼，观察我的心（这个观察的主体不是用眼睛，鼻子，手，而是用意念，会在后面解释什么是意念），我可以形象化这种愤怒，就像是被点燃的柴火，我就在旁边看着这个柴火在燃烧，火焰越来越小，最后消失。我只是在观察，并没有问问题，然后这种愤怒就自己消失了。跟之前情绪上产生的不同影响原因是 - 我的专注力和感受力提升了，所以我可以非常敏感的&rdquo;接触&ldquo;到愤怒的来临，发展，高潮，降落，消失。我也可以十分专注的只观察它（而不是任由各种新的思绪 - 问题产生，而忽略自己的愤怒，这种新的心猴反应其实是在添油加醋火上浇油）
+              </p>
+             </li>
+            </ol>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           对其他人，动物产生的同情心和悲悯心。
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             人：
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               之前我遇到一个在吹水的人夸耀自己多么多么会弹钢琴，赚多少赚多少钱，是哪个名牌大学毕业，多么厉害的时候，我会微微一笑，保持沉默。但是内心对这个人充满的鄙夷，觉得就是垃圾。然后不忘夸耀一下自己，你看我，多么谦虚，你知道我钢琴10级吗？你知道我第一份工作就年薪百万么？你知道牛津大学吗？当我产生这样的想法后我又会自责，为什么我会产生这么负面的想法？别人努力了那么久得到了这些成就吹吹牛逼怎么了？何况别人是信任你喜欢才会对你说，不然懒得说，就跟你一样，什么都藏着掖着，真小人伪君子！自责完了以后开始问自己怎么做才能消除这种差别心。
+              </p>
+             </li>
+             <li>
+              <p>
+               现在我表面上还是微微一笑，然后闭上双眼，感受到自己的内心升起了一阵鄙视，自负，不屑一顾的火焰，然后我又开始静静地观察，然后他们消失了。当我睁开双眼的时候，他还在吹水，但是我已经产生一种怜悯的感受：是啊，朋友，你这个阶段我也经历过，自己通过自己的努力然后达到了之前的目标，于是想要跟其他人炫耀一下，让别人也肯定，赞美自己。我真心希望你可以有一天脱离这种希望得到认可的状态，也可以感受到自己想要炫耀的心，那时候，你还是说着一模一样的吹水的话，但是你的心是平静的，没有炫耀，没有欲求，没有贪爱，没有执着。
+              </p>
+              <ol start="1">
+               <li>
+                <p>
+                 说这一模一样的话，但是有完全不同的心的例子： 我骂我的下属&rdquo;你个蠢猪，这都不会？垃圾&ldquo;，我跟我的女朋友玩王者荣耀她不会打野的时候我开玩笑：&rdquo;你个蠢猪，这都不会？垃圾&ldquo;。 一样的话。但是我对我的下属是鄙视，对我的女朋友是满满的爱
+                </p>
+               </li>
+              </ol>
+             </li>
+            </ol>
+           </li>
+           <li>
+            <p>
+             动物
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               之前我如果在路上遇到一个蟑螂，我会毫不犹豫的把眼睛移开，然后哆嗦一下，说一句&rdquo;好恶心&ldquo;，如果这只蟑螂在我厨房出现我绝对会杀死他。偶尔会有&rdquo;多毛&ldquo;&rdquo;触角&ldquo;，&rdquo;肮脏&ldquo;这样的词汇出现我就更难受了。
+              </p>
+             </li>
+             <li>
+              <p>
+               内观第7天晚上10:00左右我在散步的时候遇到了一个蟑螂，我首先哆嗦了一下，然后我闭上眼睛，看见了内心升起了&rdquo;鄙视，愤怒，害怕，傻逼虫&ldquo;的感受，然后我观察这些感受3分钟后，他们消失了（旁人看到我就是我站在一只蟑螂旁边闭着眼睛呆呆的站了3分钟）。然后我睁开眼睛继续观察蟑螂，然后怜悯心升起：蟑螂好可怜啊， 我如果是蟑螂，我只能在晚上出来，还要担心被人一脚踩死，担惊受怕，但我又做错了什么呢？我要吃东西， 我只是努力着想要活着！我真心希望这只蟑螂可以找到吃的，好好活下去。然后这只蟑螂钻进了井盖底下。我当时产生了更加深厚的悲天悯虫的同理心，蟑螂一辈子都要生活在黑暗里，地底下，因为只要有光线的地方就有危险让自己死亡，所以一辈子都要躲躲藏藏。太可怜了，蟑螂君。
+              </p>
+             </li>
+            </ol>
+           </li>
+          </ol>
+         </li>
+        </ol>
+        <div class="callout callout-medical">
+         <p>
+          <strong>
+           健康记录的边界：
+          </strong>
+          下面是我在 2022 年第三天到第十天的主观记录，包括当时的双相情感障碍、焦虑、服药、睡眠、偏头痛和颈腰背不适。它不能证明内观有治疗效果，也不能替代医生的诊断与治疗。
+         </p>
+        </div>
+        <h3>
+         身体（body）上的修复
+        </h3>
+        <div class="callout">
+         <p>
+          我有双向情感障碍，和焦虑症，一直在吃心理医生给的治疗心理疾病的药
+         </p>
+        </div>
+        <ol start="1">
+         <li>
+          <p>
+           睡眠
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             入睡速度：
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               之前我每天晚上需要服用半片安眠药才能睡着，不然整晚整晚有非常多的想法和能量，完全睡不着（mania的表现之一）
+              </p>
+             </li>
+             <li>
+              <p>
+               给我10分钟，非常一般的床垫，被子，枕头，甚至开着灯，别人在小声说话，有噪音，我也能睡着
+              </p>
+             </li>
+            </ol>
+           </li>
+           <li>
+            <p>
+             睡眠质量
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               我有过去一年我的睡眠数据（入水时间，深度睡眠时间，我的呼吸频率，心率变异指标等等），一切都显示不太好
+              </p>
+             </li>
+             <li>
+              <p>
+               从第4天到第10天我感受到了前所未有的睡眠质量提升，完全起床的时候感受不到做过梦，并且活力充沛
+              </p>
+             </li>
+            </ol>
+           </li>
+           <li>
+            <p>
+             睡眠时间
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               过去三个月的平均我需要的睡眠时间是9小时，并且白天又是很困很累也要睡觉
+              </p>
+             </li>
+             <li>
+              <p>
+               每天就晚上睡5小时
+              </p>
+             </li>
+            </ol>
+           </li>
+           <li>
+            <p>
+             起床后的情绪和精力
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               从前我最讨厌起床，即使睡了10个小时，还是感觉没睡够，尝试了各种不同的方法想改变（现在家里枕头是5k的，床垫是2w的），并没有明显的改观。起床我会非常暴躁，哈欠连天，起床气，不停地打喷嚏等等不愉快的反应
+              </p>
+             </li>
+             <li>
+              <p>
+               精力充沛，甚至不需要去用冷水+咖啡去提神，感觉起床就可以去工作了！
+              </p>
+             </li>
+            </ol>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           偏头痛
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             我之前有严重的眼型偏头痛， 非常害怕他会在我上课期间发生，那样子的话我肯定不能坚持下去
+            </p>
+           </li>
+          </ol>
+         </li>
+        </ol>
+        <p>
+         b.  怕什么来什么，第七天早上10点我正在静坐偏头痛发作，但是我一直在用右边的脑尝试去感受到，只是安静的观察这种头痛，然后过了半个小时，他居然自己消失了
+        </p>
+        <p>
+         3. 腰痛背痛颈椎痛
+        </p>
+        <p>
+         a. 我有严重的颈椎病（曲度变直，往左边倾斜），也是看过很多医生。有治疗好过一段时间，但是之后又出问题了
+        </p>
+        <p>
+         b. 10天，从第四天开始我发现从右到左，从腰，到背，到肩部，到脊椎，每天我自己这些部位的感知能力可以告诉我他们在慢慢变好，之前静坐10分钟我背部就痛的不行，现在我最多可以不变姿势的静坐一个小时。
+        </p>
+        <div class="source-note">
+         <p>
+          <strong>
+           第三方经历：
+          </strong>
+          原笔记曾整段收录另一位作者关于颈肩腰背改善的文章。为避免把他人的经历混成我的原文，这里不再转载，只保留
+          <a href="https://medium.com/@jamesfwwong/%E5%85%A7%E8%A7%80%E9%9D%9C%E5%9D%90%E9%86%AB%E5%A5%BD%E4%BA%86%E8%84%8A%E6%A4%8E%E7%97%85-9f8d20ed49cc" rel="noopener noreferrer" target="_blank">
+           原始链接
+          </a>
+          。
+         </p>
+        </div>
+        <h2>
+         为什么我会喜欢上打坐？
+        </h2>
+        <p>
+         除开心灵和身体上的修复，还因为我本身喜欢学习，对世界有好奇心。在学习内观之前，我只知道外观，研究外部世界。因为我不知道我还有&rdquo;意&ldquo;这种感觉器官。 学习外观和内观， 现在在锻炼观察自己内部能力。 如果有可能结合医学解剖学理论来解释我的感受。 从而把理论作为依据并且得出推论，然后在感受上cross check。 最终每一个感受的出现，我都能明白它为什么出现，它会导致有可能哪些其他感受。于是我可以治愈他们，通过调动自己的内部器官。 - 可能这是为什么中医会把脚跟心联系到一起，因为有些人在内观自己脚的时候，发现心会有反应。或者是当心躁动的时候， 某些脚上的穴位有反应，会痛。 于是他们就为了那些没有能力用意念去观察细微差别的脚上的人，但是心很烦躁的人，要他们去按摩脚，按摩的感觉和长期注意力集中在一个点的感觉是一致的。&nbsp;举一个外观（科学研究用科学仪器观察和用试验方法验证）和内观的例子
+        </p>
+        <details class="subchapter" id="body-hypothesis">
+         <summary>
+          一个我当时试图自己解释身体的例子
+         </summary>
+         <div class="detail-body">
+          <div class="callout">
+           <p>
+            <strong>
+             这是当时的猜想，不是医学结论。
+            </strong>
+            我试图把眼痒、结痂、鼻窦和免疫反应放在一起解释，再拿身体感受去 cross-check。今天重读，我仍然保留这段，因为它真实呈现了我的思考方式；但其中因果关系没有经过验证。
+           </p>
+          </div>
+          <h3>
+           为什么有时候眼睛有黏黏，结痂，痒痒，想去揉的感觉：
+          </h3>
+          <ol start="1">
+           <li>
+            <p>
+             内观的结论
+            </p>
+           </li>
+          </ol>
+          <p>
+           只有左边鼻子通气，右边堵住了。 感受到右边鼻窦部位一直在努力去化解堵住的东西，一直有感受化学物质的持续分泌（猜想就是鼻涕）。分泌到一定程度有想要打喷嚏的感受，观察喷嚏，然后它自己化解了，并没有产生强烈的气流，猜想产生强烈气流的目的就是为了让鼻涕扩散的更快，或者让抗体和抗原结合完产生的脓液从鼻子（另外一个鼻孔）排出身体，但是这样擤鼻涕会让鼻涕也去到耳朵，嘴巴，和眼睛，导致这些部位的痒。这种液体的浓度和粘稠程度不一样，但是会流过鼻子，嘴巴，眼睛。 产生了化学物质，眼泪出来了，眼睛有点干燥，粘，就像眼睛生产了鼻涕，液体聚集在外眼角就会流出来，而聚集在内眼角则会留下来在泪丘周围。而随着眼皮的开关和风干作用，浓度越来越高，就会形成黏黏的液体，甚至结痂的固体。眼屎是这样形成的吗？ 鼻涕流下来到嘴巴里面，咸咸的，果冻一样。感受到了这两种液体成分是差不多，但是浓度和粘稠程度不一样，比特会更高。 鼻涕流过脸颊的感觉，脸部的凹凸不平可以通过鼻涕的放大作用感受到。眼泪流过脸颊，不同部位的脸颊会有不同的感受。&nbsp;然后再问自己，什么是痒？ 脸部细小绒毛的感受:左脸有毛的地方更容易产生痒的感觉，是因为风吹动导致毛尖和其他部位接触？ 是的， 这是因为毛的尖端接触到皮肤，在皮肤表面运动引起痒，这些运动导致皮肤浅层神经末梢受到物理刺激产生兴奋，传到大脑产生痒，痒和痛觉在皮肤上成点状分布。当你下次产生痒的感觉的时候，尝试去观察，你可以感受到你的毛细血管吗？你可以感受到有多少根毛么？哪一个精确的皮肤部位？
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             科学的临床解释
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               眼部对空气中漂浮的灰尘，油烟过敏，什么是过敏？ 免疫系统将某种实际无害的物质误认为有害，而产生了很多抗体。为什么会误认为？因为会并不是一个病症出现一个医生，而是一个病症就会使用100个医生，而这些医生就是抗体，为的是防止抗原变异。免疫球蛋白E，原本用于对抗寄生虫感染，一旦释放出来，就会让毛细血管舒张，黏膜迅速充血，阻碍呼吸，同时造成黏膜瘙痒
+              </p>
+             </li>
+             <li>
+              <p>
+               炎症，慢性结膜炎
+              </p>
+             </li>
+             <li>
+              <p>
+               用眼过度，干眼症，由于长时间用眼，眨眼的次数变少，导致泪液分泌变少。
+              </p>
+             </li>
+            </ol>
+           </li>
+          </ol>
+         </div>
+        </details>
+        <p>
+         想通过上面例子，表示你的内在身体，皮肤，器官，脊髓就是一个游乐公园，大多数人都不知道有这样一个乐园，因为他们没有培养&rdquo;内观的能力&ldquo;，没有买票，ignorrance。 当你培养一定能力后，你会喜欢这个乐园。但是这里面的游乐设施就像乐高一样，需要你自己去拼好你才能玩（感受到），比乐高难的是你不知道你最后拼到的是个什么产品，你可以在现实生活中去找科学理论当作一个地图然后在内在观察中去快速的拼完，但是有时候科学理论现阶段还不完善，有错误，甚至无法解释。 这时候你就要自己每天经历的这些过往的拼图的经验去拼了。但是这很有意思，对我来说很有挑战性。
+        </p>
+        <p>
+         我现在会更加喜欢探索自己的内在世界，对比与探索外在世界（旅游，读书，看风景，虽然他们都很舒服）。因为当我突然发现一个新的&rdquo;感觉器官 - 意念&ldquo;以后，就像盲人突然有了视力一样，他会非常想看一看之前别人一直跟他说的，什么是大象，什么是颜色，什么是彩虹（理论），而去自己亲身用新培养的感觉器官（眼睛）去感受。
+        </p>
+        <p>
+         过去的我一直在培养已经存在的感觉器官，比如耳朵，我自己对艺术鉴赏能力的认知是：你培养了多少6官的能力（包括各自的感知能力和结合的感知能力）。比如说我从小就在弹钢琴，听古典音乐。我培养了&rdquo;绝对音感&ldquo;。我理解的所谓&rdquo;绝对音感&ldquo;，其实就是听觉和意觉的感受能力, 感受能力更加具体说就是区别细小事物差别的能力。比方说，当你听到一段旋律，你听到的旋律可能很音乐家听到的旋律完全不一样。&nbsp;
+        </p>
+        <h2>
+         打坐细节
+        </h2>
+        <ol start="1">
+         <li>
+          <p>
+           打坐的时候就打坐嘛？什么别的都不做？不听音乐什么的？
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             打坐的时候外人看到你是就是坐在那里，但是你的意识一直非常清醒，清醒的在内观 - 观察自己的感受
+            </p>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           是在什么地方打坐呢？房间里？空白的房间里？还是大自然中？
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             法堂（室内）
+            </p>
+           </li>
+           <li>
+            <p>
+             会屏蔽自然光，只有微弱的烛光
+            </p>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           打坐什么姿势？盘腿那种嘛？
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             姿势由静坐人本身的能力定
+            </p>
+           </li>
+           <li>
+            <p>
+             坐在有靠背的椅子上-&gt;没靠背的椅子上-》双腿直着坐在打坐垫上-》自然盘 -》单盘 -》双盘
+            </p>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           吃什么呢？青菜加米饭嘛？
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             每天都不一样，每天每餐都不一样
+            </p>
+           </li>
+           <li>
+            <p>
+             除了肉类之外的所有东西
+            </p>
+            <ol start="1">
+             <li>
+              <p>
+               蔬果：比如🥦， 胡萝卜，笋子，土豆，红枣，青豆，玉米，藕，苹果，香蕉，橙子，梨子，猕猴桃
+              </p>
+             </li>
+             <li>
+              <p>
+               蛋白质：豆腐，奶粉， 藜麦，杏仁，花生
+              </p>
+             </li>
+             <li>
+              <p>
+               碳水：面包，意粉，白米饭，糙米饭，红枣饭，杂粮米饭，粉丝
+              </p>
+             </li>
+            </ol>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           睡觉时间是定闹钟嘛？还是寺庙有钟声？
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             睡觉是有钟声，每一个计划的事项结束和开始都会敲钟
+            </p>
+           </li>
+           <li>
+            <p>
+             但是没有人检查你有没有睡觉，晚上930以后你也可以自己去散步， 我一般会冥想散步+复习一天的内容到11pm
+            </p>
+           </li>
+          </ol>
+         </li>
+         <li>
+          <p>
+           我看到了他们的视频，打坐的时候专注于呼吸，把注意力放在自己的鼻孔，感受气息进出，对不对
+          </p>
+          <ol start="1">
+           <li>
+            <p>
+             我不能回答这个问题，因为可能会指导错误。
+            </p>
+           </li>
+          </ol>
+         </li>
+        </ol>
+        <h2>
+         为什么睡眠时间少，但是会精力充沛？
+        </h2>
+        <div class="source-note">
+         <p>
+          以下是我 2022 年当时的解释，不是医学结论。
+         </p>
+        </div>
+        <p>
+         为什么睡眠时间少，但是会经历充沛？
+        </p>
+        <ol start="1">
+         <li>
+          <p>
+           睡眠是为了1）意识的休息2）身体的休息。2）是可以通过躺着就行，1）是需要你控制你的脑子专注于一件事情。我认为意识的休息就是专注在一件事情上，我自己的体验是：我在100%专注在弹钢琴的时候， 我的脑子是不累的，我的手腕在长时间后会疲倦，但脑子不会。我也可以持续5小时一直学习，不会累。但如果脑子里面有很多思绪，一下子想A，然后又跳到B，然后又跳到A，就会很累。我之前睡觉脑子里面一直在想今天学过的东西，明天需要做的计划，就睡不着，脑子没有得到休息，但是现在我可以非常专注的在呼吸上。
+          </p>
+         </li>
+        </ol>
+        <details class="subchapter" id="dedication-note">
+         <summary>
+          当时记下的一段关于&ldquo;回向&rdquo;的说法
+         </summary>
+         <div class="detail-body">
+          <div class="source-note">
+           <p>
+            这段语气像是当时收到的建议，但旧笔记没有记录来源。它不是我能够确认的原创文字，所以单独放在这里。
+           </p>
+          </div>
+          <p>
+           我觉得你每一次静坐完，或关于任何的修行完结，
+           <br>
+           都要记得以下的一步
+          </p>
+          <p>
+           将我修行的功德回向于我
+           <br>
+           身边所有的六道众生
+           <br>
+           而且回向于我过去轮回里面结下的冤亲债主
+           <br>
+           将我修行的所有功德全部无私的回馈他们
+          </p>
+          <p>
+           这样才是真正的解结，不然他们得不到的利益，就无法化解他们的妒忌或怨恨
+          </p>
+          <p>
+           一般人对于回向的理解最大的误解就是
+           <br>
+           如果我回向功德后那对"我"而言是否白练呢？
+          </p>
+          <p>
+           其实打个比方，
+           <br>
+           修行就是在太阳下储蓄阳光，而回向就是举起镜子，调整角度(回向对象)，把光折射过去(分享功德)
+           <br>
+           但是其实大部分阳光都已经洒在身体上了，我只是把阳光通过身体媒介传达于其他人，
+           <br>
+           功德已经在身体扫过一次，自己已经得到一手的功德了，但依然要懂得把二手的阳光(功德)继续去回馈于有需要的六道众生，起码三恶道没得修行，他们比我们需要太多了，起码二手功德对他们而言已经甘之如饴。
+          </p>
+         </div>
+        </details>
+        <details class="subchapter" id="pre-course">
+         <summary>
+          参课前｜我当时做的研究与课程笔记
+         </summary>
+         <div class="detail-body">
+          <h2>
+           我当时想解决什么
+          </h2>
+          <h3>
+           负面情绪是怎么产生呢？
+          </h3>
+          <ul>
+           <li>
+            <p>
+             发现人，事情不合我愿，我就会感到十分不愉快。
+            </p>
+           </li>
+          </ul>
+          <h3>
+           世界上没有一个人可以处处如意。当面对不如意的情景的时候，要如何才可以不盲目的产生反应？
+          </h3>
+          <ul>
+           <li>
+            <p>
+             每当内心开始产生愤怒，恐惧，立即把注意力转到别处去，比如喝水，重复一句话，持诵一个你信仰的神。 --- 此办法把负面情绪推到更深的潜意识层面。使得原有的烦恼在此层面不断繁衍。意识表层看起来一片安详，其实内心隐藏着一座休眠火山。
+            </p>
+           </li>
+           <li>
+            <p>
+             注意力的转移只不过是在逃避问题。要面对他，只有贯彻他，这些烦恼就会日益枯萎，逐渐被连根拔起。
+            </p>
+            <ul>
+             <li>
+              <p>
+               当一般人的怒火生气的时候，根本未曾来得及观察，人就已经失控了。因为这些烦恼往往是在不知不觉的情况下产生，萌生于潜意识最深层次，难于观察，等到它浮现到表层意识时候，太过强劲把我淹没，导致我失去观察他的能力。理性在盛怒中已经丧失，任何好言相劝均称为忠言逆耳，无济于事。
+              </p>
+             </li>
+             <li>
+              <p>
+               当我坐下来观察我的愤怒。心中出现的是愤恨的对象。那应发怒火的某人、事。而不是观察愤怒本身。我只是在观察引起情绪波动的外在刺激因素。去观察抽象的情绪，是很难的事情，必须先从外在的情境中脱离出来。
+              </p>
+             </li>
             </ul>
-            <div class="nav-lang-toggle">
-                <button id="lang-zh" class="lang-btn active">中文</button>
-                <button id="lang-en" class="lang-btn">English</button>
+           </li>
+          </ul>
+          <h3>
+           负面情绪对我们产生的根本影响
+          </h3>
+          <ul>
+           <li>
+            <p>
+             气息失去正常的节奏，呼吸开始加重
+            </p>
+           </li>
+           <li>
+            <p>
+             在深入细微的层面，身体开始产生生化反应 - 感受的呈现，在身体的这个部位或者那个部位（比如，肾上腺素、其他激素的分泌） --- 一般人难以察觉抽象的感受，不管是恐惧，愤怒，但是通过适当的训练和练习，观察呼吸和身体上的感受变得轻易。
+            </p>
+           </li>
+          </ul>
+          <h3>
+           加强观察的能力为什么可以帮助你感知到烦恼
+          </h3>
+          <ul>
+           <li>
+            <p>
+             观察呼吸和感受仿佛就像你的私人秘书，当烦恼在心中升起，我的呼吸马上失去常态，他马上呼喊：看，有毛病出现了。 感受也是警告我。 接收到警告后， 我开始观察我的呼吸，很快发现那个烦恼渐渐消失了
+            </p>
+           </li>
+           <li>
+            <p>
+             铜板的两面，一面是心中所出现的意念和情绪，一面是身体的呼吸。借由观察呼吸、感受，我其实是在观察心中的不净。
+            </p>
+           </li>
+           <li>
+            <p>
+             越努力的修习这种技巧，越可以从负面情绪中解脱。渐渐地内心得以净化，被净化的心总是充满着爱。对他人的失败和痛苦报以慈悲。成就与快乐感到欣喜
+            </p>
+           </li>
+          </ul>
+          <h3>
+           除了充满爱，平静还有什么好处？
+          </h3>
+          <ul>
+           <li>
+            <p>
+             不但让自己感到安宁，更帮助其他人变得平和，安详。在他周围弥漫孕育着安详和谐的气氛。任何人进入那个环境也会被感染。
+            </p>
+           </li>
+           <li>
+            <p>
+             对外在一切境遇的豁达，不在执着。不执着不等于逃避现实或者无视事务问题。 而是对于他人的苦变得更加敏感。而且会尽能解除别人的苦因。 心中充满爱。
+            </p>
+           </li>
+          </ul>
+          <h3>
+           如何进行训练呢？
+          </h3>
+          <ol start="1">
+           <li>
+            <p>
+             道德规范。不杀生，偷盗，性行为，说谎，麻醉品。因为我们不可能一方面在行为上造作不良，一方面要消除自己内心的不净。
+            </p>
+           </li>
+           <li>
+            <p>
+             将心专注于一点上，气息上。以此来培养心的控制力，驯服狂野的心。并不是去控制呼吸，而是去如实观察自然的呼吸。只有当注意力集中时候，心会变得警觉，敏锐，才有能力执行洞察的工作。
+            </p>
+           </li>
+           <li>
+            <p>
+             以上两个步骤对过着到的的生活和控制心猴十分有帮助。缺点是也会造成自我的压抑。第三个步骤就是内观。 开展洞察力，找见自身的本质。
+             <strong>
+              透过自我观察来达到自我净化。
+             </strong>
+            </p>
+           </li>
+          </ol>
+          <h2>
+           我在 2022 年参课前摘录的课程资料
+          </h2>
+          <div class="source-note">
+           <p>
+            下面的课程简介、作息与纪律是我在 2022 年参课前摘录的历史资料，不代表今天仍完全相同。旧地址、电话、传真与交通细节已经删除；请以
+            <a href="https://www.dhamma.org/zh-HANS/courses/search" rel="noopener noreferrer" target="_blank">
+             Dhamma.org 当前课程页面
+            </a>
+            和
+            <a href="https://mutta.dhamma.org/zh-hk/dhamma-mutta/" rel="noopener noreferrer" target="_blank">
+             香港法之明珠官网
+            </a>
+            为准。
+           </p>
+          </div>
+          <h3>
+           课程简介：
+          </h3>
+          <p>
+           課程要求認真、勤奮地用功。訓練過程有三個步驟。第一是在課程期間不殺生、不偷盜、不可有任何性行爲、不說謊、及不服用麻醉品。這簡單的道德規範旨在使心平靜，否則激動、不安的心難以進行自我觀察的工作。接下來的步驟是培養心的自主能力，學習將注意力鎖定在氣息之流不斷變化的自然實相-當氣息從鼻孔進來和出去時。到了第四天，心開始較為平靜和專注，這樣的心擁有較好的能力來練習內觀技巧：就是觀察全身所有的感受，了解它們的本質，學習對它們不起反應以培養平等心。課程最後的一整天，參加者將學習對所有的眾生散發慈愛和善意-慈悲觀，也就是將自己在內觀課程中發展出的純淨善念與一切眾生分享。
+          </p>
+          <p>
+           這整個練習其實是一項心的訓練。正如肢體運動可以促進身體健康，練習內觀可以培養健康的心。
+          </p>
+          <p class="entry-date">
+           <time datetime="2022-10-20">
+            2022-10-20
+           </time>
+           <br>
+           内观：是印度最古老的自我观察技巧之一。在长久失传以后，两千五百多年前被释迦牟尼重新发现。内观：如实观察如其本然的真相。最终目的是得到完全的解脱和全然的觉悟。 根除三大苦的根源：贪爱，嗔恨，愚痴。
+          </p>
+          <h3>
+           课程作息
+          </h3>
+          <div class="table-scroll">
+           <table>
+            <tbody>
+             <tr>
+              <td>
+               <p>
+                4:00
+               </p>
+              </td>
+              <td>
+               <p>
+                清晨起床堂
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                4:30～ 6:30
+               </p>
+              </td>
+              <td>
+               <p>
+                在大堂或自己房間修習
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                6:30～ 8:00
+               </p>
+              </td>
+              <td>
+               <p>
+                早餐及休息
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                8:00～9:00
+               </p>
+              </td>
+              <td>
+               <p>
+                大堂共修
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                9:00～11:00
+               </p>
+              </td>
+              <td>
+               <p>
+                在大堂或自己房間修習
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                11:00～12:00
+               </p>
+              </td>
+              <td>
+               <p>
+                午餐
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                <u>
+                 下午
+                </u>
+               </p>
+              </td>
+              <td>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                <strong>
+                 12:00～ 1:00
+                </strong>
+               </p>
+              </td>
+              <td>
+               <p>
+                <strong>
+                 休息(可向老師個別提問)
+                </strong>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                1:00～ 2:30
+               </p>
+              </td>
+              <td>
+               <p>
+                在大堂或自己房間修習
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                2:30～3:30
+               </p>
+              </td>
+              <td>
+               <p>
+                大堂共修
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                3:30～ 5:00
+               </p>
+              </td>
+              <td>
+               <p>
+                在大堂或自己房間修習
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                5:00～ 6:00
+               </p>
+              </td>
+              <td>
+               <p>
+                茶點
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                6:00～7:00
+               </p>
+              </td>
+              <td>
+               <p>
+                大堂共修
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                7:00～ 8:30
+               </p>
+              </td>
+              <td>
+               <p>
+                葛印卡老師開示
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                8:30～ 9:00
+               </p>
+              </td>
+              <td>
+               <p>
+                大堂共修
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                <strong>
+                 9:00～ 9:30
+                </strong>
+               </p>
+              </td>
+              <td>
+               <p>
+                <strong>
+                 大堂提問或回寢室就寢
+                </strong>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <p>
+                9:30
+               </p>
+              </td>
+              <td>
+               <p>
+                就寢--熄燈
+               </p>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <h4>
+           神聖的靜默
+          </h4>
+          <p>
+           從課程的開始至到第十天的早上，所有的學員必須遵守「神聖的靜默」－是指身體、言語及意念的靜默。學員之間禁止有任何形式上的溝通，不管是比手勢、手語、寫便條等等都不被允許。
+          </p>
+          <h4>
+           男女分隔
+          </h4>
+          <p>
+           男學員與女學員必須保持完全分隔。不論已婚或否的伴侶在課程進行期間都不應有任何接觸，朋友、家人等也是一樣。
+          </p>
+          <h4>
+           身體接觸
+          </h4>
+          <p>
+           在課程進行期間，不論是同性或異性之間都不能有任何身體上的接觸，這點很重要。
+          </p>
+          <h4>
+           瑜珈及運動
+          </h4>
+          <p>
+           雖然瑜珈體操及其它運動與內觀可以互相協調，但在課程期間亦應暫停，因為課程地點尚無適當的分隔設施。慢跑也在禁止之列。休息時間，學員們可以在規定範圍之內以散步作為運動。
+          </p>
+          <h4>
+           與外界的接觸
+          </h4>
+          <p>
+           在課程進行期間學員都必須留在課程地點範圍內，只有經過老師的特別准許才可以離開。在課程結束前都不能與外界聯絡，包括信件、電話及訪客。假如有緊急情況，親友可與課程事務處聯絡。
+          </p>
+          <h4>
+           聽音樂、閱讀、書寫
+          </h4>
+          <p>
+           課程期間不可使用樂器、收音機等。不應帶任何書簿紙筆。學員不應作筆記，以免使自己分心。嚴格實踐才是靜坐的本質，限制讀寫是為了強調這一點。
+          </p>
+          <div class="source-note">
+           <p>
+            <strong>
+             关于&ldquo;别人的日记&rdquo;：
+            </strong>
+            我当时的页面收录过一篇没有记下出处的旧生日记。它不是我的经历，也找不到可靠原链接，所以这里不再全文公开。
+           </p>
+          </div>
+          <details class="subchapter" id="course-notes">
+           <summary>
+            第一至第七天｜我当时记下的课程开示要点
+           </summary>
+           <div class="detail-body">
+            <div class="source-note">
+             <p>
+              这部分是我对课程开示、佛教概念和练习方法的当时记录，不是逐字教学稿，也不是我自己的逐日日记。错漏和理解偏差都可能存在。
+             </p>
             </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="historical-notes">
+             <p class="entry-date">
+              <time datetime="2022-10-21">
+               2022-10-21
+              </time>
+              十日笔记
+             </p>
+             <h3>
+              第一天
+             </h3>
+             <h4>
+              你疼痛的原因：
+             </h4>
+             <ul>
+              <li>
+               <p>
+                你的身和心是你习性的囚犯。你现在做的事情违反他们的习性，因此，他们开始反抗。身体开始抗拒，我不喜欢这样。
+               </p>
+              </li>
+              <li>
+               <p>
+                当你开始观察呼吸，这时候，所有的不舒服就开始显现出来。你自己总是在产生痛苦。你必须进入痛苦的根源，才能摆脱这种习性模式。
+               </p>
+              </li>
+             </ul>
+             <p>
+              任何不是你亲身经验的真理，对你而言，就不是真理。佛陀体验的真理，不是你的真理
+             </p>
+             <p>
+              内观就是圣贤说的 - 了解你自己的过程
+             </p>
+             <p>
+              探究自然的实像：探究呼吸，身，心。 当你探究完了以后，你可以和这个自然的法则一同生活，生命充满和谐。
+             </p>
+             <p>
+              单纯的观察呼吸是帮助你进入更深层的观察实像的通道。
+             </p>
+             <p>
+              外在的器官和内在的器官（心）。他们不会按照你的需求，欲望来动作。你命令你的心脏停止跳动，他是不会停止的。让它慢下来，他也不会慢下来。身体的每一个例子都在不停地运动，但是你没办法感受到。他们只是不断地自然发生，你无法控制他们。对于这些你无法控制的内在的器官活动现象，你完全不了解。
+             </p>
+             <p>
+              例子： 你和朋友住在河的北面，然后朋友（觉悟者）去了河的南面，并且告诉你，南面非常美丽，你于是天天祈祷，南面到你北面来。你应该做的其实是游过去。就这么简单。你要自己去体验。而我们需要这个桥梁，这个桥梁就是 呼吸。呼吸包含了自主和不自主的两者活动。
+             </p>
+             <h4>
+              呼吸和烦恼，心，有着密切的关系。
+             </h4>
+             <ul>
+              <li>
+               <p>
+                当你卷入情绪时，呼吸会变化。
+               </p>
+              </li>
+              <li>
+               <p>
+                呼吸会帮助你深入问题的根源，烦恼升起的根源。
+               </p>
+              </li>
+             </ul>
+             <h4>
+              练习方法：
+             </h4>
+             <ul>
+              <li>
+               <p>
+                小范围：整个鼻孔的小范围，必须讲注意力集中在鼻孔的入口，和鼻孔的内部，对通过这一范围的气息保持觉知。小范围会让你的心变得越来越敏锐。微细，敏感。
+               </p>
+              </li>
+              <li>
+               <p>
+                只是保持觉知，而不作任何事情。就像是你在河岸边，观察河水的流动。
+               </p>
+              </li>
+              <li>
+               <p>
+                你会发现， 你的心总是抛开，心猴不断地打妄想。它甚至无法做直视观察呼吸这么简单的活动。这是因为平常我们训练心去multitasking，各种习惯反应。当你发现心跑掉了，接受这个事实，微笑。
+               </p>
+              </li>
+             </ul>
+             <h4>
+              妄想
+             </h4>
+             <p>
+              心会不断地打妄想。你不可能记录妄想，因为他们生灭的速度太快了，就像是电流一样。
+             </p>
+             <ul>
+              <li>
+               <p>
+                但是他们只会住在两个领域，一个是未来， 一个是过去。这个心不想活在现在，而是过去和未来。
+               </p>
+              </li>
+              <li>
+               <p>
+                妄想包括愉快的和烦恼的妄想。愉快的就会crave，心会产生习性反应，我喜欢它，这件事情应该不断地发生。 执着，贪。烦恼的就会averse。
+               </p>
+              </li>
+              <li>
+               <p>
+                一个念头在心中升起了，然后另外一个又升起了， 没有连贯性，就像是疯子一样。 你不知道你为何产生这些念头，这些烦恼。
+               </p>
+              </li>
+             </ul>
+             <p>
+              你现在做的是一个非常严肃的事情。 你在对你的心做一个手术。就像你用刀切开伤口。这个切开的过程是非常不舒服的。你必须去面对它。没有麻醉药，并且你自己就是医生。你必须在心中有坚强的愿力。体会这种不愉悦的经验为的都是自己能更好。就像是洗冷水澡一样。
+             </p>
+             <p>
+              当下亲近的心接触到你内心深处的垃圾烦恼，就会产生极大的爆炸（冷水浇到煤炭的感觉）， 火山的爆炸。反映到你身上就是腰酸背痛，头痛。
+             </p>
+             <p>
+              每一天都有人想要逃走，就像做了一半的手术，然后走了。外科医生绝对不会让你离开。要有坚定的决心。要遵守一切的规矩，特别是时间表。
+             </p>
+             <h3>
+              第二天
+             </h3>
+             <p>
+              对待自己的心像是对待一个野猴子。有经验的驯兽师肯定不会去对野兽生气。你也不能期望在一两天内就训练好他。要有耐心。不然心就会狂乱，猴子就会更加癫狂，野性。
+             </p>
+             <h4>
+              你只有自己用功，自己去吃药，才能得救。
+             </h4>
+             <p>
+              例子：
+             </p>
+             <ul>
+              <li>
+               <p>
+                别人告诉你怎么从北京去长沙，但是你自己不走，你永远不知道北京是什么样子。眼见为实。
+               </p>
+              </li>
+             </ul>
+             <p>
+              法是什么？
+             </p>
+             <h4>
+              诸恶莫作，众善奉行，自净其意。 戒掉所有的罪恶行为。不断地净化你的心。
+             </h4>
+             <ul>
+              <li>
+               <p>
+                这个自然的法则是永恒的。
+               </p>
+              </li>
+              <li>
+               <p>
+                它适用于每一个人，每一个众生。
+               </p>
+              </li>
+              <li>
+               <p>
+                恶：不论是身体上还是行为上还是语言上，你所做的任何行为，只要会伤害任何生命，干扰其他生命，这种行为就是一种不善业。
+               </p>
+              </li>
+              <li>
+               <p>
+                善：最好的善是当你心的主人。不要因为任何一件事情跟任何人过不去。不要愤怒或者心怀恶意。
+               </p>
+              </li>
+             </ul>
+             <h4>
+              成佛是一项非常痛苦，非常艰难的工作。
+             </h4>
+             <h4>
+              实现法的步骤就是法门（圣道，八圣道）。
+             </h4>
+             <p>
+              正見解(正見)、正思惟、正語言(正語)、正行為(正業)、正生活(正命)、正精進、正意念(
+              <em>
+               正念
+              </em>
+              )、正禪定(正定)
+             </p>
+             <ul>
+              <li>
+               <p>
+                戒：遵守道德，不能伤害其他生命。
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  当一个人吸毒，喝酒的时候，他就慧变成心的努力。做那些他原本不想做的恶行。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  我必须要在一个祥和的安静的环境里面。周遭的气氛很重要。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  这些偷盗，杀人，淫邪的行为都是因为内心产生的贪婪，愤怒。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  你不可能在生气的同时内心也非常安详，也就是说，这些情绪带来的后果（焦躁不安）就是自然法则的惩罚。你永远都是你生气时候的第一个受害者。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  正当的语言： 不能说粗话，不能说谎，不能八卦
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  正当的行为：杀生，偷盗，喝酒吸毒，
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  正当的职业：诚实的工作而不伤害别人。
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    如果你的动机不当，假设你是医生，如果你想人生病，你也犯戒了。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    赚越多钱越好的念头就会让人变得疯狂，为了赚钱，不顾道义。就违背了正法。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+               </ul>
+              </li>
+              <li>
+               <p>
+                定：以清净为基础，使心专注
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  赌徒是行为模式，习惯，心的奴隶。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  正念，正确的觉知。觉知你现在身心的实像。只观察当下，而不是觉知过去和未来
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    对于观察呼吸，慢慢的你会对越来越微细的呼吸也感知的到。所觉知的范围越小，你的心就会变得越敏锐。
+                   </p>
+                   <ul>
+                    <li>
+                     <p>
+                      体会呼出和吸入的气息的温度不一样
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      生化反应
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      电磁反应在鼻子周围的。
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      只要活着，就会有感受。
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      可能是热的感受，观察热的感受，痒的感受，流汗的感受， 刺痛的感受，抽痛的感受，压力，扭力，张力，疼痛，干燥，潮湿。无法命名的感受。不用去想这是什么感受
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      这些感受会持续多久？ 他们会生灭，增强增强然后消失。
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      不管是什么感受，你都不要有习性反应，只是观察。让自然（法）扮演它的角色。这些感受都是实像。我的
+                      <strong>
+                       工作
+                      </strong>
+                      是观察这个实像。
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      不要去寻找特殊的感受。
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      身体的每一个细胞时时刻刻的都会升起感受、
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      <strong>
+                       不是观察呼吸，就是观察感受
+                      </strong>
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      如果有多种感受，就去选择微细的感受。比如痒和轻微的热。观察轻微的热。当身体其他部位的感受升起，不要去管他们。还是只是观察鼻孔的。
+                     </p>
+                    </li>
+                   </ul>
+                  </li>
+                 </ul>
+                </li>
+                <li>
+                 <p>
+                  正精进，当的努力，当你虚弱时，你要做运动来回复你的肌肉。同样你的心也是这样。心的运动包括以下几个
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    检查你自己，去除你心中的恶念。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    我的心现在没有升起这样那样的恶念，以后也要保持这样。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    现在我的心升起了这种那种善念，我必须护持它，增长他
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    现在我的心没有这种那种的善念，那么久打开你的心扉。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+                <li>
+                 <p>
+                  正定：定是心的专注。正定是没有迷惑，混淆，想象。你的心必须专注在实像。保持清醒的观察实像的时间越长，你的正定就越强。正确的意思是说你只观察实像，而不是想象（比如某个神的形象，复诵一段话）。专注。如果基础是贪嗔痴，比如猎人打猎，老虎捕猎来专注。虽然是定，但不是正定。虽然他们是完全的专注。扒手偷钱包的时候也很专注。但是正定没有贪嗔痴，没有任何想象。不是以贪念来观察呼吸。而是客观的关注。
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    持守戒律是为了第二个阶段的定
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    而修炼正定是为了第三阶段的慧（最深层的心，潜意识的层面，痛苦根源，痛苦增长的地方，要让这些之前积累的痛苦浮到表面，你才能打捞他们）
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+               </ul>
+              </li>
+              <li>
+               <p>
+                慧：
+               </p>
+              </li>
+             </ul>
+             <h3>
+              第三天
+             </h3>
+             <p>
+              严格坚守戒律，就是打下良好的基础，练习观息法。戒律对于正定是绝对必要的。 戒律是为了定，定是为了得到智慧，得到智慧是为了完全的解脱。这三者是相辅相成的。就像三脚架一样。必须每一个都得到目标。
+             </p>
+             <p>
+              佛陀从小开始遵守戒律，长大后学习了正定。但是心中还是有烦恼，这些烦恼就像是沉睡的火山一样。
+             </p>
+             <p>
+              慧
+             </p>
+             <ul>
+              <li>
+               <p>
+                正思维
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  在开始做呼吸练习的时候，会有很多妄想。他们会击败你，可能是愤怒，可能是欲望，可能是哀伤。妄想不断的冲击你。通过练习，妄想不会像前几天的那样激烈，虽然还是有，但是跟前几天是不一样的。大部分的念头，跟正法和正道有关。
+                 </p>
+                </li>
+               </ul>
+              </li>
+              <li>
+               <p>
+                正见
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  正确了解实像本来的样子。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  在太阳在乌云里面，就会很黑。只有当你有正思维的时候，你会参悟正见。三种智慧，前两种可能有好处，但也有可能有害。
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    闻慧：只是听到。如果从小就接受某种信仰，只觉得这样才是真确的，没有去质疑。这种文慧是束缚的。不管合理不合理，都会接受。描述不相信你就会下地狱，让你害怕。如果你相信你就会去天堂，让你贪婪。你只是相信，没有去理解、逻辑、思考
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    思惠：在知识上，理性上分析它，理解他， 有逻辑的。然后才接受。就像精明的律师一样。他可以证明只有这种信仰是正确的。然后去争辩。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    修慧：体会直接经验到的智慧。每一个人都必须亲自体验实像。佛陀自己体验的实像帮助不了其他人体验智慧。其他人只能得到鼓舞。只有修慧才能破除贪嗔痴的烦恼。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+                <li>
+                 <p>
+                  举例子证明三种智慧
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    一个人去餐馆，看看菜单（文慧），看看其他在用餐的人（思慧），都乐在其中，嘴里开始流口水，开始真正在享用食物（修慧）。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    一个人生病了去看医生。他不断地复诵药单（早上一颗药，晚上一颗），礼拜医生。问医生为什么开这些药，为什么得这些病。跟其他人争辩我的医生是最棒的，你们医生都是垃圾。佛陀开了法的药单，但是没有人要吃药，只是在告诉其他人说佛陀好厉害。然后复诵药单。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+                <li>
+                 <p>
+                  如果没有耳朵的功能，你就听不到声音。如果你的心没有体悟的能力，你就无法修慧。
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    例子：一个瞎子，他的朋友跟他说他今天吃了一个很好吃的甜点，但是没有带回来，瞎子问他：你没给我没关系，至少告诉我这个甜点是什么样的吧？朋友说甜点是白色的。瞎子说：什么是白色？ 白色不是黑色。什么是黑色？ 朋友找了找周围，有一只白色的鸭子，就说这只鸭子就是白色。瞎子摸了摸，哦我知道了，柔软就是白色。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    修定就是为了培养你的心的能力。气息的出入的经验的能力，然后是感受，就是这样慢慢深入，让你去感受自己原子的生灭。只有不断地去练习体会，你才能体会到更加细微的感受。一步一步来。从心的表面到新的深层。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+                <li>
+                 <p>
+                  你会明白，当你感受到身体上舒服的感受，你就想要更多，如果有不好的感受，你的习性就会厌恶他们，做出反应。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  比如说 万物是无常的，人都会死。你只是在闻慧和思慧上了解了这个道理。你并没有体验过这个实像。自然的法则存在在身体和身外的每一个地方。对于身体结构的法则，我们所记住的智慧是没有帮助的，必须要亲身体验。而要亲身体验就需要这种体验细微感受的能力。而这种能力是可以培养的。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  无常的智慧：当你读到书，在亲人死去的时候。你理解到了，现在去愤怒，争辩有什么意义了，反正我都是会化为乌有的。 但是第二天你又会照常，这种智慧只是知识上的理解。一般人都会听完开式，然后就会明白执着对我的影响。但是听完发现鞋子不见了，就会很焦虑，
+                  <strong>
+                   我
+                  </strong>
+                  的鞋子呢？
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  例子 - 无常
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    我看了一眼电灯泡，这一刹那和下一刹那的灯是不一样的。但是太快了，你的肉眼能力不够看到，只能用工具去检测。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    潜水，每一次的流水，没有一滴是一样的。你的印象还是认为这是同一条河流。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    今天的我和昨天的我是同一个我。并不是，每一刹那，银子出生了，然后又死去了。生灭生灭。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    科学家会证明整个世界就是生灭， 波动。佛陀也知道，只是佛陀是亲自体验，而科学家是通过思慧了解的。科学家还是会有痛苦，紧张。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    一个小孩，进过20年后，变化很多，这是同一个孩子吗？
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    如果一个人只在知识上，情感上去接受这个法则，不够，需要亲自深入自己的内在，身和心是怎样的，才能解脱。整个身体只是次元子粒子的组成。8种
+                   </p>
+                   <ul>
+                    <li>
+                     <p>
+                      4种物质：
+                     </p>
+                    </li>
+                    <li>
+                     <p>
+                      4种特性：
+                     </p>
+                    </li>
+                   </ul>
+                  </li>
+                  <li>
+                   <p>
+                    生命就是原子的波动和生灭。一秒钟之内一个粒子可以生灭多少次（泡沫箱）- 1e20
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    你去探索自己身心的感受的时候，并不是因为好奇心，而是因为要解脱痛苦。由于无名（ignorenace）而导致的痛苦。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+                <li>
+                 <p>
+                  一切皆苦：观察这种疼痛的感受，训练自己客观的观察这种痛苦的感受。接下来，你就会感受到能量流过全身。早上的禅坐很舒服，感受到了愉悦。但是晚上又很疼痛。身上愉悦的感受也是苦
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  无我的智慧：哪一个波动是我呢？ 如果他灭去了， 那么我也灭去了。我你他也就是表面的实像。我到底真正拥有什么呢？ 当一个人到了40岁，会去买染发剂，想骗骗别人，骗骗自己。怎么可能骗过自然的法则呢？ 但是自然规律就是不断的衰老。如果你可以控制自己的身体，你对他说：不， 你不可以变老，你必须活到500.
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    比如说困扰我多年的一个问题，对女性的执着
+                   </p>
+                   <ul>
+                    <li>
+                     <p>
+                      让我来分析一下，什么是漂亮
+                     </p>
+                     <ul>
+                      <li>
+                       <p>
+                        从头开始分析，头发，乌黑的秀发：但是当一丝头发调入碗里面的时候，你会立即扔掉它。所以只有当头发属于整体时候，他才会漂亮。
+                       </p>
+                      </li>
+                      <li>
+                       <p>
+                        牙齿，就像珍珠一样。但是如果牙齿掉下里了，你会保存在珠宝盒？当他分离整体时候，就是骨头而已。
+                       </p>
+                      </li>
+                     </ul>
+                    </li>
+                   </ul>
+                  </li>
+                 </ul>
+                </li>
+               </ul>
+              </li>
+             </ul>
+             <h3>
+              第四天
+             </h3>
+             <p>
+              我们清扫的是烦恼的枝干。只有深入他的根，才能破除病因。如果不产出跟，就会一次接一次的长出来，春风吹又生。
+             </p>
+             <p>
+              为什么我必须从头到脚来移动注意力呢？
+             </p>
+             <ul>
+              <li>
+               <p>
+                alternative是当一个部位有强烈感受时候，你就移到哪里。这样不断的从一个部位移动到另外一个部位，结果有一些部位就会被忽略掉。这样子就会忽略掉那些部位所呈现的更加微细的感受。那么，你的心还是很粗糙，只能感受粗重的感受。因为你一直在训练感受这种粗糙的感受。
+               </p>
+              </li>
+              <li>
+               <p>
+                感受到全身上下每一个部位的感受是一个重要的阶段。身体的每一个细胞都会有感受，有些是粗重的，你感受到，有些是细微的。你感受不到。要对细微的用心。
+               </p>
+              </li>
+              <li>
+               <p>
+                顺序不重要，但是每次都要按照同一个顺序。因为你可能无意中忘记，遗漏一些部位。
+               </p>
+              </li>
+             </ul>
+             <p>
+              当一个感受很强烈时候， 我是去关注他，还是继续按照我的顺序?
+             </p>
+             <ul>
+              <li>
+               <p>
+                按照顺序。因为要训练你的微细的感受
+               </p>
+              </li>
+             </ul>
+             <p>
+              <strong>
+               整个世间只是燃烧和波动。
+              </strong>
+              直接体验自然的法则。
+             </p>
+             <p>
+              多长时间扫描一次？
+             </p>
+             <ul>
+              <li>
+               <p>
+                10分钟左右
+               </p>
+              </li>
+              <li>
+               <p>
+                太慢就会无聊
+               </p>
+              </li>
+              <li>
+               <p>
+                太快就没有意识
+               </p>
+              </li>
+              <li>
+               <p>
+                从大范围 - 一大块一大块，然后慢慢缩小。 你最开始的阶段是一大片的才有一点感受。
+               </p>
+              </li>
+              <li>
+               <p>
+                只观察表面，而不是内在。 以后可以感受到。
+               </p>
+              </li>
+             </ul>
+             <p>
+              不要去寻找特殊的感受（清安，痛快），所谓感受就是你身体上的任何感觉。比如热，流汗，震动，刺痛，麻木。疼痛。都是感受。哪有什么特别的东西，全部都是自然的现象，显现出来而已。你的本分就是不断的观察，其他的就留给法。你不断的从头移到脚。你可能会有一些部位是盲目的，空白的。但是由于你的心过于粗糙，部位的感受过于细微。然后就保持平等心，遇到空白，就停留一分钟，不要有感觉期待，希望，贪求。 可能憎恨这个空白部位。你只要接受它，没有感受，就没有感受。
+              <strong>
+               皮肤和空气的感受。
+              </strong>
+              然后向前移动。这个技巧
+             </p>
+             <ul>
+              <li>
+               <p>
+                培养心对各种部位的感受
+               </p>
+              </li>
+              <li>
+               <p>
+                学习客观的感受，而不是带着贪婪 或者 憎恨
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  深层的潜意识的心有两个习性反应
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    喜欢的就贪婪
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    讨厌的就厌恶
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+               </ul>
+              </li>
+             </ul>
+             <p>
+              佛陀领悟的实像
+             </p>
+             <ol start="1">
+              <li>
+               <p>
+                变化是一直存在的，不论是内在的，还是外在的。
+               </p>
+              </li>
+              <li>
+               <p>
+                一切变化都是有原因的。因缘。这些因果的关系不断相互形成。宇宙也由于这些因果关系不断地运转着。种瓜得瓜，种豆得豆。什么因就有什么果 - 例子， 种两个不同的种子，一个甜的，一个哭的。对一个很慈悲，对一个很残忍。这并不是谁对谁残忍，而只是自然法则。
+               </p>
+               <ol start="1">
+                <li>
+                 <p>
+                  我们对于因缘的问题是 - 当我播种的时候，都漫不经心。等到收成时，我们却说- 这不是我想要的，我想要甜的。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  例子：一个佛陀弟子的父亲去世了，他哭的很伤心。弟子请佛陀超度他的父亲。石头和奶油放到水里。如果你父亲做的业是善业，那么他就会像奶油一样浮在上面。我们都想要依赖别人来带给我们光明，但其实因在我们自己身上。
+                 </p>
+                </li>
+               </ol>
+              </li>
+             </ol>
+             <p>
+              所有的行为可以分为3种
+             </p>
+             <ul>
+              <li>
+               <p>
+                身体 - 身业
+               </p>
+              </li>
+              <li>
+               <p>
+                语言 - 语业
+               </p>
+              </li>
+              <li>
+               <p>
+                意识 - 意业
+               </p>
+              </li>
+             </ul>
+             <p>
+              心是一切行为的先驱。你在生活中所表现出的行为，只是你心的产品。
+             </p>
+             <p>
+              一般普通的人认知是身体最重要，语言其次，意识最不重要。但当人们开始内光，会发现意识是最重要。因为每一个行为的因都是由于心意。语言和身体只是反应。投射，尺子。比方说，我内心有愤怒，然后他就会转换成辱骂别人。如果有枪的话可能会杀了他。
+             </p>
+             <p>
+              你的心跟你的语言和身体就像是你和你的影子。如果你又一颗善心，你的语言和身体就会一直快乐，你走到哪里，快乐就会跟到哪里。
+             </p>
+             <p>
+              你所得到的果是根据你的心，而不是你的语言和身体行为。行为别人是可以看到的，但是心看不到。
+             </p>
+             <ul>
+              <li>
+               <p>
+                比如，医生和土匪都是把刀子插到其他人肚子里面，但是医生是为了救人，土匪是为了钱财。
+               </p>
+              </li>
+             </ul>
+             <p>
+              我们要了解心的运作。拆分，消融心的感受。微细的畅快的流动感。最后到感受到原子的生灭。
+             </p>
+             <p>
+              我们还是在幼儿园的心态 - 最终我们会指导有100多种心态。
+             </p>
+             <p>
+              心的部分
+             </p>
+             <ul>
+              <li>
+               <p>
+                认知
+               </p>
+              </li>
+              <li>
+               <p>
+                辨别：六式：眼耳鼻舌身意。去认识到某件事情发生。这6种的目标就是去辨别。根据过去的业缘。
+               </p>
+              </li>
+              <li>
+               <p>
+                感受：给好的话有好的反应，你的身体就会有一个愉悦的感受
+               </p>
+              </li>
+              <li>
+               <p>
+                行运sankara：业 - 心的习性反应，这是产生了行动。产生厌恶对不喜欢的东西。憎恨的反应。你的sankara就像是一个种子。有3种
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  在水面上划线
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  在沙滩上划线
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  在石头上刻字：这就是我们造作的业，我所造的业会越来越深。每天都在做。
+                 </p>
+                </li>
+               </ul>
+              </li>
+             </ul>
+             <p>
+              内观人在死亡的时候肯定不会伤心，因为他们知道这是因果，变化，是自然的。只有懂得生活的艺术，才有可能知道死亡的艺术。
+             </p>
+             <p>
+              如果你在改变你对习性反应的能力，你就能改变你的业。 有的习性还是会在，但有几个刹那你会浮出水面，然后你就逐渐改变了。
+             </p>
+             <h3>
+              第五天
+             </h3>
+             <p>
+              从头顶到脚趾，从脚趾到头顶的顺序。
+             </p>
+             <p>
+              心被习性模式给绑架了，囚犯了。
+             </p>
+             <p>
+              表层的心和深层的心因为习性模式被阻隔了。我们现在需要架起桥梁。
+             </p>
+             <p>
+              身上的感受非常重要：因为他是了解自己的最好途径。
+             </p>
+             <p>
+              不能只从只是上接受：痛苦是普遍存在的。必须学习观察痛苦的实像。当你学会了如何观察痛苦后。这种普遍的实像就变成了一个圣地 - 第一圣地。任何人只要认真的观察，痛苦就只是痛苦，二不升起习性反应。
+             </p>
+             <ul>
+              <li>
+               <p>
+                例子：打坐一小时，很痛苦，真是难熬的折磨啊。每一分钟都像一个小时。保持平等心的意义是，观察疼痛，也观察愉悦。并不会产生习性反应，不会去厌恶疼痛，贪求愉悦。
+               </p>
+              </li>
+              <li>
+               <p>
+                过去这些疼痛不但是肉体的疼痛，你还自己加上了心里的疼痛。如果只是肉体的痛苦，痛苦的感觉会减轻很多。以前只要有疼痛的感受，你就会感到不安，现在没有任何疼痛的感受会击败你。
+               </p>
+              </li>
+              <li>
+               <p>
+                当你观察一个非常疼痛的部位，就像是医生去检查而已。医生只是客观的检查。不要对疼痛产生认同。让我来看看疼痛的中心点在哪里，他的影响范围有多大。这些部位，除了疼痛， 还有压迫感，之后又感受到了热的感受。也许还有脉动的感受。一般情况下，面对痛苦，你都会升起习性反应，但是偶尔你会观察，这种时候痛苦就是第一圣地。
+               </p>
+              </li>
+             </ul>
+             <p>
+              第二圣地：造成痛苦的深层原因。
+             </p>
+             <ul>
+              <li>
+               <p>
+                一般情况下都会归因于外在。某人某事。
+               </p>
+              </li>
+              <li>
+               <p>
+                你会通过实际的经验去了解造成痛苦的深层原因。
+               </p>
+              </li>
+              <li>
+               <p>
+                就像是在看病，你首先有症状，然后找原因。然后找解决办法
+               </p>
+              </li>
+             </ul>
+             <p>
+              第三圣地：解决痛苦
+             </p>
+             <p>
+              第四圣地：前三圣地的整个过程。
+             </p>
+             <p>
+              为什么周遭会有这么多痛苦呢？
+             </p>
+             <p>
+              是因为我们有执着，贪恋和厌恶。你希望如你所愿。你想要排除你不喜欢的事情。----痛苦一定存在。从出生开始，我们就进入痛苦。我们有贪念，贪念就会转化成执着，然后是焦躁不安。
+             </p>
+             <p>
+              苦
+             </p>
+             <ul>
+              <li>
+               <p>
+                生老病死： 生是苦的，老师苦的。&hellip;&hellip;
+               </p>
+              </li>
+              <li>
+               <p>
+                爱别离
+               </p>
+              </li>
+              <li>
+               <p>
+                造成这些痛苦的原因
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  贪念， 比如你想要疼痛消失，或者想要一种乐，只要你无法满足你的期望，你就会痛苦。
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  5运：
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  心：认知，辨别，感受，习性反应
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  执着：
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    我执：辨别的部分是我吗？习性反应的部分？ 感受完就灭去。是我吗？我们并不知道什么是我，但是对于我会非常的执着。我不会难过别人的手表，但是会难过我自己的手表。一直强调&rdquo;我的&ldquo;，&rdquo;我的&ldquo;。
+                   </p>
+                  </li>
+                 </ul>
+                </li>
+               </ul>
+              </li>
+             </ul>
+             <p>
+              两个执着的例子
+             </p>
+             <ul>
+              <li>
+               <p>
+                奶奶找钱包
+               </p>
+              </li>
+              <li>
+               <p>
+                找禅师帮忙搞大象
+               </p>
+              </li>
+             </ul>
+             <p>
+              为什么执着就一定带来痛苦烦恼？ 越深的执着就越深的烦恼？
+             </p>
+             <ul>
+              <li>
+               <p>
+                因为我一直在变化，我的业一直在变化，所以我的执着永远不可能实现。于是我们就会永恒的痛苦。
+               </p>
+              </li>
+              <li>
+               <p>
+                我拥有的东西永远存在，但是我变老了，我死了。
+               </p>
+              </li>
+              <li>
+               <p>
+                我没死，我的东西没了，消失了。就会产生痛苦。对我所有的东西感到执着。自己的观点，自己的语言，自己的眼镜，自己的哲学，自己的宗教。我们都执着自己所看到的颜色。
+               </p>
+              </li>
+              <li>
+               <p>
+                也就是说
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  身上的六根 + 身外的六层 -》因为六根造成了接触 -》 接触造成了感受 - 》身上的感受 &mdash;》 一个小小的欲望产生 -》贪念、厌恶 -》执着&mdash;》痛苦
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  无名，愚痴（在经验上的） -》 习性反应（行蕴）不停地训练 -》 世运
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  总结： 十二因缘
+                 </p>
+                 <p>
+                  <a href="https://zh.wikipedia.org/wiki/%E6%97%A0%E6%98%8E" rel="noopener noreferrer" target="_blank">
+                   無明
+                  </a>
+                  、2.
+                  <a href="https://zh.wikipedia.org/wiki/%E8%A1%8C_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   行
+                  </a>
+                  、3.
+                  <a href="https://zh.wikipedia.org/wiki/%E8%AD%98" rel="noopener noreferrer" target="_blank">
+                   識
+                  </a>
+                  、4.
+                  <a href="https://zh.wikipedia.org/wiki/%E5%90%8D%E8%89%B2" rel="noopener noreferrer" target="_blank">
+                   名色
+                  </a>
+                  、5.
+                  <a href="https://zh.wikipedia.org/wiki/%E5%85%AD%E8%99%95" rel="noopener noreferrer" target="_blank">
+                   六入
+                  </a>
+                  、6.
+                  <a href="https://zh.wikipedia.org/wiki/%E8%A7%B8_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   觸
+                  </a>
+                  、7.
+                  <a href="https://zh.wikipedia.org/wiki/%E5%8F%97_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   受
+                  </a>
+                  、8.
+                  <a href="https://zh.wikipedia.org/wiki/%E6%84%9B_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   愛
+                  </a>
+                  、9.
+                  <a href="https://zh.wikipedia.org/wiki/%E5%8F%96_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   取
+                  </a>
+                  、10.
+                  <a href="https://zh.wikipedia.org/wiki/%E6%9C%89_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   有
+                  </a>
+                  、11.
+                  <a href="https://zh.wikipedia.org/wiki/%E7%94%9F_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                   生
+                  </a>
+                  、12.
+                  <a href="https://zh.wikipedia.org/wiki/%E8%80%81%E6%AD%BB" rel="noopener noreferrer" target="_blank">
+                   老死
+                  </a>
+                  。
+                 </p>
+                </li>
+               </ul>
+              </li>
+              <li>
+               <p>
+                无明，
+                <strong>
+                 过去世
+                </strong>
+                <a href="https://zh.wikipedia.org/wiki/%E7%85%A9%E6%83%B1_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                 烦恼
+                </a>
+                带来的惑，蒙蔽了
+                <a href="https://zh.wikipedia.org/wiki/%E7%9C%9F%E5%A6%82_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                 真如
+                </a>
+                <a href="https://zh.wikipedia.org/wiki/%E6%9C%AC%E6%80%A7_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                 本性
+                </a>
+                ，所以叫无明。
+               </p>
+              </li>
+              <li>
+               <p>
+                行，
+                <strong>
+                 过去世
+                </strong>
+                身口意造作的一切善
+                <a href="https://zh.wikipedia.org/wiki/%E6%A5%AD_(%E4%BD%9B%E6%95%99)" rel="noopener noreferrer" target="_blank">
+                 業
+                </a>
+                或者不善业，其中包括身行、口行、心行。
+               </p>
+              </li>
+              <li>
+               <p>
+                識，其中包括六種：眼識、耳識、鼻識、舌識、身識、意識
+                <a href="https://zh.wikipedia.org/wiki/%E5%8D%81%E4%BA%8C%E5%9B%A0%E7%BC%98#cite_note-2" rel="noopener noreferrer" target="_blank">
+                 <sup>
+                  [2]
+                 </sup>
+                </a>
+                。
+               </p>
+              </li>
+              <li>
+               <p>
+                名色，名即是心，指心只有名相而无形质；色指身体，指托胎后至第五个七日，身体各部分如手脚等都已形成。
+               </p>
+              </li>
+              <li>
+               <p>
+                六入，指在名色之后，各种感觉器官和思维功能都已产生，叫做六入，即
+                <a href="https://zh.wikipedia.org/wiki/%E5%85%AD%E6%A0%B9" rel="noopener noreferrer" target="_blank">
+                 六根
+                </a>
+                。
+               </p>
+              </li>
+              <li>
+               <p>
+                触，出胎以后，至三四岁时，六根虽能接触
+                <a href="https://zh.wikipedia.org/wiki/%E5%85%AD%E5%A1%B5" rel="noopener noreferrer" target="_blank">
+                 六尘
+                </a>
+                ，但是未有苦或乐的想法，叫作触。
+               </p>
+              </li>
+              <li>
+               <p>
+                受，从五六岁至十二三岁时，六根能分别六尘中的好恶境界，但是沒能起贪淫之心，叫作受。
+               </p>
+              </li>
+              <li>
+               <p>
+                愛，從十四五歲至十八九歲時，貪求享樂等
+                <a href="https://zh.wikipedia.org/wiki/%E5%A2%83%E7%95%8C" rel="noopener noreferrer" target="_blank">
+                 境界
+                </a>
+                ，但是未能廣遍追求，是名為愛。捨受的本性是寧靜的，而這也能成為愛的目標。
+               </p>
+              </li>
+              <li>
+               <p>
+                取，從二十歲後，貪欲變多，到處追求
+                <a href="https://zh.wikipedia.org/wiki/%E4%BA%94%E5%A1%B5" rel="noopener noreferrer" target="_blank">
+                 五塵
+                </a>
+                境，叫作取。
+               </p>
+              </li>
+              <li>
+               <p>
+                有，因为追求诸境而引起善恶业，积集牵引，产生
+                <a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E6%9C%89" rel="noopener noreferrer" target="_blank">
+                 三有
+                </a>
+                的结果，叫作有。
+               </p>
+              </li>
+              <li>
+               <p>
+                生，指因为现世的善恶之业，
+                <strong>
+                 未來世
+                </strong>
+                还在
+                <a href="https://zh.wikipedia.org/wiki/%E5%85%AD%E9%81%93" rel="noopener noreferrer" target="_blank">
+                 六道
+                </a>
+                <a href="https://zh.wikipedia.org/wiki/%E5%9B%9B%E7%94%9F" rel="noopener noreferrer" target="_blank">
+                 四生
+                </a>
+                中受生，叫作生。
+               </p>
+              </li>
+              <li>
+               <p>
+                老死，指在
+                <strong>
+                 未来世
+                </strong>
+                受生之后，
+                <a href="https://zh.wikipedia.org/wiki/%E4%BA%94%E8%95%B4" rel="noopener noreferrer" target="_blank">
+                 五蕴
+                </a>
+                之身，成熟后又开始败坏，叫作老死。
+               </p>
+              </li>
+             </ul>
+             <p>
+              自杀无法解决问题。人自杀的时候是痛苦的。临终的时候的心念会变成下一个痛苦。
+             </p>
+             <p>
+              毁掉6根？身心无法杀死
+             </p>
+             <p>
+              毁掉6层？
+             </p>
+             <p>
+              我们要从感受下手，去打破这个12循环。如果一个愉悦的反应反正是要失去的。
+             </p>
+             <ul>
+              <li>
+               <p>
+                升起习性反应 -》不断地增长痛苦
+               </p>
+              </li>
+              <li>
+               <p>
+                不升起习性反应，只是观察 - 无常无常。感受就是打破这个生死链的关键。没有感受就不会有贪欲
+               </p>
+              </li>
+             </ul>
+             <p>
+              可以去看自己的过去的生命。我已经出生了无数次了。 每一次出生以后就不停地扭转。为了寻找这个房子的建造者，我进入了轮回。你无法再为我建造下一个房子了，我把建筑材料都摧毁了，这些材料就是业。并且将贪去除了。
+             </p>
+             <h3>
+              第六天
+             </h3>
+             <p>
+              当你口渴了， 你去找水，然后没找到水，
+             </p>
+             <ul>
+              <li>
+               <p>
+                你会很焦虑，没有找到水你会死掉
+               </p>
+              </li>
+              <li>
+               <p>
+                平常心，没找到水就思考，还有什么其他办法，继续找水。
+               </p>
+              </li>
+             </ul>
+             <p>
+              你不是在贪念某种东西，而是贪念某种感受。而当这个贪念满足了，感受也就不见了。你还想要这种感受，于是你又感念其他东西。 你得到你要， 你就变得无趣，你又要别的东西。你是为了贪念而贪念。酒瘾，其实是对感受上了瘾。
+             </p>
+             <h4>
+              四大元素：地水火风。
+             </h4>
+             <ul>
+              <li>
+               <p>
+                地大：重量的感受
+               </p>
+              </li>
+              <li>
+               <p>
+                风大：运动的感受
+               </p>
+              </li>
+              <li>
+               <p>
+                火大：温度
+               </p>
+              </li>
+              <li>
+               <p>
+                水大：黏着
+               </p>
+              </li>
+             </ul>
+             <h4>
+              为他们4种食物
+             </h4>
+             <ul>
+              <li>
+               <p>
+                两种物质
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  吃饭 - 狠辣的东西，你会在身体某处有火大的感受。如果是很油腻的东西，你感受到的是地大 ------ 如果你吃的健康的食物，你就会很健康
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  生活的环境 - 欧洲和非洲。
+                 </p>
+                </li>
+               </ul>
+              </li>
+              <li>
+               <p>
+                两种心里的
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  习性状态， 现在的业：比如愤怒，就会产生火大，如果是害怕，就是风大
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  过去的习性：心无时无刻都在获得造业的影响。
+                 </p>
+                </li>
+               </ul>
+              </li>
+             </ul>
+             <p>
+              如果你一直在造新的业，那你就开始浮现旧业。但需要时间。一直修行修行，你的旧业就消除了。你只有自己负责自己的业障。每个人都得为自己修行。
+             </p>
+             <h4>
+              5障
+             </h4>
+             <ul>
+              <li>
+               <p>
+                贪：你们在制造贪念，想要涅槃。
+               </p>
+              </li>
+              <li>
+               <p>
+                嗔：我的痛除外，并不是无常，而是恒常。
+               </p>
+              </li>
+              <li>
+               <p>
+                两种内心的反抗对你很敌人。他不让你好好修行
+               </p>
+              </li>
+              <li>
+               <p>
+                困， 就加重呼吸
+               </p>
+              </li>
+              <li>
+               <p>
+                无精打采，好奇心，想做这个，想做那个
+               </p>
+              </li>
+              <li>
+               <p>
+                疑虑：我观察呼吸有什么好处？这是哪门子的老师？
+               </p>
+               <ul>
+                <li>
+                 <p>
+                  怀疑法
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  怀疑老师
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  怀疑自己不行
+                 </p>
+                </li>
+               </ul>
+              </li>
+             </ul>
+             <h3>
+              第七天
+             </h3>
+             <p>
+              治疗生活的膏药。第十天是一个对外在世界的缓冲。
+             </p>
+             <p>
+              还是要学习持续的用功，你要觉知你在工作，行走，洗澡。觉知身上的感受。哪里在动，就觉知那里的感受。
+             </p>
+             <p>
+              你躺下的时候，就感知有感受的问题。有些人可能整晚都不用睡，会很担心。不用。你需要睡眠1）身体休息2）心休息。
+             </p>
+             <p>
+              5位朋友
+             </p>
+             <ul>
+              <li>
+               <p>
+                情感信心：自己能够越修越好。但是盲目的信仰会变成我们强大的敌人。智慧就像是眼睛，信心就像是腿。如果可以结合就变成了
+               </p>
+              </li>
+             </ul>
+             <p>
+              礼敬：具有佛陀特质的人。
+             </p>
+             <ul>
+              <li>
+               <p>
+                一个人去除了所有的贪嗔痴，没有内在烦恼
+               </p>
+              </li>
+              <li>
+               <p>
+                杀死所有敌人的人。外面没有敌人，敌人就是烦恼。
+               </p>
+              </li>
+              <li>
+               <p>
+                靠自己的努力达到了完全的觉悟。
+               </p>
+              </li>
+              <li>
+               <p>
+                对于理论和实践都有最高的领悟
+               </p>
+              </li>
+              <li>
+               <p>
+                所有的行为都是为了别人的好，不去伤害别人
+               </p>
+              </li>
+             </ul>
+             <p>
+              纯洁的6法的特质
+             </p>
+             <ul>
+              <li>
+               <p>
+                可以用很简单的文字描述，是大家都能了解的东西
+               </p>
+              </li>
+              <li>
+               <p>
+                在自己身上可以觉悟的真相。是你自己亲身体验的。
+               </p>
+              </li>
+              <li>
+               <p>
+                开始有益处，中途有益处，终点有益处。有收获，你所做的任何努力都会有收获
+               </p>
+              </li>
+              <li>
+               <p>
+                在感受上体会真相。
+               </p>
+              </li>
+             </ul>
+             <p>
+              解脱有4个阶段
+             </p>
+             <ul>
+              <li>
+               <p>
+                信
+               </p>
+              </li>
+              <li>
+               <p>
+                勤：划船的时候却被绑住了绳子
+               </p>
+              </li>
+              <li>
+               <p>
+                觉知：觉知总是当下的事情
+               </p>
+              </li>
+              <li>
+               <p>
+                正定：清净的心作为基础。
+               </p>
+              </li>
+              <li>
+               <p>
+                智慧 - 平等心。
+               </p>
+              </li>
+              <li>
+              </li>
+             </ul>
             </div>
+           </div>
+          </details>
+         </div>
+        </details>
+        <button class="read-next" data-read-next type="button">
+         <span>
+          继续读：第二次内观 &middot; 桂东 &middot; 2024
+         </span>
+         <span aria-hidden="true">
+          &darr;
+         </span>
+        </button>
+       </div>
+      </details>
+      <details class="story-chapter" id="second-retreat">
+       <summary>
+        <span class="chapter-number">
+         02
+        </span>
+        <span class="chapter-title">
+         第二次内观
+        </span>
+        <span class="chapter-meta">
+         桂东 &middot; 2024｜脑与心、平等心，以及回到生活后的失败记录
+        </span>
+       </summary>
+       <div class="chapter-body">
+        <p class="chapter-intro">
+         这一次没有从出行攻略写起。我删掉了旧账号密码、详细路线、同行者姓名、携带清单和相关图片，从回来后最先记下的&ldquo;师兄聊天&rdquo;开始。
+        </p>
+        <div class="source-note">
+         <p>
+          这一部分混合了我的体验、同修谈话和我当时对课程观点的理解。像&ldquo;意识 / 潜意识&rdquo;&ldquo;身体反应&rdquo;&ldquo;高血压&rdquo;等表述，不应当作已经证实的神经科学或医学结论。
+         </p>
         </div>
-    </nav>
-
-    <!-- Article Section -->
-    <section id="article" style="padding-top: 100px; padding-bottom: 80px;">
-        <div class="article-container">
-            <a href="../../projects.html" class="back-link" data-i18n="projects.back">← 返回项目</a>
-            
-            <article class="post">
-                <header class="post-header">
-                    <h1 data-i18n="vipassana.title">我如何接触到 Vipassana（内观）｜10天静默体验与收获</h1>
-                    <p class="post-meta" data-i18n="vipassana.meta">2022-11-06 · 约 7 分钟阅读</p>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: -1rem; margin-bottom: 1.5rem;"><em data-i18n="vipassana.lastUpdate">最后更新：2024-10-09</em></p>
-                    
-                    <div class="intensity-badge">
-                        <span data-i18n="vipassana.intensity.label">课程强度：</span>
-                        <span data-i18n="vipassana.intensity.days">10天</span> <span>·</span>
-                        <span data-i18n="vipassana.intensity.silent">静默</span> <span>·</span>
-                        <span data-i18n="vipassana.intensity.hours">每日≈10小时</span> <span>·</span>
-                        <span data-i18n="vipassana.intensity.nophone">无手机</span>
-                    </div>
-                    
-                    <div class="tldr-card">
-                        <strong data-i18n="vipassana.tldr.title">TL;DR</strong>
-                        <ul>
-                            <li data-i18n="vipassana.tldr.1">我参加了一次 10 天静默内观（Vipassana）课程：无手机、无交流、每天长时间静坐。</li>
-                            <li data-i18n="vipassana.tldr.2">最大收获不是"神秘体验"，而是对 <strong>觉察（awareness）</strong> 与 <strong>平等心（equanimity）</strong> 的训练更可感了。</li>
-                            <li data-i18n="vipassana.tldr.3">我主观感到：专注更稳定、对身体与情绪的"早期信号"更敏感；睡眠与一些身体不适在课程中阶段性缓解。</li>
-                            <li data-i18n="vipassana.tldr.4"><strong>重要：</strong>这只是个人体验；不构成医疗建议；不同人反应差异很大。</li>
-                        </ul>
-                    </div>
-                </header>
-
-                <section>
-                    <h2 data-i18n="vipassana.section1.title">1) 我为什么去</h2>
-                    <p data-i18n="vipassana.section1.p1">我第一次听说 Vipassana（内观）是在 2021 年 11 月：一位朋友辞职后写复盘，提到静坐对他影响很大。我当时在香港报名，结果排期等了一年，终于在 2022-10-26 参加。</p>
-                    <p data-i18n="vipassana.section1.p2">我想验证的不是"灵性结果"，而是一个更现实的问题：在高强度约束下，我能否观察并管理自己的注意力与反应？</p>
-                </section>
-
-                <section>
-                    <h2 data-i18n="vipassana.section2.title">2) 我做了哪些挑战</h2>
-                    <p data-i18n="vipassana.section2.p1">这次课程对我来说像"极限版的注意力训练营"：</p>
-                    <ul>
-                        <li data-i18n="vipassana.section2.li1"><strong>10 天静默：</strong>不说话、不交流</li>
-                        <li data-i18n="vipassana.section2.li2"><strong>无电子设备：</strong>手机/电脑/手表/网络都没有</li>
-                        <li data-i18n="vipassana.section2.li3"><strong>饮食约束：</strong>以素食为主（具体安排以课程为准）</li>
-                        <li data-i18n="vipassana.section2.li4"><strong>作息固定：</strong>早起、睡眠压缩（不同中心可能不同）</li>
-                        <li data-i18n="vipassana.section2.li5"><strong>长时间静坐：</strong>每天大量时间在坐禅与行禅之间切换</li>
-                        <li data-i18n="vipassana.section2.li6"><strong>生活极简：</strong>大部分时间只剩 睡觉/吃饭/练习/必要活动</li>
-                    </ul>
-                    <p data-i18n="vipassana.section2.p2">我没有期待"神奇效果"，更多是想把自己放进一个可控的实验环境里。</p>
-                </section>
-
-                <section>
-                    <h2 data-i18n="vipassana.section3.title">3) 参加完后，最大的收获是什么</h2>
-                    
-                    <h3 data-i18n="vipassana.section3.1.title">3.1 心（mind）：更早觉察到"反应的起点"</h3>
-                    <p data-i18n="vipassana.section3.1.p1">我最明显的变化是：情绪或冲动还没长成"剧情"，我更早就能察觉到它的身体信号。</p>
-                    <ul>
-                        <li data-i18n="vipassana.section3.1.li1"><strong>以前：</strong>刺激 → 自动反应 → 事后才意识到</li>
-                        <li data-i18n="vipassana.section3.1.li2"><strong>现在（更接近）：</strong>刺激 → 感受到身体/心理的起势 → 选择是否继续反应</li>
-                    </ul>
-                    <p data-i18n="vipassana.section3.1.p2">对我来说，这种"提前量"很关键：它让自控更像技术问题，而不是道德自责。</p>
-                    
-                    <h3 data-i18n="vipassana.section3.2.title">3.2 身（body）：部分状态在课程中阶段性改善</h3>
-                    <p data-i18n="vipassana.section3.2.p1">我主观感到睡眠质量上升、起床更清醒；一些身体不适在课程中有缓解（包括疼痛与不适感的处理方式变化）。</p>
-                    <p data-i18n="vipassana.section3.2.p2">但我不把它当作稳定结论：离开课程环境后能否保持，需要长期观察与复盘。</p>
-                </section>
-
-                <section>
-                    <h2 data-i18n="vipassana.section4.title">4) 我理解的核心机制：觉察 + 平等心</h2>
-                    
-                    <div class="callout callout-note">
-                        <strong data-i18n="vipassana.section4.note.title">Note：术语解释</strong>
-                        <p data-i18n="vipassana.section4.note.awareness"><strong>觉察（awareness）：</strong>更清楚地"看到正在发生什么"（呼吸、触感、情绪起势）。</p>
-                        <p data-i18n="vipassana.section4.note.equanimity"><strong>平等心（equanimity）：</strong>看到之后，不立刻追加"喜欢/讨厌/必须马上改变"的自动反应。</p>
-                    </div>
-                    
-                    <p data-i18n="vipassana.section4.p1">这两者结合起来，带来一个实际效果：</p>
-                    <p data-i18n="vipassana.section4.p2">情绪还在，但我更少给它"添柴"。它升起、变化、减弱、消失的过程更可见；我更像在观察一个过程，而不是被它拖走。</p>
-                </section>
-
-                <section>
-                    <h2 data-i18n="vipassana.section5.title">5) 我如何在日常复用（3 个短例子）</h2>
-                    <ul>
-                        <li data-i18n="vipassana.section5.li1"><strong>吃饭：</strong>发现"还想继续吃"的冲动升起时，先停一拍，观察它；冲动往往会自己变弱。</li>
-                        <li data-i18n="vipassana.section5.li2"><strong>愤怒：</strong>外在保持礼貌离开，同时在内心观察愤怒的身体感（热、紧、冲）；不急着用脑内辩论把它扩大。</li>
-                        <li data-i18n="vipassana.section5.li3"><strong>分心：</strong>注意力被吸走时，不用羞耻感加罚自己；把"走神 → 拉回"的动作当成训练次数。</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2 data-i18n="vipassana.section6.title">6) 重要提醒（Warning）</h2>
-                    
-                    <div class="callout callout-warning">
-                        <strong data-i18n="vipassana.section6.warning.title">Warning：免责声明</strong>
-                        <ul>
-                            <li data-i18n="vipassana.section6.warning.li1"><strong>这是个人体验：</strong>不同人收获可能很小，甚至不适。</li>
-                            <li data-i18n="vipassana.section6.warning.li2"><strong>它不是医疗替代：</strong>如果你有明确的身心健康问题，请优先遵循专业医疗建议。</li>
-                            <li data-i18n="vipassana.section6.warning.li3"><strong>不要追逐体验：</strong>把"舒服/特殊感觉"当成目标，可能反而更焦躁。</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h2 data-i18n="vipassana.appendix.title">附录</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;" data-i18n="vipassana.appendix.desc">以下内容为详细记录与参考资料，默认折叠。点击展开查看。</p>
-                    
-                    <details>
-                        <summary data-i18n="vipassana.appendixA.title">附录A：逐日笔记（2022-2024）</summary>
-                        <div style="margin-top: 1rem;">
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;"><em data-i18n="vipassana.appendixA.desc">说明：以下为个人练习记录，按时间顺序整理。部分内容为当时的主观体验，不代表普遍结论。</em></p>
-                            
-                            <h3 data-i18n="vipassana.appendixA.2022.title">2022年记录</h3>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2022.first.title">2022-11-06｜初次体验总结</h4>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.start">起点：</strong><span data-i18n="vipassana.appendixA.2022.first.start.text">2021-11 在香港准备辞职时，看见朋友从 Google 辞职后的反思文章提到 Vipassana 影响很大；尝试报名但要排队，一等一年。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.attend">正式参加：</strong><span data-i18n="vipassana.appendixA.2022.first.attend.text">2022-10-26 起参加 10 天、每天约 10 小时静坐的课程（香港中心）。</span></p>
-                            
-                            <h5 data-i18n="vipassana.appendixA.2022.first.challenges">挑战的约束</h5>
-                            <ul>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge1">10 天不说话</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge2">10 天不用手机/电脑/手表/网络</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge3">10 天不吃肉（此前没尝试过、也不想逼自己）</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge4">10 天睡 5 小时（11pm–4am）</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge5">10 天每天静坐 10 小时（此前最长 30 分钟、且在椅子上）</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge6">10 天见不到任何女生（此前没尝试过、也不想逼自己）</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.challenge7">10 天只做 4 件事：睡觉/吃饭/打坐/上厕所</li>
-                            </ul>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.expectation">预期：</strong><span data-i18n="vipassana.appendixA.2022.first.expectation.text">不期待"神奇效果"。</span></p>
-                            
-                            <h5 data-i18n="vipassana.appendixA.2022.first.gain">最大收获</h5>
-                            <p data-i18n="vipassana.appendixA.2022.first.gain.text">从第 3 天开始出现"心灵与身体的修复感"。</p>
-                            
-                            <h5 data-i18n="vipassana.appendixA.2022.first.boundary">边界说明</h5>
-                            <ul>
-                                <li data-i18n="vipassana.appendixA.2022.first.boundary1">只是个人体验，不代表所有人</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.boundary2">同行者有人感受轻微</li>
-                                <li data-i18n="vipassana.appendixA.2022.first.boundary3">不保证课程后修复能力可持续；我会继续对身体做实验观察</li>
-                            </ul>
-                            
-                            <h5 data-i18n="vipassana.appendixA.2022.first.mind">心灵（mind）层面</h5>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.mind.sensitivity">感受力增强：</strong><span data-i18n="vipassana.appendixA.2022.first.mind.sensitivity.text">感受出现更快、更早觉察到细微伤口/身心变化。听觉敏感：音乐音量从"90%不过瘾"到"55%足够"，能更清晰感受低频震动。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.mind.focus">专注力增强：</strong><span data-i18n="vipassana.appendixA.2022.first.mind.focus.text">能把注意力移动到身体任意部位并持续观察，焦虑/无聊减少。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.mind.desire">欲望与注意力：</strong><span data-i18n="vipassana.appendixA.2022.first.mind.desire.text">过去：外界刺激→注意力被劫持→闭眼也会在想象中持续→自责。现在：欲望仍会升起，但可"看着它燃烧"、不再添柴，观察其自行消退（此问题仍在持续练习中）。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.mind.understanding">"悟道前后"故事的理解：</strong><span data-i18n="vipassana.appendixA.2022.first.mind.understanding.text">悟道前：吃饭想着挑水；挑水想着砍柴。悟道后：吃饭只吃饭；挑水只挑水；砍柴只砍柴。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.mind.emotion">情绪处理：</strong><span data-i18n="vipassana.appendixA.2022.first.mind.emotion.text">快乐：觉察"贪求更多"的升起，观察后自然消退，进食速度变慢更细致。愤怒：被辱骂后外在仍微笑离开，但内在观察愤怒"燃烧→消退"，减少"心猴式追问"。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.mind.compassion">同情/悲悯心：</strong><span data-i18n="vipassana.appendixA.2022.first.mind.compassion.text">对人：面对"吹水者"，先觉察鄙夷/自负，再观察其消退，转为怜悯与理解。对动物：遇到蟑螂，先恐惧/厌恶，观察 3 分钟后转为同情（"蟑螂君"段落）。</span></p>
-                            
-                            <h5 data-i18n="vipassana.appendixA.2022.first.body">身体（body）层面</h5>
-                            <div class="callout callout-warning" style="margin: 1rem 0;">
-                                <strong data-i18n="vipassana.appendixA.2022.first.body.warning">重要说明</strong>
-                                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;" data-i18n="vipassana.appendixA.2022.first.body.warning.text">以下记录涉及个人身心健康状况。作者提到双相情感障碍与焦虑，并在服药；以下均为个人主观体验记录，不构成医学结论。如有类似状况，请咨询专业医疗人员。</p>
-                            </div>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.body.sleep">睡眠：</strong></p>
-                            <ul>
-                                <li><strong data-i18n="vipassana.appendixA.2022.first.body.sleep.fall">入睡：</strong><span data-i18n="vipassana.appendixA.2022.first.body.sleep.fall.text">过去需半片安眠药；课程后"10 分钟、一般床品、开灯/噪音也能睡着"</span></li>
-                                <li><strong data-i18n="vipassana.appendixA.2022.first.body.sleep.quality">质量：</strong><span data-i18n="vipassana.appendixA.2022.first.body.sleep.quality.text">第 4–10 天明显提升；起床精力充沛</span></li>
-                                <li><strong data-i18n="vipassana.appendixA.2022.first.body.sleep.duration">时长：</strong><span data-i18n="vipassana.appendixA.2022.first.body.sleep.duration.text">过去平均 9 小时且白天易困；课程期间夜间约 5 小时</span></li>
-                                <li><strong data-i18n="vipassana.appendixA.2022.first.body.sleep.wake">起床状态：</strong><span data-i18n="vipassana.appendixA.2022.first.body.sleep.wake.text">过去严重起床气/疲惫；课程后不需冷水+咖啡提神</span></li>
-                            </ul>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.body.migraine">偏头痛：</strong><span data-i18n="vipassana.appendixA.2022.first.body.migraine.text">第 7 天上午 10 点静坐时发作；观察后约半小时自行消退。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.first.body.pain">腰背颈痛：</strong><span data-i18n="vipassana.appendixA.2022.first.body.pain.text">颈椎问题既往史；第 4 天起感到从腰背肩脊逐步改善；静坐耐受从 10 分钟痛到可 1 小时不变姿势。</span></p>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2022.why.title">2022-11-07｜为什么我会喜欢上打坐</h4>
-                            <p><strong data-i18n="vipassana.appendixA.2022.why.motive">动机：</strong><span data-i18n="vipassana.appendixA.2022.why.motive.text">好奇心 + 学习欲；从"外观（研究外部世界）"扩展到"内观（观察内部）"。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.why.concept">关键概念：</strong><span data-i18n="vipassana.appendixA.2022.why.concept.text">我提出"意"是新的"感觉器官"（类比：盲人获得视力）。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.why.method">方法论倾向：</strong><span data-i18n="vipassana.appendixA.2022.why.method.text">希望结合医学/解剖学解释内在体验：用理论做地图，再用体验 cross-check。举例：眼痒/结痂/黏液，从"内观推断"与"临床解释（过敏/结膜炎/干眼）"并置比较（仅为推断，非医疗诊断）。</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.why.metaphor">比喻：</strong><span data-i18n="vipassana.appendixA.2022.why.metaphor.text">身体/皮肤/器官像"游乐园"；多数人因缺乏内观能力而"未买票"。内观像拼乐高：需要自己拼出才能玩；科学理论有时可当地图，但也可能不完善。</span></p>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2022.sleep.title">2022-11-09｜为什么睡眠时间少但精力充沛</h4>
-                            <p><strong data-i18n="vipassana.appendixA.2022.sleep.use">睡眠用途：</strong><span data-i18n="vipassana.appendixA.2022.sleep.use.text">1) 意识休息 2) 身体休息</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.sleep.core">核心观点：</strong><span data-i18n="vipassana.appendixA.2022.sleep.core.text">身体休息：躺着即可。意识休息：需要"让脑子专注于一件事"，减少 A↔B 跳跃的思绪消耗。类比：弹钢琴时 100% 专注，脑不累、手腕会累；学习可 5 小时不累；但思绪乱跳会累。归因：课程后更能专注在呼吸上，从而"意识得到休息"（推测）。</span></p>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2022.dedication.title">2022-11-11｜"回向"段落</h4>
-                            <p><strong data-i18n="vipassana.appendixA.2022.dedication.core">核心句式：</strong><span data-i18n="vipassana.appendixA.2022.dedication.core.text">将修行功德回向六道众生、冤亲债主</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.dedication.metaphor">比喻：</strong><span data-i18n="vipassana.appendixA.2022.dedication.metaphor.text">修行像"储蓄阳光"，回向像"举镜折射分享"；光已照过自身一次，仍可继续折射给需要者</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2022.dedication.purpose">目的表述：</strong><span data-i18n="vipassana.appendixA.2022.dedication.purpose.text">解结、减少妒忌/怨恨（课程中听到的表述）。</span></p>
-                            
-                            <h3 data-i18n="vipassana.appendixA.2024.title">2024年记录</h3>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2024.prep.title">2024-09-01｜出行准备：桂东内观（行程与清单）</h4>
-                            <p><strong data-i18n="vipassana.appendixA.2024.prep.plan">计划：</strong><span data-i18n="vipassana.appendixA.2024.prep.plan.text">内观计划（2024-09-12 去桂东）</span></p>
-                            <p><strong data-i18n="vipassana.appendixA.2024.prep.trip">行程：</strong></p>
-                            <ul>
-                                <li>10:20 出发</li>
-                                <li>11:19 长沙南 高铁 G809</li>
-                                <li>12:16 郴州西</li>
-                                <li>14:00 从燕泉广场出发坐商务车去桂东（约 1:15）</li>
-                                <li>17:00 到达：湖南省郴州市桂东县大塘镇蛟龙村原蕉源村村部（无门牌号）</li>
-                            </ul>
-                            <p><strong data-i18n="vipassana.appendixA.2024.prep.items">携带物品：</strong><span data-i18n="vipassana.appendixA.2024.prep.items.text">枕头、水杯、浴巾、卫生纸/湿纸巾；5 条内裤、5 双袜子；长裤/宽松裤（穿短裤去）；感冒药、喉咙痛药（强调一定要带）；手机/手表充电器</span></p>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2024.info.title">2024-09-13｜报名/资料/中心信息</h4>
-                            <p data-i18n="vipassana.appendixA.2024.info.text">报名链接、中国资料下载、交通方式、中心要求/提供/不提供、联系电话、纪律提醒等详细信息见<a href="#appendix-b">附录B</a>。</p>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2024.chat.title">2024-09-13｜师兄聊天要点</h4>
-                            <ul>
-                                <li>分开"脑/意识"与"心/潜意识"</li>
-                                <li>"平等心"无法用脑量化；用脑量化是妄念</li>
-                                <li>Saṅkhāra（行/习性反应）的清理：年少/年长不同</li>
-                                <li>痛与时间无关</li>
-                                <li>日常持五戒的重要性；常听开示</li>
-                                <li>"至性"："会一直轮回的灵魂"</li>
-                                <li>"无我"："我不是老师，我是旧生"，指出"我执"</li>
-                                <li>身心互相影响：身体着凉→嗔恨增加；生气→血流速度增快→高血压累积（非医学结论）</li>
-                                <li>潜意识持续运作（含深睡）；感受不断发生；觉知是要培养的</li>
-                                <li>反思：妄念多、习惯用理性分析而非用心观察感受</li>
-                                <li>"画像/投射"隐喻：在心里画他人画像并起贪嗔；那是画像不是"真人"</li>
-                                <li>以后谈话/教导/时间想用在"苦、苦的止息"，不谈离苦无关的话题</li>
-                            </ul>
-                            
-                            <h4 data-i18n="vipassana.appendixA.2024.practice.title">2024-09-13～2024-10-09｜后续练习日志</h4>
-                            <ul>
-                                <li><strong>2024-09-13：</strong>在家观呼吸/内观比寺庙禅修更难，心更易被过去未来分心</li>
-                                <li><strong>2024-09-14：</strong>早上定的时间大于晚上</li>
-                                <li><strong>2024-09-16：</strong>昨晚 20m；早上 1h + 35m 阅读 + 40m；扫描多在早上且 30m 之后出现；周末集中静坐必要</li>
-                                <li><strong>2024-09-17：</strong>晚 25m，白天 1h+35m；最后 35m 定和平等心最高；蚊子咬但"咬就咬吧"并生怜悯</li>
-                                <li><strong>2024-09-22：</strong>参加共修，一天 4h；共修 2h 定力不够；计划每周天加练 1h</li>
-                                <li><strong>2024-09-25：</strong>看房 4h 晚上没打坐；早 5 点打坐，观察身体/梦境：右侧起床头痛、无便意、不想早餐、肠胃不通气；梦：司机/茶馆"最低消费"情节</li>
-                                <li><strong>2024-09-26：</strong>晚 10m 早 20m；念头欲望多；左眼压高；晚饭增加肠胃负担；不能坚持根因：不够"信"，五盖-疑；治标：有陪伴时能坚持</li>
-                                <li><strong>2024-09-27：</strong>晚 25m 早 30m；因打鼓与游戏晚睡；对身边人出言不逊归因：打坐减少→不平静；吃多犯晕；股市大涨引发骄傲</li>
-                                <li><strong>2024-10-09：</strong>国庆假期后改为早晚各半小时；方法指导：无感受观呼吸；空白区域停留 2 分钟以进入观察；强调不问因缘，重在觉知当下感受；接受理论的原因：统一解释更简洁 + 亲身体验（粗重/微细/法喜/慈悲观）</li>
-                            </ul>
-                        </div>
-                    </details>
-                    
-                    <details id="appendix-b">
-                        <summary data-i18n="vipassana.appendixB.title">附录B：外部链接与资料（中心信息、交通、报名）</summary>
-                        <div style="margin-top: 1rem;">
-                            <div class="callout callout-warning" style="margin-bottom: 1.5rem;">
-                                <strong data-i18n="vipassana.appendixB.warning.title">敏感信息提示</strong>
-                                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;" data-i18n="vipassana.appendixB.warning.text">以下包含账号密码等敏感信息，请妥善保管，勿公开分享。</p>
-                            </div>
-                            
-                            <h3 data-i18n="vipassana.appendixB.registration.title">报名与资料下载</h3>
-                            <ul>
-                                <li><strong data-i18n="vipassana.appendixB.registration.link">报名链接：</strong><a href="https://ng.shandao8.com/" target="_blank" rel="noopener noreferrer">https://ng.shandao8.com/</a></li>
-                                <li><strong data-i18n="vipassana.appendixB.registration.download">中国资料下载：</strong><a href="http://ng.81355.net/download.html" target="_blank" rel="noopener noreferrer">http://ng.81355.net/download.html</a></li>
-                            </ul>
-                            
-                            <details style="margin: 1rem 0;">
-                                <summary style="font-size: 0.95rem;" data-i18n="vipassana.appendixB.registration.account">账号密码（点击展开）</summary>
-                                <ul style="margin-top: 0.5rem;">
-                                    <li><strong data-i18n="vipassana.appendixB.registration.account.label">账户：</strong>oldstudent</li>
-                                    <li><strong>密码：</strong>behappy</li>
-                                </ul>
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;"><em data-i18n="vipassana.appendixB.registration.account.note">注：此为公开资料下载账号，非个人账户。</em></p>
-                            </details>
-                            
-                            <h3 data-i18n="vipassana.appendixB.transport.title">交通方式</h3>
-                            <p data-i18n="vipassana.appendixB.transport.text1">郴州西高铁站出站后 → 乘坐"福城快车"到中心</p>
-                            <p data-i18n="vipassana.appendixB.transport.text2">在<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener noreferrer">"郴汽集团"公众号</a>：出行服务 → 福城快车，搜索从郴州到桂东的车次</p>
-                            <p><strong data-i18n="vipassana.appendixB.transport.tip">提示：</strong><span data-i18n="vipassana.appendixB.transport.tip.text">九座商务车，座位有限，需提前买票；上车前司机会联系</span></p>
-                            <p><strong data-i18n="vipassana.appendixB.transport.destination">导航目的地：</strong><span data-i18n="vipassana.appendixB.transport.destination.text">桂东内观中心；车到中心请司机停车</span></p>
-                            
-                            <h3 data-i18n="vipassana.appendixB.location.title">中心地点</h3>
-                            <p data-i18n="vipassana.appendixB.location.address">湖南省郴州市桂东县大塘镇蛟龙村原蕉源村村部（无门牌号）</p>
-                            <p><span data-i18n="vipassana.appendixB.location.zip">邮编：</span>423502</p>
-                            <p style="margin-top: 0.5rem;"><a href="https://map.baidu.com/search/桂东内观中心/@12945600,3600000,13z?querytype=s&da_src=shareurl&wd=桂东内观中心&c=1&src=0&pn=0&sug=0&l=13&b=(12945600,3600000;12945600,3600000)&from=webapi&biz_forward=%7B%22scaler%22:1,%22styles%22:%22pl%22%7D" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); text-decoration: none;">📍 在地图上查看</a></p>
-                            
-                            <h3 data-i18n="vipassana.appendixB.items.title">必带/不提供/提供</h3>
-                            <p><strong data-i18n="vipassana.appendixB.items.must">请务必携带：</strong></p>
-                            <ul>
-                                <li data-i18n="vipassana.appendixB.items.must1">年龄满 65 岁需健康证明</li>
-                                <li data-i18n="vipassana.appendixB.items.must2">如开课前已有感冒、咳嗽、发烧、打喷嚏等症状：请主动取消课程，完全康复后再来</li>
-                            </ul>
-                            
-                            <p><strong data-i18n="vipassana.appendixB.items.not">中心不提供：</strong></p>
-                            <ul>
-                                <li data-i18n="vipassana.appendixB.items.not1">水杯、牙膏牙刷、毛巾、洗衣粉、肥皂、拖鞋、卫生纸、卫生巾</li>
-                                <li data-i18n="vipassana.appendixB.items.not2">个人衣物要求：宽松舒适、避免会产生摩擦声音的衣服</li>
-                                <li data-i18n="vipassana.appendixB.items.not3">路面上下坡：请带防滑舒适的鞋子（重要）</li>
-                            </ul>
-                            
-                            <p><strong data-i18n="vipassana.appendixB.items.provided">中心提供：</strong></p>
-                            <ul>
-                                <li data-i18n="vipassana.appendixB.items.provided1">餐具</li>
-                                <li data-i18n="vipassana.appendixB.items.provided2">子母被（厚/薄）、床单、被套、电热毯、垫被、枕头等床品</li>
-                                <li data-i18n="vipassana.appendixB.items.provided3">坐垫、盖腿毛巾被/毛毯</li>
-                                <li data-i18n="vipassana.appendixB.items.provided4">盆、桶一套</li>
-                            </ul>
-                            
-                            <h3 data-i18n="vipassana.appendixB.contact.title">联系电话</h3>
-                            <ul>
-                                <li><strong data-i18n="vipassana.appendixB.contact.office">办公室（值班时间）：</strong><a href="tel:19958975163" target="_blank" rel="noopener noreferrer">19958975163</a></li>
-                                <li><strong data-i18n="vipassana.appendixB.contact.registration">报名咨询电话：</strong><a href="tel:19176551171" target="_blank" rel="noopener noreferrer">19176551171</a></li>
-                                <li><strong data-i18n="vipassana.appendixB.contact.center">中心联系电话：</strong><a href="tel:19958975163" target="_blank" rel="noopener noreferrer">19958975163</a></li>
-                                <li><strong data-i18n="vipassana.appendixB.contact.emergency">紧急事件转告：</strong><span data-i18n="vipassana.appendixB.contact.emergency.text">家属致电中心 <a href="tel:19958975163" target="_blank" rel="noopener noreferrer">19958975163</a></span></li>
-                            </ul>
-                            
-                            <h3 data-i18n="vipassana.appendixB.discipline.title">纪律提醒</h3>
-                            <ul>
-                                <li data-i18n="vipassana.appendixB.discipline1">禅修期间必须严格遵守规定、遵守老师指导、禁语、不与外界联系</li>
-                                <li data-i18n="vipassana.appendixB.discipline2">必须全程参与直至课程结束，不得中途退出</li>
-                                <li data-i18n="vipassana.appendixB.discipline3">课程期间不允许与外界接触及使用电话；紧急事件由家属致电中心代为转告</li>
-                            </ul>
-                        </div>
-                    </details>
-                    
-                    <details>
-                        <summary data-i18n="vipassana.appendixC.title">附录C：术语表（中英/巴利对照 + 一句解释）</summary>
-                        <div style="margin-top: 1rem;">
-                            <h3 data-i18n="vipassana.appendixC.section1">C1. 核心术语</h3>
-                            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.chinese">中文</th>
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.english">English / Pāli</th>
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.explanation">一句解释</th>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>内观</strong></td>
-                                    <td style="padding: 0.5rem;">Vipassanā (Pāli)</td>
-                                    <td style="padding: 0.5rem;">通过直接观察身心"当下感受"的洞见训练。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>观呼吸</strong></td>
-                                    <td style="padding: 0.5rem;">Ānāpāna / mindfulness of breathing</td>
-                                    <td style="padding: 0.5rem;">以呼吸为锚点训练专注与当下觉知。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>平等心</strong></td>
-                                    <td style="padding: 0.5rem;">Equanimity / Upekkhā (Pāli)</td>
-                                    <td style="padding: 0.5rem;">对愉快/不愉快感受不追逐也不排斥的平衡态度。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>觉知</strong></td>
-                                    <td style="padding: 0.5rem;">Awareness / Sati (Pāli)</td>
-                                    <td style="padding: 0.5rem;">对当下身心现象持续清醒地"知道"。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>感受</strong></td>
-                                    <td style="padding: 0.5rem;">Sensation / Vedanā (Pāli)</td>
-                                    <td style="padding: 0.5rem;">身心对刺激的直接体验（苦/乐/不苦不乐）。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>习性反应</strong></td>
-                                    <td style="padding: 0.5rem;">Conditioning / Saṅkhāra (Pāli)</td>
-                                    <td style="padding: 0.5rem;">对感受自动生起的偏好/厌恶反应及其累积痕迹。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>贪</strong></td>
-                                    <td style="padding: 0.5rem;">Craving / Lobha 或 Ragā</td>
-                                    <td style="padding: 0.5rem;">对愉快感受的抓取与延长冲动。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>嗔</strong></td>
-                                    <td style="padding: 0.5rem;">Aversion / Dosa</td>
-                                    <td style="padding: 0.5rem;">对不愉快感受的排斥与敌意冲动。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>痴/无明</strong></td>
-                                    <td style="padding: 0.5rem;">Delusion / Moha</td>
-                                    <td style="padding: 0.5rem;">对无常、无我、苦等实相的不了解而盲目反应。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>五盖</strong></td>
-                                    <td style="padding: 0.5rem;">Five hindrances / Nīvaraṇa</td>
-                                    <td style="padding: 0.5rem;">阻碍定与慧的五类心障。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>疑</strong></td>
-                                    <td style="padding: 0.5rem;">Doubt / Vicikicchā</td>
-                                    <td style="padding: 0.5rem;">对方法/道路的犹疑导致练习中断。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>五戒</strong></td>
-                                    <td style="padding: 0.5rem;">Five precepts</td>
-                                    <td style="padding: 0.5rem;">用行为与语言的自律减少内心不安，利于禅修。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>六根</strong></td>
-                                    <td style="padding: 0.5rem;">Six sense bases</td>
-                                    <td style="padding: 0.5rem;">眼耳鼻舌身意六类"接触入口"。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>六尘</strong></td>
-                                    <td style="padding: 0.5rem;">Sense objects</td>
-                                    <td style="padding: 0.5rem;">色声香味触法六类对象。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>意</strong></td>
-                                    <td style="padding: 0.5rem;">Mind (as a sense base)</td>
-                                    <td style="padding: 0.5rem;">作为"意根"的输入通道：念头、情绪、记忆、想象等。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>回向</strong></td>
-                                    <td style="padding: 0.5rem;">Dedication of merit</td>
-                                    <td style="padding: 0.5rem;">将修行所得善意/功德指向他者与众生。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>法喜</strong></td>
-                                    <td style="padding: 0.5rem;">Joy (in practice)</td>
-                                    <td style="padding: 0.5rem;">练习中出现的喜悦体验。</td>
-                                </tr>
-                            </table>
-                            
-                            <h3 data-i18n="vipassana.appendixC.section2">C2. 三学、三宝、四圣谛、八圣道</h3>
-                            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.chinese">中文</th>
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.english">English / Pāli</th>
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.explanation">一句解释</th>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>戒</strong></td>
-                                    <td style="padding: 0.5rem;">Morality / Sīla</td>
-                                    <td style="padding: 0.5rem;">戒除不善行为与言语，为心安稳打基础。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>定</strong></td>
-                                    <td style="padding: 0.5rem;">Concentration / Samādhi</td>
-                                    <td style="padding: 0.5rem;">训练心"安住一处"的稳定与掌控力。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>慧</strong></td>
-                                    <td style="padding: 0.5rem;">Wisdom / Paññā</td>
-                                    <td style="padding: 0.5rem;">通过洞见净化习性反应，直观实相。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>三宝</strong></td>
-                                    <td style="padding: 0.5rem;">Three Jewels / Ti-ratana</td>
-                                    <td style="padding: 0.5rem;">佛（觉者）法（道路/法则）僧（修行群体）的依止对象。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>四圣谛</strong></td>
-                                    <td style="padding: 0.5rem;">Four Noble Truths / Cattāri Ariyasaccāni</td>
-                                    <td style="padding: 0.5rem;">苦、集、灭、道：问题、起因、终点、路径四框架。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>八圣道</strong></td>
-                                    <td style="padding: 0.5rem;">Noble Eightfold Path / Ariya Aṭṭhaṅgika Magga</td>
-                                    <td style="padding: 0.5rem;">以正见到正定的八个训练面向。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正见</strong></td>
-                                    <td style="padding: 0.5rem;">Right view / Sammā-diṭṭhi</td>
-                                    <td style="padding: 0.5rem;">以如实知见理解因果与实相。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正思维</strong></td>
-                                    <td style="padding: 0.5rem;">Right intention / Sammā-saṅkappa</td>
-                                    <td style="padding: 0.5rem;">让动机朝向离苦与善意。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正语</strong></td>
-                                    <td style="padding: 0.5rem;">Right speech / Sammā-vācā</td>
-                                    <td style="padding: 0.5rem;">避免说谎、离间、恶口、绮语等伤害性语言。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正业</strong></td>
-                                    <td style="padding: 0.5rem;">Right action / Sammā-kammanta</td>
-                                    <td style="padding: 0.5rem;">避免杀盗邪淫等破坏性行为。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正命</strong></td>
-                                    <td style="padding: 0.5rem;">Right livelihood / Sammā-ājīva</td>
-                                    <td style="padding: 0.5rem;">以不伤害他人的方式谋生。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正精进</strong></td>
-                                    <td style="padding: 0.5rem;">Right effort / Sammā-vāyāma</td>
-                                    <td style="padding: 0.5rem;">防恶、断恶、生善、增善四类努力。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正念</strong></td>
-                                    <td style="padding: 0.5rem;">Right mindfulness / Sammā-sati</td>
-                                    <td style="padding: 0.5rem;">对身受心法保持持续觉察。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>正定</strong></td>
-                                    <td style="padding: 0.5rem;">Right concentration / Sammā-samādhi</td>
-                                    <td style="padding: 0.5rem;">在正确对象上稳定专注，支持洞见。</td>
-                                </tr>
-                            </table>
-                            
-                            <h3 data-i18n="vipassana.appendixC.section3">C3. 三特性、四无量心、五蕴、四大等</h3>
-                            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.chinese">中文</th>
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.english">English / Pāli</th>
-                                    <th style="text-align: left; padding: 0.5rem; font-weight: 600;" data-i18n="vipassana.appendixC.table.explanation">一句解释</th>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>无常</strong></td>
-                                    <td style="padding: 0.5rem;">Impermanence / Anicca</td>
-                                    <td style="padding: 0.5rem;">一切体验与现象都在生灭变化。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>无我</strong></td>
-                                    <td style="padding: 0.5rem;">Non-self / Anattā</td>
-                                    <td style="padding: 0.5rem;">找不到恒常不变的"主体自我"。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>苦</strong></td>
-                                    <td style="padding: 0.5rem;">Unsatisfactoriness / Dukkha</td>
-                                    <td style="padding: 0.5rem;">对无常事物的执取通常会带来不圆满。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>慈</strong></td>
-                                    <td style="padding: 0.5rem;">Loving-kindness / Mettā</td>
-                                    <td style="padding: 0.5rem;">不求回报地祝愿他者安乐。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>悲</strong></td>
-                                    <td style="padding: 0.5rem;">Compassion / Karuṇā</td>
-                                    <td style="padding: 0.5rem;">对他者痛苦的同情与愿其离苦。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>喜</strong></td>
-                                    <td style="padding: 0.5rem;">Sympathetic joy / Muditā</td>
-                                    <td style="padding: 0.5rem;">对他者顺利与善事的随喜。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>舍</strong></td>
-                                    <td style="padding: 0.5rem;">Equanimity / Upekkhā</td>
-                                    <td style="padding: 0.5rem;">不偏不倚地面对顺逆境。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>五蕴</strong></td>
-                                    <td style="padding: 0.5rem;">Five aggregates / Pañca-khandhā</td>
-                                    <td style="padding: 0.5rem;">色受想行识构成"人"的经验集合。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>色蕴</strong></td>
-                                    <td style="padding: 0.5rem;">Form / Rūpa</td>
-                                    <td style="padding: 0.5rem;">身体与物质层面的经验。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>受蕴</strong></td>
-                                    <td style="padding: 0.5rem;">Feeling / Vedanā</td>
-                                    <td style="padding: 0.5rem;">苦乐舍的感受层面。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>想蕴</strong></td>
-                                    <td style="padding: 0.5rem;">Perception / Saññā</td>
-                                    <td style="padding: 0.5rem;">识别、命名、归类与表征。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>行蕴</strong></td>
-                                    <td style="padding: 0.5rem;">Formations / Saṅkhāra</td>
-                                    <td style="padding: 0.5rem;">习性反应与心理驱动的形成。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>识蕴</strong></td>
-                                    <td style="padding: 0.5rem;">Consciousness / Viññāṇa</td>
-                                    <td style="padding: 0.5rem;">对象出现时的识知活动。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>四大</strong></td>
-                                    <td style="padding: 0.5rem;">Four elements / Mahā-bhūtāni</td>
-                                    <td style="padding: 0.5rem;">地水火风：硬/湿/热/动的体验分类。</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 0.5rem;"><strong>业</strong></td>
-                                    <td style="padding: 0.5rem;">Kamma (karma)</td>
-                                    <td style="padding: 0.5rem;">会对未来产生影响的身语意行为链。</td>
-                                </tr>
-                            </table>
-                            
-                            <div class="callout callout-warning" style="margin-top: 2rem;">
-                                <strong data-i18n="vipassana.appendixC.warning.title">重要说明</strong>
-                                <p data-i18n="vipassana.appendixC.warning.text">以上术语表基于个人学习与实践记录整理，部分内容涉及医学/临床解释（如过敏、免疫球蛋白E、结膜炎、干眼等）仅为"并置解释/推断"，不构成医疗诊断。如有身心健康问题，请咨询专业医疗人员。</p>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-            </article>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; Zi Yin</p>
-            <div class="footer-links">
-                <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
-                <a href="https://www.linkedin.com/in/zi-yin-96a61772/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../../i18n.js"></script>
-    <script src="../../script.js"></script>
-</body>
+        <h2>
+         师兄聊天：
+        </h2>
+        <p>
+         分开脑和心. 一开始用脑就要注意了. 脑和心就用布丁白色和鸭子的盲人故事解释， 不是同一个维度世界的东西. 我还是停留在意识的世界， 不是潜意识的世界
+        </p>
+        <p>
+         最重要的是平等心， 你想要量化平等心， 如何用脑量化只能在心的世界存在的东西 - 就是妄念.&nbsp;
+        </p>
+        <p>
+         年少和年长的sankara要消的不同
+        </p>
+        <p>
+         痛和时间无关
+        </p>
+        <p>
+         日常生活持五戒的重要性
+        </p>
+        <p>
+         时常听开示
+        </p>
+        <p>
+         至性: 指会一直轮回的那个&ldquo;灵魂&rdquo;
+        </p>
+        <p>
+         当我说师兄是我老师的时候他说： 这就是觉知、 我不是老师， 我是旧生- 无我， 我执的体现.
+        </p>
+        <p>
+         我的烦恼心比较重
+        </p>
+        <p>
+         身和心之间的相互影响
+        </p>
+        <p>
+         心的反应（情绪） 会反映到身体上的堵塞
+        </p>
+        <h2>
+         身和心的交互反应
+        </h2>
+        <ul>
+         <li>
+          <p>
+           身会影响到心
+          </p>
+          <ul>
+           <li>
+            <p>
+             身体着凉以后生病心里感受到不愉快, 嗔恨心增加
+            </p>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <p>
+           心会影响到身
+          </p>
+          <ul>
+           <li>
+            <p>
+             生气以后的血流速度增快, 经常生气慢慢累积高血压
+            </p>
+           </li>
+          </ul>
+         </li>
+        </ul>
+        <h2>
+         意识(脑)和心(潜意识)的交互反应
+        </h2>
+        <ul>
+         <li>
+          <p>
+           潜意识时时刻刻都在运作, 包括睡觉(深度睡眠时, 意识,脑子停止, 潜意识依然运行, e.g. 熟睡的时候有蚊子叮咬, 习性反应去拍打他)
+          </p>
+         </li>
+         <li>
+          <p>
+           潜意识时刻对感受进行反应, 但只有这种反应积累的足够多, 才会造成意识层面的&ldquo;感受&rdquo;, 意识层面的&ldquo;感受&rdquo;就是我们要培养的觉知.
+          </p>
+         </li>
+         <li>
+          <p>
+           感受时刻在发生(因为六根一直在接触六尘)
+          </p>
+         </li>
+         <li>
+          <p>
+           意识是可以思维, 分析, 逻辑的. 我擅长的是意识层面的解构和重构和组构.但对于我的潜意识我认知甚少. 我对身体上感受的觉知就像盲人对颜色的觉知一样. 我的妄念太多. 我太习惯用理性(脑子)意识去观察和分析, 而不是用心去观察感受.
+          </p>
+         </li>
+         <li>
+          <p>
+           潜意识只有 认知, 辨别, 感受, 习性反应.
+          </p>
+         </li>
+        </ul>
+        <h2>
+         我是谁?
+        </h2>
+        <ul>
+         <li>
+          <p>
+           没有我, 感受到无我， 只是次元子粒子的不断生灭
+          </p>
+         </li>
+         <li>
+          <p>
+           自己在心里有一尊自己的雕塑， 不允许坍塌. 并且自己还想树立起在别人心中自己的雕塑. 还想在别人心中树立自己的孩子的雕塑&nbsp;
+          </p>
+         </li>
+         <li>
+          <p>
+           自己画了其他人的画像, 并且对画像起了贪嗔的反应. 那都是画像. 没有他人, 也没有我. 就像灯, 就像河流.
+          </p>
+         </li>
+        </ul>
+        <h2>
+         内观 + 外观 --》 更加全面的观察事物 (盲人摸象)
+        </h2>
+        <blockquote class="pull-quote">
+         我抛弃了之前的价值观。现在我的谈话、我的教导、我的时间，想用在两件事：苦；苦的止息。
+        </blockquote>
+        <section id="practice-log">
+         <div class="practice-log">
+          <h2>
+           后续记录
+          </h2>
+          <p class="entry-date">
+           <time datetime="2024-09-13">
+            2024-09-13
+           </time>
+          </p>
+          <p>
+           不管是观呼吸还是内观都比在寺庙禅修要难很多. 因为心有很多过去和未来的事情可以做, 于是分心很多.
+          </p>
+          <p class="entry-date">
+           <time datetime="2024-09-14">
+            2024-09-14
+           </time>
+          </p>
+          <p>
+           早上的定的时间大于晚上.
+          </p>
+          <p class="entry-date">
+           <time datetime="2024-09-16">
+            2024-09-16
+           </time>
+          </p>
+          <p>
+           昨晚打坐 20 分钟, 早上先打坐 1 小时, 然后看 35 分钟书, 再打坐 40 分钟.
+          </p>
+          <p>
+           的确, 扫描都发生在早上, 并且是 30 分钟以后的事情.
+          </p>
+          <p>
+           这样看来, 周末的集中静坐是很有必要的.
+          </p>
+          <p class="entry-date">
+           <time datetime="2024-09-17">
+            2024-09-17
+           </time>
+          </p>
+          <p>
+           晚上 25, 白天 1 + 35. 最后 35 分钟的效率和定和平等心最高
+          </p>
+          <p>
+           晚上发热的原因是因为蚊子连续 3 天在咬. 但是念头是: 咬就咬吧, 我也不想杀它. 对我也产生不了长期的伤害 . 它咬一段时间也就去世了. 也可怜. 如果可以通过这种方式吸取功德, 我觉得也算是我造福昆虫了. 希望它平安喜乐.
+          </p>
+          <p class="entry-date">
+           <time datetime="2024-09-22">
+            2024-09-22
+           </time>
+          </p>
+          <p>
+           昨天去参加了共修, 一天打坐 4 小时. 共修的 2 小时感觉定力不够.
+           <strong>
+            以后每周天加练 1 小时在家里面.
+           </strong>
+          </p>
+          <p class="entry-date">
+           <time datetime="2024-09-25">
+            2024-09-25
+           </time>
+          </p>
+          <p>
+           昨天晚上因为去看了 4 个小时房, 回到家 9:30 了就没打坐了. 早上 5 点起床打坐. 发现
+          </p>
+          <ul>
+           <li>
+            <p>
+             右边起床头痛
+            </p>
+           </li>
+           <li>
+            <p>
+             没有便意
+            </p>
+           </li>
+           <li>
+            <p>
+             不想吃早饭
+            </p>
+           </li>
+           <li>
+            <p>
+             肠胃不通气
+            </p>
+           </li>
+           <li>
+            <p>
+             做梦 - 尴尬的场面: 我跟司机说回家, 司机把我开到一家饭店. 然后给我上了一桌子菜, 问我给 1000 小费还是 5000小费. 我走了. 然后又进了一家茶馆. 我渴了, 喝了口茶, 服务员看到我端起茶杯就过来问我 先生你要坐在 vip 还是普通的位子? 我们这里最低消费 500
+            </p>
+           </li>
+          </ul>
+          <p class="entry-date">
+           <time datetime="2024-09-26">
+            2024-09-26
+           </time>
+          </p>
+          <p>
+           昨天晚上930-940 打坐 10 mins, 早上打坐 20 分. 念头太多, 欲望太多, 想做的的事情太多.
+          </p>
+          <ul>
+           <li>
+            <p>
+             左边眼球眼压比较高
+            </p>
+           </li>
+           <li>
+            <p>
+             吃晚饭对自己还是不好的, 肠胃在晚上压力太大了
+            </p>
+           </li>
+           <li>
+            <p>
+             不能坚持的根本原因: 不够 信, 5 盖 - 疑
+            </p>
+           </li>
+           <li>
+            <p>
+             治标方法: 找 女朋友 回家. 女朋友 在的时候我能坚持
+            </p>
+           </li>
+          </ul>
+          <p class="entry-date">
+           <time datetime="2024-09-27">
+            2024-09-27
+           </time>
+          </p>
+          <p>
+           昨晚 25 mins, 今早 30mins.
+          </p>
+          <p>
+           本来 9 点去睡觉, 因为打鼓, 有点睡不着, 于是起来打原神到 11:30
+          </p>
+          <p>
+           为什么会对女朋友出言不逊?
+          </p>
+          <ul>
+           <li>
+            <p>
+             心不平静 + 自傲的心理 + 思维能力减少不谨慎了, 为什么?
+            </p>
+            <ul>
+             <li>
+              <p>
+               打坐减少 - 不平静
+              </p>
+             </li>
+             <li>
+              <p>
+               吃的太多 - 犯晕, 脑子不太好
+              </p>
+             </li>
+             <li>
+              <p>
+               股市这两天涨太多, 导致我觉得这是我的判断力正确的结果, 所以骄傲觉得自己很了不起
+              </p>
+             </li>
+            </ul>
+           </li>
+          </ul>
+          <p class="entry-date">
+           <time datetime="2024-10-09">
+            2024-10-09
+           </time>
+          </p>
+          <p>
+           国庆节的疯狂日程结束. 感觉不太可能打坐 1 小时. 开始早晚 半小时
+          </p>
+         </div>
+        </section>
+        <h2>
+         理论分析
+        </h2>
+        <h3>
+         人活着为了什么?  - 解脱痛苦
+        </h3>
+        <h3>
+         什么是苦?
+        </h3>
+        <h3>
+         如何解脱?
+        </h3>
+        <h3>
+         方法指导
+        </h3>
+        <ul>
+         <li>
+          <p>
+           观呼吸: 人中的微小粒子的感受. 有微小感受就观感受, 没有的话观呼吸
+          </p>
+         </li>
+         <li>
+          <p>
+           空白区域的持续停留两分钟达到观察到感受的状态
+          </p>
+         </li>
+         <li>
+          <p>
+           都是妄念: 内观者也不必尝试去了解感受的起因。它们也许源自 外在的环境、坐姿、痼疾、体弱或是所吃的食物等。
+           <strong>
+            原因无关紧要，也不是我们该关心的。不要去问为什么.
+           </strong>
+           真正重要的，是集 中注意力觉知当下身体上的感受
+          </p>
+         </li>
+        </ul>
+        <h3>
+         我为什么会同意这种理论?
+        </h3>
+        <ul>
+         <li>
+          <p>
+           头脑思考
+          </p>
+          <ul>
+           <li>
+            <p>
+             统一解释, 简洁(比我现在的多价值观模式 - 健康, 亲密关系, 事业, 爱好)
+            </p>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <p>
+           亲身体验:
+          </p>
+          <ul>
+           <li>
+            <p>
+             粗重的感受
+            </p>
+           </li>
+           <li>
+            <p>
+             微细的感受
+            </p>
+           </li>
+           <li>
+            <p>
+             法喜
+            </p>
+           </li>
+           <li>
+            <p>
+             慈悲观
+            </p>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <p>
+           头脑+亲身的结合, 理论+实修的 interaction effect.
+          </p>
+         </li>
+        </ul>
+        <details class="subchapter" id="reading-notes">
+         <summary>
+          我当时整理的理论与资料
+         </summary>
+         <div class="detail-body">
+          <div class="source-note">
+           <p>
+            下面是《生活的艺术》读书笔记、课程与日常练习资料的整理。它们不是我的原创理论；我保留的是当时选择、重组和理解这些材料的方式。原页里一段 GPT 生成的&ldquo;禅那解释&rdquo;已经删除。
+           </p>
+          </div>
+          <h2>
+           生活的艺术 - 总结
+          </h2>
+          <h3>
+           内观提供一个斩新的视角看世界和一切事物.
+          </h3>
+          <ul>
+           <li>
+            <p>
+             我门探索月球背面, 为什么不去探索内在深处呢?
+            </p>
+           </li>
+           <li>
+            <p>
+             只有当我们用身心去体验感受时, 宇宙才真正存在. 宇宙不在别处(月球), 他一直就在当下.
+            </p>
+           </li>
+           <li>
+            <p>
+             我们探索外在世界的方式跟探索内在世界不一样.
+            </p>
+            <ul>
+             <li>
+              <p>
+               外在世界: 知性的概念, 六根 (比如地质学, 地球学, 物理学). 可以从各种理论层面去辩论
+              </p>
+             </li>
+             <li>
+              <p>
+               内在世界: 亲身体验(学会游泳).
+              </p>
+             </li>
+             <li>
+              <p>
+               故事
+              </p>
+              <ul>
+               <li>
+                <p>
+                 什么是亲身体验的智慧? 游泳和理论的故事
+                </p>
+               </li>
+               <li>
+                <p>
+                 什么叫做亲身体会? 佛陀(提高自己的感知能力观察身体的实相)和现代物理学研究物质生灭(实验观察外在事物)的例子.
+                </p>
+               </li>
+               <li>
+                <p>
+                 为什么你不能帮助我达到清净快乐?  自己走这条路 (讲解完了以后还是需要自己走)
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+           </li>
+          </ul>
+          <h3>
+           内观研究了内在的真理
+          </h3>
+          <ul>
+           <li>
+            <p>
+             习性反应的存在. 并且习性反应遮蔽了我们的心眼, 隐藏了实相, 制造痛苦的种种偏见. - 内观可以消除习性反应. 习性反应完全去除了以后, 就是心的本来面目. 纯净的爱. 你会感到俺想和快乐
+            </p>
+           </li>
+           <li>
+            <p>
+             看清累积在内, 另我们焦躁不安, 痛苦烦恼的紧张压力
+            </p>
+           </li>
+           <li>
+            <p>
+             他们是可以分解消融的
+            </p>
+           </li>
+          </ul>
+          <h3>
+           内观: 巴利文(印度古老语言)里面&ldquo;洞见&rdquo;的意思.
+          </h3>
+          <ul>
+           <li>
+            <p>
+             唯一能直接体验真理的方法, 就是向内观照.
+            </p>
+           </li>
+           <li>
+            <p>
+             整个宇宙及其运作的自然法则. 都必须在我们自身之内体验
+            </p>
+           </li>
+          </ul>
+          <h3>
+           生命的根本问题: 我们对遗憾 A 和 B 的形成, 前因, 一无所知. 无可奈何.
+          </h3>
+          <p>
+           遗憾、痛苦:
+          </p>
+          <ul>
+           <li>
+            <p>
+             A: 不想要的一再发生 (嗔恨)
+            </p>
+           </li>
+           <li>
+            <p>
+             B: 想要的得不到 (贪爱)
+            </p>
+           </li>
+          </ul>
+          <h3>
+           痛苦的原因是什么? 如何止息痛苦?
+          </h3>
+          <ul>
+           <li>
+            <p>
+             如果痛苦的起因是由于毫无脉络可寻的偶然事件. 我们完全无法控制或者影响他们发生. 因为无能为力, 放弃.
+            </p>
+           </li>
+           <li>
+            <p>
+             如果痛苦由高深莫测的全能主宰所操控. 那我们就想办法讨好这位神, 恳求不要给我们痛苦
+            </p>
+           </li>
+           <li>
+            <p>
+             体悟: 痛苦不是偶然形成的 - 有果必有因. 因果法则的存在是普遍和基本的. 痛苦的起因我们可以控制. 我们痛苦的原因是因为我们的业(karma), 也就是行为.
+            </p>
+           </li>
+          </ul>
+          <h4>
+           如何着手这个无知无奈?
+          </h4>
+          <ul>
+           <li>
+            <p>
+             所有智者都说: 认识你自己. 必须要从认识自身的本质着手. 否则不可能解决自己的烦恼 (痛苦始于对自己本身实相的无知.).
+            </p>
+           </li>
+           <li>
+            <p>
+             人是什么? 二元主义, 细分心的 4 部分. 色、受、想、行、识
+            </p>
+            <ul>
+             <li>
+              <p>
+               身体. 我们对身的 1)了解不够 2)控制力薄弱. 我们了解自己的身体吗? 你知道肾小球的再吸收功能是如何实现的么? 我可以控制自己的 4 肢, 但内在器官呢? 比如说消化吸收, 心脏跳动的快慢? 就更微细的层面来说. 身体的每一个细胞不断发生的生化反应, 我们完全没有体验, 一无所知. 更微细一点. 次元子粒子的不断生气, 灭去呢? 就像电灯, 蜡烛, 河流一样. 我的身体是什么? 是物质的最终实相: 波动或者粒子的持续之流. 就像你问烛火是什么一样. 是碳和氧不断发生的化学反应.
+              </p>
+             </li>
+             <li>
+              <p>
+               心: 我们对心的 1)了解不够 2)控制力薄弱. 对意识表层的掌控力微乎其微. 对潜意识则似乎完全超过我们的掌握或了解.
+              </p>
+              <ul>
+               <li>
+                <p>
+                 认知 (接收部分). 只记载各种原始资料,不辨别明目, 不做价值判断
+                </p>
+               </li>
+               <li>
+                <p>
+                 辨别(
+                 <strong>
+                  问题的关键
+                 </strong>
+                 ). 将输入的原石资料予以分辨, 命名, 归类, 做出正面、负面评价
+                </p>
+               </li>
+               <li>
+                <p>
+                 感受. 一个讯号, 表示某件事情正在发生. 每当接收到任何信息时, 感受就会立刻升起. 只要不&ldquo;用辨别&rdquo;功能, 那么感受就会保持中性(还是会生起, 但保持中性). 但是一旦对输入的资料赋予价值判断. 感受就会变得愉悦或者不愉悦.
+                </p>
+               </li>
+               <li>
+                <p>
+                 习性反应(就是
+                 <strong>
+                  行
+                 </strong>
+                 ): 如果感受是愉悦的，就会期待这愉悦的体验能够延长 或强化;
+                 <strong>
+                  如果感受是愉悦的，就会期待这愉悦的体验能够延长 或强化;如果感受是不愉悦的，就一心想将它排除终 止 。 结 果 ， 心 会 生 起 喜 欢 或 厌 恶 的 习 性 反 应 。
+                 </strong>
+                </p>
+                <ul>
+                 <li>
+                  <p>
+                   习性反应包括两者
+                  </p>
+                  <ul>
+                   <li>
+                    <p>
+                     最后一个步骤: 一连串心理运作过程的结果
+                    </p>
+                   </li>
+                   <li>
+                    <p>
+                     第一个:新的心里运作过程的起因
+                    </p>
+                   </li>
+                  </ul>
+                 </li>
+                 <li>
+                  <p>
+                   过去的习性以及个人的喜好与偏见，扭曲模糊 了我们对外在世界以及内在世界的认知。根据这扭曲的 认知，一个原本是中性的感受，立刻摇身一变，成为愉 悦或不愉悦的感受;而对这个感受，我们又再起盲目的 反应，因而再制造新的习性，继而扭曲以后的认知。就 这样，每个盲目反应成为下一个盲目反应的起因;所有 的反应，均被过去的习性反应所制约，接着又制约了未 来 的 习 性 反 应 ，如 此 周 而 复 始 ，循 环 不 已 。
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   例子:我和 20 年前我讨厌的人 - 画家的例子, 在内心创造了一个形象, 对它做出反应, 而不是真人.
+                  </p>
+                 </li>
+                </ul>
+               </li>
+               <li>
+                <p>
+                 例子: 当 耳 朵 运 作 正 常 ，听 到 了 声 音 ，这 是 认 知( 识 蕴 ) 在作用。当声音被辨识出是正面或负面的语言时，
+                 <strong>
+                  辨别 (想蕴)已经开始运作。
+                 </strong>
+                 紧接着
+                 <strong>
+                  感受(受蕴)
+                 </strong>
+                 开始起作 用，如果是赞美之辞，就会生起愉悦的感受，如果是粗 言辱骂，就会生起不愉悦的感受，而
+                 <strong>
+                  习性反应(行蕴) 亦随之而生:如果是愉悦的感受，我们就喜欢它，期望能多得到一些赞美.
+                 </strong>
+                 如果是不愉悦, 我们就讨厌它, 想终止辱骂.
+                </p>
+               </li>
+               <li>
+                <p>
+                 心的这种&ldquo;化学反应&rdquo; 比组成物质实相的粒子变化的更快. 这个过程发生的如此迅速我们无法觉察到正在发生的实相. 只有当某种特定的习性反应重复发生好一段时间. 形成明显强烈的心态时, 我们才能在
+                 <strong>
+                  意识
+                 </strong>
+                 层面觉察到它.
+                </p>
+               </li>
+               <li>
+                <p>
+                 心的位置? 心在身上无所不在, 在每一个原子之中, 每当你感觉到什么时, 心就在那里. 心能够感觉.
+                 <strong>
+                  六识都属于心
+                 </strong>
+                </p>
+               </li>
+               <li>
+                <p>
+                 谁在感觉, 谁在观察? 感觉本身在感觉, 观察本身在观察. 没有一个&ldquo;主体, 一个人&rdquo;在感觉. &ldquo;我&rdquo;会最终消融的, 那时候这个问题就不存在了.
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               认知偏差: 每个人与生俱来的认为: 有个我存在. 一个不灭的自我. 我们不假思索的认定 - 10 年前的那个人, 基本上和今天的这个人呢是同一个人. 10 年后也一样. 死后还会继续存在与来生. 这种出于本能的自我认知是有问题的.
+              </p>
+              <ul>
+               <li>
+                <p>
+                 人是一连串前后不同但相互关联的
+                 <strong>
+                  零件.
+                 </strong>
+                 这些密不可分的事情接连的发生. 表面看起来是连续不变, 完全相同的一个人. 但这只是表面的实相, 不是最终的真理. 想一想河流和不断流动的水. 烛火和灯芯燃烧的瞬间火焰. 没一瞬间都有心的东西生起, 他是过去的产物.因为这些事件的连续是如此的迅速和无间断. 以至于很难分辨. 我们不能说: 现在跟 1 分钟前的你完全相同, 但也不能说: 完全不同. 我们知道的是 - 流动的过程的确发生了.
+                </p>
+               </li>
+               <li>
+                <p>
+                 人是时时刻刻不停流动的过程.
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+           </li>
+          </ul>
+          <h4>
+           苦的起因:
+          </h4>
+          <ul>
+           <li>
+            <p>
+             痛苦是因为业(因果法则)
+            </p>
+           </li>
+           <li>
+            <p>
+             业包括 3 种, 行为, 语言, 意念. 其中意念(心)是源头也是最重要, 真正的业.
+            </p>
+           </li>
+           <li>
+            <p>
+             心包括 4 部分. 认知, 辨别, 感受都是被动的. 但一旦心开始生起习性反应, 就由被动变成喜爱或者厌恶了. 心的习性反应引发了新的连锁反应.
+            </p>
+           </li>
+           <li>
+            <p>
+             如果所有的习性反应止息了, 所有的痛苦也就止息了.  - 真正的业是(痛苦的真正起因)是心的习性反应. 一闪即逝的喜欢或者不喜欢的反应. 可能不是非常强烈, 也没有显著的果报, 但会有累积效果, 每分每秒习性反应重复不断的发生. 每重复一次都会更加强烈, 最后就形成贪爱或是嗔恨.
+            </p>
+           </li>
+           <li>
+            <p>
+             不要把苦当做一种哲学概念或是一种信条, 而是接受它存在的事实, 它影响着我们每个人的生活.
+            </p>
+           </li>
+           <li>
+            <p>
+             普遍的观点: 生命种有痛苦不是很自然的么? - 我们一直生活在苦中,以至于想从痛苦中解脱反而显得不自然.
+            </p>
+           </li>
+          </ul>
+          <h4>
+           苦的具体
+          </h4>
+          <ul>
+           <li>
+            <p>
+             生 (出生就是极大的创痛)
+            </p>
+           </li>
+           <li>
+            <p>
+             老病死
+            </p>
+           </li>
+          </ul>
+          <h4>
+           苦的本质
+          </h4>
+          <ul>
+           <li>
+            <p>
+             无知, 贪爱和嗔恨是生命种所有痛苦的 3 大根源
+            </p>
+           </li>
+           <li>
+            <p>
+             换一个角度: 对五蕴的执着是苦.人们对自己这个个体 - 身和心, 有强烈的执着. 事实上, 这个个体只是不断变化的过程而已. 对一种事实上不断生灭变化的东西的执着, 就是苦.
+            </p>
+           </li>
+          </ul>
+          <h4>
+           执取的对象(所有的痛苦都与一下提到的某种执取相关. 痛苦和执取同时存在)
+          </h4>
+          <ul>
+           <li>
+            <p>
+             追求感官享乐的执取 - 上了毒瘾的人, 想体会毒品在它身上造出来的愉快感受, 虽然知道吸毒会加深她的毒瘾.
+            </p>
+           </li>
+           <li>
+            <p>
+             对于贪爱这个习性, 也上了瘾. 一旦一个欲望满足了, 我们就生起下一个欲望(whats the next big thing?) 事情的真相是. 所执取的对象都无所谓了, 我们渴望&ldquo;贪爱&rdquo;这种状态能不断的持续. 贪爱本身又会在我们身上制造愉悦的感受. 我们希望这愉悦的感受能不断延续. 结果, 贪爱成为我们无法打破的习惯. 就像毒品需要更大的剂量. 我们的贪爱也是, 越去满足就越强烈. 我们永远无法止息贪爱.
+             <strong>
+              而只要我们有贪爱, 我们就永远不可能快乐.
+             </strong>
+            </p>
+           </li>
+           <li>
+            <p>
+             对&ldquo;我&rdquo;的执着, 这个自我, 我们认同的自我形象. 对每个人而言. 我是全世界最重要的人. 我们还将执取延伸到&ldquo;我的&rdquo;. 任何属于我们的东西, 都会产生很大的执取, 因为它与我们有关, 这些东西增强了 &ldquo;自我&rdquo;形象. 更近一步,是对&ldquo;我的见解, 观点, 信仰&rdquo;的执着.
+            </p>
+            <ul>
+             <li>
+              <p>
+               如果&ldquo;我的&rdquo;和&ldquo;我&rdquo;都万古长存并且关系永远不变. 那这种执取不会造成任何问题
+              </p>
+             </li>
+             <li>
+              <p>
+               但是&ldquo;我&rdquo;迟早会和&ldquo;我的&rdquo;分道扬镳. 离别的时刻一定会来. 当时候到了. 若对&ldquo;我的&rdquo;执取越深, 痛苦就会越强烈.
+              </p>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <p>
+             对宗教仪式的执取.
+            </p>
+           </li>
+          </ul>
+          <h3>
+           执取是如何生起的呢(缘起法则 和 痛苦之轮的转动方式)
+          </h3>
+          <ul>
+           <li>
+            <p>
+             一霎那一霎那的喜爱与厌恶的习性反应一刻接一刻的不断重复, 形成强大的引力和推力,形成我们所有的执取.
+             <strong>
+              执取
+             </strong>
+             就是一次又一次的习性反应发展出来的
+             <strong>
+              形态
+             </strong>
+            </p>
+           </li>
+           <li>
+            <p>
+             习性反应的发生和积累是由于不断的感受:
+             <strong>
+              我们感觉到愉悦的 感受，便开始喜欢它;我们感觉到不愉悦的感受，便开始讨厌它。
+             </strong>
+            </p>
+           </li>
+           <li>
+            <p>
+             感受的发生是因为: 六根接触六尘
+            </p>
+           </li>
+           <li>
+            <p>
+             为什么六尘存在? 世界本身的性质
+            </p>
+           </li>
+           <li>
+            <p>
+             为什么六根存在? 因为他们来自身心之流(名色)
+            </p>
+            <ul>
+             <li>
+              <p>
+               为什么有名色?由于&ldquo;识&rdquo;, 认知的行为 - 把世界分为
+              </p>
+              <ul>
+               <li>
+                <p>
+                 能知和所知
+                </p>
+               </li>
+               <li>
+                <p>
+                 主体和客体
+                </p>
+               </li>
+               <li>
+                <p>
+                 我和他
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               有了这种划分, 就有了个体的&ldquo;出生&rdquo; - 不是指物理意义的出生, 而是&ldquo;人&rdquo;的诞生.
+              </p>
+             </li>
+             <li>
+              <p>
+               每一个片刻, 识一生起,就由某种特定的名色.下一个片刻, 识又变成了一个稍微不同的形式. 在整个人存在的过程, 识不停的流动, 变化.最后到死亡, 识仍不停止, 毫不间断,从一个存在到下一个存在. 心识之流持续不已.
+              </p>
+             </li>
+             <li>
+              <p>
+               什么形成心识之流呢? 由于习性反应. 心片刻不停地起习性反应，每一 个习性反应都是心识之流的推动力，使它延续到下一 刻。习性反应越强烈，它供给的推动力就越大。片刻间 的轻微习性反应，只能让心识之流持续片刻。但是刹那 刹那好恶的习性反应，如果强化成为贪爱或瞋恨，它的 力 量 就 增 强 ，使 心 识 之 流 持 续 好 几 个 片 刻 、好 几 分 钟 、甚 至好几个小时。如果贪爱、瞋恨的习性反应更进一步加 强，就会让心识之流持续数天、数月或是数年。如果一 个 人 终 其 一 生 ，都 不 停 地 重 复 、强 化 某 些 习 性 反 应 ，这 些 习性反应所形成的力量，会让心识之流，不仅从此刻持 续到下一刻、从一天持续到另一天、从一年持续到另一 年，甚至从此生持续到来生。
+              </p>
+             </li>
+             <li>
+              <p>
+               习性反应是如何形成的? 最深的层面是由于无明(因为不知道自身真正的本质，我们盲目地起反应;因为 不知道我们已起了习性反应，我们持续地盲目反应下 去 ，并 且 任 由 它 们 越 演 越 烈 。因 此 ，由 于 无 知 ，我 们 被 困 在习性反应的牢笼中):
+              </p>
+              <ul>
+               <li>
+                <p>
+                 我们并不知道自己生起习性反应这个事实,
+                </p>
+               </li>
+               <li>
+                <p>
+                 也不知道自己对什么对象生起了反应.
+                </p>
+               </li>
+               <li>
+                <p>
+                 对存在的无常, 无我的性质完全无知
+                </p>
+               </li>
+               <li>
+                <p>
+                 对存在的执着就会带来痛苦
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <p>
+             缘无明，所以行生;(由于无明，所以习性反应生起) 缘行，所以识生;
+             <br>
+             缘识，所以名色生;
+             <br>
+             缘名色，所以六处生;
+            </p>
+            <p>
+             缘六处，所以触生;
+             <br>
+             缘触，所以受生;
+             <br>
+             缘受，所以爱生;
+             <br>
+             缘爱，所以取生;
+             <br>
+             缘 取 ，所 以 有 生 ;
+             <br>
+             缘 有 ，所 以 生 生 ; 若缘生，所以老、死，连同愁、叹、身苦、心忧及恼生; 如此大苦蕴聚生起了。(我们被无明所蒙蔽而 累积贪爱、瞋恨的反应，盲目反应发展为执取，导致种 种的不快乐。这种盲目反应的习惯就是业，业塑造了我 们的未来。)
+            </p>
+           </li>
+          </ul>
+          <h4>
+           如何止息苦
+          </h4>
+          <ul>
+           <li>
+            <p>
+             缘起法则和痛苦之轮的停止
+            </p>
+           </li>
+           <li>
+            <p>
+             无明灭，于是行灭; 行灭，于是识灭: 识灭，于是名色灭; 名色灭，于是六处灭; 六处灭，于是触灭; 触灭，于是受灭: 受灭，于是爱灭; 爱灭，于是取灭; 取灭，于是有灭;有灭，于是生灭; 生灭，于是老，死，连同愁、叹、身苦、心忧及恼灭; 如此大苦蕴聚止息了。(注五)
+            </p>
+           </li>
+           <li>
+            <p>
+             &ldquo;感受&rdquo;就是 那关键性的一环。只要&ldquo;感受&rdquo;一生起，好恶就随之而 来 。这 些 短 暂 的 、无 意 识 的 好 恶 反 应 ，立 刻 会 被 扩 大 、增 强为强烈的贪与瞋，最后变成执取，令我们的现在与 未来充满痛苦。我们一而再、再而三、机械性地重复 这个过程，变成一种盲目的习惯。
+            </p>
+           </li>
+           <li>
+            <p>
+             借 着&ldquo; 内 观 &rdquo;的 练 习 ，我 们 培 养 出 对 每 种 感 受 的 觉 知 ，也 培养了平等心:我们不生起习性反应，只是冷静地检 视感受，不起好恶之心，不带贪爱、瞋恨或执着。对每 个感受，都不再产生新的习性反应，而是生起智慧与 洞 见 :&ldquo; 它 是 无 常 的 ，一 定 会 生 起 灭 去 &rdquo;。当因果之链被打破，痛苦也就止息了。
+            </p>
+           </li>
+           <li>
+            <p>
+             平等心
+            </p>
+            <ul>
+             <li>
+              <p>
+               不要对任何一种体验，生起附 着或排斥之心，只是以一颗平等、平衡的心客观地观察 每个现象。
+              </p>
+             </li>
+             <li>
+              <p>
+               如果我们能以片刻的时间只观察肉体上的疼痛;或 者，暂时脱离&ldquo;这是我的痛、是我觉得痛&rdquo;的错觉;或 者像医生检査病人的疼痛一样，客观地检视这感受，我 们就可以体验到，&ldquo;痛&rdquo;的本身是多变的，它不会永 远持续下去，每一刻都在变化、消失、再生、再灭。
+              </p>
+             </li>
+             <li>
+              <p>
+               学会以 不执着(习性反应)的心来观察它，不会再因这些痛苦而受罪。
+              </p>
+             </li>
+             <li>
+              <p>
+               如果在习性反应开始的那一刻，我们能对自己的感 受念念分明，我们就可以做主，不让任何习性反应发生 或增强。
+              </p>
+             </li>
+            </ul>
+           </li>
+          </ul>
+          <h3>
+           为什么要持戒?
+          </h3>
+          <ul>
+           <li>
+            <p>
+             我们的行为不善, 就会体验到贪爱和嗔恨的低于之火
+            </p>
+           </li>
+           <li>
+            <p>
+             我们的行为善, 就会体验到内在安详的天堂
+            </p>
+           </li>
+           <li>
+            <p>
+             戒除不好的言语和行为. 不仅可以利益他人也可以利益自己. 避免对自己造成伤害.
+            </p>
+           </li>
+           <li>
+            <p>
+             一旦做了坏事, 心中就会忐忑不安, 失去平静. 必须远离诸恶行, 心才能变得安详, 才能开始往内深观.
+            </p>
+           </li>
+          </ul>
+          <h4>
+           心的习性反应
+          </h4>
+          <ul>
+           <li>
+            <p>
+             过去, 未来
+            </p>
+           </li>
+           <li>
+            <p>
+             惶惶不定, 往年不断, 就像一个受宠的孩子, 拿了一个玩具, 玩腻了, 就换一个.我们就像一个喝醉酒的人, 努力想走直线, 却总是东倒西歪走不直.由于无明和妄想, 我们确实是像醉了一样糊涂, 所以才会不断活在过去和未来, 贪爱和嗔恨.
+            </p>
+           </li>
+          </ul>
+          <h3>
+           为什么要观吸?
+          </h3>
+          <ul>
+           <li>
+            <p>
+             活在当下: 觉知当下的自己 - 现在是吸气, 现在是呼气.
+            </p>
+           </li>
+           <li>
+            <p>
+             体悟终极实相: 将注意力置于呼吸上, 可以帮助我们深入了解未知的自我, 让潜意识成为意识. 呼吸就像是潜意识与意识之间的桥梁. 因为它的运作方式, 既属于潜意识 (当我们不去控制呼吸时, 他不需要提醒也会继续运作), 也属于意识(刻意的以某种方式呼吸).
+            </p>
+           </li>
+           <li>
+            <p>
+             呼吸是我们内心状态的一面镜子: 当心境 平和时，呼吸规律且温和。但是每当负面情绪由心中 生起时，无论是生气、憎恶、恐惧或激情，呼吸都会变 得较粗重而急促。如此一来，呼吸提醒我们注意到自 己的心理状态，同时也让我们能开始去面对这种状态。要想远离贪嗔痴, 必先觉知到它们的存在.
+            </p>
+           </li>
+           <li>
+            <p>
+             呼吸是实相: 不是虚无缥缈的妄想或者幻想, 是一个非常正确的专注对象. 我们对呼吸不会产生贪爱或嗔恨. 正定的对象, 绝对不含贪嗔痴.
+            </p>
+           </li>
+           <li>
+            <p>
+             观吸的过程: 当我们把注意力完全放在呼吸上,
+             <strong>
+              心变得专注时, 呼吸就会越细微, 也就越不易观察
+             </strong>
+             , 因此就需要更努力才能维持专注. 如此不断磨练心, 培养专注力, 让心成为一个利器.
+             <strong>
+              让心可以观察到内在更细微的真理
+             </strong>
+             . 为内观打下基础
+            </p>
+           </li>
+           <li>
+            <p>
+             为什么训练定?
+            </p>
+            <ul>
+             <li>
+              <p>
+               注意力的转移可以使心静下来. 否则就会起贪爱和嗔恨. 比如为了生气. 慢慢的数数 10. 或者复诵咒语.
+              </p>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <p>
+             为什么不够?
+            </p>
+            <ul>
+             <li>
+              <p>
+               效果只限于心的意识表层. 潜在内心底层的不尽烦恼(潜意识)并没有真正去除. 它们在冬眠状态, 像是在内心深处有一座火山.
+              </p>
+             </li>
+             <li>
+              <p>
+               只修定就像一棵根深蒂固的树, 即使被砍伐了, 仍会生出新芽.如果贪嗔的习性反应旧账没有被根除. 痛苦就会一再的重现
+              </p>
+             </li>
+            </ul>
+           </li>
+          </ul>
+          <h4>
+           为什么要内观?
+          </h4>
+          <ul>
+           <li>
+            <p>
+             培养洞察力, 观察自身本质的方法. 借助这个洞察力. 一个人可以辨识并止息痛苦的成因.
+            </p>
+           </li>
+           <li>
+            <p>
+             &ldquo;戒&rdquo;和&ldquo;定&rdquo;本身虽有价值，但真正的目的，是为了 开发&ldquo;慧&rdquo;。只有开发智慧，才能让我们在自我放纵和 自我压抑的两种极端之间，找到真正的中道。借着持 戒，我们可以避免做出不正当的行为，可以避免内心 强烈的精神激越;借着修定，我们进一步使心平静，同 时使心成为一个有利的工具，以便检视自己;但是，唯 有借着培养智慧，我们才能透视内在的实相，远离所 有的无明和执着。
+            </p>
+           </li>
+           <li>
+            <p>
+             为什么选择&ldquo;感受&rdquo;作为观察对象?
+            </p>
+            <ul>
+             <li>
+              <p>
+               选择&ldquo;感受&rdquo;为观照的对象，还有另外一个原因，因为 身体上的感受和心理状态息息相关。感受就像呼吸 一样，会反映出当下的心理状况。任何一种心理状 态&mdash;&mdash;如想法、概念、想像、情绪、记忆、希望或恐 惧&mdash;&mdash;浮上意识表层，感受就会跟着生起。每个想 法、情绪、内心的变化，都会伴随着一种相应的身体 上的感受出现。因此，借着观察身体上的感受，我们 也同时观察了自己的内心。
+              </p>
+             </li>
+             <li>
+              <p>
+               若想充分了知真理，就不可不重视感受。无论我们遭 遇何事，都会因此而唤起身体上的某种感受。感受可 说是心与身交会的十字路口，虽然在本质上，感受是 在 身 体 上 ，但 它 同 时 也 是 四 种 心 法( 受 、想 、行 、识 )运 作的过程之一。它由身生起，由心感受。一具死尸或是 没有生命的东西，是不会有任何感受的，因为心不在 此。如果我们对自己的感受不清楚，那么我们对实相 的观察，就永远不完整、不深入。就好像想除去园中 的杂草，必须先了解它们的根深埋在哪儿以及它们 的维生运作方式;同样的，如果我们想要了解自己的 习性，且处理得恰如其分，就必须深入观察自己的感 受;而大部分的感受是难以察觉的。
+              </p>
+             </li>
+             <li>
+              <p>
+               无论被感觉到的是什么，都和苦相连。所以感受是体验苦的真相的理想工具. 不愉悦的感 受当然是苦，但我们只想拥有愉悦的感受，这也是一 种十分微细的苦扰形式。任何感受都是无常的，如果 我们只想拥有愉悦的感受，当愉悦消失后，就只会留 下苦。因此，每一个感受都包含着一颗悲苦的种子。
+              </p>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <p>
+             培养觉知 + 平等心
+            </p>
+            <ul>
+             <li>
+              <p>
+               觉知高, 平等心弱: 对感受越敏锐, 就越可能起习性反应, 因此增加痛苦 - 我
+              </p>
+             </li>
+             <li>
+              <p>
+               觉知弱, 平等心强: 这种平等心只是表面上的, 隐藏在内心深处的习性反应仍然在进行, 而我们浑然不知. &mdash;一位同修
+              </p>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <p>
+             有了觉知+平等心 ---》 可以停止制造新的习性反应, 新的痛苦.
+            </p>
+           </li>
+           <li>
+            <p>
+             3 基本特性: 无常, 无我, 苦. 每次打坐都能体证到这 3 点. 于是就有了可持续可积累的智慧.
+            </p>
+           </li>
+          </ul>
+          <h4>
+           3 慧一定都需要么?
+          </h4>
+          <ul>
+           <li>
+            <p>
+             不一定, 比如说如果已经听闻&ldquo;火&rdquo;是危险的, 没有必要坚持跳进火堆里面. 才能接受火会伤人的事实.
+            </p>
+           </li>
+           <li>
+            <p>
+             但是对于法的层面, 实证智慧非常重要
+            </p>
+           </li>
+           <li>
+            <p>
+             你必须自修、自悟;已到对岸的人，只能指出那条路而已
+            </p>
+           </li>
+           <li>
+            <p>
+             真理只可以在自己身上实践、去直接体验。外在的一切 总是不切实际的。只有在自身之内，我们才能对实相有 实际、直接而鲜活的体验。
+            </p>
+           </li>
+          </ul>
+          <details class="subchapter" id="glossary">
+           <summary>
+            内观常用词汇｜当时的学习整理
+           </summary>
+           <div class="detail-body">
+            <h2>
+             内观常用词汇
+            </h2>
+            <p>
+             三学
+            </p>
+            <ul>
+             <li>
+              <p>
+               戒：道德 s&imacr;la (道德修养的训练, 戒除所有不良的言语和行为)
+              </p>
+             </li>
+             <li>
+              <p>
+               定：专注力、心的掌控力 sam&amacr;dhi (专注力的训练, 培养念念分明的能力, 控制自己的心念)
+              </p>
+             </li>
+             <li>
+              <p>
+               慧：智慧、净化心的洞见 pa&ntilde;&ntilde;&amacr; (培养洞察力, 照见自己的实相)
+              </p>
+             </li>
+            </ul>
+            <p>
+             禅修
+            </p>
+            <ul>
+             <li>
+              <p>
+               修定
+              </p>
+             </li>
+             <li>
+              <p>
+               修会
+              </p>
+             </li>
+            </ul>
+            <p>
+             三宝｜ ti-ratana
+            </p>
+            <ul>
+             <li>
+              <p>
+               佛：完全觉悟者 Buddha
+              </p>
+             </li>
+             <li>
+              <p>
+               法：自然法则；觉悟者的教导；解脱之道 Dhamma
+              </p>
+             </li>
+             <li>
+              <p>
+               僧：修习正法并净化了自心的人Saṅgha
+              </p>
+             </li>
+            </ul>
+            <p>
+             三毒（所有心不净的三根）｜kilesa
+            </p>
+            <ul>
+             <li>
+              <p>
+               贪 rag&amacr; / lobha
+              </p>
+             </li>
+             <li>
+              <p>
+               嗔 dosa
+              </p>
+             </li>
+             <li>
+              <p>
+               痴 / 无明 moha
+              </p>
+             </li>
+            </ul>
+            <p>
+             八圣道｜ ariya aṭṭhaṅgika magga (简单的解释 - 诸恶莫作, 众善奉行, 自净其意)
+            </p>
+            <ul>
+             <li>
+              <p>
+               正语 samm&amacr;-v&amacr;c&amacr;
+              </p>
+              <ul>
+               <li>
+                <p>
+                 说谎, 言过其实 or 隐瞒真相
+                </p>
+               </li>
+               <li>
+                <p>
+                 搬弄是非
+                </p>
+               </li>
+               <li>
+                <p>
+                 背后诽谤
+                </p>
+               </li>
+               <li>
+                <p>
+                 尖酸刻薄, 令人痛苦的话
+                </p>
+               </li>
+               <li>
+                <p>
+                 无意义的蜚短流长, 浪费自己和他人的时间
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正业 samm&amacr;-kammanta
+              </p>
+              <ul>
+               <li>
+                <p>
+                 杀生
+                </p>
+               </li>
+               <li>
+                <p>
+                 偷盗
+                </p>
+               </li>
+               <li>
+                <p>
+                 不当性行为
+                </p>
+               </li>
+               <li>
+                <p>
+                 营救吸毒
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正命 samm&amacr;-&amacr;j&imacr;va
+              </p>
+              <ul>
+               <li>
+                <p>
+                 正当的谋生方式
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正精进 samm&amacr;-v&amacr;y&amacr;ma 正确的
+               <strong>
+                努力
+               </strong>
+               (观吸)
+              </p>
+              <ul>
+               <li>
+                <p>
+                 觉知实相的方法. 显微镜的对焦 & 固定,
+                 <strong>
+                  训练觉知
+                 </strong>
+                </p>
+               </li>
+               <li>
+                <p>
+                 ?? (跟精进有什么关系)4 种类型:
+                </p>
+                <ul>
+                 <li>
+                  <p>
+                   防止邪恶不善的念头生起
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   去除已经生起的邪恶不善的念头
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   让未生起的善念得以生起
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   让已经生起的善念得以发展
+                  </p>
+                 </li>
+                </ul>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正念 samm&amacr;-sati (观吸)
+              </p>
+              <ul>
+               <li>
+                <p>
+                 活在当下
+                </p>
+               </li>
+               <li>
+                <p>
+                 时刻保持对身受心法的觉察
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正定 samm&amacr;-sam&amacr;dhi (观吸 -
+               <strong>
+                时时刻刻
+               </strong>
+               保持觉知)
+              </p>
+              <ul>
+               <li>
+                <p>
+                 心系一处 (cross section)
+                </p>
+               </li>
+               <li>
+                <p>
+                 不分心 (time series)
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正思维 samm&amacr;-saṅkappa (内观)
+              </p>
+              <ul>
+               <li>
+                <p>
+                 一念不生
+                </p>
+               </li>
+               <li>
+                <p>
+                 维持每一个当下有觉知
+                </p>
+               </li>
+               <li>
+                <p>
+                 思维真理
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               正见 samm&amacr;-diṭṭhi
+              </p>
+              <ul>
+               <li>
+                <p>
+                 亲身体悟真理, 看清事物的本来面目, 而不仅仅看表面.
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+            <p>
+             涅槃｜ nibb&amacr;na
+            </p>
+            <ul>
+             <li>
+              <p>
+               超越身心范畴、不受限的究竟实相（梵文 nirv&amacr;ṇa）
+              </p>
+             </li>
+             <li>
+              <p>
+               贪瞋痴的息灭就是涅槃
+              </p>
+             </li>
+             <li>
+              <p>
+               无论内在或 外在发生什么事，我们都保持平等心，此时此刻我们就 已达到解脱。
+              </p>
+             </li>
+            </ul>
+            <p>
+             三慧｜ pa&ntilde;&ntilde;&amacr;
+            </p>
+            <ul>
+             <li>
+              <p>
+               闻慧 suta-may&amacr; pa&ntilde;&ntilde;&amacr;
+              </p>
+              <ul>
+               <li>
+                <p>
+                 通过看书从别人那里学来的智慧
+                </p>
+               </li>
+               <li>
+                <p>
+                 接受别人的智慧成为自己的智慧, 这种接受可能源于
+                 <strong>
+                  &ldquo;无明&rdquo;, 比如小孩子接受教派
+                 </strong>
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               思慧 cint&amacr;-may&amacr; pa&ntilde;&ntilde;&amacr;
+              </p>
+              <ul>
+               <li>
+                <p>
+                 知性上的理解. 在听闻某一种说法后, 予以思考, 合理, 有用, 实际.如果思考结果是满意, 才会信任和行动. 知性的判断.
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               修慧 bh&amacr;van&amacr;-may&amacr; pa&ntilde;&ntilde;&amacr;
+              </p>
+              <ul>
+               <li>
+                <p>
+                 对真理亲身的体验与领悟.这种修证、亲身体验的智慧 - 可以改变内心的本质, 从而改变个人的生命.
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+            <p>
+             三基本特性(内观证得的结果)
+            </p>
+            <ul>
+             <li>
+              <p>
+               无常 anicca
+              </p>
+              <ul>
+               <li>
+                <p>
+                 身体的每一个部分, 都有感受生起, 每种感受都代表一个变化(电磁or 生化反应).
+                </p>
+               </li>
+               <li>
+                <p>
+                 心更是瞬息万变, 并在身体的变化上显现出来
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               无我 anatt&amacr;
+              </p>
+              <ul>
+               <li>
+                <p>
+                 因为身的每一个部分, 心的每一个过程, 都在不断变化. 除了当下, 别无他物. 没有什么可以叫做&ldquo;我&ldquo;. 没有一个真实, 永恒的我. 我其实是烛焰, 瞬间流过的电流, 水流.
+                </p>
+               </li>
+              </ul>
+             </li>
+             <li>
+              <p>
+               苦 dukkha
+              </p>
+              <ul>
+               <li>
+                <p>
+                 任何执着&ldquo;这是我，这是我的&rdquo; 的努力，终将导致不快乐，因为所执着的东西或是这 个&ldquo;我&rdquo;迟早都会消逝。而执着于任何无常、短暂、幻 想以及不可控制的东西都是苦(dukkha)。
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+            <p>
+             业｜ kamma
+            </p>
+            <p>
+             行为；特指一个人所做的会对他的未来造成影响的行为（梵文 karma）
+            </p>
+            <ul>
+             <li>
+              <p>
+               身业: 身体的行为
+              </p>
+             </li>
+             <li>
+              <p>
+               语业: 语言的行为
+              </p>
+             </li>
+             <li>
+              <p>
+               意业: 意念的行为 (最为重要, 意念的不同, 产生不同的果报 - 刀插胸口的故事)
+              </p>
+             </li>
+            </ul>
+            <p>
+             六根
+            </p>
+            <ul>
+             <li>
+              <p>
+               眼耳鼻舌身意
+              </p>
+             </li>
+             <li>
+              <p>
+               意: 心接触到念头, 情绪, 想象, 记忆
+              </p>
+             </li>
+            </ul>
+            <p>
+             六尘
+            </p>
+            <ul>
+             <li>
+              <p>
+               色声香味触法
+              </p>
+             </li>
+            </ul>
+            <p>
+             四圣谛｜ catt&amacr;ri ariyasacc&amacr;ni
+            </p>
+            <ul>
+             <li>
+              <p>
+               苦谛 dukkha-sacca (什么是苦 - 生命是不完美, 不如人意的)
+              </p>
+             </li>
+             <li>
+              <p>
+               集谛 samudaya-sacca(什么是苦的起源) - 起点
+              </p>
+             </li>
+             <li>
+              <p>
+               灭谛 nirodha-sacca (什么是苦的止息) - 终点
+              </p>
+             </li>
+             <li>
+              <p>
+               道谛 magga-sacca(什么止息苦的方法) - 如何到
+              </p>
+             </li>
+            </ul>
+            <p>
+             五蕴（构成一个人的五个蕴聚）｜
+            </p>
+            <p>
+             pa&ntilde;ca khandh&amacr;
+            </p>
+            <ul>
+             <li>
+              <p>
+               色蕴 r&umacr;pa
+              </p>
+             </li>
+             <li>
+              <p>
+               识蕴 vi&ntilde;&ntilde;&amacr;ṇa
+              </p>
+             </li>
+             <li>
+              <p>
+               想蕴 sa&ntilde;&ntilde;&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               受蕴 vedan&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               行蕴（习性反应；心的制约）
+              </p>
+              <ul>
+               <li>
+                <p>
+                 水面画过的痕迹
+                </p>
+               </li>
+               <li>
+                <p>
+                 沙滩留下的线条
+                </p>
+               </li>
+               <li>
+                <p>
+                 岩石上的刻痕
+                </p>
+               </li>
+              </ul>
+             </li>
+            </ul>
+            <p>
+             saṅkh&amacr;ra
+            </p>
+            <p>
+             四大｜ mah&amacr;-bh&umacr;t&amacr;ni
+            </p>
+            <ul>
+             <li>
+              <p>
+               地大（坚） paṭhav&imacr;-dh&amacr;tu 软硬
+              </p>
+             </li>
+             <li>
+              <p>
+               水大（湿） &amacr;po-dh&amacr;tu 粘着
+              </p>
+             </li>
+             <li>
+              <p>
+               火大（暖） tejo-dh&amacr;tu 冷热
+              </p>
+             </li>
+             <li>
+              <p>
+               风大（动） v&amacr;yo-dh&amacr;tu 运动
+              </p>
+             </li>
+            </ul>
+            <p>
+             五盖 或 五个敌人｜ n&imacr;varaṇa
+            </p>
+            <ul>
+             <li>
+              <p>
+               贪欲 k&amacr;macchanda
+              </p>
+             </li>
+             <li>
+              <p>
+               瞋恚 vy&amacr;p&amacr;da
+              </p>
+             </li>
+             <li>
+              <p>
+               身或心的怠惰 th&imacr;na-middha
+              </p>
+             </li>
+             <li>
+              <p>
+               烦躁 uddhacca-kukkucca
+              </p>
+             </li>
+             <li>
+              <p>
+               疑法 vicikicch&amacr;
+              </p>
+             </li>
+            </ul>
+            <p>
+             五力或五个朋友｜ indriyas / balan&imacr;
+            </p>
+            <ul>
+             <li>
+              <p>
+               信念 saddh&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               精进 viriya
+              </p>
+             </li>
+             <li>
+              <p>
+               觉知 sati
+              </p>
+             </li>
+             <li>
+              <p>
+               禅定 sam&amacr;dhi
+              </p>
+             </li>
+             <li>
+              <p>
+               智慧 pa&ntilde;&ntilde;&amacr;
+              </p>
+             </li>
+            </ul>
+            <p>
+             物质生起的四个起因
+            </p>
+            <ul>
+             <li>
+              <p>
+               食物
+              </p>
+             </li>
+             <li>
+              <p>
+               环境 / 气侯
+              </p>
+             </li>
+             <li>
+              <p>
+               现时的心理反应
+              </p>
+             </li>
+             <li>
+              <p>
+               过去的心理反应
+              </p>
+             </li>
+            </ul>
+            <p>
+             四无量心｜ brahmavih&amacr;ras
+            </p>
+            <ul>
+             <li>
+              <p>
+               慈 mett&amacr; - 帮助别人而不求汇报的善意和爱心
+              </p>
+             </li>
+             <li>
+              <p>
+               悲 karuṇ&amacr; - 同情别人的失败和痛苦
+              </p>
+             </li>
+             <li>
+              <p>
+               喜 mudit&amacr; - 分享别人的成功和好运
+              </p>
+             </li>
+             <li>
+              <p>
+               舍（平等心） upekkh&amacr; - 神圣的无分别心
+              </p>
+             </li>
+            </ul>
+            <p>
+             四念住 （觉知的建立 / 内观）｜
+            </p>
+            <p>
+             satipaṭṭh&amacr;na
+            </p>
+            <ul>
+             <li>
+              <p>
+               身念住 k&amacr;y&amacr;nupassan&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               受念住 vedan&amacr;nupassan&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               心念住 citt&amacr;nupassan&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               法念住 dhamm&amacr;nupassan&amacr;
+              </p>
+             </li>
+            </ul>
+            <p>
+             十波罗密｜ p&amacr;ram&imacr;
+            </p>
+            <ul>
+             <li>
+              <p>
+               舍离 nekkhamma
+              </p>
+             </li>
+             <li>
+              <p>
+               持戒 s&imacr;la
+              </p>
+             </li>
+             <li>
+              <p>
+               精进 viriya
+              </p>
+             </li>
+             <li>
+              <p>
+               忍耐 khant&imacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               实相 sacca
+              </p>
+             </li>
+             <li>
+              <p>
+               坚毅 adhiṭṭh&amacr;na
+              </p>
+             </li>
+             <li>
+              <p>
+               智慧 pa&ntilde;&ntilde;&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               平等心 upekkh&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               慈爱 mett&amacr;
+              </p>
+             </li>
+             <li>
+              <p>
+               布施 d&amacr;na
+              </p>
+             </li>
+            </ul>
+           </div>
+          </details>
+          <div class="source-note">
+           <p>
+            原页最后还收录了大段课程或书籍&ldquo;问与答&rdquo;。因为它不是我的个人表达，这个版本不再全文转载。
+           </p>
+          </div>
+         </div>
+        </details>
+       </div>
+      </details>
+      <p class="end-note">
+       这篇文章停在 2024-10-09 的记录处。我没有补写一个事后看起来更圆满的结论，因为当时真实留下的，就是练习变难、不断中断、再把目标调回早晚半小时。
+      </p>
+     </article>
+    </div>
+   </div>
+  </main>
+  <footer class="footer">
+   <div class="container">
+    <p>
+     &copy; Zi Yin
+    </p>
+    <div class="footer-links">
+     <a href="mailto:silver.ziyin@gmail.com">
+      silver.ziyin@gmail.com
+     </a>
+     <a href="https://www.linkedin.com/in/zi-yin-96a61772/" rel="noopener noreferrer" target="_blank">
+      LinkedIn
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script src="../../script.js?v=20260716-3">
+  </script>
+  <script src="/papers/vipassana.js?v=20260716-3">
+  </script>
+ </body>
 </html>
