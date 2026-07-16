@@ -7,7 +7,7 @@
 
 ## Architecture
 
-- `server.mjs` serves the repository and maps clean public routes such as `/projects/vipassana` to static files.
+- `server.mjs` serves the repository and maps clean public routes such as `/projects/vipassana` and `/projects/mbti` to static files.
 - Shared site navigation and base tokens live in `styles.css` and `script.js`.
 - Page-specific long-form behavior belongs beside the page under `papers/`.
 
@@ -16,7 +16,7 @@
 - Preserve the author's first-person voice and explicitly label personal experience, inference, official material, and third-party material.
 - Do not publish credentials, financial proofs, obsolete travel logistics, or private names without an explicit reason.
 - Long-form pages must be checked at desktop, tablet, and narrow mobile widths and must support keyboard focus, reduced motion, deep links, and printing.
-- On the Vipassana page, keep long narratives single-column; reserve the wide-desktop book spread for explicitly bounded, scannable sections at `1280px` and above.
+- On long-form self-analysis pages, use wide-desktop book spreads only for bounded, scannable sections; keep long narrative prose in a centered single column.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.
 
 ## Publication
