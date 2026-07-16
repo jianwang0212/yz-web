@@ -24,3 +24,12 @@
 - Excluded scraped physiological claims, celebrity typing, generic AI Q&A, Confluence-only media blobs, and private examples that were not necessary to the public self-analysis.
 - Wide desktop uses a paper surface and local two-page grids only for bounded cards and short comparisons. Long prose remains centered and single-column.
 - Page assets are `papers/mbti.html`, `papers/mbti.css`, and `papers/mbti.js`; focused regression coverage is in `tests/mbti-longform.test.js`.
+
+## 2026-07-16 — Work, partners, and long-termism essay
+
+- Added `/essays/career-and-long-termism` from Confluence page `524320769`, preserving the original first-person experiences, dates, numbers, revisions, and visible source headings.
+- Public reading order is an always-visible overview followed by five folded volumes: ownership, partners, major decisions and freedom, compounding work, and information and creativity. Only the first volume opens by default.
+- Private names are anonymized by explicit approval. Public references such as Reid Hoffman and DockingTech remain attributed where they are necessary to the argument.
+- Explicit quotations and external frameworks are visually marked as source excerpts. Two unattributed network graphics were not republished because their claims and reuse rights could not be verified.
+- Wide desktop uses a book-like paper, sticky reading path, and bounded two-page spreads; at `1100px` the side path becomes an in-page disclosure; at `520px` overview cards use a compact two-column grid. Long prose remains single-column at every width.
+- Page assets are `essays/career-and-long-termism.html`, `.css`, and `.js`; discovery is wired through Essays, clean routes, i18n, and the sitemap. Regression coverage is in `tests/career-longform.test.js`.
