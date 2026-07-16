@@ -16,6 +16,7 @@
 - Preserve the author's first-person voice and explicitly label personal experience, inference, official material, and third-party material.
 - Do not publish credentials, financial proofs, obsolete travel logistics, or private names without an explicit reason.
 - Long-form pages must be checked at desktop, tablet, and narrow mobile widths and must support keyboard focus, reduced motion, deep links, and printing.
+- On the Vipassana page, keep long narratives single-column; reserve the wide-desktop book spread for explicitly bounded, scannable sections at `1280px` and above.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.
 
 ## Publication
