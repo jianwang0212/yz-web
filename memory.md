@@ -16,3 +16,11 @@
 - Wide desktop uses a larger paper surface, a two-page editorial header, and a two-column overview.
 - Use local `.book-spread--two` wrappers only for bounded, scannable sections. Long narratives, theory, follow-up logs, callouts, and nested source material stay in a centered single column.
 - Do not apply CSS columns to `.chapter-body` or the full article: it creates long bottom-left-to-top-right reading jumps and damages chronological reading order.
+
+## 2026-07-16 — MBTI / INTJ self-analysis page
+
+- Added `/projects/mbti` from two archived Confluence records, using the Vipassana long-form reading contract: always-visible overview, one primary chapter open, later chapters folded, nested source material, deep links, print expansion, and narrow-mobile single-column flow.
+- Preserved concrete first-person phrasing and separated Zi's observations from type-theory interpretation and external material.
+- Excluded scraped physiological claims, celebrity typing, generic AI Q&A, Confluence-only media blobs, and private examples that were not necessary to the public self-analysis.
+- Wide desktop uses a paper surface and local two-page grids only for bounded cards and short comparisons. Long prose remains centered and single-column.
+- Page assets are `papers/mbti.html`, `papers/mbti.css`, and `papers/mbti.js`; focused regression coverage is in `tests/mbti-longform.test.js`.

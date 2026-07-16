@@ -23,6 +23,7 @@ test('projects index separates public work from internal operations', () => {
   expectIncludes(publicSection, 'href="/projects/workout"');
   expectIncludes(publicSection, 'href="/projects/stock-research-dashboard"');
   expectIncludes(publicSection, 'href="/projects/vipassana"');
+  expectIncludes(publicSection, 'href="/projects/mbti"');
   expectIncludes(publicSection, 'href="/engineering"');
   expectIncludes(publicSection, 'href="/projects/chord-trainer"');
   expectIncludes(publicSection, 'href="/projects/stem-splitter"');
