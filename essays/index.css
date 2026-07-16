@@ -152,6 +152,35 @@
 .garden-pill-d { right: 9%; bottom: 12%; }
 .garden-pill-e { left: calc(50% - 88px); bottom: 5%; background: #f8fff9; }
 .garden-pill-f { left: calc(50% - 84px); top: 5%; background: #fffdf4; }
+.garden-pill-g { right: 3%; top: calc(50% - 41px); background: #f4faf7; }
+
+.essays-hero-board {
+    display: grid;
+    grid-template-areas:
+        "berklee vocal plans"
+        "works main career"
+        "snow system empty";
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    align-content: center;
+    padding: 58px 46px;
+}
+
+.garden-pill {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-height: 88px;
+}
+
+.garden-pill-main { grid-area: main; width: auto; min-height: 116px; }
+.garden-pill-a { grid-area: plans; }
+.garden-pill-b { grid-area: works; }
+.garden-pill-c { grid-area: snow; }
+.garden-pill-d { grid-area: system; }
+.garden-pill-e { grid-area: berklee; }
+.garden-pill-f { grid-area: vocal; }
+.garden-pill-g { grid-area: career; }
 
 .essays-section {
     width: min(1120px, calc(100% - 40px));
@@ -256,6 +285,32 @@
         url("/images/photos/music-practice.webp");
     background-size: cover;
     background-position: center 42%;
+}
+
+.essay-card-career .essay-card-image {
+    position: relative;
+    background:
+        linear-gradient(90deg, transparent 49.7%, rgba(23, 33, 33, 0.15) 50%, transparent 50.3%),
+        repeating-linear-gradient(180deg, transparent 0 31px, rgba(23, 33, 33, 0.055) 31px 32px),
+        linear-gradient(145deg, #eef4ef, #d7e5dd);
+}
+
+.essay-card-career .essay-card-image::before {
+    content: "OWNERSHIP  ·  PARTNERS\A COMPOUNDING  ·  FREEDOM";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: min(72%, 270px);
+    padding: 28px 24px;
+    border: 1px solid rgba(23, 33, 33, 0.2);
+    background: rgba(251, 252, 250, 0.88);
+    color: var(--essays-deep);
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 2;
+    letter-spacing: 0.06em;
+    text-align: center;
+    white-space: pre-line;
+    transform: translate(-50%, -50%);
 }
 
 .essay-card-copy {
@@ -367,6 +422,8 @@
     .essays-hero-board {
         min-height: auto;
         padding: 12px;
+        grid-template-areas: none;
+        grid-template-columns: 1fr;
     }
 
     .essays-hero-board::after {
@@ -380,9 +437,11 @@
     .garden-pill-c,
     .garden-pill-d,
     .garden-pill-e,
-    .garden-pill-f {
+    .garden-pill-f,
+    .garden-pill-g {
         position: relative;
         inset: auto;
+        grid-area: auto;
         width: auto;
         margin: 10px 0;
     }

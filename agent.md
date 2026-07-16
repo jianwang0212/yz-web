@@ -9,7 +9,7 @@
 
 - `server.mjs` serves the repository and maps clean public routes such as `/projects/vipassana` and `/projects/mbti` to static files.
 - Shared site navigation and base tokens live in `styles.css` and `script.js`.
-- Page-specific long-form behavior belongs beside the page under `papers/`.
+- Page-specific long-form behavior belongs beside the page under `papers/` or `essays/`, matching its public section.
 
 ## Content and code rules
 
