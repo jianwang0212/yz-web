@@ -14,6 +14,7 @@
 ## Content and code rules
 
 - Preserve the author's first-person voice and explicitly label personal experience, inference, official material, and third-party material.
+- When proofreading migrated long-form prose, correct only high-confidence typos, omissions, duplicated text, and OCR artifacts; preserve deliberate colloquialisms and imperfect first-person phrasing.
 - Do not publish credentials, financial proofs, obsolete travel logistics, or private names without an explicit reason.
 - Long-form pages must be checked at desktop, tablet, and narrow mobile widths and must support keyboard focus, reduced motion, deep links, and printing.
 - On long-form self-analysis pages, use wide-desktop book spreads only for bounded, scannable sections; keep long narrative prose in a centered single column.
