@@ -1,5 +1,11 @@
 # Project memory
 
+## 2026-07-17 — Vipassana full-text proofreading
+
+- Proofread the complete published long-form page against the three archived Confluence sources, not only the reader-reported `入水时间` typo.
+- Corrected confirmed typos, missing or repeated words, wrong pronouns, malformed Pali spelling, and OCR-created spaces while preserving Zi's deliberate colloquialisms, first-person logs, and uncertain experiential terminology.
+- Added regression assertions for representative corrections such as `入睡时间`, `双相情感障碍`, `次原子粒子`, `崭新的视角`, and `第一圣谛` so these errors cannot silently return.
+
 ## 2026-07-16 — Vipassana long-form restoration
 
 - Rebuilt `/projects/vipassana` from three archived Confluence pages while keeping the public route unchanged.

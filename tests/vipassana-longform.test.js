@@ -41,6 +41,45 @@ test("Vipassana longform removes credentials and stale private logistics", () =>
     }
 });
 
+test("Vipassana longform keeps confirmed typos out of the published text", () => {
+    for (const typo of [
+        "入水时间",
+        "vipassasna",
+        "双向情感障碍",
+        "经历充沛",
+        "次元子粒子",
+        "每周天",
+        "想做的的事情",
+        "斩新的视角",
+        "我门探索",
+        "俺想和快乐",
+        "原石资料",
+        "没一瞬间",
+        "生命种",
+        "低于之火",
+        "往年不断",
+        "不尽烦恼",
+        "营救吸毒",
+        "气侯",
+        "不求汇报的善意",
+        "第一圣地",
+    ]) {
+        assert.ok(!html.includes(typo), `Unexpected typo in Vipassana text: ${typo}`);
+    }
+
+    for (const correction of [
+        "入睡时间",
+        "双相情感障碍",
+        "精力充沛",
+        "次原子粒子",
+        "崭新的视角",
+        "不求回报的善意",
+        "第一圣谛",
+    ]) {
+        assert.ok(html.includes(correction), `Missing confirmed correction: ${correction}`);
+    }
+});
+
 test("Vipassana assets cover responsive, accessible, print, and deep-link behavior", () => {
     assert.match(html, /href="\/papers\/vipassana\.css\?v=20260716-4"/);
     assert.match(html, /src="\/papers\/vipassana\.js\?v=20260716-4"/);
