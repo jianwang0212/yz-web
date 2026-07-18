@@ -23,6 +23,11 @@ test('snow white archive page and assets are tracked together', () => {
   expectIncludes(snowWhiteHtml, 'assets/snow-white/snow-white-mastered.wav');
   expectIncludes(snowWhiteHtml, 'snow-white.css');
   expectIncludes(snowWhiteHtml, 'snow-white.js');
+  expectIncludes(snowWhiteHtml, '<div><dt>Arranger / 编曲</dt><dd>银子；吴子睿</dd></div>');
+  expectIncludes(snowWhiteHtml, '<div><dt>Mix engineer / 混音师</dt><dd>吴子睿</dd></div>');
+  expectIncludes(snowWhiteHtml, '<div><dt>Mastering engineer / 母带师</dt><dd>银子</dd></div>');
+  assert.equal(snowWhiteHtml.includes('Flute / 长笛'), false);
+  assert.equal(snowWhiteHtml.includes('Special thanks / 特别鸣谢'), false);
 
   const audioFile = new URL('../assets/snow-white/snow-white-mastered.mp3', import.meta.url);
   const losslessAudioFile = new URL('../assets/snow-white/snow-white-mastered.wav', import.meta.url);
