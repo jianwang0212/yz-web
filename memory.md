@@ -1,5 +1,12 @@
 # Project memory
 
+## 2026-07-18 — One Person credits copied from Snow White
+
+- The requested target is `/works/one-person`; keep `/works/snow-white` on its original production credits unless Zi explicitly asks to change that page.
+- One Person now reuses Snow White's four-card credits structure and personnel while retaining One Person's own song title and lyrics.
+- One Person-specific overrides are arranger `银子；吴子睿`, mix engineer `吴子睿`, and mastering engineer `银子`; omit the flute and special-thanks rows.
+- Regression coverage must verify both sides: Snow White keeps its original five credit details, while One Person keeps the copied-and-overridden credits.
+
 ## 2026-07-17 — Vipassana full-text proofreading
 
 - Proofread the complete published long-form page against the three archived Confluence sources, not only the reader-reported `入水时间` typo.
