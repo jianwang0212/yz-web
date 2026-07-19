@@ -18,6 +18,8 @@ test('server route aliases cover clean project URLs', () => {
   assert.equal(findRouteAlias('/essays/career-and-long-termism.html'), 'essays/career-and-long-termism.html');
   assert.equal(findRouteAlias('/essays/why-jazz'), 'essays/why-jazz.html');
   assert.equal(findRouteAlias('/essays/why-jazz.html'), 'essays/why-jazz.html');
+  assert.equal(findRouteAlias('/essays/happiness'), 'essays/happiness.html');
+  assert.equal(findRouteAlias('/essays/happiness.html'), 'essays/happiness.html');
   assert.equal(findRouteAlias('/projects/dockingtech'), 'projects/dockingtech.html');
   assert.equal(findRouteAlias('/projects/stock-research-dashboard'), 'projects/stock-research-dashboard.html');
   assert.equal(findRouteAlias('/projects/workout'), 'projects/workout.html');
@@ -65,6 +67,7 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(rewrites.get('/engineering'), '/engineering.html');
   assert.equal(rewrites.get('/essays/career-and-long-termism'), '/essays/career-and-long-termism.html');
   assert.equal(rewrites.get('/essays/why-jazz'), '/essays/why-jazz.html');
+  assert.equal(rewrites.get('/essays/happiness'), '/essays/happiness.html');
   assert.equal(rewrites.get('/2026-h1-review'), '/2026-h1-review.html');
   assert.equal(rewrites.get('/projects/dockingtech'), '/projects/dockingtech.html');
   assert.equal(rewrites.get('/projects/stock-research-dashboard'), '/projects/stock-research-dashboard.html');
