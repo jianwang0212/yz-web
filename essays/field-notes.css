@@ -1,0 +1,707 @@
+:root {
+    --note-ink: #202925;
+    --note-muted: #65706a;
+    --note-paper: #fffdf8;
+    --note-canvas: #ecefe9;
+    --note-line: rgba(32, 41, 37, 0.15);
+    --note-accent: #355f52;
+    --note-accent-soft: #e3ece6;
+    --note-warm: #9a5a43;
+    --note-blue: #476b7b;
+}
+
+.field-note-page--market {
+    --note-accent: #7a3f32;
+    --note-accent-soft: #f2e6df;
+    --note-warm: #a65f35;
+}
+
+.field-note-page--ai {
+    --note-accent: #315e69;
+    --note-accent-soft: #e2ecee;
+    --note-warm: #8b6a37;
+}
+
+.field-note-page--life {
+    --note-accent: #52643f;
+    --note-accent-soft: #e8eee1;
+    --note-warm: #8f6048;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.field-note-page {
+    margin: 0;
+    color: var(--note-ink);
+    background:
+        linear-gradient(90deg, transparent calc(50% - 1px), rgba(32, 41, 37, 0.025) 50%, transparent calc(50% + 1px)),
+        var(--note-canvas);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.field-note-page .navbar {
+    background: rgba(255, 253, 248, 0.94);
+    border-bottom: 1px solid var(--note-line);
+    backdrop-filter: blur(16px);
+}
+
+.field-note-page .navbar a {
+    color: var(--note-ink);
+}
+
+.skip-link {
+    position: fixed;
+    z-index: 1000;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    background: var(--note-ink);
+    color: #fff;
+    transform: translateY(-160%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.field-note-main {
+    padding: 8.5rem 1.25rem 5rem;
+}
+
+.reading-shell {
+    display: grid;
+    grid-template-columns: 12.5rem minmax(0, 70rem);
+    gap: 2rem;
+    justify-content: center;
+    align-items: start;
+}
+
+.article-toc {
+    position: sticky;
+    top: 7rem;
+    padding: 1.1rem 0.25rem;
+    border-top: 2px solid var(--note-accent);
+    color: var(--note-muted);
+}
+
+.toc-label,
+.section-kicker,
+.eyebrow,
+.chapter-number,
+.category-label {
+    margin: 0;
+    color: var(--note-accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.article-toc ol,
+.mobile-toc ol {
+    margin: 0.7rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.article-toc li + li,
+.mobile-toc li + li {
+    margin-top: 0.15rem;
+}
+
+.article-toc a,
+.mobile-toc a {
+    display: block;
+    padding: 0.45rem 0;
+    color: inherit;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    text-decoration: none;
+}
+
+.article-toc a:hover,
+.article-toc a:focus-visible,
+.article-toc a[aria-current="location"] {
+    color: var(--note-accent);
+}
+
+.reading-column {
+    min-width: 0;
+}
+
+.back-link {
+    display: inline-block;
+    margin: 0 0 1rem;
+    color: var(--note-accent);
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mobile-toc {
+    display: none;
+}
+
+.post {
+    overflow: hidden;
+    border: 1px solid var(--note-line);
+    border-radius: 0.35rem;
+    background: var(--note-paper);
+    box-shadow: 0 1.4rem 4rem rgba(32, 41, 37, 0.09);
+}
+
+.book-spread {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.post-header {
+    position: relative;
+    min-height: 31rem;
+    border-bottom: 1px solid var(--note-line);
+    background:
+        repeating-linear-gradient(180deg, transparent 0 31px, rgba(32, 41, 37, 0.045) 31px 32px),
+        linear-gradient(140deg, #fffefb, var(--note-accent-soft));
+}
+
+.post-header::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(32, 41, 37, 0.18), transparent);
+}
+
+.book-page {
+    display: flex;
+    min-width: 0;
+    padding: clamp(2rem, 5vw, 4.5rem);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-page--title h1 {
+    margin: 1.25rem 0 0;
+    color: var(--note-ink);
+    font-family: ui-serif, "Songti SC", "STSong", "Iowan Old Style", serif;
+    font-size: clamp(2.8rem, 5.3vw, 5rem);
+    font-weight: 650;
+    line-height: 1.03;
+    letter-spacing: -0.045em;
+}
+
+.title-note {
+    margin: 1rem 0 0;
+    color: var(--note-accent);
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: 1.1rem;
+}
+
+.book-page--dek {
+    color: #3e4944;
+}
+
+.dek {
+    margin: 0;
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.85;
+}
+
+.post-meta {
+    margin: 1.4rem 0 0;
+    color: var(--note-muted);
+    font-size: 0.78rem;
+    line-height: 1.7;
+}
+
+.principle-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1.8rem;
+}
+
+.principle-row span {
+    padding: 0.35rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--note-accent) 25%, transparent);
+    border-radius: 999px;
+    color: var(--note-accent);
+    font-size: 0.74rem;
+    font-weight: 750;
+}
+
+.overview-card,
+.source-note,
+.article-end {
+    padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.overview-card {
+    border-bottom: 1px solid var(--note-line);
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 1.28fr);
+    gap: 2.5rem;
+}
+
+.overview-grid h2 {
+    margin: 0.65rem 0 0;
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.18;
+}
+
+.overview-grid p,
+.chapter-prose p,
+.chapter-prose li,
+.source-note p,
+.source-note li,
+.article-end p {
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.overview-grid p:first-child {
+    margin-top: 0;
+}
+
+.thesis-grid,
+.risk-grid,
+.systems-grid,
+.motive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: 2.5rem;
+}
+
+.thesis-grid article,
+.risk-grid article,
+.systems-grid article,
+.motive-grid article {
+    padding: 1.2rem 1.25rem;
+    border: 1px solid var(--note-line);
+    border-radius: 0.35rem;
+    background: rgba(255, 255, 255, 0.68);
+}
+
+.thesis-grid h3,
+.risk-grid h3,
+.systems-grid h3,
+.motive-grid h3 {
+    margin: 0.45rem 0 0.55rem;
+    color: var(--note-ink);
+    font-size: 1.02rem;
+}
+
+.thesis-grid p,
+.risk-grid p,
+.systems-grid p,
+.motive-grid p {
+    margin: 0;
+    color: var(--note-muted);
+    font-size: 0.88rem;
+    line-height: 1.75;
+}
+
+.story-chapter {
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid var(--note-line);
+}
+
+.story-chapter > summary,
+.mobile-toc > summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    min-height: 6rem;
+    padding: 1.45rem 4.3rem 1.45rem clamp(1.4rem, 4vw, 3.2rem);
+    cursor: pointer;
+    list-style: none;
+}
+
+.story-chapter > summary::-webkit-details-marker,
+.mobile-toc > summary::-webkit-details-marker {
+    display: none;
+}
+
+.story-chapter > summary::after,
+.mobile-toc > summary::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 1.7rem;
+    color: var(--note-accent);
+    font-size: 1.35rem;
+    transform: translateY(-50%);
+    transition: transform 160ms ease;
+}
+
+.story-chapter[open] > summary::after,
+.mobile-toc[open] > summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.story-chapter[open] > summary {
+    background: var(--note-accent-soft);
+}
+
+.chapter-title {
+    color: var(--note-ink);
+    font-size: 1.32rem;
+    font-weight: 760;
+    line-height: 1.35;
+}
+
+.chapter-meta {
+    grid-column: 2;
+    margin-top: 0.25rem;
+    color: var(--note-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.chapter-body {
+    padding: 1rem clamp(1.4rem, 5vw, 4.5rem) 3.8rem;
+}
+
+.chapter-prose {
+    width: min(100%, 50rem);
+    margin-inline: auto;
+}
+
+.chapter-intro {
+    margin: 1.2rem 0 2.2rem;
+    color: var(--note-muted);
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: 1.12rem !important;
+}
+
+.chapter-prose h2 {
+    margin: 3rem 0 1rem;
+    color: var(--note-ink);
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: 1.55rem;
+    line-height: 1.4;
+}
+
+.chapter-prose h3 {
+    margin: 2.2rem 0 0.65rem;
+    color: var(--note-accent);
+    font-size: 1.02rem;
+}
+
+.chapter-prose ul,
+.chapter-prose ol,
+.source-note ul {
+    padding-left: 1.35rem;
+}
+
+.chapter-prose li + li,
+.source-note li + li {
+    margin-top: 0.6rem;
+}
+
+.pull-quote {
+    margin: 2.7rem 0;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    border-left: 4px solid var(--note-accent);
+    color: var(--note-accent);
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 620;
+    line-height: 1.65;
+}
+
+.note-card,
+.boundary-note,
+.version-note {
+    margin: 2rem 0;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--note-line);
+    border-left: 4px solid var(--note-accent);
+    border-radius: 0.3rem;
+    background: rgba(255, 255, 255, 0.66);
+}
+
+.note-card strong,
+.boundary-note strong,
+.version-note strong {
+    color: var(--note-accent);
+}
+
+.note-card p,
+.boundary-note p,
+.version-note p {
+    margin: 0.35rem 0 0;
+    color: #4f5a54;
+    font-size: 0.9rem;
+}
+
+.decision-list {
+    margin: 1.5rem 0;
+    padding: 0 !important;
+    list-style: none;
+    counter-reset: decisions;
+}
+
+.decision-list li {
+    position: relative;
+    margin: 0 !important;
+    padding: 0.85rem 0 0.85rem 2.8rem;
+    border-bottom: 1px solid var(--note-line);
+    counter-increment: decisions;
+}
+
+.decision-list li::before {
+    content: counter(decisions, decimal-leading-zero);
+    position: absolute;
+    top: 0.9rem;
+    left: 0;
+    color: var(--note-accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.timeline {
+    margin: 2rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.timeline li {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--note-line);
+}
+
+.timeline time {
+    color: var(--note-accent);
+    font-weight: 800;
+}
+
+.source-note {
+    background: #f6f5ef;
+}
+
+.source-note h2,
+.article-end h2 {
+    margin: 0 0 1rem;
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: 1.7rem;
+}
+
+.source-note a,
+.article-end a {
+    color: var(--note-accent);
+}
+
+.article-end {
+    border-top: 1px solid var(--note-line);
+    text-align: center;
+}
+
+.article-end-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.article-end-links a {
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--note-line);
+    text-decoration: none;
+}
+
+.field-note-footer {
+    margin-top: 4rem;
+    border-top: 1px solid var(--note-line);
+    background: var(--note-paper);
+}
+
+:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--note-accent) 50%, white);
+    outline-offset: 3px;
+}
+
+@media (min-width: 1280px) {
+    .reading-shell {
+        grid-template-columns: 13.5rem minmax(0, 72rem);
+        gap: 2.5rem;
+    }
+
+    .book-page--title {
+        padding-left: 5.2rem;
+    }
+
+    .chapter-body {
+        padding-inline: 5.2rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .reading-shell {
+        grid-template-columns: minmax(0, 58rem);
+    }
+
+    .article-toc {
+        display: none;
+    }
+
+    .mobile-toc {
+        display: block;
+        margin: 0 0 1rem;
+        border: 1px solid var(--note-line);
+        background: var(--note-paper);
+    }
+
+    .mobile-toc > summary {
+        min-height: auto;
+        padding: 0.9rem 3.5rem 0.9rem 1rem;
+        font-weight: 750;
+    }
+
+    .mobile-toc ol {
+        padding: 0 1rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .field-note-main {
+        padding: 6.7rem 0.85rem 2.5rem;
+    }
+
+    .post {
+        border-radius: 0;
+        box-shadow: 0 0.8rem 2.5rem rgba(32, 41, 37, 0.06);
+    }
+
+    .book-spread,
+    .overview-grid,
+    .thesis-grid,
+    .risk-grid,
+    .systems-grid,
+    .motive-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .post-header {
+        min-height: 0;
+    }
+
+    .post-header::after {
+        display: none;
+    }
+
+    .book-page {
+        padding: 2.3rem 1.45rem;
+    }
+
+    .book-page--title {
+        min-height: 22rem;
+        border-bottom: 1px solid var(--note-line);
+    }
+
+    .book-page--title h1 {
+        font-size: clamp(2.65rem, 14vw, 4rem);
+    }
+
+    .overview-card,
+    .source-note,
+    .article-end {
+        padding: 2.1rem 1.35rem;
+    }
+
+    .story-chapter > summary {
+        min-height: 5.5rem;
+        padding: 1.2rem 3.2rem 1.2rem 1.2rem;
+        grid-template-columns: 1.75rem minmax(0, 1fr);
+    }
+
+    .story-chapter > summary::after {
+        right: 1.1rem;
+    }
+
+    .chapter-body {
+        padding: 0.75rem 1.35rem 3rem;
+    }
+
+    .chapter-title {
+        font-size: 1.12rem;
+    }
+
+    .chapter-meta {
+        font-size: 0.72rem;
+    }
+
+    .overview-grid p,
+    .chapter-prose p,
+    .chapter-prose li,
+    .source-note p,
+    .source-note li,
+    .article-end p {
+        font-size: 1rem;
+        line-height: 1.88;
+    }
+
+    .timeline li {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+@media print {
+    .navbar,
+    .article-toc,
+    .mobile-toc,
+    .back-link,
+    .field-note-footer {
+        display: none !important;
+    }
+
+    .field-note-page,
+    .post,
+    .source-note {
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    .field-note-main {
+        padding: 0;
+    }
+
+    .reading-shell {
+        display: block;
+    }
+
+    .post {
+        border: 0;
+    }
+
+    .story-chapter {
+        break-inside: avoid-page;
+    }
+}

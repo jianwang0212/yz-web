@@ -10,6 +10,7 @@
 - `server.mjs` serves the repository and maps clean public routes such as `/projects/vipassana` and `/projects/mbti` to static files.
 - Shared site navigation and base tokens live in `styles.css` and `script.js`.
 - Page-specific long-form behavior belongs beside the page under `papers/` or `essays/`, matching its public section.
+- New first-person field essays may share `essays/field-notes.css` and `essays/field-notes.js`; keep page content in standalone HTML and avoid copying the same book/disclosure behavior into each essay.
 
 ## Content and code rules
 
@@ -19,6 +20,7 @@
 - In public health-related personal notes, retain concrete first-person experience and questions, but remove private measurements and downgrade unsupported medical causality to clearly labeled open questions; always state that the page is not medical advice.
 - Long-form pages must be checked at desktop, tablet, and narrow mobile widths and must support keyboard focus, reduced motion, deep links, and printing.
 - On long-form self-analysis pages, use wide-desktop book spreads only for bounded, scannable sections; keep long narrative prose in a centered single column.
+- Organize the public Essays index under four durable reader paths: market and judgment; entrepreneurship and systems; music and training; life and self.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.
 
 ## Publication

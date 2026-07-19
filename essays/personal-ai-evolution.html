@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="从 2023 年想做一个最了解我的 GPT，到 2026 年搭建数据、Agent、Supervisor 和公开输出：我的个人 AI 系统怎样从想象变成基础设施。">
+    <meta property="og:title" content="从想象到基础设施：我如何用三年构建个人 AI 系统">
+    <meta property="og:description" content="个人 AI 最大的 gap，不是模型不知道世界，而是它不知道我；真正困难的，是数据、权限、闭环和判断。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://thisisyz.com/essays/personal-ai-evolution">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://thisisyz.com/essays/personal-ai-evolution">
+    <title>个人 AI 三年演化｜Zi Yin</title>
+    <link rel="stylesheet" href="/styles.css?v=20260719-essays1">
+    <link rel="stylesheet" href="/essays/field-notes.css?v=20260719-1">
+</head>
+<body class="field-note-page field-note-page--ai">
+    <a class="skip-link" href="#article">跳到正文</a>
+    <nav class="navbar" aria-label="主导航"><div class="container">
+        <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页"><span class="name-en">Zi Yin</span><span class="name-sep">·</span><span class="name-zh">银子</span></a>
+        <ul class="nav-menu" id="primary-navigation"><li><a href="/index.html">首页</a></li><li><a href="/year-review.html">年度总结</a></li><li><a href="/works.html">作品</a></li><li class="nav-menu-item"><a class="nav-dropdown-toggle" href="#">更多 <span aria-hidden="true">▼</span></a><div class="nav-dropdown"><a href="/essays/">Essays</a><a href="/projects.html">项目</a><a href="/timeline.html">时间线</a><a href="/resume.html">简历</a></div></li></ul>
+        <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation"><span></span><span></span><span></span></div>
+    </div></nav>
+
+    <main class="field-note-main" id="article"><div class="reading-shell">
+        <aside class="article-toc" aria-label="文章目录"><p class="toc-label">阅读路径</p><ol>
+            <li><a href="#overview">总述</a></li><li><a href="#year-2023">01 · 2023 想象</a></li><li><a href="#gap">02 · 真正的 Gap</a></li><li><a href="#year-2025">03 · 2025 闭环</a></li><li><a href="#year-2026">04 · 2026 组织</a></li><li><a href="#revisions">05 · 五个修正</a></li><li><a href="#next">06 · 接下来</a></li><li><a href="#source-note">版本与边界</a></li>
+        </ol></aside>
+
+        <div class="reading-column">
+            <a class="back-link" href="/essays/">← 返回 Essays</a>
+            <details class="mobile-toc"><summary>阅读路径</summary><ol><li><a href="#overview">总述</a></li><li><a href="#year-2023">01 · 2023 想象</a></li><li><a href="#gap">02 · 真正的 Gap</a></li><li><a href="#year-2025">03 · 2025 闭环</a></li><li><a href="#year-2026">04 · 2026 组织</a></li><li><a href="#revisions">05 · 五个修正</a></li><li><a href="#next">06 · 接下来</a></li></ol></details>
+
+            <article class="post">
+                <header class="post-header book-spread">
+                    <div class="book-page book-page--title"><p class="eyebrow">AI · Agent · Personal Systems</p><h1>从想象<br>到基础设施</h1><p class="title-note">我如何用三年构建个人 AI 系统</p></div>
+                    <div class="book-page book-page--dek"><p class="dek">2023 年，我想把所有数据喂给 GPT，让它成为最了解我的人。到了 2026 年，我发现真正有用的不是一个无所不知的模型，而是一套由数据、Agent、人工审核和输出组成的个人基础设施。</p><p class="post-meta">2023-08—2026-07 · 已实现、实验中和仍在构想的部分分开标注 · 约 13 分钟</p><div class="principle-row"><span>Golden Copy</span><span>Agent</span><span>Supervisor</span><span>Output</span></div></div>
+                </header>
+
+                <section class="overview-card" id="overview">
+                    <div class="overview-grid"><div><p class="section-kicker">Three-year arc</p><h2>我想做的，一直不只是聊天机器人</h2></div><div>
+                        <p>三年前，我把问题理解成“怎样训练一个最像我的模型”；现在，我把它理解成“怎样建立一套长期可用、权限清楚、失败可见的个人基础设施”。</p>
+                        <p>模型能力是其中一层。下面还有数据入口、可信版本、权限、自动化、审核和真正到达外部世界的 output。任何一层断掉，所谓个人 AI 都只是一次漂亮的 demo。</p>
+                        <p>这篇文章不是项目完成清单。我把已经跑通过的 workflow、正在统一的系统和仍在构想的方向分开写。回头看，真正改变我的往往不是最大胆的想法，而是那些小、无聊、却终于闭环的流程。</p>
+                    </div></div>
+                    <ol class="timeline"><li><time>2023</time><span><strong>数字替身</strong><br>如果 AI 拥有我的长期数据，它能不能成为最了解我的人？</span></li><li><time>2025</time><span><strong>工作流</strong><br>AI 离开对话框，开始接收输入、调用工具并完成真实动作。</span></li><li><time>2026</time><span><strong>个人组织</strong><br>多个职责有限的 Agent 协作，人从提问者变成 Supervisor。</span></li></ol>
+                </section>
+
+                <details class="story-chapter" id="year-2023" open>
+                    <summary><span class="chapter-number">01</span><span class="chapter-title">2023：我想做一个最了解我的 AI</span><span class="chapter-meta">长期记忆 · 个人数据 · 数字替身</span></summary>
+                    <div class="chapter-body"><div class="chapter-prose">
+                        <p class="chapter-intro">通用模型已经足够聪明。个人 AI 最大的 gap，不是模型不知道世界，而是它不知道我。</p>
+                        <p>2023 年 8 月，我写下了一份叫《ChatGPT 的长期计划》的笔记。那时 ChatGPT 出现还不到一年。我关心的已经不只是它能不能回答问题，而是：如果一个 AI 长期拥有我的个人数据，它到底可以了解我到什么程度？</p>
+                        <p>我列出文字、照片、视频、音乐、代码、健康记录、财务数据、日历、聊天和日记，然后开始问一些真正和我有关的问题：</p>
+                        <ul>
+                            <li>我最近几个月把时间花在了哪些事情和哪些人身上？</li>
+                            <li>过去几年的支出和状态受什么因素影响最大？</li>
+                            <li>做一个重要决定时，我过去有没有相似的记录？</li>
+                            <li>哪些健康变化值得我带着证据去问专业人士？</li>
+                            <li>能不能把旅行时随手拍的视频和照片，自动整理成一段 vlog？</li>
+                        </ul>
+                        <p>我想做的是一个<strong>对我的一生拥有长期记忆的系统</strong>。它不只知道这次对话里说了什么，而是知道我过去做过什么、喜欢什么、害怕什么、哪些计划总是失败、什么情况下我的判断容易变形。</p>
+                        <p>我甚至设想过让它学习我的说话方式，用我的声音回答问题，替我整理社交关系，成为一个数字版本的我。现在回头看，这份笔记很粗糙，也有一些过度乐观、侵犯隐私或根本不应该做的想法。但有一个判断后来没有变：个人 AI 的价值来自长期上下文，不只是参数量。</p>
+                        <blockquote class="pull-quote">我当时想做的，不是更聪明的搜索框，而是一个会记得的系统。</blockquote>
+                    </div></div>
+                </details>
+
+                <details class="story-chapter" id="gap">
+                    <summary><span class="chapter-number">02</span><span class="chapter-title">真正难的不是 Fine-tuning</span><span class="chapter-meta">数据入口 · 权限 · 可信版本</span></summary>
+                    <div class="chapter-body"><div class="chapter-prose">
+                        <p class="chapter-intro">当时我以为，只要把足够多的数据喂进去，AI 就会自然地变得了解我。后来发现完全不是这么简单。</p>
+                        <p>原始聊天记录里有大量重复、表情、群聊噪音和没有上下文的碎片。照片里的同一个人可能有很多名字；健康、财务、关系数据又有完全不同的权限要求。信息分散在手机、电脑、云盘、表格、社交软件和封闭的 App 里，每个地方都有自己的格式和更新时间。</p>
+                        <p>真正困难的是：</p>
+                        <ol class="decision-list"><li>数据怎样合法、稳定地拿出来；</li><li>怎样清洗、去重并保留来源；</li><li>哪一个版本是可以信任的 golden copy；</li><li>怎样持续更新，而不是一次性导入后慢慢腐烂；</li><li>谁可以访问，什么可以撤回和删除；</li><li>AI 做完以后，人怎样检查它有没有理解错。</li></ol>
+                        <p>如果同一条信息散落在五个数据库里，每个版本都不一样，AI 只是更快地制造混乱。个人数据库真正重要的能力，不是“存得多”，而是知道一条信息从哪里来、什么时候更新、谁有权读取，以及能不能被删掉。</p>
+                        <div class="boundary-note"><strong>从“什么都记录”到“只保存必要的”</strong><p>2023 年的我把全面收集当作能力。现在我更在意最小必要、明确同意、本地优先、可删除和按任务授权。尤其涉及他人的聊天、照片和关系，不因为技术上能拿到，就默认我应该拿。</p></div>
+                        <p>我还需要固定的整理习惯。模型能力再强，如果 input 永远不更新，所谓长期记忆也只是一个过期的档案馆。</p>
+                    </div></div>
+                </details>
+
+                <details class="story-chapter" id="year-2025">
+                    <summary><span class="chapter-number">03</span><span class="chapter-title">2025：AI 开始离开对话框</span><span class="chapter-meta">Input · Process · Output · Bottleneck</span></summary>
+                    <div class="chapter-body"><div class="chapter-prose">
+                        <p class="chapter-intro">我不再只问“它知道什么”，我开始问“它可以替我完成什么”。</p>
+                        <p>我用 n8n 做了一个很小的视频发布流程：手机拍完视频，文件进入工作流；模型分析内容，生成标题、描述和标签；系统上传到视频平台，发回结果通知，然后删除中间文件。</p>
+                        <p>它现在看起来不复杂，但改变了我对 AI 的理解。在这以前，AI 的主要形态是一个对话框。我问一个问题，它给我一段文字。对话结束，工作也就结束了。</p>
+                        <p>这个 workflow 不一样。它有明确的 input、process 和 output；会调用不同工具，完成一个真实动作，并把结果交还给我。AI 第一次不是“给建议的人”，而是进入了我的工作流。</p>
+                        <h2>最先跑通的，都是小闭环</h2>
+                        <div class="systems-grid">
+                            <article><p class="category-label">Published</p><h3>视频发布</h3><p>上传、理解、生成 metadata、发布、通知和清理中间文件。</p></article>
+                            <article><p class="category-label">Analysis</p><h3>时间使用</h3><p>整理 Calendar 数据，看“我说我重视什么”和“我实际把时间放在哪里”的差别。</p></article>
+                            <article><p class="category-label">Monitoring</p><h3>持续查询</h3><p>把部分反复搜索变成长期运行的调查任务，有值得看的结果再回来找我。</p></article>
+                            <article><p class="category-label">Feedback</p><h3>创作练习</h3><p>让模型看练习素材，给出带时间点的候选反馈，再由我和老师判断是否成立。</p></article>
+                        </div>
+                        <p>这些实验让我明白：真正有用的个人 AI，不应该要求我每天打开十个产品，写十遍 prompt，再把答案手工复制到另一个地方。它应该在后台工作，只把值得我看的部分送回来。</p>
+                        <p>但只要 AI 开始行动，新的问题就出现了。登录会过期，平台 API 不完整，RPA 不稳定，模型对长视频、纯音乐和细微动作的理解不可靠。一个看似简单的“自动订琴房”，瓶颈可能只是每次都要重新验证；一个“AI 钢琴老师”，可能卡在模型只能稳定分析很短的素材。</p>
+                        <blockquote class="pull-quote">我开始在每个项目后面专门写一项：瓶颈是什么。</blockquote>
+                        <p>这是我从做 demo 走向做系统的开始。</p>
+                    </div></div>
+                </details>
+
+                <details class="story-chapter" id="year-2026">
+                    <summary><span class="chapter-number">04</span><span class="chapter-title">2026：我不再想训练一个模型，而是建立一个组织</span><span class="chapter-meta">Specialists · Supervisor · Reviewer</span></summary>
+                    <div class="chapter-body"><div class="chapter-prose">
+                        <p class="chapter-intro">这个组织有数据入口、长期记忆、负责具体任务的 Agent、Supervisor，也有最后挑战结果的 Reviewer。</p>
+                        <p>到 2026 年，我对个人 AI 的想法已经不再是“做一个懂我的 GPT”。它更像一个小型组织。我的角色也从提问的人，变成决定目标、设置边界和检查结果的人。</p>
+                        <h2>数据入口</h2>
+                        <p>系统持续接收我主动选择保存的文字、计划、照片、视频、音乐、语音、日历，以及经授权整理的健康、财务和项目运行数据。重点不再是什么都收集，而是清楚哪一份是 master copy，来源能不能追踪，更新有没有时间戳。</p>
+                        <h2>职责有限的 Agent</h2>
+                        <p>以整理照片为例，我不再让一个模型从头做到尾。它可以被拆成：</p>
+                        <ul><li><strong>Ingest Agent：</strong>读取时间、地点和文件元数据；</li><li><strong>Vision Agent：</strong>识别场景、事件、乐器、季节等画面信息；</li><li><strong>People Agent：</strong>只在获得授权的私人环境里聚类人物；</li><li><strong>Theme Agent：</strong>整理旅行、学校、音乐等主题；</li><li><strong>Editor Agent：</strong>判断哪些素材是 hero、good 或 context；</li><li><strong>Supervisor：</strong>按主题、时间、人物多样性和画面质量，提出一组候选供我预览。</li></ul>
+                        <p>同样的结构也可以用于视频、音乐、研究和交易系统。我不再追求一个 Agent 什么都会。我更关心一条工作链里，每一步是否足够简单，失败以后能不能看见，结果有没有审核。</p>
+                        <h2>统一的交互和输出</h2>
+                        <p>我希望把 Codex 作为主要交互入口，让不同 Agent 在后台持续工作；GPT 更像 Reviewer，在关键节点挑战结果。我的目标是：少量时间花在聊天，大部分时间花在检查真正完成的 output。</p>
+                        <p>这些 output 进入不同地方：需要继续生长的原始资料留在私人知识库；数据和工具进入自己的应用；监控结果进入 Dashboard；值得公开的作品和文章进入个人网站；真正需要我决定的事情回到我面前。</p>
+                        <blockquote class="pull-quote">Confluence 是 master copy 和原始记录，自己的网站是精华。</blockquote>
+                        <p>这不只是一条网站迁移规则，也逐渐成为我使用 AI 的规则。AI 可以处理大量原始材料，但最后被留下来的内容应该经过选择。</p>
+                    </div></div>
+                </details>
+
+                <details class="story-chapter" id="revisions">
+                    <summary><span class="chapter-number">05</span><span class="chapter-title">三年里，我真正改变的五个判断</span><span class="chapter-meta">数据 · 闭环 · 瓶颈 · 审核 · 作品</span></summary>
+                    <div class="chapter-body"><div class="chapter-prose">
+                        <p class="chapter-intro">最容易犯的错误，是把项目清单当成实际成果。</p>
+                        <ol class="decision-list">
+                            <li><strong>数据多，不等于系统了解我。</strong>没有结构、权限和来源的数据只是负担。第一步不是上传一切，而是决定什么值得保存。</li>
+                            <li><strong>AI 的价值不在回答，而在闭环。</strong>如果最后仍需要我复制、粘贴、重新整理和手工执行，它只是把脑力劳动换成了阅读劳动。</li>
+                            <li><strong>架构由瓶颈决定。</strong>很多项目不是败在模型不聪明，而是败在登录、权限、数据格式、成本和不稳定接口。解决不了瓶颈，demo 就不是系统。</li>
+                            <li><strong>人不应该退出判断链。</strong>健康、财务、交易、人际关系和公开发布可以让 AI 整理证据、提出候选、检查遗漏，但最终决定和发送动作需要明确授权。</li>
+                            <li><strong>个人网站应该保存结果，不应该倾倒数据。</strong>私人原始记录允许混乱、重复和犯错；公开内容需要经过时间和选择，真的对阅读者有价值。</li>
+                        </ol>
+                        <div class="version-note"><strong>现在准确的完成度</strong><p>我拥有的还不是一个完整的个人 AI 操作系统。更准确地说，是一些已经跑通的 workflow、一些正在统一的数据入口，以及一套越来越清楚的架构判断。照片 Supervisor、音乐反馈、长期记忆和更多自动化仍在建设。</p></div>
+                    </div></div>
+                </details>
+
+                <details class="story-chapter" id="next">
+                    <summary><span class="chapter-number">06</span><span class="chapter-title">从数字替身，到个人基础设施</span><span class="chapter-meta">有限权限 · 可逆自动化 · 判断权</span></summary>
+                    <div class="chapter-body"><div class="chapter-prose">
+                        <p class="chapter-intro">我不再特别想制造“另一个我”。我想建立的是一套不会和我争夺注意力，却可以长期帮助我工作的基础设施。</p>
+                        <p>接下来我更关心三件事。</p>
+                        <h2>第一，决策要有历史</h2>
+                        <p>系统不只保存我最后做了什么，也保存当时掌握了哪些信息、为什么做、预期什么会发生。这样未来复盘时，AI 可以帮助我区分结果偏见和真正的判断错误。</p>
+                        <h2>第二，健康与财务是辅助，不是权威</h2>
+                        <p>模型可以整理趋势、找出缺口、生成去问医生或专业人士的问题，也可以检查财务记录的异常；但它不应该假装诊断、替我下单，或者因为“了解我”就绕过授权。</p>
+                        <h2>第三，创造工具要把我送回现实</h2>
+                        <p>音乐、视频、写作和照片系统的价值，不是生成更多内容淹没我，而是让我更快看见素材、得到反馈、继续练习，并把少数真正 proud 的 output 放到世界上。</p>
+                        <p>它记得必要的背景，拥有有限而清楚的权限；可以执行重复任务，也会暴露自己的失败；多个 Agent 可以合作，但重要结果需要 Reviewer 和我自己确认；原始资料继续生长，真正值得留下的东西再变成作品。</p>
+                        <blockquote class="pull-quote">我从 AI 的使用者，慢慢变成了它的 Supervisor。</blockquote>
+                        <p>个人 AI 对我来说，不再是一个更聪明的聊天窗口。它是一套长期的数据结构，一组可以工作的 Agent，一条可检查的执行链，以及我对最后结果保留的判断权。这可能才是这三年真正发生的变化。</p>
+                    </div></div>
+                </details>
+
+                <section class="source-note" id="source-note"><p class="section-kicker">Version &amp; privacy</p><h2>版本、事实状态与隐私边界</h2>
+                    <p>本文整理自 2023 年《ChatGPT 的长期计划》、2025—2026 年《AI 调研和思考》及 2026 年 5 月的 AI 项目清单。“三年”是 2023 年 8 月至 2026 年 7 月的叙事跨度。</p>
+                    <p>公开版删除了联系人姓名与个人关系推断、联系方式、内部域名和执行链接、数据库结构、部署位置、健康和账户资料，以及任何冒充、未经同意采集或不应实施的早期设想。涉及他人的数据只在获得授权的私人环境中处理；公开发布和对外发送保留人工确认。</p>
+                    <p>文中明确区分了已经跑通的 workflow、架构设计和仍在建设的模块，不把项目愿望写成既成事实。</p>
+                </section>
+
+                <footer class="article-end"><h2>继续阅读</h2><div class="article-end-links"><a href="/essays/trading-emotions-and-risk">交易情绪与风险</a><a href="/essays/financial-freedom-and-work">财务自由以后</a><a href="/essays/career-and-long-termism">工作与长期主义</a></div></footer>
+            </article>
+        </div>
+    </div></main>
+
+    <footer class="footer field-note-footer"><div class="container"><p>&copy; Zi Yin / 银子</p><div class="footer-links"><a href="/essays/">Essays</a><a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a></div></div></footer>
+    <script src="/site-nav.js" defer></script><script src="/script.js?v=20260511-essays-nav" defer></script><script src="/essays/field-notes.js?v=20260719-1" defer></script>
+</body>
+</html>

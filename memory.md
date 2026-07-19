@@ -1,5 +1,16 @@
 # Project memory
 
+## 2026-07-19 — Essays four-pillar library and three new long-form essays
+
+- Added `/essays/trading-emotions-and-risk`, a five-volume restoration of Zi's 2022—2025 trading emotion records. It preserves the personal language around greed, fear, missing out, psychological position size, attention, automation, platform risk, and trusting the rules written by the calmer self.
+- Added `/essays/personal-ai-evolution`, a six-volume 2023—2026 arc from the idea of a personal digital double to a data/Agent/Supervisor infrastructure. Completed workflows, architecture, and future plans are explicitly separated.
+- Added `/essays/financial-freedom-and-work` instead of a leaving-Citadel essay. It connects work, systems, music, practice, Vipassana, love, fear, and chosen difficulty while acknowledging the resource and survivorship boundary.
+- Public versions remove exact assets, accounts, returns, current strategies, platform identities, contact names, relationship details, internal URLs, database layouts, health and financial records, and private automation endpoints.
+- Reorganized `/essays/` into four explicit reader paths: market and judgment; entrepreneurship and systems; music and training; life and self. Existing essays were preserved and remapped rather than removed.
+- The three pages share `essays/field-notes.css` and `essays/field-notes.js`: wide desktop uses a two-page header and sticky reading path; long prose stays single-column; mobile uses a folded in-page path and one-column reading. Only the first volume opens by default, with deep-link and print expansion support.
+- Browser checks covered `1440×1000` and `390×844`: both index and article had zero horizontal overflow; desktop rendered two-column library/card layouts, while mobile rendered a single column with the desktop TOC hidden.
+- Discovery is wired through clean routes, generated Vercel rewrites, the sitemap, and focused regression coverage in `tests/essay-four-pillars.test.js`.
+
 ## 2026-07-19 — Happiness living-system essay
 
 - Added `/essays/happiness` from Confluence page `528482308`, preserving the 2022 happiness and peace essay, the 2024 optionality and systems notes, the 90% / 95% / 99% voluntary-time estimates, the meditation observations, the jack model, and the personal exercise thresholds.

@@ -439,10 +439,199 @@
     background: #fff;
 }
 
+/* Four-pillar library */
+.essays-hero--library {
+    min-height: 680px;
+}
+
+.category-map {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 28px;
+    border: 1px solid var(--essays-line);
+    border-radius: 8px;
+    background:
+        repeating-linear-gradient(180deg, transparent 0 31px, rgba(23, 33, 33, 0.045) 31px 32px),
+        rgba(255, 255, 255, 0.7);
+    box-shadow: 0 24px 70px rgba(23, 33, 33, 0.09);
+}
+
+.category-map a {
+    display: grid;
+    min-height: 190px;
+    padding: 24px;
+    border: 1px solid var(--essays-line);
+    border-radius: 6px;
+    align-content: end;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--essays-ink);
+    text-decoration: none;
+    transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.category-map a:nth-child(1) { background: #f2e7e1; }
+.category-map a:nth-child(2) { background: #e4edef; }
+.category-map a:nth-child(3) { background: #f4eddf; }
+.category-map a:nth-child(4) { background: #e8eee2; }
+
+.category-map a:hover,
+.category-map a:focus-visible {
+    border-color: rgba(47, 122, 99, 0.55);
+    outline: none;
+    transform: translateY(-3px);
+}
+
+.category-map span {
+    color: var(--essays-leaf);
+    font-size: 0.74rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+}
+
+.category-map strong,
+.category-map small {
+    display: block;
+}
+
+.category-map strong {
+    margin-top: 12px;
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: 1.45rem;
+}
+
+.category-map small {
+    margin-top: 8px;
+    color: var(--essays-muted);
+    font-size: 0.82rem;
+}
+
+.category-section {
+    border-top: 1px solid var(--essays-line);
+    scroll-margin-top: 90px;
+}
+
+.category-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.76fr) minmax(360px, 1.24fr);
+    gap: 40px;
+    align-items: end;
+    margin-bottom: 34px;
+}
+
+.category-heading h2 {
+    margin-top: 6px;
+    font-family: ui-serif, "Songti SC", "STSong", serif;
+    font-size: clamp(2.5rem, 5vw, 4.4rem);
+    line-height: 1;
+}
+
+.category-heading > p {
+    margin: 0;
+    color: var(--essays-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.essay-card-grid--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+.essay-card-grid--compact .essay-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+}
+
+.essay-card-grid--compact .essay-card--lead {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(320px, 0.76fr) minmax(0, 1.24fr);
+}
+
+.essay-card-grid--compact .essay-card-image {
+    min-height: 220px;
+}
+
+.essay-card-grid--compact .essay-card--lead .essay-card-image {
+    min-height: 350px;
+}
+
+.essay-card-grid--compact .essay-card-copy {
+    padding: 28px;
+}
+
+.essay-card-grid--compact .essay-card h3 {
+    font-size: clamp(1.45rem, 2.5vw, 2.25rem);
+    line-height: 1.14;
+}
+
+.essay-card-grid--compact .essay-card--lead h3 {
+    font-size: clamp(2rem, 3.4vw, 3.5rem);
+    line-height: 1.06;
+}
+
+.essay-card-trading .essay-card-image,
+.essay-card-ai .essay-card-image,
+.essay-card-freedom .essay-card-image {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.essay-card-trading .essay-card-image {
+    background:
+        linear-gradient(135deg, transparent 0 49.7%, rgba(122, 63, 50, 0.2) 50%, transparent 50.3%),
+        repeating-linear-gradient(180deg, transparent 0 29px, rgba(122, 63, 50, 0.09) 29px 30px),
+        linear-gradient(145deg, #f4e9e2, #e6d4c9);
+}
+
+.essay-card-trading .essay-card-image::before {
+    content: "GREED  ↗\A FEAR  ↘\A SYSTEM  —";
+}
+
+.essay-card-ai .essay-card-image {
+    background:
+        linear-gradient(90deg, transparent 49.7%, rgba(49, 94, 105, 0.14) 50%, transparent 50.3%),
+        linear-gradient(145deg, #e7f0f1, #d3e2e5);
+}
+
+.essay-card-ai .essay-card-image::before {
+    content: "2023   MODEL\A 2025   WORKFLOW\A 2026   SYSTEM";
+}
+
+.essay-card-freedom .essay-card-image {
+    background:
+        radial-gradient(circle at 50% 50%, rgba(82, 100, 63, 0.18) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle at 50% 50%, transparent 0 38px, rgba(82, 100, 63, 0.09) 39px 40px),
+        linear-gradient(145deg, #eef1e8, #dde6d3);
+}
+
+.essay-card-freedom .essay-card-image::before {
+    content: "MONEY → CHOICE\A CHOICE → ?";
+}
+
+.essay-card-trading .essay-card-image::before,
+.essay-card-ai .essay-card-image::before,
+.essay-card-freedom .essay-card-image::before {
+    width: min(72%, 290px);
+    padding: 28px 22px;
+    border: 1px solid rgba(23, 33, 33, 0.2);
+    background: rgba(255, 253, 248, 0.88);
+    color: var(--essays-deep);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 2.15;
+    letter-spacing: 0.06em;
+    text-align: center;
+    white-space: pre-line;
+}
+
 @media (max-width: 920px) {
     .essays-hero,
     .essays-taxonomy,
-    .essay-card {
+    .essay-card,
+    .category-heading {
         grid-template-columns: 1fr;
     }
 
@@ -456,6 +645,15 @@
     }
 
     .path-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .essay-card-grid--compact {
+        grid-template-columns: 1fr;
+    }
+
+    .essay-card-grid--compact .essay-card--lead {
+        grid-column: auto;
         grid-template-columns: 1fr;
     }
 }
@@ -509,6 +707,28 @@
     }
 
     .essay-card h3 {
+        font-size: 2rem;
+    }
+
+    .category-map {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    .category-map a {
+        min-height: 130px;
+        padding: 20px;
+    }
+
+    .category-heading {
+        gap: 18px;
+    }
+
+    .category-heading > p {
+        font-size: 0.94rem;
+    }
+
+    .essay-card-grid--compact .essay-card--lead h3 {
         font-size: 2rem;
     }
 }
