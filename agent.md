@@ -16,6 +16,7 @@
 - Preserve the author's first-person voice and explicitly label personal experience, inference, official material, and third-party material.
 - When proofreading migrated long-form prose, correct only high-confidence typos, omissions, duplicated text, and OCR artifacts; preserve deliberate colloquialisms and imperfect first-person phrasing.
 - Do not publish credentials, financial proofs, obsolete travel logistics, or private names without an explicit reason.
+- In public health-related personal notes, retain concrete first-person experience and questions, but remove private measurements and downgrade unsupported medical causality to clearly labeled open questions; always state that the page is not medical advice.
 - Long-form pages must be checked at desktop, tablet, and narrow mobile widths and must support keyboard focus, reduced motion, deep links, and printing.
 - On long-form self-analysis pages, use wide-desktop book spreads only for bounded, scannable sections; keep long narrative prose in a centered single column.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.

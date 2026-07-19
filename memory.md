@@ -1,5 +1,16 @@
 # Project memory
 
+## 2026-07-19 — Happiness living-system essay
+
+- Added `/essays/happiness` from Confluence page `528482308`, preserving the 2022 happiness and peace essay, the 2024 optionality and systems notes, the 90% / 95% / 99% voluntary-time estimates, the meditation observations, the jack model, and the personal exercise thresholds.
+- Public reading order is an always-visible overview followed by five folded volumes: happiness and relationships; success, principles, and freedom; training the mind; optionality, boundaries, and root-cause work; health as the foundation. Only the first volume opens by default.
+- Anonymous publication removes private names, relationship incidents, the ski vignette, medical test values, and stigmatizing labels while retaining the underlying first-person lessons and imperfect self-observations.
+- External frameworks are explicitly separated from Zi's experience. The relationship note links the Harvard Study of Adult Development; Naval-derived happiness, desire, peace, and meditation models link the official Happiness collection. Other unverified excerpts remain labeled as source-pending.
+- The health volume keeps personal sleep, movement, posture, lifespan-planning, and VO₂ max goals but excludes unsupported fasting, vitamin D, brain-wave, Zone 2, longevity, and immune-causality claims. It is explicitly not medical advice.
+- Three inaccessible Confluence blob images and their unseen OHIO/SOP content were not republished or reconstructed.
+- Wide desktop uses a quiet ledger-style paper surface, sticky reading path, and bounded grids only for short comparisons, timelines, decision cards, and metrics. Long prose remains single-column; mobile is fully single-column.
+- Page assets are `essays/happiness.html`, `.css`, and `.js`; discovery is wired through Essays, the adjacent career note, clean routes, i18n, and the sitemap. Regression coverage is in `tests/happiness-longform.test.js`.
+
 ## 2026-07-19 — Why jazz long-form essay
 
 - Added `/essays/why-jazz` from Confluence page `941064202`, preserving the original motivation, four piano outcomes, five-part learning chain, reasons for each basic drill, Berklee level notes, and the two-semester progress snapshot.

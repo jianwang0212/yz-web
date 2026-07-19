@@ -153,13 +153,15 @@
 .garden-pill-e { left: calc(50% - 88px); bottom: 5%; background: #f8fff9; }
 .garden-pill-f { left: calc(50% - 84px); top: 5%; background: #fffdf4; }
 .garden-pill-g { right: 3%; top: calc(50% - 41px); background: #f4faf7; }
+.garden-pill-i { left: 3%; top: calc(50% - 41px); background: #f1f5f0; }
 
 .essays-hero-board {
     display: grid;
     grid-template-areas:
         "berklee vocal plans"
         "works main career"
-        "snow system jazz";
+        "happiness main jazz"
+        "snow system .";
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
     align-content: center;
@@ -182,6 +184,7 @@
 .garden-pill-f { grid-area: vocal; }
 .garden-pill-g { grid-area: career; }
 .garden-pill-h { grid-area: jazz; background: #fff9ed; }
+.garden-pill-i { grid-area: happiness; background: #f1f5f0; }
 
 .essays-section {
     width: min(1120px, calc(100% - 40px));
@@ -340,6 +343,32 @@
     transform: translate(-50%, -50%);
 }
 
+.essay-card-happiness .essay-card-image {
+    position: relative;
+    background:
+        repeating-linear-gradient(180deg, transparent 0 31px, rgba(41, 75, 74, 0.08) 31px 32px),
+        linear-gradient(145deg, #edf1ed, #dce4df);
+}
+
+.essay-card-happiness .essay-card-image::before {
+    content: "2022      90%\A 2023      95%\A 2024 H1   99%";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: min(72%, 280px);
+    padding: 28px 24px;
+    border: 1px solid rgba(41, 75, 74, 0.22);
+    background: rgba(255, 254, 249, 0.9);
+    color: #294b4a;
+    font-family: ui-serif, "Iowan Old Style", "Songti SC", serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 2.2;
+    letter-spacing: 0.06em;
+    text-align: left;
+    white-space: pre-line;
+    transform: translate(-50%, -50%);
+}
+
 .essay-card-copy {
     display: grid;
     align-content: center;
@@ -466,7 +495,8 @@
     .garden-pill-e,
     .garden-pill-f,
     .garden-pill-g,
-    .garden-pill-h {
+    .garden-pill-h,
+    .garden-pill-i {
         position: relative;
         inset: auto;
         grid-area: auto;
