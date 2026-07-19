@@ -159,7 +159,7 @@
     grid-template-areas:
         "berklee vocal plans"
         "works main career"
-        "snow system empty";
+        "snow system jazz";
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
     align-content: center;
@@ -181,6 +181,7 @@
 .garden-pill-e { grid-area: berklee; }
 .garden-pill-f { grid-area: vocal; }
 .garden-pill-g { grid-area: career; }
+.garden-pill-h { grid-area: jazz; background: #fff9ed; }
 
 .essays-section {
     width: min(1120px, calc(100% - 40px));
@@ -313,6 +314,32 @@
     transform: translate(-50%, -50%);
 }
 
+.essay-card-jazz .essay-card-image {
+    position: relative;
+    background:
+        repeating-linear-gradient(180deg, transparent 0 40px, rgba(39, 60, 78, 0.12) 40px 41px),
+        linear-gradient(145deg, #f7f1e4, #e3d6bd);
+}
+
+.essay-card-jazz .essay-card-image::before {
+    content: "EYE  →  BRAIN  →  HAND\A MOUTH  →  EAR  →  KEY";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: min(72%, 280px);
+    padding: 28px 22px;
+    border: 1px solid rgba(48, 43, 36, 0.22);
+    background: rgba(255, 253, 247, 0.9);
+    color: #273c4e;
+    font-family: ui-serif, "Iowan Old Style", "Songti SC", serif;
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 2.15;
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: pre-line;
+    transform: translate(-50%, -50%);
+}
+
 .essay-card-copy {
     display: grid;
     align-content: center;
@@ -438,7 +465,8 @@
     .garden-pill-d,
     .garden-pill-e,
     .garden-pill-f,
-    .garden-pill-g {
+    .garden-pill-g,
+    .garden-pill-h {
         position: relative;
         inset: auto;
         grid-area: auto;

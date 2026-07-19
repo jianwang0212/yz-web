@@ -17,6 +17,7 @@ const projectPages = [
 ];
 
 const essayPages = [
+  ['why-jazz', 'essays/why-jazz.html'],
   ['career-and-long-termism', 'essays/career-and-long-termism.html'],
   ['long-term-plans', 'essays/long-term-plans.html'],
   ['vocal-training-system', 'essays/vocal-training-system.html'],
