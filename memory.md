@@ -1,5 +1,14 @@
 # Project memory
 
+## 2026-07-19 — Why jazz long-form essay
+
+- Added `/essays/why-jazz` from Confluence page `941064202`, preserving the original motivation, four piano outcomes, five-part learning chain, reasons for each basic drill, Berklee level notes, and the two-semester progress snapshot.
+- Public reading order is an always-visible overview followed by four folded volumes: motivation plus piano goals; brain/ears/eyes/hands/mouth; why each drill matters; current stage and next stage. Only the first volume opens by default.
+- Kept Zi's mixed Chinese/English music vocabulary and defining phrases such as `治标不治本`, `很划算`, `段位`, and the relative-do response chain. Corrected only high-confidence errors, including the fourth-goal dependency, `articulation`, `open studio`, and duplicated words.
+- The source's Berklee PIPN level descriptions are labeled as Zi's 2025 personal notes because the original page has no supporting course link. The inaccessible Confluence blob image was not republished or guessed.
+- Wide desktop uses a warm paper practice-book layout and bounded grids for the 2×2 goal matrix, five short channels, practice cards, and stage comparison. Long prose remains a centered single column; mobile remains entirely single-column.
+- Page assets are `essays/why-jazz.html`, `.css`, and `.js`; discovery is wired through Essays, the adjacent why-Berklee note, clean routes, i18n, and the sitemap. Regression coverage is in `tests/why-jazz-longform.test.js`.
+
 ## 2026-07-18 — One Person credits copied from Snow White
 
 - The requested target is `/works/one-person`; keep `/works/snow-white` on its original production credits unless Zi explicitly asks to change that page.
