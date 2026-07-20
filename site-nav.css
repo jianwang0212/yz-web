@@ -348,3 +348,7 @@ body:has(> .site-global-nav[data-site-nav-injected="true"]) .sidebar {
         transition: none;
     }
 }
+html:not([data-language-switch="available"]) .nav-lang-toggle,
+html:not([data-language-switch="available"]) .nav-menu-lang-item {
+    display: none !important;
+}

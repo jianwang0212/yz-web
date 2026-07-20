@@ -25,6 +25,7 @@
 - Public-facing copy must speak to readers, not explain the site's information architecture or implementation. Keep maintainer-only paths, raw file inventories, and handoff language out of public pages.
 - For media-heavy chronological archives, keep recent records first, use native month/date disclosures, and defer image/poster hydration until a record opens. Visual folding alone is not a performance optimization.
 - Keep every public content page on the canonical five-link navigation: Home (`/`), Works (`/works`), Essays (`/essays/`), Projects (`/projects`), and About (`/resume`). Run `npm run nav:sync` after adding or moving a public page, and keep the sync check idempotent.
+- Show the Chinese/English language switch only on routes whose rendered public content has a complete English mode. Register verified routes in `site-nav.js`; incomplete or Chinese-only routes must render in Chinese without erasing the visitor's saved language preference.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.
 
 ## Publication

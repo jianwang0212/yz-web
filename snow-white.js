@@ -184,6 +184,7 @@ const snowDownloadLabels = {
 };
 
 function getSnowLanguage() {
+    if (window.ziPageSupportsEnglish === false) return 'zh';
     return localStorage.getItem('language') === 'en' ? 'en' : 'zh';
 }
 

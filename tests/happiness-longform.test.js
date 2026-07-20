@@ -127,7 +127,7 @@ test("happiness is discoverable from Essays, career, routes, and the sitemap", (
     assert.match(essaysIndex, /href="\/essays\/happiness"/);
     assert.match(essaysIndex, /幸福、平和与选择权/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260719-four-pillars1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260719-four-pillars1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260720-english-coverage1/);
     assert.match(essaysIndex, /\/styles\.css\?v=20260719-happiness1/);
     assert.match(essaysIndexCss, /\.garden-pill-i/);
     assert.match(essaysIndexCss, /\.essay-card-happiness/);

@@ -149,6 +149,18 @@ test('credential cards have expected content and explicit link semantics', () =>
 
   const credentialCtas = indexHtml.match(/class="credential-card-cta"/g) || [];
   assert.equal(credentialCtas.length, 5);
+  const translatedCredentialCtas = indexHtml.match(/class="credential-card-cta" aria-hidden="true" data-i18n="hero\.credential\.cta"/g) || [];
+  assert.equal(translatedCredentialCtas.length, 5, 'Every credential CTA must switch languages');
+
+  for (const key of [
+    'hero.identity.aria',
+    'hero.docking.aria',
+    'hero.experience.aria',
+    'hero.oxford.aria',
+    'hero.training.aria',
+  ]) {
+    expectIncludes(indexHtml, `data-i18n-aria-label="${key}"`);
+  }
 
   for (const key of [
     'hero.identity.left',
@@ -201,7 +213,7 @@ test('home page features music archives before resume records', () => {
 
   expectIncludes(indexHtml, 'Snow White / 白雪公主');
   expectIncludes(indexHtml, 'Mirror / 镜子');
-  expectIncludes(indexHtml, '一个人做不好');
+  expectIncludes(indexHtml, 'I can\'t / 一个人做不好');
   expectIncludes(indexHtml, '<section id="home-snow" class="home-snow-feature"');
   expectIncludes(indexHtml, '<article class="home-snow-card">');
   expectIncludes(indexHtml, 'href="/works/snow-white" class="home-snow-primary"');
@@ -224,4 +236,36 @@ test('home page features music archives before resume records', () => {
     false,
     'Home page should keep Snow White as a compact share card, not a full score preview'
   );
+
+  for (const key of [
+    'homeMusic.graduation.kicker',
+    'homeMusic.new.kicker',
+    'homeMusic.onePerson.title',
+    'homeMusic.onePerson.desc',
+    'homeMusic.snowWhite.desc',
+    'homeMusic.mirror.desc',
+    'homeMusic.open',
+  ]) {
+    expectIncludes(indexHtml, `data-i18n="${key}"`);
+    const occurrences = i18nJs.match(new RegExp(`'${key.replaceAll('.', '\\.')}':`, 'g')) || [];
+    assert.equal(occurrences.length, 2, `Expected Chinese and English translations for ${key}`);
+  }
+
+  for (const key of [
+    'homeMusic.section.aria',
+    'homeMusic.onePerson.aria',
+    'homeMusic.snowWhite.aria',
+    'homeMusic.mirror.aria',
+  ]) {
+    expectIncludes(indexHtml, `data-i18n-aria-label="${key}"`);
+    const occurrences = i18nJs.match(new RegExp(`'${key.replaceAll('.', '\\.')}':`, 'g')) || [];
+    assert.equal(occurrences.length, 2, `Expected Chinese and English translations for ${key}`);
+  }
+});
+
+test('home metadata participates in the language switch', () => {
+  expectIncludes(indexHtml, 'data-i18n-title="home.meta.title"');
+  expectIncludes(indexHtml, 'data-i18n-description="home.meta.description"');
+  expectIncludes(i18nJs, "'home.meta.title':");
+  expectIncludes(i18nJs, "'home.meta.description':");
 });
