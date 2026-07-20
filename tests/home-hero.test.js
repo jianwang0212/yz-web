@@ -118,6 +118,27 @@ test('home entry section mirrors the four top-level paths and folds the curated 
   assert.equal(i18nJs.includes("'entry.start':"), false);
 });
 
+test('home entry copy speaks to public readers instead of explaining the page structure', () => {
+  expectIncludes(indexHtml, '一些长期留下来的东西');
+  expectIncludes(indexHtml, '作品、思考，也有正在发生的生活。');
+  expectIncludes(indexHtml, '音乐、市场、技术和我一路做过的选择，都慢慢收在这里。');
+
+  expectIncludes(i18nJs, "'entry.kicker': 'A growing archive'");
+  expectIncludes(i18nJs, "'entry.title': 'Work, ideas, and a life still unfolding.'");
+  expectIncludes(i18nJs, "'entry.intro': 'Music, markets, technology, and the choices I have made along the way all live here.'");
+
+  for (const internalCopy of [
+    "'entry.kicker': '四条路径'",
+    "'entry.title': '先看大类，再往里走。'",
+    "'entry.intro': '首页只留下四个入口",
+    "'entry.kicker': 'Four paths'",
+    "'entry.title': 'Start broad. Then go deeper.'",
+    "'entry.intro': 'The homepage keeps four clear doors",
+  ]) {
+    assert.equal(i18nJs.includes(internalCopy), false, `Translations should not expose internal IA copy: ${internalCopy}`);
+  }
+});
+
 test('credential cards have expected content and explicit link semantics', () => {
   const credentialCards = indexHtml.match(/class="metric-row(?: hero-identity)? credential-card credential-card-link"/g) || [];
   assert.equal(credentialCards.length, 5);

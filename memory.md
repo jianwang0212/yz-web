@@ -1,5 +1,14 @@
 # Project memory
 
+## 2026-07-20 — Workout progressive archive and reader-facing homepage copy
+
+- Reworked `/projects/workout` into a recent-first archive with month and date `<details>` disclosures. The newest date opens by default; older records preserve stable hash links and can be opened with pointer or keyboard.
+- The performance root cause was eager media discovery, not the 20 KB compressed HTML or roughly 1,500 DOM nodes. Folding without changing media loading left the request storm intact.
+- Archive images now keep URLs in `data-src`, videos use `preload="none"`, and posters hydrate only when their date opens. A cold local GStack run dropped first load from 173 resources / 16.58 MiB to 9 resources / 0.91 MiB with zero MP4 requests.
+- Preserved the pending July 2 and July 8 records and their 9 videos instead of publishing the older June-only snapshot. The public archive now contains 15 dates and 52 videos.
+- Removed the raw file manifest, local filesystem wording, and other maintainer-only copy from the public page. The homepage four-path heading now describes Zi's work and life directly instead of explaining how the homepage was organized.
+- Regression coverage is in `tests/workout-progressive-loading.test.js` and `tests/home-hero.test.js`; it checks structure, loading attributes, referenced assets, cache policy, and public copy.
+
 ## 2026-07-20 — Canonical global navigation and homepage tonal bridge
 
 - Replaced the site's page-by-page navigation variants with one exact five-link contract: Home, Works, Essays, Projects, and About. `site-nav.js` derives the active reader section for nested works, essays, projects, papers, year reviews, and About pages.

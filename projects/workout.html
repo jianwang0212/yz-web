@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>健身记录与动作分析 - Zi Yin</title>
+  <title>健身记录 · 2026-06/07 - Zi Yin</title>
   <style>
     :root {
       color-scheme: light;
@@ -261,7 +261,7 @@
 
     .section {
       margin-top: 18px;
-      scroll-margin-top: 78px;
+      scroll-margin-top: 146px;
     }
 
     .section-head {
@@ -677,6 +677,107 @@
       border-radius: 0;
     }
 
+    .history-section {
+      margin-top: 28px;
+    }
+
+    .archive-list,
+    .month-body {
+      display: grid;
+      gap: 12px;
+    }
+
+    .month-record {
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      overflow: visible;
+      scroll-margin-top: 185px;
+    }
+
+    .month-summary,
+    .date-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      list-style: none;
+    }
+
+    .month-summary::-webkit-details-marker,
+    .date-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .month-summary {
+      min-height: 64px;
+      padding: 16px 2px 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 20px;
+    }
+
+    .month-summary span,
+    .date-summary span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 620;
+      white-space: nowrap;
+    }
+
+    .month-summary::after,
+    .date-summary::after {
+      content: "+";
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-left: auto;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .month-record[open] > .month-summary::after,
+    .date-record[open] > .date-summary::after {
+      content: "−";
+    }
+
+    .month-body {
+      padding-top: 12px;
+    }
+
+    .date-record {
+      border-radius: 10px;
+      box-shadow: 0 10px 28px rgba(34, 31, 24, 0.05);
+      scroll-margin-top: 185px;
+    }
+
+    .date-summary {
+      min-height: 64px;
+      padding: 14px 16px;
+      color: var(--ink);
+    }
+
+    .date-summary strong {
+      font-size: 16px;
+    }
+
+    .date-record > .section {
+      margin: 0;
+      padding: 18px 16px 22px;
+      border-top: 1px solid var(--line);
+      content-visibility: auto;
+      contain-intrinsic-size: auto 920px;
+    }
+
+    .date-record > .section > .section-head {
+      display: none;
+    }
+
     .lightbox {
       position: fixed;
       inset: 0;
@@ -809,6 +910,16 @@
       .section-note {
         text-align: left;
       }
+
+      .month-summary,
+      .date-summary {
+        align-items: flex-start;
+      }
+
+      .date-summary {
+        gap: 10px;
+        min-height: 56px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -820,6 +931,21 @@
 
       h1 {
         font-size: 38px;
+      }
+    }
+
+    @media print {
+      details:not([open]) > :not(summary) {
+        display: block !important;
+      }
+
+      .month-summary,
+      .date-summary {
+        display: none;
+      }
+
+      .date-record > .section {
+        content-visibility: visible;
       }
     }
   </style>
@@ -862,25 +988,15 @@
     <div class="topbar-inner">
       <div class="brand">
         <span class="brand-mark">训</span>
-        <span>健身记录与动作分析 · Zi Yin</span>
+        <span>健身记录 · 2026-06/07</span>
       </div>
       <nav class="nav" aria-label="页面分区">
         <a href="#overview">总览</a>
-        <a href="#d20260531">05/31</a>
-        <a href="#d20260601">06/01</a>
-        <a href="#d20260604">06/04</a>
-        <a href="#d20260605">06/05</a>
-        <a href="#d20260609">06/09</a>
-        <a href="#d20260611">06/11</a>
-        <a href="#d20260612">06/12</a>
-        <a href="#d20260614">06/14</a>
-        <a href="#d20260616">06/16</a>
-        <a href="#d20260618">06/18</a>
-        <a href="#d20260623">06/23</a>
-        <a href="#d20260626">06/26</a>
-        <a href="#d20260630">06/30</a>
+        <a href="#d20260708">最新</a>
+        <a href="#month-202607">2026 / 07</a>
+        <a href="#month-202606">2026 / 06</a>
+        <a href="#d20260531">体测基线</a>
         <a href="#log">后续</a>
-        <a href="#files">素材</a>
       </nav>
     </div>
   </div>
@@ -890,7 +1006,7 @@
       <div class="panel">
         <div class="eyebrow">Rongcheng Gym Archive</div>
         <h1 id="page-title">健身记录</h1>
-        <p class="lead">按时间线整理课程、体成分、围度、体态照片、饮食照片和训练视频。每个日期下面集中放当天结论、动作分析、关键帧和原视频。</p>
+        <p class="lead">一段从偏瘦、动作生疏开始的训练记录：体成分、饮食、体态，以及每一次动作调整留下来的痕迹。</p>
         <div class="intro-meta">
           <div class="meta-item">
             <div class="meta-label">机构</div>
@@ -898,15 +1014,15 @@
           </div>
           <div class="meta-item">
             <div class="meta-label">素材日期</div>
-            <div class="meta-value">2026-06-01 至 2026-06-30</div>
+            <div class="meta-value">2026-06-01 至 2026-07-08</div>
           </div>
           <div class="meta-item">
             <div class="meta-label">体成分报告</div>
             <div class="meta-value">2026-05-31</div>
           </div>
           <div class="meta-item">
-            <div class="meta-label">本地素材</div>
-            <div class="meta-value">17 张图片 · 43 段重点视频</div>
+            <div class="meta-label">训练记录</div>
+            <div class="meta-value">15 次记录 · 52 段动作视频</div>
           </div>
         </div>
       </div>
@@ -927,7 +1043,7 @@
     <section id="overview" class="section" aria-labelledby="overview-title">
       <div class="section-head">
         <h2 id="overview-title">总览：现在最重要的判断</h2>
-        <p class="section-note">先看结论，再按日期往下复盘</p>
+        <p class="section-note">从体测基线到一个月后的动作变化</p>
       </div>
 
       <div class="finding-grid">
@@ -937,11 +1053,11 @@
         </div>
         <div class="finding-card">
           <strong>训练已经从零散动作变成训练周</strong>
-          <p>6 月 4 日只有背部/肩背尝试；到 6 月 30 日已经覆盖推、拉、腿、臀部激活、核心、负重行走和单侧腿部控制。</p>
+          <p>6 月 4 日只有背部/肩背尝试；到 7 月 8 日已经覆盖推、拉、腿、臀部激活、核心、负重行走和单侧腿部控制。</p>
         </div>
         <div class="finding-card">
-          <strong>最新变化：背部和下肢模块都成型</strong>
-          <p>6 月 23 日和 6 月 30 日拉背密度最高；6 月 26 日开始出现负重行走、壶铃和单侧腿部控制。</p>
+          <strong>最新变化：训练周继续延伸到 7 月</strong>
+          <p>7 月 2 日继续补下肢稳定；7 月 8 日回到上肢推拉，训练不再只是单次体验，而是在重复关键模式。</p>
         </div>
         <div class="finding-card">
           <strong>下一步不要急着加重量</strong>
@@ -964,19 +1080,19 @@
               <tr>
                 <td>背部动作</td>
                 <td>下拉时肩膀容易上提，身体后仰较多。</td>
-                <td>到 6 月 30 日，划船、高位拉和后束动作出现频率更高，背部训练结构更稳定。</td>
+                <td>到 7 月 8 日，划船、高位拉、夹胸和胸推继续重复出现，上肢推拉结构更稳定。</td>
                 <td>每次先沉肩，再让手肘向肋骨方向走；回程慢放，不要靠后仰完成。</td>
               </tr>
               <tr>
                 <td>腿部动作</td>
                 <td>6 月 5 日腿屈伸和腿弯举节奏偏快，顶端容易锁死或代偿。</td>
-                <td>6 月 26 日加入壶铃、农夫走、分腿蹲和弓步，腿部训练更接近日常力量。</td>
+                <td>6 月 26 日加入壶铃、农夫走和分腿蹲；7 月 2 日继续练腿屈伸、腿弯举和深蹲模式。</td>
                 <td>固定脚底三点、膝盖跟脚尖同向；单侧动作先稳再加重量。</td>
               </tr>
               <tr>
                 <td>肩背控制</td>
                 <td>反向飞鸟动作幅度偏小，容易变成耸肩。</td>
-                <td>6 月 23 日和 6 月 30 日继续出现肩胛激活和后束控制，说明肩背训练已变成固定模块。</td>
+                <td>6 月 23 日、6 月 30 日和 7 月 8 日都在重复肩胛固定，肩背控制已经变成固定约束。</td>
                 <td>手肘微弯，肩膀离耳朵远一点；弹力带和后束动作都不要做成耸肩。</td>
               </tr>
               <tr>
@@ -1001,7 +1117,18 @@
       </div>
     </section>
 
-    <section id="d20260531" class="section" aria-labelledby="d20260531-title">
+    <section id="history" class="section history-section" aria-labelledby="history-title">
+      <div class="section-head">
+        <h2 id="history-title">训练记录</h2>
+        <p class="section-note">一路练下来的动作、体感和调整。</p>
+      </div>
+      <div class="archive-list" data-workout-archive>
+        <details class="month-record" id="month-202605" data-month="2026-05">
+          <summary class="month-summary"><strong>2026 年 5 月</strong><span>1 份基线</span></summary>
+          <div class="month-body">
+            <details class="date-record" data-date="20260531" id="d20260531">
+              <summary class="date-summary"><strong>2026 年 5 月 31 日 · 体成分基线</strong><span>1 份报告</span></summary>
+    <section class="section" aria-labelledby="d20260531-title">
       <div class="section-head">
         <h2 id="d20260531-title">2026-05-31：体成分基线</h2>
         <p class="section-note">这是后续判断变化的起点</p>
@@ -1033,14 +1160,22 @@
         </div>
         <div class="media-card">
           <button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063425.jpg" data-caption="体成分分析报告 · 2026-05-31">
-            <img src="workout-assets/media/微信图片_20260605063425.jpg" alt="体成分分析报告">
+            <img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260605063425.jpg" alt="体成分分析报告">
           </button>
           <div class="media-body"><h3>体成分报告</h3><p>核心结论：不要继续减重，优先增肌和动作质量。</p></div>
         </div>
       </div>
     </section>
+            </details>
+          </div>
+        </details>
 
-    <section id="d20260601" class="section" aria-labelledby="d20260601-title">
+        <details class="month-record" id="month-202606" data-month="2026-06">
+          <summary class="month-summary"><strong>2026 年 6 月</strong><span>12 次记录</span></summary>
+          <div class="month-body">
+            <details class="date-record" data-date="20260601" id="d20260601">
+              <summary class="date-summary"><strong>2026 年 6 月 1 日 · 训练投入与饮食</strong><span>9 张记录</span></summary>
+    <section class="section" aria-labelledby="d20260601-title">
       <div class="section-head">
         <h2 id="d20260601-title">2026-06-01：课程、协议、饮食记录</h2>
         <p class="section-note">先把训练投入和饮食环境留档</p>
@@ -1068,19 +1203,22 @@
       </div>
 
       <div class="media-grid section">
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601111832_43_741.jpg" data-caption="价格表"><img src="workout-assets/media/微信图片_20260601111832_43_741.jpg" alt="价格表"></button><div class="media-body"><h3>价格表</h3><p>12 / 36 / 70 节课程三档。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601110652_39_741.jpg" data-caption="私人教练课程购买协议"><img src="workout-assets/media/微信图片_20260601110652_39_741.jpg" alt="私人教练课程购买协议"></button><div class="media-body"><h3>协议模板</h3><p>合同条款和有效期选项留档。</p></div></article>
-        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123809_70_741.jpg" data-caption="6 月 1 日 · 外食家常菜"><img src="workout-assets/media/微信图片_20260601123809_70_741.jpg" alt="6 月 1 日外食家常菜"></button><div class="media-body"><h3>外食家常菜</h3><p>蔬菜、豆制品、肉类。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123809_71_741.jpg" data-caption="6 月 1 日 · 打包餐"><img src="workout-assets/media/微信图片_20260601123809_71_741.jpg" alt="6 月 1 日打包餐"></button><div class="media-body"><h3>打包餐</h3><p>紫米饭、肉菜、虾粉、青菜、汤。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123810_72_741.jpg" data-caption="6 月 1 日 · 打包餐组合"><img src="workout-assets/media/微信图片_20260601123810_72_741.jpg" alt="6 月 1 日打包餐组合"></button><div class="media-body"><h3>打包餐组合</h3><p>米饭、青菜、汤、鸡肉/豆腐/鸡蛋。</p></div></article>
-        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123811_73_741.jpg" data-caption="6 月 1 日 · 米饭与鱼"><img src="workout-assets/media/微信图片_20260601123811_73_741.jpg" alt="6 月 1 日米饭与鱼"></button><div class="media-body"><h3>米饭与鱼</h3><p>白米饭、紫米饭、蒸鱼、青菜、汤。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123811_74_741.jpg" data-caption="6 月 1 日 · 家常菜聚餐"><img src="workout-assets/media/微信图片_20260601123811_74_741.jpg" alt="6 月 1 日家常菜聚餐"></button><div class="media-body"><h3>家常菜聚餐</h3><p>鱼、肉类、蔬菜、汤。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123812_75_741.jpg" data-caption="6 月 1 日 · 打包餐复盘"><img src="workout-assets/media/微信图片_20260601123812_75_741.jpg" alt="6 月 1 日打包餐复盘"></button><div class="media-body"><h3>打包餐复盘</h3><p>紫米饭、青菜、鸡肉/豆腐、鸡蛋。</p></div></article>
-        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601124550_82_741.jpg" data-caption="6 月 1 日 · 家常菜"><img src="workout-assets/media/微信图片_20260601124550_82_741.jpg" alt="6 月 1 日家常菜"></button><div class="media-body"><h3>家常菜</h3><p>土豆排骨、绿叶菜、豆角、蛋白质菜。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601111832_43_741.jpg" data-caption="价格表"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601111832_43_741.jpg" alt="价格表"></button><div class="media-body"><h3>价格表</h3><p>12 / 36 / 70 节课程三档。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601110652_39_741.jpg" data-caption="私人教练课程购买协议"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601110652_39_741.jpg" alt="私人教练课程购买协议"></button><div class="media-body"><h3>协议模板</h3><p>合同条款和有效期选项留档。</p></div></article>
+        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123809_70_741.jpg" data-caption="6 月 1 日 · 外食家常菜"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601123809_70_741.jpg" alt="6 月 1 日外食家常菜"></button><div class="media-body"><h3>外食家常菜</h3><p>蔬菜、豆制品、肉类。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123809_71_741.jpg" data-caption="6 月 1 日 · 打包餐"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601123809_71_741.jpg" alt="6 月 1 日打包餐"></button><div class="media-body"><h3>打包餐</h3><p>紫米饭、肉菜、虾粉、青菜、汤。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123810_72_741.jpg" data-caption="6 月 1 日 · 打包餐组合"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601123810_72_741.jpg" alt="6 月 1 日打包餐组合"></button><div class="media-body"><h3>打包餐组合</h3><p>米饭、青菜、汤、鸡肉/豆腐/鸡蛋。</p></div></article>
+        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123811_73_741.jpg" data-caption="6 月 1 日 · 米饭与鱼"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601123811_73_741.jpg" alt="6 月 1 日米饭与鱼"></button><div class="media-body"><h3>米饭与鱼</h3><p>白米饭、紫米饭、蒸鱼、青菜、汤。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123811_74_741.jpg" data-caption="6 月 1 日 · 家常菜聚餐"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601123811_74_741.jpg" alt="6 月 1 日家常菜聚餐"></button><div class="media-body"><h3>家常菜聚餐</h3><p>鱼、肉类、蔬菜、汤。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601123812_75_741.jpg" data-caption="6 月 1 日 · 打包餐复盘"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601123812_75_741.jpg" alt="6 月 1 日打包餐复盘"></button><div class="media-body"><h3>打包餐复盘</h3><p>紫米饭、青菜、鸡肉/豆腐、鸡蛋。</p></div></article>
+        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260601124550_82_741.jpg" data-caption="6 月 1 日 · 家常菜"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260601124550_82_741.jpg" alt="6 月 1 日家常菜"></button><div class="media-body"><h3>家常菜</h3><p>土豆排骨、绿叶菜、豆角、蛋白质菜。</p></div></article>
       </div>
     </section>
+            </details>
 
-    <section id="d20260604" class="section" aria-labelledby="d20260604-title">
+            <details class="date-record" data-date="20260604" id="d20260604">
+              <summary class="date-summary"><strong>2026 年 6 月 4 日 · 背部与肩背</strong><span>3 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260604-title">
       <div class="section-head">
         <h2 id="d20260604-title">2026-06-04：首批背部 / 肩背视频</h2>
         <p class="section-note">3 段视频：下拉、直臂下压/髋铰链位、反向飞鸟</p>
@@ -1104,24 +1242,27 @@
       </div>
 
       <div class="sheet-grid section">
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/c0f6e72af1f6c66476fc796029a8e10b_fullsheet.jpg" data-caption="下拉关键帧 · 2026-06-04"><img src="workout-assets/analysis/c0f6e72af1f6c66476fc796029a8e10b_fullsheet.jpg" alt="下拉关键帧"></button><div class="media-body"><h3>下拉关键帧</h3><p>观察重点：顶部肩膀离耳朵远一点。</p></div></article>
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/24e2d82caad22c7481f240046b442aba_fullsheet.jpg" data-caption="直臂下压 / 髋铰链关键帧 · 2026-06-04"><img src="workout-assets/analysis/24e2d82caad22c7481f240046b442aba_fullsheet.jpg" alt="直臂下压关键帧"></button><div class="media-body"><h3>直臂下压 / 髋铰链位</h3><p>观察重点：不要低头圆背。</p></div></article>
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/4719f86378c075f3c1898d0ebd8f9169_fullsheet.jpg" data-caption="反向飞鸟关键帧 · 2026-06-04"><img src="workout-assets/analysis/4719f86378c075f3c1898d0ebd8f9169_fullsheet.jpg" alt="反向飞鸟关键帧"></button><div class="media-body"><h3>反向飞鸟</h3><p>观察重点：手肘向外打开，不要耸肩。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/c0f6e72af1f6c66476fc796029a8e10b_fullsheet.jpg" data-caption="下拉关键帧 · 2026-06-04"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/c0f6e72af1f6c66476fc796029a8e10b_fullsheet.jpg" alt="下拉关键帧"></button><div class="media-body"><h3>下拉关键帧</h3><p>观察重点：顶部肩膀离耳朵远一点。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/24e2d82caad22c7481f240046b442aba_fullsheet.jpg" data-caption="直臂下压 / 髋铰链关键帧 · 2026-06-04"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/24e2d82caad22c7481f240046b442aba_fullsheet.jpg" alt="直臂下压关键帧"></button><div class="media-body"><h3>直臂下压 / 髋铰链位</h3><p>观察重点：不要低头圆背。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/4719f86378c075f3c1898d0ebd8f9169_fullsheet.jpg" data-caption="反向飞鸟关键帧 · 2026-06-04"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/4719f86378c075f3c1898d0ebd8f9169_fullsheet.jpg" alt="反向飞鸟关键帧"></button><div class="media-body"><h3>反向飞鸟</h3><p>观察重点：手肘向外打开，不要耸肩。</p></div></article>
       </div>
 
       <div class="media-grid section">
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/c0f6e72af1f6c66476fc796029a8e10b.jpg"><source src="workout-assets/media/c0f6e72af1f6c66476fc796029a8e10b.mp4" type="video/mp4"></video><div class="media-body"><h3>下拉 / 拉背动作</h3><p>11.5 秒 · 1280 × 720。</p></div></article>
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/24e2d82caad22c7481f240046b442aba.jpg"><source src="workout-assets/media/24e2d82caad22c7481f240046b442aba.mp4" type="video/mp4"></video><div class="media-body"><h3>髋铰链 / 直臂下压</h3><p>17.3 秒 · 1280 × 720。</p></div></article>
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/4719f86378c075f3c1898d0ebd8f9169.jpg"><source src="workout-assets/media/4719f86378c075f3c1898d0ebd8f9169.mp4" type="video/mp4"></video><div class="media-body"><h3>飞鸟 / 肩背控制</h3><p>15.6 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/c0f6e72af1f6c66476fc796029a8e10b.jpg"><source src="workout-assets/media/c0f6e72af1f6c66476fc796029a8e10b.mp4" type="video/mp4"></video><div class="media-body"><h3>下拉 / 拉背动作</h3><p>11.5 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/24e2d82caad22c7481f240046b442aba.jpg"><source src="workout-assets/media/24e2d82caad22c7481f240046b442aba.mp4" type="video/mp4"></video><div class="media-body"><h3>髋铰链 / 直臂下压</h3><p>17.3 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/4719f86378c075f3c1898d0ebd8f9169.jpg"><source src="workout-assets/media/4719f86378c075f3c1898d0ebd8f9169.mp4" type="video/mp4"></video><div class="media-body"><h3>飞鸟 / 肩背控制</h3><p>15.6 秒 · 1280 × 720。</p></div></article>
       </div>
 
       <div class="media-grid section">
-        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260604141551_120_741.jpg" data-caption="6 月 4 日 · 外食聚餐"><img src="workout-assets/media/微信图片_20260604141551_120_741.jpg" alt="6 月 4 日外食聚餐"></button><div class="media-body"><h3>外食聚餐</h3><p>鱼、贝类、米饭等。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260604190734_129_741.jpg" data-caption="6 月 4 日 · 打包餐"><img src="workout-assets/media/微信图片_20260604190734_129_741.jpg" alt="6 月 4 日打包餐"></button><div class="media-body"><h3>打包餐</h3><p>白米/紫米、鱼、番茄、青菜、汤。</p></div></article>
+        <article class="media-card wide"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260604141551_120_741.jpg" data-caption="6 月 4 日 · 外食聚餐"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260604141551_120_741.jpg" alt="6 月 4 日外食聚餐"></button><div class="media-body"><h3>外食聚餐</h3><p>鱼、贝类、米饭等。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260604190734_129_741.jpg" data-caption="6 月 4 日 · 打包餐"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260604190734_129_741.jpg" alt="6 月 4 日打包餐"></button><div class="media-body"><h3>打包餐</h3><p>白米/紫米、鱼、番茄、青菜、汤。</p></div></article>
       </div>
     </section>
+            </details>
 
-    <section id="d20260605" class="section" aria-labelledby="d20260605-title">
+            <details class="date-record" data-date="20260605" id="d20260605">
+              <summary class="date-summary"><strong>2026 年 6 月 5 日 · 体态与腿日</strong><span>5 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260605-title">
       <div class="section-head">
         <h2 id="d20260605-title">2026-06-05：体态照片 + 腿日</h2>
         <p class="section-note">体态基线、围度表、5 段训练视频</p>
@@ -1157,91 +1298,150 @@
       </div>
 
       <div class="media-grid section">
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063419.jpg" data-caption="围度登记表"><img src="workout-assets/media/微信图片_20260605063419.jpg" alt="围度登记表"></button><div class="media-body"><h3>围度表</h3><p>第一次围度基线。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063428.jpg" data-caption="体态基线 · 正面"><img src="workout-assets/media/微信图片_20260605063428.jpg" alt="体态基线正面"></button><div class="media-body"><h3>正面</h3><p>整体偏瘦，肩背和上肢肌肉量不足。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063431.jpg" data-caption="体态基线 · 左侧"><img src="workout-assets/media/微信图片_20260605063431.jpg" alt="体态基线左侧"></button><div class="media-body"><h3>左侧</h3><p>头部略前伸、肩略向前卷。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063434.jpg" data-caption="体态基线 · 右侧"><img src="workout-assets/media/微信图片_20260605063434.jpg" alt="体态基线右侧"></button><div class="media-body"><h3>右侧</h3><p>侧面站姿记录。</p></div></article>
-        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063437.jpg" data-caption="体态基线 · 背面"><img src="workout-assets/media/微信图片_20260605063437.jpg" alt="体态基线背面"></button><div class="media-body"><h3>背面</h3><p>背阔肌、后三角、下斜方肌仍要补。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063419.jpg" data-caption="围度登记表"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260605063419.jpg" alt="围度登记表"></button><div class="media-body"><h3>围度表</h3><p>第一次围度基线。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063428.jpg" data-caption="体态基线 · 正面"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260605063428.jpg" alt="体态基线正面"></button><div class="media-body"><h3>正面</h3><p>整体偏瘦，肩背和上肢肌肉量不足。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063431.jpg" data-caption="体态基线 · 左侧"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260605063431.jpg" alt="体态基线左侧"></button><div class="media-body"><h3>左侧</h3><p>头部略前伸、肩略向前卷。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063434.jpg" data-caption="体态基线 · 右侧"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260605063434.jpg" alt="体态基线右侧"></button><div class="media-body"><h3>右侧</h3><p>侧面站姿记录。</p></div></article>
+        <article class="media-card"><button class="thumb zoomable" data-full="workout-assets/media/微信图片_20260605063437.jpg" data-caption="体态基线 · 背面"><img loading="lazy" decoding="async" data-src="workout-assets/media/微信图片_20260605063437.jpg" alt="体态基线背面"></button><div class="media-body"><h3>背面</h3><p>背阔肌、后三角、下斜方肌仍要补。</p></div></article>
       </div>
 
       <div class="sheet-grid section">
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/d4d5033319a12eed7f76106a8d5f1936_sheet.jpg" data-caption="坐姿腿屈伸关键帧 · 2026-06-05"><img src="workout-assets/analysis/legs-20260605/d4d5033319a12eed7f76106a8d5f1936_sheet.jpg" alt="坐姿腿屈伸关键帧"></button><div class="media-body"><h3>坐姿腿屈伸</h3><p>顶部避免猛锁膝，回程要慢。</p></div></article>
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/a4f2ed7ae03a80c83b696dbd7ac95463_sheet.jpg" data-caption="俯卧腿弯举关键帧 · 2026-06-05"><img src="workout-assets/analysis/legs-20260605/a4f2ed7ae03a80c83b696dbd7ac95463_sheet.jpg" alt="俯卧腿弯举关键帧"></button><div class="media-body"><h3>俯卧腿弯举</h3><p>髋不要抬、腰不要拱。</p></div></article>
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/d26fa84bc91d2394a5da52d719ccd55a_sheet.jpg" data-caption="史密斯卧推动作关键帧 · 2026-06-05"><img src="workout-assets/analysis/legs-20260605/d26fa84bc91d2394a5da52d719ccd55a_sheet.jpg" alt="史密斯卧推动作关键帧"></button><div class="media-body"><h3>史密斯卧推</h3><p>如果当天目标是练腿，不建议放在腿日主流程里。</p></div></article>
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/7740eef93b8777f3dd76de9e3ccc42f3_sheet.jpg" data-caption="臀推关键帧 · 2026-06-05"><img src="workout-assets/analysis/legs-20260605/7740eef93b8777f3dd76de9e3ccc42f3_sheet.jpg" alt="臀推关键帧"></button><div class="media-body"><h3>臀推</h3><p>最需要修正：别用腰顶高度。</p></div></article>
-        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/7721de30fc956872d4ef774a36fec340_sheet.jpg" data-caption="徒手分腿蹲 / 弓步关键帧 · 2026-06-05"><img src="workout-assets/analysis/legs-20260605/7721de30fc956872d4ef774a36fec340_sheet.jpg" alt="徒手分腿蹲关键帧"></button><div class="media-body"><h3>徒手分腿蹲 / 弓步</h3><p>深度可以，下一步看膝盖轨迹和脚底压力。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/d4d5033319a12eed7f76106a8d5f1936_sheet.jpg" data-caption="坐姿腿屈伸关键帧 · 2026-06-05"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/legs-20260605/d4d5033319a12eed7f76106a8d5f1936_sheet.jpg" alt="坐姿腿屈伸关键帧"></button><div class="media-body"><h3>坐姿腿屈伸</h3><p>顶部避免猛锁膝，回程要慢。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/a4f2ed7ae03a80c83b696dbd7ac95463_sheet.jpg" data-caption="俯卧腿弯举关键帧 · 2026-06-05"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/legs-20260605/a4f2ed7ae03a80c83b696dbd7ac95463_sheet.jpg" alt="俯卧腿弯举关键帧"></button><div class="media-body"><h3>俯卧腿弯举</h3><p>髋不要抬、腰不要拱。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/d26fa84bc91d2394a5da52d719ccd55a_sheet.jpg" data-caption="史密斯卧推动作关键帧 · 2026-06-05"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/legs-20260605/d26fa84bc91d2394a5da52d719ccd55a_sheet.jpg" alt="史密斯卧推动作关键帧"></button><div class="media-body"><h3>史密斯卧推</h3><p>如果当天目标是练腿，不建议放在腿日主流程里。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/7740eef93b8777f3dd76de9e3ccc42f3_sheet.jpg" data-caption="臀推关键帧 · 2026-06-05"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/legs-20260605/7740eef93b8777f3dd76de9e3ccc42f3_sheet.jpg" alt="臀推关键帧"></button><div class="media-body"><h3>臀推</h3><p>最需要修正：别用腰顶高度。</p></div></article>
+        <article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/legs-20260605/7721de30fc956872d4ef774a36fec340_sheet.jpg" data-caption="徒手分腿蹲 / 弓步关键帧 · 2026-06-05"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/legs-20260605/7721de30fc956872d4ef774a36fec340_sheet.jpg" alt="徒手分腿蹲关键帧"></button><div class="media-body"><h3>徒手分腿蹲 / 弓步</h3><p>深度可以，下一步看膝盖轨迹和脚底压力。</p></div></article>
       </div>
 
       <div class="media-grid section">
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/d4d5033319a12eed7f76106a8d5f1936.jpg"><source src="workout-assets/media/d4d5033319a12eed7f76106a8d5f1936.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿屈伸</h3><p>8.4 秒 · 1280 × 720。</p></div></article>
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/a4f2ed7ae03a80c83b696dbd7ac95463.jpg"><source src="workout-assets/media/a4f2ed7ae03a80c83b696dbd7ac95463.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举</h3><p>14.9 秒 · 1280 × 720。</p></div></article>
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/d26fa84bc91d2394a5da52d719ccd55a.jpg"><source src="workout-assets/media/d26fa84bc91d2394a5da52d719ccd55a.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯卧推</h3><p>17.4 秒 · 1280 × 720。</p></div></article>
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/7740eef93b8777f3dd76de9e3ccc42f3.jpg"><source src="workout-assets/media/7740eef93b8777f3dd76de9e3ccc42f3.mp4" type="video/mp4"></video><div class="media-body"><h3>臀推</h3><p>16.4 秒 · 1280 × 720。</p></div></article>
-        <article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/7721de30fc956872d4ef774a36fec340.jpg"><source src="workout-assets/media/7721de30fc956872d4ef774a36fec340.mp4" type="video/mp4"></video><div class="media-body"><h3>徒手分腿蹲 / 弓步</h3><p>13.8 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/d4d5033319a12eed7f76106a8d5f1936.jpg"><source src="workout-assets/media/d4d5033319a12eed7f76106a8d5f1936.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿屈伸</h3><p>8.4 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/a4f2ed7ae03a80c83b696dbd7ac95463.jpg"><source src="workout-assets/media/a4f2ed7ae03a80c83b696dbd7ac95463.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举</h3><p>14.9 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/d26fa84bc91d2394a5da52d719ccd55a.jpg"><source src="workout-assets/media/d26fa84bc91d2394a5da52d719ccd55a.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯卧推</h3><p>17.4 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/7740eef93b8777f3dd76de9e3ccc42f3.jpg"><source src="workout-assets/media/7740eef93b8777f3dd76de9e3ccc42f3.mp4" type="video/mp4"></video><div class="media-body"><h3>臀推</h3><p>16.4 秒 · 1280 × 720。</p></div></article>
+        <article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/7721de30fc956872d4ef774a36fec340.jpg"><source src="workout-assets/media/7721de30fc956872d4ef774a36fec340.mp4" type="video/mp4"></video><div class="media-body"><h3>徒手分腿蹲 / 弓步</h3><p>13.8 秒 · 1280 × 720。</p></div></article>
       </div>
     </section>
+            </details>
 
-    <section id="d20260609" class="section" aria-labelledby="d20260609-title">
+            <details class="date-record" data-date="20260609" id="d20260609">
+              <summary class="date-summary"><strong>2026 年 6 月 9 日 · 推与拉</strong><span>3 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260609-title">
       <div class="section-head"><h2 id="d20260609-title">2026-06-09：推 + 拉</h2><p class="section-note">史密斯卧推、坐姿夹胸、坐姿划船</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-09 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>史密斯卧推</td><td>脚已经放地，比 6 月 5 日更稳；但手腕、肩胛和胸椎固定还需要更清楚。</td><td>肩胛后收下沉，脚踩地，手腕叠手肘，下降 2 秒后再推。</td></tr><tr><td>坐姿夹胸</td><td>动作轨迹清楚，但手臂容易伸太直，肩膀会往前跑。</td><td>肘微弯，胸口抬，夹到胸前停 1 秒，回程慢放到胸有拉伸。</td></tr><tr><td>坐姿划船</td><td>背部参与更明显；仍要避免靠后仰拉重量。</td><td>先挺胸沉肩，再让肘往后下方走；拉到身体两侧停半秒。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>训练从单纯体验变成推拉组合。卧推稳定性变好，划船开始像背部训练；下一步是减少后仰和肩颈代偿。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/11135495bc8798d167ea54ca5ab77416_sheet.jpg" data-caption="史密斯卧推关键帧 · 2026-06-09"><img src="workout-assets/analysis/updates-20260609-14/11135495bc8798d167ea54ca5ab77416_sheet.jpg" alt="史密斯卧推关键帧"></button><div class="media-body"><h3>史密斯卧推</h3><p>稳定性比上一批卧推更好。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/c0fa5be47e099069e3ca9272bffb37f9_sheet.jpg" data-caption="坐姿夹胸关键帧 · 2026-06-09"><img src="workout-assets/analysis/updates-20260609-14/c0fa5be47e099069e3ca9272bffb37f9_sheet.jpg" alt="坐姿夹胸关键帧"></button><div class="media-body"><h3>坐姿夹胸</h3><p>不要让肩膀抢动作，回程要慢。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/f3a453f3ff5f5a96ce8a88fca2a7f34a_sheet.jpg" data-caption="坐姿划船关键帧 · 2026-06-09"><img src="workout-assets/analysis/updates-20260609-14/f3a453f3ff5f5a96ce8a88fca2a7f34a_sheet.jpg" alt="坐姿划船关键帧"></button><div class="media-body"><h3>坐姿划船</h3><p>少后仰，多用肩胛后收和手肘向后下方完成。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/11135495bc8798d167ea54ca5ab77416.jpg"><source src="workout-assets/media/11135495bc8798d167ea54ca5ab77416.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯卧推</h3><p>20.0 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/c0fa5be47e099069e3ca9272bffb37f9.jpg"><source src="workout-assets/media/c0fa5be47e099069e3ca9272bffb37f9.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿夹胸</h3><p>12.0 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/f3a453f3ff5f5a96ce8a88fca2a7f34a.jpg"><source src="workout-assets/media/f3a453f3ff5f5a96ce8a88fca2a7f34a.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船</h3><p>14.8 秒 · 1280 × 720。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/11135495bc8798d167ea54ca5ab77416_sheet.jpg" data-caption="史密斯卧推关键帧 · 2026-06-09"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/11135495bc8798d167ea54ca5ab77416_sheet.jpg" alt="史密斯卧推关键帧"></button><div class="media-body"><h3>史密斯卧推</h3><p>稳定性比上一批卧推更好。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/c0fa5be47e099069e3ca9272bffb37f9_sheet.jpg" data-caption="坐姿夹胸关键帧 · 2026-06-09"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/c0fa5be47e099069e3ca9272bffb37f9_sheet.jpg" alt="坐姿夹胸关键帧"></button><div class="media-body"><h3>坐姿夹胸</h3><p>不要让肩膀抢动作，回程要慢。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/f3a453f3ff5f5a96ce8a88fca2a7f34a_sheet.jpg" data-caption="坐姿划船关键帧 · 2026-06-09"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/f3a453f3ff5f5a96ce8a88fca2a7f34a_sheet.jpg" alt="坐姿划船关键帧"></button><div class="media-body"><h3>坐姿划船</h3><p>少后仰，多用肩胛后收和手肘向后下方完成。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/11135495bc8798d167ea54ca5ab77416.jpg"><source src="workout-assets/media/11135495bc8798d167ea54ca5ab77416.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯卧推</h3><p>20.0 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/c0fa5be47e099069e3ca9272bffb37f9.jpg"><source src="workout-assets/media/c0fa5be47e099069e3ca9272bffb37f9.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿夹胸</h3><p>12.0 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/f3a453f3ff5f5a96ce8a88fca2a7f34a.jpg"><source src="workout-assets/media/f3a453f3ff5f5a96ce8a88fca2a7f34a.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船</h3><p>14.8 秒 · 1280 × 720。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260611" class="section" aria-labelledby="d20260611-title">
+            <details class="date-record" data-date="20260611" id="d20260611">
+              <summary class="date-summary"><strong>2026 年 6 月 11 日 · 下肢控制</strong><span>4 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260611-title">
       <div class="section-head"><h2 id="d20260611-title">2026-06-11：下肢控制</h2><p class="section-note">侧弓步、臀部激活、腿屈伸、深蹲模式</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-11 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>侧弓步 / 哥萨克蹲</td><td>髋和踝活动度不错，但有借手拉器械找深度的倾向。</td><td>扶手只保平衡，不要拉身体；支撑脚三点踩地，膝盖朝脚尖。</td></tr><tr><td>俯身髋伸 / 臀部激活</td><td>拍摄角度不完整，只能判断是臀部激活动作。</td><td>腰不要塌，骨盆不要左右转。</td></tr><tr><td>坐姿腿屈伸</td><td>坐姿比 6 月 5 日稳定，手也抓稳了。</td><td>上 1 秒、停 1 秒、下 3 秒；不锁膝，不甩腿。</td></tr><tr><td>深蹲模式</td><td>深度和躯干角度不错。</td><td>固定脚底压力、膝盖轨迹和呼吸腹压。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>下肢控制比 6 月 5 日更完整。重点不是更深，而是稳定、慢放、终末位不要靠甩。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/08ff90a606b161d55582fffb463aca10_sheet.jpg" data-caption="侧弓步关键帧 · 2026-06-11"><img src="workout-assets/analysis/updates-20260609-14/08ff90a606b161d55582fffb463aca10_sheet.jpg" alt="侧弓步关键帧"></button><div class="media-body"><h3>侧弓步 / 哥萨克蹲</h3><p>活动度好，扶手只用于平衡。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/6004074f3f8c6dc5b169080b93d57c6b_sheet.jpg" data-caption="俯身髋伸关键帧 · 2026-06-11"><img src="workout-assets/analysis/updates-20260609-14/6004074f3f8c6dc5b169080b93d57c6b_sheet.jpg" alt="俯身髋伸关键帧"></button><div class="media-body"><h3>俯身髋伸 / 臀部激活</h3><p>注意腰和骨盆稳定。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/b549d944a7f8a3e1d826d19cf6024b56_sheet.jpg" data-caption="腿屈伸关键帧 · 2026-06-11"><img src="workout-assets/analysis/updates-20260609-14/b549d944a7f8a3e1d826d19cf6024b56_sheet.jpg" alt="腿屈伸关键帧"></button><div class="media-body"><h3>坐姿腿屈伸</h3><p>坐姿更稳，用慢离心制造刺激。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/e4589b9968b623232591d021f94cfab2_sheet.jpg" data-caption="深蹲模式关键帧 · 2026-06-11"><img src="workout-assets/analysis/updates-20260609-14/e4589b9968b623232591d021f94cfab2_sheet.jpg" alt="深蹲模式关键帧"></button><div class="media-body"><h3>深蹲模式练习</h3><p>深度可以，下一步固定腹压和膝盖轨迹。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/08ff90a606b161d55582fffb463aca10.jpg"><source src="workout-assets/media/08ff90a606b161d55582fffb463aca10.mp4" type="video/mp4"></video><div class="media-body"><h3>侧弓步 / 哥萨克蹲</h3><p>9.1 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/6004074f3f8c6dc5b169080b93d57c6b.jpg"><source src="workout-assets/media/6004074f3f8c6dc5b169080b93d57c6b.mp4" type="video/mp4"></video><div class="media-body"><h3>俯身髋伸 / 臀部激活</h3><p>10.5 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/b549d944a7f8a3e1d826d19cf6024b56.jpg"><source src="workout-assets/media/b549d944a7f8a3e1d826d19cf6024b56.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿屈伸</h3><p>8.9 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/e4589b9968b623232591d021f94cfab2.jpg"><source src="workout-assets/media/e4589b9968b623232591d021f94cfab2.mp4" type="video/mp4"></video><div class="media-body"><h3>深蹲模式练习</h3><p>9.2 秒 · 1280 × 720。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/08ff90a606b161d55582fffb463aca10_sheet.jpg" data-caption="侧弓步关键帧 · 2026-06-11"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/08ff90a606b161d55582fffb463aca10_sheet.jpg" alt="侧弓步关键帧"></button><div class="media-body"><h3>侧弓步 / 哥萨克蹲</h3><p>活动度好，扶手只用于平衡。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/6004074f3f8c6dc5b169080b93d57c6b_sheet.jpg" data-caption="俯身髋伸关键帧 · 2026-06-11"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/6004074f3f8c6dc5b169080b93d57c6b_sheet.jpg" alt="俯身髋伸关键帧"></button><div class="media-body"><h3>俯身髋伸 / 臀部激活</h3><p>注意腰和骨盆稳定。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/b549d944a7f8a3e1d826d19cf6024b56_sheet.jpg" data-caption="腿屈伸关键帧 · 2026-06-11"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/b549d944a7f8a3e1d826d19cf6024b56_sheet.jpg" alt="腿屈伸关键帧"></button><div class="media-body"><h3>坐姿腿屈伸</h3><p>坐姿更稳，用慢离心制造刺激。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/e4589b9968b623232591d021f94cfab2_sheet.jpg" data-caption="深蹲模式关键帧 · 2026-06-11"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/e4589b9968b623232591d021f94cfab2_sheet.jpg" alt="深蹲模式关键帧"></button><div class="media-body"><h3>深蹲模式练习</h3><p>深度可以，下一步固定腹压和膝盖轨迹。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/08ff90a606b161d55582fffb463aca10.jpg"><source src="workout-assets/media/08ff90a606b161d55582fffb463aca10.mp4" type="video/mp4"></video><div class="media-body"><h3>侧弓步 / 哥萨克蹲</h3><p>9.1 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/6004074f3f8c6dc5b169080b93d57c6b.jpg"><source src="workout-assets/media/6004074f3f8c6dc5b169080b93d57c6b.mp4" type="video/mp4"></video><div class="media-body"><h3>俯身髋伸 / 臀部激活</h3><p>10.5 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/b549d944a7f8a3e1d826d19cf6024b56.jpg"><source src="workout-assets/media/b549d944a7f8a3e1d826d19cf6024b56.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿屈伸</h3><p>8.9 秒 · 1280 × 720。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/e4589b9968b623232591d021f94cfab2.jpg"><source src="workout-assets/media/e4589b9968b623232591d021f94cfab2.mp4" type="video/mp4"></video><div class="media-body"><h3>深蹲模式练习</h3><p>9.2 秒 · 1280 × 720。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260612" class="section" aria-labelledby="d20260612-title">
+            <details class="date-record" data-date="20260612" id="d20260612">
+              <summary class="date-summary"><strong>2026 年 6 月 12 日 · 腿弯举</strong><span>1 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260612-title">
       <div class="section-head"><h2 id="d20260612-title">2026-06-12：腿弯举</h2><p class="section-note">腘绳肌孤立动作</p></div>
       <div class="finding-grid"><div class="finding-card"><strong>重点：骨盆坐稳</strong><p>腿弯举不是用腰和骨盆帮忙把重量卷起来。顶端停 1 秒，下放慢到 3 秒。</p></div><div class="finding-card"><strong>下一步</strong><p>每次记录重量和次数。只要腰开始代偿，就降重量。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/15ab43a220f5e49c6e1fbb74ace8339d_sheet.jpg" data-caption="腿弯举关键帧 · 2026-06-12"><img src="workout-assets/analysis/updates-20260609-14/15ab43a220f5e49c6e1fbb74ace8339d_sheet.jpg" alt="腿弯举关键帧"></button><div class="media-body"><h3>坐姿腿弯举</h3><p>骨盆坐稳，顶端停顿，下放慢到 3 秒。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/15ab43a220f5e49c6e1fbb74ace8339d.jpg"><source src="workout-assets/media/15ab43a220f5e49c6e1fbb74ace8339d.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿弯举</h3><p>14.6 秒 · 1280 × 720。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/15ab43a220f5e49c6e1fbb74ace8339d_sheet.jpg" data-caption="腿弯举关键帧 · 2026-06-12"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/15ab43a220f5e49c6e1fbb74ace8339d_sheet.jpg" alt="腿弯举关键帧"></button><div class="media-body"><h3>坐姿腿弯举</h3><p>骨盆坐稳，顶端停顿，下放慢到 3 秒。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/15ab43a220f5e49c6e1fbb74ace8339d.jpg"><source src="workout-assets/media/15ab43a220f5e49c6e1fbb74ace8339d.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿弯举</h3><p>14.6 秒 · 1280 × 720。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260614" class="section" aria-labelledby="d20260614-title">
+            <details class="date-record" data-date="20260614" id="d20260614">
+              <summary class="date-summary"><strong>2026 年 6 月 14 日 · 背部与肩背</strong><span>3 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260614-title">
       <div class="section-head"><h2 id="d20260614-title">2026-06-14：背部和肩背进步最明显</h2><p class="section-note">反向飞鸟、高位下拉、机器划船</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-14 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>反向飞鸟 / 后束</td><td>范围比早期更完整，能看到左右肩胛参与；仍有轻微耸肩和手臂过直。</td><td>肩膀远离耳朵，肘微弯，打开到肩线即可。</td></tr><tr><td>高位下拉</td><td>躯干更直，动作更像背部训练；顶部仍容易肩上提，底部颈部前伸。</td><td>从沉肩开始，胸口找把手，拉到锁骨/上胸附近。</td></tr><tr><td>机器划船</td><td>背部训练质量最好的一类动作。</td><td>胸口稳定，肘向后下，回程慢放。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>这是目前最好的变化证据：背部动作更稳定、更像目标肌群发力。继续把下拉、划船、后束飞鸟作为每周固定动作。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/8bad7ddef5424756a90fe0b4e91be021_sheet.jpg" data-caption="反向飞鸟关键帧 · 2026-06-14"><img src="workout-assets/analysis/updates-20260609-14/8bad7ddef5424756a90fe0b4e91be021_sheet.jpg" alt="反向飞鸟关键帧"></button><div class="media-body"><h3>反向飞鸟 / 后束</h3><p>范围比早期更完整，注意不要耸肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/d7b7a84fb437d3d62e69c2dfadbf4af5_sheet.jpg" data-caption="高位下拉关键帧 · 2026-06-14"><img src="workout-assets/analysis/updates-20260609-14/d7b7a84fb437d3d62e69c2dfadbf4af5_sheet.jpg" alt="高位下拉关键帧"></button><div class="media-body"><h3>高位下拉</h3><p>躯干更稳，顶部先沉肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/3354fc101e14a4b252c807291fb417fa_sheet.jpg" data-caption="机器划船关键帧 · 2026-06-14"><img src="workout-assets/analysis/updates-20260609-14/3354fc101e14a4b252c807291fb417fa_sheet.jpg" alt="机器划船关键帧"></button><div class="media-body"><h3>机器划船</h3><p>胸口稳定、肘向后下、回程慢放。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/8bad7ddef5424756a90fe0b4e91be021.jpg"><source src="workout-assets/media/8bad7ddef5424756a90fe0b4e91be021.mp4" type="video/mp4"></video><div class="media-body"><h3>反向飞鸟 / 后束</h3><p>19.1 秒 · 720 × 1280。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/d7b7a84fb437d3d62e69c2dfadbf4af5.jpg"><source src="workout-assets/media/d7b7a84fb437d3d62e69c2dfadbf4af5.mp4" type="video/mp4"></video><div class="media-body"><h3>高位下拉</h3><p>25.0 秒 · 720 × 1280。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/3354fc101e14a4b252c807291fb417fa.jpg"><source src="workout-assets/media/3354fc101e14a4b252c807291fb417fa.mp4" type="video/mp4"></video><div class="media-body"><h3>机器划船</h3><p>34.0 秒 · 720 × 1280。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/8bad7ddef5424756a90fe0b4e91be021_sheet.jpg" data-caption="反向飞鸟关键帧 · 2026-06-14"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/8bad7ddef5424756a90fe0b4e91be021_sheet.jpg" alt="反向飞鸟关键帧"></button><div class="media-body"><h3>反向飞鸟 / 后束</h3><p>范围比早期更完整，注意不要耸肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/d7b7a84fb437d3d62e69c2dfadbf4af5_sheet.jpg" data-caption="高位下拉关键帧 · 2026-06-14"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/d7b7a84fb437d3d62e69c2dfadbf4af5_sheet.jpg" alt="高位下拉关键帧"></button><div class="media-body"><h3>高位下拉</h3><p>躯干更稳，顶部先沉肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260609-14/3354fc101e14a4b252c807291fb417fa_sheet.jpg" data-caption="机器划船关键帧 · 2026-06-14"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260609-14/3354fc101e14a4b252c807291fb417fa_sheet.jpg" alt="机器划船关键帧"></button><div class="media-body"><h3>机器划船</h3><p>胸口稳定、肘向后下、回程慢放。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/8bad7ddef5424756a90fe0b4e91be021.jpg"><source src="workout-assets/media/8bad7ddef5424756a90fe0b4e91be021.mp4" type="video/mp4"></video><div class="media-body"><h3>反向飞鸟 / 后束</h3><p>19.1 秒 · 720 × 1280。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/d7b7a84fb437d3d62e69c2dfadbf4af5.jpg"><source src="workout-assets/media/d7b7a84fb437d3d62e69c2dfadbf4af5.mp4" type="video/mp4"></video><div class="media-body"><h3>高位下拉</h3><p>25.0 秒 · 720 × 1280。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/3354fc101e14a4b252c807291fb417fa.jpg"><source src="workout-assets/media/3354fc101e14a4b252c807291fb417fa.mp4" type="video/mp4"></video><div class="media-body"><h3>机器划船</h3><p>34.0 秒 · 720 × 1280。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260616" class="section" aria-labelledby="d20260616-title">
+            <details class="date-record" data-date="20260616" id="d20260616">
+              <summary class="date-summary"><strong>2026 年 6 月 16 日 · 上肢推拉</strong><span>3 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260616-title">
       <div class="section-head"><h2 id="d20260616-title">2026-06-16：上肢推拉和肩胛固定</h2><p class="section-note">绳索下压、史密斯上斜推、坐姿夹胸</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-16 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>绳索下压</td><td>动作可以作为三头辅助，但肩膀容易跟着上提。</td><td>肘夹住身体两侧，肩膀下沉，身体不要后仰。</td></tr><tr><td>史密斯上斜推 / 胸推</td><td>肩胛和手腕稳定还不够，容易用肩前侧顶。</td><td>肩胛后收下沉压住靠背，手腕叠手肘。</td></tr><tr><td>坐姿夹胸 / 胸飞鸟</td><td>动作轨迹清楚，但末端可能含胸圆肩。</td><td>胸口抬，肘微弯，夹到胸前停 1 秒，回程慢。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>这一天把上肢推和肩胛固定接起来了。重点不是加重量，而是把肩胛压稳、肩膀离耳朵远一点。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/8da8645cb096cd56300cfb6d8f28f361_sheet.jpg" data-caption="绳索下压 / 三头关键帧 · 2026-06-16"><img src="workout-assets/analysis/updates-20260616-30/8da8645cb096cd56300cfb6d8f28f361_sheet.jpg" alt="绳索下压 / 三头关键帧"></button><div class="media-body"><h3>绳索下压 / 三头</h3><p>肘固定在身体两侧，肩膀不要上提。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/ecffd629700884f62acaea9eccabbc4d_sheet.jpg" data-caption="史密斯上斜推 / 胸推关键帧 · 2026-06-16"><img src="workout-assets/analysis/updates-20260616-30/ecffd629700884f62acaea9eccabbc4d_sheet.jpg" alt="史密斯上斜推 / 胸推关键帧"></button><div class="media-body"><h3>史密斯上斜推 / 胸推</h3><p>P1：肩胛压稳靠背，手腕保持中立。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b518108171ffca3297cd9c8ed7d8437a_sheet.jpg" data-caption="坐姿夹胸 / 胸飞鸟关键帧 · 2026-06-16"><img src="workout-assets/analysis/updates-20260616-30/b518108171ffca3297cd9c8ed7d8437a_sheet.jpg" alt="坐姿夹胸 / 胸飞鸟关键帧"></button><div class="media-body"><h3>坐姿夹胸 / 胸飞鸟</h3><p>P2：不要含胸圆肩，回程慢放。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/8da8645cb096cd56300cfb6d8f28f361.jpg"><source src="workout-assets/media/8da8645cb096cd56300cfb6d8f28f361.mp4" type="video/mp4"></video><div class="media-body"><h3>绳索下压 / 三头</h3><p>17.4 秒 · 1280 × 720 · 上肢推辅助。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/ecffd629700884f62acaea9eccabbc4d.jpg"><source src="workout-assets/media/ecffd629700884f62acaea9eccabbc4d.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯上斜推 / 胸推</h3><p>13.6 秒 · 1280 × 720 · 上肢推。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/b518108171ffca3297cd9c8ed7d8437a.jpg"><source src="workout-assets/media/b518108171ffca3297cd9c8ed7d8437a.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿夹胸 / 胸飞鸟</h3><p>13.4 秒 · 1280 × 720 · 上肢推。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/8da8645cb096cd56300cfb6d8f28f361_sheet.jpg" data-caption="绳索下压 / 三头关键帧 · 2026-06-16"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/8da8645cb096cd56300cfb6d8f28f361_sheet.jpg" alt="绳索下压 / 三头关键帧"></button><div class="media-body"><h3>绳索下压 / 三头</h3><p>肘固定在身体两侧，肩膀不要上提。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/ecffd629700884f62acaea9eccabbc4d_sheet.jpg" data-caption="史密斯上斜推 / 胸推关键帧 · 2026-06-16"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/ecffd629700884f62acaea9eccabbc4d_sheet.jpg" alt="史密斯上斜推 / 胸推关键帧"></button><div class="media-body"><h3>史密斯上斜推 / 胸推</h3><p>P1：肩胛压稳靠背，手腕保持中立。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b518108171ffca3297cd9c8ed7d8437a_sheet.jpg" data-caption="坐姿夹胸 / 胸飞鸟关键帧 · 2026-06-16"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/b518108171ffca3297cd9c8ed7d8437a_sheet.jpg" alt="坐姿夹胸 / 胸飞鸟关键帧"></button><div class="media-body"><h3>坐姿夹胸 / 胸飞鸟</h3><p>P2：不要含胸圆肩，回程慢放。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/8da8645cb096cd56300cfb6d8f28f361.jpg"><source src="workout-assets/media/8da8645cb096cd56300cfb6d8f28f361.mp4" type="video/mp4"></video><div class="media-body"><h3>绳索下压 / 三头</h3><p>17.4 秒 · 1280 × 720 · 上肢推辅助。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/ecffd629700884f62acaea9eccabbc4d.jpg"><source src="workout-assets/media/ecffd629700884f62acaea9eccabbc4d.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯上斜推 / 胸推</h3><p>13.6 秒 · 1280 × 720 · 上肢推。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/b518108171ffca3297cd9c8ed7d8437a.jpg"><source src="workout-assets/media/b518108171ffca3297cd9c8ed7d8437a.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿夹胸 / 胸飞鸟</h3><p>13.4 秒 · 1280 × 720 · 上肢推。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260618" class="section" aria-labelledby="d20260618-title">
+            <details class="date-record" data-date="20260618" id="d20260618">
+              <summary class="date-summary"><strong>2026 年 6 月 18 日 · 腿后侧、臀与核心</strong><span>6 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260618-title">
       <div class="section-head"><h2 id="d20260618-title">2026-06-18：腿后侧、臀和核心控制</h2><p class="section-note">腿弯举、臀推、卷腹、四点跪姿髋伸</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-18 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>腿弯举</td><td>同一天有远景和近景，能看到骨盆稳定是关键。</td><td>骨盆压住垫子，顶端停 1 秒，下放 3 秒。</td></tr><tr><td>臀推 / 髋伸</td><td>开始加入臀部主导动作，但顶端容易用腰顶高度。</td><td>下巴微收、肋骨下收，顶端只做到臀收紧。</td></tr><tr><td>核心 / 四点跪姿</td><td>核心训练开始出现，但颈部和腰椎位置要更干净。</td><td>视线看地面，腰背拉长，腿动时骨盆不转。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>训练从上肢器械扩展到腿后侧、臀和核心。最大价值是补短板；最大风险是骨盆不稳后用腰代偿。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/76bea158d973991032253d18d8098cc3_sheet.jpg" data-caption="俯卧腿弯举关键帧 · 2026-06-18"><img src="workout-assets/analysis/updates-20260616-30/76bea158d973991032253d18d8098cc3_sheet.jpg" alt="俯卧腿弯举关键帧"></button><div class="media-body"><h3>俯卧腿弯举</h3><p>P3：骨盆压住垫子，别用腰带腿。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/e851c5e29b0458f56293904cb99c5f3b_sheet.jpg" data-caption="四点跪姿髋伸 / 核心关键帧 · 2026-06-18"><img src="workout-assets/analysis/updates-20260616-30/e851c5e29b0458f56293904cb99c5f3b_sheet.jpg" alt="四点跪姿髋伸 / 核心关键帧"></button><div class="media-body"><h3>四点跪姿髋伸 / 核心</h3><p>脊柱保持中立，腿动但腰不要塌。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b0238b5bf0a168ce0ca60a4d0357b64b_sheet.jpg" data-caption="卷腹 / 核心关键帧 · 2026-06-18"><img src="workout-assets/analysis/updates-20260616-30/b0238b5bf0a168ce0ca60a4d0357b64b_sheet.jpg" alt="卷腹 / 核心关键帧"></button><div class="media-body"><h3>卷腹 / 核心</h3><p>别用手拉头，肋骨向骨盆卷。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/f0c2dc68915863cb11dd8ecc15a9d8d8_sheet.jpg" data-caption="俯卧腿弯举近景关键帧 · 2026-06-18"><img src="workout-assets/analysis/updates-20260616-30/f0c2dc68915863cb11dd8ecc15a9d8d8_sheet.jpg" alt="俯卧腿弯举近景关键帧"></button><div class="media-body"><h3>俯卧腿弯举近景</h3><p>同类动作近景，重点看膝弯曲节奏。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/838f0039f76a817f69b88994dea8d31c_sheet.jpg" data-caption="臀推 / 髋伸关键帧 · 2026-06-18"><img src="workout-assets/analysis/updates-20260616-30/838f0039f76a817f69b88994dea8d31c_sheet.jpg" alt="臀推 / 髋伸关键帧"></button><div class="media-body"><h3>臀推 / 髋伸</h3><p>顶端臀收紧，肋骨别顶、腰别拱。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/c224337edb7883d300afee7f68fde955_sheet.jpg" data-caption="四点跪姿髋伸关键帧 · 2026-06-18"><img src="workout-assets/analysis/updates-20260616-30/c224337edb7883d300afee7f68fde955_sheet.jpg" alt="四点跪姿髋伸关键帧"></button><div class="media-body"><h3>四点跪姿髋伸</h3><p>核心固定，骨盆不要左右转。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/76bea158d973991032253d18d8098cc3.jpg"><source src="workout-assets/media/76bea158d973991032253d18d8098cc3.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举</h3><p>10.6 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/e851c5e29b0458f56293904cb99c5f3b.jpg"><source src="workout-assets/media/e851c5e29b0458f56293904cb99c5f3b.mp4" type="video/mp4"></video><div class="media-body"><h3>四点跪姿髋伸 / 核心</h3><p>9.9 秒 · 1280 × 720 · 核心 / 髋。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/b0238b5bf0a168ce0ca60a4d0357b64b.jpg"><source src="workout-assets/media/b0238b5bf0a168ce0ca60a4d0357b64b.mp4" type="video/mp4"></video><div class="media-body"><h3>卷腹 / 核心</h3><p>9.5 秒 · 1280 × 720 · 核心。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/f0c2dc68915863cb11dd8ecc15a9d8d8.jpg"><source src="workout-assets/media/f0c2dc68915863cb11dd8ecc15a9d8d8.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举近景</h3><p>11.3 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/838f0039f76a817f69b88994dea8d31c.jpg"><source src="workout-assets/media/838f0039f76a817f69b88994dea8d31c.mp4" type="video/mp4"></video><div class="media-body"><h3>臀推 / 髋伸</h3><p>11.5 秒 · 1280 × 720 · 臀腿。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/c224337edb7883d300afee7f68fde955.jpg"><source src="workout-assets/media/c224337edb7883d300afee7f68fde955.mp4" type="video/mp4"></video><div class="media-body"><h3>四点跪姿髋伸</h3><p>21.1 秒 · 1280 × 720 · 核心 / 髋。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/76bea158d973991032253d18d8098cc3_sheet.jpg" data-caption="俯卧腿弯举关键帧 · 2026-06-18"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/76bea158d973991032253d18d8098cc3_sheet.jpg" alt="俯卧腿弯举关键帧"></button><div class="media-body"><h3>俯卧腿弯举</h3><p>P3：骨盆压住垫子，别用腰带腿。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/e851c5e29b0458f56293904cb99c5f3b_sheet.jpg" data-caption="四点跪姿髋伸 / 核心关键帧 · 2026-06-18"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/e851c5e29b0458f56293904cb99c5f3b_sheet.jpg" alt="四点跪姿髋伸 / 核心关键帧"></button><div class="media-body"><h3>四点跪姿髋伸 / 核心</h3><p>脊柱保持中立，腿动但腰不要塌。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b0238b5bf0a168ce0ca60a4d0357b64b_sheet.jpg" data-caption="卷腹 / 核心关键帧 · 2026-06-18"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/b0238b5bf0a168ce0ca60a4d0357b64b_sheet.jpg" alt="卷腹 / 核心关键帧"></button><div class="media-body"><h3>卷腹 / 核心</h3><p>别用手拉头，肋骨向骨盆卷。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/f0c2dc68915863cb11dd8ecc15a9d8d8_sheet.jpg" data-caption="俯卧腿弯举近景关键帧 · 2026-06-18"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/f0c2dc68915863cb11dd8ecc15a9d8d8_sheet.jpg" alt="俯卧腿弯举近景关键帧"></button><div class="media-body"><h3>俯卧腿弯举近景</h3><p>同类动作近景，重点看膝弯曲节奏。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/838f0039f76a817f69b88994dea8d31c_sheet.jpg" data-caption="臀推 / 髋伸关键帧 · 2026-06-18"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/838f0039f76a817f69b88994dea8d31c_sheet.jpg" alt="臀推 / 髋伸关键帧"></button><div class="media-body"><h3>臀推 / 髋伸</h3><p>顶端臀收紧，肋骨别顶、腰别拱。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/c224337edb7883d300afee7f68fde955_sheet.jpg" data-caption="四点跪姿髋伸关键帧 · 2026-06-18"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/c224337edb7883d300afee7f68fde955_sheet.jpg" alt="四点跪姿髋伸关键帧"></button><div class="media-body"><h3>四点跪姿髋伸</h3><p>核心固定，骨盆不要左右转。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/76bea158d973991032253d18d8098cc3.jpg"><source src="workout-assets/media/76bea158d973991032253d18d8098cc3.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举</h3><p>10.6 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/e851c5e29b0458f56293904cb99c5f3b.jpg"><source src="workout-assets/media/e851c5e29b0458f56293904cb99c5f3b.mp4" type="video/mp4"></video><div class="media-body"><h3>四点跪姿髋伸 / 核心</h3><p>9.9 秒 · 1280 × 720 · 核心 / 髋。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/b0238b5bf0a168ce0ca60a4d0357b64b.jpg"><source src="workout-assets/media/b0238b5bf0a168ce0ca60a4d0357b64b.mp4" type="video/mp4"></video><div class="media-body"><h3>卷腹 / 核心</h3><p>9.5 秒 · 1280 × 720 · 核心。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/f0c2dc68915863cb11dd8ecc15a9d8d8.jpg"><source src="workout-assets/media/f0c2dc68915863cb11dd8ecc15a9d8d8.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举近景</h3><p>11.3 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/838f0039f76a817f69b88994dea8d31c.jpg"><source src="workout-assets/media/838f0039f76a817f69b88994dea8d31c.mp4" type="video/mp4"></video><div class="media-body"><h3>臀推 / 髋伸</h3><p>11.5 秒 · 1280 × 720 · 臀腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/c224337edb7883d300afee7f68fde955.jpg"><source src="workout-assets/media/c224337edb7883d300afee7f68fde955.mp4" type="video/mp4"></video><div class="media-body"><h3>四点跪姿髋伸</h3><p>21.1 秒 · 1280 × 720 · 核心 / 髋。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260623" class="section" aria-labelledby="d20260623-title">
+            <details class="date-record" data-date="20260623" id="d20260623">
+              <summary class="date-summary"><strong>2026 年 6 月 23 日 · 背肩训练</strong><span>6 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260623-title">
       <div class="section-head"><h2 id="d20260623-title">2026-06-23：背肩训练密度提高</h2><p class="section-note">高位拉、划船、凳上臂屈伸、弹力带肩胛激活</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-23 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>高位拉 / 划船</td><td>动作种类变多，说明训练结构更完整；问题是手臂和上斜方容易抢。</td><td>先沉肩收肩胛，再让手肘走向肋骨或身体两侧。</td></tr><tr><td>凳上臂屈伸</td><td>肩前侧压力大，且不容易控制肩胛。</td><td>有肩前侧不适就换绳索下压或窄距俯卧撑。</td></tr><tr><td>弹力带肩胛激活</td><td>适合训练前放在热身里，但不要靠耸肩完成。</td><td>肋骨下收，肩膀远离耳朵，手肘微弯。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>这是新增素材里最值得重点复盘的一天：背部训练量明显增加，但肩颈代偿也最容易暴露。凳上臂屈伸对肩前侧压力偏大，不建议作为主力动作。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/60291f032ffaa5058f6d2ee29e8af893_sheet.jpg" data-caption="高位绳索划船关键帧 · 2026-06-23"><img src="workout-assets/analysis/updates-20260616-30/60291f032ffaa5058f6d2ee29e8af893_sheet.jpg" alt="高位绳索划船关键帧"></button><div class="media-body"><h3>高位绳索划船</h3><p>P1：先沉肩收肩胛，再让手肘向后下。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/3e2c7942ab875a5a9986aeb18e2e925c_sheet.jpg" data-caption="坐姿划船关键帧 · 2026-06-23"><img src="workout-assets/analysis/updates-20260616-30/3e2c7942ab875a5a9986aeb18e2e925c_sheet.jpg" alt="坐姿划船关键帧"></button><div class="media-body"><h3>坐姿划船</h3><p>胸口立住，少用身体后仰借力。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/374250c0ab923f3bd8453b0f96d4cc55_sheet.jpg" data-caption="高位下拉 / 肩背关键帧 · 2026-06-23"><img src="workout-assets/analysis/updates-20260616-30/374250c0ab923f3bd8453b0f96d4cc55_sheet.jpg" alt="高位下拉 / 肩背关键帧"></button><div class="media-body"><h3>高位下拉 / 肩背</h3><p>P1：下巴微收，肘向下走，顶部别耸肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/15fc6090f46e30e95487b337e304373a_sheet.jpg" data-caption="高位拉 / 肩后束关键帧 · 2026-06-23"><img src="workout-assets/analysis/updates-20260616-30/15fc6090f46e30e95487b337e304373a_sheet.jpg" alt="高位拉 / 肩后束关键帧"></button><div class="media-body"><h3>高位拉 / 肩后束</h3><p>手臂别抢动作，肩胛先下沉。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/0a709bb4b5198bdd2d082d5b64327779_sheet.jpg" data-caption="凳上臂屈伸关键帧 · 2026-06-23"><img src="workout-assets/analysis/updates-20260616-30/0a709bb4b5198bdd2d082d5b64327779_sheet.jpg" alt="凳上臂屈伸关键帧"></button><div class="media-body"><h3>凳上臂屈伸</h3><p>P1：肩前侧压力大，优先换绳索下压。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b40b19aaa48c240a0ecc26eb3e831b1d_sheet.jpg" data-caption="弹力带拉伸 / 肩胛激活关键帧 · 2026-06-23"><img src="workout-assets/analysis/updates-20260616-30/b40b19aaa48c240a0ecc26eb3e831b1d_sheet.jpg" alt="弹力带拉伸 / 肩胛激活关键帧"></button><div class="media-body"><h3>弹力带拉伸 / 肩胛激活</h3><p>肋骨下收，肩膀离耳朵远一点。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/60291f032ffaa5058f6d2ee29e8af893.jpg"><source src="workout-assets/media/60291f032ffaa5058f6d2ee29e8af893.mp4" type="video/mp4"></video><div class="media-body"><h3>高位绳索划船</h3><p>14.5 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/3e2c7942ab875a5a9986aeb18e2e925c.jpg"><source src="workout-assets/media/3e2c7942ab875a5a9986aeb18e2e925c.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船</h3><p>12.4 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/374250c0ab923f3bd8453b0f96d4cc55.jpg"><source src="workout-assets/media/374250c0ab923f3bd8453b0f96d4cc55.mp4" type="video/mp4"></video><div class="media-body"><h3>高位下拉 / 肩背</h3><p>13.3 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/15fc6090f46e30e95487b337e304373a.jpg"><source src="workout-assets/media/15fc6090f46e30e95487b337e304373a.mp4" type="video/mp4"></video><div class="media-body"><h3>高位拉 / 肩后束</h3><p>13.8 秒 · 1280 × 720 · 肩背。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/0a709bb4b5198bdd2d082d5b64327779.jpg"><source src="workout-assets/media/0a709bb4b5198bdd2d082d5b64327779.mp4" type="video/mp4"></video><div class="media-body"><h3>凳上臂屈伸</h3><p>11.7 秒 · 1280 × 720 · 上肢推。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/b40b19aaa48c240a0ecc26eb3e831b1d.jpg"><source src="workout-assets/media/b40b19aaa48c240a0ecc26eb3e831b1d.mp4" type="video/mp4"></video><div class="media-body"><h3>弹力带拉伸 / 肩胛激活</h3><p>14.3 秒 · 1280 × 720 · 肩胛激活。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/60291f032ffaa5058f6d2ee29e8af893_sheet.jpg" data-caption="高位绳索划船关键帧 · 2026-06-23"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/60291f032ffaa5058f6d2ee29e8af893_sheet.jpg" alt="高位绳索划船关键帧"></button><div class="media-body"><h3>高位绳索划船</h3><p>P1：先沉肩收肩胛，再让手肘向后下。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/3e2c7942ab875a5a9986aeb18e2e925c_sheet.jpg" data-caption="坐姿划船关键帧 · 2026-06-23"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/3e2c7942ab875a5a9986aeb18e2e925c_sheet.jpg" alt="坐姿划船关键帧"></button><div class="media-body"><h3>坐姿划船</h3><p>胸口立住，少用身体后仰借力。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/374250c0ab923f3bd8453b0f96d4cc55_sheet.jpg" data-caption="高位下拉 / 肩背关键帧 · 2026-06-23"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/374250c0ab923f3bd8453b0f96d4cc55_sheet.jpg" alt="高位下拉 / 肩背关键帧"></button><div class="media-body"><h3>高位下拉 / 肩背</h3><p>P1：下巴微收，肘向下走，顶部别耸肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/15fc6090f46e30e95487b337e304373a_sheet.jpg" data-caption="高位拉 / 肩后束关键帧 · 2026-06-23"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/15fc6090f46e30e95487b337e304373a_sheet.jpg" alt="高位拉 / 肩后束关键帧"></button><div class="media-body"><h3>高位拉 / 肩后束</h3><p>手臂别抢动作，肩胛先下沉。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/0a709bb4b5198bdd2d082d5b64327779_sheet.jpg" data-caption="凳上臂屈伸关键帧 · 2026-06-23"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/0a709bb4b5198bdd2d082d5b64327779_sheet.jpg" alt="凳上臂屈伸关键帧"></button><div class="media-body"><h3>凳上臂屈伸</h3><p>P1：肩前侧压力大，优先换绳索下压。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b40b19aaa48c240a0ecc26eb3e831b1d_sheet.jpg" data-caption="弹力带拉伸 / 肩胛激活关键帧 · 2026-06-23"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/b40b19aaa48c240a0ecc26eb3e831b1d_sheet.jpg" alt="弹力带拉伸 / 肩胛激活关键帧"></button><div class="media-body"><h3>弹力带拉伸 / 肩胛激活</h3><p>肋骨下收，肩膀离耳朵远一点。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/60291f032ffaa5058f6d2ee29e8af893.jpg"><source src="workout-assets/media/60291f032ffaa5058f6d2ee29e8af893.mp4" type="video/mp4"></video><div class="media-body"><h3>高位绳索划船</h3><p>14.5 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/3e2c7942ab875a5a9986aeb18e2e925c.jpg"><source src="workout-assets/media/3e2c7942ab875a5a9986aeb18e2e925c.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船</h3><p>12.4 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/374250c0ab923f3bd8453b0f96d4cc55.jpg"><source src="workout-assets/media/374250c0ab923f3bd8453b0f96d4cc55.mp4" type="video/mp4"></video><div class="media-body"><h3>高位下拉 / 肩背</h3><p>13.3 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/15fc6090f46e30e95487b337e304373a.jpg"><source src="workout-assets/media/15fc6090f46e30e95487b337e304373a.mp4" type="video/mp4"></video><div class="media-body"><h3>高位拉 / 肩后束</h3><p>13.8 秒 · 1280 × 720 · 肩背。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/0a709bb4b5198bdd2d082d5b64327779.jpg"><source src="workout-assets/media/0a709bb4b5198bdd2d082d5b64327779.mp4" type="video/mp4"></video><div class="media-body"><h3>凳上臂屈伸</h3><p>11.7 秒 · 1280 × 720 · 上肢推。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/b40b19aaa48c240a0ecc26eb3e831b1d.jpg"><source src="workout-assets/media/b40b19aaa48c240a0ecc26eb3e831b1d.mp4" type="video/mp4"></video><div class="media-body"><h3>弹力带拉伸 / 肩胛激活</h3><p>14.3 秒 · 1280 × 720 · 肩胛激活。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260626" class="section" aria-labelledby="d20260626-title">
+            <details class="date-record" data-date="20260626" id="d20260626">
+              <summary class="date-summary"><strong>2026 年 6 月 26 日 · 下肢与负重</strong><span>5 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260626-title">
       <div class="section-head"><h2 id="d20260626-title">2026-06-26：下肢和负重控制</h2><p class="section-note">壶铃、腿弯举、农夫走、弓步 / 分腿蹲</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-26 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>壶铃深蹲 / 髋膝控制</td><td>能看到髋和膝一起参与，但躯干和脚底压力要更稳。</td><td>脚底三点踩地，膝盖跟脚尖同向，胸口立住。</td></tr><tr><td>农夫走</td><td>很适合改善站姿和核心抗侧屈。</td><td>肋骨下收，肩膀下沉，步伐小而稳。</td></tr><tr><td>弓步 / 分腿蹲</td><td>单侧动作开始出现，是腿部进步的重要信号。</td><td>前脚全脚掌发力，骨盆正对前方，不左右晃。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>这一天开始加入更像真实训练的下肢控制：负重、单侧、行走都有了。判断变化时看稳定性，不看动作做得多花。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/452c98825fc219f4520acfff46dd4ff8_sheet.jpg" data-caption="壶铃深蹲 / 髋膝控制关键帧 · 2026-06-26"><img src="workout-assets/analysis/updates-20260616-30/452c98825fc219f4520acfff46dd4ff8_sheet.jpg" alt="壶铃深蹲 / 髋膝控制关键帧"></button><div class="media-body"><h3>壶铃深蹲 / 髋膝控制</h3><p>P1：脚底三点踩稳，胸口立住再下蹲。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b6dcfbb534a2c5dfff84a31fdbd2a7aa_sheet.jpg" data-caption="坐姿腿弯举关键帧 · 2026-06-26"><img src="workout-assets/analysis/updates-20260616-30/b6dcfbb534a2c5dfff84a31fdbd2a7aa_sheet.jpg" alt="坐姿腿弯举关键帧"></button><div class="media-body"><h3>坐姿腿弯举</h3><p>坐稳骨盆，顶端停 1 秒，下放 3 秒。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/73dd99f73457bbe576740109a93096b8_sheet.jpg" data-caption="农夫走 / 负重行走关键帧 · 2026-06-26"><img src="workout-assets/analysis/updates-20260616-30/73dd99f73457bbe576740109a93096b8_sheet.jpg" alt="农夫走 / 负重行走关键帧"></button><div class="media-body"><h3>农夫走 / 负重行走</h3><p>肋骨下收，肩膀下沉，步子慢且稳。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/52bb023ffb712de434cbd0f01ec38d94_sheet.jpg" data-caption="跪姿起立 / 弓步过渡关键帧 · 2026-06-26"><img src="workout-assets/analysis/updates-20260616-30/52bb023ffb712de434cbd0f01ec38d94_sheet.jpg" alt="跪姿起立 / 弓步过渡关键帧"></button><div class="media-body"><h3>跪姿起立 / 弓步过渡</h3><p>P2：核心收紧，膝盖跟脚尖同向。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/8f3295bee62f88037b8c4689bcf5f856_sheet.jpg" data-caption="分腿蹲 / 弓步关键帧 · 2026-06-26"><img src="workout-assets/analysis/updates-20260616-30/8f3295bee62f88037b8c4689bcf5f856_sheet.jpg" alt="分腿蹲 / 弓步关键帧"></button><div class="media-body"><h3>分腿蹲 / 弓步</h3><p>前脚全脚掌发力，躯干不要左右晃。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/452c98825fc219f4520acfff46dd4ff8.jpg"><source src="workout-assets/media/452c98825fc219f4520acfff46dd4ff8.mp4" type="video/mp4"></video><div class="media-body"><h3>壶铃深蹲 / 髋膝控制</h3><p>12.0 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/b6dcfbb534a2c5dfff84a31fdbd2a7aa.jpg"><source src="workout-assets/media/b6dcfbb534a2c5dfff84a31fdbd2a7aa.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿弯举</h3><p>11.4 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/73dd99f73457bbe576740109a93096b8.jpg"><source src="workout-assets/media/73dd99f73457bbe576740109a93096b8.mp4" type="video/mp4"></video><div class="media-body"><h3>农夫走 / 负重行走</h3><p>11.2 秒 · 1280 × 720 · 负重行走。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/52bb023ffb712de434cbd0f01ec38d94.jpg"><source src="workout-assets/media/52bb023ffb712de434cbd0f01ec38d94.mp4" type="video/mp4"></video><div class="media-body"><h3>跪姿起立 / 弓步过渡</h3><p>12.7 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/8f3295bee62f88037b8c4689bcf5f856.jpg"><source src="workout-assets/media/8f3295bee62f88037b8c4689bcf5f856.mp4" type="video/mp4"></video><div class="media-body"><h3>分腿蹲 / 弓步</h3><p>12.7 秒 · 1280 × 720 · 练腿。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/452c98825fc219f4520acfff46dd4ff8_sheet.jpg" data-caption="壶铃深蹲 / 髋膝控制关键帧 · 2026-06-26"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/452c98825fc219f4520acfff46dd4ff8_sheet.jpg" alt="壶铃深蹲 / 髋膝控制关键帧"></button><div class="media-body"><h3>壶铃深蹲 / 髋膝控制</h3><p>P1：脚底三点踩稳，胸口立住再下蹲。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/b6dcfbb534a2c5dfff84a31fdbd2a7aa_sheet.jpg" data-caption="坐姿腿弯举关键帧 · 2026-06-26"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/b6dcfbb534a2c5dfff84a31fdbd2a7aa_sheet.jpg" alt="坐姿腿弯举关键帧"></button><div class="media-body"><h3>坐姿腿弯举</h3><p>坐稳骨盆，顶端停 1 秒，下放 3 秒。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/73dd99f73457bbe576740109a93096b8_sheet.jpg" data-caption="农夫走 / 负重行走关键帧 · 2026-06-26"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/73dd99f73457bbe576740109a93096b8_sheet.jpg" alt="农夫走 / 负重行走关键帧"></button><div class="media-body"><h3>农夫走 / 负重行走</h3><p>肋骨下收，肩膀下沉，步子慢且稳。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/52bb023ffb712de434cbd0f01ec38d94_sheet.jpg" data-caption="跪姿起立 / 弓步过渡关键帧 · 2026-06-26"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/52bb023ffb712de434cbd0f01ec38d94_sheet.jpg" alt="跪姿起立 / 弓步过渡关键帧"></button><div class="media-body"><h3>跪姿起立 / 弓步过渡</h3><p>P2：核心收紧，膝盖跟脚尖同向。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/8f3295bee62f88037b8c4689bcf5f856_sheet.jpg" data-caption="分腿蹲 / 弓步关键帧 · 2026-06-26"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/8f3295bee62f88037b8c4689bcf5f856_sheet.jpg" alt="分腿蹲 / 弓步关键帧"></button><div class="media-body"><h3>分腿蹲 / 弓步</h3><p>前脚全脚掌发力，躯干不要左右晃。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/452c98825fc219f4520acfff46dd4ff8.jpg"><source src="workout-assets/media/452c98825fc219f4520acfff46dd4ff8.mp4" type="video/mp4"></video><div class="media-body"><h3>壶铃深蹲 / 髋膝控制</h3><p>12.0 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/b6dcfbb534a2c5dfff84a31fdbd2a7aa.jpg"><source src="workout-assets/media/b6dcfbb534a2c5dfff84a31fdbd2a7aa.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿弯举</h3><p>11.4 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/73dd99f73457bbe576740109a93096b8.jpg"><source src="workout-assets/media/73dd99f73457bbe576740109a93096b8.mp4" type="video/mp4"></video><div class="media-body"><h3>农夫走 / 负重行走</h3><p>11.2 秒 · 1280 × 720 · 负重行走。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/52bb023ffb712de434cbd0f01ec38d94.jpg"><source src="workout-assets/media/52bb023ffb712de434cbd0f01ec38d94.mp4" type="video/mp4"></video><div class="media-body"><h3>跪姿起立 / 弓步过渡</h3><p>12.7 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/8f3295bee62f88037b8c4689bcf5f856.jpg"><source src="workout-assets/media/8f3295bee62f88037b8c4689bcf5f856.mp4" type="video/mp4"></video><div class="media-body"><h3>分腿蹲 / 弓步</h3><p>12.7 秒 · 1280 × 720 · 练腿。</p></div></article></div>
     </section>
+            </details>
 
-    <section id="d20260630" class="section" aria-labelledby="d20260630-title">
+            <details class="date-record" data-date="20260630" id="d20260630">
+              <summary class="date-summary"><strong>2026 年 6 月 30 日 · 拉背巩固</strong><span>4 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260630-title">
       <div class="section-head"><h2 id="d20260630-title">2026-06-30：拉背巩固日</h2><p class="section-note">坐姿划船、高位拉、肩背控制</p></div>
       <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-06-30 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>坐姿划船</td><td>比早期更像背部训练，但最后几厘米仍容易后仰。</td><td>躯干固定，拉到肋骨旁停半秒，回程保持张力。</td></tr><tr><td>高位拉 / 肩背控制</td><td>手臂举高时容易耸肩或颈部前伸。</td><td>下巴微收，肩膀向下放，离心慢到 3 秒。</td></tr><tr><td>训练安排</td><td>这一天和 06-23 都是拉背密度高的日子。</td><td>每次拉背选一个下拉、一个划船、一个后束，不要全都堆。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>6 月底的背部动作更成体系：划船和高位拉反复出现。现在要避免堆太多相似动作，保留 2-3 个高质量动作就够。</p></div></div>
-      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/d190d4cbf1c7814c4e7e450d7adfc4a9_sheet.jpg" data-caption="坐姿划船关键帧 · 2026-06-30"><img src="workout-assets/analysis/updates-20260616-30/d190d4cbf1c7814c4e7e450d7adfc4a9_sheet.jpg" alt="坐姿划船关键帧"></button><div class="media-body"><h3>坐姿划船</h3><p>拉到肋骨旁停半秒，回程别塌肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/f9fc6f04287d5745eaf2857cecb4f1a5_sheet.jpg" data-caption="高位拉 / 肩背控制关键帧 · 2026-06-30"><img src="workout-assets/analysis/updates-20260616-30/f9fc6f04287d5745eaf2857cecb4f1a5_sheet.jpg" alt="高位拉 / 肩背控制关键帧"></button><div class="media-body"><h3>高位拉 / 肩背控制</h3><p>P2：不要追大幅度，先保证沉肩和肘路。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/f0654632eb83faa4a7ae5fa6a68897de_sheet.jpg" data-caption="坐姿划船 / 拉背关键帧 · 2026-06-30"><img src="workout-assets/analysis/updates-20260616-30/f0654632eb83faa4a7ae5fa6a68897de_sheet.jpg" alt="坐姿划船 / 拉背关键帧"></button><div class="media-body"><h3>坐姿划船 / 拉背</h3><p>躯干稳定，别靠后仰完成最后一段。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/ebd6fb929b94ee6dd7d1ca1d35919aa5_sheet.jpg" data-caption="高位下拉 / 肩胛控制关键帧 · 2026-06-30"><img src="workout-assets/analysis/updates-20260616-30/ebd6fb929b94ee6dd7d1ca1d35919aa5_sheet.jpg" alt="高位下拉 / 肩胛控制关键帧"></button><div class="media-body"><h3>高位下拉 / 肩胛控制</h3><p>P1：离心慢放，顶部保持背阔张力。</p></div></article></div>
-      <div class="media-grid section"><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/d190d4cbf1c7814c4e7e450d7adfc4a9.jpg"><source src="workout-assets/media/d190d4cbf1c7814c4e7e450d7adfc4a9.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船</h3><p>12.4 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/f9fc6f04287d5745eaf2857cecb4f1a5.jpg"><source src="workout-assets/media/f9fc6f04287d5745eaf2857cecb4f1a5.mp4" type="video/mp4"></video><div class="media-body"><h3>高位拉 / 肩背控制</h3><p>15.9 秒 · 1280 × 720 · 肩背。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/f0654632eb83faa4a7ae5fa6a68897de.jpg"><source src="workout-assets/media/f0654632eb83faa4a7ae5fa6a68897de.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船 / 拉背</h3><p>14.0 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="metadata" poster="workout-assets/posters/ebd6fb929b94ee6dd7d1ca1d35919aa5.jpg"><source src="workout-assets/media/ebd6fb929b94ee6dd7d1ca1d35919aa5.mp4" type="video/mp4"></video><div class="media-body"><h3>高位下拉 / 肩胛控制</h3><p>11.5 秒 · 1280 × 720 · 上肢拉。</p></div></article></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/d190d4cbf1c7814c4e7e450d7adfc4a9_sheet.jpg" data-caption="坐姿划船关键帧 · 2026-06-30"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/d190d4cbf1c7814c4e7e450d7adfc4a9_sheet.jpg" alt="坐姿划船关键帧"></button><div class="media-body"><h3>坐姿划船</h3><p>拉到肋骨旁停半秒，回程别塌肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/f9fc6f04287d5745eaf2857cecb4f1a5_sheet.jpg" data-caption="高位拉 / 肩背控制关键帧 · 2026-06-30"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/f9fc6f04287d5745eaf2857cecb4f1a5_sheet.jpg" alt="高位拉 / 肩背控制关键帧"></button><div class="media-body"><h3>高位拉 / 肩背控制</h3><p>P2：不要追大幅度，先保证沉肩和肘路。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/f0654632eb83faa4a7ae5fa6a68897de_sheet.jpg" data-caption="坐姿划船 / 拉背关键帧 · 2026-06-30"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/f0654632eb83faa4a7ae5fa6a68897de_sheet.jpg" alt="坐姿划船 / 拉背关键帧"></button><div class="media-body"><h3>坐姿划船 / 拉背</h3><p>躯干稳定，别靠后仰完成最后一段。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260616-30/ebd6fb929b94ee6dd7d1ca1d35919aa5_sheet.jpg" data-caption="高位下拉 / 肩胛控制关键帧 · 2026-06-30"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260616-30/ebd6fb929b94ee6dd7d1ca1d35919aa5_sheet.jpg" alt="高位下拉 / 肩胛控制关键帧"></button><div class="media-body"><h3>高位下拉 / 肩胛控制</h3><p>P1：离心慢放，顶部保持背阔张力。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/d190d4cbf1c7814c4e7e450d7adfc4a9.jpg"><source src="workout-assets/media/d190d4cbf1c7814c4e7e450d7adfc4a9.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船</h3><p>12.4 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/f9fc6f04287d5745eaf2857cecb4f1a5.jpg"><source src="workout-assets/media/f9fc6f04287d5745eaf2857cecb4f1a5.mp4" type="video/mp4"></video><div class="media-body"><h3>高位拉 / 肩背控制</h3><p>15.9 秒 · 1280 × 720 · 肩背。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/f0654632eb83faa4a7ae5fa6a68897de.jpg"><source src="workout-assets/media/f0654632eb83faa4a7ae5fa6a68897de.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿划船 / 拉背</h3><p>14.0 秒 · 1280 × 720 · 上肢拉。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/ebd6fb929b94ee6dd7d1ca1d35919aa5.jpg"><source src="workout-assets/media/ebd6fb929b94ee6dd7d1ca1d35919aa5.mp4" type="video/mp4"></video><div class="media-body"><h3>高位下拉 / 肩胛控制</h3><p>11.5 秒 · 1280 × 720 · 上肢拉。</p></div></article></div>
+    </section>
+            </details>
+          </div>
+        </details>
+
+        <details class="month-record" id="month-202607" data-month="2026-07" open>
+          <summary class="month-summary"><strong>2026 年 7 月</strong><span>2 次记录</span></summary>
+          <div class="month-body">
+            <details class="date-record" data-date="20260702" id="d20260702">
+              <summary class="date-summary"><strong>2026 年 7 月 2 日 · 下肢节奏与深蹲</strong><span>5 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260702-title">
+      <div class="section-head"><h2 id="d20260702-title">2026-07-02：下肢节奏和深蹲模式</h2><p class="section-note">腿屈伸、腿弯举、史密斯深蹲、扶椅深蹲</p></div>
+      <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-07-02 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>腿屈伸 / 腿弯举</td><td>下肢器械继续重复，动作节奏比早期更稳定；风险仍是顶端猛锁和回程过快。</td><td>顶端停半秒，不弹膝；回程数 3 秒，骨盆压稳。</td></tr><tr><td>史密斯深蹲</td><td>开始把深蹲模式放进器械轨道里，利于练路径，但容易让膝和髋跟着轨道走偏。</td><td>脚底三点踩地，膝盖朝第二/三脚趾，躯干别左右转。</td></tr><tr><td>扶椅深蹲 / 髋膝控制</td><td>更像技术练习，不是负重主项；适合用来找深度、脚底压力和躯干角度。</td><td>手只做平衡，先髋向后再下蹲，站起时别用手拉。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>7 月 2 日的价值在于继续练下肢基本模式。不要急着把深蹲加重量，先把脚底、膝盖轨迹和骨盆稳定做干净。</p></div></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/19830c10b9b9b8e69c4e4be030b01174_sheet.jpg" data-caption="坐姿腿屈伸关键帧 · 2026-07-02"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/19830c10b9b9b8e69c4e4be030b01174_sheet.jpg" alt="坐姿腿屈伸关键帧"></button><div class="media-body"><h3>坐姿腿屈伸</h3><p>顶端不要猛锁膝，回程慢放。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/3384aaf26e5b4d4ca66a6e00cc604e1f_sheet.jpg" data-caption="俯卧腿弯举关键帧 · 2026-07-02"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/3384aaf26e5b4d4ca66a6e00cc604e1f_sheet.jpg" alt="俯卧腿弯举关键帧"></button><div class="media-body"><h3>俯卧腿弯举</h3><p>骨盆压住垫子，别用腰带腿。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/dec24dccea28cb0f359b786c196eaf82_sheet.jpg" data-caption="坐姿腿屈伸近景关键帧 · 2026-07-02"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/dec24dccea28cb0f359b786c196eaf82_sheet.jpg" alt="坐姿腿屈伸近景关键帧"></button><div class="media-body"><h3>坐姿腿屈伸近景</h3><p>观察膝关节节奏和脚尖方向。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/3ab720633313b1efae3efaca54e5d168_sheet.jpg" data-caption="史密斯深蹲关键帧 · 2026-07-02"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/3ab720633313b1efae3efaca54e5d168_sheet.jpg" alt="史密斯深蹲关键帧"></button><div class="media-body"><h3>史密斯深蹲</h3><p>先固定脚底压力，再看深度。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/acb8d7f5202a95302ad34f83d4627ec8_sheet.jpg" data-caption="扶椅深蹲 / 髋膝控制关键帧 · 2026-07-02"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/acb8d7f5202a95302ad34f83d4627ec8_sheet.jpg" alt="扶椅深蹲 / 髋膝控制关键帧"></button><div class="media-body"><h3>扶椅深蹲 / 髋膝控制</h3><p>手只做平衡，别用手拉起。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/19830c10b9b9b8e69c4e4be030b01174.jpg"><source src="workout-assets/media/19830c10b9b9b8e69c4e4be030b01174.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿屈伸</h3><p>15.3 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/3384aaf26e5b4d4ca66a6e00cc604e1f.jpg"><source src="workout-assets/media/3384aaf26e5b4d4ca66a6e00cc604e1f.mp4" type="video/mp4"></video><div class="media-body"><h3>俯卧腿弯举</h3><p>11.2 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/dec24dccea28cb0f359b786c196eaf82.jpg"><source src="workout-assets/media/dec24dccea28cb0f359b786c196eaf82.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿腿屈伸近景</h3><p>11.2 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/3ab720633313b1efae3efaca54e5d168.jpg"><source src="workout-assets/media/3ab720633313b1efae3efaca54e5d168.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯深蹲</h3><p>15.9 秒 · 1280 × 720 · 练腿。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/acb8d7f5202a95302ad34f83d4627ec8.jpg"><source src="workout-assets/media/acb8d7f5202a95302ad34f83d4627ec8.mp4" type="video/mp4"></video><div class="media-body"><h3>扶椅深蹲 / 髋膝控制</h3><p>15.4 秒 · 1280 × 720 · 技术练习。</p></div></article></div>
+    </section>
+
+            </details>
+
+            <details class="date-record" data-date="20260708" id="d20260708" open>
+              <summary class="date-summary"><strong>2026 年 7 月 8 日 · 上肢推拉</strong><span>4 段动作</span></summary>
+    <section class="section" aria-labelledby="d20260708-title">
+      <div class="section-head"><h2 id="d20260708-title">2026-07-08：上肢推拉回到主线</h2><p class="section-note">单臂绳索、史密斯卧推、坐姿夹胸、机器胸推</p></div>
+      <div class="analysis-copy"><div class="table-wrap"><table aria-label="2026-07-08 动作复盘"><thead><tr><th>动作</th><th>变化 / 问题</th><th>修正口令</th></tr></thead><tbody><tr><td>单臂绳索 / 肩胛控制</td><td>单侧动作可以暴露左右差异，但容易变成躯干侧弯和肩膀上提。</td><td>肋骨下收，肩膀下沉，身体不要跟着手臂转。</td></tr><tr><td>史密斯卧推</td><td>推的主项继续出现，说明上肢推已变成固定训练模块。</td><td>肩胛后收下沉压住凳子，手腕叠手肘，不要耸肩推。</td></tr><tr><td>坐姿夹胸 / 机器胸推</td><td>胸部辅助动作增多，风险是为了挤压而含胸、前伸颈部。</td><td>胸口抬，脖子放松；夹胸末端停 1 秒，胸推回程慢放。</td></tr></tbody></table></div><div class="panel"><h3>这一天的结论</h3><p>7 月 8 日说明训练又回到推拉主线。当前最该管的是肩胛固定和颈部位置，而不是继续堆更多胸部动作。</p></div></div>
+      <div class="sheet-grid section"><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/490982a91ac90731aa9740839f580c38_sheet.jpg" data-caption="单臂绳索 / 肩胛控制关键帧 · 2026-07-08"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/490982a91ac90731aa9740839f580c38_sheet.jpg" alt="单臂绳索 / 肩胛控制关键帧"></button><div class="media-body"><h3>单臂绳索 / 肩胛控制</h3><p>身体别跟着转，肩膀保持下沉。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/d01f383b5af853b0e04f65763e59ebc2_sheet.jpg" data-caption="史密斯卧推关键帧 · 2026-07-08"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/d01f383b5af853b0e04f65763e59ebc2_sheet.jpg" alt="史密斯卧推关键帧"></button><div class="media-body"><h3>史密斯卧推</h3><p>肩胛压住凳子，手腕保持中立。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/47d6cd86f4f35290738c2e2f185daf6e_sheet.jpg" data-caption="坐姿夹胸关键帧 · 2026-07-08"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/47d6cd86f4f35290738c2e2f185daf6e_sheet.jpg" alt="坐姿夹胸关键帧"></button><div class="media-body"><h3>坐姿夹胸</h3><p>夹到胸前停 1 秒，别含胸耸肩。</p></div></article><article class="sheet-card"><button class="zoomable" data-full="workout-assets/analysis/updates-20260702-08/5c6463b3c953db3a19029596c1a4b094_sheet.jpg" data-caption="机器胸推关键帧 · 2026-07-08"><img loading="lazy" decoding="async" data-src="workout-assets/analysis/updates-20260702-08/5c6463b3c953db3a19029596c1a4b094_sheet.jpg" alt="机器胸推关键帧"></button><div class="media-body"><h3>机器胸推</h3><p>回程慢放，胸口别塌。</p></div></article></div>
+      <div class="media-grid section"><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/490982a91ac90731aa9740839f580c38.jpg"><source src="workout-assets/media/490982a91ac90731aa9740839f580c38.mp4" type="video/mp4"></video><div class="media-body"><h3>单臂绳索 / 肩胛控制</h3><p>12.7 秒 · 720 × 1280 · 上肢辅助。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/d01f383b5af853b0e04f65763e59ebc2.jpg"><source src="workout-assets/media/d01f383b5af853b0e04f65763e59ebc2.mp4" type="video/mp4"></video><div class="media-body"><h3>史密斯卧推</h3><p>18.3 秒 · 720 × 1280 · 上肢推。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/47d6cd86f4f35290738c2e2f185daf6e.jpg"><source src="workout-assets/media/47d6cd86f4f35290738c2e2f185daf6e.mp4" type="video/mp4"></video><div class="media-body"><h3>坐姿夹胸</h3><p>16.0 秒 · 720 × 1280 · 上肢推。</p></div></article><article class="media-card wide"><video controls preload="none" loading="lazy" data-poster="workout-assets/posters/5c6463b3c953db3a19029596c1a4b094.jpg"><source src="workout-assets/media/5c6463b3c953db3a19029596c1a4b094.mp4" type="video/mp4"></video><div class="media-body"><h3>机器胸推</h3><p>34.8 秒 · 720 × 1280 · 上肢推。</p></div></article></div>
+    </section>
+
+            </details>
+          </div>
+        </details>
+      </div>
     </section>
 
     <section id="log" class="section" aria-labelledby="log-title">
@@ -1273,94 +1473,12 @@
       </div>
     </section>
 
-    <section id="files" class="section" aria-labelledby="files-title">
-      <div class="section-head">
-        <h2 id="files-title">素材清单</h2>
-        <p class="section-note">复制到 `workout-assets/media/`，页面不依赖 Downloads 原目录</p>
-      </div>
-      <details open>
-        <summary>60 个重点素材</summary>
-        <div class="table-wrap">
-          <table aria-label="素材文件清单">
-            <thead>
-              <tr>
-                <th>文件</th>
-                <th>类型</th>
-                <th>尺寸 / 时长</th>
-                <th>归类</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><a href="workout-assets/media/微信图片_20260601110652_39_741.jpg">微信图片_20260601110652_39_741.jpg</a></td><td>JPG</td><td>1080 × 1920</td><td>协议</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601111832_43_741.jpg">微信图片_20260601111832_43_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>价格</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601123809_70_741.jpg">微信图片_20260601123809_70_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601123809_71_741.jpg">微信图片_20260601123809_71_741.jpg</a></td><td>JPG</td><td>951 × 1128</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601123810_72_741.jpg">微信图片_20260601123810_72_741.jpg</a></td><td>JPG</td><td>1280 × 1587</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601123811_73_741.jpg">微信图片_20260601123811_73_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601123811_74_741.jpg">微信图片_20260601123811_74_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601123812_75_741.jpg">微信图片_20260601123812_75_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260601124550_82_741.jpg">微信图片_20260601124550_82_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260604141551_120_741.jpg">微信图片_20260604141551_120_741.jpg</a></td><td>JPG</td><td>1707 × 1280</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260604190734_129_741.jpg">微信图片_20260604190734_129_741.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>饮食</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260605063419.jpg">微信图片_20260605063419.jpg</a></td><td>JPG</td><td>1080 × 1920</td><td>围度</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260605063425.jpg">微信图片_20260605063425.jpg</a></td><td>JPG</td><td>810 × 1440</td><td>体成分</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260605063428.jpg">微信图片_20260605063428.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260605063431.jpg">微信图片_20260605063431.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260605063434.jpg">微信图片_20260605063434.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
-              <tr><td><a href="workout-assets/media/微信图片_20260605063437.jpg">微信图片_20260605063437.jpg</a></td><td>JPG</td><td>1280 × 1707</td><td>体态</td></tr>
-              <tr><td><a href="workout-assets/media/c0f6e72af1f6c66476fc796029a8e10b.mp4">c0f6e72af1f6c66476fc796029a8e10b.mp4</a></td><td>MP4</td><td>11.5s · 1280 × 720</td><td>训练视频</td></tr>
-              <tr><td><a href="workout-assets/media/24e2d82caad22c7481f240046b442aba.mp4">24e2d82caad22c7481f240046b442aba.mp4</a></td><td>MP4</td><td>17.3s · 1280 × 720</td><td>训练视频</td></tr>
-              <tr><td><a href="workout-assets/media/4719f86378c075f3c1898d0ebd8f9169.mp4">4719f86378c075f3c1898d0ebd8f9169.mp4</a></td><td>MP4</td><td>15.6s · 1280 × 720</td><td>训练视频</td></tr>
-              <tr><td><a href="workout-assets/media/d4d5033319a12eed7f76106a8d5f1936.mp4">d4d5033319a12eed7f76106a8d5f1936.mp4</a></td><td>MP4</td><td>8.4s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/a4f2ed7ae03a80c83b696dbd7ac95463.mp4">a4f2ed7ae03a80c83b696dbd7ac95463.mp4</a></td><td>MP4</td><td>14.9s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/d26fa84bc91d2394a5da52d719ccd55a.mp4">d26fa84bc91d2394a5da52d719ccd55a.mp4</a></td><td>MP4</td><td>17.4s · 1280 × 720</td><td>卧推视频</td></tr>
-              <tr><td><a href="workout-assets/media/7740eef93b8777f3dd76de9e3ccc42f3.mp4">7740eef93b8777f3dd76de9e3ccc42f3.mp4</a></td><td>MP4</td><td>16.4s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/7721de30fc956872d4ef774a36fec340.mp4">7721de30fc956872d4ef774a36fec340.mp4</a></td><td>MP4</td><td>13.8s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/11135495bc8798d167ea54ca5ab77416.mp4">11135495bc8798d167ea54ca5ab77416.mp4</a></td><td>MP4</td><td>20.0s · 1280 × 720</td><td>上肢推</td></tr>
-              <tr><td><a href="workout-assets/media/c0fa5be47e099069e3ca9272bffb37f9.mp4">c0fa5be47e099069e3ca9272bffb37f9.mp4</a></td><td>MP4</td><td>12.0s · 1280 × 720</td><td>上肢推</td></tr>
-              <tr><td><a href="workout-assets/media/f3a453f3ff5f5a96ce8a88fca2a7f34a.mp4">f3a453f3ff5f5a96ce8a88fca2a7f34a.mp4</a></td><td>MP4</td><td>14.8s · 1280 × 720</td><td>上肢拉</td></tr>
-              <tr><td><a href="workout-assets/media/08ff90a606b161d55582fffb463aca10.mp4">08ff90a606b161d55582fffb463aca10.mp4</a></td><td>MP4</td><td>9.1s · 1280 × 720</td><td>灵活性 / 腿</td></tr>
-              <tr><td><a href="workout-assets/media/6004074f3f8c6dc5b169080b93d57c6b.mp4">6004074f3f8c6dc5b169080b93d57c6b.mp4</a></td><td>MP4</td><td>10.5s · 1280 × 720</td><td>臀部激活</td></tr>
-              <tr><td><a href="workout-assets/media/b549d944a7f8a3e1d826d19cf6024b56.mp4">b549d944a7f8a3e1d826d19cf6024b56.mp4</a></td><td>MP4</td><td>8.9s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/e4589b9968b623232591d021f94cfab2.mp4">e4589b9968b623232591d021f94cfab2.mp4</a></td><td>MP4</td><td>9.2s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/15ab43a220f5e49c6e1fbb74ace8339d.mp4">15ab43a220f5e49c6e1fbb74ace8339d.mp4</a></td><td>MP4</td><td>14.6s · 1280 × 720</td><td>练腿视频</td></tr>
-              <tr><td><a href="workout-assets/media/8bad7ddef5424756a90fe0b4e91be021.mp4">8bad7ddef5424756a90fe0b4e91be021.mp4</a></td><td>MP4</td><td>19.1s · 720 × 1280</td><td>肩背视频</td></tr>
-              <tr><td><a href="workout-assets/media/d7b7a84fb437d3d62e69c2dfadbf4af5.mp4">d7b7a84fb437d3d62e69c2dfadbf4af5.mp4</a></td><td>MP4</td><td>25.0s · 720 × 1280</td><td>上肢拉</td></tr>
-              <tr><td><a href="workout-assets/media/3354fc101e14a4b252c807291fb417fa.mp4">3354fc101e14a4b252c807291fb417fa.mp4</a></td><td>MP4</td><td>34.0s · 720 × 1280</td><td>上肢拉</td></tr>
-              <tr><td><a href="workout-assets/media/8da8645cb096cd56300cfb6d8f28f361.mp4">8da8645cb096cd56300cfb6d8f28f361.mp4</a></td><td>MP4</td><td>17.4s · 1280 × 720</td><td>上肢推辅助 · 绳索下压 / 三头</td></tr>
-              <tr><td><a href="workout-assets/media/ecffd629700884f62acaea9eccabbc4d.mp4">ecffd629700884f62acaea9eccabbc4d.mp4</a></td><td>MP4</td><td>13.6s · 1280 × 720</td><td>上肢推 · 史密斯上斜推 / 胸推</td></tr>
-              <tr><td><a href="workout-assets/media/b518108171ffca3297cd9c8ed7d8437a.mp4">b518108171ffca3297cd9c8ed7d8437a.mp4</a></td><td>MP4</td><td>13.4s · 1280 × 720</td><td>上肢推 · 坐姿夹胸 / 胸飞鸟</td></tr>
-              <tr><td><a href="workout-assets/media/76bea158d973991032253d18d8098cc3.mp4">76bea158d973991032253d18d8098cc3.mp4</a></td><td>MP4</td><td>10.6s · 1280 × 720</td><td>练腿 · 俯卧腿弯举</td></tr>
-              <tr><td><a href="workout-assets/media/e851c5e29b0458f56293904cb99c5f3b.mp4">e851c5e29b0458f56293904cb99c5f3b.mp4</a></td><td>MP4</td><td>9.9s · 1280 × 720</td><td>核心 / 髋 · 四点跪姿髋伸 / 核心</td></tr>
-              <tr><td><a href="workout-assets/media/b0238b5bf0a168ce0ca60a4d0357b64b.mp4">b0238b5bf0a168ce0ca60a4d0357b64b.mp4</a></td><td>MP4</td><td>9.5s · 1280 × 720</td><td>核心 · 卷腹 / 核心</td></tr>
-              <tr><td><a href="workout-assets/media/f0c2dc68915863cb11dd8ecc15a9d8d8.mp4">f0c2dc68915863cb11dd8ecc15a9d8d8.mp4</a></td><td>MP4</td><td>11.3s · 1280 × 720</td><td>练腿 · 俯卧腿弯举近景</td></tr>
-              <tr><td><a href="workout-assets/media/838f0039f76a817f69b88994dea8d31c.mp4">838f0039f76a817f69b88994dea8d31c.mp4</a></td><td>MP4</td><td>11.5s · 1280 × 720</td><td>臀腿 · 臀推 / 髋伸</td></tr>
-              <tr><td><a href="workout-assets/media/c224337edb7883d300afee7f68fde955.mp4">c224337edb7883d300afee7f68fde955.mp4</a></td><td>MP4</td><td>21.1s · 1280 × 720</td><td>核心 / 髋 · 四点跪姿髋伸</td></tr>
-              <tr><td><a href="workout-assets/media/60291f032ffaa5058f6d2ee29e8af893.mp4">60291f032ffaa5058f6d2ee29e8af893.mp4</a></td><td>MP4</td><td>14.5s · 1280 × 720</td><td>上肢拉 · 高位绳索划船</td></tr>
-              <tr><td><a href="workout-assets/media/3e2c7942ab875a5a9986aeb18e2e925c.mp4">3e2c7942ab875a5a9986aeb18e2e925c.mp4</a></td><td>MP4</td><td>12.4s · 1280 × 720</td><td>上肢拉 · 坐姿划船</td></tr>
-              <tr><td><a href="workout-assets/media/374250c0ab923f3bd8453b0f96d4cc55.mp4">374250c0ab923f3bd8453b0f96d4cc55.mp4</a></td><td>MP4</td><td>13.3s · 1280 × 720</td><td>上肢拉 · 高位下拉 / 肩背</td></tr>
-              <tr><td><a href="workout-assets/media/15fc6090f46e30e95487b337e304373a.mp4">15fc6090f46e30e95487b337e304373a.mp4</a></td><td>MP4</td><td>13.8s · 1280 × 720</td><td>肩背 · 高位拉 / 肩后束</td></tr>
-              <tr><td><a href="workout-assets/media/0a709bb4b5198bdd2d082d5b64327779.mp4">0a709bb4b5198bdd2d082d5b64327779.mp4</a></td><td>MP4</td><td>11.7s · 1280 × 720</td><td>上肢推 · 凳上臂屈伸</td></tr>
-              <tr><td><a href="workout-assets/media/b40b19aaa48c240a0ecc26eb3e831b1d.mp4">b40b19aaa48c240a0ecc26eb3e831b1d.mp4</a></td><td>MP4</td><td>14.3s · 1280 × 720</td><td>肩胛激活 · 弹力带拉伸 / 肩胛激活</td></tr>
-              <tr><td><a href="workout-assets/media/452c98825fc219f4520acfff46dd4ff8.mp4">452c98825fc219f4520acfff46dd4ff8.mp4</a></td><td>MP4</td><td>12.0s · 1280 × 720</td><td>练腿 · 壶铃深蹲 / 髋膝控制</td></tr>
-              <tr><td><a href="workout-assets/media/b6dcfbb534a2c5dfff84a31fdbd2a7aa.mp4">b6dcfbb534a2c5dfff84a31fdbd2a7aa.mp4</a></td><td>MP4</td><td>11.4s · 1280 × 720</td><td>练腿 · 坐姿腿弯举</td></tr>
-              <tr><td><a href="workout-assets/media/73dd99f73457bbe576740109a93096b8.mp4">73dd99f73457bbe576740109a93096b8.mp4</a></td><td>MP4</td><td>11.2s · 1280 × 720</td><td>负重行走 · 农夫走 / 负重行走</td></tr>
-              <tr><td><a href="workout-assets/media/52bb023ffb712de434cbd0f01ec38d94.mp4">52bb023ffb712de434cbd0f01ec38d94.mp4</a></td><td>MP4</td><td>12.7s · 1280 × 720</td><td>练腿 · 跪姿起立 / 弓步过渡</td></tr>
-              <tr><td><a href="workout-assets/media/8f3295bee62f88037b8c4689bcf5f856.mp4">8f3295bee62f88037b8c4689bcf5f856.mp4</a></td><td>MP4</td><td>12.7s · 1280 × 720</td><td>练腿 · 分腿蹲 / 弓步</td></tr>
-              <tr><td><a href="workout-assets/media/d190d4cbf1c7814c4e7e450d7adfc4a9.mp4">d190d4cbf1c7814c4e7e450d7adfc4a9.mp4</a></td><td>MP4</td><td>12.4s · 1280 × 720</td><td>上肢拉 · 坐姿划船</td></tr>
-              <tr><td><a href="workout-assets/media/f9fc6f04287d5745eaf2857cecb4f1a5.mp4">f9fc6f04287d5745eaf2857cecb4f1a5.mp4</a></td><td>MP4</td><td>15.9s · 1280 × 720</td><td>肩背 · 高位拉 / 肩背控制</td></tr>
-              <tr><td><a href="workout-assets/media/f0654632eb83faa4a7ae5fa6a68897de.mp4">f0654632eb83faa4a7ae5fa6a68897de.mp4</a></td><td>MP4</td><td>14.0s · 1280 × 720</td><td>上肢拉 · 坐姿划船 / 拉背</td></tr>
-              <tr><td><a href="workout-assets/media/ebd6fb929b94ee6dd7d1ca1d35919aa5.mp4">ebd6fb929b94ee6dd7d1ca1d35919aa5.mp4</a></td><td>MP4</td><td>11.5s · 1280 × 720</td><td>上肢拉 · 高位下拉 / 肩胛控制</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-    </section>
+
   </main>
 
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <div class="lightbox-inner">
-      <img id="lightbox-img" src="" alt="">
+      <img id="lightbox-img" alt="">
       <div class="lightbox-bar">
         <p id="lightbox-caption" class="lightbox-caption"></p>
         <button id="lightbox-close" class="lightbox-close" type="button" aria-label="关闭">×</button>
@@ -1369,6 +1487,63 @@
   </div>
 
   <script>
+    const workoutArchive = document.querySelector("[data-workout-archive]");
+
+    const reorderWorkoutArchive = () => {
+      if (!workoutArchive) return;
+      [...workoutArchive.querySelectorAll(":scope > .month-record")]
+        .sort((a, b) => b.dataset.month.localeCompare(a.dataset.month))
+        .forEach((month) => workoutArchive.appendChild(month));
+
+      workoutArchive.querySelectorAll(".month-body").forEach((monthBody) => {
+        [...monthBody.querySelectorAll(":scope > .date-record")]
+          .sort((a, b) => b.dataset.date.localeCompare(a.dataset.date))
+          .forEach((record) => monthBody.appendChild(record));
+      });
+    };
+
+    const hydrateWorkoutDate = (record) => {
+      if (!record || record.dataset.hydrated === "true") return;
+      record.querySelectorAll("img[data-src]").forEach((image) => {
+        image.src = image.dataset.src;
+      });
+      record.querySelectorAll("video[data-poster]").forEach((video) => {
+        video.poster = video.dataset.poster;
+      });
+      record.dataset.hydrated = "true";
+    };
+
+    const revealWorkoutHash = () => {
+      if (!location.hash) return false;
+      const target = document.getElementById(location.hash.slice(1));
+      if (!target) return false;
+      const dateRecord = target.closest(".date-record");
+      const monthRecord = target.closest(".month-record");
+      if (monthRecord) monthRecord.open = true;
+      if (dateRecord) {
+        document.querySelectorAll(".date-record[open]").forEach((record) => {
+          if (record !== dateRecord) record.open = false;
+        });
+        dateRecord.open = true;
+        hydrateWorkoutDate(dateRecord);
+      }
+      const scrollTarget = dateRecord || monthRecord || target;
+      requestAnimationFrame(() => scrollTarget.scrollIntoView({ block: "start", behavior: "instant" }));
+      return true;
+    };
+
+    reorderWorkoutArchive();
+    document.querySelectorAll(".date-record").forEach((record) => {
+      record.addEventListener("toggle", () => {
+        if (record.open) hydrateWorkoutDate(record);
+      });
+    });
+    if (!revealWorkoutHash()) {
+      document.querySelectorAll(".date-record[open]").forEach(hydrateWorkoutDate);
+    }
+    window.addEventListener("load", () => setTimeout(revealWorkoutHash, 0), { once: true });
+    window.addEventListener("hashchange", revealWorkoutHash);
+
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
     const lightboxCaption = document.getElementById("lightbox-caption");
@@ -1389,7 +1564,7 @@
     const closeLightbox = () => {
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
-      lightboxImg.src = "";
+      lightboxImg.removeAttribute("src");
     };
 
     lightboxClose.addEventListener("click", closeLightbox);
