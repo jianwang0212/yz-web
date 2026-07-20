@@ -23,5 +23,5 @@ test('public pages do not expose migration or maintainer notes', () => {
 });
 
 test('sublet page versions the shared translation bundle when its copy changes', () => {
-  assert.match(sublet, /i18n\.js\?v=20260720-public-copy/);
+  assert.match(sublet, /i18n\.js\?v=20260720-english-coverage1/);
 });

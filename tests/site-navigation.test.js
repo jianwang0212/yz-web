@@ -7,7 +7,7 @@ import test from 'node:test';
 import { findRouteAlias } from '../site-routes.mjs';
 
 const root = new URL('..', import.meta.url).pathname;
-const version = '20260720-global-nav2';
+const version = '20260720-language-availability1';
 const navSource = readFileSync(new URL('../site-nav.js', import.meta.url), 'utf8');
 const navStyles = readFileSync(new URL('../site-nav.css', import.meta.url), 'utf8');
 const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
@@ -93,6 +93,38 @@ test('shared runtime owns active groups and accessible mobile dismissal', () => 
   assert.match(navStyles, /@media \(max-width: 768px\)/);
   assert.match(navStyles, /min-height: 48px/);
   assert.match(navStyles, /@media \(prefers-reduced-motion: reduce\)/);
+});
+
+test('English controls only appear on pages with verified English content', () => {
+  assert.match(navSource, /const ENGLISH_CONTENT_PATHS = new Set/);
+  for (const path of [
+    '/',
+    '/essays',
+    '/essays/why-mpe',
+    '/essays/why-berklee',
+    '/essays/vocal-training-system',
+    '/berklee',
+    '/interests',
+    '/contact',
+    '/projects/apartment-sublet',
+    '/projects/interval-quiz',
+    '/projects/degree-quiz',
+    '/projects/chord-quiz',
+  ]) {
+    assert.match(navSource, new RegExp(`['"]${path.replaceAll('/', '\\/')}['"]`), `${path} should advertise English`);
+  }
+  for (const unsupported of ['/works', '/projects/workout', '/projects/vipassana', '/year-review']) {
+    assert.doesNotMatch(
+      navSource.match(/const ENGLISH_CONTENT_PATHS = new Set\([\s\S]*?\);/)?.[0] || '',
+      new RegExp(`['"]${unsupported.replaceAll('/', '\\/')}['"]`),
+      `${unsupported} must not advertise an incomplete English mode`,
+    );
+  }
+  assert.match(navSource, /window\.ziPageSupportsEnglish/);
+  assert.match(navSource, /canSwitchLanguage \? languageControls/);
+  assert.match(navStyles, /data-language-switch="available"/);
+  assert.match(navSource, /'\/index': '\/'/);
+  assert.match(navSource, /'\/papers\/interval-quiz': '\/projects\/interval-quiz'/);
 });
 
 test('navigation synchronizer is idempotent', () => {

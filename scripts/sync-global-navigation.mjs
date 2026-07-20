@@ -13,8 +13,8 @@ const ignoredDirectories = new Set([
   'node_modules',
   'zapp',
 ]);
-const navVersion = '20260720-global-nav2';
-const sharedScriptVersion = '20260720-global-nav2';
+const navVersion = '20260720-language-availability1';
+const sharedScriptVersion = '20260720-language-availability1';
 const navPattern = /<nav\b[^>]*class=["'][^"']*\bnavbar\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/i;
 const navStylePattern = /<link\b[^>]*href=["'][^"']*site-nav\.css[^"']*["'][^>]*>/gi;
 const navScriptPattern = /<script\b[^>]*src=["'][^"']*site-nav\.js[^"']*["'][^>]*><\/script>/gi;

@@ -115,7 +115,7 @@ test('one person graduation archive and web media are tracked together', () => {
   expectIncludes(onePersonHtml, 'id="one-person-play-toggle"');
   assert.doesNotMatch(onePersonHtml, /rel="preload" as="audio"/, 'Chromium does not support audio as a preload destination');
   expectIncludes(onePersonHtml, 'data-src="assets/one-person/video/session-loop.mp4"');
-  expectIncludes(onePersonHtml, '<div><dt>Song title / 歌名</dt><dd>一个人做不好</dd></div>');
+  expectIncludes(onePersonHtml, '<div><dt>Song title / 歌名</dt><dd>I can\'t / 一个人做不好</dd></div>');
   expectIncludes(onePersonHtml, '<div><dt>Lyrics / 作词</dt><dd>银子 Zi Yin</dd></div>');
   expectIncludes(onePersonHtml, '<div><dt>Producer / 制作人</dt><dd>银子 Zi Yin</dd></div>');
   expectIncludes(onePersonHtml, '<div><dt>Arranger / 编曲</dt><dd>银子；吴子睿</dd></div>');

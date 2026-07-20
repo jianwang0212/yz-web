@@ -1,5 +1,14 @@
 # Project memory
 
+## 2026-07-20 — Verified English availability and bilingual One Person title
+
+- GStack traversed all 43 sitemap routes at desktop and mobile widths, clicked every available English control, opened all disclosures, scanned rendered CJK text and accessibility attributes, and checked overflow.
+- The root issue was broader than missing homepage keys: 29 pages advertised English without a complete English body, and `i18n.js` replaced language buttons with clones, removing `site-nav.js` listeners. Language switching now stays under shared navigation ownership.
+- `site-nav.js` exposes the switch only on a verified route allowlist. Other pages remain Chinese while preserving `localStorage.language`, so a visitor returns to English automatically on the next supported page.
+- `window.setSiteLanguage` is the stable shared translation entry point. This avoids collisions with quiz tools that define their own `setLanguage()` while still letting both the page tool and the shared site copy update.
+- Homepage credentials, metadata, and all three featured music cards now have complete translation keys. The One Person release title is consistently `I can't / 一个人做不好` across homepage, Works, archive metadata, hero, lyrics heading, credits, and 2026 H1 review data.
+- Regression coverage is in `tests/english-coverage.test.js`, `tests/home-hero.test.js`, and `tests/site-navigation.test.js`. Cache-bust `i18n.js`, `site-nav.js`, and affected page-specific language scripts together when changing this contract.
+
 ## 2026-07-20 — Workout progressive archive and reader-facing homepage copy
 
 - Reworked `/projects/workout` into a recent-first archive with month and date `<details>` disclosures. The newest date opens by default; older records preserve stable hash links and can be opened with pointer or keyboard.

@@ -47,6 +47,12 @@ const translations = {
         'hero.oxford.right': '计量经济学研究生',
         'hero.training.left': '伯克利音乐学院',
         'hero.training.right': 'Music Production and Engineering; Jazz Composition<br>GPA 4.0',
+        'hero.credential.cta': '查看详情',
+        'hero.identity.aria': '打开 A47G 私募基金详情',
+        'hero.docking.aria': '打开入坞科技经历详情',
+        'hero.experience.aria': '打开 Citadel Securities 经历详情',
+        'hero.oxford.aria': '查看牛津大学毕业证书',
+        'hero.training.aria': '查看 Berklee 课程详情',
         'hero.metric1': '管理过 $5M+ 量化资产 ｜最高年化 120%+',
         'hero.metric2': 'Citadel Securities (London) 前量化交易员',
         'hero.metric3': '伯克利音乐学院（Berklee College of Music） — GPA 4.0（音乐人中极少见）',
@@ -55,6 +61,21 @@ const translations = {
         'hero.cta.mobile': '联系合作',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
+
+        // Home metadata and featured music
+        'home.meta.title': 'Zi Yin（银子）- 量化研究、音乐与工程',
+        'home.meta.description': 'Zi Yin（银子）的个人网站：量化研究、创业、音乐制作、作品档案、项目工具与长期记录。',
+        'homeMusic.section.aria': '精选音乐作品',
+        'homeMusic.graduation.kicker': 'Graduation work / 毕业作品',
+        'homeMusic.new.kicker': 'New music / 新作品',
+        'homeMusic.onePerson.title': 'I can\'t / 一个人做不好',
+        'homeMusic.onePerson.desc': '写给 Berklee 同学和老师的毕业作品。一封有 6/8 groove、铜管与真实录音现场的欢快告别信。',
+        'homeMusic.onePerson.aria': 'I can\'t / 一个人做不好作品链接',
+        'homeMusic.snowWhite.desc': '银子演唱、作曲并制作的中文电影感流行 Demo。这里收录试听、歌词、曲谱、制作名单和写歌故事。',
+        'homeMusic.snowWhite.aria': 'Snow White / 白雪公主作品链接',
+        'homeMusic.mirror.desc': '银子演唱、作曲的中文 Jazz ballad。这里收录试听、歌词、创作动机、录音现场动画、乐手展示和制作名单。',
+        'homeMusic.mirror.aria': 'Mirror / 镜子作品链接',
+        'homeMusic.open': '打开作品页 / Open',
 
         // Home Resume
         'homeResume.kicker': '简历',
@@ -80,7 +101,7 @@ const translations = {
         'entry.works.desc': '音乐、制作与学习档案',
         'entry.works.aria': '作品精选入口',
         'entry.works.index': '全部作品',
-        'entry.works.onePerson': '一个人做不好',
+        'entry.works.onePerson': 'I can\'t / 一个人做不好',
         'entry.works.berklee': 'Berklee 学习地图',
         'entry.works.berkleeNote': '课程与训练记录',
         'entry.essays.title': '文章',
@@ -213,6 +234,7 @@ const translations = {
         'essaysIndex.path.engineering.title': 'thisisyz 作为系统',
         'essaysIndex.path.engineering.desc': '网站架构、AI 工作流和运营工具。',
         'essaysIndex.footer.home': '首页',
+        'essaysIndex.categories.aria': 'Essays 四个栏目',
         'essayWhyMpe.meta.title': '为什么是 MPE - Zi Yin',
         'essayWhyMpe.meta.description': '银子 / Zi Yin 关于为什么选择 Berklee Music Production & Engineering 的公开改写版：从量化判断、音乐创作到制作系统。',
         'essayWhyMpe.kicker': 'Music Garden · Budding Note',
@@ -304,6 +326,7 @@ const translations = {
         'essayWhyBerklee.node.portfolio.title': 'Portfolio',
         'essayWhyBerklee.node.portfolio.desc': '公开作品',
         'essayWhyBerklee.backlinks.kicker': 'Backlinks',
+        'whyBerklee.related.whyJazz': '为什么想学爵士乐',
         'essayWhyBerklee.backlinks.mpe': '为什么是 MPE',
         'essayWhyBerklee.backlinks.vocal': '声乐训练系统',
         'essayWhyBerklee.backlinks.berklee': 'Berklee 课程地图',
@@ -1058,7 +1081,7 @@ const translations = {
         'hero.subtitle': 'Trained by markets, disciplined by data, educated by music.',
         'hero.identity.left': 'A47G Private Fund',
         'hero.identity.right': 'Founder',
-        'hero.docking.left': '入坞科技 Dockingtech',
+        'hero.docking.left': 'Dockingtech',
         'hero.docking.right': 'Co-founder',
         'hero.experience.left': 'Former Citadel Securities (London)',
         'hero.experience.right': 'U.S. Equities Quant Trader',
@@ -1066,6 +1089,12 @@ const translations = {
         'hero.oxford.right': 'Econometrics Graduate Student',
         'hero.training.left': 'Berklee College of Music',
         'hero.training.right': 'Music Production and Engineering; Jazz Composition<br>GPA 4.0',
+        'hero.credential.cta': 'View details',
+        'hero.identity.aria': 'Open A47G Private Fund details',
+        'hero.docking.aria': 'Open Dockingtech experience details',
+        'hero.experience.aria': 'Open Citadel Securities experience details',
+        'hero.oxford.aria': 'View Oxford degree certificate',
+        'hero.training.aria': 'View Berklee course details',
         'hero.metric1': 'Managed <strong>$5M+</strong> quantitative assets ｜Peak annualized return <strong>120%+</strong>',
         'hero.metric2': 'Former Quantitative Trader at <strong>Citadel Securities (London)</strong>',
         'hero.metric3': '<strong>Berklee College of Music</strong> — GPA <strong>4.0</strong> (rare among musicians)',
@@ -1074,6 +1103,21 @@ const translations = {
         'hero.cta.mobile': 'Start a Conversation',
         'hero.value.zh': '我做过许多看似不相关的事情。<br>但它们在我这里，指向同一个问题：<br>如何在复杂系统中做出高质量决策。',
         'hero.value.en': 'I work across seemingly unrelated fields.<br>In my case, they converge on one question:<br>how to make high-quality decisions in complex systems.',
+
+        // Home metadata and featured music
+        'home.meta.title': 'Zi Yin - Quant Research, Music, Engineering',
+        'home.meta.description': 'Zi Yin\'s work across quantitative research, entrepreneurship, music production, engineering projects, and long-term learning.',
+        'homeMusic.section.aria': 'Featured music archives',
+        'homeMusic.graduation.kicker': 'Graduation work',
+        'homeMusic.new.kicker': 'New music',
+        'homeMusic.onePerson.title': 'I can\'t / 一个人做不好',
+        'homeMusic.onePerson.desc': 'A joyful Berklee graduation work for the friends and teachers who made the journey possible, built around a 6/8 groove, horns, and real session footage.',
+        'homeMusic.onePerson.aria': 'I can\'t / 一个人做不好 archive links',
+        'homeMusic.snowWhite.desc': 'A cinematic Chinese pop demo performed, composed, and produced by Zi Yin, with listening, lyrics, score, credits, and the story behind the song.',
+        'homeMusic.snowWhite.aria': 'Snow White / 白雪公主 archive links',
+        'homeMusic.mirror.desc': 'A Chinese jazz ballad performed and composed by Zi Yin, with listening, lyrics, the writing story, session visuals, musicians, and credits.',
+        'homeMusic.mirror.aria': 'Mirror / 镜子 archive links',
+        'homeMusic.open': 'Open archive',
 
         // Home Resume
         'homeResume.kicker': 'Resume',
@@ -1099,7 +1143,7 @@ const translations = {
         'entry.works.desc': 'Music, production, and learning archives',
         'entry.works.aria': 'Curated works',
         'entry.works.index': 'All Works',
-        'entry.works.onePerson': 'No One Can Do It Alone',
+        'entry.works.onePerson': 'I can\'t / 一个人做不好',
         'entry.works.berklee': 'Berklee Learning Map',
         'entry.works.berkleeNote': 'Courses and practice',
         'entry.essays.title': 'Essays',
@@ -1232,6 +1276,7 @@ const translations = {
         'essaysIndex.path.engineering.title': 'thisisyz as a System',
         'essaysIndex.path.engineering.desc': 'Site architecture, AI workflows, and operating tools.',
         'essaysIndex.footer.home': 'Home',
+        'essaysIndex.categories.aria': 'Four essay categories',
         'essayWhyMpe.meta.title': 'Why MPE - Zi Yin',
         'essayWhyMpe.meta.description': 'Zi Yin’s public essay on why Berklee Music Production & Engineering matters: from quantitative judgment to music-making systems.',
         'essayWhyMpe.kicker': 'Music Garden · Budding Note',
@@ -1323,6 +1368,7 @@ const translations = {
         'essayWhyBerklee.node.portfolio.title': 'Portfolio',
         'essayWhyBerklee.node.portfolio.desc': 'Public work',
         'essayWhyBerklee.backlinks.kicker': 'Backlinks',
+        'whyBerklee.related.whyJazz': 'Why I Want to Learn Jazz',
         'essayWhyBerklee.backlinks.mpe': 'Why MPE',
         'essayWhyBerklee.backlinks.vocal': 'Vocal Training System',
         'essayWhyBerklee.backlinks.berklee': 'Berklee Course Map',
@@ -2038,9 +2084,15 @@ const translations = {
 };
 
 function setLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('language', lang);
-    document.documentElement.lang = lang;
+    const requestedLang = lang === 'en' ? 'en' : 'zh';
+    const pageSupportsEnglish = window.ziPageSupportsEnglish !== false;
+    const effectiveLang = requestedLang === 'en' && !pageSupportsEnglish ? 'zh' : requestedLang;
+    currentLang = effectiveLang;
+    lang = effectiveLang;
+    if (pageSupportsEnglish) {
+        localStorage.setItem('language', requestedLang);
+    }
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
     const body = document.body;
     const titleKey = body && body.getAttribute('data-i18n-title');
@@ -2124,64 +2176,8 @@ function setLanguage(lang) {
     }
 }
 
-// Initialize language - try multiple initialization strategies
-function initLanguageToggle() {
-    // Try to get buttons by ID first
-    let langZhBtn = document.getElementById('lang-zh');
-    let langEnBtn = document.getElementById('lang-en');
-    
-    // Also get mobile buttons
-    let langZhBtnMobile = document.getElementById('lang-zh-mobile');
-    let langEnBtnMobile = document.getElementById('lang-en-mobile');
-    
-    // If not found by ID, try to find by text content as fallback
-    if (!langZhBtn || !langEnBtn) {
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(btn => {
-            const text = btn.textContent.trim();
-            if (text === '中文' && !langZhBtn && !btn.id.includes('mobile')) {
-                langZhBtn = btn;
-                btn.id = 'lang-zh';
-                btn.classList.add('lang-btn');
-            } else if (text === 'English' && !langEnBtn && !btn.id.includes('mobile')) {
-                langEnBtn = btn;
-                btn.id = 'lang-en';
-                btn.classList.add('lang-btn');
-            }
-        });
-    }
-    
-    // Helper function to bind button
-    function bindButton(btn, lang, isMobile = false) {
-        if (!btn) return;
-        
-        // Remove any existing listeners by cloning
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
-        
-        newBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log(`Language switch to ${lang === 'zh' ? 'Chinese' : 'English'}${isMobile ? ' (mobile)' : ''}`);
-            setLanguage(lang);
-        });
-    }
-    
-    // Bind desktop buttons
-    bindButton(langZhBtn, 'zh');
-    bindButton(langEnBtn, 'en');
-    
-    // Bind mobile buttons
-    bindButton(langZhBtnMobile, 'zh', true);
-    bindButton(langEnBtnMobile, 'en', true);
-    
-    if (!langZhBtn && !langZhBtnMobile) {
-        console.error('Language button lang-zh not found in DOM');
-    }
-    if (!langEnBtn && !langEnBtnMobile) {
-        console.error('Language button lang-en not found in DOM');
-    }
-}
+// Keep a stable reference for pages whose own tools also define setLanguage().
+window.setSiteLanguage = setLanguage;
 
 function bindDelegatedLanguageToggle() {
     if (window.__ziLanguageDelegationBound) {
@@ -2199,7 +2195,7 @@ function bindDelegatedLanguageToggle() {
         const lang = button.id.includes('en') || text === 'english' ? 'en' : 'zh';
         event.preventDefault();
         event.stopPropagation();
-        setLanguage(lang);
+        window.setSiteLanguage(lang);
     });
 }
 
@@ -2207,12 +2203,10 @@ function bindDelegatedLanguageToggle() {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         bindDelegatedLanguageToggle();
-        setLanguage(currentLang);
-        initLanguageToggle();
+        window.setSiteLanguage(currentLang);
     });
 } else {
     // DOM is already loaded
     bindDelegatedLanguageToggle();
-    setLanguage(currentLang);
-    initLanguageToggle();
+    window.setSiteLanguage(currentLang);
 }

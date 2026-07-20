@@ -28,7 +28,7 @@ window.H1_REVIEW_DATA = {
     {
       number: "1 条",
       description: "仍在制作的主线",
-      detail: "《一个人做不好》",
+      detail: "《I can't / 一个人做不好》",
     },
     {
       number: "4–5 月",

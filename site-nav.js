@@ -7,10 +7,41 @@
         { id: 'about', key: 'nav.about', zh: '关于', en: 'About', href: '/resume' }
     ];
 
+    const ENGLISH_CONTENT_PATHS = new Set([
+        '/',
+        '/essays',
+        '/essays/why-mpe',
+        '/essays/why-berklee',
+        '/essays/vocal-training-system',
+        '/berklee',
+        '/interests',
+        '/contact',
+        '/projects/apartment-sublet',
+        '/projects/interval-quiz',
+        '/projects/degree-quiz',
+        '/projects/chord-quiz'
+    ]);
+
     function normalizePath(pathname) {
         const path = pathname.replace(/\/+$/, '') || '/';
-        return path.endsWith('.html') ? path.slice(0, -5) || '/' : path;
+        const withoutExtension = path.endsWith('.html') ? path.slice(0, -5) || '/' : path;
+        const physicalAliases = {
+            '/index': '/',
+            '/essays/index': '/essays',
+            '/papers/apartment-sublet': '/projects/apartment-sublet',
+            '/papers/interval-quiz': '/projects/interval-quiz',
+            '/papers/degree-quiz': '/projects/degree-quiz',
+            '/papers/chord-quiz': '/projects/chord-quiz'
+        };
+        return physicalAliases[withoutExtension] || withoutExtension;
     }
+
+    function supportsEnglishContent(pathname) {
+        return ENGLISH_CONTENT_PATHS.has(normalizePath(pathname));
+    }
+
+    window.ziPageSupportsEnglish = supportsEnglishContent(window.location.pathname);
+    document.documentElement.dataset.languageSwitch = window.ziPageSupportsEnglish ? 'available' : 'unavailable';
 
     function currentSection(pathname) {
         const path = normalizePath(pathname);
@@ -41,11 +72,25 @@
     }
 
     function renderNavigation(nav) {
-        const lang = localStorage.getItem('language') === 'en' ? 'en' : 'zh';
+        const canSwitchLanguage = window.ziPageSupportsEnglish;
+        const preferredLang = localStorage.getItem('language') === 'en' ? 'en' : 'zh';
+        const lang = canSwitchLanguage ? preferredLang : 'zh';
         const section = currentSection(window.location.pathname);
         const pathname = window.location.pathname;
         const pressed = (value) => value === lang ? 'true' : 'false';
         const activeClass = (value, base) => value === lang ? `${base} active` : base;
+        const languageControls = {
+            mobile: `<li class="nav-menu-lang-item">
+                        <div class="nav-lang-toggle-mobile" aria-label="Language">
+                            <button id="lang-zh-mobile" class="${activeClass('zh', 'lang-btn-mobile')}" type="button" aria-label="${lang === 'en' ? 'Switch to Chinese' : '切换到中文'}" aria-pressed="${pressed('zh')}">中文</button>
+                            <button id="lang-en-mobile" class="${activeClass('en', 'lang-btn-mobile')}" type="button" aria-label="Switch to English" aria-pressed="${pressed('en')}">English</button>
+                        </div>
+                    </li>`,
+            desktop: `<div class="nav-lang-toggle" aria-label="Language">
+                    <button id="lang-zh" class="${activeClass('zh', 'lang-btn')}" type="button" aria-label="${lang === 'en' ? 'Switch to Chinese' : '切换到中文'}" aria-pressed="${pressed('zh')}">中文</button>
+                    <button id="lang-en" class="${activeClass('en', 'lang-btn')}" type="button" aria-label="Switch to English" aria-pressed="${pressed('en')}">English</button>
+                </div>`
+        };
         const links = NAV_ITEMS.map((item) => {
             const active = item.id === section;
             const current = active
@@ -60,6 +105,7 @@
             document.body.classList.add('site-nav-injected');
         }
         nav.setAttribute('aria-label', lang === 'en' ? 'Primary navigation' : '主导航');
+        document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
         nav.innerHTML = `
             <div class="container site-nav-inner">
                 <a class="nav-brand site-title" href="/" aria-label="${lang === 'en' ? 'Back to Zi Yin home' : '返回 Zi Yin 首页'}">
@@ -69,17 +115,9 @@
                 </a>
                 <ul class="nav-menu" id="primary-navigation">
                     ${links}
-                    <li class="nav-menu-lang-item">
-                        <div class="nav-lang-toggle-mobile" aria-label="Language">
-                            <button id="lang-zh-mobile" class="${activeClass('zh', 'lang-btn-mobile')}" type="button" aria-label="切换到中文" aria-pressed="${pressed('zh')}">中文</button>
-                            <button id="lang-en-mobile" class="${activeClass('en', 'lang-btn-mobile')}" type="button" aria-label="Switch to English" aria-pressed="${pressed('en')}">English</button>
-                        </div>
-                    </li>
+                    ${canSwitchLanguage ? languageControls.mobile : ''}
                 </ul>
-                <div class="nav-lang-toggle" aria-label="Language">
-                    <button id="lang-zh" class="${activeClass('zh', 'lang-btn')}" type="button" aria-label="切换到中文" aria-pressed="${pressed('zh')}">中文</button>
-                    <button id="lang-en" class="${activeClass('en', 'lang-btn')}" type="button" aria-label="Switch to English" aria-pressed="${pressed('en')}">English</button>
-                </div>
+                ${canSwitchLanguage ? languageControls.desktop : ''}
                 <button class="hamburger" type="button" aria-label="${lang === 'en' ? 'Open navigation' : '打开导航菜单'}" aria-controls="primary-navigation" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -120,10 +158,15 @@
                 const lang = button.id.includes('en') ? 'en' : 'zh';
                 localStorage.setItem('language', lang);
                 renderNavigation(nav);
-                if (typeof window.setLanguage === 'function') {
-                    window.setLanguage(lang);
+                const setSiteLanguage = window.setSiteLanguage;
+                const setPageLanguage = window.setLanguage;
+                if (typeof setSiteLanguage === 'function') {
+                    setSiteLanguage(lang);
                 } else {
                     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+                }
+                if (typeof setPageLanguage === 'function' && setPageLanguage !== setSiteLanguage) {
+                    setPageLanguage(lang);
                 }
             });
         });

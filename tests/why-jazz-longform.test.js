@@ -104,7 +104,7 @@ test("why-jazz is discoverable from Essays, adjacent notes, and the sitemap", ()
     assert.match(essaysIndex, /href="\/essays\/why-jazz"/);
     assert.match(essaysIndex, /为什么想学爵士乐：把音乐从知识变成语言/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260719-four-pillars1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260719-four-pillars1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260720-english-coverage1/);
     assert.match(whyBerklee, /href="\/essays\/why-jazz"/);
     assert.match(sitemap, /https:\/\/thisisyz\.com\/essays\/why-jazz/);
 });
