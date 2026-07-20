@@ -7,6 +7,7 @@
 - Archive images now keep URLs in `data-src`, videos use `preload="none"`, and posters hydrate only when their date opens. A cold local GStack run dropped first load from 173 resources / 16.58 MiB to 9 resources / 0.91 MiB with zero MP4 requests.
 - Preserved the pending July 2 and July 8 records and their 9 videos instead of publishing the older June-only snapshot. The public archive now contains 15 dates and 52 videos.
 - Removed the raw file manifest, local filesystem wording, and other maintainer-only copy from the public page. The homepage four-path heading now describes Zi's work and life directly instead of explaining how the homepage was organized.
+- A follow-up public-copy audit also removed migration notes from the sublet PDF block, Vipassana appendix, June Codex recap, and why-jazz essay. Keep source/privacy boundaries that help readers judge the material, but remove editorial change logs, local-path notes, inaccessible-blob explanations, and AI handoff wording.
 - Regression coverage is in `tests/workout-progressive-loading.test.js` and `tests/home-hero.test.js`; it checks structure, loading attributes, referenced assets, cache policy, and public copy.
 
 ## 2026-07-20 — Canonical global navigation and homepage tonal bridge

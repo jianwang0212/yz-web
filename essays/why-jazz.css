@@ -464,8 +464,7 @@ html {
 }
 
 .hearing-note,
-.source-boundary,
-.omitted-source-note {
+.source-boundary {
     margin: 2rem 0;
     padding: 1.15rem 1.25rem;
     border-left: 3px solid var(--jazz-navy);
@@ -479,20 +478,17 @@ html {
     font-size: 1.18rem;
 }
 
-.source-boundary,
-.omitted-source-note {
+.source-boundary {
     color: #5a534b;
     font-size: 0.88rem;
     line-height: 1.72;
 }
 
-.source-boundary strong,
-.omitted-source-note strong {
+.source-boundary strong {
     color: var(--jazz-navy);
 }
 
-.source-boundary p,
-.omitted-source-note p {
+.source-boundary p {
     margin: 0.35rem 0 0;
 }
 
@@ -598,27 +594,6 @@ html {
 .read-next:hover {
     border-color: var(--jazz-navy);
     background: rgba(39, 60, 78, 0.12);
-}
-
-.source-note {
-    margin: 3.25rem 0 0;
-    padding: 1.4rem 1.5rem;
-    border: 1px solid var(--jazz-line);
-    border-left: 3px solid var(--jazz-navy);
-    border-radius: 0.35rem;
-    background: rgba(255, 253, 247, 0.88);
-    color: #565049;
-    font-size: 0.9rem;
-    line-height: 1.76;
-}
-
-.source-note h2 {
-    margin: 0 0 0.75rem;
-    font-size: 1.18rem;
-}
-
-.source-note p {
-    margin: 0.65rem 0 0;
 }
 
 .end-note {
@@ -763,7 +738,7 @@ html {
         max-width: none;
     }
 
-    .chapter-prose > :where(p, h2, h3, ul, ol, blockquote, .hearing-note, .voice-chain, .source-boundary, .omitted-source-note) {
+    .chapter-prose > :where(p, h2, h3, ul, ol, blockquote, .hearing-note, .voice-chain, .source-boundary) {
         width: min(100%, 50rem);
         margin-left: auto;
         margin-right: auto;
