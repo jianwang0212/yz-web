@@ -15,14 +15,12 @@ test("why-jazz keeps the approved overview and four-volume reading hierarchy", (
     const links = html.indexOf('id="five-links"');
     const practice = html.indexOf('id="practice"');
     const roadmap = html.indexOf('id="roadmap"');
-    const sources = html.indexOf('id="source-note"');
 
     assert.ok(overview > 0);
     assert.ok(why > overview);
     assert.ok(links > why);
     assert.ok(practice > links);
     assert.ok(roadmap > practice);
-    assert.ok(sources > roadmap);
     assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1);
     assert.equal((html.match(/class="story-chapter"/g) || []).length, 4);
     assert.doesNotMatch(html, /id="(?:five-links|practice|roadmap)"[^>]*\sopen(?:\s|>)/);
@@ -30,7 +28,7 @@ test("why-jazz keeps the approved overview and four-volume reading hierarchy", (
 
 test("why-jazz substantially restores Zi's original goals, voice, and learning system", () => {
     const visibleText = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(visibleText.length > 4300, `Expected substantial source restoration, got ${visibleText.length}`);
+    assert.ok(visibleText.length > 4000, `Expected substantial source restoration, got ${visibleText.length}`);
 
     for (const phrase of [
         "爵士是一门语言",
@@ -76,9 +74,11 @@ test("proofreading corrects confirmed errors without flattening Zi's mixed langu
         assert.ok(!html.includes(error), `Unexpected source error or private blob: ${error}`);
     }
 
-    assert.match(html, /原页没有附课程目录或引用链接/);
-    assert.match(html, /不把它当作当前官方课程定义/);
-    assert.match(html, /网页不重发失效链接，也不根据看不到的内容补画/);
+    assert.match(html, /写在个人笔记里的阶段性整理/);
+    assert.match(html, /而不是 Berklee 现在的官方课程定义/);
+    assert.doesNotMatch(html, /Confluence 临时 blob 链接/);
+    assert.doesNotMatch(html, /版本与来源/);
+    assert.doesNotMatch(html, /网页整理于/);
 });
 
 test("layout provides a desktop book, bounded grids, and narrow-mobile single-column reading", () => {
