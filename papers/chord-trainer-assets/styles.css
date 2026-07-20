@@ -64,6 +64,10 @@ body {
   font-family: "SF Mono", "IBM Plex Mono", "Menlo", monospace;
 }
 
+.app-shell > * {
+  min-width: 0;
+}
+
 .hero-card,
 .keyboard-card,
 .stat-card,

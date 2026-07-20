@@ -2,6 +2,22 @@
   position: relative;
 }
 
+.review-switcher--inline {
+  width: fit-content;
+  margin: -1rem auto 2rem;
+  padding: 0.25rem 0.35rem 0.25rem 0.8rem;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.review-switcher--inline .review-switcher-link {
+  color: var(--text-primary, #1f2937);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
 .review-switcher-trigger {
   display: flex;
   align-items: center;
@@ -89,6 +105,10 @@
 @media (max-width: 768px) {
   .review-switcher {
     width: 100%;
+  }
+
+  .review-switcher--inline {
+    width: fit-content;
   }
 
   .review-switcher-trigger {

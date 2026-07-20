@@ -34,7 +34,7 @@ document.addEventListener('click', (e) => {
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-if (hamburger && navMenu) {
+if (hamburger && navMenu && !hamburger.closest('.site-global-nav')) {
     if (!navMenu.id) {
         navMenu.id = 'primary-navigation';
     }
@@ -824,7 +824,6 @@ function populateProjects() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    loadContentData();
     initMusicPlayer();
     initDownloadSection();
     

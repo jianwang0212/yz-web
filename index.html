@@ -34,38 +34,40 @@
         "knowsAbout": ["Quantitative trading", "Music production", "Jazz composition", "AI tools", "Entrepreneurship"]
     }
     </script>
+    <link rel="stylesheet" href="/site-nav.css?v=20260720-global-nav2">
+    <script src="/site-nav.js?v=20260720-global-nav2" defer></script>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
+    <nav class="navbar site-global-nav" aria-label="主导航">
+        <div class="container site-nav-inner">
             <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
             </a>
             <ul class="nav-menu" id="primary-navigation">
-                <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a></li>
-                <li><a href="works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="/essays/" data-i18n="nav.essays">文章</a></li>
-                <li><a href="projects.html" data-i18n="nav.projects">项目</a></li>
-                <li><a href="resume.html" data-i18n="nav.about">关于</a></li>
+                <li><a href="/" class="nav-link" data-nav-id="home" data-i18n="nav.home">首页</a></li>
+                <li><a href="/works" class="nav-link" data-nav-id="works" data-i18n="nav.works">作品</a></li>
+                <li><a href="/essays/" class="nav-link" data-nav-id="essays" data-i18n="nav.essays">文章</a></li>
+                <li><a href="/projects" class="nav-link" data-nav-id="projects" data-i18n="nav.projects">项目</a></li>
+                <li><a href="/resume" class="nav-link" data-nav-id="about" data-i18n="nav.about">关于</a></li>
                 <li class="nav-menu-lang-item">
-                    <div class="nav-lang-toggle-mobile">
+                    <div class="nav-lang-toggle-mobile" aria-label="Language">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                         <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
                     </div>
                 </li>
             </ul>
-            <div class="nav-lang-toggle">
+            <div class="nav-lang-toggle" aria-label="Language">
                 <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                 <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
             </div>
-            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
+            <button class="hamburger" type="button" aria-label="打开导航菜单" aria-controls="primary-navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -225,7 +227,7 @@
                         <span class="entry-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="entry-links" aria-label="作品精选入口" data-i18n-aria-label="entry.works.aria">
-                        <a href="works.html"><span data-i18n="entry.works.index">全部作品</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="/works"><span data-i18n="entry.works.index">全部作品</span><small data-i18n="entry.works.indexNote">作品索引</small></a>
                         <a href="/works/one-person"><span data-i18n="entry.works.onePerson">一个人做不好</span><small>Graduation work</small></a>
                         <a href="/works/snow-white"><span>Snow White / 白雪公主</span><small>Music archive</small></a>
                         <a href="/works/mirror"><span>Mirror / 镜子</span><small>Jazz ballad</small></a>
@@ -243,7 +245,7 @@
                         <span class="entry-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="entry-links" aria-label="文章精选入口" data-i18n-aria-label="entry.essays.aria">
-                        <a href="/essays/"><span>Essays / Field Library</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="/essays/"><span>Essays / Field Library</span><small data-i18n="entry.essays.indexNote">文章索引</small></a>
                         <a href="/essays/trading-emotions-and-risk"><span data-i18n="entry.essays.trading">交易情绪与风险</span><small data-i18n="entry.essays.tradingNote">市场与判断</small></a>
                         <a href="/essays/personal-ai-evolution"><span data-i18n="entry.essays.ai">个人 AI 三年演化</span><small data-i18n="entry.essays.aiNote">创业与系统</small></a>
                         <a href="/2026-h1-review"><span data-i18n="entry.essays.review">2026 上半年总结</span><small data-i18n="entry.essays.reviewNote">阶段复盘</small></a>
@@ -262,7 +264,7 @@
                         <span class="entry-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="entry-links" aria-label="项目精选入口" data-i18n-aria-label="entry.projects.aria">
-                        <a href="projects.html"><span data-i18n="entry.projects.index">项目索引</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="/projects"><span data-i18n="entry.projects.index">项目索引</span><small data-i18n="entry.projects.indexNote">全部项目</small></a>
                         <a href="engineering.html"><span data-i18n="entry.projects.engineering">工程 / GitHub</span><small data-i18n="entry.projects.engineeringNote">架构与 AI 工作流</small></a>
                         <a href="financial-dashboard.html"><span data-i18n="entry.projects.finance">财务仪表盘</span><small data-i18n="entry.projects.financeNote">个人财务系统</small></a>
                         <a href="/projects/dockingtech"><span data-i18n="entry.projects.docking">入坞科技</span><small data-i18n="entry.projects.dockingNote">创业经历</small></a>
@@ -279,7 +281,7 @@
                         <span class="entry-toggle" aria-hidden="true"></span>
                     </summary>
                     <div class="entry-links" aria-label="关于我的精选入口" data-i18n-aria-label="entry.about.aria">
-                        <a href="resume.html"><span data-i18n="entry.about.resume">简历</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="/resume"><span data-i18n="entry.about.resume">简历</span><small data-i18n="entry.about.resumeNote">完整简历</small></a>
                         <a href="timeline.html"><span data-i18n="entry.about.timeline">人生时间线</span><small data-i18n="entry.about.timelineNote">长期决定与阶段反思</small></a>
                         <a href="highlights.html"><span data-i18n="entry.about.highlights">主要亮点</span><small data-i18n="entry.about.highlightsNote">学术、职业与音乐</small></a>
                         <a href="interests.html"><span data-i18n="entry.about.interests">兴趣爱好</span><small data-i18n="entry.about.interestsNote">工作之外</small></a>
@@ -624,6 +626,6 @@
     </footer>
 
     <script src="i18n.js?v=20260720-home-paths" defer></script>
-    <script src="script.js?v=20260513-main-perf" defer></script>
+    <script src="/script.js?v=20260720-global-nav2" defer></script>
 </body>
 </html>

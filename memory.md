@@ -1,5 +1,15 @@
 # Project memory
 
+## 2026-07-20 — Canonical global navigation and homepage tonal bridge
+
+- Replaced the site's page-by-page navigation variants with one exact five-link contract: Home, Works, Essays, Projects, and About. `site-nav.js` derives the active reader section for nested works, essays, projects, papers, year reviews, and About pages.
+- `scripts/sync-global-navigation.mjs` is the canonical HTML synchronizer. It injects missing navigation into sitemap pages, rewrites older nav blocks, versions `site-nav.css`, `site-nav.js`, and the shared `script.js`, and must pass `npm run nav:sync -- --check` without modifying files.
+- The shared runtime owns the mobile menu, outside click, Escape/focus return, language controls, and `aria-current`; the older `script.js` menu handler is explicitly disabled inside `.site-global-nav` to prevent double toggles.
+- Replaced the ambiguous repeated “从这里开始” labels with destination-specific labels: 作品索引、文章索引、全部项目、完整简历. English uses Work index, Essay index, All projects, and Full résumé.
+- The homepage keeps its dark opening but now transitions through charcoal and warm gray into the paper-colored reading surface. Reading sections remain light; the transition is a deliberate tonal bridge rather than a sudden theme switch.
+- Local QA covered all 43 sitemap routes at desktop and mobile widths with zero overflow, 215 real GStack navigation clicks, 123 unique safe internal GET links, language switching, four folded homepage cards, and Escape/focus behavior.
+- Optional historical `data/*.json` files are no longer requested on every page. Their public endpoints return 404 and the rendered site already contains static fallback content, so removing the unconditional request eliminates avoidable console/network errors without changing visible content.
+
 ## 2026-07-20 — Homepage four-path navigation
 
 - Replaced the homepage's competing “More” dropdown and six-card discovery grid with one shared taxonomy: Works, Essays, Projects, and About.

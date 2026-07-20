@@ -26,7 +26,6 @@
     <link rel="canonical" href="https://thisisyz.com/works/one-person">
     <title>一个人做不好 - 银子 Zi Yin</title>
     <link rel="preload" as="image" href="assets/one-person/visuals/one-person-cover.webp" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="audio" href="assets/one-person/one-person-ziyin-stream-192.mp3" type="audio/mpeg">
     <link rel="stylesheet" href="styles.css?v=20260715-one-person">
     <link rel="stylesheet" href="snow-white.css?v=20260715-one-person">
     <link rel="stylesheet" href="mirror.css?v=20260715-one-person">
@@ -48,26 +47,39 @@
         "description": "A joyful Berklee graduation work written for the friends and teachers who carried the journey together."
     }
     </script>
+    <link rel="stylesheet" href="/site-nav.css?v=20260720-global-nav2">
+    <script src="/site-nav.js?v=20260720-global-nav2" defer></script>
 </head>
 <body class="snow-white-page mirror-page one-person-page">
-    <nav class="navbar snow-nav mirror-nav one-person-nav">
-        <div class="container">
-            <a class="nav-brand site-title snow-brand" href="index.html" aria-label="返回 Zi Yin 首页 / Back to homepage">
-                <span class="name-en">Zi Yin</span><span class="name-sep">·</span><span class="name-zh">银子</span>
+    <nav class="navbar site-global-nav" aria-label="主导航">
+        <div class="container site-nav-inner">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
+                <span class="name-en">Zi Yin</span>
+                <span class="name-sep">·</span>
+                <span class="name-zh">银子</span>
             </a>
             <ul class="nav-menu" id="primary-navigation">
-                <li><a href="index.html">首页 Home</a></li>
-                <li><a href="works.html">作品 Works</a></li>
-                <li><a href="#story">故事 Story</a></li>
-                <li><a href="#sessions">现场 Sessions</a></li>
-                <li><a href="#lyrics">歌词 Lyrics</a></li>
-                <li><a href="#arrangement">编曲 Arrangement</a></li>
-                <li><a href="#voices">朋友 Friends</a></li>
-                <li><a href="#credits">名单 Credits</a></li>
+                <li><a href="/" class="nav-link" data-nav-id="home" data-i18n="nav.home">首页</a></li>
+                <li><a href="/works" class="nav-link" data-nav-id="works" data-i18n="nav.works">作品</a></li>
+                <li><a href="/essays/" class="nav-link" data-nav-id="essays" data-i18n="nav.essays">文章</a></li>
+                <li><a href="/projects" class="nav-link" data-nav-id="projects" data-i18n="nav.projects">项目</a></li>
+                <li><a href="/resume" class="nav-link" data-nav-id="about" data-i18n="nav.about">关于</a></li>
+                <li class="nav-menu-lang-item">
+                    <div class="nav-lang-toggle-mobile" aria-label="Language">
+                        <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                        <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+                    </div>
+                </li>
             </ul>
-            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单 / Open navigation" aria-controls="primary-navigation">
-                <span></span><span></span><span></span>
+            <div class="nav-lang-toggle" aria-label="Language">
+                <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
             </div>
+            <button class="hamburger" type="button" aria-label="打开导航菜单" aria-controls="primary-navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -337,14 +349,13 @@
         <div class="container">
             <p>&copy; Zi Yin / 银子</p>
             <div class="footer-links">
-                <a href="index.html">首页 / Homepage</a>
-                <a href="works.html">作品 / Works</a>
+                <a href="/">首页 / Homepage</a>
+                <a href="/works">作品 / Works</a>
                 <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
             </div>
         </div>
     </footer>
-    <script src="site-nav.js?v=20260715-one-person" defer></script>
-    <script src="script.js" defer></script>
+<script src="/script.js?v=20260720-global-nav2" defer></script>
     <script src="one-person.js?v=20260715-speed-1" defer></script>
 </body>
 </html>
