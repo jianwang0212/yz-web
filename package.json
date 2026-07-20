@@ -8,6 +8,7 @@
     "deploy:zapp": "node scripts/deploy-zapp.mjs",
     "zapp:refresh-friend-crm": "node zapp/scripts/refresh_friend_crm_monthly.mjs",
     "routes:sync": "node scripts/generate-vercel-config.mjs",
+    "nav:sync": "node scripts/sync-global-navigation.mjs",
     "lint": "node scripts/check-js-syntax.mjs",
     "test": "node --test tests/*.test.js",
     "test:home": "node --test tests/home-hero.test.js"

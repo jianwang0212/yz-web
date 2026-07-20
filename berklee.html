@@ -17,36 +17,39 @@
     <title>Berklee 课程概览 - 银子 / Zi Yin</title>
     <link rel="stylesheet" href="styles.css?v=20260507-consistent-nav">
     <link rel="stylesheet" href="berklee.css?v=20260507-consistent-nav">
+    <link rel="stylesheet" href="/site-nav.css?v=20260720-global-nav2">
+    <script src="/site-nav.js?v=20260720-global-nav2" defer></script>
 </head>
 <body class="berklee-page">
-    <nav class="navbar berklee-nav">
-        <div class="container">
-            <a class="nav-brand site-title" href="index.html" aria-label="Back to Zi Yin homepage">
+    <nav class="navbar site-global-nav" aria-label="主导航">
+        <div class="container site-nav-inner">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
             </a>
             <ul class="nav-menu" id="primary-navigation">
-                <li><a href="index.html" data-berklee-i18n="nav.home">首页</a></li>
-                <li><a href="works.html" data-berklee-i18n="nav.works">作品</a></li>
-                <li><a href="resume.html" data-berklee-i18n="nav.resume">简历</a></li>
-                <li><a href="highlights.html" data-berklee-i18n="nav.highlights">主要亮点</a></li>
+                <li><a href="/" class="nav-link" data-nav-id="home" data-i18n="nav.home">首页</a></li>
+                <li><a href="/works" class="nav-link" data-nav-id="works" data-i18n="nav.works">作品</a></li>
+                <li><a href="/essays/" class="nav-link" data-nav-id="essays" data-i18n="nav.essays">文章</a></li>
+                <li><a href="/projects" class="nav-link" data-nav-id="projects" data-i18n="nav.projects">项目</a></li>
+                <li><a href="/resume" class="nav-link" data-nav-id="about" data-i18n="nav.about">关于</a></li>
                 <li class="nav-menu-lang-item">
-                    <div class="nav-lang-toggle-mobile">
+                    <div class="nav-lang-toggle-mobile" aria-label="Language">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                         <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
                     </div>
                 </li>
             </ul>
-            <div class="nav-lang-toggle">
+            <div class="nav-lang-toggle" aria-label="Language">
                 <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                 <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
             </div>
-            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
+            <button class="hamburger" type="button" aria-label="打开导航菜单" aria-controls="primary-navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -127,10 +130,9 @@
             </div>
         </div>
     </footer>
-    <script src="/site-nav.js?v=20260507-consistent-nav"></script>
-    <script src="/i18n.js?v=20260507-lang-toggle-fix"></script>
+<script src="/i18n.js?v=20260507-lang-toggle-fix"></script>
 
-    <script src="script.js" defer></script>
+    <script src="/script.js?v=20260720-global-nav2" defer></script>
     <script src="berklee.js?v=20260507-lang-toggle-fix" defer></script>
 </body>
 </html>

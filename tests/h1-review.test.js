@@ -16,7 +16,8 @@ test('2026 H1 review is public, titled, and discoverable', () => {
   assert.match(html, /<h1 class="section-title">2026 上半年<\/h1>/);
   assert.match(html, /content="index, follow"/);
   assert.match(html, /https:\/\/thisisyz\.com\/2026-h1-review/);
-  assert.match(yearReview, /href="2026-h1-review\.html"[^>]*>阅读 2026 上半年/);
+  assert.match(yearReview, /class="review-switcher review-switcher--inline"/);
+  assert.match(yearReview, /href="2026-h1-review\.html"[^>]*>2026 上半年/);
   assert.match(index, /href="\/2026-h1-review"/);
   assert.match(i18n, /'entry\.review\.title': '2026 上半年'/);
   assert.match(i18n, /'entry\.review\.title': '2026 H1 Review'/);

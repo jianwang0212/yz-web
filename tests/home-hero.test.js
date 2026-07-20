@@ -50,13 +50,13 @@ test('language controls expose accessible names and selected state', () => {
 test('home navigation has an active current-page state', () => {
   expectIncludes(indexHtml, '<a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">');
   expectIncludes(indexHtml, '<ul class="nav-menu" id="primary-navigation">');
-  expectIncludes(indexHtml, '<a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a>');
-  expectIncludes(indexHtml, '<a href="works.html" data-i18n="nav.works">作品</a>');
-  expectIncludes(indexHtml, '<a href="/essays/" data-i18n="nav.essays">文章</a>');
-  expectIncludes(indexHtml, '<a href="projects.html" data-i18n="nav.projects">项目</a>');
-  expectIncludes(indexHtml, '<a href="resume.html" data-i18n="nav.about">关于</a>');
+  expectIncludes(indexHtml, '<a href="/" class="nav-link" data-nav-id="home" data-i18n="nav.home">首页</a>');
+  expectIncludes(indexHtml, '<a href="/works" class="nav-link" data-nav-id="works" data-i18n="nav.works">作品</a>');
+  expectIncludes(indexHtml, '<a href="/essays/" class="nav-link" data-nav-id="essays" data-i18n="nav.essays">文章</a>');
+  expectIncludes(indexHtml, '<a href="/projects" class="nav-link" data-nav-id="projects" data-i18n="nav.projects">项目</a>');
+  expectIncludes(indexHtml, '<a href="/resume" class="nav-link" data-nav-id="about" data-i18n="nav.about">关于</a>');
   assert.equal(indexHtml.includes('class="nav-dropdown-toggle"'), false);
-  expectIncludes(indexHtml, 'class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation"');
+  expectIncludes(indexHtml, 'class="hamburger" type="button" aria-label="打开导航菜单" aria-controls="primary-navigation" aria-expanded="false"');
 });
 
 test('home entry section mirrors the four top-level paths and folds the curated links', () => {
@@ -100,10 +100,22 @@ test('home entry section mirrors the four top-level paths and folds the curated 
   assert.equal(summaryBlocks.length, 4);
   assert.ok(summaryBlocks.every((summary) => !summary.includes('<a ')), 'Summary controls must not contain nested links');
 
-  for (const key of ['entry.kicker', 'entry.start', 'entry.works.title', 'entry.essays.title', 'entry.projects.title', 'entry.about.title']) {
+  for (const key of [
+    'entry.kicker',
+    'entry.works.indexNote',
+    'entry.essays.indexNote',
+    'entry.projects.indexNote',
+    'entry.about.resumeNote',
+    'entry.works.title',
+    'entry.essays.title',
+    'entry.projects.title',
+    'entry.about.title',
+  ]) {
     const occurrences = i18nJs.match(new RegExp(`'${key.replaceAll('.', '\\.')}':`, 'g')) || [];
     assert.equal(occurrences.length, 2, `Expected Chinese and English translations for ${key}`);
   }
+  assert.equal(indexHtml.includes('data-i18n="entry.start"'), false);
+  assert.equal(i18nJs.includes("'entry.start':"), false);
 });
 
 test('credential cards have expected content and explicit link semantics', () => {

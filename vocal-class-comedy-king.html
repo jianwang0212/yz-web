@@ -17,7 +17,6 @@
     <link rel="canonical" href="https://thisisyz.com/works/vocal-class-comedy-king">
     <title>喜剧之王 Vocal Class 001 - 银子 Zi Yin</title>
     <link rel="preload" as="image" href="/images/works/kiwi-tears-hero.webp" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="audio" href="/assets/vocal-class/comedy-king-practice-001-20260609.mp3" type="audio/mpeg">
     <link rel="stylesheet" href="/styles.css?v=20260507-consistent-nav">
     <link rel="stylesheet" href="/vocal-class-comedy-king.css?v=20260610-pinyin-process">
     <script type="application/ld+json">
@@ -37,29 +36,39 @@
         "learningResourceType": "practice log"
     }
     </script>
+    <link rel="stylesheet" href="/site-nav.css?v=20260720-global-nav2">
+    <script src="/site-nav.js?v=20260720-global-nav2" defer></script>
 </head>
 <body class="kiwi-page">
-    <nav class="navbar kiwi-nav">
-        <div class="container">
-            <a class="nav-brand site-title kiwi-brand" href="index.html" aria-label="Back to Zi Yin homepage">
+    <nav class="navbar site-global-nav" aria-label="主导航">
+        <div class="container site-nav-inner">
+            <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
             </a>
             <ul class="nav-menu" id="primary-navigation">
-                <li><a href="index.html" class="nav-link">首页 Home</a></li>
-                <li><a href="works.html">作品 Works</a></li>
-                <li><a href="#practice">练习 Audio</a></li>
-                <li><a href="#method">方法 Method</a></li>
-                <li><a href="#pronunciation">拼音 Pinyin</a></li>
-                <li><a href="#pinyin-process">流程 Process</a></li>
-                <li><a href="#lyrics">歌词 Lyrics</a></li>
+                <li><a href="/" class="nav-link" data-nav-id="home" data-i18n="nav.home">首页</a></li>
+                <li><a href="/works" class="nav-link" data-nav-id="works" data-i18n="nav.works">作品</a></li>
+                <li><a href="/essays/" class="nav-link" data-nav-id="essays" data-i18n="nav.essays">文章</a></li>
+                <li><a href="/projects" class="nav-link" data-nav-id="projects" data-i18n="nav.projects">项目</a></li>
+                <li><a href="/resume" class="nav-link" data-nav-id="about" data-i18n="nav.about">关于</a></li>
+                <li class="nav-menu-lang-item">
+                    <div class="nav-lang-toggle-mobile" aria-label="Language">
+                        <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                        <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
+                    </div>
+                </li>
             </ul>
-            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单 / Open navigation" aria-controls="primary-navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-lang-toggle" aria-label="Language">
+                <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
+                <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
             </div>
+            <button class="hamburger" type="button" aria-label="打开导航菜单" aria-controls="primary-navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -74,7 +83,7 @@
                     <a href="#method">练习方法</a>
                     <a href="#pronunciation">拼音标注</a>
                     <a href="#pinyin-process">读词流程</a>
-                    <a href="works.html">回到作品页</a>
+                    <a href="/works">回到作品页</a>
                 </div>
             </div>
         </section>
@@ -218,13 +227,13 @@
         <div class="container">
             <p>&copy; Zi Yin</p>
             <div class="footer-links">
-                <a href="works.html">作品 Works</a>
+                <a href="/works">作品 Works</a>
                 <a href="mailto:silver.ziyin@gmail.com">silver.ziyin@gmail.com</a>
             </div>
         </div>
     </footer>
 
-    <script src="/script.js"></script>
+    <script src="/script.js?v=20260720-global-nav2"></script>
     <script>
     (() => {
         const lines = [

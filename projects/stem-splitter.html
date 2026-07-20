@@ -17,48 +17,39 @@
     <title>Stem Splitter - Zi Yin</title>
     <link rel="stylesheet" href="/styles.css?v=20260513-main-perf">
     <link rel="stylesheet" href="/projects/stem-splitter.css?v=20260605">
+    <link rel="stylesheet" href="/site-nav.css?v=20260720-global-nav2">
+    <script src="/site-nav.js?v=20260720-global-nav2" defer></script>
 </head>
 <body class="stem-project-page">
-    <nav class="navbar">
-        <div class="container">
+    <nav class="navbar site-global-nav" aria-label="主导航">
+        <div class="container site-nav-inner">
             <a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">
                 <span class="name-en">Zi Yin</span>
                 <span class="name-sep">·</span>
                 <span class="name-zh">银子</span>
             </a>
             <ul class="nav-menu" id="primary-navigation">
-                <li><a href="/index.html" data-i18n="nav.home">首页</a></li>
-                <li><a href="/year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
-                <li><a href="/works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="/contact.html" data-i18n="nav.contact">联系</a></li>
+                <li><a href="/" class="nav-link" data-nav-id="home" data-i18n="nav.home">首页</a></li>
+                <li><a href="/works" class="nav-link" data-nav-id="works" data-i18n="nav.works">作品</a></li>
+                <li><a href="/essays/" class="nav-link" data-nav-id="essays" data-i18n="nav.essays">文章</a></li>
+                <li><a href="/projects" class="nav-link" data-nav-id="projects" data-i18n="nav.projects">项目</a></li>
+                <li><a href="/resume" class="nav-link" data-nav-id="about" data-i18n="nav.about">关于</a></li>
                 <li class="nav-menu-lang-item">
-                    <div class="nav-lang-toggle-mobile">
+                    <div class="nav-lang-toggle-mobile" aria-label="Language">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                         <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
                     </div>
                 </li>
-                <li class="nav-menu-item">
-                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
-                    <div class="nav-dropdown">
-                        <a href="/projects.html" data-i18n="nav.projects" style="color: var(--primary-color);">项目</a>
-                        <a href="/engineering.html" data-i18n="nav.engineering">Engineering</a>
-                        <a href="/timeline.html" data-i18n="nav.timeline">时间线</a>
-                        <a href="/resume.html" data-i18n="nav.resume">简历</a>
-                        <a href="/financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
-                        <a href="/interests.html" data-i18n="nav.interests">兴趣爱好</a>
-                        <a href="/highlights.html" data-i18n="nav.highlights">主要亮点</a>
-                    </div>
-                </li>
             </ul>
-            <div class="nav-lang-toggle">
+            <div class="nav-lang-toggle" aria-label="Language">
                 <button id="lang-zh" class="lang-btn active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                 <button id="lang-en" class="lang-btn" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
             </div>
-            <div class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation">
+            <button class="hamburger" type="button" aria-label="打开导航菜单" aria-controls="primary-navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -190,7 +181,7 @@
     </main>
 
     <script src="/i18n.js?v=20260515-london-fix" defer></script>
-    <script src="/script.js?v=20260513-main-perf" defer></script>
+    <script src="/script.js?v=20260720-global-nav2" defer></script>
     <script type="module" src="/projects/stem-splitter.js?v=20260605"></script>
 </body>
 </html>
