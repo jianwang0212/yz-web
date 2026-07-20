@@ -118,6 +118,11 @@ app.use(
     index: ['index.html'],
     setHeaders(res, filePath) {
       const normalizedPath = filePath.split(path.sep).join('/');
+      if (normalizedPath.includes('/projects/workout-assets/')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        return;
+      }
+
       if (normalizedPath.includes('/assets/one-person/')) {
         res.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=2592000');
         return;

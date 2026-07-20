@@ -69,9 +69,9 @@ const translations = {
         'homeResume.fact3.value': 'Berklee · GPA 4.0',
         
         // Entry
-        'entry.kicker': '四条路径',
-        'entry.title': '先看大类，再往里走。',
-        'entry.intro': '首页只留下四个入口；点开以后，才是作品、文章、系统和经历里的具体记录。',
+        'entry.kicker': '一些长期留下来的东西',
+        'entry.title': '作品、思考，也有正在发生的生活。',
+        'entry.intro': '音乐、市场、技术和我一路做过的选择，都慢慢收在这里。',
         'entry.works.indexNote': '作品索引',
         'entry.essays.indexNote': '文章索引',
         'entry.projects.indexNote': '全部项目',
@@ -1088,9 +1088,9 @@ const translations = {
         'homeResume.fact3.value': 'Berklee · GPA 4.0',
         
         // Entry
-        'entry.kicker': 'Four paths',
-        'entry.title': 'Start broad. Then go deeper.',
-        'entry.intro': 'The homepage keeps four clear doors. Open one to find the specific works, essays, systems, and personal records inside.',
+        'entry.kicker': 'A growing archive',
+        'entry.title': 'Work, ideas, and a life still unfolding.',
+        'entry.intro': 'Music, markets, technology, and the choices I have made along the way all live here.',
         'entry.works.indexNote': 'Works index',
         'entry.essays.indexNote': 'Essay index',
         'entry.projects.indexNote': 'All projects',

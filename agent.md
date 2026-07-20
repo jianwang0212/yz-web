@@ -22,6 +22,8 @@
 - On long-form self-analysis pages, use wide-desktop book spreads only for bounded, scannable sections; keep long narrative prose in a centered single column.
 - Organize the public Essays index under four durable reader paths: market and judgment; entrepreneurship and systems; music and training; life and self.
 - Keep the homepage information architecture to four concrete reader paths: Works, Essays, Projects, and About. The top navigation and homepage entry cards must use the same labels; secondary destinations belong inside native folded cards instead of a second global dropdown.
+- Public-facing copy must speak to readers, not explain the site's information architecture or implementation. Keep maintainer-only paths, raw file inventories, and handoff language out of public pages.
+- For media-heavy chronological archives, keep recent records first, use native month/date disclosures, and defer image/poster hydration until a record opens. Visual folding alone is not a performance optimization.
 - Keep every public content page on the canonical five-link navigation: Home (`/`), Works (`/works`), Essays (`/essays/`), Projects (`/projects`), and About (`/resume`). Run `npm run nav:sync` after adding or moving a public page, and keep the sync check idempotent.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.
 
