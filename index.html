@@ -17,7 +17,7 @@
     <title>Zi Yin (银子) - Quant Research, Music, Engineering</title>
     <link rel="preload" href="images/AuMusicBest.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="images/photos/academic-presentation.webp" as="image" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260520-home-mirror">
+    <link rel="stylesheet" href="styles.css?v=20260720-home-paths2">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -46,25 +46,14 @@
             </a>
             <ul class="nav-menu" id="primary-navigation">
                 <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a></li>
-                <li><a href="year-review.html" data-i18n="nav.yearReview">年度总结</a></li>
                 <li><a href="works.html" data-i18n="nav.works">作品</a></li>
-                <li><a href="contact.html" data-i18n="nav.contact">联系</a></li>
+                <li><a href="/essays/" data-i18n="nav.essays">文章</a></li>
+                <li><a href="projects.html" data-i18n="nav.projects">项目</a></li>
+                <li><a href="resume.html" data-i18n="nav.about">关于</a></li>
                 <li class="nav-menu-lang-item">
                     <div class="nav-lang-toggle-mobile">
                         <button id="lang-zh-mobile" class="lang-btn-mobile active" type="button" aria-label="切换到中文" aria-pressed="true">中文</button>
                         <button id="lang-en-mobile" class="lang-btn-mobile" type="button" aria-label="Switch to English" aria-pressed="false">English</button>
-                    </div>
-                </li>
-                <li class="nav-menu-item">
-                    <a href="#" class="nav-dropdown-toggle"><span data-i18n="nav.more">更多</span> <span style="font-size: 0.8em;">▼</span></a>
-                    <div class="nav-dropdown">
-                        <a href="projects.html" data-i18n="nav.projects">项目</a>
-                        <a href="engineering.html" data-i18n="nav.engineering">Engineering</a>
-                        <a href="timeline.html" data-i18n="nav.timeline">时间线</a>
-                        <a href="resume.html" data-i18n="nav.resume">简历</a>
-                        <a href="financial-dashboard.html" data-i18n="nav.finance">财务仪表盘</a>
-                        <a href="interests.html" data-i18n="nav.interests">兴趣爱好</a>
-                        <a href="highlights.html" data-i18n="nav.highlights">主要亮点</a>
                     </div>
                 </li>
             </ul>
@@ -220,38 +209,83 @@
     <!-- Entry Section -->
     <section id="entry" class="entry">
         <div class="container">
-            <h2 class="entry-title" data-i18n="entry.title">探索不同维度的长期记录</h2>
+            <div class="entry-heading">
+                <p class="entry-kicker" data-i18n="entry.kicker">四条路径</p>
+                <h2 class="entry-title" data-i18n="entry.title">先看大类，再往里走。</h2>
+                <p class="entry-intro" data-i18n="entry.intro">首页只留下四个入口；点开以后，才是作品、文章、系统和经历里的具体记录。</p>
+            </div>
             <div class="entry-grid">
-                <a href="timeline.html" class="entry-card">
-                    <h3 class="entry-card-title" data-i18n="entry.timeline.title">人生时间线</h3>
-                    <p class="entry-card-desc" data-i18n="entry.timeline.desc">长期决策与阶段反思记录</p>
-                    <span class="entry-card-link" data-i18n="entry.timeline.link">→ 查看时间线</span>
-                </a>
-                <a href="highlights.html" class="entry-card">
-                    <h3 class="entry-card-title" data-i18n="entry.highlights.title">主要亮点</h3>
-                    <p class="entry-card-desc" data-i18n="entry.highlights.desc">学术、职业、音乐与其他成就</p>
-                    <span class="entry-card-link" data-i18n="entry.highlights.link">→ 查看亮点</span>
-                </a>
-                <a href="works.html" class="entry-card">
-                    <h3 class="entry-card-title" data-i18n="entry.works.title">音乐与作品</h3>
-                    <p class="entry-card-desc" data-i18n="entry.works.desc">创作、演出与训练记录</p>
-                    <span class="entry-card-link" data-i18n="entry.works.link">→ 查看作品</span>
-                </a>
-                <a href="/essays/" class="entry-card entry-card-garden">
-                    <h3 class="entry-card-title" data-i18n="entry.essays.title">Essays / 音乐花园</h3>
-                    <p class="entry-card-desc" data-i18n="entry.essays.desc">按知识关联组织的公开文章、作品笔记和长期学习节点</p>
-                    <span class="entry-card-link" data-i18n="entry.essays.link">→ 进入音乐花园</span>
-                </a>
-                <a href="engineering.html" class="entry-card">
-                    <h3 class="entry-card-title" data-i18n="entry.engineering.title">Engineering / GitHub</h3>
-                    <p class="entry-card-desc" data-i18n="entry.engineering.desc">网站架构、AI 工作流与工具系统</p>
-                    <span class="entry-card-link" data-i18n="entry.engineering.link">→ 查看工程展示</span>
-                </a>
-                <a href="/2026-h1-review" class="entry-card">
-                    <h3 class="entry-card-title" data-i18n="entry.review.title">2026 上半年</h3>
-                    <p class="entry-card-desc" data-i18n="entry.review.desc">音乐、工作、财务、关系与 AI 系统复盘</p>
-                    <span class="entry-card-link" data-i18n="entry.review.link">→ 阅读 2026 上半年</span>
-                </a>
+                <details class="entry-card entry-path" id="path-works">
+                    <summary class="entry-summary">
+                        <span class="entry-summary-copy">
+                            <span class="entry-path-number">01</span>
+                            <h3 class="entry-card-title" data-i18n="entry.works.title">作品</h3>
+                            <span class="entry-card-desc" data-i18n="entry.works.desc">音乐、制作与学习档案</span>
+                        </span>
+                        <span class="entry-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="entry-links" aria-label="作品精选入口" data-i18n-aria-label="entry.works.aria">
+                        <a href="works.html"><span data-i18n="entry.works.index">全部作品</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="/works/one-person"><span data-i18n="entry.works.onePerson">一个人做不好</span><small>Graduation work</small></a>
+                        <a href="/works/snow-white"><span>Snow White / 白雪公主</span><small>Music archive</small></a>
+                        <a href="/works/mirror"><span>Mirror / 镜子</span><small>Jazz ballad</small></a>
+                        <a href="/berklee"><span data-i18n="entry.works.berklee">Berklee 学习地图</span><small data-i18n="entry.works.berkleeNote">课程与训练记录</small></a>
+                    </div>
+                </details>
+
+                <details class="entry-card entry-path" id="path-essays">
+                    <summary class="entry-summary">
+                        <span class="entry-summary-copy">
+                            <span class="entry-path-number">02</span>
+                            <h3 class="entry-card-title" data-i18n="entry.essays.title">文章</h3>
+                            <span class="entry-card-desc" data-i18n="entry.essays.desc">市场、系统、音乐与生活思考</span>
+                        </span>
+                        <span class="entry-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="entry-links" aria-label="文章精选入口" data-i18n-aria-label="entry.essays.aria">
+                        <a href="/essays/"><span>Essays / Field Library</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="/essays/trading-emotions-and-risk"><span data-i18n="entry.essays.trading">交易情绪与风险</span><small data-i18n="entry.essays.tradingNote">市场与判断</small></a>
+                        <a href="/essays/personal-ai-evolution"><span data-i18n="entry.essays.ai">个人 AI 三年演化</span><small data-i18n="entry.essays.aiNote">创业与系统</small></a>
+                        <a href="/2026-h1-review"><span data-i18n="entry.essays.review">2026 上半年总结</span><small data-i18n="entry.essays.reviewNote">阶段复盘</small></a>
+                        <a href="year-review.html"><span data-i18n="entry.essays.yearReview">2025 年度总结</span><small data-i18n="entry.essays.yearReviewNote">年度复盘</small></a>
+                        <a href="/projects/vipassana"><span data-i18n="entry.essays.vipassana">Vipassana 十日内观</span><small data-i18n="entry.essays.vipassanaNote">生活与自我</small></a>
+                    </div>
+                </details>
+
+                <details class="entry-card entry-path" id="path-projects">
+                    <summary class="entry-summary">
+                        <span class="entry-summary-copy">
+                            <span class="entry-path-number">03</span>
+                            <h3 class="entry-card-title" data-i18n="entry.projects.title">项目</h3>
+                            <span class="entry-card-desc" data-i18n="entry.projects.desc">产品、工程与个人工具</span>
+                        </span>
+                        <span class="entry-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="entry-links" aria-label="项目精选入口" data-i18n-aria-label="entry.projects.aria">
+                        <a href="projects.html"><span data-i18n="entry.projects.index">项目索引</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="engineering.html"><span data-i18n="entry.projects.engineering">工程 / GitHub</span><small data-i18n="entry.projects.engineeringNote">架构与 AI 工作流</small></a>
+                        <a href="financial-dashboard.html"><span data-i18n="entry.projects.finance">财务仪表盘</span><small data-i18n="entry.projects.financeNote">个人财务系统</small></a>
+                        <a href="/projects/dockingtech"><span data-i18n="entry.projects.docking">入坞科技</span><small data-i18n="entry.projects.dockingNote">创业经历</small></a>
+                    </div>
+                </details>
+
+                <details class="entry-card entry-path" id="path-about">
+                    <summary class="entry-summary">
+                        <span class="entry-summary-copy">
+                            <span class="entry-path-number">04</span>
+                            <h3 class="entry-card-title" data-i18n="entry.about.title">关于</h3>
+                            <span class="entry-card-desc" data-i18n="entry.about.desc">经历、选择与联系方式</span>
+                        </span>
+                        <span class="entry-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="entry-links" aria-label="关于我的精选入口" data-i18n-aria-label="entry.about.aria">
+                        <a href="resume.html"><span data-i18n="entry.about.resume">简历</span><small data-i18n="entry.start">从这里开始</small></a>
+                        <a href="timeline.html"><span data-i18n="entry.about.timeline">人生时间线</span><small data-i18n="entry.about.timelineNote">长期决定与阶段反思</small></a>
+                        <a href="highlights.html"><span data-i18n="entry.about.highlights">主要亮点</span><small data-i18n="entry.about.highlightsNote">学术、职业与音乐</small></a>
+                        <a href="interests.html"><span data-i18n="entry.about.interests">兴趣爱好</span><small data-i18n="entry.about.interestsNote">工作之外</small></a>
+                        <a href="contact.html"><span data-i18n="entry.about.contact">联系</span><small data-i18n="entry.about.contactNote">交流与合作</small></a>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
@@ -589,7 +623,7 @@
         </div>
     </footer>
 
-    <script src="i18n.js?v=20260521-a47g-name" defer></script>
+    <script src="i18n.js?v=20260720-home-paths" defer></script>
     <script src="script.js?v=20260513-main-perf" defer></script>
 </body>
 </html>

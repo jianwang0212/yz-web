@@ -21,6 +21,7 @@
 - Long-form pages must be checked at desktop, tablet, and narrow mobile widths and must support keyboard focus, reduced motion, deep links, and printing.
 - On long-form self-analysis pages, use wide-desktop book spreads only for bounded, scannable sections; keep long narrative prose in a centered single column.
 - Organize the public Essays index under four durable reader paths: market and judgment; entrepreneurship and systems; music and training; life and self.
+- Keep the homepage information architecture to four concrete reader paths: Works, Essays, Projects, and About. The top navigation and homepage entry cards must use the same labels; secondary destinations belong inside native folded cards instead of a second global dropdown.
 - Run `npm test`, `npm run lint`, and `git diff --check` with Node 20 or newer before publication.
 
 ## Publication
