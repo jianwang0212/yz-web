@@ -1,5 +1,13 @@
 # Project memory
 
+## 2026-07-20 — Homepage four-path navigation
+
+- Replaced the homepage's competing “More” dropdown and six-card discovery grid with one shared taxonomy: Works, Essays, Projects, and About.
+- The top navigation stays flat and links to each category's primary index. The lower section uses four native `<details>/<summary>` cards; summaries only open the card, while the expanded area contains real curated links.
+- The folded cards preserve the former destinations (timeline, highlights, engineering, finance, year review, and contact) while also surfacing selected works and essays without making the first view denser.
+- The scope is intentionally homepage-only. `site-nav.js` rewrites only a subset of pages, so changing it alone would create a third navigation state; a full-site navigation migration should be handled separately.
+- Desktop uses a compact 2×2 grid with independent card heights; mobile uses a single column and 48px-or-larger link rows. Both languages must keep zero horizontal overflow.
+
 ## 2026-07-19 — Essays four-pillar library and three new long-form essays
 
 - Added `/essays/trading-emotions-and-risk`, a five-volume restoration of Zi's 2022—2025 trading emotion records. It preserves the personal language around greed, fear, missing out, psychological position size, attention, automation, platform risk, and trusting the rules written by the calmer self.

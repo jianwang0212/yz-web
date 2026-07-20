@@ -51,7 +51,59 @@ test('home navigation has an active current-page state', () => {
   expectIncludes(indexHtml, '<a class="nav-brand site-title" href="/" aria-label="返回 Zi Yin 首页">');
   expectIncludes(indexHtml, '<ul class="nav-menu" id="primary-navigation">');
   expectIncludes(indexHtml, '<a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">首页</a>');
+  expectIncludes(indexHtml, '<a href="works.html" data-i18n="nav.works">作品</a>');
+  expectIncludes(indexHtml, '<a href="/essays/" data-i18n="nav.essays">文章</a>');
+  expectIncludes(indexHtml, '<a href="projects.html" data-i18n="nav.projects">项目</a>');
+  expectIncludes(indexHtml, '<a href="resume.html" data-i18n="nav.about">关于</a>');
+  assert.equal(indexHtml.includes('class="nav-dropdown-toggle"'), false);
   expectIncludes(indexHtml, 'class="hamburger" role="button" tabindex="0" aria-label="打开导航菜单" aria-controls="primary-navigation"');
+});
+
+test('home entry section mirrors the four top-level paths and folds the curated links', () => {
+  const details = indexHtml.match(/<details class="entry-card entry-path"/g) || [];
+  const summaries = indexHtml.match(/<summary class="entry-summary">/g) || [];
+  assert.equal(details.length, 4);
+  assert.equal(summaries.length, 4);
+
+  for (const [navKey, entryKey] of [
+    ['nav.works', 'entry.works.title'],
+    ['nav.essays', 'entry.essays.title'],
+    ['nav.projects', 'entry.projects.title'],
+    ['nav.about', 'entry.about.title'],
+  ]) {
+    expectIncludes(indexHtml, `data-i18n="${navKey}"`);
+    expectIncludes(indexHtml, `data-i18n="${entryKey}"`);
+  }
+
+  for (const href of [
+    '/works/one-person',
+    '/works/snow-white',
+    '/works/mirror',
+    '/berklee',
+    '/essays/trading-emotions-and-risk',
+    '/essays/personal-ai-evolution',
+    '/2026-h1-review',
+    'year-review.html',
+    '/projects/vipassana',
+    'engineering.html',
+    'financial-dashboard.html',
+    '/projects/dockingtech',
+    'timeline.html',
+    'highlights.html',
+    'interests.html',
+    'contact.html',
+  ]) {
+    expectIncludes(indexHtml, `href="${href}"`);
+  }
+
+  const summaryBlocks = indexHtml.match(/<summary class="entry-summary">[\s\S]*?<\/summary>/g) || [];
+  assert.equal(summaryBlocks.length, 4);
+  assert.ok(summaryBlocks.every((summary) => !summary.includes('<a ')), 'Summary controls must not contain nested links');
+
+  for (const key of ['entry.kicker', 'entry.start', 'entry.works.title', 'entry.essays.title', 'entry.projects.title', 'entry.about.title']) {
+    const occurrences = i18nJs.match(new RegExp(`'${key.replaceAll('.', '\\.')}':`, 'g')) || [];
+    assert.equal(occurrences.length, 2, `Expected Chinese and English translations for ${key}`);
+  }
 });
 
 test('credential cards have expected content and explicit link semantics', () => {
