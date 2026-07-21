@@ -2,9 +2,9 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-const html = readFileSync(new URL("../papers/mbti.html", import.meta.url), "utf8");
-const css = readFileSync(new URL("../papers/mbti.css", import.meta.url), "utf8");
-const js = readFileSync(new URL("../papers/mbti.js", import.meta.url), "utf8");
+const html = readFileSync(new URL("../essays/intj.html", import.meta.url), "utf8");
+const css = readFileSync(new URL("../essays/intj.css", import.meta.url), "utf8");
+const js = readFileSync(new URL("../essays/intj.js", import.meta.url), "utf8");
 
 test("MBTI longform keeps the approved progressive reading hierarchy", () => {
     const overview = html.indexOf('id="overview"');
@@ -53,8 +53,8 @@ test("MBTI page separates personal observation from unsupported external materia
 });
 
 test("MBTI assets cover book layout, responsive access, deep links, and print", () => {
-    assert.match(html, /href="\/papers\/mbti\.css\?v=20260716-1"/);
-    assert.match(html, /src="\/papers\/mbti\.js\?v=20260716-1"/);
+    assert.match(html, /href="\/essays\/intj\.css\?v=20260721-1"/);
+    assert.match(html, /src="\/essays\/intj\.js\?v=20260721-1"/);
     assert.match(html, /rel="canonical"/);
     assert.match(html, /class="mobile-toc"/);
     assert.match(html, /data-read-target="function-stack"/);
@@ -67,6 +67,13 @@ test("MBTI assets cover book layout, responsive access, deep links, and print", 
     assert.match(js, /beforeprint/);
     assert.match(js, /openAncestors/);
     assert.match(js, /data-read-target/);
+});
+
+test("INTJ is canonically an essay and returns to Life & Self", () => {
+    assert.match(html, /rel="canonical" href="https:\/\/thisisyz\.com\/essays\/intj"/);
+    assert.match(html, /property="og:url" content="https:\/\/thisisyz\.com\/essays\/intj"/);
+    assert.match(html, /href="\/essays\/#life">← 返回生活与自我/);
+    assert.doesNotMatch(html, /href="\/projects(?:\.html)?">← 返回项目/);
 });
 
 test("wide desktop uses local spreads and keeps narrative prose single-column", () => {

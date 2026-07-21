@@ -132,8 +132,8 @@ test("layout supports the approved desktop book and narrow-mobile reading contra
 test("the new essay is discoverable from Essays and the sitemap", () => {
     assert.match(essaysIndex, /href="\/essays\/career-and-long-termism"/);
     assert.match(essaysIndex, /工作、伙伴与长期主义/);
-    assert.match(essaysIndex, /\/essays\/index\.css\?v=20260719-four-pillars1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-essays-copy1/);
+    assert.match(essaysIndex, /\/essays\/index\.css\?v=20260721-intj1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-project-categories1/);
     assert.match(essaysIndexCss, /grid-template-areas:/);
     assert.match(essaysIndexCss, /\.garden-pill-main \{ grid-area: main;/);
     assert.match(sitemap, /https:\/\/thisisyz\.com\/essays\/career-and-long-termism/);

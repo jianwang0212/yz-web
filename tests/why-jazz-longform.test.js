@@ -103,8 +103,8 @@ test("layout provides a desktop book, bounded grids, and narrow-mobile single-co
 test("why-jazz is discoverable from Essays, adjacent notes, and the sitemap", () => {
     assert.match(essaysIndex, /href="\/essays\/why-jazz"/);
     assert.match(essaysIndex, /为什么想学爵士乐/);
-    assert.match(essaysIndex, /\/essays\/index\.css\?v=20260719-four-pillars1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-essays-copy1/);
+    assert.match(essaysIndex, /\/essays\/index\.css\?v=20260721-intj1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-project-categories1/);
     assert.match(whyBerklee, /href="\/essays\/why-jazz"/);
     assert.match(sitemap, /https:\/\/thisisyz\.com\/essays\/why-jazz/);
 });

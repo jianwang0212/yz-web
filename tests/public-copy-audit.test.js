@@ -15,6 +15,8 @@ const ai = readFileSync(new URL('../essays/personal-ai-evolution.html', import.m
 const freedom = readFileSync(new URL('../essays/financial-freedom-and-work.html', import.meta.url), 'utf8');
 const career = readFileSync(new URL('../essays/career-and-long-termism.html', import.meta.url), 'utf8');
 const happiness = readFileSync(new URL('../essays/happiness.html', import.meta.url), 'utf8');
+const projects = readFileSync(new URL('../projects.html', import.meta.url), 'utf8');
+const intj = readFileSync(new URL('../essays/intj.html', import.meta.url), 'utf8');
 
 test('public pages do not expose migration or maintainer notes', () => {
   const publicCopy = [
@@ -30,6 +32,8 @@ test('public pages do not expose migration or maintainer notes', () => {
     freedom,
     career,
     happiness,
+    projects,
+    intj,
   ].join('\n');
 
   for (const phrase of [
@@ -87,7 +91,21 @@ test('Essays uses concise reader-facing titles in both languages', () => {
     'Long-term Plans',
   ]) assert.ok(i18n.includes(phrase), `Missing concise English title: ${phrase}`);
 
-  assert.match(essaysIndex, /i18n\.js\?v=20260721-essays-copy1/);
+  assert.match(essaysIndex, /i18n\.js\?v=20260721-project-categories1/);
+  assert.match(`${essaysIndex}\n${i18n}`, /我的 INTJ/);
+  assert.match(i18n, /My INTJ/);
+});
+
+test('Projects copy addresses readers without explaining the information architecture', () => {
+  assert.match(projects, /一些正在使用、持续迭代的系统与工具。/);
+  for (const phrase of [
+    '方便访客快速理解每个入口的用途',
+    '降低视觉优先级',
+    '公开作品放在前面',
+    'internal tools are grouped separately',
+  ]) {
+    assert.equal(`${projects}\n${i18n}`.includes(phrase), false, `Projects should not include: ${phrase}`);
+  }
 });
 
 test('sublet page versions the shared translation bundle when its copy changes', () => {

@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zi Yin (银子) 的项目页：公开作品、音乐训练工具，以及 Codex Monitor、SocialPulse 等内部运营工具。">
+    <meta name="description" content="Zi Yin（银子）的项目：研究系统、音乐工具、健康记录与阶段档案。">
     <meta property="og:title" content="项目 - Zi Yin (银子)">
-    <meta property="og:description" content="公开作品、音乐训练工具和内部运营系统。">
+    <meta property="og:description" content="研究、训练和日常运行的系统与工具。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thisisyz.com/projects">
     <meta property="og:image" content="https://thisisyz.com/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="项目 - Zi Yin (银子)">
-    <meta name="twitter:description" content="公开作品、音乐训练工具和内部运营系统。">
+    <meta name="twitter:description" content="研究、训练和日常运行的系统与工具。">
     <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
     <link rel="canonical" href="https://thisisyz.com/projects">
     <title>项目 - Zi Yin (银子)</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="/site-nav.css?v=20260720-language-availability1">
-    <script src="/site-nav.js?v=20260720-language-availability1" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260721-project-categories1">
+    <link rel="stylesheet" href="/site-nav.css?v=20260721-project-categories2">
+    <script src="/site-nav.js?v=20260721-project-categories2" defer></script>
 </head>
-<body>
+<body data-i18n-title="projects.meta.title" data-i18n-description="projects.meta.description">
     <!-- Navigation -->
     <nav class="navbar site-global-nav" aria-label="主导航">
         <div class="container site-nav-inner">
@@ -53,33 +53,29 @@
         </div>
     </nav>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects projects-page">
         <div class="container">
             <header class="projects-page-header">
                 <p class="projects-eyebrow" data-i18n="projects.kicker">项目索引</p>
-            <h1 class="section-title" data-i18n="projects.title">项目 / Projects</h1>
-                <p class="projects-intro" data-i18n="projects.intro">公开作品放在前面，内部工具单独收纳，方便访客快速理解每个入口的用途。</p>
+                <h1 class="section-title" data-i18n="projects.title">项目。</h1>
+                <p class="projects-intro" data-i18n="projects.intro">一些正在使用、持续迭代的系统与工具。</p>
             </header>
 
-            <section class="project-group" aria-labelledby="public-work-title">
+            <nav class="project-category-nav" aria-label="项目分类" data-i18n-aria-label="projects.categories.aria">
+                <a href="#systems"><span>01</span><strong data-i18n="projects.systems.title">系统与研究</strong></a>
+                <a href="#music"><span>02</span><strong data-i18n="projects.music.title">音乐工具</strong></a>
+                <a href="#health"><span>03</span><strong data-i18n="projects.health.title">健康</strong></a>
+                <a href="#archive" data-open-project-archive aria-controls="archive"><span>04</span><strong data-i18n="projects.archive.title">Archive</strong></a>
+            </nav>
+
+            <section id="systems" class="project-group" data-project-group="systems" aria-labelledby="systems-title">
                 <div class="project-group-header">
-                    <p class="projects-eyebrow" data-i18n="projects.public.kicker">Public Work</p>
-                    <h3 id="public-work-title" data-i18n="projects.public.title">公开作品</h3>
-                    <p data-i18n="projects.public.desc">可以直接阅读、使用或分享的文章、音乐训练工具和临时公开页面。</p>
+                    <p class="projects-eyebrow">01 / Systems &amp; Research</p>
+                    <h2 id="systems-title" data-i18n="projects.systems.title">系统与研究</h2>
+                    <p data-i18n="projects.systems.desc">研究、自动化与日常运营。</p>
                 </div>
 
                 <div class="projects-grid">
-                    <a href="/projects/codex-monthly-2026-06" class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag">Codex</span>
-                                <span class="tag">项目周报</span>
-                            </div>
-                            <h3 class="project-title">Codex 最近一个月项目小结</h3>
-                            <p class="project-description">Slack agent、Zapp、音乐 demo、健身报告、远程工作站和课程归档的图文复盘</p>
-                        </div>
-                    </a>
                     <a href="/projects/stock-research-dashboard" class="project-card">
                         <div class="project-card-body">
                             <div class="project-tags" aria-label="Project tags">
@@ -89,44 +85,6 @@
                             </div>
                             <h3 class="project-title" data-i18n="projects.stock_research_title">金融研究工作台</h3>
                             <p class="project-description" data-i18n="projects.stock_research_desc">个股研报、股票筛选、深度研究、自选股追踪和财经早报的单页原型</p>
-                        </div>
-                    </a>
-                    <a href="/projects/workout" class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.health">健康记录</span>
-                                <span class="tag" data-i18n="projects.tag.analysis">动作分析</span>
-                            </div>
-                            <h3 class="project-title" data-i18n="projects.workout_title">健身记录与动作分析</h3>
-                            <p class="project-description" data-i18n="projects.workout_desc">体成分、围度、体态照片、饮食记录和训练视频逐帧复盘</p>
-                        </div>
-                    </a>
-                    <a href="/projects/vipassana" class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.essay">文章</span>
-                            </div>
-                            <h3 class="project-title" data-i18n="projects.vipassana_title">内观（Vipassana）</h3>
-                            <p class="project-description" data-i18n="projects.vipassana_desc">关于内观冥想实践的思考与记录</p>
-                        </div>
-                    </a>
-                    <a href="/projects/mbti" class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag">自我观察</span>
-                                <span class="tag">INTJ</span>
-                            </div>
-                            <h3 class="project-title">我的 INTJ：把精神世界变成现实系统</h3>
-                            <p class="project-description">Ni、Te、Fi、Se，以及我对洞察、逻辑、情感、盲点和成长方向的长期记录</p>
-                        </div>
-                    </a>
-                    <a href="/projects/apartment-sublet" class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.temporary">临时公开页</span>
-                            </div>
-                            <h3 class="project-title" data-i18n="projects.sublet_title">波士顿公寓转租（给下一位租客）</h3>
-                            <p class="project-description" data-i18n="projects.sublet_desc">步行伯克利约 10 分钟 · 2026 年 5 月 20 日起 · 二手清单与入住福利</p>
                         </div>
                     </a>
                     <a href="/engineering" class="project-card">
@@ -139,22 +97,47 @@
                             <p class="project-description" data-i18n="projects.engineering_desc">个人网站架构、AI 辅助工作流、运营系统和音乐训练工具的工程说明页</p>
                         </div>
                     </a>
-                    <a href="/projects/interval-quiz" class="project-card">
+                    <a href="/projects/codex-monitor" class="project-card project-card-secondary">
                         <div class="project-card-body">
                             <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
-                                <span class="tag" data-i18n="projects.tag.interactive">互动练习</span>
+                                <span class="tag" data-i18n="projects.tag.operations">内部工具</span>
+                                <span class="tag" data-i18n="projects.tag.dashboard">仪表盘</span>
                             </div>
+                            <h3 class="project-title" data-i18n="projects.codex_title">Codex 使用监控后台</h3>
+                            <p class="project-description" data-i18n="projects.codex_desc">活跃 agent、token、CPU、内存和趋势数据的公开摘要</p>
+                        </div>
+                    </a>
+                    <a href="/projects/socialpulse" class="project-card project-card-secondary">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag" data-i18n="projects.tag.operations">内部工具</span>
+                                <span class="tag" data-i18n="projects.tag.publishing">发布检查</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.socialpulse_title">SocialPulse 发布检查台</h3>
+                            <p class="project-description" data-i18n="projects.socialpulse_desc">五个平台的发布状态、库存和最近标题</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="music" class="project-group" data-project-group="music" aria-labelledby="music-title">
+                <div class="project-group-header">
+                    <p class="projects-eyebrow">02 / Music</p>
+                    <h2 id="music-title" data-i18n="projects.music.title">音乐工具</h2>
+                    <p data-i18n="projects.music.desc">听、弹、识别与制作。</p>
+                </div>
+
+                <div class="projects-grid">
+                    <a href="/projects/interval-quiz" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags"><span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span><span class="tag" data-i18n="projects.tag.interactive">互动练习</span></div>
                             <h3 class="project-title" data-i18n="projects.interval_quiz_title">音程测验（Interval Quiz）</h3>
                             <p class="project-description" data-i18n="projects.interval_quiz_desc">扩展和弦音程：给定音，猜主音 · 中英双语 · 错题贴纸</p>
                         </div>
                     </a>
                     <a href="/projects/degree-quiz" class="project-card">
                         <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
-                                <span class="tag" data-i18n="projects.tag.interactive">互动练习</span>
-                            </div>
+                            <div class="project-tags" aria-label="Project tags"><span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span><span class="tag" data-i18n="projects.tag.interactive">互动练习</span></div>
                             <h3 class="project-title" data-i18n="projects.degree_quiz_title">调号级数测试</h3>
                             <p class="project-description" data-i18n="projects.degree_quiz_desc">12 个调可选：给定调和音，判断是第几级 · 中英双语 · 错题贴纸板</p>
                         </div>
@@ -192,46 +175,70 @@
                     <a href="/projects/song-leadsheet-database" class="project-card">
                         <div class="project-card-body">
                             <div class="project-tags" aria-label="Project tags">
-                                <span class="tag">音乐工具</span>
-                                <span class="tag">资料库</span>
+                                <span class="tag" data-i18n="projects.tag.music_tool">音乐工具</span>
+                                <span class="tag" data-i18n="projects.tag.library">资料库</span>
                             </div>
-                            <h3 class="project-title">歌曲 Leadsheet 数据库</h3>
-                            <p class="project-description">华语流行曲 lead sheet 合集：和弦、旋律与歌词对照，持续整理</p>
+                            <h3 class="project-title" data-i18n="projects.leadsheet_title">歌曲 Leadsheet 数据库</h3>
+                            <p class="project-description" data-i18n="projects.leadsheet_desc">华语流行曲 lead sheet 合集：和弦、旋律与歌词对照，持续整理</p>
                         </div>
                     </a>
                 </div>
             </section>
 
-            <section class="project-group project-group-muted" aria-labelledby="operations-title">
+            <section id="health" class="project-group" data-project-group="health" aria-labelledby="health-title">
                 <div class="project-group-header">
-                    <p class="projects-eyebrow" data-i18n="projects.operations.kicker">Operations</p>
-                    <h3 id="operations-title" data-i18n="projects.operations.title">私人工具后台</h3>
-                    <p data-i18n="projects.operations.desc">用于同步、监控和发布运营的工作台；保留公开入口，但降低视觉优先级。</p>
+                    <p class="projects-eyebrow">03 / Health</p>
+                    <h2 id="health-title" data-i18n="projects.health.title">健康</h2>
+                    <p data-i18n="projects.health.desc">身体数据、训练与复盘。</p>
                 </div>
 
-                <div class="projects-grid projects-grid-compact">
-                    <a href="/projects/codex-monitor" class="project-card">
+                <div class="projects-grid projects-grid-single">
+                    <a href="/projects/workout" class="project-card">
                         <div class="project-card-body">
                             <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.operations">内部工具</span>
-                                <span class="tag" data-i18n="projects.tag.dashboard">仪表盘</span>
+                                <span class="tag" data-i18n="projects.tag.health">健康记录</span>
+                                <span class="tag" data-i18n="projects.tag.analysis">动作分析</span>
                             </div>
-                            <h3 class="project-title" data-i18n="projects.codex_title">Codex 使用监控后台</h3>
-                            <p class="project-description" data-i18n="projects.codex_desc">本地 MacBookPro 公开摘要页：每 5 分钟同步一次活跃 agent、token、CPU、内存和趋势数据到网站</p>
-                        </div>
-                    </a>
-                    <a href="/projects/socialpulse" class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-tags" aria-label="Project tags">
-                                <span class="tag" data-i18n="projects.tag.operations">内部工具</span>
-                                <span class="tag" data-i18n="projects.tag.publishing">发布检查</span>
-                            </div>
-                            <h3 class="project-title" data-i18n="projects.socialpulse_title">SocialPulse 发布检查台</h3>
-                            <p class="project-description" data-i18n="projects.socialpulse_desc">五平台发布状态、库存和最近标题：Instagram、X、Reddit、小红书、抖音的运营检查面板</p>
+                            <h3 class="project-title" data-i18n="projects.workout_title">健身记录与动作分析</h3>
+                            <p class="project-description" data-i18n="projects.workout_desc">体成分、围度、体态照片、饮食记录和训练视频逐帧复盘</p>
                         </div>
                     </a>
                 </div>
             </section>
+
+            <details id="archive" class="project-archive" data-project-group="archive">
+                <summary>
+                    <span class="archive-index">04</span>
+                    <span class="archive-summary-copy"><strong data-i18n="projects.archive.title">Archive</strong><small data-i18n="projects.archive.desc">阶段记录与曾经公开的页面。</small></span>
+                    <span class="archive-count" aria-label="3 items">3</span>
+                </summary>
+                <div class="projects-grid projects-grid-archive">
+                    <a href="/projects/codex-monthly-2026-06" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags">
+                                <span class="tag">Codex</span>
+                                <span class="tag" data-i18n="projects.tag.project_recap">项目复盘</span>
+                            </div>
+                            <h3 class="project-title" data-i18n="projects.codex_monthly_title">Codex 最近一个月项目小结</h3>
+                            <p class="project-description" data-i18n="projects.codex_monthly_desc">Slack agent、Zapp、音乐 demo、健身报告、远程工作站和课程归档的图文复盘</p>
+                        </div>
+                    </a>
+                    <a href="/projects/vipassana" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags"><span class="tag" data-i18n="projects.tag.essay">文章</span></div>
+                            <h3 class="project-title" data-i18n="projects.vipassana_title">内观（Vipassana）</h3>
+                            <p class="project-description" data-i18n="projects.vipassana_desc">关于内观冥想实践的思考与记录</p>
+                        </div>
+                    </a>
+                    <a href="/projects/apartment-sublet" class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-tags" aria-label="Project tags"><span class="tag" data-i18n="projects.tag.temporary">临时公开页</span></div>
+                            <h3 class="project-title" data-i18n="projects.sublet_title">波士顿公寓转租（给下一位租客）</h3>
+                            <p class="project-description" data-i18n="projects.sublet_desc">步行伯克利约 10 分钟 · 2026 年 5 月 20 日起 · 二手清单与入住福利</p>
+                        </div>
+                    </a>
+                </div>
+            </details>
         </div>
     </section>
 
@@ -246,7 +253,8 @@
         </div>
     </footer>
 
-    <script src="i18n.js"></script>
+    <script src="i18n.js?v=20260721-project-categories1"></script>
+    <script src="/projects-index.js?v=20260721-project-categories1"></script>
     <script src="/script.js?v=20260720-language-availability1"></script>
 </body>
 </html>
