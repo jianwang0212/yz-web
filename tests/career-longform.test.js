@@ -86,8 +86,8 @@ test("public draft preserves experiences while removing identifiable private nam
         assert.ok(!html.includes(forbidden), `Unexpected private or unusable source material: ${forbidden}`);
     }
 
-    assert.match(html, /公开版隐去姓名，但保留我用共同项目认识人的方法/);
-    assert.match(html, /公开版隐去当事人身份，但不删除这些不够体面的真实教训/);
+    assert.match(html, /名字并不重要，重要的是我们能不能通过共同项目认识彼此/);
+    assert.match(html, /我不讨论当事人身份，只保留这些不够体面的真实教训/);
     assert.match(html, /原页未记录来源/);
     assert.match(html, /原页摘录／转述 · 来源待补/);
     assert.match(html, /材料边界/);
@@ -107,8 +107,7 @@ test("public draft preserves experiences while removing identifiable private nam
 test("unattributed network graphics stay out of the public page", () => {
     assert.doesNotMatch(html, /career-and-long-termism-assets/);
     assert.doesNotMatch(essaysIndexCss, /career-and-long-termism-assets/);
-    assert.match(html, /来源未记录的网络图片/);
-    assert.match(html, /网页不重发原图/);
+    assert.doesNotMatch(html, /原页附件说明|网页不重发原图/);
 });
 
 test("layout supports the approved desktop book and narrow-mobile reading contracts", () => {
@@ -132,9 +131,9 @@ test("layout supports the approved desktop book and narrow-mobile reading contra
 
 test("the new essay is discoverable from Essays and the sitemap", () => {
     assert.match(essaysIndex, /href="\/essays\/career-and-long-termism"/);
-    assert.match(essaysIndex, /工作、伙伴与长期主义：我的底层判断/);
+    assert.match(essaysIndex, /工作、伙伴与长期主义/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260719-four-pillars1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260720-english-coverage1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-essays-copy1/);
     assert.match(essaysIndexCss, /grid-template-areas:/);
     assert.match(essaysIndexCss, /\.garden-pill-main \{ grid-area: main;/);
     assert.match(sitemap, /https:\/\/thisisyz\.com\/essays\/career-and-long-termism/);

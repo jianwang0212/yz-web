@@ -122,7 +122,7 @@ test("Essays is reorganized into four explicit paths and all articles remain dis
     assert.match(index, /data-i18n="essaysIndex\.cardTrading\.title"/);
     assert.match(index, /data-i18n="essaysIndex\.cardAI\.title"/);
     assert.match(index, /data-i18n="essaysIndex\.cardFreedom\.title"/);
-    assert.match(i18n, /When a Trading System Meets Human Nature/);
-    assert.match(i18n, /From Imagination to Infrastructure: Three Years of Personal AI/);
-    assert.match(i18n, /Why I Still Work and Learn After Financial Freedom/);
+    assert.match(i18n, /Trading Emotions & Risk/);
+    assert.match(i18n, /Three Years of Personal AI/);
+    assert.match(i18n, /After Financial Freedom/);
 });

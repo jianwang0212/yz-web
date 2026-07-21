@@ -1,5 +1,14 @@
 # Project memory
 
+## 2026-07-21 — Essays reader-facing copy and concise titles
+
+- Replaced the Essays hero with `一些长期思考。` / `Long-term notes.` and a single reader-facing line about markets, systems, music, and life.
+- Shortened all ten directory card titles, removed editorial maturity labels such as New, Budding, Garden, and Living, and standardized calls to action as `阅读文章 →` / `Read essay →`.
+- Removed public-facing migration logs, anonymization checklists, inaccessible-source handoff notes, local-path wording, and draft metadata from the Essays index, related long-form pages, and three bilingual music essays.
+- Keep content provenance, personal-experience boundaries, medical or investment disclaimers, and uncertainty where they help readers judge the writing; phrase them as part of the article rather than as a changelog of what the website editor did.
+- When `i18n.js` copy changes, version it on every page that uses the changed keys. Regression coverage now checks both concise bilingual titles and known maintainer-language regressions.
+- Local GStack QA covered the Essays index at `1440×1000` and `390×844`, switched both languages, clicked all ten article cards, and checked the three bilingual music essays for untranslated or editorial residue and horizontal overflow.
+
 ## 2026-07-20 — Verified English availability and bilingual One Person title
 
 - GStack traversed all 43 sitemap routes at desktop and mobile widths, clicked every available English control, opened all disclosures, scanned rendered CJK text and accessibility attributes, and checked overflow.

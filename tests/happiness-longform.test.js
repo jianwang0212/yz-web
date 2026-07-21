@@ -82,8 +82,7 @@ test("public version anonymizes private records and keeps source boundaries expl
     assert.match(html, /Naval 的 Happiness 合集/);
     assert.match(html, /外部阅读笔记/);
     assert.match(html, /来源待补/);
-    assert.match(html, /私人姓名、伴侣细节与具体冲突/);
-    assert.match(html, /不重发三张失效的 Confluence 图片/);
+    assert.match(html, /不同年份的判断并不完全一致/);
     assert.match(html, /不构成医疗、心理、投资或关系建议/);
 });
 
@@ -127,7 +126,7 @@ test("happiness is discoverable from Essays, career, routes, and the sitemap", (
     assert.match(essaysIndex, /href="\/essays\/happiness"/);
     assert.match(essaysIndex, /幸福、平和与选择权/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260719-four-pillars1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260720-english-coverage1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-essays-copy1/);
     assert.match(essaysIndex, /\/styles\.css\?v=20260719-happiness1/);
     assert.match(essaysIndexCss, /\.garden-pill-i/);
     assert.match(essaysIndexCss, /\.essay-card-happiness/);
