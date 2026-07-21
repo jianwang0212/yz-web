@@ -115,6 +115,7 @@ test("Essays is reorganized into four explicit paths and all articles remain dis
         "vocal-training-system",
         "happiness",
         "long-term-plans",
+        "intj",
     ]) {
         assert.match(index, new RegExp(`href="/essays/${slug}"`));
         assert.match(sitemap, new RegExp(`https://thisisyz\\.com/essays/${slug}`));
@@ -122,6 +123,9 @@ test("Essays is reorganized into four explicit paths and all articles remain dis
     assert.match(index, /data-i18n="essaysIndex\.cardTrading\.title"/);
     assert.match(index, /data-i18n="essaysIndex\.cardAI\.title"/);
     assert.match(index, /data-i18n="essaysIndex\.cardFreedom\.title"/);
+    const lifeSection = index.slice(index.indexOf('id="life"'), index.indexOf('class="essays-section related-paths"'));
+    assert.match(lifeSection, /href="\/essays\/intj"/);
+    assert.match(lifeSection, /data-i18n="essaysIndex\.cardIntj\.title"/);
     assert.match(i18n, /Trading Emotions & Risk/);
     assert.match(i18n, /Three Years of Personal AI/);
     assert.match(i18n, /After Financial Freedom/);

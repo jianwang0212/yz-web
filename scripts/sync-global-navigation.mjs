@@ -13,7 +13,7 @@ const ignoredDirectories = new Set([
   'node_modules',
   'zapp',
 ]);
-const navVersion = '20260720-language-availability1';
+const navVersion = '20260721-project-categories2';
 const sharedScriptVersion = '20260720-language-availability1';
 const navPattern = /<nav\b[^>]*class=["'][^"']*\bnavbar\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/i;
 const navStylePattern = /<link\b[^>]*href=["'][^"']*site-nav\.css[^"']*["'][^>]*>/gi;

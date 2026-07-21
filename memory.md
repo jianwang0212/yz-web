@@ -1,5 +1,15 @@
 # Project memory
 
+## 2026-07-21 — Projects domain index and INTJ essay migration
+
+- Replaced the flat Projects card wall and the competing public/internal split with four reader-facing paths: systems and research, music tools, health, and Archive. Internal status remains a tag on Codex Monitor and SocialPulse instead of becoming a fifth category.
+- Archive is a native disclosure that contains the June Codex recap, Vipassana, and the Boston sublet. It stays closed by default, but opens when the Archive category is clicked or when `/projects#archive` is loaded directly.
+- Projects uses short public copy in both languages: `项目。` / `Projects.` and one line about systems and tools still in use. The route now advertises English because every visible project-index string and its metadata has a verified translation.
+- Moved the INTJ long-form assets from `papers/mbti.*` to `essays/intj.*`. The canonical public route is `/essays/intj`; `/projects/mbti(.html)` and `/papers/mbti(.html)` permanently redirect there. The page returns to Essays `生活与自我`, keeps Chinese-only mode, and no longer exposes editing-process metadata.
+- `site-nav.js` no longer treats `/projects/vipassana` as an Essay route. Vipassana now highlights Projects because its discovery location is Projects Archive, while `/essays/intj` highlights Essays.
+- GStack checked Projects and INTJ at `1440×1000` / `390×844`, both Projects languages, Archive click/direct-hash behavior, all 14 project links, the Life & Self three-card row, canonical redirects, active navigation, console output, and horizontal overflow. SocialPulse's local data API needs production credentials and Stem Splitter's local health probe needs its separate backend; both public pages themselves loaded successfully.
+- Regression coverage spans Projects grouping/copy, Essays discovery, INTJ long-form assets, route and Vercel parity, language availability, public-copy rules, sitemap discovery, and the canonical navigation synchronizer.
+
 ## 2026-07-21 — Essays reader-facing copy and concise titles
 
 - Replaced the Essays hero with `一些长期思考。` / `Long-term notes.` and a single reader-facing line about markets, systems, music, and life.

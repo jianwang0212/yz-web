@@ -570,6 +570,38 @@
     line-height: 1.06;
 }
 
+@media (min-width: 921px) {
+    .essay-card-grid--life {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.essay-card-intj .essay-card-image {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background:
+        linear-gradient(90deg, transparent 49.7%, rgba(73, 76, 104, 0.14) 50%, transparent 50.3%),
+        repeating-linear-gradient(0deg, transparent 0 38px, rgba(73, 76, 104, 0.08) 39px 40px),
+        linear-gradient(145deg, #ebeaf2, #dcdce9);
+}
+
+.essay-card-intj .essay-card-image::before {
+    content: "Ni  →  Te\A Fi  ↔  Se";
+    width: min(72%, 220px);
+    padding: 24px 18px;
+    border: 1px solid rgba(23, 33, 33, 0.2);
+    background: rgba(255, 253, 248, 0.88);
+    color: #41445f;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 2.15;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: pre-line;
+}
+
 .essay-card-trading .essay-card-image,
 .essay-card-ai .essay-card-image,
 .essay-card-freedom .essay-card-image {

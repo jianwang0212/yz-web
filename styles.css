@@ -1144,7 +1144,7 @@ section {
 
 .projects-page-header {
     max-width: 760px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .projects-page .section-title {
@@ -1168,8 +1168,49 @@ section {
     line-height: 1.75;
 }
 
+.project-category-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 4rem;
+}
+
+.project-category-nav a {
+    display: grid;
+    min-height: 96px;
+    padding: 1rem;
+    align-content: space-between;
+    color: var(--text-primary);
+    text-decoration: none;
+    border: 1px solid rgba(15, 23, 42, 0.13);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.76);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-category-nav a:hover,
+.project-category-nav a:focus-visible {
+    border-color: rgba(37, 99, 235, 0.34);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.project-category-nav span {
+    color: var(--text-light);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.project-category-nav strong {
+    font-size: 1rem;
+}
+
 .project-group {
-    margin-top: 2rem;
+    padding: 0;
+    margin-top: 3.75rem;
+    scroll-margin-top: 88px;
 }
 
 .project-group + .project-group {
@@ -1181,7 +1222,7 @@ section {
     margin-bottom: 1.35rem;
 }
 
-.project-group-header h3 {
+.project-group-header h2 {
     margin: 0 0 0.6rem;
     color: var(--text-primary);
     font-size: 1.55rem;
@@ -1195,12 +1236,17 @@ section {
 }
 
 .projects-page .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
 }
 
-.projects-page .projects-grid-compact {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.projects-page .projects-grid-single {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: calc(50% - 0.625rem);
+}
+
+.projects-page .projects-grid-archive {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .projects-page .project-card {
@@ -1243,7 +1289,7 @@ section {
     display: flex;
     min-height: 100%;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .projects-page .project-tags {
@@ -1282,6 +1328,80 @@ section {
 
 .project-group-muted .project-title {
     color: var(--primary-color);
+}
+
+.projects-page .project-card-secondary {
+    background: #fbfdff;
+    border-color: rgba(100, 116, 139, 0.18);
+}
+
+.project-archive {
+    margin-top: 4.25rem;
+    scroll-margin-top: 88px;
+    border: 1px solid rgba(15, 23, 42, 0.13);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.58);
+}
+
+.project-archive summary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    min-height: 84px;
+    padding: 1.15rem 1.3rem;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+}
+
+.project-archive summary::-webkit-details-marker {
+    display: none;
+}
+
+.project-archive summary:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.28);
+    outline-offset: 3px;
+}
+
+.archive-index,
+.archive-count {
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.archive-count {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 50%;
+}
+
+.archive-summary-copy strong,
+.archive-summary-copy small {
+    display: block;
+}
+
+.archive-summary-copy strong {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+}
+
+.archive-summary-copy small {
+    margin-top: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+.project-archive[open] summary {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.project-archive .projects-grid {
+    padding: 1.25rem;
 }
 
 /* Engineering / GitHub page */
@@ -1464,8 +1584,10 @@ section {
     }
 
     .projects-page .projects-grid,
-    .projects-page .projects-grid-compact {
+    .projects-page .projects-grid-single,
+    .projects-page .projects-grid-archive {
         grid-template-columns: 1fr;
+        max-width: none;
     }
 
     .project-group {
@@ -1474,6 +1596,24 @@ section {
 
     .project-card-body {
         padding: 1.15rem;
+    }
+
+    .project-category-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 3rem;
+    }
+
+    .project-category-nav a {
+        min-height: 84px;
+        padding: 0.9rem;
+    }
+
+    .project-archive summary {
+        padding: 1rem;
+    }
+
+    .archive-summary-copy small {
+        font-size: 0.8rem;
     }
 }
 

@@ -23,10 +23,11 @@ test('server route aliases cover clean project URLs', () => {
   assert.equal(findRouteAlias('/essays/trading-emotions-and-risk'), 'essays/trading-emotions-and-risk.html');
   assert.equal(findRouteAlias('/essays/personal-ai-evolution'), 'essays/personal-ai-evolution.html');
   assert.equal(findRouteAlias('/essays/financial-freedom-and-work'), 'essays/financial-freedom-and-work.html');
+  assert.equal(findRouteAlias('/essays/intj'), 'essays/intj.html');
   assert.equal(findRouteAlias('/projects/dockingtech'), 'projects/dockingtech.html');
   assert.equal(findRouteAlias('/projects/stock-research-dashboard'), 'projects/stock-research-dashboard.html');
   assert.equal(findRouteAlias('/projects/workout'), 'projects/workout.html');
-  assert.equal(findRouteAlias('/projects/mbti'), 'papers/mbti.html');
+  assert.equal(findRouteAlias('/projects/mbti'), null);
   assert.equal(findRouteAlias('/projects/socialpulse'), 'projects/socialpulse.html');
   assert.equal(findRouteAlias('/projects/codex-monitor'), 'codex-monitor.html');
   assert.equal(findRouteAlias('/projects/song-leadsheet-database'), 'song-leadsheet-database.html');
@@ -48,6 +49,10 @@ test('legacy URLs 301-redirect to their canonical section locations', () => {
   assert.equal(findRedirect('/song-leadsheet-database'), '/projects/song-leadsheet-database');
   assert.equal(findRedirect('/papers/vipassana'), '/projects/vipassana');
   assert.equal(findRedirect('/papers/vipassana.html'), '/projects/vipassana');
+  assert.equal(findRedirect('/projects/mbti'), '/essays/intj');
+  assert.equal(findRedirect('/projects/mbti.html'), '/essays/intj');
+  assert.equal(findRedirect('/papers/mbti'), '/essays/intj');
+  assert.equal(findRedirect('/papers/mbti.html'), '/essays/intj');
   assert.equal(findRedirect('/plans'), '/essays/long-term-plans');
   assert.equal(findRedirect('/works/snow-white'), null);
 });
@@ -74,11 +79,12 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(rewrites.get('/essays/trading-emotions-and-risk'), '/essays/trading-emotions-and-risk.html');
   assert.equal(rewrites.get('/essays/personal-ai-evolution'), '/essays/personal-ai-evolution.html');
   assert.equal(rewrites.get('/essays/financial-freedom-and-work'), '/essays/financial-freedom-and-work.html');
+  assert.equal(rewrites.get('/essays/intj'), '/essays/intj.html');
   assert.equal(rewrites.get('/2026-h1-review'), '/2026-h1-review.html');
   assert.equal(rewrites.get('/projects/dockingtech'), '/projects/dockingtech.html');
   assert.equal(rewrites.get('/projects/stock-research-dashboard'), '/projects/stock-research-dashboard.html');
   assert.equal(rewrites.get('/projects/workout'), '/projects/workout.html');
-  assert.equal(rewrites.get('/projects/mbti'), '/papers/mbti.html');
+  assert.equal(rewrites.has('/projects/mbti'), false);
   assert.equal(rewrites.get('/projects/chord-quiz'), '/papers/chord-quiz.html');
   assert.equal(rewrites.get('/projects/chord-trainer-assets/(.*)'), '/papers/chord-trainer-assets/$1');
   assert.ok(config.headers.some((header) => header.source === '/(.*)'));
@@ -94,5 +100,6 @@ test('vercel config is generated from the same project route table', () => {
   assert.equal(redirects.get('/one-person'), '/works/one-person');
   assert.equal(redirects.get('/codex-monitor'), '/projects/codex-monitor');
   assert.equal(redirects.get('/papers/vipassana.html'), '/projects/vipassana');
-  assert.equal(redirects.get('/papers/mbti.html'), '/projects/mbti');
+  assert.equal(redirects.get('/projects/mbti'), '/essays/intj');
+  assert.equal(redirects.get('/papers/mbti.html'), '/essays/intj');
 });

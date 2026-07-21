@@ -7,7 +7,7 @@ import test from 'node:test';
 import { findRouteAlias } from '../site-routes.mjs';
 
 const root = new URL('..', import.meta.url).pathname;
-const version = '20260720-language-availability1';
+const version = '20260721-project-categories2';
 const navSource = readFileSync(new URL('../site-nav.js', import.meta.url), 'utf8');
 const navStyles = readFileSync(new URL('../site-nav.css', import.meta.url), 'utf8');
 const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
@@ -90,6 +90,8 @@ test('shared runtime owns active groups and accessible mobile dismissal', () => 
   assert.match(navSource, /event\.key !== 'Escape'/);
   assert.match(navSource, /currentHamburger\.focus\(\)/);
   assert.match(navSource, /currentNav\.contains\(event\.target\)/);
+  assert.doesNotMatch(navSource, /path === '\/projects\/vipassana'/);
+  assert.match(navSource, /path\.startsWith\('\/essays\/'\)/);
   assert.match(navStyles, /@media \(max-width: 768px\)/);
   assert.match(navStyles, /min-height: 48px/);
   assert.match(navStyles, /@media \(prefers-reduced-motion: reduce\)/);
@@ -106,6 +108,7 @@ test('English controls only appear on pages with verified English content', () =
     '/berklee',
     '/interests',
     '/contact',
+    '/projects',
     '/projects/apartment-sublet',
     '/projects/interval-quiz',
     '/projects/degree-quiz',

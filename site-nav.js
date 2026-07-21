@@ -16,6 +16,7 @@
         '/berklee',
         '/interests',
         '/contact',
+        '/projects',
         '/projects/apartment-sublet',
         '/projects/interval-quiz',
         '/projects/degree-quiz',
@@ -51,8 +52,7 @@
             path === '/essays' ||
             path.startsWith('/essays/') ||
             path === '/year-review' ||
-            path === '/2026-h1-review' ||
-            path === '/projects/vipassana'
+            path === '/2026-h1-review'
         ) return 'essays';
         if (
             path === '/projects' ||

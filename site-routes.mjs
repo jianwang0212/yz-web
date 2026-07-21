@@ -4,7 +4,6 @@ const projectPages = [
   ['dockingtech', 'projects/dockingtech.html'],
   ['workout', 'projects/workout.html'],
   ['vipassana', 'papers/vipassana.html'],
-  ['mbti', 'papers/mbti.html'],
   ['apartment-sublet', 'papers/apartment-sublet.html'],
   ['interval-quiz', 'papers/interval-quiz.html'],
   ['degree-quiz', 'papers/degree-quiz.html'],
@@ -17,6 +16,7 @@ const projectPages = [
 ];
 
 const essayPages = [
+  ['intj', 'essays/intj.html'],
   ['happiness', 'essays/happiness.html'],
   ['why-jazz', 'essays/why-jazz.html'],
   ['career-and-long-termism', 'essays/career-and-long-termism.html'],
@@ -125,7 +125,11 @@ export const pageRedirects = [
   ['/song-leadsheet-database', '/projects/song-leadsheet-database'],
   ['/song-leadsheet-database.html', '/projects/song-leadsheet-database'],
   ['/plans', '/essays/long-term-plans'],
-  ['/plans.html', '/essays/long-term-plans']
+  ['/plans.html', '/essays/long-term-plans'],
+  ['/projects/mbti', '/essays/intj'],
+  ['/projects/mbti.html', '/essays/intj'],
+  ['/papers/mbti', '/essays/intj'],
+  ['/papers/mbti.html', '/essays/intj']
 ];
 
 export function findRedirect(urlPath) {
