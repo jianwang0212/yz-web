@@ -14,7 +14,7 @@
 
 ## Content and code rules
 
-- Preserve the author's first-person voice and explicitly label personal experience, inference, official material, and third-party material.
+- Preserve the author's first-person voice. Attribute borrowed material and qualify uncertain claims inside the prose, but do not add reader-facing boxes about source-material boundaries, editing, anonymization, migration, or what an earlier draft contained.
 - When proofreading migrated long-form prose, correct only high-confidence typos, omissions, duplicated text, and OCR artifacts; preserve deliberate colloquialisms and imperfect first-person phrasing.
 - Do not publish credentials, financial proofs, obsolete travel logistics, or private names without an explicit reason.
 - In public health-related personal notes, retain concrete first-person experience and questions, but remove private measurements and downgrade unsupported medical causality to clearly labeled open questions; always state that the page is not medical advice.
@@ -23,7 +23,7 @@
 - Organize the public Essays index under four durable reader paths: market and judgment; entrepreneurship and systems; music and training; life and self.
 - Organize the Projects index by domain, not by access level: systems and research; music tools; health; and a folded Archive for stage-bound records or temporary public pages. Keep internal/public status as a card tag instead of a competing category.
 - Keep the homepage information architecture to four concrete reader paths: Works, Essays, Projects, and About. The top navigation and homepage entry cards must use the same labels; secondary destinations belong inside native folded cards instead of a second global dropdown.
-- Public-facing copy must speak to readers, not explain the site's information architecture or implementation. Keep maintainer-only paths, raw file inventories, and handoff language out of public pages.
+- Public-facing copy must speak to readers, not explain the site's information architecture, editing process, or implementation. Keep labels such as `材料边界`, public-version change logs, maintainer-only paths, raw file inventories, and handoff language out of public pages. Preserve concise medical, investment, currency, and direct-source notes when they materially help readers judge a claim.
 - For media-heavy chronological archives, keep recent records first, use native month/date disclosures, and defer image/poster hydration until a record opens. Visual folding alone is not a performance optimization.
 - Keep every public content page on the canonical five-link navigation: Home (`/`), Works (`/works`), Essays (`/essays/`), Projects (`/projects`), and About (`/resume`). Run `npm run nav:sync` after adding or moving a public page, and keep the sync check idempotent.
 - Show the Chinese/English language switch only on routes whose rendered public content has a complete English mode. Register verified routes in `site-nav.js`; incomplete or Chinese-only routes must render in Chinese without erasing the visitor's saved language preference.

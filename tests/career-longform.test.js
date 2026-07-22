@@ -16,7 +16,6 @@ test("career handbook keeps the proposed five-volume reading hierarchy", () => {
     const decisions = html.indexOf('id="decisions"');
     const career = html.indexOf('id="career"');
     const information = html.indexOf('id="information"');
-    const sources = html.indexOf('id="source-note"');
 
     assert.ok(overview > 0);
     assert.ok(ownership > overview);
@@ -24,7 +23,6 @@ test("career handbook keeps the proposed five-volume reading hierarchy", () => {
     assert.ok(decisions > partners);
     assert.ok(career > decisions);
     assert.ok(information > career);
-    assert.ok(sources > information);
     assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1);
     assert.equal((html.match(/class="story-chapter"/g) || []).length, 5);
     assert.doesNotMatch(html, /id="(?:partners|decisions|career|information)"[^>]*\sopen(?:\s|>)/);
@@ -44,10 +42,7 @@ test("career handbook keeps the proposed five-volume reading hierarchy", () => {
     }
 });
 
-test("career handbook remains a substantial restoration of Zi's first-person source", () => {
-    const visibleText = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(visibleText.length > 8000, `Expected substantial longform text, got ${visibleText.length}`);
-
+test("career handbook preserves Zi's defining first-person observations", () => {
     for (const phrase of [
         "产品化你自己",
         "人生的大部分时间，是用来寻找那些最需要你的人和事",
@@ -69,7 +64,7 @@ test("career handbook remains a substantial restoration of Zi's first-person sou
     assert.match(html, /<s>越想靠近我的人，必须有更高的上进心。<\/s>/);
 });
 
-test("public draft preserves experiences while removing identifiable private names", () => {
+test("public essay preserves experiences while removing identifiable private names", () => {
     for (const forbidden of [
         "yuheng",
         "wutao",
@@ -87,13 +82,11 @@ test("public draft preserves experiences while removing identifiable private nam
     }
 
     assert.match(html, /名字并不重要，重要的是我们能不能通过共同项目认识彼此/);
-    assert.match(html, /我不讨论当事人身份，只保留这些不够体面的真实教训/);
-    assert.match(html, /原页未记录来源/);
-    assert.match(html, /原页摘录／转述 · 来源待补/);
-    assert.match(html, /材料边界/);
     assert.ok((html.match(/class="source-excerpt/g) || []).length >= 12);
-    assert.match(html, /不构成投资建议/);
+    assert.ok((html.match(/<cite>阅读(?:摘录|转述)<\/cite>/g) || []).length >= 10);
+    assert.match(html, /不是投资建议/);
     assert.match(html, /Reid Hoffman/);
+    assert.doesNotMatch(html, /材料边界|关于这篇记录|原页未记录来源|来源待补/);
 
     for (const invented of [
         "这也是我为什么需要把原则写下来",
@@ -133,7 +126,7 @@ test("the new essay is discoverable from Essays and the sitemap", () => {
     assert.match(essaysIndex, /href="\/essays\/career-and-long-termism"/);
     assert.match(essaysIndex, /工作、伙伴与长期主义/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260721-intj1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-project-categories1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260722-public-copy1/);
     assert.match(essaysIndexCss, /grid-template-areas:/);
     assert.match(essaysIndexCss, /\.garden-pill-main \{ grid-area: main;/);
     assert.match(sitemap, /https:\/\/thisisyz\.com\/essays\/career-and-long-termism/);

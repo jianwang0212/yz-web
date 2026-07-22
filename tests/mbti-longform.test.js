@@ -37,10 +37,10 @@ test("MBTI analysis preserves Zi's original first-person observations", () => {
     }
 });
 
-test("MBTI page separates personal observation from unsupported external material", () => {
-    assert.match(html, /自我观察，不是心理诊断/);
-    assert.match(html, /网络人格段子、身体特征归因、名人类型猜测和一段 AI 问答/);
-    assert.match(html, /原始记录/);
+test("MBTI page stays personal and excludes unsupported external material", () => {
+    assert.match(html, /2021—2025 · 自我观察/);
+    assert.match(html, /测试历史/);
+    assert.doesNotMatch(html, /网络人格段子、身体特征归因、名人类型猜测和一段 AI 问答|原始记录|这页保留了什么|公开整理/);
 
     for (const forbidden of [
         "INTJ雄激素高",

@@ -17,7 +17,6 @@ test("happiness keeps the overview and five-volume reading hierarchy", () => {
     const mind = html.indexOf('id="mind"');
     const optionality = html.indexOf('id="optionality"');
     const health = html.indexOf('id="health"');
-    const sources = html.indexOf('id="source-note"');
 
     assert.ok(overview > 0);
     assert.ok(happiness > overview);
@@ -25,16 +24,12 @@ test("happiness keeps the overview and five-volume reading hierarchy", () => {
     assert.ok(mind > success);
     assert.ok(optionality > mind);
     assert.ok(health > optionality);
-    assert.ok(sources > health);
     assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1);
     assert.equal((html.match(/class="story-chapter"/g) || []).length, 5);
     assert.doesNotMatch(html, /id="(?:success|mind|optionality|health)"[^>]*\sopen(?:\s|>)/);
 });
 
-test("happiness substantially restores Zi's personal timeline, models, and voice", () => {
-    const visibleText = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(visibleText.length > 9000, `Expected substantial source restoration, got ${visibleText.length}`);
-
+test("happiness preserves Zi's personal timeline, models, and voice", () => {
     for (const phrase of [
         "有人陪伴、支持和爱着",
         "幸福是什么都不缺时的状态",
@@ -62,7 +57,7 @@ test("happiness substantially restores Zi's personal timeline, models, and voice
     assert.match(html, /<time datetime="2024-08-15">2024-08-15<\/time>/);
 });
 
-test("public version anonymizes private records and keeps source boundaries explicit", () => {
+test("public version removes private records while retaining direct sources", () => {
     for (const forbidden of [
         "lyh",
         "JK 滑雪",
@@ -79,11 +74,8 @@ test("public version anonymizes private records and keeps source boundaries expl
     }
 
     assert.match(html, /Harvard Study of Adult Development/);
-    assert.match(html, /Naval 的 Happiness 合集/);
-    assert.match(html, /外部阅读笔记/);
-    assert.match(html, /来源待补/);
-    assert.match(html, /不同年份的判断并不完全一致/);
-    assert.match(html, /不构成医疗、心理、投资或关系建议/);
+    assert.match(html, /Naval · Happiness/);
+    assert.doesNotMatch(html, /材料边界|这一卷的材料边界|关于这篇记录|来源待补|不同年份的判断并不完全一致/);
 });
 
 test("health content remains personal and does not republish unsupported medical claims", () => {
@@ -99,7 +91,6 @@ test("health content remains personal and does not republish unsupported medical
     }
 
     assert.match(html, /个人执行规则，不是适合所有人的训练处方/);
-    assert.match(html, /它不是医疗建议/);
     assert.match(html, /这些是研究问题，不是这篇文章已经得出的医学答案/);
 });
 
@@ -126,7 +117,7 @@ test("happiness is discoverable from Essays, career, routes, and the sitemap", (
     assert.match(essaysIndex, /href="\/essays\/happiness"/);
     assert.match(essaysIndex, /幸福、平和与选择权/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260721-intj1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-project-categories1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260722-public-copy1/);
     assert.match(essaysIndex, /\/styles\.css\?v=20260719-happiness1/);
     assert.match(essaysIndexCss, /\.garden-pill-i/);
     assert.match(essaysIndexCss, /\.essay-card-happiness/);

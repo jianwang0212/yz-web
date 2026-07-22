@@ -20,12 +20,12 @@ test("Vipassana longform keeps the approved reading hierarchy", () => {
     assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1);
 });
 
-test("Vipassana longform separates original experience from reference material", () => {
-    assert.match(html, /我的体验、我当时的推论、课程或书籍资料，以及第三方内容/);
+test("Vipassana longform keeps direct experience and concise safety notes", () => {
     assert.match(html, /我当时记下的课程开示要点/);
-    assert.match(html, /《生活的艺术》读书笔记/);
-    assert.match(html, /旧笔记没有记录来源/);
+    assert.match(html, /生活的艺术 - 总结/);
     assert.match(html, /不构成医疗建议/);
+    assert.match(html, /最新安排请以/);
+    assert.doesNotMatch(html, /材料边界|阅读说明|旧笔记没有记录来源|别人的日记|这个版本不再全文转载|已经删除/);
 });
 
 test("Vipassana longform removes credentials and stale private logistics", () => {

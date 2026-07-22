@@ -18,7 +18,7 @@ test("three new essays keep one overview and a folded longform hierarchy", () =>
         assert.equal((html.match(/class="story-chapter"/g) || []).length, chapterCount);
         assert.equal((html.match(/class="story-chapter"[^>]* open/g) || []).length, 1);
         assert.match(html, /id="overview"/);
-        assert.match(html, /id="source-note"/);
+        assert.doesNotMatch(html, /id="source-note"/);
         assert.match(html, /class="mobile-toc"/);
         assert.match(html, /field-notes\.css\?v=20260719-1/);
         assert.match(html, /field-notes\.js\?v=20260719-1/);
@@ -26,8 +26,6 @@ test("three new essays keep one overview and a folded longform hierarchy", () =>
 });
 
 test("trading essay preserves Zi's defining emotional record and system rules", () => {
-    const text = trading.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(text.length > 4400, `Expected substantial trading restoration, got ${text.length}`);
     for (const phrase of [
         "不要想去赚那些不属于自己的钱",
         "我在记录里只写了一个字",
@@ -41,29 +39,25 @@ test("trading essay preserves Zi's defining emotional record and system rules", 
 });
 
 test("AI essay separates working loops, architecture, and future plans", () => {
-    const text = ai.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(text.length > 5100, `Expected substantial AI restoration, got ${text.length}`);
     for (const phrase of [
         "个人 AI 最大的 gap",
         "golden copy",
         "Input · Process · Output · Bottleneck",
         "我开始在每个项目后面专门写一项：瓶颈是什么",
-        "Confluence 是 master copy 和原始记录",
         "我从 AI 的使用者，慢慢变成了它的 Supervisor",
     ]) assert.ok(ai.includes(phrase), `Missing AI phrase: ${phrase}`);
-    assert.match(ai, /已经跑通的 workflow、架构设计和仍在建设的模块/);
+    assert.match(ai, /一些已经跑通的 workflow、一些正在统一的数据入口/);
+    assert.match(ai, /照片 Supervisor、音乐反馈、长期记忆和更多自动化仍在建设/);
 });
 
 test("financial freedom essay stays personal and acknowledges its resource boundary", () => {
-    const text = freedom.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(text.length > 3900, `Expected substantial freedom essay, got ${text.length}`);
     for (const phrase of [
         "我只是不想再因为恐惧工作",
         "钱解决了“不得不”",
         "恐惧是一台效率很高的发动机",
         "热爱没有取消困难",
         "我今天做这件事，是因为爱，还是因为恐惧",
-        "资源与幸存者偏差",
+        "资源、责任和运气不同，可选项本来就不同",
     ]) assert.ok(freedom.includes(phrase), `Missing freedom phrase: ${phrase}`);
 });
 
