@@ -124,3 +124,15 @@ test("Essays is reorganized into four explicit paths and all articles remain dis
     assert.match(i18n, /Three Years of Personal AI/);
     assert.match(i18n, /After Financial Freedom/);
 });
+
+test("Essays presents life first and market fourth", () => {
+    const categoryMapStart = index.indexOf('class="category-map"');
+    const categoryMap = index.slice(categoryMapStart, index.indexOf("</nav>", categoryMapStart));
+    const categoryOrder = [...categoryMap.matchAll(/href="#([^"]+)"><span>(\d+)<\/span>/g)]
+        .map(([, id, number]) => `${number}:${id}`);
+    assert.deepEqual(categoryOrder, ["01:life", "02:systems", "03:music", "04:market"]);
+
+    const sectionOrder = [...index.matchAll(/<section class="essays-section category-section[^"]*" id="([^"]+)"[\s\S]*?<p class="essays-kicker">(\d+) \/ /g)]
+        .map(([, id, number]) => `${number}:${id}`);
+    assert.deepEqual(sectionOrder, ["01:life", "02:systems", "03:music", "04:market"]);
+});
