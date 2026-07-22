@@ -1,5 +1,14 @@
 # Project memory
 
+## 2026-07-22 — Site-wide reader-copy trim
+
+- Audited every HTML destination in `site-routes.mjs` plus shared bilingual copy. Removed reader-facing explanations of source-material boundaries, editing, anonymization, migration, deleted material, local archives, and public-version construction.
+- Long-form articles now begin directly with experience or argument. Borrowed passages retain compact attribution; Vipassana, happiness, and trading retain only claim-specific medical, course-currency, or investment cautions.
+- Removed unattributed third-party Vipassana passages instead of leaving explanatory placeholders. Historical course material still links readers to the current official course page.
+- `tests/public-copy-audit.test.js` now scans every public route destination for editorial-process language, protects required safety notes, and enforces one cache-busting `i18n.js` version after shared-copy changes.
+- GStack checked the affected long-form, project, and homepage routes at `1440×1000` and `390×844`; all retained the five-link navigation, valid in-page anchors, working disclosures, zero horizontal overflow, and no console errors on the representative Vipassana pass. Bilingual copy was also rechecked on Home, Projects, the music essays, and the sublet page.
+- Future public-copy edits should delete maintainer explanations rather than rename them. If provenance matters, use a direct source link or a short inline attribution; if a borrowed passage has no usable source, remove the passage.
+
 ## 2026-07-21 — Projects domain index and INTJ essay migration
 
 - Replaced the flat Projects card wall and the competing public/internal split with four reader-facing paths: systems and research, music tools, health, and Archive. Internal status remains a tag on Codex Monitor and SocialPulse instead of becoming a fifth category.

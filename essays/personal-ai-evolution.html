@@ -52,24 +52,24 @@
 
     <main class="field-note-main" id="article"><div class="reading-shell">
         <aside class="article-toc" aria-label="文章目录"><p class="toc-label">阅读路径</p><ol>
-            <li><a href="#overview">总述</a></li><li><a href="#year-2023">01 · 2023 想象</a></li><li><a href="#gap">02 · 真正的 Gap</a></li><li><a href="#year-2025">03 · 2025 闭环</a></li><li><a href="#year-2026">04 · 2026 组织</a></li><li><a href="#revisions">05 · 五个修正</a></li><li><a href="#next">06 · 接下来</a></li><li><a href="#source-note">版本与边界</a></li>
+            <li><a href="#overview">总述</a></li><li><a href="#year-2023">01 · 2023 想象</a></li><li><a href="#gap">02 · 真正的 Gap</a></li><li><a href="#year-2025">03 · 2025 闭环</a></li><li><a href="#year-2026">04 · 2026 组织</a></li><li><a href="#revisions">05 · 四个修正</a></li><li><a href="#next">06 · 接下来</a></li>
         </ol></aside>
 
         <div class="reading-column">
             <a class="back-link" href="/essays/">← 返回 Essays</a>
-            <details class="mobile-toc"><summary>阅读路径</summary><ol><li><a href="#overview">总述</a></li><li><a href="#year-2023">01 · 2023 想象</a></li><li><a href="#gap">02 · 真正的 Gap</a></li><li><a href="#year-2025">03 · 2025 闭环</a></li><li><a href="#year-2026">04 · 2026 组织</a></li><li><a href="#revisions">05 · 五个修正</a></li><li><a href="#next">06 · 接下来</a></li></ol></details>
+            <details class="mobile-toc"><summary>阅读路径</summary><ol><li><a href="#overview">总述</a></li><li><a href="#year-2023">01 · 2023 想象</a></li><li><a href="#gap">02 · 真正的 Gap</a></li><li><a href="#year-2025">03 · 2025 闭环</a></li><li><a href="#year-2026">04 · 2026 组织</a></li><li><a href="#revisions">05 · 四个修正</a></li><li><a href="#next">06 · 接下来</a></li></ol></details>
 
             <article class="post">
                 <header class="post-header book-spread">
                     <div class="book-page book-page--title"><p class="eyebrow">AI · Agent · Personal Systems</p><h1>从想象<br>到基础设施</h1><p class="title-note">我如何用三年构建个人 AI 系统</p></div>
-                    <div class="book-page book-page--dek"><p class="dek">2023 年，我想把所有数据喂给 GPT，让它成为最了解我的人。到了 2026 年，我发现真正有用的不是一个无所不知的模型，而是一套由数据、Agent、人工审核和输出组成的个人基础设施。</p><p class="post-meta">2023-08—2026-07 · 已实现、实验中和仍在构想的部分分开标注 · 约 13 分钟</p><div class="principle-row"><span>Golden Copy</span><span>Agent</span><span>Supervisor</span><span>Output</span></div></div>
+                    <div class="book-page book-page--dek"><p class="dek">2023 年，我想把所有数据喂给 GPT，让它成为最了解我的人。到了 2026 年，我发现真正有用的不是一个无所不知的模型，而是一套由数据、Agent、人工审核和输出组成的个人基础设施。</p><p class="post-meta">2023-08—2026-07 · 约 13 分钟</p><div class="principle-row"><span>Golden Copy</span><span>Agent</span><span>Supervisor</span><span>Output</span></div></div>
                 </header>
 
                 <section class="overview-card" id="overview">
                     <div class="overview-grid"><div><p class="section-kicker">Three-year arc</p><h2>我想做的，一直不只是聊天机器人</h2></div><div>
                         <p>三年前，我把问题理解成“怎样训练一个最像我的模型”；现在，我把它理解成“怎样建立一套长期可用、权限清楚、失败可见的个人基础设施”。</p>
                         <p>模型能力是其中一层。下面还有数据入口、可信版本、权限、自动化、审核和真正到达外部世界的 output。任何一层断掉，所谓个人 AI 都只是一次漂亮的 demo。</p>
-                        <p>这篇文章不是项目完成清单。我把已经跑通过的 workflow、正在统一的系统和仍在构想的方向分开写。回头看，真正改变我的往往不是最大胆的想法，而是那些小、无聊、却终于闭环的流程。</p>
+                        <p>回头看，真正改变我的往往不是最大胆的想法，而是那些小、无聊、却终于闭环的流程。</p>
                     </div></div>
                     <ol class="timeline"><li><time>2023</time><span><strong>数字替身</strong><br>如果 AI 拥有我的长期数据，它能不能成为最了解我的人？</span></li><li><time>2025</time><span><strong>工作流</strong><br>AI 离开对话框，开始接收输入、调用工具并完成真实动作。</span></li><li><time>2026</time><span><strong>个人组织</strong><br>多个职责有限的 Agent 协作，人从提问者变成 Supervisor。</span></li></ol>
                 </section>
@@ -141,13 +141,12 @@
                         <h2>统一的交互和输出</h2>
                         <p>我希望把 Codex 作为主要交互入口，让不同 Agent 在后台持续工作；GPT 更像 Reviewer，在关键节点挑战结果。我的目标是：少量时间花在聊天，大部分时间花在检查真正完成的 output。</p>
                         <p>这些 output 进入不同地方：需要继续生长的原始资料留在私人知识库；数据和工具进入自己的应用；监控结果进入 Dashboard；值得公开的作品和文章进入个人网站；真正需要我决定的事情回到我面前。</p>
-                        <blockquote class="pull-quote">Confluence 是 master copy 和原始记录，自己的网站是精华。</blockquote>
-                        <p>这不只是一条网站迁移规则，也逐渐成为我使用 AI 的规则。AI 可以处理大量原始材料，但最后被留下来的内容应该经过选择。</p>
+                        <p>AI 可以处理大量原始材料，但最后被留下来的内容应该经过选择。</p>
                     </div></div>
                 </details>
 
                 <details class="story-chapter" id="revisions">
-                    <summary><span class="chapter-number">05</span><span class="chapter-title">三年里，我真正改变的五个判断</span><span class="chapter-meta">数据 · 闭环 · 瓶颈 · 审核 · 作品</span></summary>
+                    <summary><span class="chapter-number">05</span><span class="chapter-title">三年里，我真正改变的四个判断</span><span class="chapter-meta">数据 · 闭环 · 瓶颈 · 审核</span></summary>
                     <div class="chapter-body"><div class="chapter-prose">
                         <p class="chapter-intro">最容易犯的错误，是把项目清单当成实际成果。</p>
                         <ol class="decision-list">
@@ -155,7 +154,6 @@
                             <li><strong>AI 的价值不在回答，而在闭环。</strong>如果最后仍需要我复制、粘贴、重新整理和手工执行，它只是把脑力劳动换成了阅读劳动。</li>
                             <li><strong>架构由瓶颈决定。</strong>很多项目不是败在模型不聪明，而是败在登录、权限、数据格式、成本和不稳定接口。解决不了瓶颈，demo 就不是系统。</li>
                             <li><strong>人不应该退出判断链。</strong>健康、财务、交易、人际关系和公开发布可以让 AI 整理证据、提出候选、检查遗漏，但最终决定和发送动作需要明确授权。</li>
-                            <li><strong>个人网站应该保存结果，不应该倾倒数据。</strong>私人原始记录允许混乱、重复和犯错；公开内容需要经过时间和选择，真的对阅读者有价值。</li>
                         </ol>
                         <div class="version-note"><strong>现在准确的完成度</strong><p>我拥有的还不是一个完整的个人 AI 操作系统。更准确地说，是一些已经跑通的 workflow、一些正在统一的数据入口，以及一套越来越清楚的架构判断。照片 Supervisor、音乐反馈、长期记忆和更多自动化仍在建设。</p></div>
                     </div></div>
@@ -177,12 +175,6 @@
                         <p>个人 AI 对我来说，不再是一个更聪明的聊天窗口。它是一套长期的数据结构，一组可以工作的 Agent，一条可检查的执行链，以及我对最后结果保留的判断权。这可能才是这三年真正发生的变化。</p>
                     </div></div>
                 </details>
-
-                <section class="source-note" id="source-note"><p class="section-kicker">关于这篇记录</p><h2>三年里的想法与现实</h2>
-                    <p>本文整理自 2023 年《ChatGPT 的长期计划》、2025—2026 年《AI 调研和思考》及 2026 年 5 月的 AI 项目清单。“三年”是 2023 年 8 月至 2026 年 7 月的叙事跨度。</p>
-                    <p>这篇文章不讨论联系人、内部系统或个人数据。涉及他人的数据只在获得授权的私人环境中处理；任何公开发布和对外发送都保留人工确认。</p>
-                    <p>文中明确区分了已经跑通的 workflow、架构设计和仍在建设的模块，不把项目愿望写成既成事实。</p>
-                </section>
 
                 <footer class="article-end"><h2>继续阅读</h2><div class="article-end-links"><a href="/essays/trading-emotions-and-risk">交易情绪与风险</a><a href="/essays/financial-freedom-and-work">财务自由以后</a><a href="/essays/career-and-long-termism">工作与长期主义</a></div></footer>
             </article>

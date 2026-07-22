@@ -27,7 +27,7 @@ const snowCopy = {
         '.notes-grid article:nth-child(2) p': '后期笔记提醒先把 vocal、drums、piano 的基本平衡做好，再处理 reverb、compression、panning 和 guitar focal points。',
         '.snow-videos .snow-kicker': '视频合集',
         '#videos-title': '原创-白雪公主的制作',
-        '.snow-videos .section-lede': 'B站合集目前有 3 个视频，更新到 2026-05-01。这个模块把每集内容按创作顺序整理出来，点击卡片可打开对应视频。',
+        '.snow-videos .section-lede': 'B站合集目前有 3 个视频，更新到 2026-05-01，按创作顺序排列。',
         '.season-feature-copy span': 'Bilibili · 3 个视频',
         '.season-feature-copy strong': '从一首原创歌的灵感，到 Demo、Leadsheet、编曲层次和动态。',
         '.season-feature-copy small': '写歌、Demo 搭建、Lead Sheet、编曲层次与动态。',

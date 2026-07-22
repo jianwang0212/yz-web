@@ -26,10 +26,7 @@ test("why-jazz keeps the approved overview and four-volume reading hierarchy", (
     assert.doesNotMatch(html, /id="(?:five-links|practice|roadmap)"[^>]*\sopen(?:\s|>)/);
 });
 
-test("why-jazz substantially restores Zi's original goals, voice, and learning system", () => {
-    const visibleText = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    assert.ok(visibleText.length > 4000, `Expected substantial source restoration, got ${visibleText.length}`);
-
+test("why-jazz preserves Zi's goals, voice, and learning system", () => {
     for (const phrase of [
         "爵士是一门语言",
         "治标不治本",
@@ -74,8 +71,8 @@ test("proofreading corrects confirmed errors without flattening Zi's mixed langu
         assert.ok(!html.includes(error), `Unexpected source error or private blob: ${error}`);
     }
 
-    assert.match(html, /写在个人笔记里的阶段性整理/);
-    assert.match(html, /而不是 Berklee 现在的官方课程定义/);
+    assert.match(html, /我的 Berklee 钢琴学习地图/);
+    assert.doesNotMatch(html, /写在个人笔记里的阶段性整理|Berklee 现在的官方课程定义|材料边界/);
     assert.doesNotMatch(html, /Confluence 临时 blob 链接/);
     assert.doesNotMatch(html, /版本与来源/);
     assert.doesNotMatch(html, /网页整理于/);
@@ -104,7 +101,7 @@ test("why-jazz is discoverable from Essays, adjacent notes, and the sitemap", ()
     assert.match(essaysIndex, /href="\/essays\/why-jazz"/);
     assert.match(essaysIndex, /为什么想学爵士乐/);
     assert.match(essaysIndex, /\/essays\/index\.css\?v=20260721-intj1/);
-    assert.match(essaysIndex, /\/i18n\.js\?v=20260721-project-categories1/);
+    assert.match(essaysIndex, /\/i18n\.js\?v=20260722-public-copy1/);
     assert.match(whyBerklee, /href="\/essays\/why-jazz"/);
     assert.match(sitemap, /https:\/\/thisisyz\.com\/essays\/why-jazz/);
 });
