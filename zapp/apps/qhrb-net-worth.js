@@ -1,4 +1,4 @@
-const DATA_URL = "qhrb-san-ci-can-sai-data.json?v=20260724";
+const DATA_URL = "qhrb-san-ci-can-sai-data.json?v=20260727";
 const UPDATE_LOG_URL = "qhrb-net-worth-update-log.json";
 
 const els = {
