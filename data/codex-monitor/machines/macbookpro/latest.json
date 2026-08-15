@@ -1,22 +1,99 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-08-10T14:42:44.018Z",
+  "syncedAt": "2026-08-15T02:11:30.724Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 13,
-    "todayTokens": 21812303,
-    "weekTokens": 232001586,
-    "totalTokens": 1505055862,
-    "estimatedCostUsd": 1821.3550805400002,
-    "cpu": 3.2538088853587626,
-    "memoryBytes": 1621196800
+    "activeAgents": 18,
+    "todayTokens": 26136043,
+    "weekTokens": 165566628,
+    "totalTokens": 1642284702,
+    "estimatedCostUsd": 2032.0849317399998,
+    "cpu": 8.844043689468782,
+    "memoryBytes": 3523170304
   },
   "agents": [
+    {
+      "agentId": "72ec52c31750d29a",
+      "processName": "Autoupdate",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0015019455704203708,
+      "memoryBytes": 14680064,
+      "confidence": "low"
+    },
+    {
+      "agentId": "9c40d251d3adcad5",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "zapp",
+      "cpu": 0.012654579752672396,
+      "memoryBytes": 57884672,
+      "confidence": "low"
+    },
+    {
+      "agentId": "5e4da4df0a1be369",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.16487455197132617,
+      "memoryBytes": 172646400,
+      "confidence": "low"
+    },
+    {
+      "agentId": "56b9d3a595815258",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.4883303411131059,
+      "memoryBytes": 278847488,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8f921e40875f39f0",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "ClaudeCodeWorkSpace",
+      "cpu": 0.16568047337278108,
+      "memoryBytes": 165675008,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4561b99485f17dd6",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "ClaudeCodeWorkSpace",
+      "cpu": 0.43873517786561267,
+      "memoryBytes": 276992000,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d0992ead62bb1860",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "trading-infra",
+      "cpu": 4.818181818181818,
+      "memoryBytes": 245563392,
+      "confidence": "low"
+    },
     {
       "agentId": "284ab93cb8967879",
       "processName": "browser_crashpad_handler",
@@ -24,95 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000033098444704083357,
-      "memoryBytes": 8355840,
-      "confidence": "low"
-    },
-    {
-      "agentId": "c7b97f1ba8940d72",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 7864320,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8dd74985bd95ba23",
-      "processName": "Codex (Service)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.02887186887676746,
-      "memoryBytes": 125059072,
-      "confidence": "low"
-    },
-    {
-      "agentId": "5221fd62ebab1e43",
-      "processName": "Codex (Service)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0636021818566965,
-      "memoryBytes": 93880320,
-      "confidence": "low"
-    },
-    {
-      "agentId": "efd81d3886de7dc5",
-      "processName": "Codex (Service)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.007983371286342212,
-      "memoryBytes": 75415552,
-      "confidence": "low"
-    },
-    {
-      "agentId": "77cc074248534a02",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.08434532497923058,
-      "memoryBytes": 209027072,
-      "confidence": "low"
-    },
-    {
-      "agentId": "9c3481ab9c0a9970",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.32210957643639926,
-      "memoryBytes": 320716800,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1ff7e1532bd5472c",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 1.0321884505522512,
-      "memoryBytes": 553172992,
+      "cpu": 0.000001448200755381514,
+      "memoryBytes": 7815168,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1232895192,
-      "inputTokens": 60354731,
-      "outputTokens": 4460461,
-      "costUSD": 1382.3527959999994
+      "totalTokens": 1367832028,
+      "inputTokens": 66554629,
+      "outputTokens": 4782295,
+      "costUSD": 1592.0769200000002
     },
     {
       "model": "gpt-5.5",
@@ -130,10 +130,10 @@
     },
     {
       "model": "gpt-5.6-terra",
-      "totalTokens": 5298052,
-      "inputTokens": 540060,
-      "outputTokens": 41960,
-      "costUSD": 2.5268463999999993
+      "totalTokens": 7590056,
+      "inputTokens": 735190,
+      "outputTokens": 58578,
+      "costUSD": 3.532573599999999
     }
   ],
   "health": {
@@ -141,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-08-10T14:42:50.614Z"
+  "receivedAt": "2026-08-15T02:11:41.706Z"
 }
