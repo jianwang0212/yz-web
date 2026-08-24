@@ -55,6 +55,13 @@ def update_text(path: Path, replacements: list[tuple[str, str]]) -> None:
     path.write_text(text)
 
 
+def next_cache_version(path: Path) -> int:
+    match = re.search(r'const CACHE_VERSION = "zapp-store-v(\d+)-', path.read_text())
+    if not match:
+        raise RuntimeError(f"Cannot determine cache version from {path}")
+    return int(match.group(1)) + 1
+
+
 def load_json(path: Path, fallback):
     if not path.exists():
         return fallback
@@ -214,9 +221,10 @@ def main() -> None:
         [(r'qhrb-net-worth\.css\?v=\d+', f"qhrb-net-worth.css?v={version}"),
          (r'qhrb-net-worth\.js\?v=\d+', f"qhrb-net-worth.js?v={version}")],
     )
+    cache_version = next_cache_version(SW_PATH)
     update_text(
         SW_PATH,
-        [(r'const CACHE_VERSION = "zapp-store-v[^"]+";', f'const CACHE_VERSION = "zapp-store-v37-{version}-qhrb-monitor";')],
+        [(r'const CACHE_VERSION = "zapp-store-v[^"]+";', f'const CACHE_VERSION = "zapp-store-v{cache_version}-{version}-qhrb-monitor";')],
     )
 
     print(
