@@ -1,4 +1,4 @@
-const ENCRYPTED_DATA_URL = "ly-fund-data.enc.json?v=20260817yuque1";
+const ENCRYPTED_DATA_URL = "ly-fund-data.enc.json?v=20260824yuque1";
 const STORE_SESSION_PASSWORD_KEY = "zappStore.sessionUnlockPassword.v1";
 const SESSION_PAYLOAD_CACHE_KEY = "lyFund.decryptedPayload.v1";
 

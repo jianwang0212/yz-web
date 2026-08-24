@@ -46,7 +46,7 @@ const FINANCE_PREWARM_PACKAGES = [
   },
   {
     label: "LY Fund",
-    url: "apps/ly-fund-data.enc.json?v=20260817yuque1",
+    url: "apps/ly-fund-data.enc.json?v=20260824yuque1",
     cacheKey: "lyFund.decryptedPayload.v1",
   },
 ];
