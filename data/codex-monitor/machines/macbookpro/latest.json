@@ -1,22 +1,44 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-09-07T03:44:28.744Z",
+  "syncedAt": "2026-09-07T07:32:17.113Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 11,
-    "todayTokens": 14987778,
-    "weekTokens": 54793861,
-    "totalTokens": 1794669612,
-    "estimatedCostUsd": 1874.5533803400003,
-    "cpu": 1.8261530087003741,
-    "memoryBytes": 1837105152
+    "activeAgents": 13,
+    "todayTokens": 15132407,
+    "weekTokens": 54938490,
+    "totalTokens": 1794814241,
+    "estimatedCostUsd": 2288.319338939999,
+    "cpu": 1.8219087785897319,
+    "memoryBytes": 2057207808
   },
   "agents": [
+    {
+      "agentId": "0ce97e8b716e50fa",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a07ac7-34b9-7a30-baae-089c22b9e551",
+      "sessionTitle": "Automation: 半导体设备击球区监控\nAutomation ID: automation\nAutomation memory: $CODEX_HOME/automations/automation/memory.md\nLast run: 2026-09-04T07:31:00.096Z (1788507060096)\n\n这是一个A股半导体设备择时监控任务。每个A股交易日北京时间15:30以后执行；如果当天休市、数据尚未形成正式收盘价或无法用至少两个可靠行情来源交叉核实，则不要发邮件，只记录失败原因并结束。\n\n监控标的与估值/击球区：\n1. 北方华创 002371.SZ：研究区600–650元；初始仓450–520元；核心区330–380元。\n2. 中微公司 688012.SH：研究区220–250元；初始仓165–190元；核心区130–150元。\n3. 华海清科 688120.SH：研究区185–190元；初始仓145–155元；核心区120–130元。\n\n触发规则：\n- 以正式收盘价判断，不使用盘中瞬时价格。\n- 首次收盘价达到或跌破研究区上沿时发送“研究区提醒”；首次达到或跌破初始仓上沿时发送“初始仓提醒”；首次达到或跌破核心区上沿时发送“核心击球区提醒”。如果单日跳过多个档位，只发送最高优先级的一封。\n- 使用 /Users/Zi/Code/CodexWorkspace/projects/zapp/.codex/semiconductor-equipment-monitor-state.json 保存每只股票最近已发送的最低档位、上次收盘价、日期与来源，避免在同一档位每日重复发信。若股价重新升到已触发档位上沿以上至少5%，再度回落进入该档位时允许重新提醒一次。\n- 未触发新档位时不要发邮件。\n\n触发后通过已连接的Gmail发送到 yinzi.aiesecjinan@gmail.com。主题格式：『半导体设备击球区｜公司名｜档位｜收盘价』。正文必须包含：股票代码、北京时间日期、正式收盘价、进入的档位及上下沿、距下一档上沿的百分比、当日涨跌幅、最近一期已披露估值/经营风险的简短提示、两个行情来源链接，并明确写“这是价格纪律提醒，不代表基本面验证通过，也不是自动买入指令”。\n\n如果价格触发但Gmail发送失败，任务应当报错，不要把状态文件标记为已发送，以便下次重试。",
+      "workspaceLabel": "zapp",
+      "cpu": 0.08055687767729652,
+      "memoryBytes": 320897024,
+      "confidence": "high"
+    },
+    {
+      "agentId": "266ac84717e90ace",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a07ac7-936c-7b63-a95e-a788220acbe4",
+      "sessionTitle": "Automation: 半导体设备击球区监控\nAutomation ID: automation\nAutomation memory: $CODEX_HOME/automations/automation/memory.md\nLast run: 2026-09-04T07:31:00.096Z (1788507060096)\n\n这是一个A股半导体设备择时监控任务。每个A股交易日北京时间15:30以后执行；如果当天休市、数据尚未形成正式收盘价或无法用至少两个可靠行情来源交叉核实，则不要发邮件，只记录失败原因并结束。\n\n监控标的与估值/击球区：\n1. 北方华创 002371.SZ：研究区600–650元；初始仓450–520元；核心区330–380元。\n2. 中微公司 688012.SH：研究区220–250元；初始仓165–190元；核心区130–150元。\n3. 华海清科 688120.SH：研究区185–190元；初始仓145–155元；核心区120–130元。\n\n触发规则：\n- 以正式收盘价判断，不使用盘中瞬时价格。\n- 首次收盘价达到或跌破研究区上沿时发送“研究区提醒”；首次达到或跌破初始仓上沿时发送“初始仓提醒”；首次达到或跌破核心区上沿时发送“核心击球区提醒”。如果单日跳过多个档位，只发送最高优先级的一封。\n- 使用 /Users/Zi/Code/CodexWorkspace/projects/zapp/.codex/semiconductor-equipment-monitor-state.json 保存每只股票最近已发送的最低档位、上次收盘价、日期与来源，避免在同一档位每日重复发信。若股价重新升到已触发档位上沿以上至少5%，再度回落进入该档位时允许重新提醒一次。\n- 未触发新档位时不要发邮件。\n\n触发后通过已连接的Gmail发送到 yinzi.aiesecjinan@gmail.com。主题格式：『半导体设备击球区｜公司名｜档位｜收盘价』。正文必须包含：股票代码、北京时间日期、正式收盘价、进入的档位及上下沿、距下一档上沿的百分比、当日涨跌幅、最近一期已披露估值/经营风险的简短提示、两个行情来源链接，并明确写“这是价格纪律提醒，不代表基本面验证通过，也不是自动买入指令”。\n\n如果价格触发但Gmail发送失败，任务应当报错，不要把状态文件标记为已发送，以便下次重试。",
+      "workspaceLabel": "zapp",
+      "cpu": 0.08055687767729652,
+      "memoryBytes": 320897024,
+      "confidence": "high"
+    },
     {
       "agentId": "577808858138ee31",
       "processName": "browser_crashpad_handler",
@@ -24,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000023476548102273235,
-      "memoryBytes": 7487488,
+      "cpu": 0.00000231049867492901,
+      "memoryBytes": 7831552,
       "confidence": "low"
     },
     {
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000011738274051136617,
+      "cpu": 0.000001155249337464505,
       "memoryBytes": 7143424,
       "confidence": "low"
     },
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.023934368885085683,
-      "memoryBytes": 105922560,
+      "cpu": 0.023833976615415895,
+      "memoryBytes": 92667904,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.21293254123367056,
-      "memoryBytes": 80478208,
+      "cpu": 0.21277406878131452,
+      "memoryBytes": 80773120,
       "confidence": "low"
     },
     {
@@ -68,19 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00859594817780689,
-      "memoryBytes": 44269568,
-      "confidence": "low"
-    },
-    {
-      "agentId": "5a2cb6bf9119b817",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.08045784071594249,
-      "memoryBytes": 143212544,
+      "cpu": 0.008586978245474594,
+      "memoryBytes": 44843008,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3854423931110255,
-      "memoryBytes": 342310912,
-      "confidence": "low"
-    },
-    {
-      "agentId": "20774619f6634adb",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8506383288414765,
-      "memoryBytes": 718749696,
+      "cpu": 0.3840092327740373,
+      "memoryBytes": 355368960,
       "confidence": "low"
     }
   ],
@@ -112,28 +112,28 @@
       "totalTokens": 1512110146,
       "inputTokens": 75045700,
       "outputTokens": 5320190,
-      "costUSD": 1448.7062644000005
+      "costUSD": 1844.510482000001
     },
     {
       "model": "gpt-5.5",
       "totalTokens": 181358549,
       "inputTokens": 18572047,
       "outputTokens": 1215174,
-      "costUSD": 364.13851410000046
+      "costUSD": 369.4329205000004
     },
     {
       "model": "gpt-5.6-luna",
       "totalTokens": 85504069,
       "inputTokens": 4517790,
       "outputTokens": 274599,
-      "costUSD": 54.480299040000006
+      "costUSD": 67.04251764000006
     },
     {
       "model": "gpt-5.6-terra",
-      "totalTokens": 15696848,
-      "inputTokens": 1460019,
-      "outputTokens": 123805,
-      "costUSD": 7.2283028
+      "totalTokens": 15841477,
+      "inputTokens": 1497699,
+      "outputTokens": 124514,
+      "costUSD": 7.3334188000000005
     }
   ],
   "health": {
@@ -141,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-09-07T03:44:39.616Z"
+  "receivedAt": "2026-09-07T07:32:28.662Z"
 }
