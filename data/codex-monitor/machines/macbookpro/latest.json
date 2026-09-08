@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-09-07T17:21:27.166Z",
+  "syncedAt": "2026-09-08T00:20:17.317Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -12,11 +12,33 @@
     "todayTokens": 15786815,
     "weekTokens": 55592898,
     "totalTokens": 1795468649,
-    "estimatedCostUsd": 2288.5692413399993,
-    "cpu": 3.5980822884029093,
-    "memoryBytes": 2458218496
+    "estimatedCostUsd": 1874.9083987400002,
+    "cpu": 3.133784766484508,
+    "memoryBytes": 2283921408
   },
   "agents": [
+    {
+      "agentId": "7532718ab4e8d90d",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.3161764705882353,
+      "memoryBytes": 171122688,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f21c6bae75095c9f",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.9926470588235293,
+      "memoryBytes": 289390592,
+      "confidence": "low"
+    },
     {
       "agentId": "577808858138ee31",
       "processName": "browser_crashpad_handler",
@@ -24,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000022200170053302608,
-      "memoryBytes": 7831552,
+      "cpu": 0.000002159621979768661,
+      "memoryBytes": 7487488,
       "confidence": "low"
     },
     {
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000011100085026651304,
+      "cpu": 0.0000010798109898843305,
       "memoryBytes": 7143424,
       "confidence": "low"
     },
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.023583266825250058,
-      "memoryBytes": 82853888,
+      "cpu": 0.02338549185983606,
+      "memoryBytes": 89407488,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.21226161153433315,
-      "memoryBytes": 77692928,
+      "cpu": 0.21197792432028523,
+      "memoryBytes": 76267520,
       "confidence": "low"
     },
     {
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008579265240156156,
-      "memoryBytes": 50167808,
+      "cpu": 0.00854779302592521,
+      "memoryBytes": 49577984,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08008396122953695,
-      "memoryBytes": 306839552,
-      "confidence": "low"
-    },
-    {
-      "agentId": "b14428d25921f72f",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.37970478148324105,
-      "memoryBytes": 372326400,
-      "confidence": "low"
-    },
-    {
-      "agentId": "20774619f6634adb",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8475100233990313,
-      "memoryBytes": 707837952,
+      "cpu": 0.07953149059590578,
+      "memoryBytes": 145014784,
       "confidence": "low"
     }
   ],
@@ -112,21 +112,21 @@
       "totalTokens": 1512110146,
       "inputTokens": 75045700,
       "outputTokens": 5320190,
-      "costUSD": 1844.510482000001
+      "costUSD": 1448.7062644000005
     },
     {
       "model": "gpt-5.5",
       "totalTokens": 181358549,
       "inputTokens": 18572047,
       "outputTokens": 1215174,
-      "costUSD": 369.4329205000004
+      "costUSD": 364.13851410000046
     },
     {
       "model": "gpt-5.6-luna",
       "totalTokens": 85504069,
       "inputTokens": 4517790,
       "outputTokens": 274599,
-      "costUSD": 67.04251764000006
+      "costUSD": 54.480299040000006
     },
     {
       "model": "gpt-5.6-terra",
@@ -141,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-09-07T17:21:30.782Z"
+  "receivedAt": "2026-09-08T00:20:19.967Z"
 }
