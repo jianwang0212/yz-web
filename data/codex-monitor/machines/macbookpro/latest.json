@@ -1,22 +1,55 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-09-11T22:54:48.659Z",
+  "syncedAt": "2026-09-12T06:12:03.307Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 13,
-    "todayTokens": 14715704,
-    "weekTokens": 57993479,
-    "totalTokens": 1830821463,
-    "estimatedCostUsd": 2340.864881339999,
-    "cpu": 2.049300217755534,
-    "memoryBytes": 2264285184
+    "activeAgents": 16,
+    "todayTokens": 13189192,
+    "weekTokens": 68311231,
+    "totalTokens": 1844010655,
+    "estimatedCostUsd": 1932.8329339400002,
+    "cpu": 3.1678140963030446,
+    "memoryBytes": 2278678528
   },
   "agents": [
+    {
+      "agentId": "fb91cfd9dfe2fb26",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5295031055900621,
+      "memoryBytes": 315351040,
+      "confidence": "low"
+    },
+    {
+      "agentId": "b6222d0358fb72df",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.043478260869565216,
+      "memoryBytes": 4177920,
+      "confidence": "low"
+    },
+    {
+      "agentId": "1b06b5e688b47f63",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5,
+      "memoryBytes": 4161536,
+      "confidence": "low"
+    },
     {
       "agentId": "b841a167e7e15305",
       "processName": "browser_crashpad_handler",
@@ -24,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00000745523133582835,
+      "cpu": 0.000006233092735953726,
       "memoryBytes": 8011776,
       "confidence": "low"
     },
@@ -46,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.029485659755615692,
-      "memoryBytes": 115195904,
+      "cpu": 0.030386516489749615,
+      "memoryBytes": 119226368,
       "confidence": "low"
     },
     {
@@ -57,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.17787569054595068,
-      "memoryBytes": 335609856,
+      "cpu": 0.18164592072703248,
+      "memoryBytes": 111149056,
       "confidence": "low"
     },
     {
@@ -68,51 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007209262448465329,
-      "memoryBytes": 86949888,
-      "confidence": "low"
-    },
-    {
-      "agentId": "229e062316f1383d",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.34504070617004146,
-      "memoryBytes": 144375808,
-      "confidence": "low"
-    },
-    {
-      "agentId": "b763f928a64ac958",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.32494110279426236,
-      "memoryBytes": 460177408,
-      "confidence": "low"
-    },
-    {
-      "agentId": "44ab46ffaabfdb0a",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.9445322518116482,
-      "memoryBytes": 582320128,
+      "cpu": 0.007392494062942162,
+      "memoryBytes": 70451200,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1545005288,
-      "inputTokens": 76546006,
-      "outputTokens": 5394322,
-      "costUSD": 1895.2821660000009
+      "totalTokens": 1558194480,
+      "inputTokens": 77157473,
+      "outputTokens": 5430607,
+      "costUSD": 1916.1153760000007
     },
     {
       "model": "gpt-5.5",
@@ -141,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-09-11T22:54:51.220Z"
+  "receivedAt": "2026-09-12T06:12:10.795Z"
 }
