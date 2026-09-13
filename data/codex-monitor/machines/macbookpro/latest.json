@@ -1,22 +1,44 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-09-13T14:49:57.065Z",
+  "syncedAt": "2026-09-13T16:37:29.749Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 14,
+    "activeAgents": 15,
     "todayTokens": 1054427,
     "weekTokens": 65383248,
     "totalTokens": 1845065082,
-    "estimatedCostUsd": 2364.143119339999,
-    "cpu": 2.5532737529556653,
-    "memoryBytes": 2176450560
+    "estimatedCostUsd": 1934.7446443400001,
+    "cpu": 2.5307189831510217,
+    "memoryBytes": 2284453888
   },
   "agents": [
+    {
+      "agentId": "15edec0031ee245b",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.034482758620689655,
+      "memoryBytes": 4227072,
+      "confidence": "low"
+    },
+    {
+      "agentId": "78b36e9ebc4c9839",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4161536,
+      "confidence": "low"
+    },
     {
       "agentId": "b841a167e7e15305",
       "processName": "browser_crashpad_handler",
@@ -24,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000035986238862259073,
+      "cpu": 0.0000035167432144439676,
       "memoryBytes": 8011776,
       "confidence": "low"
     },
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.031088623629369195,
-      "memoryBytes": 118374400,
+      "cpu": 0.03129912467953565,
+      "memoryBytes": 119291904,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1940564914010573,
-      "memoryBytes": 125239296,
+      "cpu": 0.19475089061835113,
+      "memoryBytes": 158203904,
       "confidence": "low"
     },
     {
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008312851092006348,
-      "memoryBytes": 69582848,
+      "cpu": 0.00838394530741719,
+      "memoryBytes": 78921728,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3892299609186633,
-      "memoryBytes": 139657216,
-      "confidence": "low"
-    },
-    {
-      "agentId": "b763f928a64ac958",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.4041679561828402,
-      "memoryBytes": 538755072,
-      "confidence": "low"
-    },
-    {
-      "agentId": "44ab46ffaabfdb0a",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 1.2088944228125609,
-      "memoryBytes": 654278656,
+      "cpu": 0.3911138307449921,
+      "memoryBytes": 143605760,
       "confidence": "low"
     }
   ],
@@ -112,21 +112,21 @@
       "totalTokens": 1559248907,
       "inputTokens": 77275673,
       "outputTokens": 5436146,
-      "costUSD": 1918.5604040000007
+      "costUSD": 1507.018554000001
     },
     {
       "model": "gpt-5.5",
       "totalTokens": 181358549,
       "inputTokens": 18572047,
       "outputTokens": 1215174,
-      "costUSD": 369.4329205000004
+      "costUSD": 364.13851410000046
     },
     {
       "model": "gpt-5.6-luna",
       "totalTokens": 85504069,
       "inputTokens": 4517790,
       "outputTokens": 274599,
-      "costUSD": 67.04251764000006
+      "costUSD": 54.480299040000006
     },
     {
       "model": "gpt-5.6-terra",
@@ -141,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-09-13T14:50:03.945Z"
+  "receivedAt": "2026-09-13T16:37:40.966Z"
 }
