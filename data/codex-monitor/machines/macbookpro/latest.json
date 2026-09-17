@@ -1,52 +1,30 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-09-17T00:10:20.572Z",
+  "syncedAt": "2026-09-17T03:41:45.985Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 16,
-    "todayTokens": 6569073,
-    "weekTokens": 64260088,
-    "totalTokens": 1879662832,
-    "estimatedCostUsd": 1558.6004936799993,
-    "cpu": 3.3698695234319405,
-    "memoryBytes": 3004248064
+    "activeAgents": 14,
+    "todayTokens": 562795,
+    "weekTokens": 64119868,
+    "totalTokens": 1880225627,
+    "estimatedCostUsd": 1559.0626048799993,
+    "cpu": 2.6344579329096476,
+    "memoryBytes": 2316894208
   },
   "agents": [
     {
-      "agentId": "6820eb680f9eaea2",
-      "processName": "node",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.16234887737478412,
-      "memoryBytes": 159977472,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f3ba1a9eecf6bc44",
-      "processName": "node",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.555363321799308,
-      "memoryBytes": 243916800,
-      "confidence": "low"
-    },
-    {
-      "agentId": "a123c09f1a8e2ce2",
+      "agentId": "b2918e1a0d37a8da",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.03571428571428571,
+      "cpu": 0.027777777777777776,
       "memoryBytes": 4227072,
       "confidence": "low"
     },
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017520928749391147,
-      "memoryBytes": 7847936,
+      "cpu": 0.0000017140692518259124,
+      "memoryBytes": 7208960,
       "confidence": "low"
     },
     {
@@ -69,7 +47,7 @@
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
-      "memoryBytes": 7749632,
+      "memoryBytes": 7208960,
       "confidence": "low"
     },
     {
@@ -79,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.09676825902986448,
-      "memoryBytes": 109461504,
+      "cpu": 0.0952527056629517,
+      "memoryBytes": 84361216,
       "confidence": "low"
     },
     {
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.19572313379880685,
-      "memoryBytes": 140427264,
+      "cpu": 0.19517797211547364,
+      "memoryBytes": 107216896,
       "confidence": "low"
     },
     {
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008313695257952326,
-      "memoryBytes": 68206592,
+      "cpu": 0.00828582496580426,
+      "memoryBytes": 51937280,
+      "confidence": "low"
+    },
+    {
+      "agentId": "229e062316f1383d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.40903317592410077,
+      "memoryBytes": 141524992,
+      "confidence": "low"
+    },
+    {
+      "agentId": "b763f928a64ac958",
+      "processName": "Codex (Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.4366486403099048,
+      "memoryBytes": 621821952,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1590876390,
-      "inputTokens": 79098215,
-      "outputTokens": 5508479,
-      "costUSD": 1289.0906028000018
+      "totalTokens": 1591439185,
+      "inputTokens": 79154094,
+      "outputTokens": 5510307,
+      "costUSD": 1289.5527140000017
     },
     {
       "model": "gpt-5.5",
@@ -141,5 +141,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-09-17T00:10:23.048Z"
+  "receivedAt": "2026-09-17T03:41:57.883Z"
 }
