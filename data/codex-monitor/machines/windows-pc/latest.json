@@ -1,22 +1,45 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-10-14T00:35:19.616Z",
+  "syncedAt": "2026-10-14T00:55:30.153Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 0,
-    "todayTokens": 515036,
-    "weekTokens": 79513753,
-    "totalTokens": 1122664151,
+    "activeAgents": 2,
+    "todayTokens": 507165,
+    "weekTokens": 64926411,
+    "totalTokens": 1123171316,
     "estimatedCostUsd": 445.8283156,
-    "cpu": 0,
-    "memoryBytes": 0
+    "cpu": 1.05,
+    "memoryBytes": 359616512
   },
-  "agents": [],
+  "agents": [
+    {
+      "agentId": "cc1fc8f45bd6a65f",
+      "processName": "codex.exe",
+      "status": "running",
+      "sessionId": "01a137e4-401d-7e62-9e81-8542aac2e621",
+      "sessionTitle": "我现在用的clash verge， 但是当我想用moomoo的充币 虚拟货币功能， 他提示我需要由于您来自服务受限区域，应监管要求，我们目前无法为您提供加密货币充提服务。 我如何更改我的地点来充币？ 你可以用我的程序",
+      "workspaceLabel": "CodeXProject",
+      "cpu": 0.7833333333333333,
+      "memoryBytes": 281903104,
+      "confidence": "medium"
+    },
+    {
+      "agentId": "b67b8141d35e0220",
+      "processName": "codex.exe",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.26666666666666666,
+      "memoryBytes": 67903488,
+      "confidence": "low"
+    }
+  ],
   "models": [
     {
       "model": "gpt-5.4",
@@ -31,6 +54,20 @@
       "inputTokens": 169832410,
       "outputTokens": 737169,
       "costUSD": 40.2843141
+    },
+    {
+      "model": "gpt-6-luna",
+      "totalTokens": 373301,
+      "inputTokens": 371891,
+      "outputTokens": 1410,
+      "costUSD": 0
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "totalTokens": 133864,
+      "inputTokens": 132610,
+      "outputTokens": 1254,
+      "costUSD": 0
     }
   ],
   "health": {
@@ -38,5 +75,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-10-14T00:35:19.616Z"
+  "receivedAt": "2026-10-14T00:55:30.154Z"
 }
