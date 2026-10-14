@@ -1,15 +1,5 @@
 [
   {
-    "timestamp": "2026-05-22T15:05:15.509Z",
-    "cpu": 39.08,
-    "memoryBytes": 894611456,
-    "totalTokens": 1122149115,
-    "todayTokens": 4317895,
-    "activeAgents": 0,
-    "estimatedCostUsd": 559.4493600999999,
-    "agents": []
-  },
-  {
     "timestamp": "2026-05-22T15:10:20.987Z",
     "cpu": 39.98,
     "memoryBytes": 1013395456,
@@ -5859,6 +5849,50 @@
         "workspaceLabel": null,
         "cpu": 0,
         "memoryBytes": 110735360,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-10-14T01:25:26.757Z",
+    "cpu": 0.2285714285714286,
+    "memoryBytes": 504569856,
+    "totalTokens": 1127610310,
+    "todayTokens": 4946159,
+    "activeAgents": 3,
+    "estimatedCostUsd": 561.61898496,
+    "agents": [
+      {
+        "agentId": "cc1fc8f45bd6a65f",
+        "processName": "codex.exe",
+        "status": "running",
+        "sessionId": "01a13801-b28c-7c33-9dd4-2571a15c7241",
+        "sessionTitle": "给我一个powershell的command， 我可以查询 现在的ip和location的",
+        "workspaceLabel": "CodeXProject",
+        "cpu": 0,
+        "memoryBytes": 314261504,
+        "confidence": "medium"
+      },
+      {
+        "agentId": "b67b8141d35e0220",
+        "processName": "codex.exe",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.2285714285714286,
+        "memoryBytes": 69242880,
+        "confidence": "low"
+      },
+      {
+        "agentId": "fd114d2b078d2857",
+        "processName": "codex.exe",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0,
+        "memoryBytes": 111239168,
         "confidence": "low"
       }
     ]

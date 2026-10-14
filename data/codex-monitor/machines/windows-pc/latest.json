@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-10-14T01:20:20.581Z",
+  "syncedAt": "2026-10-14T01:25:26.757Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
@@ -9,24 +9,24 @@
   },
   "summary": {
     "activeAgents": 3,
-    "todayTokens": 4709561,
-    "weekTokens": 69128807,
-    "totalTokens": 1127373712,
-    "estimatedCostUsd": 445.8283156,
+    "todayTokens": 4946159,
+    "weekTokens": 69365405,
+    "totalTokens": 1127610310,
+    "estimatedCostUsd": 561.61898496,
     "cpu": 0.2285714285714286,
-    "memoryBytes": 474808320
+    "memoryBytes": 504569856
   },
   "agents": [
     {
-      "agentId": "e6bc26397dc2dfc4",
+      "agentId": "cc1fc8f45bd6a65f",
       "processName": "codex.exe",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2285714285714286,
-      "memoryBytes": 287117312,
-      "confidence": "low"
+      "status": "running",
+      "sessionId": "01a13801-b28c-7c33-9dd4-2571a15c7241",
+      "sessionTitle": "给我一个powershell的command， 我可以查询 现在的ip和location的",
+      "workspaceLabel": "CodeXProject",
+      "cpu": 0,
+      "memoryBytes": 314261504,
+      "confidence": "medium"
     },
     {
       "agentId": "b67b8141d35e0220",
@@ -35,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0,
-      "memoryBytes": 67133440,
+      "cpu": 0.2285714285714286,
+      "memoryBytes": 69242880,
       "confidence": "low"
     },
     {
@@ -47,7 +47,7 @@
       "sessionTitle": null,
       "workspaceLabel": null,
       "cpu": 0,
-      "memoryBytes": 110735360,
+      "memoryBytes": 111239168,
       "confidence": "low"
     }
   ],
@@ -57,28 +57,28 @@
       "totalTokens": 952094572,
       "inputTokens": 947233751,
       "outputTokens": 4860821,
-      "costUSD": 405.5440015
+      "costUSD": 406.95406749999995
     },
     {
       "model": "gpt-5.5",
       "totalTokens": 170569579,
       "inputTokens": 169832410,
       "outputTokens": 737169,
-      "costUSD": 40.2843141
+      "costUSD": 153.6547306
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 4336260,
-      "inputTokens": 4318251,
-      "outputTokens": 18009,
-      "costUSD": 0
+      "totalTokens": 4572858,
+      "inputTokens": 4554063,
+      "outputTokens": 18795,
+      "costUSD": 0.950668
     },
     {
       "model": "gpt-6-luna",
       "totalTokens": 373301,
       "inputTokens": 371891,
       "outputTokens": 1410,
-      "costUSD": 0
+      "costUSD": 0.05951886
     }
   ],
   "health": {
@@ -86,5 +86,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-10-14T01:20:20.581Z"
+  "receivedAt": "2026-10-14T01:25:26.757Z"
 }
