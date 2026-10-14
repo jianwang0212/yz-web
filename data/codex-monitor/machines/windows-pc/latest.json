@@ -1,32 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-10-14T01:00:37.164Z",
+  "syncedAt": "2026-10-14T01:20:20.581Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
     "label": "本地 Windows PC"
   },
   "summary": {
-    "activeAgents": 2,
-    "todayTokens": 1946817,
-    "weekTokens": 66366063,
-    "totalTokens": 1124610968,
+    "activeAgents": 3,
+    "todayTokens": 4709561,
+    "weekTokens": 69128807,
+    "totalTokens": 1127373712,
     "estimatedCostUsd": 445.8283156,
-    "cpu": 1.7857142857142856,
-    "memoryBytes": 375721984
+    "cpu": 0.2285714285714286,
+    "memoryBytes": 474808320
   },
   "agents": [
     {
-      "agentId": "0d3c89fdfd37fa53",
+      "agentId": "e6bc26397dc2dfc4",
       "processName": "codex.exe",
-      "status": "running",
-      "sessionId": "01a137e4-401d-7e62-9e81-8542aac2e621",
-      "sessionTitle": "我现在用的clash verge， 但是当我想用moomoo的充币 虚拟货币功能， 他提示我需要由于您来自服务受限区域，应监管要求，我们目前无法为您提供加密货币充提服务。 我如何更改我的地点来充币？ 你可以用我的程序",
-      "workspaceLabel": "CodeXProject",
-      "cpu": 1.7857142857142856,
-      "memoryBytes": 297963520,
-      "confidence": "high"
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2285714285714286,
+      "memoryBytes": 287117312,
+      "confidence": "low"
     },
     {
       "agentId": "b67b8141d35e0220",
@@ -36,7 +36,18 @@
       "sessionTitle": null,
       "workspaceLabel": null,
       "cpu": 0,
-      "memoryBytes": 67887104,
+      "memoryBytes": 67133440,
+      "confidence": "low"
+    },
+    {
+      "agentId": "fd114d2b078d2857",
+      "processName": "codex.exe",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0,
+      "memoryBytes": 110735360,
       "confidence": "low"
     }
   ],
@@ -57,9 +68,9 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1573516,
-      "inputTokens": 1565379,
-      "outputTokens": 8137,
+      "totalTokens": 4336260,
+      "inputTokens": 4318251,
+      "outputTokens": 18009,
       "costUSD": 0
     },
     {
@@ -75,5 +86,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-10-14T01:00:37.165Z"
+  "receivedAt": "2026-10-14T01:20:20.581Z"
 }
