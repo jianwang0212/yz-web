@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-10-27T14:05:19.393Z",
+  "syncedAt": "2026-10-27T23:10:20.646Z",
   "machine": {
     "id": "windows-pc",
     "name": "Windows PC",
@@ -9,60 +9,67 @@
   },
   "summary": {
     "activeAgents": 1,
-    "todayTokens": 4946159,
-    "weekTokens": 69365405,
-    "totalTokens": 1127610310,
-    "estimatedCostUsd": 561.61898496,
-    "cpu": 0,
-    "memoryBytes": 94789632
+    "todayTokens": 0,
+    "weekTokens": 0,
+    "totalTokens": 1049848175,
+    "estimatedCostUsd": 0,
+    "cpu": 0.2142857142857143,
+    "memoryBytes": 122916864
   },
   "agents": [
     {
-      "agentId": "d19ace9e2bfb8af3",
+      "agentId": "cce5c446e12ce7f3",
       "processName": "codex.exe",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0,
-      "memoryBytes": 85553152,
+      "cpu": 0.2142857142857143,
+      "memoryBytes": 113225728,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.4",
-      "totalTokens": 952094572,
-      "inputTokens": 947233751,
-      "outputTokens": 4860821,
-      "costUSD": 406.95406749999995
+      "totalTokens": 880837708,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUSD": 0
     },
     {
       "model": "gpt-5.5",
-      "totalTokens": 170569579,
-      "inputTokens": 169832410,
-      "outputTokens": 737169,
-      "costUSD": 153.6547306
+      "totalTokens": 164115459,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUSD": 0
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 4572858,
-      "inputTokens": 4554063,
-      "outputTokens": 18795,
-      "costUSD": 0.950668
+      "totalTokens": 4521707,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUSD": 0
     },
     {
       "model": "gpt-6-luna",
-      "totalTokens": 373301,
-      "inputTokens": 371891,
-      "outputTokens": 1410,
-      "costUSD": 0.05951886
+      "totalTokens": 229386,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUSD": 0
+    },
+    {
+      "model": "gpt-6-sol",
+      "totalTokens": 143915,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUSD": 0
     }
   ],
   "health": {
-    "parser": "ok",
+    "parser": "warn",
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-10-27T14:05:19.393Z"
+  "receivedAt": "2026-10-27T23:10:20.647Z"
 }
