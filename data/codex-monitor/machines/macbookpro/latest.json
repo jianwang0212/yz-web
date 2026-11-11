@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-11T11:19:36.148Z",
+  "syncedAt": "2026-11-11T11:25:03.536Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 47,
-    "todayTokens": 583071730,
-    "weekTokens": 589495815,
-    "totalTokens": 2257648812,
-    "estimatedCostUsd": 1497.4453198,
-    "cpu": 28.055987702509146,
-    "memoryBytes": 8527822848
+    "activeAgents": 46,
+    "todayTokens": 601615658,
+    "weekTokens": 608039743,
+    "totalTokens": 2276192740,
+    "estimatedCostUsd": 1499.5107502,
+    "cpu": 26.13964911323351,
+    "memoryBytes": 8850046976
   },
   "agents": [
+    {
+      "agentId": "c1bede0cb4227740",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c82d-e406-7af2-ae9f-570991b63fcb",
+      "sessionTitle": "**建立公司照片资产库和人物相册**已有 **966 张照片**，支持质量筛选、轻度修图、场景标签、人脸分组、人名检索和个人精选导出。已有 CEO、李雪、周侗等人的分类，但还没覆盖全部员工。Claude 记录称精选相册已发布；本次未复核线上。当前素材主要是 **1600px 预览图**。[照片库](/Users/Zi/DockingTech/入坞照片库/05_网页/index.html) 这个你来接替 claude 进行工作. 给我现在的 ststus 和需要干什么? 是不是有个 html 给我看看",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.4972268066340195,
+      "memoryBytes": 1294663680,
+      "confidence": "high"
+    },
     {
       "agentId": "9b9fb94e7582c200",
       "processName": "codex",
@@ -24,8 +35,8 @@
       "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
       "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.491128459900639,
-      "memoryBytes": 1150287872,
+      "cpu": 1.4972268066340195,
+      "memoryBytes": 1294663680,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0765500306936771,
-      "memoryBytes": 147030016,
+      "cpu": 0.08350806819217796,
+      "memoryBytes": 147062784,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011695582284795744,
-      "memoryBytes": 72548352,
+      "cpu": 0.011755335219313906,
+      "memoryBytes": 72122368,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0029101188991435935,
-      "memoryBytes": 140836864,
+      "cpu": 0.002883981542518128,
+      "memoryBytes": 140853248,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00524053791764869,
-      "memoryBytes": 138674176,
+      "cpu": 0.005193449109694439,
+      "memoryBytes": 138657792,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.05051797684338818,
-      "memoryBytes": 137396224,
+      "cpu": 0.05036744936368525,
+      "memoryBytes": 137510912,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 7.742685935847726,
-      "memoryBytes": 1650245632,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8e18bb2276ed02a5",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Resources",
-      "cpu": 0.04945249028611798,
-      "memoryBytes": 39141376,
+      "cpu": 7.628950695322377,
+      "memoryBytes": 1759100928,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 583071730,
-      "inputTokens": 10190336,
-      "outputTokens": 1024114,
-      "costUSD": 116.42550060000002
+      "totalTokens": 601615658,
+      "inputTokens": 10252096,
+      "outputTokens": 1033578,
+      "costUSD": 118.49093100000002
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-11T11:19:39.237Z"
+  "receivedAt": "2026-11-11T11:25:06.941Z"
 }
