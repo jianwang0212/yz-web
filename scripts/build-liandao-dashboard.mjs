@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+const [templatePath, snapshotPath, outputPath] = process.argv.slice(2);
+if (!templatePath || !snapshotPath || !outputPath) throw new Error('Usage: node build-liandao-dashboard.mjs template snapshot output');
+const snapshot = fs.readFileSync(snapshotPath, 'utf8');
+const match = snapshot.match(/^const D = (.+);$/m);
+if (!match) throw new Error('Business snapshot not found');
+const data = JSON.parse(match[1]);
+if (!Array.isArray(data.rows) || !data.kpi || !data.generated) throw new Error('Invalid business snapshot');
+const template = fs.readFileSync(templatePath, 'utf8');
+if (!template.includes('/*__DATA__*/null')) throw new Error('Template data marker missing');
+const safeData = JSON.stringify(data).replace(/</g, String.raw`\u003c`);
+fs.writeFileSync(outputPath, template.replace('/*__DATA__*/null', () => safeData));
+console.log('Built dashboard using existing business snapshot:', data.generated);

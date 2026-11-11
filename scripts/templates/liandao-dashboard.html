@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>炼刀客户后台</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f5f5f3; --surface:#fcfcfb; --border:#e4e3df; --grid:#ecebe7;
+  --text:#0b0b0b; --text2:#52514e; --muted:#8a8984;
+  --s1:#2a78d6; --s2:#eb6834; --past:#c4c3bd;
+  --critical:#d03b3b; --good:#0ca30c; --warn-bg:#fdf3e1; --warn-ink:#7a4b00;
+  --chip:#e8f0fb; --chip-ink:#1c4f93;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --bg:#121211; --surface:#1a1a19; --border:#2e2e2b; --grid:#2a2a27;
+    --text:#f0efec; --text2:#c3c2b7; --muted:#8f8e86;
+    --s1:#3987e5; --s2:#d95926; --past:#4a4a45;
+    --critical:#e66767; --good:#0ca30c; --warn-bg:#33270f; --warn-ink:#f3c76b;
+    --chip:#1f2f46; --chip-ink:#a9cbf5;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121211; --surface:#1a1a19; --border:#2e2e2b; --grid:#2a2a27;
+  --text:#f0efec; --text2:#c3c2b7; --muted:#8f8e86;
+  --s1:#3987e5; --s2:#d95926; --past:#4a4a45;
+  --critical:#e66767; --good:#0ca30c; --warn-bg:#33270f; --warn-ink:#f3c76b;
+  --chip:#1f2f46; --chip-ink:#a9cbf5;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+button,select,input{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border)}
+.hwrap{max-width:1280px;margin:0 auto;padding:8px 16px}
+.hrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:16px;margin:0;font-weight:650}
+.meta{color:var(--muted);font-size:12px}
+nav{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
+nav a{color:var(--text2);text-decoration:none;padding:2px 8px;border-radius:6px;font-size:13px;cursor:pointer}
+nav a:hover{background:var(--grid);color:var(--text)}
+.btn{border:1px solid var(--border);background:transparent;color:var(--text2);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;line-height:1.5}
+.btn:hover{background:var(--grid);color:var(--text)}
+.btn.on{background:var(--s1);border-color:var(--s1);color:#fff}
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.fl{display:flex;flex-direction:column;position:relative}
+.fl>label{font-size:11px;color:var(--muted);line-height:1.2;margin-bottom:2px}
+.fl select,.msb{border:1px solid var(--border);background:var(--bg);border-radius:6px;padding:3px 8px;font-size:12px;height:28px;min-width:96px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:6px;color:var(--text)}
+.fl select{display:block}
+.msb .ct{background:var(--s1);color:#fff;border-radius:9px;font-size:11px;padding:0 6px;line-height:16px}
+.msb .ph{color:var(--muted)}
+.range{display:flex;gap:4px;align-items:center;font-size:12px;color:var(--muted)}
+.pop{position:absolute;top:100%;left:0;margin-top:4px;width:260px;max-width:calc(100vw - 32px);background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:30;padding:8px;display:none}
+.pop.open{display:block}
+.pop input[type=search]{width:100%;border:1px solid var(--border);background:var(--bg);border-radius:6px;padding:4px 8px;font-size:12px;margin-bottom:6px}
+.opts{max-height:260px;overflow:auto}
+.opt{display:flex;align-items:center;gap:6px;padding:3px 4px;border-radius:4px;font-size:12px;cursor:pointer}
+.opt:hover{background:var(--grid)}
+.opt .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.opt .c{color:var(--muted);font-variant-numeric:tabular-nums}
+.pfoot{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;min-height:0}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--chip);color:var(--chip-ink);border-radius:12px;padding:1px 4px 1px 10px;font-size:12px;cursor:pointer;border:0}
+.chip b{font-weight:400;opacity:.7}
+.chip:hover{filter:brightness(.96)}
+.chip .x{width:16px;height:16px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;line-height:1}
+.chip:hover .x{background:rgba(128,128,128,.25)}
+.ftoggle{display:none}
+main{max-width:1280px;margin:0 auto;padding:16px}
+section{margin:0 0 28px}
+h2{font-size:15px;margin:0 0 10px;font-weight:650;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.grid{display:grid;gap:12px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.span2{grid-column:span 2}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;min-width:0}
+.card h3{font-size:13px;margin:0 0 2px;font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.card .sub{color:var(--muted);font-size:12px;margin:0 0 10px}
+/* 经营提示：悬停、键盘聚焦或点击查看 */
+.insight{display:inline-flex;vertical-align:middle}
+.insight-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;padding:0;border:1px solid var(--warn-ink);border-radius:50%;background:var(--warn-bg);color:var(--warn-ink);font-size:14px;font-weight:750;cursor:help}
+.insight-btn:focus-visible{outline:2px solid var(--s1);outline-offset:3px}
+.insight-panel{position:fixed;z-index:50;width:360px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);overflow:auto;background:var(--surface);color:var(--text2);border:1px solid var(--border);border-top:3px solid var(--warn-ink);border-radius:8px;box-shadow:0 8px 28px #0005;padding:14px 16px;font-size:13px;font-weight:400;line-height:1.7;white-space:normal}
+.insight-panel[hidden]{display:none}
+.insight-panel strong{display:block;color:var(--warn-ink);font-size:14px;margin-bottom:6px}
+.insight-panel .insight-copy{display:block;margin-bottom:8px}
+.insight-panel small{display:block;color:var(--muted);font-size:11px}
+.tag{font-size:11px;font-weight:400;color:var(--warn-ink);background:var(--warn-bg);border-radius:4px;padding:0 6px}
+.kpi .lab{color:var(--text2);font-size:12px}
+.kpi .val{font-size:26px;font-weight:650;letter-spacing:-.5px;font-variant-numeric:tabular-nums;margin:2px 0}
+.kpi .note{color:var(--muted);font-size:12px}
+.kpi.alert .val{color:var(--critical)}
+.kpi .share{height:4px;background:var(--grid);border-radius:2px;margin:6px 0 4px;overflow:hidden}
+.kpi .share i{display:block;height:100%;background:var(--s1);border-radius:2px;min-width:1px}
+.alertbar{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 14px;margin:0 0 12px;font-size:13px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--text2);margin:0 0 8px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.hbar{display:grid;grid-template-columns:minmax(64px,120px) 1fr;gap:2px 10px;align-items:center}
+.hbar .lbl{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right}
+.hbar .row{position:relative;padding:3px 0}
+.hbar .bar{height:7px;border-radius:0 4px 4px 0;min-width:2px}
+.hbar .bar+.bar{margin-top:2px}
+.hbar .v{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;background:var(--surface);padding-left:4px}
+.hbar.click .lbl,.hbar.click .row{cursor:pointer}
+.hbar .row:hover .bar{filter:brightness(1.1)}
+.hbar .dim{opacity:.35}
+.hbar .lbl.sel{color:var(--text);font-weight:650}
+svg text{fill:var(--muted);font-size:11px}
+svg .gl{stroke:var(--grid)}
+svg.tr{width:100%;height:auto;display:block;touch-action:pan-y}
+.tools{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--text2);margin:0 0 8px;flex-wrap:wrap}
+.ctools{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+details{margin-top:0;flex:1 1 100%}
+summary{cursor:pointer;color:var(--muted);font-size:12px}
+table{border-collapse:collapse;width:100%;font-size:12px;margin-top:6px;font-variant-numeric:tabular-nums}
+th,td{padding:4px 6px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--text2);font-weight:600}
+.tbl-scroll{max-height:320px;overflow:auto}
+.big-scroll{max-height:440px;overflow:auto}
+table.sortable th{cursor:pointer;user-select:none;position:sticky;top:0;background:var(--surface);z-index:1}
+table.sortable th.cur{color:var(--s1)}
+table.sortable tbody tr{cursor:pointer}
+table.sortable tbody tr:hover{background:var(--grid)}
+table.sortable tbody tr.sel{background:var(--chip);color:var(--chip-ink)}
+td.heat{color:var(--text)}
+#tip{position:fixed;pointer-events:none;background:var(--text);color:var(--surface);font-size:12px;padding:6px 9px;border-radius:6px;opacity:0;transition:opacity .08s;z-index:40;white-space:nowrap}
+.meter{height:8px;background:var(--grid);border-radius:4px;overflow:hidden;margin:4px 0 10px}
+.meter>div{height:100%;background:var(--s1);border-radius:4px}
+.qrow{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);gap:8px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--text2);padding:2px 10px;cursor:pointer;font-size:12px}
+.seg button.on{background:var(--s1);color:#fff}
+.search{border:1px solid var(--border);background:var(--bg);border-radius:6px;padding:3px 8px;font-size:12px;width:180px;max-width:100%}
+.funnel .fr{display:grid;grid-template-columns:minmax(90px,130px) 1fr 96px;gap:10px;align-items:center;margin:6px 0;font-size:12px}
+.funnel .fb{height:26px;background:var(--s1);border-radius:4px;min-width:2px;position:relative}
+.funnel .fr .cv b{color:var(--text);font-size:13px}
+.funnel .fr .cv{color:var(--text2);line-height:1.3;text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:900px){.grid.gk{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3,.g2{grid-template-columns:1fr}.span2{grid-column:auto}}
+@media(max-width:700px){
+  .hwrap{padding:6px 12px}
+  nav{display:none}
+  .ftoggle{display:inline-block}
+  .filters{display:none}
+  .filters.open{display:flex}
+  .filters .fl{flex:1 1 calc(50% - 8px)}
+  .fl select,.msb{min-width:0;width:100%}
+  .pop{position:fixed;left:16px;right:16px;top:auto;width:auto;max-width:none}
+  .chips{max-height:64px;overflow:auto}
+  main{padding:12px}
+  .funnel .fr{grid-template-columns:70px 1fr 84px;gap:6px}
+  .kpi .val{font-size:20px}
+  .grid.gk{gap:8px}.kpi.card{padding:10px 12px}.kpi .note{font-size:11px}
+}
+</style>
+<style id="liandao-module-context">
+.module-context{margin:0 0 20px;padding:16px 18px;border:1px solid var(--border,var(--line));border-radius:10px;background:var(--surface,var(--panel));color:var(--text2,var(--secondary));font-size:13px;line-height:1.75}
+.module-context .module-breadcrumb{font-size:12px;margin-bottom:10px;color:var(--muted)}
+.module-context a{color:var(--s1,var(--blue));text-decoration:none}
+.module-context .module-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.module-context .module-switch a{display:inline-flex;align-items:center;padding:6px 14px;border:1px solid var(--border,var(--line));border-radius:7px;color:var(--text,var(--ink))}
+.module-context .module-switch a[aria-current="page"]{background:var(--chip,var(--soft));border-color:var(--s1,var(--blue));font-weight:600}
+.module-context p{margin:5px 0}
+.module-context strong{color:var(--text,var(--ink))}
+.module-context .module-boundary{color:var(--warn-ink,#f0c36b);font-size:12px}
+@media(max-width:600px){.module-context{padding:12px;font-size:12px}.module-context .module-switch a{flex:1;justify-content:center}}
+</style>
+</head>
+<body>
+<header><div class="hwrap">
+  <div class="hrow">
+    <h1>炼刀客户后台</h1>
+    <span class="meta" id="gen"></span>
+    <nav id="nav">
+      <a data-t="overview">总览</a><a data-t="trend">趋势</a><a data-t="funnel">转化</a><a data-t="region">地区</a><a data-t="industry">行业</a>
+      <a data-t="channel">渠道</a><a data-t="usage">使用</a><a data-t="renew">续费</a><a data-t="quality">数据质量</a>
+    </nav>
+    <button class="btn ftoggle" id="ftoggle">筛选</button>
+    <button class="btn" id="themeBtn">深浅色</button>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="chips" id="chips"></div>
+</div></header>
+<main>
+  <section class="module-context" aria-label="后台模块与数据关系">
+<div class="module-breadcrumb"><a href="/projects/dockingtech">入坞科技</a> / <a href="/projects/dockingtech/liandao/">炼刀客户后台</a> / 经营分析</div>
+<nav class="module-switch" aria-label="后台模块"><a href="/projects/dockingtech/liandao/" aria-current="page">经营分析</a><a href="/projects/dockingtech/liandao/compute/">历史算力分析</a></nav>
+<p><strong>经营分析是主后台</strong>：查看 2026-11-10 业务库快照中的商家注册、付费、近 30 天活跃、渠道及续费。</p>
+<p><strong>历史算力是附属分析模块</strong>：查看截至 2026-02-28、经清洗的 4,450 个有消耗账号，分析累计消耗、21 项功能及行业使用场景。</p>
+<p class="module-boundary">两模块的数据日期、商家/账号口径与筛选独立，尚未建立商家与账号的对应关系；不能直接关联付费或续费，也不能据累计消耗判断当前活跃。消耗为源表计量值，不等同于收入或真实成本。</p>
+</section>
+  <section id="overview">
+    <h2>总览 <span class="meta" id="scope"></span></h2>
+    <div class="grid g3 gk" id="kpis"></div>
+  </section>
+
+  <section id="trend">
+    <h2>月度趋势
+      <span class="seg" id="segType"><button data-v="line">折线</button><button data-v="bar">柱状</button></span>
+      <span class="seg" id="segGran"><button data-v="m">按月</button><button data-v="q">按季</button></span>
+      <span class="meta">点击图中任一时段，把注册时间设为该时段；再点取消</span>
+    </h2>
+    <div class="grid g2">
+      <div class="card"><h3>新注册商家</h3><p class="sub">按商家创建月份；此图不受「注册时间」筛选影响，筛选范围内的月份高亮；本期数据尚未结束时以淡色显示</p><div id="c_reg"></div></div>
+      <div class="card"><h3>新增付费商家</h3><p class="sub">按首次付费月份；仅统计注册时间在筛选范围内的商家</p><div id="c_paid"></div></div>
+      <div class="card"><h3>会员收入（元）</h3><p class="sub">商家累计会员实付金额，归到其首次付费月份（与旧版按订单完成月份略有差异）</p><div id="c_rev"></div></div>
+      <div class="card"><h3>月活跃商家 <span class="tag">不随筛选变化</span> <span class="insight"><button class="insight-btn" type="button" aria-label="查看付费后不使用分析" aria-describedby="insight-inactive" aria-expanded="false">!</button><span class="insight-panel" id="insight-inactive" role="tooltip" hidden><strong>付费后不使用</strong><span class="insight-copy"></span><small>全库快照 · <span class="insight-date"></span> · 不随筛选变化</small></span></span></h3><p class="sub">当月有曝光、私信、加好友、发视频或评论任一动作；按商家拆分需要明细表，当前不支持</p><div id="c_mau"></div></div>
+    </div>
+  </section>
+
+  <section id="funnel">
+    <h2>转化与留存</h2>
+    <div class="grid g2">
+      <div class="card"><h3>付费转化漏斗</h3><p class="sub">逐级嵌套：注册 → 近 30 天活跃 → 其中已付费 → 其中已续费（年费订单 ≥2 笔）</p><div class="funnel" id="c_funnel"></div></div>
+      <div class="card"><h3>注册月份 Cohort</h3><p class="sub">按注册月份分组，颜色越深比例越高；点击行把注册时间设为该月。此表不受「注册时间」筛选影响。老 cohort 活跃率偏低主要是流失</p><div class="big-scroll" id="c_cohort"></div></div>
+    </div>
+  </section>
+
+  <section id="region">
+    <h2>地区分布</h2>
+    <div class="alertbar" id="regionNote"></div>
+    <div class="grid g2">
+      <div class="card"><h3>省份</h3><p class="sub">只统计填写了省份的商家；点击条形加入/取消省份筛选</p><div class="legend" data-legend></div><div id="c_prov"></div></div>
+      <div class="card"><h3>城市 Top 30</h3><p class="sub">只统计填写了城市的商家，已排除「市辖区」；点击条形筛选城市</p><div class="legend" data-legend></div><div id="c_city"></div></div>
+    </div>
+  </section>
+
+  <section id="industry">
+    <h2>行业分布</h2>
+    <div class="alertbar" id="indNote"></div>
+    <div class="card">
+      <h3>行业 Top 25</h3><p class="sub">已合并同义写法，例如 AI / ai / 人工智能 合并为「AI/人工智能」；点击条形筛选行业</p>
+      <div class="tools"><label><input type="radio" name="indsort" value="n" checked> 按注册数排序</label><label><input type="radio" name="indsort" value="paid"> 按付费数排序</label></div>
+      <div class="legend" data-legend></div><div id="c_ind"></div>
+    </div>
+  </section>
+
+  <section id="channel">
+    <h2>渠道（代理商）</h2>
+    <div class="grid g3">
+      <div class="card"><h3>代理商规模分层 <span class="tag">不随筛选变化</span></h3><p class="sub">按名下商家数分层（含全部关联，口径与明细的「取任一代理商」不同）</p><div id="c_bucket"></div></div>
+      <div class="card span2"><h3>代理商明细</h3><p class="sub">点表头排序，点行加入/取消代理商筛选；本表不受「代理商」筛选自身影响，以便对比</p>
+        <div class="tools"><input class="search" id="agSearch" type="search" placeholder="搜索代理商名称"><span class="meta" id="agCount"></span></div>
+        <div class="big-scroll" id="c_agent"></div><div class="ctools" id="agTools"></div></div>
+    </div>
+  </section>
+
+  <section id="usage">
+    <h2>产品使用与收入构成</h2>
+    <div class="grid g3">
+      <div class="card"><h3>近 30 天各功能使用商家数</h3><p class="sub">一个商家可能同时使用多个功能</p><div id="c_feat"></div></div>
+      <div class="card"><h3>订单价格分布 <span class="tag">不随筛选变化</span></h3><p class="sub">已完成订单的笔数，前 12 种价格</p><div id="c_price"></div></div>
+      <div class="card"><h3>支付方式（金额，元） <span class="tag">不随筛选变化</span></h3><p class="sub">全部已完成订单</p><div id="c_pay"></div></div>
+    </div>
+  </section>
+
+  <section id="renew">
+    <h2>续费与到期 <span class="insight"><button class="insight-btn" type="button" aria-label="查看续费压力分析" aria-describedby="insight-renew" aria-expanded="false">!</button><span class="insight-panel" id="insight-renew" role="tooltip" hidden><strong>续费压力</strong><span class="insight-copy"></span><small>全库快照 · <span class="insight-date"></span> · 不随筛选变化</small></span></span></h2>
+    <div class="alertbar" id="renewNote"></div>
+    <div class="card"><h3>付费商家到期月份</h3><p class="sub">灰色表示已经过期，蓝色表示即将到期；口径为 tb_merchant 中的版本到期时间，窗口为过去 5 个月至未来 12 个月</p><div class="legend"><span><i style="background:var(--past)"></i>已过期</span><span><i style="background:var(--s1)"></i>即将到期</span></div><div id="c_exp"></div></div>
+  </section>
+
+  <section id="quality">
+    <h2>数据质量 <span class="tag">全库口径，不随筛选变化</span></h2>
+    <div class="card" id="qual"></div>
+  </section>
+</main>
+<div id="tip"></div>
+<script>
+const D = /*__DATA__*/null;
+const fmt = n => Math.round(n).toLocaleString('zh-CN');
+const wan = n => n >= 1e4 ? (n/1e4).toFixed(n>=1e6?0:1)+' 万' : fmt(n);
+const pct = (a,b) => b ? (a/b*100).toFixed(1)+'%' : '–';
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const NS = 'http://www.w3.org/2000/svg';
+const tip = $('tip');
+function showTip(e, html){ tip.innerHTML = html; tip.style.opacity = 1; moveTip(e); }
+function moveTip(e){ const w = tip.offsetWidth; let x = e.clientX + 12; if (x + w > innerWidth - 8) x = e.clientX - w - 12; tip.style.left = Math.max(4,x)+'px'; tip.style.top = (e.clientY + 12)+'px'; }
+function hideTip(){ tip.style.opacity = 0; }
+function bindTip(el, html){ el.addEventListener('mouseenter', e=>showTip(e, html)); el.addEventListener('mousemove', moveTip); el.addEventListener('mouseleave', hideTip); }
+
+/* ---------------- 数据与维度 ---------------- */
+const R = D.rows, DM = D.dict;
+const MONTH = DM.month;
+const IDX = {}; ['prov','city','ind','agent','month'].forEach(k=>{ IDX[k] = new Map(DM[k].map((v,i)=>[v,i])); });
+const UNF = '(未填写)';
+const NOW_M = D.generated.slice(0,7);
+const addM = (ym, d) => { let [y,m] = ym.split('-').map(Number); m += d; y += Math.floor((m-1)/12); m = ((m-1)%12+12)%12+1; return y+'-'+String(m).padStart(2,'0'); };
+// 趋势轴：2025-03（与旧版一致）至当前月，连续
+const AXIS = []; for (let m = '2025-03'; m <= NOW_M; m = addM(m,1)) AXIS.push(m);
+const AXIS_I = new Map(AXIS.map((m,i)=>[m,i]));
+const MAP_AXIS = MONTH.map(m=>AXIS_I.has(m)?AXIS_I.get(m):-1);   // 月份字典下标 -> 轴下标
+const FEATS = ['曝光私信','AI 客服消息','加好友','发布视频','评论'];
+const EXP_LO = addM(NOW_M,-5), EXP_HI = addM(NOW_M,12);
+const CITY_PROV = new Map();   // 城市下标 -> 所属省份下标集合
+R.forEach(r=>{ let s = CITY_PROV.get(r[1]); if(!s) CITY_PROV.set(r[1], s = new Set()); s.add(r[0]); });
+const CNT = {prov:new Int32Array(DM.prov.length), city:new Int32Array(DM.city.length), ind:new Int32Array(DM.ind.length), agent:new Int32Array(DM.agent.length)};
+R.forEach(r=>{ CNT.prov[r[0]]++; CNT.city[r[1]]++; CNT.ind[r[2]]++; CNT.agent[r[3]]++; });
+
+/* ---------------- 筛选状态 ---------------- */
+const KEYS = {prov:'p', city:'c', ind:'i', agent:'a'};
+const LABELS = {prov:'省份', city:'城市', ind:'行业', agent:'代理商'};
+const newF = () => ({prov:new Set(), city:new Set(), ind:new Set(), agent:new Set(), pay:'all', act:'all', from:'', to:''});
+let F = newF();
+let VIEW = {type:'line', gran:'m'};
+const MON_SET = new Set(MONTH);
+
+function toHash(){
+  const p = [];
+  for (const k in KEYS) if (F[k].size) p.push(KEYS[k]+'='+[...F[k]].map(encodeURIComponent).join(','));
+  if (F.pay!=='all') p.push('pay='+F.pay);
+  if (F.act!=='all') p.push('act='+F.act);
+  if (F.from) p.push('from='+F.from);
+  if (F.to) p.push('to='+F.to);
+  if (VIEW.type!=='line') p.push('v='+VIEW.type);
+  if (VIEW.gran!=='m') p.push('g='+VIEW.gran);
+  return p.join('&');
+}
+function fromHash(){
+  const f = newF(), v = {type:'line', gran:'m'};
+  const h = location.hash.replace(/^#/,'');
+  if (h.includes('=')) h.split('&').forEach(kv=>{
+    const i = kv.indexOf('='); if (i<0) return;
+    const k = kv.slice(0,i), val = kv.slice(i+1);
+    for (const d in KEYS) if (KEYS[d]===k) val.split(',').filter(Boolean).forEach(s=>{ let x; try{ x = decodeURIComponent(s); }catch(e){ return; } if (IDX[d].has(x)) f[d].add(x); });
+    if (k==='pay' && (val==='1'||val==='0')) f.pay = val;
+    if (k==='act' && (val==='1'||val==='0')) f.act = val;
+    if (k==='from' && /^\d{4}-\d{2}$/.test(val)) f.from = val;
+    if (k==='to' && /^\d{4}-\d{2}$/.test(val)) f.to = val;
+    if (k==='v' && (val==='bar')) v.type = val;
+    if (k==='g' && val==='q') v.gran = val;
+  });
+  F = f; VIEW = v;
+}
+function syncHash(){ const h = toHash(); history.replaceState(null, '', location.pathname + location.search + (h?'#'+h:'')); }
+const hasFilter = () => Object.keys(KEYS).some(k=>F[k].size) || F.pay!=='all' || F.act!=='all' || F.from || F.to;
+function normalizeRange(){ if (F.from && F.to && F.from>F.to) [F.from,F.to] = [F.to,F.from]; }
+function pruneCities(){
+  if (!F.prov.size) return;
+  const pids = new Set([...F.prov].map(n=>IDX.prov.get(n)));
+  [...F.city].forEach(c=>{ const s = CITY_PROV.get(IDX.city.get(c)); if (s && ![...s].some(p=>pids.has(p))) F.city.delete(c); });
+}
+function toggleDim(k, name){ if (F[k].has(name)) F[k].delete(name); else F[k].add(name); if (k==='prov') pruneCities(); update(); }
+function setRange(from, to){
+  if (F.from===from && F.to===to) { F.from = F.to = ''; } else { F.from = from; F.to = to; }
+  update();
+}
+
+/* ---------------- 一次遍历全部分组 ---------------- */
+function mkMask(set, dim){ if (!set.size) return null; const a = new Uint8Array(DM[dim].length); set.forEach(n=>{ const i = IDX[dim].get(n); if (i!=null) a[i]=1; }); return a; }
+function compute(F){
+  const fp = mkMask(F.prov,'prov'), fc = mkMask(F.city,'city'), fi = mkMask(F.ind,'ind'), fa = mkMask(F.agent,'agent');
+  const NM = MONTH.length, NP = DM.prov.length, NC = DM.city.length, NI = DM.ind.length, NA = DM.agent.length, NX = AXIS.length;
+  let tm = null;
+  if (F.from || F.to) { tm = new Uint8Array(NM); MONTH.forEach((m,i)=>{ if ((!F.from||m>=F.from) && (!F.to||m<=F.to)) tm[i]=1; }); }
+  const payF = F.pay==='all'?-1:+F.pay, actF = F.act==='all'?-1:+F.act;
+  const A = {
+    total:0, paid:0, rev:0, act:0, paidAct:0, due:0, renewed:0, actPaid:0, actPaidRenew:0, paidAny:0, renewAny:0,
+    feat:[0,0,0,0,0], unfProv:0, unfProvPaid:0, unfInd:0, unfCity:0,
+    prov:{n:new Int32Array(NP), paid:new Int32Array(NP)}, city:{n:new Int32Array(NC), paid:new Int32Array(NC)},
+    ind:{n:new Int32Array(NI), paid:new Int32Array(NI)},
+    agent:{n:new Int32Array(NA), paid:new Int32Array(NA), rev:new Float64Array(NA), act:new Int32Array(NA)},
+    reg:{n:new Int32Array(NX), paid:new Int32Array(NX), act:new Int32Array(NX)},
+    pay:{n:new Int32Array(NX), rev:new Float64Array(NX)}, exp:new Int32Array(NM), match:0
+  };
+  const unfP = IDX.prov.get(UNF), unfC = IDX.city.get(UNF), unfI = IDX.ind.get(UNF);
+  for (let k=0, L=R.length; k<L; k++){
+    const r = R[k]; let f = 0;
+    if (fp && !fp[r[0]]) f |= 1;
+    if (fc && !fc[r[1]]) f |= 2;
+    if (fi && !fi[r[2]]) f |= 4;
+    if (fa && !fa[r[3]]) f |= 8;
+    if (payF>=0 && r[5]!==payF) f |= 16;
+    const act = r[10]>0?1:0;
+    if (actF>=0 && act!==actF) f |= 32;
+    if (tm && !(r[4]>=0 && tm[r[4]])) f |= 64;
+    if (f & (f-1)) continue;                 // 不满足两项及以上：任何图都不统计
+    const paid = r[5];
+    if (f===0 || f===1){ A.prov.n[r[0]]++; A.prov.paid[r[0]] += paid; }
+    if (f===0 || f===2){ A.city.n[r[1]]++; A.city.paid[r[1]] += paid; }
+    if (f===0 || f===4){ A.ind.n[r[2]]++; A.ind.paid[r[2]] += paid; }
+    if (f===0 || f===8){ const a = r[3]; A.agent.n[a]++; A.agent.paid[a] += paid; A.agent.rev[a] += r[6]; A.agent.act[a] += act; }
+    if (f===0 || f===64){ const x = MAP_AXIS[r[4]]; if (x>=0){ A.reg.n[x]++; A.reg.paid[x] += paid; A.reg.act[x] += act; } }
+    if (f!==0) continue;
+    A.match++;
+    A.total++; A.paid += paid; A.rev += r[6]; A.act += act;
+    if (paid){
+      if (act) { A.paidAct++; A.actPaid++; if (r[8]>1) A.actPaidRenew++; }
+      if (r[8]>1) A.renewAny++;
+      const x = MAP_AXIS[r[7]]; if (x>=0){ A.pay.n[x]++; A.pay.rev[x] += r[6]; }
+      const e = r[11]; if (e>=0) A.exp[e]++;
+    }
+    if (r[9]){ A.due++; if (r[8]>1) A.renewed++; }
+    if (act) { const b = r[10]; for (let j=0;j<5;j++) if (b & (1<<j)) A.feat[j]++; }
+    if (r[0]===unfP){ A.unfProv++; A.unfProvPaid += paid; } if (r[1]===unfC) A.unfCity++; if (r[2]===unfI) A.unfInd++;
+  }
+  return A;
+}
+const ALL = compute(newF());
+
+/* ---------------- CSV / 表格 ---------------- */
+const openDetails = new Set();
+function downloadCSV(name, cols, rows){
+  const q = v => { v = v==null?'':String(v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; };
+  const txt = '﻿' + [cols.map(c=>q(c[0])).join(',')].concat(rows.map(r=>cols.map(c=>q(typeof c[1]==='function'?c[1](r,true):r[c[1]])).join(','))).join('\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt],{type:'text/csv;charset=utf-8'}));
+  a.download = name+'_'+D.generated.slice(0,10)+'.csv'; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+// cols: [标题, key|fn(row, forCsv)]
+function chartFooter(el, id, cols, rows, exportRows){
+  const wrap = document.createElement('div'); wrap.className = 'ctools';
+  const d = document.createElement('details');
+  if (openDetails.has(id)) d.open = true;
+  d.addEventListener('toggle', ()=>{ d.open ? openDetails.add(id) : openDetails.delete(id); });
+  const cell = (c,r) => { const v = typeof c[1]==='function'?c[1](r,false):r[c[1]]; return v==null?'':esc(v); };
+  d.innerHTML = '<summary>查看表格</summary><div class="tbl-scroll"><table><thead><tr>'+cols.map(c=>'<th>'+c[0]+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr>'+cols.map(c=>'<td>'+cell(c,r)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+  const b = document.createElement('button'); b.className='btn'; b.textContent='导出 CSV（当前筛选下的聚合）';
+  b.addEventListener('click', ()=>downloadCSV(id, cols, exportRows||rows));
+  wrap.appendChild(d); wrap.appendChild(b); el.appendChild(wrap);
+}
+
+/* ---------------- 横向条形图（可点击筛选） ---------------- */
+function hbars(el, id, rows, series, opts={}){
+  el.innerHTML = '';
+  const max = Math.max(...rows.map(r=>Math.max(...series.map(s=>r[s.key]||0))), 1);
+  const g = document.createElement('div'); g.className = 'hbar' + (opts.dim?' click':'');
+  const anySel = opts.dim && F[opts.dim].size>0;
+  rows.forEach(r=>{
+    const sel = opts.dim && F[opts.dim].has(r.k);
+    const l = document.createElement('div'); l.className='lbl'+(sel?' sel':''); l.textContent = r.k; l.title = r.k;
+    const row = document.createElement('div'); row.className='row';
+    series.forEach(s=>{ const b=document.createElement('div'); b.className='bar'+(anySel&&!sel?' dim':''); b.style.width=((r[s.key]||0)/max*88)+'%'; b.style.background=s.color; row.appendChild(b); });
+    const v = document.createElement('span'); v.className='v'; v.textContent = (opts.valFmt||fmt)(r[series[0].key]); row.appendChild(v);
+    const tipHtml = '<b>'+esc(r.k)+'</b><br>'+series.map(s=>s.label+'：'+(opts.valFmt||fmt)(r[s.key]||0)).join('<br>') + (opts.extra?'<br>'+opts.extra(r):'') + (opts.dim?'<br><i>'+(sel?'点击取消筛选':'点击加入筛选')+'</i>':'');
+    bindTip(row, tipHtml); bindTip(l, tipHtml);
+    if (opts.dim){ const go = ()=>{ hideTip(); toggleDim(opts.dim, r.k); }; l.addEventListener('click', go); row.addEventListener('click', go); }
+    g.appendChild(l); g.appendChild(row);
+  });
+  el.appendChild(g);
+  if (!rows.length) el.insertAdjacentHTML('beforeend','<p class="sub">当前筛选下没有数据</p>');
+  const cols = [['名称','k']].concat(series.map(s=>[s.label, (r,csv)=>csv?(r[s.key]||0):(opts.valFmt||fmt)(r[s.key]||0)]));
+  if (opts.extraCol) cols.push(opts.extraCol);
+  chartFooter(el, id, cols, rows, opts.exportRows);
+}
+
+/* ---------------- 趋势图：折线 / 柱状，十字准线 + tooltip，可点击 ---------------- */
+function niceMax(v){ if (v<=0) return 1; const p=Math.pow(10,Math.floor(Math.log10(v))); const n=v/p; return (n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p; }
+function trendChart(el, id, labels, vals, o={}){
+  el.innerHTML='';
+  const n = labels.length, W=600, H=220, pl=48, pr=10, pt=12, pb=26, iw=W-pl-pr, ih=H-pt-pb, bw=iw/Math.max(n,1);
+  const nice = niceMax(Math.max(...vals,1)), fv = o.valFmt||fmt, X = i=>pl+(i+0.5)*bw, Y = v=>pt+ih-v/nice*ih;
+  const svg = document.createElementNS(NS,'svg'); svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('class','tr');
+  const mk = (t,a,p)=>{ const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e; };
+  for (let i=0;i<=4;i++){ const y=pt+ih-ih*i/4; mk('line',{x1:pl,x2:W-pr,y1:y,y2:y,class:'gl'}); const t=mk('text',{x:pl-6,y:y+4,'text-anchor':'end'}); t.textContent = (o.axFmt||wan)(nice*i/4); }
+  const anySel = o.sel && labels.some((_,i)=>o.sel(i));
+  if (anySel) labels.forEach((_,i)=>{ if (o.sel(i)) mk('rect',{x:pl+i*bw,y:pt,width:bw,height:ih,fill:'var(--grid)'}); });
+  const step = Math.ceil(n/(o.maxTicks||12));
+  labels.forEach((l,i)=>{ if (i%step===0){ const t=mk('text',{x:X(i),y:H-8,'text-anchor':'middle'}); t.textContent=l.slice(2); } });
+  const partialIdx = o.partial ? n-1 : -1;
+  if ((o.type||VIEW.type)==='bar'){
+    vals.forEach((v,i)=>{
+      const h = v/nice*ih, w = Math.max(2,bw*0.7), x = X(i)-w/2, y = pt+ih-h, rad = Math.min(4,w/2,h);
+      if (h<=0) return;
+      const p = mk('path',{d:`M${x},${pt+ih}V${y+rad}Q${x},${y} ${x+rad},${y}H${x+w-rad}Q${x+w},${y} ${x+w},${y+rad}V${pt+ih}Z`, fill:o.barColor?o.barColor(i):(o.color||'var(--s1)')});
+      if (i===partialIdx || (anySel && !o.sel(i))) p.setAttribute('opacity', i===partialIdx?'.45':'.4');
+    });
+  } else {
+    const pts = vals.map((v,i)=>[X(i),Y(v)]);
+    if (n>1){
+      mk('path',{d:'M'+pts.map(p=>p.join(',')).join('L')+`L${pts[n-1][0]},${pt+ih}L${pts[0][0]},${pt+ih}Z`, fill:o.color||'var(--s1)', opacity:.1});
+      const solid = partialIdx>=0 ? pts.slice(0,n-1) : pts;
+      if (solid.length>1) mk('path',{d:'M'+solid.map(p=>p.join(',')).join('L'), fill:'none', stroke:o.color||'var(--s1)','stroke-width':2,'stroke-linejoin':'round'});
+      if (partialIdx>=0 && n>1) mk('path',{d:`M${pts[n-2].join(',')}L${pts[n-1].join(',')}`, fill:'none', stroke:o.color||'var(--s1)','stroke-width':2,'stroke-dasharray':'4 3'});
+    }
+    if (n<=24) pts.forEach((p,i)=>mk('circle',{cx:p[0],cy:p[1],r:2.5,fill:o.color||'var(--s1)',opacity:(anySel&&!o.sel(i))?.4:1}));
+  }
+  const cross = mk('line',{y1:pt,y2:pt+ih,stroke:'var(--muted)','stroke-dasharray':'3 3',opacity:0});
+  const dot = mk('circle',{r:4.5,fill:o.color||'var(--s1)',stroke:'var(--surface)','stroke-width':2,opacity:0});
+  const ov = mk('rect',{x:pl,y:pt,width:iw,height:ih,fill:'transparent'});
+  ov.style.cursor=o.onClick?'pointer':'default';
+  const idxOf = e=>{ const r = svg.getBoundingClientRect(); const x = (e.clientX-r.left)*W/r.width; return Math.max(0,Math.min(n-1,Math.floor((x-pl)/bw))); };
+  const show = e=>{ const i = idxOf(e); cross.setAttribute('x1',X(i)); cross.setAttribute('x2',X(i)); cross.setAttribute('opacity',1);
+    dot.setAttribute('cx',X(i)); dot.setAttribute('cy',Y(vals[i])); dot.setAttribute('opacity',1);
+    showTip(e,'<b>'+labels[i]+'</b><br>'+(o.label||'数值')+'：'+fv(vals[i])+(i===partialIdx?'<br>本期尚未结束':'')+(o.extra?'<br>'+o.extra(i):'')+(o.onClick?'<br><i>点击'+((o.sel&&o.sel(i))?'取消':'设为')+'注册时间</i>':'')); };
+  ov.addEventListener('mousemove',show); ov.addEventListener('mouseenter',show);
+  ov.addEventListener('mouseleave',()=>{ cross.setAttribute('opacity',0); dot.setAttribute('opacity',0); hideTip(); });
+  if (o.onClick) ov.addEventListener('click',e=>{ hideTip(); o.onClick(idxOf(e)); });
+  el.appendChild(svg);
+  const rows = labels.map((l,i)=>({k:l, v:vals[i]}));
+  chartFooter(el, id, [[o.gran==='q'?'季度':'月份','k'],[o.label||'数值',(r,csv)=>csv?r.v:fv(r.v)]], rows);
+}
+
+/* ---------------- 渲染 ---------------- */
+const S2 = [{key:'n',label:'注册',color:'var(--s1)'},{key:'paid',label:'付费',color:'var(--s2)'}];
+function dimRows(dim, agg, skip, extraFn){
+  const out = []; for (let i=0;i<DM[dim].length;i++){ const n = agg.n[i]; if (n>0 || F[dim].has(DM[dim][i])) { const k = DM[dim][i]; if (skip&&skip(k)) continue; out.push(Object.assign({k, n, paid:agg.paid[i]}, extraFn?extraFn(i):null)); } }
+  return out;
+}
+function withSelected(all, top, dim){ const t = all.slice(0,top); F[dim].forEach(s=>{ if (!t.find(r=>r.k===s)){ const r = all.find(x=>x.k===s); if (r) t.push(r); } }); return t; }
+const payRate = {extra:r=>'付费率：'+pct(r.paid,r.n), extraCol:['付费率', r=>pct(r.paid,r.n)]};
+
+let agSort = {key:'n', dir:-1}, agQuery = '', agShowAll = false, lastA = null;
+let indSort = 'n';
+
+function groupQ(arr){ // 月序列 -> 季度序列
+  const labs = [], vals = [];
+  AXIS.forEach((m,i)=>{ const [y,mm] = m.split('-'); const q = y+'Q'+Math.ceil(mm/3); if (labs[labs.length-1]!==q){ labs.push(q); vals.push(0); } vals[vals.length-1] += arr[i]; });
+  return {labs, vals};
+}
+function render(A){
+  lastA = A;
+  const K = D.kpi;
+  $('gen').textContent = '数据更新于 '+D.generated;
+  const sc = $('scope');
+  sc.textContent = hasFilter() ? `当前筛选：${fmt(A.total)} / ${fmt(ALL.total)} 家商家（${pct(A.total,ALL.total)}）` : '当前：全部商家（无筛选）';
+  const arpu = A.paid ? A.rev/A.paid : 0, arpuAll = ALL.rev/ALL.paid;
+  const rate = (a,b)=>b?a/b:0;
+  const shareBar = (a,b)=>`<div class="share"><i style="width:${b?Math.min(100,a/b*100):0}%"></i></div>`;
+  const cnt = (lab, val, a, b, note, extra={}) => ({lab, val, bar:shareBar(a,b), note: `占全部 ${pct(a,b)}` + (note?' · '+note:''), alert:extra.alert});
+  const rt = (lab, val, a, b, aa, bb, note, alert) => ({lab, val, bar:'', note:`全部：${pct(aa,bb)}${note?' · '+note:''}`, alert});
+  const tiles = [
+    cnt('注册商家', fmt(A.total), A.total, ALL.total, '未删除的商家'),
+    cnt('付费商家', fmt(A.paid), A.paid, ALL.paid),
+    rt('付费率', pct(A.paid,A.total), 0,0, ALL.paid, ALL.total, `${fmt(A.paid)} / ${fmt(A.total)}`),
+    cnt('会员收入', '¥'+wan(A.rev), A.rev, ALL.rev, `全部 ¥${wan(ALL.rev)}`),
+    {lab:'客单价（会员）', val:'¥'+fmt(arpu), bar:'', note:`全部：¥${fmt(arpuAll)} · 会员收入 / 付费商家`},
+    cnt('近 30 天活跃', fmt(A.act), A.act, ALL.act),
+    rt('付费商家活跃率', pct(A.paidAct,A.paid), 0,0, ALL.paidAct, ALL.paid, `${fmt(A.paidAct)} 家付费商家近 30 天在用`, A.paid>0 && A.paidAct/A.paid<0.3),
+    cnt('满一年可续费', fmt(A.due), A.due, ALL.due, '首购年费已满 365 天'),
+    rt('年费续费率', pct(A.renewed,A.due), 0,0, ALL.renewed, ALL.due, `${fmt(A.renewed)} 家有第二笔年费订单（口径待核实）`, A.due>0 && A.renewed/A.due<0.3),
+  ];
+  $('kpis').innerHTML = tiles.map(t=>`<div class="card kpi${t.alert?' alert':''}"><div class="lab">${t.lab}</div><div class="val">${t.val}</div>${t.bar}<div class="note">${t.note}</div></div>`).join('');
+
+  // 趋势
+  const q = VIEW.gran==='q';
+  const lab = AXIS, regV = Array.from(A.reg.n), paidV = Array.from(A.pay.n), revV = Array.from(A.pay.rev);
+  const isPartialM = AXIS[AXIS.length-1]===NOW_M;
+  let L, rg, pd, rv, rangeOf;
+  if (q){ const g1 = groupQ(regV); L = g1.labs; rg = g1.vals; pd = groupQ(paidV).vals; rv = groupQ(revV).vals;
+    rangeOf = i=>{ const y = L[i].slice(0,4), qq = +L[i].slice(5); return [y+'-'+String((qq-1)*3+1).padStart(2,'0'), y+'-'+String(qq*3).padStart(2,'0')]; };
+  } else { L = lab; rg = regV; pd = paidV; rv = revV; rangeOf = i=>[lab[i],lab[i]]; }
+  const selFn = i=>{ if (!F.from && !F.to) return false; const [a,b] = rangeOf(i); return (!F.from||b>=F.from) && (!F.to||a<=F.to); };
+  const clk = i=>{ const [a,b] = rangeOf(i); setRange(a,b); };
+  const common = {gran:VIEW.gran, partial:isPartialM, onClick:clk};
+  trendChart($('c_reg'),'trend_reg',L,rg,Object.assign({label:'新注册',sel:selFn,extra:i=>'付费率：'+pct((q?groupQ(Array.from(A.reg.paid)).vals:Array.from(A.reg.paid))[i],rg[i])+'（该期注册的商家）'},common));
+  trendChart($('c_paid'),'trend_paid',L,pd,Object.assign({label:'新增付费',color:'var(--s1)'},common));
+  trendChart($('c_rev'),'trend_rev',L,rv,Object.assign({label:'会员收入',valFmt:v=>'¥'+fmt(v),axFmt:wan},common));
+  const MAUM = D.monthly.map(r=>r.m), MAUV = D.monthly.map(r=>r.mau);
+  trendChart($('c_mau'),'trend_mau',MAUM,MAUV,{label:'月活跃商家',partial:MAUM[MAUM.length-1]===NOW_M,gran:'m'});
+
+  // 漏斗
+  const fs = [['注册商家',A.total,A.total],['近 30 天活跃',A.act,A.total],['活跃且付费',A.actPaid,A.act],['活跃付费且已续费',A.actPaidRenew,A.actPaid]];
+  const f0 = Math.max(A.total,1);
+  $('c_funnel').innerHTML = fs.map((s,i)=>`<div class="fr"><span>${s[0]}</span><div class="fb" style="width:${Math.max(s[1]/f0*100,0.5)}%;opacity:${1-i*.18}"></div><span class="cv"><b>${fmt(s[1])}</b><br>${i?'上一级 '+pct(s[1],s[2]):'占全部 '+pct(A.total,ALL.total)}</span></div>`).join('') +
+    `<p class="sub" style="margin-top:10px">注册→付费的整体转化率 ${pct(A.paid,A.total)}（${fmt(A.paid)} 家，不限是否活跃）；不限活跃的年费续费商家 ${fmt(A.renewAny)} 家。漏斗为逐级嵌套口径，所以第三、四级比上面的整体数小。</p>`;
+  const funRows = fs.map((s,i)=>({k:s[0],n:s[1],cv:i?s[1]/(s[2]||1):1}));
+  chartFooter($('c_funnel'),'funnel',[['阶段','k'],['商家数',(r,c)=>c?r.n:fmt(r.n)],['较上一级',(r,c)=>c?(r.cv*100).toFixed(2)+'%':(r.cv*100).toFixed(1)+'%']],funRows);
+
+  // cohort
+  const cr = []; for (let i=AXIS.length-1;i>=0;i--) if (A.reg.n[i]>0) cr.push({k:AXIS[i], n:A.reg.n[i], paid:A.reg.paid[i], act:A.reg.act[i]});
+  const mx = k=>Math.max(...cr.map(r=>r[k]/r.n),0.0001);
+  const mp = mx('paid'), ma = mx('act');
+  const heat = (v,m)=>`style="background:color-mix(in srgb, var(--s1) ${Math.round(v/m*55)}%, transparent)"`;
+  const co = $('c_cohort');
+  co.innerHTML = '<table class="sortable"><thead><tr><th>注册月</th><th>注册数</th><th>付费数</th><th>付费率</th><th>活跃数</th><th>活跃率</th></tr></thead><tbody>'+
+    cr.map(r=>`<tr data-m="${r.k}" class="${(F.from===r.k&&F.to===r.k)?'sel':''}"><td>${r.k}</td><td>${fmt(r.n)}</td><td>${fmt(r.paid)}</td><td class="heat" ${heat(r.paid/r.n,mp)}>${pct(r.paid,r.n)}</td><td>${fmt(r.act)}</td><td class="heat" ${heat(r.act/r.n,ma)}>${pct(r.act,r.n)}</td></tr>`).join('')+'</tbody></table>';
+  co.querySelectorAll('tr[data-m]').forEach(tr=>tr.addEventListener('click',()=>setRange(tr.dataset.m,tr.dataset.m)));
+  const cwrap = document.createElement('div'); co.appendChild(cwrap);
+  chartFooter(cwrap,'cohort',[['注册月','k'],['注册数',(r,c)=>c?r.n:fmt(r.n)],['付费数','paid'],['付费率',(r,c)=>c?(r.paid/r.n).toFixed(4):pct(r.paid,r.n)],['活跃数','act'],['活跃率',(r,c)=>c?(r.act/r.n).toFixed(4):pct(r.act,r.n)]],cr);
+  if (!cr.length) co.insertAdjacentHTML('afterbegin','<p class="sub">当前筛选下没有数据</p>');
+
+  // 地区
+  const provAll = dimRows('prov', A.prov, k=>k===UNF).sort((a,b)=>b.n-a.n);
+  const pu = A.unfProv;
+  $('regionNote').textContent = A.total ? (pu ? `当前筛选下有 ${fmt(pu)} 家商家（占 ${pct(pu,A.total)}）没有填写省份，其中付费 ${fmt(A.unfProvPaid)} 家。下面的分布只代表填写了省份的那部分商家。` : '当前筛选下的商家均已填写省份。') : '当前筛选下没有商家。';
+  document.querySelectorAll('[data-legend]').forEach(l=>l.innerHTML=S2.map(s=>`<span><i style="background:${s.color}"></i>${s.label}</span>`).join(''));
+  hbars($('c_prov'),'region_province',provAll,S2,Object.assign({dim:'prov'},payRate));
+  const cityAll = dimRows('city', A.city, k=>k===UNF||k==='市辖区').sort((a,b)=>b.n-a.n);
+  hbars($('c_city'),'region_city',withSelected(cityAll,30,'city'),S2,Object.assign({dim:'city',exportRows:cityAll},payRate));
+
+  // 行业
+  const iu = A.unfInd;
+  $('indNote').textContent = A.total ? (iu ? `当前筛选下有 ${fmt(iu)} 家商家（占 ${pct(iu,A.total)}）没有填写行业，下面只统计填写了行业的商家。` : '当前筛选下的商家均已填写行业。') : '当前筛选下没有商家。';
+  const indAll = dimRows('ind', A.ind, k=>k===UNF).sort((a,b)=>b[indSort]-a[indSort]);
+  hbars($('c_ind'),'industry',withSelected(indAll,25,'ind'),S2,Object.assign({dim:'ind',exportRows:indAll},payRate));
+
+  // 渠道
+  hbars($('c_bucket'),'agent_bucket',D.agent_bucket,[{key:'n',label:'名下商家',color:'var(--s1)'}],{extra:r=>'代理商数：'+fmt(r.agents), extraCol:['代理商数', r=>fmt(r.agents)]});
+  renderAgents(A);
+
+  // 使用
+  const feat = FEATS.map((k,i)=>({k, n:A.feat[i]})).sort((a,b)=>b.n-a.n);
+  hbars($('c_feat'),'usage_feature',feat,[{key:'n',label:'使用商家',color:'var(--s1)'}],{extra:r=>'占近 30 天活跃：'+pct(r.n,A.act), extraCol:['占活跃', (r,c)=>c?(r.n/(A.act||1)).toFixed(4):pct(r.n,A.act)]});
+  hbars($('c_price'),'price',D.price,[{key:'n',label:'订单数',color:'var(--s1)'}],{extra:r=>'金额：¥'+fmt(r.amt), extraCol:['金额', r=>'¥'+fmt(r.amt)]});
+  const PM = {SCAN_TO_PAY:'扫码支付', CORPORATE_TRANSFER:'对公转账', APP:'App 内支付'};
+  hbars($('c_pay'),'paymethod',D.paymethod.map(r=>({...r,k:PM[r.k]||r.k})),[{key:'amt',label:'金额',color:'var(--s1)'}],{valFmt:v=>'¥'+wan(v), extra:r=>'笔数：'+fmt(r.n)});
+
+  // 续费 / 到期
+  const expFull = []; for (let m=EXP_LO; m<=EXP_HI; m=addM(m,1)) expFull.push({k:m, n:A.exp[IDX.month.get(m)]||0});
+  const past = expFull.filter(r=>r.k<NOW_M).reduce((a,r)=>a+r.n,0), soon = expFull.filter(r=>r.k>=NOW_M).slice(0,3).reduce((a,r)=>a+r.n,0);
+  $('renewNote').textContent = `当前筛选下，过去 5 个月已有 ${fmt(past)} 家付费商家到期，未来 3 个月（含本月）还有 ${fmt(soon)} 家到期。按订单统计的年费续费率是 ${pct(A.renewed,A.due)}（满一年可续费 ${fmt(A.due)} 家）。如果有续费走了线下、赠送或直接改了到期日，这个续费率会偏低，需要和业务核对续费的记录方式。`;
+  trendChart($('c_exp'),'expiry',expFull.map(r=>r.k),expFull.map(r=>r.n),{label:'到期商家',gran:'m',type:'bar',maxTicks:18,barColor:i=>expFull[i].k<NOW_M?'var(--past)':'var(--s1)'});
+}
+
+/* ---------------- 代理商表 ---------------- */
+function renderAgents(A){
+  const all = []; for (let i=0;i<DM.agent.length;i++){ const n = A.agent.n[i]; const k = DM.agent[i]; if (n>0 || F.agent.has(k)) all.push({k, n, paid:A.agent.paid[i], rev:A.agent.rev[i], act:A.agent.act[i], pr:n?A.agent.paid[i]/n:0, ar:n?A.agent.act[i]/n:0}); }
+  const qy = agQuery.trim().toLowerCase();
+  let rows = qy ? all.filter(r=>r.k.toLowerCase().includes(qy)) : all;
+  const key = agSort.key;
+  rows = rows.slice().sort((a,b)=> key==='k' ? agSort.dir*a.k.localeCompare(b.k,'zh') : agSort.dir*((a[key]-b[key]) || (b.n-a.n)));
+  const LIM = 200, shown = agShowAll ? rows : rows.slice(0,LIM);
+  $('agCount').textContent = `共 ${fmt(rows.length)} 个代理商${rows.length>shown.length?'，显示前 '+LIM+' 个':''}`;
+  const heads = [['k','代理商'],['n','商家数'],['paid','付费数'],['pr','付费率'],['rev','会员收入'],['ar','活跃率']];
+  const el = $('c_agent');
+  el.innerHTML = '<table class="sortable"><thead><tr>'+heads.map(h=>`<th data-k="${h[0]}" class="${key===h[0]?'cur':''}">${h[1]}${key===h[0]?(agSort.dir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>'+
+    shown.map((r,i)=>`<tr data-i="${i}" class="${F.agent.has(r.k)?'sel':''}"><td title="${esc(r.k)}" style="max-width:200px;overflow:hidden;text-overflow:ellipsis">${esc(r.k)}</td><td>${fmt(r.n)}</td><td>${fmt(r.paid)}</td><td>${pct(r.paid,r.n)}</td><td>¥${fmt(r.rev)}</td><td>${pct(r.act,r.n)}</td></tr>`).join('')+'</tbody></table>';
+  el.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{ const k = th.dataset.k; agSort = {key:k, dir: agSort.key===k ? -agSort.dir : (k==='k'?1:-1)}; renderAgents(lastA); }));
+  el.querySelectorAll('tbody tr').forEach(tr=>tr.addEventListener('click',()=>toggleDim('agent', shown[+tr.dataset.i].k)));
+  const t = $('agTools'); t.innerHTML = '';
+  if (rows.length>shown.length){ const b = document.createElement('button'); b.className='btn'; b.textContent='显示全部 '+fmt(rows.length)+' 个'; b.addEventListener('click',()=>{ agShowAll = true; renderAgents(lastA); }); t.appendChild(b); }
+  const ex = document.createElement('button'); ex.className='btn'; ex.textContent='导出 CSV（当前筛选下的聚合）';
+  ex.addEventListener('click',()=>downloadCSV('agents',[['代理商','k'],['商家数','n'],['付费数','paid'],['付费率',(r)=>r.pr.toFixed(4)],['会员收入','rev'],['活跃数','act'],['活跃率',(r)=>r.ar.toFixed(4)]],rows));
+  t.appendChild(ex);
+}
+
+/* ---------------- 筛选栏 ---------------- */
+const filtersEl = $('filters');
+const ms = {};
+function buildFilters(){
+  filtersEl.innerHTML = '';
+  ['prov','city','ind','agent'].forEach(dim=>{
+    const w = document.createElement('div'); w.className='fl';
+    w.innerHTML = `<label>${LABELS[dim]}</label><button class="msb" type="button"><span class="ph">全部</span></button><div class="pop"><input type="search" placeholder="搜索${LABELS[dim]}"><div class="opts"></div><div class="pfoot"><span class="hint"></span><a class="btn" style="padding:0 8px">清除</a></div></div>`;
+    filtersEl.appendChild(w);
+    const btn = w.querySelector('.msb'), pop = w.querySelector('.pop'), inp = w.querySelector('input'), opts = w.querySelector('.opts');
+    const draw = ()=>{
+      const qy = inp.value.trim().toLowerCase();
+      let list = DM[dim].map((v,i)=>({v,c:CNT[dim][i]}));
+      if (dim==='city' && F.prov.size){ const pids = new Set([...F.prov].map(n=>IDX.prov.get(n))); list = list.filter(o=>{ const s = CITY_PROV.get(IDX.city.get(o.v)); return s && [...s].some(p=>pids.has(p)); }); }
+      if (qy) list = list.filter(o=>o.v.toLowerCase().includes(qy));
+      const total = list.length; list = list.slice(0,300);
+      opts.innerHTML = list.map(o=>`<label class="opt"><input type="checkbox" ${F[dim].has(o.v)?'checked':''} data-v="${esc(o.v)}"><span class="nm" title="${esc(o.v)}">${esc(o.v)}</span><span class="c">${fmt(o.c)}</span></label>`).join('') || '<div class="sub">无匹配</div>';
+      w.querySelector('.hint').textContent = total>300 ? `匹配 ${fmt(total)} 项，显示前 300，请继续搜索` : (dim==='city'&&F.prov.size?'已按所选省份联动':'');
+    };
+    btn.addEventListener('click',e=>{ e.stopPropagation(); const open = !pop.classList.contains('open'); closePops(); if (open){ pop.classList.add('open'); inp.value=''; draw(); if (innerWidth>700) inp.focus(); } });
+    pop.addEventListener('click',e=>e.stopPropagation());
+    inp.addEventListener('input',draw);
+    opts.addEventListener('change',e=>{ const v = e.target.dataset.v; if (v==null) return; if (e.target.checked) F[dim].add(v); else F[dim].delete(v); if (dim==='prov') pruneCities(); update(true); });
+    w.querySelector('.pfoot a').addEventListener('click',()=>{ F[dim].clear(); if (dim==='prov') pruneCities(); update(true); draw(); });
+    ms[dim] = {btn, draw, pop};
+  });
+  const sel = (id,lab,opts)=>{ const w = document.createElement('div'); w.className='fl'; w.innerHTML = `<label>${lab}</label><select id="${id}">${opts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('')}</select>`; filtersEl.appendChild(w); return w.querySelector('select'); };
+  sel('fPay','付费状态',[['all','全部'],['1','付费'],['0','未付费']]).addEventListener('change',e=>{ F.pay = e.target.value; update(); });
+  sel('fAct','近 30 天活跃',[['all','全部'],['1','活跃'],['0','不活跃']]).addEventListener('change',e=>{ F.act = e.target.value; update(); });
+  const mopts = [['','不限']].concat(MONTH.filter(m=>m<=NOW_M && m>='2023-01').map(m=>[m,m]));
+  const rw = document.createElement('div'); rw.className='fl'; rw.innerHTML = '<label>注册时间（起 – 止）</label><div class="range"><select id="fFrom"></select>–<select id="fTo"></select></div>'; filtersEl.appendChild(rw);
+  ['fFrom','fTo'].forEach(id=>{ const s = $(id); s.innerHTML = mopts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join(''); s.style.minWidth='88px'; s.addEventListener('change',()=>{ F.from = $('fFrom').value; F.to = $('fTo').value; normalizeRange(); update(); }); });
+  const clr = document.createElement('button'); clr.className='btn'; clr.textContent='清空筛选'; clr.style.alignSelf='flex-end'; clr.style.height='28px'; clr.addEventListener('click',()=>{ F = newF(); update(); });
+  filtersEl.appendChild(clr);
+}
+function closePops(){ document.querySelectorAll('.pop.open').forEach(p=>p.classList.remove('open')); }
+document.addEventListener('click',closePops);
+document.addEventListener('keydown',e=>{ if (e.key==='Escape') closePops(); });
+
+function syncControls(){
+  for (const dim in ms){ const n = F[dim].size; ms[dim].btn.innerHTML = n ? `<span>已选</span><span class="ct">${n}</span>` : '<span class="ph">全部</span>'; if (ms[dim].pop.classList.contains('open')) ms[dim].draw(); }
+  $('fPay').value = F.pay; $('fAct').value = F.act;
+  const ensure = (id,v)=>{ const s = $(id); if (v && ![...s.options].some(o=>o.value===v)) s.add(new Option(v,v)); s.value = v; };
+  ensure('fFrom',F.from); ensure('fTo',F.to);
+  const chips = [];
+  for (const k in KEYS) F[k].forEach(v=>chips.push({t:LABELS[k], v, rm:()=>{ F[k].delete(v); if (k==='prov') pruneCities(); update(); }}));
+  if (F.pay!=='all') chips.push({t:'付费状态', v:F.pay==='1'?'付费':'未付费', rm:()=>{ F.pay='all'; update(); }});
+  if (F.act!=='all') chips.push({t:'近 30 天', v:F.act==='1'?'活跃':'不活跃', rm:()=>{ F.act='all'; update(); }});
+  if (F.from||F.to) chips.push({t:'注册时间', v:(F.from||'…')+(F.from===F.to?'':' ~ '+(F.to||'…')), rm:()=>{ F.from=F.to=''; update(); }});
+  const ce = $('chips'); ce.innerHTML = '';
+  chips.forEach(c=>{ const b = document.createElement('button'); b.className='chip'; b.type='button'; b.title='点击移除'; b.innerHTML = `<b>${c.t}：</b>${esc(c.v)} <span class="x">×</span>`; b.addEventListener('click',c.rm); ce.appendChild(b); });
+  $('ftoggle').textContent = '筛选' + (chips.length?` (${chips.length})`:'');
+  $('segType').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===VIEW.type));
+  $('segGran').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===VIEW.gran));
+}
+
+let lastMs = 0;
+function update(keepPop){
+  normalizeRange();
+  const t0 = performance.now();
+  const A = compute(F);
+  const t1 = performance.now();
+  lastMs = t1 - t0;
+  render(A);
+  syncControls();
+  syncHash();
+  adjustScrollPad();
+  window.__perf = {computeMs:lastMs, renderMs:performance.now()-t1};
+}
+
+/* ---------------- 经营提示 ---------------- */
+function initInsights(){
+  const k = D.kpi;
+  const [year, month] = D.generated.slice(0,7).split('-').map(Number);
+  const next = new Date(Date.UTC(year,month,1)).toISOString().slice(0,7);
+  const current = D.generated.slice(0,7);
+  const exp = m => Number((D.expiry.find(r=>r.k===m)||{}).n||0);
+  $('insight-inactive').querySelector('.insight-copy').textContent = `${fmt(k.paid)} 家付费客户中，近 30 天活跃 ${fmt(k.paid_act30)} 家（${pct(k.paid_act30,k.paid)}），其余 ${fmt(k.paid-k.paid_act30)} 家未记录到曝光、私信、加好友、发视频或评论动作。建议先筛选“付费＋不活跃”，再按行业、代理商和注册月份拆分，判断问题集中在哪里。此处近 30 天口径与图中的自然月月活口径不同。`;
+  $('insight-renew').querySelector('.insight-copy').textContent = `${current}、${next} 到期的付费商家分别为 ${fmt(exp(current))}、${fmt(exp(next))} 家，合计 ${fmt(exp(current)+exp(next))} 家，建议安排客户成功跟进。首次年费已满一年的 ${fmt(k.due)} 家商家中，${fmt(k.renewed)} 家记录到第二笔年费订单（${pct(k.renewed,k.due)}）。该订单口径需核实线下续费、赠送及手工延长到期日，不能直接视为真实续费率。`;
+  const close = item => { item.querySelector('.insight-panel').hidden=true; item.querySelector('button').setAttribute('aria-expanded','false'); };
+  document.querySelectorAll('.insight').forEach(item=>{
+    const btn=item.querySelector('button'), panel=item.querySelector('.insight-panel');
+    panel.querySelector('.insight-date').textContent=D.generated;
+    let timer;
+    const show=()=>{
+      clearTimeout(timer);
+      document.querySelectorAll('.insight').forEach(other=>{if(other!==item)close(other);});
+      panel.hidden=false;btn.setAttribute('aria-expanded','true');
+      const r=btn.getBoundingClientRect(), h=panel.offsetHeight, w=panel.offsetWidth;
+      panel.style.left=Math.max(12,Math.min(r.left,innerWidth-w-12))+'px';
+      panel.style.top=Math.max(12,r.bottom+h+8>innerHeight?r.top-h-8:r.bottom+8)+'px';
+    };
+    item.addEventListener('mouseenter',show);
+    item.addEventListener('mouseleave',()=>{timer=setTimeout(()=>{if(!item.contains(document.activeElement))close(item);},160);});
+    item.addEventListener('focusin',show);
+    item.addEventListener('focusout',e=>{if(!item.contains(e.relatedTarget))close(item);});
+    btn.addEventListener('click',show);
+    item.addEventListener('keydown',e=>{if(e.key==='Escape'){clearTimeout(timer);close(item);e.stopPropagation();}});
+  });
+  document.addEventListener('click',e=>{document.querySelectorAll('.insight').forEach(item=>{if(!item.contains(e.target))close(item);});});
+  const closeAll=()=>document.querySelectorAll('.insight').forEach(close);
+  addEventListener('scroll',e=>{if(!e.target.closest?.('.insight-panel'))closeAll();},true);
+  addEventListener('resize',closeAll);
+}
+initInsights();
+
+/* ---------------- 初始化 ---------------- */
+buildFilters();
+fromHash();
+$('segType').addEventListener('click',e=>{ const v = e.target.dataset.v; if (v){ VIEW.type = v; update(); } });
+$('segGran').addEventListener('click',e=>{ const v = e.target.dataset.v; if (v){ VIEW.gran = v; update(); } });
+document.querySelectorAll('input[name=indsort]').forEach(i=>i.addEventListener('change',e=>{ indSort = e.target.value; update(); }));
+$('agSearch').addEventListener('input',e=>{ agQuery = e.target.value; agShowAll = false; renderAgents(lastA); });
+$('nav').addEventListener('click',e=>{ const t = e.target.dataset.t; if (t) document.getElementById(t).scrollIntoView({behavior:'smooth'}); });
+$('ftoggle').addEventListener('click',()=>filtersEl.classList.toggle('open'));
+$('themeBtn').addEventListener('click',()=>{
+  const r=document.documentElement; const dark = r.dataset.theme ? r.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme = dark ? 'light' : 'dark';
+});
+addEventListener('hashchange',()=>{ fromHash(); update(); });
+function adjustScrollPad(){ document.documentElement.style.scrollPaddingTop = (document.querySelector('header').offsetHeight + 8) + 'px'; }
+addEventListener('resize',adjustScrollPad);
+update(); adjustScrollPad();
+</script>
+</body>
+</html>
