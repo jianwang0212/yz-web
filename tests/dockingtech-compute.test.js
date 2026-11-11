@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const html = fs.readFileSync(new URL('../projects/dockingtech-compute.html', import.meta.url), 'utf8');
+const html = fs.readFileSync(new URL('../projects/dockingtech/liandao/compute/index.html', import.meta.url), 'utf8');
 const payload = html.match(/<script id="data" type="application\/json">(.*?)<\/script>/s)?.[1];
 const data = JSON.parse(payload);
 const total = (key) => data.customers.reduce((sum, row) => sum + row[key], 0);
@@ -42,7 +42,7 @@ test('public snapshot omits original customer identities and private audit recor
 
 test('project entry retains existing production sections and adds the report', () => {
   const entry = fs.readFileSync(new URL('../projects/dockingtech.html', import.meta.url), 'utf8');
-  assert.match(entry, /href="\/projects\/dockingtech-compute"/);
+  assert.match(entry, /href="\/projects\/dockingtech\/liandao\/compute\/"/);
   assert.match(entry, /\/projects\/dockingtech\/liandao\//);
   assert.match(entry, /\/projects\/dockingtech-photos\//);
   assert.match(entry, /不代表当前经营状况/);
