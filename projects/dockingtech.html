@@ -74,7 +74,7 @@
 
             <div class="container dock-team-grid" aria-label="团队成员">
                 <article class="dock-team-card">
-                    <img src="/assets/dockingtech/team-harvey.webp" alt="李禹衡 Harvey" loading="lazy" decoding="async">
+                    <img src="/assets/dockingtech/team-harvey.webp" alt="李禹衡 Harvey" decoding="async">
                     <div class="dock-team-copy">
                         <p>创始人 &amp; CEO</p>
                         <h2>李禹衡 Harvey</h2>
@@ -87,7 +87,7 @@
                     </div>
                 </article>
                 <article class="dock-team-card">
-                    <img src="/assets/dockingtech/team-karl.webp" alt="吴涛 Karl" loading="lazy" decoding="async">
+                    <img src="/assets/dockingtech/team-karl.webp" alt="吴涛 Karl" decoding="async">
                     <div class="dock-team-copy">
                         <p>联创 &amp; CTO</p>
                         <h2>吴涛 Karl</h2>
@@ -100,7 +100,7 @@
                     </div>
                 </article>
                 <article class="dock-team-card">
-                    <img src="/assets/dockingtech/team-zi.webp" alt="银子 Ziggle" loading="lazy" decoding="async">
+                    <img src="/assets/dockingtech/team-zi.webp" alt="银子 Ziggle" decoding="async">
                     <div class="dock-team-copy">
                         <p>AI R&amp;D</p>
                         <h2>银子 Ziggle</h2>
@@ -113,6 +113,18 @@
                         </ul>
                     </div>
                 </article>
+            </div>
+        </section>
+
+
+        <section class="dock-section" id="compute" aria-labelledby="compute-title">
+            <div class="container">
+                <p class="dock-kicker">历史数据分析 · 截至 2026 年 2 月</p>
+                <h2 id="compute-title">算力消耗分析工作台</h2>
+                <p>清洗后 4,450 个有消耗账号，累计消耗 310.22 亿源表计量值。交互查看功能结构、行业分布与客户消耗。</p>
+                <p>行业来源区分源表分类、名称推断与待补充；推断项待核验。历史快照不代表当前经营状况，消耗不等于收入或成本。</p>
+                <a href="/projects/dockingtech-compute" style="display:inline-flex;padding:12px 20px;margin-top:12px;border-radius:8px;background:#245bf2;color:#fff;text-decoration:none;font-weight:600">打开算力分析工作台 →</a>
+                <p style="font-size:13px;opacity:.75;margin-top:12px">公开展示中，客户名称和账号 ID 已替换为展示编号。</p>
             </div>
         </section>
 
@@ -169,8 +181,40 @@
                     </li>
                 </ol>
                 <figure class="dock-slide-figure">
-                    <img src="/assets/dockingtech/three-step.webp" alt="入坞科技 BP 中的三步解题路线" loading="lazy" decoding="async">
+                    <img src="/assets/dockingtech/three-step.webp" alt="入坞科技 BP 中的三步解题路线" decoding="async">
                 </figure>
+            </div>
+        </section>
+
+        <section class="dock-section dock-photos" id="photos" aria-labelledby="photos-title">
+            <style>
+            .dock-photos .dock-photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0 20px}
+            .dock-photos .dock-photo-strip img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block}
+            .dock-photos .dock-photo-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+            .dock-photos .dock-photo-link:hover{background:#4f46e5}
+            @media(max-width:640px){.dock-photos .dock-photo-strip{grid-template-columns:repeat(2,1fr);gap:8px}}
+            </style>
+            <div class="container">
+                <div class="dock-section-header">
+                    <p class="dock-kicker">团队相册</p>
+                    <h2 id="photos-title">入坞精选照片：AI 为每位同事挑出最好看的几张。</h2>
+                    <p>966 张活动照片，经 AI 去重、轻度修图、看图打标签和人脸识别，按人整理成个人精选。</p>
+                </div>
+                <a href="/projects/dockingtech-photos/" class="dock-photo-strip" aria-label="查看入坞精选照片">
+                    <img src="/projects/dockingtech-photos/thumb/44739ed17f.jpg" alt="全体员工户外新春大合影" decoding="async">
+                    <img src="/projects/dockingtech-photos/thumb/2fb9918a53.jpg" alt="颁发最佳案例分享者奖牌" decoding="async">
+                    <img src="/projects/dockingtech-photos/thumb/0677f8d707.jpg" alt="主讲人在大会舞台演讲" decoding="async">
+                    <img src="/projects/dockingtech-photos/thumb/72a08bb32e.jpg" alt="同事举着奖杯合影" decoding="async">
+                </a>
+                <a href="/projects/dockingtech-photos/" class="dock-photo-link">查看全部精选照片 →</a>
+            </div>
+        </section>
+
+        <section class="dock-section" id="customer-dashboard" aria-labelledby="customer-dashboard-title">
+            <div class="container">
+                <h2 id="customer-dashboard-title">炼刀客户分析后台</h2>
+                <p>查看注册、付费、活跃、地区、行业、代理商及续费统计。</p>
+                <a href="/projects/dockingtech/liandao/">进入客户分析后台 →</a>
             </div>
         </section>
 
