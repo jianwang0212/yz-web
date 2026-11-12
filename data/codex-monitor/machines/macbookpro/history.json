@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-09-30T03:25:18.918Z",
-    "cpu": 2.760835387484496,
-    "memoryBytes": 2601574400,
-    "totalTokens": 1662661883,
-    "todayTokens": 753185,
-    "activeAgents": 19,
-    "estimatedCostUsd": 1376.3666774399999,
-    "agents": [
-      {
-        "agentId": "54c027d365df7b05",
-        "processName": "Autoupdate",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.001985921664636524,
-        "memoryBytes": 14548992,
-        "confidence": "low"
-      },
-      {
-        "agentId": "cc9921f024d6a3da",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0000029836406980525776,
-        "memoryBytes": 7864320,
-        "confidence": "low"
-      },
-      {
-        "agentId": "2862309cdcb76e49",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0,
-        "memoryBytes": 7700480,
-        "confidence": "low"
-      },
-      {
-        "agentId": "01f542aafb4e20af",
-        "processName": "Codex (Service)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.02677220798362578,
-        "memoryBytes": 129449984,
-        "confidence": "low"
-      },
-      {
-        "agentId": "4a8841232fc82ac8",
-        "processName": "Codex (Service)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.2668717422373128,
-        "memoryBytes": 109215744,
-        "confidence": "low"
-      },
-      {
-        "agentId": "f4a9b5a009e0285f",
-        "processName": "Codex (Service)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.007661989312599019,
-        "memoryBytes": 69959680,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e70b97bdf0edfea7",
-        "processName": "codex",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.049108767909677345,
-        "memoryBytes": 152551424,
-        "confidence": "low"
-      },
-      {
-        "agentId": "72a94f40e7a020c0",
-        "processName": "Codex (Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.011370892186875287,
-        "memoryBytes": 171950080,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-09-30T03:53:10.380Z",
     "cpu": 2.032663518728668,
     "memoryBytes": 2116501504,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.7625102543068089,
         "memoryBytes": 584695808,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-12T10:25:48.299Z",
+    "cpu": 7.478784741276592,
+    "memoryBytes": 5348114432,
+    "totalTokens": 2729514753,
+    "todayTokens": 237820915,
+    "activeAgents": 22,
+    "estimatedCostUsd": 1589.19565936,
+    "agents": [
+      {
+        "agentId": "8a9798cbc4d8e3cc",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1c830-9005-7940-89a6-f11dc0bc8c0e",
+        "sessionTitle": "**分析客户分布并做管理后台**通过只读数据库统计注册、付费、活跃、地区、行业、代理商和续费。报告记录 **17,517 家注册、5,372 家付费、近 30 天活跃 1,820 家**。交互后台已生成，最后记录仍待部署。[统计报告](/Users/Zi/DockingTech/炼刀客户分布_20261110.md) · [后台页面](/Users/Zi/DockingTech/炼刀后台/dashboard.html) 开始部署",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.9045603232634212,
+        "memoryBytes": 1012449280,
+        "confidence": "high"
+      },
+      {
+        "agentId": "7b60511527d6e6fb",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1cf4a-0663-7122-839d-f415a898fbd8",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.9045603232634212,
+        "memoryBytes": 1012449280,
+        "confidence": "high"
+      },
+      {
+        "agentId": "4e930a2ba6a2d5de",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.25133689839572193,
+        "memoryBytes": 167952384,
+        "confidence": "low"
+      },
+      {
+        "agentId": "1e4466a939ffb364",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.28260869565217395,
+        "memoryBytes": 125403136,
+        "confidence": "low"
+      },
+      {
+        "agentId": "36875eb9da5f2228",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.11363636363636363,
+        "memoryBytes": 68354048,
+        "confidence": "low"
+      },
+      {
+        "agentId": "b7298e12183a7780",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0003843197540353574,
+        "memoryBytes": 10190848,
+        "confidence": "low"
+      },
+      {
+        "agentId": "38482c558dc59713",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0001921598770176787,
+        "memoryBytes": 9977856,
+        "confidence": "low"
+      },
+      {
+        "agentId": "d0ecab57e969f674",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 1.784355179704017,
+        "memoryBytes": 194510848,
         "confidence": "low"
       }
     ]

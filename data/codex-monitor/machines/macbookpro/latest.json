@@ -1,31 +1,75 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T10:20:27.892Z",
+  "syncedAt": "2026-11-12T10:25:48.299Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 19,
-    "todayTokens": 237181856,
-    "weekTokens": 1059611109,
-    "totalTokens": 2728875694,
-    "estimatedCostUsd": 1587.94466136,
-    "cpu": 5.8053110735918,
-    "memoryBytes": 3608657920
+    "activeAgents": 22,
+    "todayTokens": 237820915,
+    "weekTokens": 1060250168,
+    "totalTokens": 2729514753,
+    "estimatedCostUsd": 1589.19565936,
+    "cpu": 7.478784741276592,
+    "memoryBytes": 5348114432
   },
   "agents": [
     {
-      "agentId": "d52b2fb5e346fdf4",
-      "processName": "ssh",
+      "agentId": "8a9798cbc4d8e3cc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c830-9005-7940-89a6-f11dc0bc8c0e",
+      "sessionTitle": "**分析客户分布并做管理后台**通过只读数据库统计注册、付费、活跃、地区、行业、代理商和续费。报告记录 **17,517 家注册、5,372 家付费、近 30 天活跃 1,820 家**。交互后台已生成，最后记录仍待部署。[统计报告](/Users/Zi/DockingTech/炼刀客户分布_20261110.md) · [后台页面](/Users/Zi/DockingTech/炼刀后台/dashboard.html) 开始部署",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.9045603232634212,
+      "memoryBytes": 1012449280,
+      "confidence": "high"
+    },
+    {
+      "agentId": "7b60511527d6e6fb",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cf4a-0663-7122-839d-f415a898fbd8",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.9045603232634212,
+      "memoryBytes": 1012449280,
+      "confidence": "high"
+    },
+    {
+      "agentId": "4e930a2ba6a2d5de",
+      "processName": "Codex (Aperitif Renderer)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4063232,
+      "cpu": 0.25133689839572193,
+      "memoryBytes": 167952384,
+      "confidence": "low"
+    },
+    {
+      "agentId": "1e4466a939ffb364",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.28260869565217395,
+      "memoryBytes": 125403136,
+      "confidence": "low"
+    },
+    {
+      "agentId": "36875eb9da5f2228",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.11363636363636363,
+      "memoryBytes": 68354048,
       "confidence": "low"
     },
     {
@@ -35,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0004095842719639566,
+      "cpu": 0.0003843197540353574,
       "memoryBytes": 10190848,
       "confidence": "low"
     },
@@ -46,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0002047921359819783,
+      "cpu": 0.0001921598770176787,
       "memoryBytes": 9977856,
       "confidence": "low"
     },
@@ -57,52 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.7072920934043425,
-      "memoryBytes": 182796288,
-      "confidence": "low"
-    },
-    {
-      "agentId": "974c34f8bb3ae977",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.18926669397787793,
-      "memoryBytes": 94797824,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f7bc468270c9e085",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.008398197460057353,
-      "memoryBytes": 53493760,
-      "confidence": "low"
-    },
-    {
-      "agentId": "3e861e862adb1878",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0067678424938474166,
-      "memoryBytes": 114114560,
-      "confidence": "low"
-    },
-    {
-      "agentId": "20dbba392984160e",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.7625102543068089,
-      "memoryBytes": 584695808,
+      "cpu": 1.784355179704017,
+      "memoryBytes": 194510848,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1053344289,
-      "inputTokens": 16657687,
-      "outputTokens": 1695754,
-      "costUSD": 206.15772859999998
+      "totalTokens": 1053983348,
+      "inputTokens": 16951276,
+      "outputTokens": 1696264,
+      "costUSD": 207.40872659999997
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T10:20:30.813Z"
+  "receivedAt": "2026-11-12T10:25:51.088Z"
 }
