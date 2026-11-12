@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T16:19:16.387Z",
+  "syncedAt": "2026-11-12T16:24:38.585Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 28,
+    "activeAgents": 26,
     "todayTokens": 319971836,
     "weekTokens": 1142401089,
     "totalTokens": 2811665674,
     "estimatedCostUsd": 1606.0826397600001,
-    "cpu": 8.731883311810618,
-    "memoryBytes": 5413437440
+    "cpu": 8.424552766031344,
+    "memoryBytes": 5384896512
   },
   "agents": [
+    {
+      "agentId": "0e95ecf95bce71b4",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1c82d-e406-7af2-ae9f-570991b63fcb",
+      "sessionTitle": "**建立公司照片资产库和人物相册**已有 **966 张照片**，支持质量筛选、轻度修图、场景标签、人脸分组、人名检索和个人精选导出。已有 CEO、李雪、周侗等人的分类，但还没覆盖全部员工。Claude 记录称精选相册已发布；本次未复核线上。当前素材主要是 **1600px 预览图**。[照片库](/Users/Zi/DockingTech/入坞照片库/05_网页/index.html) 这个你来接替 claude 进行工作. 给我现在的 ststus 和需要干什么? 是不是有个 html 给我看看",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.5580333757389808,
+      "memoryBytes": 1094565888,
+      "confidence": "high"
+    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01794895765167804,
-      "memoryBytes": 130596864,
+      "cpu": 0.01768281451464358,
+      "memoryBytes": 130547712,
       "confidence": "low"
     },
     {
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006869618406813155,
+      "cpu": 0.006813441483198146,
       "memoryBytes": 208093184,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008187849983530187,
+      "cpu": 0.008111991841653919,
       "memoryBytes": 166576128,
       "confidence": "low"
     },
@@ -57,19 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1458136458136458,
+      "cpu": 0.1437214930652518,
       "memoryBytes": 199901184,
-      "confidence": "low"
-    },
-    {
-      "agentId": "30c4904ae6188995",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.017722117202268434,
-      "memoryBytes": 78364672,
       "confidence": "low"
     },
     {
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.019290389252497417,
+      "cpu": 0.0191888721300486,
       "memoryBytes": 79249408,
       "confidence": "low"
     },
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.023571058539112417,
-      "memoryBytes": 80150528,
+      "cpu": 0.023269489247311828,
+      "memoryBytes": 80134144,
       "confidence": "low"
     },
     {
@@ -101,7 +101,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00007572602324788913,
+      "cpu": 0.00007481390042269854,
       "memoryBytes": 8552448,
       "confidence": "low"
     }
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T16:19:20.221Z"
+  "receivedAt": "2026-11-12T16:24:41.890Z"
 }
