@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T07:55:01.896Z",
+  "syncedAt": "2026-11-12T08:00:29.620Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 51,
-    "todayTokens": 223033923,
-    "weekTokens": 1045463176,
-    "totalTokens": 2714727761,
-    "estimatedCostUsd": 1584.04889308,
-    "cpu": 17.24189842841938,
-    "memoryBytes": 9037856768
+    "activeAgents": 50,
+    "todayTokens": 229888198,
+    "weekTokens": 1052317451,
+    "totalTokens": 2721582036,
+    "estimatedCostUsd": 1585.36659316,
+    "cpu": 16.90756385197478,
+    "memoryBytes": 8698757120
   },
   "agents": [
-    {
-      "agentId": "8d68dcf0ff50fd58",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ca6e-1d59-7cb1-bcaf-9c08f77b8e07",
-      "sessionTitle": "发票的总结, 所有的发票都先储存在本地, 你可以查我的 gmail. 先查过去半年的",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.8991422896352473,
-      "memoryBytes": 990330880,
-      "confidence": "high"
-    },
     {
       "agentId": "71e72adfe5fdf01e",
       "processName": "codex",
@@ -35,19 +24,30 @@
       "sessionId": "01a1c9ba-9bdc-7f02-ad47-6306d7669132",
       "sessionTitle": "为什么这个我打开不了? [https://chatgpt.com/s/cx_6af42742625081919f23ec22180bf5ae](https://chatgpt.com/s/cx_6af42742625081919f23ec22180bf5ae)",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.8991422896352473,
-      "memoryBytes": 990330880,
+      "cpu": 0.9003042632867636,
+      "memoryBytes": 958889984,
       "confidence": "high"
     },
     {
-      "agentId": "7c5770f37cdc7d4c",
+      "agentId": "60f0937f1de8fa25",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a1ce6a-6afe-7261-8242-31d4e6f01175",
-      "sessionTitle": "这是我们公司的新产品, 你看看. [https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0&tab=studio&detail=aigc](https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0\\&tab=studio\\&detail=aigc) 账号密码: admin\\\nDocking然后魔力师的demo做成视频， 我的， 然后放到我的网站上",
+      "sessionId": "01a1cec4-91d1-7a41-8279-6646d471f93a",
+      "sessionTitle": "Guardian review",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.8991422896352473,
-      "memoryBytes": 990330880,
+      "cpu": 0.9003042632867636,
+      "memoryBytes": 958889984,
+      "confidence": "high"
+    },
+    {
+      "agentId": "8d68dcf0ff50fd58",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1ca6e-1d59-7cb1-bcaf-9c08f77b8e07",
+      "sessionTitle": "发票的总结, 所有的发票都先储存在本地, 你可以查我的 gmail. 先查过去半年的",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.9003042632867636,
+      "memoryBytes": 958889984,
       "confidence": "high"
     },
     {
@@ -57,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.06639153059393504,
-      "memoryBytes": 72679424,
+      "cpu": 0.06337908829012032,
+      "memoryBytes": 72761344,
       "confidence": "low"
     },
     {
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010329836876321143,
-      "memoryBytes": 117620736,
+      "cpu": 0.010196448958702413,
+      "memoryBytes": 117538816,
       "confidence": "low"
     },
     {
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10154298717877559,
-      "memoryBytes": 109920256,
+      "cpu": 0.10108293275871594,
+      "memoryBytes": 109821952,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011469221835075493,
-      "memoryBytes": 63438848,
+      "cpu": 0.011471375841354853,
+      "memoryBytes": 63193088,
       "confidence": "low"
     },
     {
@@ -101,8 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011455274802530913,
-      "memoryBytes": 11878400,
+      "cpu": 0.011301970704639112,
+      "memoryBytes": 13041664,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1039991151,
-      "inputTokens": 16215193,
-      "outputTokens": 1643222,
-      "costUSD": 203.01775819999997
+      "totalTokens": 1046813033,
+      "inputTokens": 16242436,
+      "outputTokens": 1668453,
+      "costUSD": 204.32984439999998
     },
     {
       "model": "gpt-5.5",
@@ -130,10 +130,10 @@
     },
     {
       "model": "gpt-5.6-luna",
-      "totalTokens": 87404091,
-      "inputTokens": 4867185,
-      "outputTokens": 280522,
-      "costUSD": 53.926041320000024
+      "totalTokens": 87436484,
+      "inputTokens": 4893948,
+      "outputTokens": 280648,
+      "costUSD": 53.93165520000002
     },
     {
       "model": "gpt-5.6-terra",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T07:55:04.942Z"
+  "receivedAt": "2026-11-12T08:00:32.649Z"
 }
