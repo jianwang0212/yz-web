@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T06:49:34.631Z",
+  "syncedAt": "2026-11-12T06:55:01.226Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 47,
-    "todayTokens": 135634840,
-    "weekTokens": 958064093,
-    "totalTokens": 2627328678,
-    "estimatedCostUsd": 1567.1080416,
-    "cpu": 19.200043137302078,
-    "memoryBytes": 6955696128
+    "activeAgents": 46,
+    "todayTokens": 141639412,
+    "weekTokens": 964068665,
+    "totalTokens": 2633333250,
+    "estimatedCostUsd": 1568.4788068,
+    "cpu": 19.360671176058457,
+    "memoryBytes": 6860111872
   },
   "agents": [
+    {
+      "agentId": "71e72adfe5fdf01e",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c9ba-9bdc-7f02-ad47-6306d7669132",
+      "sessionTitle": "为什么这个我打开不了? [https://chatgpt.com/s/cx_6af42742625081919f23ec22180bf5ae](https://chatgpt.com/s/cx_6af42742625081919f23ec22180bf5ae)",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.8806737588652482,
+      "memoryBytes": 731365376,
+      "confidence": "high"
+    },
     {
       "agentId": "8d68dcf0ff50fd58",
       "processName": "codex",
@@ -24,8 +35,8 @@
       "sessionId": "01a1ca6e-1d59-7cb1-bcaf-9c08f77b8e07",
       "sessionTitle": "发票的总结, 所有的发票都先储存在本地, 你可以查我的 gmail. 先查过去半年的",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.8796345698426516,
-      "memoryBytes": 750157824,
+      "cpu": 0.8806737588652482,
+      "memoryBytes": 731365376,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.05528554070473876,
-      "memoryBytes": 145768448,
+      "cpu": 0.048150025342118596,
+      "memoryBytes": 145997824,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0054811205846528625,
-      "memoryBytes": 80314368,
+      "cpu": 0.005078720162519045,
+      "memoryBytes": 80216064,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011633405845077084,
-      "memoryBytes": 119619584,
+      "cpu": 0.011456247380431238,
+      "memoryBytes": 119242752,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10726288137831849,
-      "memoryBytes": 111362048,
+      "cpu": 0.10675059881988666,
+      "memoryBytes": 111165440,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011488412792502893,
-      "memoryBytes": 62291968,
+      "cpu": 0.011481314723097704,
+      "memoryBytes": 62308352,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.013676310852177347,
+      "cpu": 0.013459015596909771,
       "memoryBytes": 13041664,
-      "confidence": "low"
-    },
-    {
-      "agentId": "58868cc7cb6bdf78",
-      "processName": "Codex (Renderer)",
-      "status": "running",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 2.182127145965347,
-      "memoryBytes": 1332953088,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 952751596,
-      "inputTokens": 15366913,
-      "outputTokens": 1479403,
-      "costUSD": 186.08822239999998
+      "totalTokens": 958756168,
+      "inputTokens": 15410488,
+      "outputTokens": 1492112,
+      "costUSD": 187.45898759999997
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T06:49:37.677Z"
+  "receivedAt": "2026-11-12T06:55:04.540Z"
 }
