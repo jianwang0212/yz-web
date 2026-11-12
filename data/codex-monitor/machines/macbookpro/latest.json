@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T06:55:01.226Z",
+  "syncedAt": "2026-11-12T07:00:28.407Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 46,
-    "todayTokens": 141639412,
-    "weekTokens": 964068665,
-    "totalTokens": 2633333250,
-    "estimatedCostUsd": 1568.4788068,
-    "cpu": 19.360671176058457,
-    "memoryBytes": 6860111872
+    "activeAgents": 47,
+    "todayTokens": 148121642,
+    "weekTokens": 970550895,
+    "totalTokens": 2639815480,
+    "estimatedCostUsd": 1569.9871838000001,
+    "cpu": 18.238526930831803,
+    "memoryBytes": 7239565312
   },
   "agents": [
+    {
+      "agentId": "7c5770f37cdc7d4c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ce6a-6afe-7261-8242-31d4e6f01175",
+      "sessionTitle": "这是我们公司的新产品, 你看看. [https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0&tab=studio&detail=aigc](https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0\\&tab=studio\\&detail=aigc) 账号密码: admin\\\nDocking然后魔力师的demo做成视频， 我的， 然后放到我的网站上",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.8841534325081172,
+      "memoryBytes": 753221632,
+      "confidence": "high"
+    },
     {
       "agentId": "71e72adfe5fdf01e",
       "processName": "codex",
@@ -24,8 +35,8 @@
       "sessionId": "01a1c9ba-9bdc-7f02-ad47-6306d7669132",
       "sessionTitle": "为什么这个我打开不了? [https://chatgpt.com/s/cx_6af42742625081919f23ec22180bf5ae](https://chatgpt.com/s/cx_6af42742625081919f23ec22180bf5ae)",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.8806737588652482,
-      "memoryBytes": 731365376,
+      "cpu": 0.8841534325081172,
+      "memoryBytes": 753221632,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": "01a1ca6e-1d59-7cb1-bcaf-9c08f77b8e07",
       "sessionTitle": "发票的总结, 所有的发票都先储存在本地, 你可以查我的 gmail. 先查过去半年的",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.8806737588652482,
-      "memoryBytes": 731365376,
+      "cpu": 0.8841534325081172,
+      "memoryBytes": 753221632,
       "confidence": "high"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.048150025342118596,
-      "memoryBytes": 145997824,
+      "cpu": 0.04652173913043478,
+      "memoryBytes": 71434240,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005078720162519045,
-      "memoryBytes": 80216064,
+      "cpu": 0.05792682926829268,
+      "memoryBytes": 292339712,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011456247380431238,
-      "memoryBytes": 119242752,
+      "cpu": 0.0113302752293578,
+      "memoryBytes": 119324672,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10675059881988666,
-      "memoryBytes": 111165440,
+      "cpu": 0.10625772221818447,
+      "memoryBytes": 111362048,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011481314723097704,
-      "memoryBytes": 62308352,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d62062889e3dc8a9",
-      "processName": "Autoupdate",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.013459015596909771,
-      "memoryBytes": 13041664,
+      "cpu": 0.011474260064525179,
+      "memoryBytes": 62996480,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 958756168,
-      "inputTokens": 15410488,
-      "outputTokens": 1492112,
-      "costUSD": 187.45898759999997
+      "totalTokens": 965238398,
+      "inputTokens": 15449434,
+      "outputTokens": 1512356,
+      "costUSD": 188.9673646
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T06:55:04.540Z"
+  "receivedAt": "2026-11-12T07:00:31.432Z"
 }
