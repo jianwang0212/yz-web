@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T01:48:49.646Z",
+  "syncedAt": "2026-11-12T01:54:19.220Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 52,
-    "todayTokens": 35378140,
-    "weekTokens": 857807393,
-    "totalTokens": 2527071978,
-    "estimatedCostUsd": 1546.4513162,
-    "cpu": 19.151705938561303,
-    "memoryBytes": 6661701632
+    "activeAgents": 50,
+    "todayTokens": 47037550,
+    "weekTokens": 869466803,
+    "totalTokens": 2538731388,
+    "estimatedCostUsd": 1548.142628,
+    "cpu": 16.257394727188583,
+    "memoryBytes": 6381568000
   },
   "agents": [
-    {
-      "agentId": "dcd930ea359ead27",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ca98-29fb-76e3-9176-ab4c7d402b02",
-      "sessionTitle": "",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9463929380728514,
-      "memoryBytes": 406700032,
-      "confidence": "high"
-    },
-    {
-      "agentId": "8d68dcf0ff50fd58",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ca6e-1d59-7cb1-bcaf-9c08f77b8e07",
-      "sessionTitle": "发票的总结, 所有的发票都先储存在本地, 你可以查我的 gmail. 先查过去半年的",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9463929380728514,
-      "memoryBytes": 406700032,
-      "confidence": "high"
-    },
     {
       "agentId": "49ae11f8fbb95113",
       "processName": "Codex (Renderer)",
@@ -46,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.03715992037159921,
-      "memoryBytes": 148324352,
+      "cpu": 0.03296382730455076,
+      "memoryBytes": 139542528,
       "confidence": "low"
     },
     {
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.06830720521695985,
-      "memoryBytes": 164003840,
+      "cpu": 0.06798650380315303,
+      "memoryBytes": 139919360,
       "confidence": "low"
     },
     {
@@ -68,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01223779719650463,
-      "memoryBytes": 153223168,
+      "cpu": 0.020427186006385975,
+      "memoryBytes": 134135808,
       "confidence": "low"
     },
     {
@@ -79,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011106195192231336,
-      "memoryBytes": 59342848,
+      "cpu": 0.011122026128292854,
+      "memoryBytes": 64536576,
       "confidence": "low"
     },
     {
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0018264736579389207,
-      "memoryBytes": 152928256,
+      "cpu": 0.001817935457645491,
+      "memoryBytes": 134135808,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0027912676439885626,
-      "memoryBytes": 152289280,
+      "cpu": 0.0027895105368960765,
+      "memoryBytes": 133316608,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d62062889e3dc8a9",
+      "processName": "Autoupdate",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.1084384858044164,
+      "memoryBytes": 13549568,
+      "confidence": "low"
+    },
+    {
+      "agentId": "58868cc7cb6bdf78",
+      "processName": "Codex (Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.4809388052774648,
+      "memoryBytes": 655704064,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 852494896,
-      "inputTokens": 14014041,
-      "outputTokens": 1354583,
-      "costUSD": 165.43149699999998
+      "totalTokens": 864154306,
+      "inputTokens": 14033166,
+      "outputTokens": 1361204,
+      "costUSD": 167.12280879999997
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T01:48:52.695Z"
+  "receivedAt": "2026-11-12T01:54:23.011Z"
 }
