@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T14:15:45.588Z",
+  "syncedAt": "2026-11-12T14:21:07.162Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,25 +9,14 @@
   },
   "summary": {
     "activeAgents": 27,
-    "todayTokens": 287687530,
-    "weekTokens": 1110116783,
-    "totalTokens": 2779381368,
-    "estimatedCostUsd": 1601.29842336,
-    "cpu": 9.393064611036724,
-    "memoryBytes": 6686031872
+    "todayTokens": 289260293,
+    "weekTokens": 1111689546,
+    "totalTokens": 2780954131,
+    "estimatedCostUsd": 1601.4918549600002,
+    "cpu": 9.31376325824819,
+    "memoryBytes": 5502025728
   },
   "agents": [
-    {
-      "agentId": "00216d6dccb8c862",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1c82f-531f-78e2-8057-b07bc5d997e2",
-      "sessionTitle": "**开展销售、HR 访谈**读了周侗和 HR 的会议纪要。销售侧集中在手动录 CRM、客户分级、跟进排序、代理商数据同步；HR 侧集中在招聘和 AI 视频制作。还准备了第二位销售主管的追问方案。 这个我今天会继续, 你读一下历史, 梳理下复盘下",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6180497051390059,
-      "memoryBytes": 1207746560,
-      "confidence": "high"
-    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -35,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.018523816335288226,
-      "memoryBytes": 142901248,
+      "cpu": 0.01859619686800895,
+      "memoryBytes": 129335296,
       "confidence": "low"
     },
     {
@@ -46,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00960913228812947,
-      "memoryBytes": 209911808,
+      "cpu": 0.009461272329308762,
+      "memoryBytes": 207978496,
       "confidence": "low"
     },
     {
@@ -57,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011706048124864513,
-      "memoryBytes": 266092544,
+      "cpu": 0.01143987006567333,
+      "memoryBytes": 164528128,
       "confidence": "low"
     },
     {
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.22164048865619546,
-      "memoryBytes": 326942720,
+      "cpu": 0.2166406138979679,
+      "memoryBytes": 196444160,
       "confidence": "low"
     },
     {
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.020002909514111145,
-      "memoryBytes": 138903552,
+      "cpu": 0.019758351101634684,
+      "memoryBytes": 77905920,
       "confidence": "low"
     },
     {
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.02642857142857143,
-      "memoryBytes": 122781696,
+      "cpu": 0.025210084033613446,
+      "memoryBytes": 76234752,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.03884892086330936,
-      "memoryBytes": 147570688,
+      "cpu": 0.03695458593054319,
+      "memoryBytes": 79249408,
+      "confidence": "low"
+    },
+    {
+      "agentId": "b7298e12183a7780",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.00010351431085347549,
+      "memoryBytes": 10190848,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1103849963,
-      "inputTokens": 18058206,
-      "outputTokens": 1759885,
-      "costUSD": 219.5114906
+      "totalTokens": 1105422726,
+      "inputTokens": 18073520,
+      "outputTokens": 1760598,
+      "costUSD": 219.7049222
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T14:15:48.692Z"
+  "receivedAt": "2026-11-12T14:21:10.304Z"
 }
