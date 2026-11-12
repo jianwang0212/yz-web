@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T13:27:26.902Z",
+  "syncedAt": "2026-11-12T13:32:48.008Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,23 +9,34 @@
   },
   "summary": {
     "activeAgents": 28,
-    "todayTokens": 261391535,
-    "weekTokens": 1083820788,
-    "totalTokens": 2753085373,
-    "estimatedCostUsd": 1595.85947596,
-    "cpu": 9.08373187541166,
-    "memoryBytes": 7619772416
+    "todayTokens": 261815901,
+    "weekTokens": 1084245154,
+    "totalTokens": 2753509739,
+    "estimatedCostUsd": 1595.90705596,
+    "cpu": 9.079614392538526,
+    "memoryBytes": 7639547904
   },
   "agents": [
     {
-      "agentId": "b82b2fc6799b7c6c",
+      "agentId": "bf5add5172909400",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1cfef-b5cf-7693-ba4a-bc2a8ec7eeb0",
+      "status": "running",
+      "sessionId": "01a1cff5-0083-7ed0-a8ee-0b88524bb6c5",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.5470982975021748,
-      "memoryBytes": 1514799104,
+      "cpu": 0.559244593359732,
+      "memoryBytes": 1519894528,
+      "confidence": "high"
+    },
+    {
+      "agentId": "ffe173dd423d7f89",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cff5-1905-7d42-b5e9-80385951dead",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.559244593359732,
+      "memoryBytes": 1519894528,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": "01a1c82f-531f-78e2-8057-b07bc5d997e2",
       "sessionTitle": "**开展销售、HR 访谈**读了周侗和 HR 的会议纪要。销售侧集中在手动录 CRM、客户分级、跟进排序、代理商数据同步；HR 侧集中在招聘和 AI 视频制作。还准备了第二位销售主管的追问方案。 这个我今天会继续, 你读一下历史, 梳理下复盘下",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.5470982975021748,
-      "memoryBytes": 1514799104,
+      "cpu": 0.559244593359732,
+      "memoryBytes": 1519894528,
       "confidence": "high"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01957776975821003,
-      "memoryBytes": 172343296,
+      "cpu": 0.01972818939061815,
+      "memoryBytes": 172376064,
       "confidence": "low"
     },
     {
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011696975235310244,
+      "cpu": 0.011452414772727274,
       "memoryBytes": 416022528,
       "confidence": "low"
     },
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014349693812265788,
-      "memoryBytes": 312786944,
+      "cpu": 0.013940685491031788,
+      "memoryBytes": 312770560,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.14188317670904735,
-      "memoryBytes": 372998144,
+      "cpu": 0.17011185682326624,
+      "memoryBytes": 375963648,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.02230414746543779,
-      "memoryBytes": 180551680,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8477208dadacb14a",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.052995391705069124,
-      "memoryBytes": 178536448,
+      "cpu": 0.02211082266583117,
+      "memoryBytes": 180617216,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1077553968,
-      "inputTokens": 17734592,
-      "outputTokens": 1731696,
-      "costUSD": 214.0725432
+      "totalTokens": 1077978334,
+      "inputTokens": 17734798,
+      "outputTokens": 1732176,
+      "costUSD": 214.12012320000002
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T13:27:29.973Z"
+  "receivedAt": "2026-11-12T13:32:51.174Z"
 }
