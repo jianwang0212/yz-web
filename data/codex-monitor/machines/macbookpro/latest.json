@@ -1,22 +1,55 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T08:49:29.545Z",
+  "syncedAt": "2026-11-12T08:54:56.609Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 48,
+    "activeAgents": 50,
     "todayTokens": 231768741,
     "weekTokens": 1054197994,
     "totalTokens": 2723462579,
     "estimatedCostUsd": 1586.00211856,
-    "cpu": 10.98770028209616,
-    "memoryBytes": 7838859264
+    "cpu": 13.099822787077096,
+    "memoryBytes": 7993622528
   },
   "agents": [
+    {
+      "agentId": "f26c4b96af19abfa",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cef7-3e7f-7ac3-b74c-437bcae30ecd",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.8851995977438678,
+      "memoryBytes": 941244416,
+      "confidence": "high"
+    },
+    {
+      "agentId": "83fab36163fa4517",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cebb-3155-7da1-8642-59583b0221ad",
+      "sessionTitle": "发票跟收据的差别是什么",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.8851995977438678,
+      "memoryBytes": 941244416,
+      "confidence": "high"
+    },
+    {
+      "agentId": "5c59ed42d629180c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cebb-31a3-7200-913c-6550a6a564c5",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.8851995977438678,
+      "memoryBytes": 941244416,
+      "confidence": "high"
+    },
     {
       "agentId": "45d6a2a22ca0543a",
       "processName": "codex",
@@ -24,19 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.047505938242280284,
-      "memoryBytes": 69107712,
-      "confidence": "low"
-    },
-    {
-      "agentId": "9be2fb3623152d02",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.024335454885810556,
-      "memoryBytes": 82558976,
+      "cpu": 0.046247818499127395,
+      "memoryBytes": 68763648,
       "confidence": "low"
     },
     {
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00935041106524117,
-      "memoryBytes": 119668736,
+      "cpu": 0.009278638202874284,
+      "memoryBytes": 119685120,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.09720452373367315,
-      "memoryBytes": 111968256,
+      "cpu": 0.09679764217649313,
+      "memoryBytes": 112033792,
       "confidence": "low"
     },
     {
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011526666431668369,
-      "memoryBytes": 63111168,
+      "cpu": 0.011528694322645274,
+      "memoryBytes": 63143936,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010091442311195306,
+      "cpu": 0.009972638248847926,
       "memoryBytes": 13041664,
-      "confidence": "low"
-    },
-    {
-      "agentId": "58868cc7cb6bdf78",
-      "processName": "Codex (Renderer)",
-      "status": "running",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 2.606966734129586,
-      "memoryBytes": 1965096960,
-      "confidence": "low"
-    },
-    {
-      "agentId": "e55d08a6b81d0d62",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Resources",
-      "cpu": 0.02954885610434039,
-      "memoryBytes": 38453248,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T08:49:32.551Z"
+  "receivedAt": "2026-11-12T08:54:59.634Z"
 }
