@@ -1,22 +1,66 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T07:22:22.114Z",
+  "syncedAt": "2026-11-12T07:27:49.408Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 43,
-    "todayTokens": 175016727,
-    "weekTokens": 997445980,
-    "totalTokens": 2666710565,
-    "estimatedCostUsd": 1574.3661562,
-    "cpu": 7.283353808437664,
-    "memoryBytes": 7358349312
+    "activeAgents": 50,
+    "todayTokens": 176727094,
+    "weekTokens": 999156347,
+    "totalTokens": 2668420932,
+    "estimatedCostUsd": 1574.6074374,
+    "cpu": 9.881334241147247,
+    "memoryBytes": 8113471488
   },
   "agents": [
+    {
+      "agentId": "7c5770f37cdc7d4c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ce6a-6afe-7261-8242-31d4e6f01175",
+      "sessionTitle": "这是我们公司的新产品, 你看看. [https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0&tab=studio&detail=aigc](https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0\\&tab=studio\\&detail=aigc) 账号密码: admin\\\nDocking然后魔力师的demo做成视频， 我的， 然后放到我的网站上",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.8870123800709265,
+      "memoryBytes": 695943168,
+      "confidence": "high"
+    },
+    {
+      "agentId": "189e6fef22469543",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cea6-cf76-7a80-b99b-d684a9577944",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.8870123800709265,
+      "memoryBytes": 695943168,
+      "confidence": "high"
+    },
+    {
+      "agentId": "8d68dcf0ff50fd58",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ca6e-1d59-7cb1-bcaf-9c08f77b8e07",
+      "sessionTitle": "发票的总结, 所有的发票都先储存在本地, 你可以查我的 gmail. 先查过去半年的",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.8870123800709265,
+      "memoryBytes": 695943168,
+      "confidence": "high"
+    },
+    {
+      "agentId": "1190ec1224407fc5",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1cea7-14c6-71e1-8fc7-66bd24109c5b",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.8870123800709265,
+      "memoryBytes": 695943168,
+      "confidence": "high"
+    },
     {
       "agentId": "45d6a2a22ca0543a",
       "processName": "codex",
@@ -24,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.04454897620365246,
-      "memoryBytes": 71417856,
+      "cpu": 0.04263959390862944,
+      "memoryBytes": 72007680,
       "confidence": "low"
     },
     {
@@ -35,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010902483343428226,
-      "memoryBytes": 113672192,
+      "cpu": 0.010793515358361774,
+      "memoryBytes": 116916224,
       "confidence": "low"
     },
     {
@@ -46,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10430900455005777,
-      "memoryBytes": 108920832,
+      "cpu": 0.10382622275857173,
+      "memoryBytes": 108986368,
       "confidence": "low"
     },
     {
@@ -57,52 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011473547099742262,
-      "memoryBytes": 63438848,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d62062889e3dc8a9",
-      "processName": "Autoupdate",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.012465124651246513,
-      "memoryBytes": 13041664,
-      "confidence": "low"
-    },
-    {
-      "agentId": "58868cc7cb6bdf78",
-      "processName": "Codex (Renderer)",
-      "status": "running",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 2.2997150997150997,
-      "memoryBytes": 2065268736,
-      "confidence": "low"
-    },
-    {
-      "agentId": "e55d08a6b81d0d62",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Resources",
-      "cpu": 0.02858551010349926,
-      "memoryBytes": 37601280,
-      "confidence": "low"
-    },
-    {
-      "agentId": "15e7d7b5b27c8ef1",
-      "processName": "Codex (Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.04721049875234897,
-      "memoryBytes": 270336000,
+      "cpu": 0.011466728068155654,
+      "memoryBytes": 63422464,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 992133483,
-      "inputTokens": 15693836,
-      "outputTokens": 1577823,
-      "costUSD": 193.34633699999998
+      "totalTokens": 993843850,
+      "inputTokens": 15725961,
+      "outputTokens": 1578753,
+      "costUSD": 193.58761819999998
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T07:22:25.205Z"
+  "receivedAt": "2026-11-12T07:27:52.589Z"
 }
