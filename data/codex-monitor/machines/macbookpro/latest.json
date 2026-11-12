@@ -1,22 +1,44 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T14:21:07.162Z",
+  "syncedAt": "2026-11-12T14:31:53.270Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
-    "todayTokens": 289260293,
-    "weekTokens": 1111689546,
-    "totalTokens": 2780954131,
-    "estimatedCostUsd": 1601.4918549600002,
-    "cpu": 9.31376325824819,
-    "memoryBytes": 5502025728
+    "activeAgents": 28,
+    "todayTokens": 300874235,
+    "weekTokens": 1123303488,
+    "totalTokens": 2792568073,
+    "estimatedCostUsd": 1603.3155045600001,
+    "cpu": 10.590902744763786,
+    "memoryBytes": 5432934400
   },
   "agents": [
+    {
+      "agentId": "c8e0d2e50ac614ce",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
+      "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.649498997995992,
+      "memoryBytes": 922402816,
+      "confidence": "high"
+    },
+    {
+      "agentId": "4260c1c6208e1b8f",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1,
+      "memoryBytes": 4767744,
+      "confidence": "low"
+    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01859619686800895,
-      "memoryBytes": 129335296,
+      "cpu": 0.018595317725752507,
+      "memoryBytes": 130514944,
       "confidence": "low"
     },
     {
@@ -35,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009461272329308762,
-      "memoryBytes": 207978496,
+      "cpu": 0.009116078060638801,
+      "memoryBytes": 208093184,
       "confidence": "low"
     },
     {
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01143987006567333,
-      "memoryBytes": 164528128,
+      "cpu": 0.011008306881880191,
+      "memoryBytes": 166576128,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.2166406138979679,
-      "memoryBytes": 196444160,
+      "cpu": 0.20733695652173914,
+      "memoryBytes": 199589888,
       "confidence": "low"
     },
     {
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.019758351101634684,
-      "memoryBytes": 77905920,
+      "cpu": 0.019366675727099755,
+      "memoryBytes": 78053376,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.025210084033613446,
-      "memoryBytes": 76234752,
-      "confidence": "low"
-    },
-    {
-      "agentId": "83e102b46e49435b",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.03695458593054319,
-      "memoryBytes": 79249408,
-      "confidence": "low"
-    },
-    {
-      "agentId": "b7298e12183a7780",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00010351431085347549,
-      "memoryBytes": 10190848,
+      "cpu": 0.023993808049535603,
+      "memoryBytes": 77070336,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1105422726,
-      "inputTokens": 18073520,
-      "outputTokens": 1760598,
-      "costUSD": 219.7049222
+      "totalTokens": 1117036668,
+      "inputTokens": 18205081,
+      "outputTokens": 1769443,
+      "costUSD": 221.5285718
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T14:21:10.304Z"
+  "receivedAt": "2026-11-12T14:31:56.325Z"
 }
