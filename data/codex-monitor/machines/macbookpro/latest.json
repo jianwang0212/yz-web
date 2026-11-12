@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T16:56:50.239Z",
+  "syncedAt": "2026-11-12T17:02:12.281Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
+    "activeAgents": 25,
     "todayTokens": 319971836,
     "weekTokens": 1142401089,
     "totalTokens": 2811665674,
     "estimatedCostUsd": 1606.0826397600001,
-    "cpu": 7.899518639704789,
-    "memoryBytes": 5310316544
+    "cpu": 7.821441611243358,
+    "memoryBytes": 5313216512
   },
   "agents": [
-    {
-      "agentId": "9c0627cbf1ad52c3",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1ce6a-6afe-7261-8242-31d4e6f01175",
-      "sessionTitle": "这是我们公司的新产品, 你看看. [https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0&tab=studio&detail=aigc](https://192.168.10.18:8878/?client_id=59530cb1cc414a53a92768ba354617b0\\&tab=studio\\&detail=aigc) 账号密码: admin\\\nDocking然后魔力师的demo做成视频， 我的， 然后放到我的网站上",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5265031231461772,
-      "memoryBytes": 1098383360,
-      "confidence": "high"
-    },
-    {
-      "agentId": "fcca1f6365535783",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4128768,
-      "confidence": "low"
-    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -46,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.018353279485769865,
-      "memoryBytes": 130629632,
+      "cpu": 0.018105965790571547,
+      "memoryBytes": 130580480,
       "confidence": "low"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006423891772313452,
+      "cpu": 0.006336816484115993,
       "memoryBytes": 208093184,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007573179033356025,
+      "cpu": 0.00751248583539682,
       "memoryBytes": 166592512,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.13233975317077337,
+      "cpu": 0.1306234203875316,
       "memoryBytes": 199901184,
       "confidence": "low"
     },
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.01860800576992427,
-      "memoryBytes": 79331328,
+      "cpu": 0.01874823794756132,
+      "memoryBytes": 79314944,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00006977393245883337,
+      "cpu": 0.00006899644668299582,
       "memoryBytes": 8552448,
+      "confidence": "low"
+    },
+    {
+      "agentId": "38482c558dc59713",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.00003449822334149791,
+      "memoryBytes": 7995392,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d0ecab57e969f674",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.3517560201476575,
+      "memoryBytes": 133431296,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T16:56:53.389Z"
+  "receivedAt": "2026-11-12T17:02:15.294Z"
 }
