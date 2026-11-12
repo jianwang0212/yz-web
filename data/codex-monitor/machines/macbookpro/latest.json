@@ -1,55 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-12T01:08:43.952Z",
+  "syncedAt": "2026-11-12T01:14:19.889Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 51,
-    "todayTokens": 14919744,
-    "weekTokens": 837348997,
-    "totalTokens": 2506613582,
-    "estimatedCostUsd": 1541.6224244,
-    "cpu": 5.909771248157537,
-    "memoryBytes": 7412744192
+    "activeAgents": 50,
+    "todayTokens": 16902374,
+    "weekTokens": 839331627,
+    "totalTokens": 2508596212,
+    "estimatedCostUsd": 1542.0557370000001,
+    "cpu": 9.291991378184608,
+    "memoryBytes": 8002600960
   },
   "agents": [
-    {
-      "agentId": "158ff09c9fde90ad",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ca8e-d580-7a22-9fa2-f6b83fdf1adc",
-      "sessionTitle": "# Files mentioned by the user:\n\n## IMG_0801.mov: /Users/Zi/Downloads/IMG_0801.mov\n\n## 6593e2aee9a0be7104b8d5c43f2bcd65_raw.mp4: /Users/Zi/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/q953514896_e93a/msg/video/2026-11/6593e2aee9a0be7104b8d5c43f2bcd65_raw.mp4\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n把这个钢琴视频运用 AI 和我之前的场地视频的一些素材, 还有你最近做的公司员工的视频, 还有可以加上视频生成, 做成一个高科技公司的宣传片. 突出星际穿越的未来科技版. 炫酷一点.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9564371794723376,
-      "memoryBytes": 1194082304,
-      "confidence": "high"
-    },
-    {
-      "agentId": "c5f62fbf970ee354",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1cd4b-ceb0-7842-884e-d5c457d70f2b",
-      "sessionTitle": "",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9564371794723376,
-      "memoryBytes": 1194082304,
-      "confidence": "high"
-    },
-    {
-      "agentId": "b0512843e0f3c7a8",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1cd41-7df0-7b20-aab3-99d69b42f5a4",
-      "sessionTitle": "",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9564371794723376,
-      "memoryBytes": 1194082304,
-      "confidence": "high"
-    },
     {
       "agentId": "49ae11f8fbb95113",
       "processName": "Codex (Renderer)",
@@ -57,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008645533141210374,
-      "memoryBytes": 81608704,
+      "cpu": 0.005865102639296188,
+      "memoryBytes": 81379328,
       "confidence": "low"
     },
     {
@@ -68,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.07018353638538997,
-      "memoryBytes": 139886592,
+      "cpu": 0.06990418118466898,
+      "memoryBytes": 139509760,
       "confidence": "low"
     },
     {
@@ -79,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002390488372580679,
-      "memoryBytes": 131858432,
+      "cpu": 0.002374109708859178,
+      "memoryBytes": 131874816,
       "confidence": "low"
     },
     {
@@ -90,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.01115007747963975,
-      "memoryBytes": 69353472,
+      "cpu": 0.011153926507114836,
+      "memoryBytes": 68501504,
       "confidence": "low"
     },
     {
@@ -101,8 +68,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0018175886657035,
-      "memoryBytes": 132743168,
+      "cpu": 0.0018106480030641735,
+      "memoryBytes": 132464640,
+      "confidence": "low"
+    },
+    {
+      "agentId": "6e545e800b452ef0",
+      "processName": "Codex (Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.002820956339025551,
+      "memoryBytes": 132808704,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d62062889e3dc8a9",
+      "processName": "Autoupdate",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2.083969465648855,
+      "memoryBytes": 853950464,
+      "confidence": "low"
+    },
+    {
+      "agentId": "6f9c98285d884895",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 1.3333333333333335,
+      "memoryBytes": 4685824,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 832036500,
-      "inputTokens": 13401964,
-      "outputTokens": 1332264,
-      "costUSD": 160.6026052
+      "totalTokens": 834019130,
+      "inputTokens": 13403493,
+      "outputTokens": 1334357,
+      "costUSD": 161.0359178
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-12T01:08:47.648Z"
+  "receivedAt": "2026-11-12T01:14:23.509Z"
 }
