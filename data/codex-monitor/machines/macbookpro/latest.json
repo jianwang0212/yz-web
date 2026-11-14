@@ -1,31 +1,42 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T04:07:16.464Z",
+  "syncedAt": "2026-11-14T04:12:37.623Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
-    "todayTokens": 49876064,
-    "weekTokens": 1229914115,
-    "totalTokens": 2900597286,
-    "estimatedCostUsd": 2072.2184798199996,
-    "cpu": 4.257548026361571,
-    "memoryBytes": 5024972800
+    "activeAgents": 28,
+    "todayTokens": 50773997,
+    "weekTokens": 1230812048,
+    "totalTokens": 2901495219,
+    "estimatedCostUsd": 2072.5362670199993,
+    "cpu": 4.263039406818031,
+    "memoryBytes": 5217402880
   },
   "agents": [
     {
+      "agentId": "428a47ebeec27f6d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1d83f-f419-7351-8a09-27c958341d97",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.26245300600880433,
+      "memoryBytes": 1014824960,
+      "confidence": "high"
+    },
+    {
       "agentId": "c8e0d2e50ac614ce",
       "processName": "codex",
-      "status": "running",
+      "status": "idle",
       "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
       "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.26042605806135855,
-      "memoryBytes": 1079623680,
+      "cpu": 0.26245300600880433,
+      "memoryBytes": 1014824960,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015551592424504572,
-      "memoryBytes": 118177792,
+      "cpu": 0.01552508383412464,
+      "memoryBytes": 116948992,
       "confidence": "low"
     },
     {
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0024711422538682367,
+      "cpu": 0.002465869966900182,
       "memoryBytes": 199327744,
       "confidence": "low"
     },
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0026443572613251095,
-      "memoryBytes": 167608320,
+      "cpu": 0.0026387153377821497,
+      "memoryBytes": 167378944,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.029331396123803682,
-      "memoryBytes": 175603712,
+      "cpu": 0.029275429787517043,
+      "memoryBytes": 174997504,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.0231042654028436,
+      "cpu": 0.022098421541318476,
       "memoryBytes": 88047616,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000012879046435401924,
+      "cpu": 0.000012852479243246023,
       "memoryBytes": 8060928,
-      "confidence": "low"
-    },
-    {
-      "agentId": "38482c558dc59713",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000006439523217700962,
-      "memoryBytes": 7897088,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1222509716,
-      "inputTokens": 20481707,
-      "outputTokens": 1873641,
-      "costUSD": 254.00251500000005
+      "totalTokens": 1223407649,
+      "inputTokens": 20484316,
+      "outputTokens": 1882309,
+      "costUSD": 254.32030220000004
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T04:07:19.385Z"
+  "receivedAt": "2026-11-14T04:12:41.044Z"
 }
