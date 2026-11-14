@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T03:08:12.920Z",
+  "syncedAt": "2026-11-14T03:13:34.814Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,36 @@
   },
   "summary": {
     "activeAgents": 28,
-    "todayTokens": 5948404,
-    "weekTokens": 1185986455,
-    "totalTokens": 2856669626,
-    "estimatedCostUsd": 2061.8656548199997,
-    "cpu": 6.078928928341554,
-    "memoryBytes": 3953442816
+    "todayTokens": 6363765,
+    "weekTokens": 1186401816,
+    "totalTokens": 2857084987,
+    "estimatedCostUsd": 2061.9578422199993,
+    "cpu": 4.0623116288132906,
+    "memoryBytes": 3948494848
   },
   "agents": [
+    {
+      "agentId": "4665826ceb2fa96a",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1d809-f4d3-7780-867d-23d2b0b0c512",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.24815535768305036,
+      "memoryBytes": 409567232,
+      "confidence": "high"
+    },
+    {
+      "agentId": "00216d6dccb8c862",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1c82f-531f-78e2-8057-b07bc5d997e2",
+      "sessionTitle": "**开展销售、HR 访谈**读了周侗和 HR 的会议纪要。销售侧集中在手动录 CRM、客户分级、跟进排序、代理商数据同步；HR 侧集中在招聘和 AI 视频制作。还准备了第二位销售主管的追问方案。 这个我今天会继续, 你读一下历史, 梳理下复盘下",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.24815535768305036,
+      "memoryBytes": 409567232,
+      "confidence": "high"
+    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01566141893273359,
-      "memoryBytes": 118161408,
+      "cpu": 0.015695128253950984,
+      "memoryBytes": 118210560,
       "confidence": "low"
     },
     {
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0024967767022082148,
+      "cpu": 0.0024913042590411884,
       "memoryBytes": 200654848,
       "confidence": "low"
     },
@@ -46,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0026741798385941456,
+      "cpu": 0.0026683184828703486,
       "memoryBytes": 167247872,
       "confidence": "low"
     },
@@ -57,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.029959044368600685,
+      "cpu": 0.02990015120349811,
       "memoryBytes": 176144384,
       "confidence": "low"
     },
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.057236842105263155,
-      "memoryBytes": 86999040,
+      "cpu": 0.048859934853420196,
+      "memoryBytes": 87031808,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001317983222073583,
+      "cpu": 0.000013151924455345928,
       "memoryBytes": 8060928,
-      "confidence": "low"
-    },
-    {
-      "agentId": "38482c558dc59713",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000006589916110367915,
-      "memoryBytes": 7897088,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d0ecab57e969f674",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.6824957494760981,
-      "memoryBytes": 136249344,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1179459472,
-      "inputTokens": 20062743,
-      "outputTokens": 1839225,
-      "costUSD": 244.96106280000004
+      "totalTokens": 1179874833,
+      "inputTokens": 20062949,
+      "outputTokens": 1839788,
+      "costUSD": 245.05325020000004
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T03:08:15.875Z"
+  "receivedAt": "2026-11-14T03:13:37.805Z"
 }
