@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T02:52:06.567Z",
+  "syncedAt": "2026-11-14T02:57:28.522Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 30,
-    "todayTokens": 4293405,
-    "weekTokens": 1184331456,
-    "totalTokens": 2855014627,
-    "estimatedCostUsd": 2061.4974082199997,
-    "cpu": 4.533289030542732,
-    "memoryBytes": 4165500928
+    "activeAgents": 29,
+    "todayTokens": 5533658,
+    "weekTokens": 1185571709,
+    "totalTokens": 2856254880,
+    "estimatedCostUsd": 2061.7696186199996,
+    "cpu": 4.15067857030588,
+    "memoryBytes": 4128063488
   },
   "agents": [
-    {
-      "agentId": "00216d6dccb8c862",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1c82f-531f-78e2-8057-b07bc5d997e2",
-      "sessionTitle": "**开展销售、HR 访谈**读了周侗和 HR 的会议纪要。销售侧集中在手动录 CRM、客户分级、跟进排序、代理商数据同步；HR 侧集中在招聘和 AI 视频制作。还准备了第二位销售主管的追问方案。 这个我今天会继续, 你读一下历史, 梳理下复盘下",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.24640853197500898,
-      "memoryBytes": 398196736,
-      "confidence": "high"
-    },
-    {
-      "agentId": "24d7bf0e8e502da8",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1d7f6-e063-71b0-b369-b89b7d0279d1",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.24640853197500898,
-      "memoryBytes": 398196736,
-      "confidence": "high"
-    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -46,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015724047089816416,
-      "memoryBytes": 121307136,
+      "cpu": 0.01568949584146216,
+      "memoryBytes": 118145024,
       "confidence": "low"
     },
     {
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0024309346737809274,
-      "memoryBytes": 170590208,
+      "cpu": 0.002500959272049553,
+      "memoryBytes": 200671232,
       "confidence": "low"
     },
     {
@@ -68,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0026781851518668325,
-      "memoryBytes": 169246720,
+      "cpu": 0.0026791465102574998,
+      "memoryBytes": 167215104,
       "confidence": "low"
     },
     {
@@ -79,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.030116673766954802,
-      "memoryBytes": 179240960,
+      "cpu": 0.03007096088581125,
+      "memoryBytes": 176848896,
       "confidence": "low"
     },
     {
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.14259927797833935,
-      "memoryBytes": 92651520,
+      "cpu": 0.09257142857142857,
+      "memoryBytes": 92684288,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001326427069723639,
+      "cpu": 0.000013236092176145916,
       "memoryBytes": 8060928,
+      "confidence": "low"
+    },
+    {
+      "agentId": "38482c558dc59713",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000006618046088072958,
+      "memoryBytes": 7897088,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d0ecab57e969f674",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.6847208158781213,
+      "memoryBytes": 137330688,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1177804473,
-      "inputTokens": 20062051,
-      "outputTokens": 1836886,
-      "costUSD": 244.59281620000004
+      "totalTokens": 1179044726,
+      "inputTokens": 20062520,
+      "outputTokens": 1838398,
+      "costUSD": 244.86502660000005
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T02:52:09.616Z"
+  "receivedAt": "2026-11-14T02:57:31.504Z"
 }
