@@ -1,32 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T06:33:09.791Z",
+  "syncedAt": "2026-11-14T06:38:30.867Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 28,
+    "activeAgents": 26,
     "todayTokens": 50773997,
     "weekTokens": 1230812048,
     "totalTokens": 2901495219,
     "estimatedCostUsd": 2072.5362670199993,
-    "cpu": 6.004611223987206,
-    "memoryBytes": 4638162944
+    "cpu": 3.9836372839944088,
+    "memoryBytes": 4553916416
   },
   "agents": [
     {
-      "agentId": "811045f0485502ee",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 2,
-      "memoryBytes": 4390912,
-      "confidence": "low"
+      "agentId": "00216d6dccb8c862",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c82f-531f-78e2-8057-b07bc5d997e2",
+      "sessionTitle": "**开展销售、HR 访谈**读了周侗和 HR 的会议纪要。销售侧集中在手动录 CRM、客户分级、跟进排序、代理商数据同步；HR 侧集中在招聘和 AI 视频制作。还准备了第二位销售主管的追问方案。 这个我今天会继续, 你读一下历史, 梳理下复盘下",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2513172464984972,
+      "memoryBytes": 839647232,
+      "confidence": "high"
     },
     {
       "agentId": "4e930a2ba6a2d5de",
@@ -35,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0151672357524194,
-      "memoryBytes": 118325248,
+      "cpu": 0.015186886562743179,
+      "memoryBytes": 118390784,
       "confidence": "low"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0023790642347343376,
+      "cpu": 0.002380548593968858,
       "memoryBytes": 199458816,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002549029480627376,
+      "cpu": 0.0025438899532049873,
       "memoryBytes": 167673856,
       "confidence": "low"
     },
@@ -68,19 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.02787206307423944,
-      "memoryBytes": 175734784,
-      "confidence": "low"
-    },
-    {
-      "agentId": "05db7cfa0b74bb48",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.013316928421509736,
-      "memoryBytes": 87654400,
+      "cpu": 0.027815834789275885,
+      "memoryBytes": 175751168,
       "confidence": "low"
     },
     {
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000012191850966813783,
+      "cpu": 0.000012168040641255741,
       "memoryBytes": 8060928,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000060959254834068915,
+      "cpu": 0.0000060840203206278705,
       "memoryBytes": 7897088,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d0ecab57e969f674",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.6388016840670706,
+      "memoryBytes": 130875392,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T06:33:12.545Z"
+  "receivedAt": "2026-11-14T06:38:34.133Z"
 }
