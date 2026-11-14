@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T03:24:17.425Z",
+  "syncedAt": "2026-11-14T03:29:39.519Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,45 +9,23 @@
   },
   "summary": {
     "activeAgents": 28,
-    "todayTokens": 6544429,
-    "weekTokens": 1186582480,
-    "totalTokens": 2857265651,
-    "estimatedCostUsd": 2062.3670390199995,
-    "cpu": 4.025096292876216,
-    "memoryBytes": 4043128832
+    "todayTokens": 12786883,
+    "weekTokens": 1192824934,
+    "totalTokens": 2863508105,
+    "estimatedCostUsd": 2064.2376174199994,
+    "cpu": 7.348387103585382,
+    "memoryBytes": 4866932736
   },
   "agents": [
     {
-      "agentId": "fbbbdf310e5bc6e4",
+      "agentId": "c8e0d2e50ac614ce",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1d3e1-fba4-7072-8164-16a089195457",
-      "sessionTitle": "这是个啥? [linux.do](http://linux.do)",
+      "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
+      "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.24902262532333583,
-      "memoryBytes": 445628416,
-      "confidence": "high"
-    },
-    {
-      "agentId": "bb4573d9832f5aaf",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1d815-73f1-7411-a114-fc50cfd9f7b2",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.24902262532333583,
-      "memoryBytes": 445628416,
-      "confidence": "high"
-    },
-    {
-      "agentId": "e8af2034b1f600b9",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1d385-707f-7320-ba0f-b3afc18bc1cf",
-      "sessionTitle": "给我一个dockingtech公司的人员 html, 我可以点击的. 我在点奶茶, 我想点一个人, 告诉我已经买过了",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.24902262532333583,
-      "memoryBytes": 445628416,
+      "cpu": 0.25310731509678097,
+      "memoryBytes": 763478016,
       "confidence": "high"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015687734858999963,
+      "cpu": 0.015687493243973626,
       "memoryBytes": 118194176,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0024940021958062813,
+      "cpu": 0.002488588334742181,
       "memoryBytes": 201474048,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0026702450661461722,
+      "cpu": 0.0026644485470640345,
       "memoryBytes": 168067072,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.029790119689417825,
+      "cpu": 0.029732180314779477,
       "memoryBytes": 176930816,
       "confidence": "low"
     },
@@ -101,25 +79,47 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.039034205231388334,
-      "memoryBytes": 87162880,
+      "cpu": 0.03528153955808981,
+      "memoryBytes": 87195648,
+      "confidence": "low"
+    },
+    {
+      "agentId": "b7298e12183a7780",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000013069076604392515,
+      "memoryBytes": 8060928,
+      "confidence": "low"
+    },
+    {
+      "agentId": "38482c558dc59713",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000006534538302196258,
+      "memoryBytes": 7897088,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1370777511,
-      "inputTokens": 66335005,
-      "outputTokens": 4608394,
-      "costUSD": 1374.6286616000002
+      "totalTokens": 1371474263,
+      "inputTokens": 66365528,
+      "outputTokens": 4611583,
+      "costUSD": 1375.5308376000003
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1179874833,
-      "inputTokens": 20062949,
-      "outputTokens": 1839788,
-      "costUSD": 245.05325020000004
+      "totalTokens": 1185420535,
+      "inputTokens": 20250847,
+      "outputTokens": 1845528,
+      "costUSD": 246.02165260000004
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T03:24:20.519Z"
+  "receivedAt": "2026-11-14T03:29:43.210Z"
 }
