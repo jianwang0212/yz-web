@@ -1,22 +1,55 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T03:18:56.172Z",
+  "syncedAt": "2026-11-14T03:24:17.425Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
-    "todayTokens": 6363765,
-    "weekTokens": 1186401816,
-    "totalTokens": 2857084987,
-    "estimatedCostUsd": 2061.9578422199993,
-    "cpu": 4.044688854150775,
-    "memoryBytes": 3950002176
+    "activeAgents": 28,
+    "todayTokens": 6544429,
+    "weekTokens": 1186582480,
+    "totalTokens": 2857265651,
+    "estimatedCostUsd": 2062.3670390199995,
+    "cpu": 4.025096292876216,
+    "memoryBytes": 4043128832
   },
   "agents": [
+    {
+      "agentId": "fbbbdf310e5bc6e4",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1d3e1-fba4-7072-8164-16a089195457",
+      "sessionTitle": "这是个啥? [linux.do](http://linux.do)",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.24902262532333583,
+      "memoryBytes": 445628416,
+      "confidence": "high"
+    },
+    {
+      "agentId": "bb4573d9832f5aaf",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1d815-73f1-7411-a114-fc50cfd9f7b2",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.24902262532333583,
+      "memoryBytes": 445628416,
+      "confidence": "high"
+    },
+    {
+      "agentId": "e8af2034b1f600b9",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1d385-707f-7320-ba0f-b3afc18bc1cf",
+      "sessionTitle": "给我一个dockingtech公司的人员 html, 我可以点击的. 我在点奶茶, 我想点一个人, 告诉我已经买过了",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.24902262532333583,
+      "memoryBytes": 445628416,
+      "confidence": "high"
+    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0156880839773907,
-      "memoryBytes": 118177792,
+      "cpu": 0.015687734858999963,
+      "memoryBytes": 118194176,
       "confidence": "low"
     },
     {
@@ -35,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002485872636383395,
-      "memoryBytes": 200654848,
+      "cpu": 0.0024940021958062813,
+      "memoryBytes": 201474048,
       "confidence": "low"
     },
     {
@@ -46,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0026692929430143313,
-      "memoryBytes": 167247872,
+      "cpu": 0.0026702450661461722,
+      "memoryBytes": 168067072,
       "confidence": "low"
     },
     {
@@ -57,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.029841718600273202,
-      "memoryBytes": 176144384,
+      "cpu": 0.029790119689417825,
+      "memoryBytes": 176930816,
       "confidence": "low"
     },
     {
@@ -68,51 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.04299583911234397,
-      "memoryBytes": 87113728,
-      "confidence": "low"
-    },
-    {
-      "agentId": "b7298e12183a7780",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000013124220749393005,
-      "memoryBytes": 8060928,
-      "confidence": "low"
-    },
-    {
-      "agentId": "38482c558dc59713",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0000065621103746965025,
-      "memoryBytes": 7897088,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d0ecab57e969f674",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.6800753335214484,
-      "memoryBytes": 135118848,
+      "cpu": 0.039034205231388334,
+      "memoryBytes": 87162880,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1370596847,
-      "inputTokens": 66305732,
-      "outputTokens": 4607019,
-      "costUSD": 1374.2194648000002
+      "totalTokens": 1370777511,
+      "inputTokens": 66335005,
+      "outputTokens": 4608394,
+      "costUSD": 1374.6286616000002
     },
     {
       "model": "gpt-6.1-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T03:18:58.987Z"
+  "receivedAt": "2026-11-14T03:24:20.519Z"
 }
