@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-14T03:51:12.402Z",
+  "syncedAt": "2026-11-14T03:56:34.097Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 28,
-    "todayTokens": 24311816,
-    "weekTokens": 1204349867,
-    "totalTokens": 2875033038,
-    "estimatedCostUsd": 2066.4027616199996,
-    "cpu": 5.7078825845374235,
-    "memoryBytes": 4619567104
+    "activeAgents": 27,
+    "todayTokens": 33179850,
+    "weekTokens": 1213217901,
+    "totalTokens": 2883901072,
+    "estimatedCostUsd": 2068.4514856199994,
+    "cpu": 4.215063531859774,
+    "memoryBytes": 4871340032
   },
   "agents": [
+    {
+      "agentId": "c8e0d2e50ac614ce",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
+      "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2587606132914298,
+      "memoryBytes": 925827072,
+      "confidence": "high"
+    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015651999196302994,
-      "memoryBytes": 118210560,
+      "cpu": 0.015618421316438438,
+      "memoryBytes": 118325248,
       "confidence": "low"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0024804081276940918,
-      "memoryBytes": 199966720,
+      "cpu": 0.0024750819452806208,
+      "memoryBytes": 200130560,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0026547426709660985,
-      "memoryBytes": 167608320,
+      "cpu": 0.0026490420635770094,
+      "memoryBytes": 167804928,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.029500939093104372,
-      "memoryBytes": 176717824,
+      "cpu": 0.029444247361128772,
+      "memoryBytes": 176865280,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.027073170731707313,
-      "memoryBytes": 87326720,
+      "cpu": 0.025559828093191586,
+      "memoryBytes": 87343104,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001295949509807098,
+      "cpu": 0.00001293259531322746,
       "memoryBytes": 8060928,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00000647974754903549,
+      "cpu": 0.00000646629765661373,
       "memoryBytes": 7897088,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d0ecab57e969f674",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.6761465987584724,
-      "memoryBytes": 131710976,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1196945468,
-      "inputTokens": 20345196,
-      "outputTokens": 1861200,
-      "costUSD": 248.18679680000005
+      "totalTokens": 1205813502,
+      "inputTokens": 20402250,
+      "outputTokens": 1865140,
+      "costUSD": 250.23552080000005
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-14T03:51:15.278Z"
+  "receivedAt": "2026-11-14T03:56:36.982Z"
 }
