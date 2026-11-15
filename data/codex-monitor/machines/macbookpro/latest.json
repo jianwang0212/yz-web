@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-15T04:40:43.893Z",
+  "syncedAt": "2026-11-15T04:46:09.920Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,25 @@
   },
   "summary": {
     "activeAgents": 31,
-    "todayTokens": 16844356,
-    "weekTokens": 1247174938,
-    "totalTokens": 2918339575,
-    "estimatedCostUsd": 2091.0980470199993,
-    "cpu": 4.114658790476777,
-    "memoryBytes": 4352868352
+    "todayTokens": 16943079,
+    "weekTokens": 1247273661,
+    "totalTokens": 2918438298,
+    "estimatedCostUsd": 2091.2729894199992,
+    "cpu": 3.3598102046187375,
+    "memoryBytes": 4533764096
   },
   "agents": [
+    {
+      "agentId": "5dc11794272c0e39",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1dd49-4a81-7ec3-a477-8b9ac36c937d",
+      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-229c58ee-2707-4529-92eb-a6bd1e3093ec.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-229c58ee-2707-4529-92eb-a6bd1e3093ec.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;为什么我的 nord 不能链接 protools? 在 UAD 上也没有显示?",
+      "workspaceLabel": "Writer EngineerProducer in HomeStudio",
+      "cpu": 0.2094575765523572,
+      "memoryBytes": 624050176,
+      "confidence": "high"
+    },
     {
       "agentId": "4e930a2ba6a2d5de",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.012937770497023224,
+      "cpu": 0.012941097713028125,
       "memoryBytes": 113737728,
       "confidence": "low"
     },
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0019200134149408904,
-      "memoryBytes": 138149888,
+      "cpu": 0.001921587507587968,
+      "memoryBytes": 138231808,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002041603434253662,
-      "memoryBytes": 134512640,
+      "cpu": 0.0020430121031721113,
+      "memoryBytes": 134545408,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01953860541578773,
-      "memoryBytes": 156893184,
+      "cpu": 0.01952038730860723,
+      "memoryBytes": 157089792,
       "confidence": "low"
     },
     {
@@ -68,19 +79,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001579778830963665,
-      "memoryBytes": 57344000,
+      "cpu": 0.0015149602322939023,
+      "memoryBytes": 57360384,
       "confidence": "low"
     },
     {
-      "agentId": "3a56b5b9e97e00af",
+      "agentId": "c26aff7bc090e5ab",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1,
-      "memoryBytes": 4079616,
+      "cpu": 0.25,
+      "memoryBytes": 4046848,
       "confidence": "low"
     },
     {
@@ -90,29 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008206879005982814,
+      "cpu": 0.000008195948742536565,
       "memoryBytes": 8044544,
-      "confidence": "low"
-    },
-    {
-      "agentId": "38482c558dc59713",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000004103439502991407,
-      "memoryBytes": 7880704,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1385237497,
-      "inputTokens": 66942845,
-      "outputTokens": 4632316,
-      "costUSD": 1391.5108408000003
+      "totalTokens": 1385336220,
+      "inputTokens": 66953217,
+      "outputTokens": 4632859,
+      "costUSD": 1391.6857832000005
     },
     {
       "model": "gpt-6.1-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-15T04:40:46.961Z"
+  "receivedAt": "2026-11-15T04:46:13.110Z"
 }
