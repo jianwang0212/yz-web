@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-15T17:24:41.321Z",
+  "syncedAt": "2026-11-15T17:31:56.941Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
-    "todayTokens": 10172701,
-    "weekTokens": 1480181805,
-    "totalTokens": 3154246867,
-    "estimatedCostUsd": 1730.7325291600002,
-    "cpu": 10.019033466273394,
-    "memoryBytes": 2579841024
+    "activeAgents": 19,
+    "todayTokens": 10740909,
+    "weekTokens": 1480750013,
+    "totalTokens": 3154815075,
+    "estimatedCostUsd": 1730.8202875600002,
+    "cpu": 9.199893417963947,
+    "memoryBytes": 2605219840
   },
   "agents": [
-    {
-      "agentId": "f25c7c334f008497",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1dfd8-2fbe-7f53-b1a8-cd336de30156",
-      "sessionTitle": "&#x20;为什么微信截图不能截图自己?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 1.1168724279835391,
-      "memoryBytes": 490127360,
-      "confidence": "high"
-    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -35,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00041017227235438887,
+      "cpu": 0.00035124692658939234,
       "memoryBytes": 8847360,
       "confidence": "low"
     },
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00041017227235438887,
+      "cpu": 0.00035124692658939234,
       "memoryBytes": 7946240,
       "confidence": "low"
     },
@@ -57,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.4883052933935166,
-      "memoryBytes": 104693760,
+      "cpu": 0.4216444132115249,
+      "memoryBytes": 104382464,
       "confidence": "low"
     },
     {
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.15962248666393106,
-      "memoryBytes": 82575360,
+      "cpu": 0.1556570625439213,
+      "memoryBytes": 83099648,
       "confidence": "low"
     },
     {
@@ -79,19 +68,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006565449322938038,
-      "memoryBytes": 45563904,
+      "cpu": 0.006324666198172875,
+      "memoryBytes": 45400064,
+      "confidence": "low"
+    },
+    {
+      "agentId": "183557375b2ed696",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.0186685452624162,
+      "memoryBytes": 493699072,
       "confidence": "low"
     },
     {
       "agentId": "e18744e9c7b04fa8",
       "processName": "Codex (Aperitif Renderer)",
-      "status": "running",
+      "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 2.1141326740832302,
-      "memoryBytes": 636502016,
+      "cpu": 1.8832863187588151,
+      "memoryBytes": 650330112,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.024752475247524754,
-      "memoryBytes": 110460928,
+      "cpu": 0.02188492763854571,
+      "memoryBytes": 110493696,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1429401587,
-      "inputTokens": 24307053,
-      "outputTokens": 2697606,
-      "costUSD": 302.2402164000001
+      "totalTokens": 1429969795,
+      "inputTokens": 24314452,
+      "outputTokens": 2699311,
+      "costUSD": 302.3279748000001
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-15T17:24:44.291Z"
+  "receivedAt": "2026-11-15T17:32:00.607Z"
 }
