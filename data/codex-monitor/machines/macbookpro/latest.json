@@ -1,43 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-15T16:12:12.029Z",
+  "syncedAt": "2026-11-15T16:17:43.408Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
+    "activeAgents": 24,
     "todayTokens": 242578947,
     "weekTokens": 1472909529,
     "totalTokens": 3144074166,
     "estimatedCostUsd": 1728.2096091600001,
-    "cpu": 14.4272763573228,
-    "memoryBytes": 3728654336
+    "cpu": 14.091044126986692,
+    "memoryBytes": 3662446592
   },
   "agents": [
     {
-      "agentId": "9e2182912819336f",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.25,
-      "memoryBytes": 4079616,
-      "confidence": "low"
-    },
-    {
-      "agentId": "dbe41c59e10cfe37",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.33333333333333337,
-      "memoryBytes": 4079616,
-      "confidence": "low"
+      "agentId": "2d42fcdb33ddae71",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
+      "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.1038180341186028,
+      "memoryBytes": 635224064,
+      "confidence": "high"
     },
     {
       "agentId": "3d3a0da01b59f675",
@@ -46,8 +35,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.01090062440469891,
+      "cpu": 0.010925550179491181,
       "memoryBytes": 76939264,
+      "confidence": "low"
+    },
+    {
+      "agentId": "ba64b11fdbf31fe3",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.33333333333333337,
+      "memoryBytes": 4046848,
       "confidence": "low"
     },
     {
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0018104015799868336,
+      "cpu": 0.001786656921265278,
       "memoryBytes": 12238848,
       "confidence": "low"
     },
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00004114718347529112,
+      "cpu": 0.000040607488020791034,
       "memoryBytes": 7897088,
       "confidence": "low"
     },
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.699913590914702,
+      "cpu": 0.6908551936977179,
       "memoryBytes": 112574464,
       "confidence": "low"
     },
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.09369213677323787,
-      "memoryBytes": 78151680,
+      "cpu": 0.09360025988792334,
+      "memoryBytes": 78217216,
       "confidence": "low"
     },
     {
@@ -101,7 +101,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004279307081430276,
+      "cpu": 0.00430439373020385,
       "memoryBytes": 42631168,
       "confidence": "low"
     }
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-15T16:12:16.259Z"
+  "receivedAt": "2026-11-15T16:17:50.888Z"
 }
