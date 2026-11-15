@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-15T13:41:12.511Z",
+  "syncedAt": "2026-11-15T13:46:38.622Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,12 +9,12 @@
   },
   "summary": {
     "activeAgents": 25,
-    "todayTokens": 174290229,
-    "weekTokens": 1404620811,
-    "totalTokens": 3075785448,
-    "estimatedCostUsd": 1712.0749623600002,
-    "cpu": 15.904610888157288,
-    "memoryBytes": 3286188032
+    "todayTokens": 175082154,
+    "weekTokens": 1405412736,
+    "totalTokens": 3076577373,
+    "estimatedCostUsd": 1712.3353573600002,
+    "cpu": 14.836469883217474,
+    "memoryBytes": 3187048448
   },
   "agents": [
     {
@@ -24,8 +24,19 @@
       "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
       "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.3081467865817633,
-      "memoryBytes": 581877760,
+      "cpu": 1.2848605577689243,
+      "memoryBytes": 542818304,
+      "confidence": "high"
+    },
+    {
+      "agentId": "bbe940fc17065cba",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1df6a-4cf3-7e83-8be2-b7cd9245ee89",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 1.2848605577689243,
+      "memoryBytes": 542818304,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.009660362009355298,
-      "memoryBytes": 73220096,
+      "cpu": 0.009741218144248746,
+      "memoryBytes": 73236480,
       "confidence": "low"
     },
     {
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0007874015748031496,
+      "cpu": 0.0007707624124863512,
       "memoryBytes": 9519104,
       "confidence": "low"
     },
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00006562110374696503,
+      "cpu": 0.00006423432682425488,
       "memoryBytes": 7897088,
       "confidence": "low"
     },
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.7286567360062997,
-      "memoryBytes": 103989248,
+      "cpu": 0.7351618705035972,
+      "memoryBytes": 100286464,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0943631471881357,
-      "memoryBytes": 75005952,
+      "cpu": 0.09423175745118191,
+      "memoryBytes": 75137024,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004002887328564866,
-      "memoryBytes": 42254336,
-      "confidence": "low"
-    },
-    {
-      "agentId": "bc48258304d45d09",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.003872915846133648,
-      "memoryBytes": 89735168,
+      "cpu": 0.003982528263103803,
+      "memoryBytes": 42237952,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1350940168,
-      "inputTokens": 23705297,
-      "outputTokens": 2303415,
-      "costUSD": 283.5826496
+      "totalTokens": 1351732093,
+      "inputTokens": 23705825,
+      "outputTokens": 2310172,
+      "costUSD": 283.84304460000004
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-15T13:41:16.108Z"
+  "receivedAt": "2026-11-15T13:46:42.771Z"
 }
