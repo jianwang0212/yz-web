@@ -1,31 +1,31 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-15T11:10:47.848Z",
+  "syncedAt": "2026-11-15T11:16:13.066Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 21,
-    "todayTokens": 101284555,
-    "weekTokens": 1331615137,
-    "totalTokens": 3002779774,
-    "estimatedCostUsd": 2129.2667280199994,
-    "cpu": 17.54593246239224,
-    "memoryBytes": 4382638080
+    "activeAgents": 22,
+    "todayTokens": 101948981,
+    "weekTokens": 1332279563,
+    "totalTokens": 3003444200,
+    "estimatedCostUsd": 2129.4390920199994,
+    "cpu": 18.559085962643927,
+    "memoryBytes": 4379328512
   },
   "agents": [
     {
-      "agentId": "2d42fcdb33ddae71",
+      "agentId": "f5e1ccc01897cf50",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1c830-11fe-7992-8b7c-6f061866ed7c",
-      "sessionTitle": "**学习并实测炼刀获客流程**整理培训录像笔记，用自己的钢琴／爵士教育和录歌业务测试 GEO、抖音曝光私信、微信 AI 专家及家人群专家。早期复盘为 **4 条私信、0 回复、0 加微信、0 报名**；11 月 10 日后续记录显示私信重新实际发出，但目标不够精准，尚无新增学生证据。 这个你读取下信息, 我们今天会继续做, 你会使用我的 todesk 去远程我的炼刀",
-      "workspaceLabel": "Docking2611",
-      "cpu": 1.5274424593594076,
-      "memoryBytes": 1143373824,
+      "status": "idle",
+      "sessionId": "01a1dee9-d3e4-7dd3-82b7-0010da591471",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 1.4897522178036096,
+      "memoryBytes": 1165574144,
       "confidence": "high"
     },
     {
@@ -35,19 +35,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.02334152334152334,
-      "memoryBytes": 93290496,
+      "cpu": 0.02019315188762072,
+      "memoryBytes": 93421568,
       "confidence": "low"
     },
     {
-      "agentId": "a4d4e79658ed409c",
+      "agentId": "a11e42dede0116d5",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1,
-      "memoryBytes": 4145152,
+      "cpu": 0.25,
+      "memoryBytes": 4063232,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8bfc825c1d3f7ea7",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2,
+      "memoryBytes": 4390912,
       "confidence": "low"
     },
     {
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0001607717041800643,
+      "cpu": 0.00015278838808250572,
       "memoryBytes": 8404992,
       "confidence": "low"
     },
@@ -68,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00016079755587715066,
+      "cpu": 0.0001528117359413203,
       "memoryBytes": 7995392,
       "confidence": "low"
     },
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.8512622608136357,
-      "memoryBytes": 134250496,
+      "cpu": 0.8647616136919315,
+      "memoryBytes": 134905856,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11657822801093423,
-      "memoryBytes": 80084992,
-      "confidence": "low"
-    },
-    {
-      "agentId": "a6fd641d6bc0e774",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.004341534008683068,
-      "memoryBytes": 44417024,
+      "cpu": 0.11460880195599023,
+      "memoryBytes": 80117760,
       "confidence": "low"
     }
   ],
@@ -116,10 +116,10 @@
     },
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1280506980,
-      "inputTokens": 21762320,
-      "outputTokens": 2022612,
-      "costUSD": 269.38090720000025
+      "totalTokens": 1281171406,
+      "inputTokens": 21776931,
+      "outputTokens": 2030507,
+      "costUSD": 269.5532712000002
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-15T11:10:53.468Z"
+  "receivedAt": "2026-11-15T11:16:16.912Z"
 }
