@@ -1,31 +1,42 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-15T03:14:33.269Z",
+  "syncedAt": "2026-11-15T03:19:56.444Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 29,
-    "todayTokens": 3708241,
-    "weekTokens": 1234038823,
-    "totalTokens": 2905203460,
-    "estimatedCostUsd": 2076.683808619999,
-    "cpu": 2.987840722505773,
-    "memoryBytes": 3925180416
+    "activeAgents": 28,
+    "todayTokens": 4489579,
+    "weekTokens": 1234820161,
+    "totalTokens": 2905984798,
+    "estimatedCostUsd": 2078.1491110199995,
+    "cpu": 3.3472698695101464,
+    "memoryBytes": 4348837888
   },
   "agents": [
     {
-      "agentId": "b4ff846e4d15d63d",
+      "agentId": "c7abf2ec5aa7c185",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1dd27-e13a-7a12-9c9f-7b04e825d754",
+      "status": "running",
+      "sessionId": "01a1dd36-8adc-73a0-823c-bacb72f68e7a",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.20032282408183802,
-      "memoryBytes": 493305856,
+      "cpu": 0.20378240099144626,
+      "memoryBytes": 608829440,
+      "confidence": "high"
+    },
+    {
+      "agentId": "d3ff5fc6fd2c2cc6",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1dd36-89b1-78c2-ad89-1b77564f1115",
+      "sessionTitle": "protools 怎么让 每次按播放键, 是从开始的地方, 而不是停下的地方开始 play",
+      "workspaceLabel": "Writer EngineerProducer in HomeStudio",
+      "cpu": 0.20378240099144626,
+      "memoryBytes": 608829440,
       "confidence": "high"
     },
     {
@@ -35,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.013022996873795553,
-      "memoryBytes": 116244480,
+      "cpu": 0.013022114072863968,
+      "memoryBytes": 116260864,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0019368467962754266,
-      "memoryBytes": 143409152,
+      "cpu": 0.0019384488985502285,
+      "memoryBytes": 143458304,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002065416275651656,
-      "memoryBytes": 139427840,
+      "cpu": 0.002062561513115666,
+      "memoryBytes": 139460608,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.019903120713305897,
-      "memoryBytes": 160268288,
+      "cpu": 0.019879881679601717,
+      "memoryBytes": 160301056,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00288659793814433,
-      "memoryBytes": 59539456,
+      "cpu": 0.0029112081513828236,
+      "memoryBytes": 59572224,
       "confidence": "low"
     },
     {
@@ -90,29 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008384795012723927,
+      "cpu": 0.000008373456144023445,
       "memoryBytes": 8044544,
-      "confidence": "low"
-    },
-    {
-      "agentId": "38482c558dc59713",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000004192397506361963,
-      "memoryBytes": 7880704,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "totalTokens": 1372101382,
-      "inputTokens": 66489447,
-      "outputTokens": 4615967,
-      "costUSD": 1377.0966024000004
+      "totalTokens": 1372882720,
+      "inputTokens": 66594620,
+      "outputTokens": 4618084,
+      "costUSD": 1378.5619048000003
     },
     {
       "model": "gpt-6.1-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-15T03:14:36.291Z"
+  "receivedAt": "2026-11-15T03:19:59.533Z"
 }
