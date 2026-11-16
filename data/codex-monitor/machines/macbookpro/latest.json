@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-16T06:50:15.891Z",
+  "syncedAt": "2026-11-16T06:55:36.233Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 372554441,
-    "weekTokens": 1842563545,
-    "totalTokens": 3516628607,
-    "estimatedCostUsd": 1829.0324959600002,
-    "cpu": 6.267799217479885,
-    "memoryBytes": 3824877568
+    "activeAgents": 23,
+    "todayTokens": 376101275,
+    "weekTokens": 1846110379,
+    "totalTokens": 3520175441,
+    "estimatedCostUsd": 1829.9247027600002,
+    "cpu": 5.2416237385312785,
+    "memoryBytes": 3817635840
   },
   "agents": [
-    {
-      "agentId": "e1592081c96ffbb0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.8321251280434955,
-      "memoryBytes": 974372864,
-      "confidence": "high"
-    },
     {
       "agentId": "9637be8814abf525",
       "processName": "codex",
@@ -35,8 +24,19 @@
       "sessionId": "01a1e26c-36f3-7bf0-9590-767e99300061",
       "sessionTitle": "",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.8321251280434955,
-      "memoryBytes": 974372864,
+      "cpu": 0.8303415875501615,
+      "memoryBytes": 974225408,
+      "confidence": "high"
+    },
+    {
+      "agentId": "e1592081c96ffbb0",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
+      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.8303415875501615,
+      "memoryBytes": 974225408,
       "confidence": "high"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000019695895375403764,
+      "cpu": 0.000019572152741079992,
       "memoryBytes": 7995392,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000019695895375403764,
+      "cpu": 0.000019572152741079992,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3227432983396033,
+      "cpu": 0.32079386205276755,
       "memoryBytes": 137117696,
       "confidence": "low"
     },
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11412026550589903,
-      "memoryBytes": 83378176,
+      "cpu": 0.11416660142488061,
+      "memoryBytes": 83460096,
       "confidence": "low"
     },
     {
@@ -90,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006598254909298616,
+      "cpu": 0.006595944570578565,
       "memoryBytes": 44400640,
       "confidence": "low"
     },
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.7253994208151928,
-      "memoryBytes": 1041137664,
+      "cpu": 1.7170823382013236,
+      "memoryBytes": 1039269888,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1791078562,
-      "inputTokens": 32027234,
-      "outputTokens": 4472384,
-      "costUSD": 399.2050264000001
+      "totalTokens": 1794625396,
+      "inputTokens": 32040340,
+      "outputTokens": 4489312,
+      "costUSD": 400.0972332000001
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-16T06:50:18.860Z"
+  "receivedAt": "2026-11-16T06:55:39.169Z"
 }
