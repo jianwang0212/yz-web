@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-16T00:52:19.576Z",
+  "syncedAt": "2026-11-16T01:08:46.806Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,36 @@
   },
   "summary": {
     "activeAgents": 18,
-    "todayTokens": 17060097,
-    "weekTokens": 1487069201,
-    "totalTokens": 3161134263,
-    "estimatedCostUsd": 1732.58304696,
-    "cpu": 2.4249625493503935,
-    "memoryBytes": 2551250944
+    "todayTokens": 17205268,
+    "weekTokens": 1487214372,
+    "totalTokens": 3161279434,
+    "estimatedCostUsd": 1732.85986096,
+    "cpu": 2.1042140877207407,
+    "memoryBytes": 2840330240
   },
   "agents": [
+    {
+      "agentId": "f25c7c334f008497",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1dfd8-2fbe-7f53-b1a8-cd336de30156",
+      "sessionTitle": "&#x20;为什么微信截图不能截图自己?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.21858898137138327,
+      "memoryBytes": 571015168,
+      "confidence": "high"
+    },
+    {
+      "agentId": "a12741adfc092b23",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1e1e5-e47b-7243-a8a2-d2361f390265",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21858898137138327,
+      "memoryBytes": 571015168,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000034133187698399155,
+      "cpu": 0.00003302073702285035,
       "memoryBytes": 8847360,
       "confidence": "low"
     },
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000034133187698399155,
+      "cpu": 0.00003302073702285035,
       "memoryBytes": 7946240,
       "confidence": "low"
     },
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0663230475150191,
-      "memoryBytes": 101941248,
+      "cpu": 0.06696826602384176,
+      "memoryBytes": 114294784,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11004915346805025,
-      "memoryBytes": 84066304,
+      "cpu": 0.11019383812700195,
+      "memoryBytes": 84295680,
       "confidence": "low"
     },
     {
@@ -68,19 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007099945385035499,
-      "memoryBytes": 46465024,
-      "confidence": "low"
-    },
-    {
-      "agentId": "183557375b2ed696",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.2083717436580286,
-      "memoryBytes": 496123904,
+      "cpu": 0.00713271472443285,
+      "memoryBytes": 46481408,
       "confidence": "low"
     },
     {
@@ -90,29 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.4733661135013317,
-      "memoryBytes": 638779392,
-      "confidence": "low"
-    },
-    {
-      "agentId": "44a9cf272f406426",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.008469077621828365,
-      "memoryBytes": 110837760,
+      "cpu": 0.4846232616522974,
+      "memoryBytes": 829767680,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 1436288983,
-      "inputTokens": 24412789,
-      "outputTokens": 2723426,
-      "costUSD": 304.0907342000001
+      "totalTokens": 1436434154,
+      "inputTokens": 24548563,
+      "outputTokens": 2723863,
+      "costUSD": 304.3675482000001
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-16T00:52:22.476Z"
+  "receivedAt": "2026-11-16T01:08:50.397Z"
 }
