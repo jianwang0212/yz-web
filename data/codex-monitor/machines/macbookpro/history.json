@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-13T21:42:34.456Z",
-    "cpu": 6.315030148377359,
-    "memoryBytes": 3996647424,
-    "totalTokens": 2850721222,
-    "todayTokens": 39055548,
-    "activeAgents": 27,
-    "estimatedCostUsd": 2059.0767540199995,
-    "agents": [
-      {
-        "agentId": "3a7c4528e9f59e7f",
-        "processName": "ssh",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 2,
-        "memoryBytes": 4685824,
-        "confidence": "low"
-      },
-      {
-        "agentId": "4e930a2ba6a2d5de",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.01631391911440971,
-        "memoryBytes": 120864768,
-        "confidence": "low"
-      },
-      {
-        "agentId": "1e4466a939ffb364",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.002597382153623348,
-        "memoryBytes": 146194432,
-        "confidence": "low"
-      },
-      {
-        "agentId": "36875eb9da5f2228",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0028807782823949816,
-        "memoryBytes": 173391872,
-        "confidence": "low"
-      },
-      {
-        "agentId": "8e7ed1d112a202d4",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.03300200059860431,
-        "memoryBytes": 186286080,
-        "confidence": "low"
-      },
-      {
-        "agentId": "b7298e12183a7780",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000015127563176485718,
-        "memoryBytes": 8454144,
-        "confidence": "low"
-      },
-      {
-        "agentId": "38482c558dc59713",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000007563781588242859,
-        "memoryBytes": 7946240,
-        "confidence": "low"
-      },
-      {
-        "agentId": "d0ecab57e969f674",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.7715796320948808,
-        "memoryBytes": 124534784,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-13T21:47:54.330Z",
     "cpu": 4.306189948831414,
     "memoryBytes": 3991126016,
@@ -56930,6 +56831,105 @@
         "workspaceLabel": "/",
         "cpu": 0.23233868249812045,
         "memoryBytes": 122896384,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-16T03:32:19.516Z",
+    "cpu": 4.5670109937182035,
+    "memoryBytes": 3350052864,
+    "totalTokens": 3257996597,
+    "todayTokens": 113922431,
+    "activeAgents": 28,
+    "estimatedCostUsd": 1763.9086573600002,
+    "agents": [
+      {
+        "agentId": "d8973911ecbafefd",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1e246-4753-7a61-a02f-7f378efee239",
+        "sessionTitle": "- playwright - 浏览器自动化 有使用么?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "e5f5e3c941c973b0",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1e24c-8d5d-7603-a475-91c95ab28630",
+        "sessionTitle": "- **风控服务器磁盘已满**：FutuOpenD 日志约 **27.8 GiB**，系统日志约 **5 GiB**。需要确认保留要求后归档、清理并配置轮转；**我没有删除文件或重启服务**。 你查一下?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "4db63cea183418e7",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1df61-df1f-7b62-8359-87017009e217",
+        "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-0f4d52bd-e22d-4424-bc48-51d47d19753d.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-0f4d52bd-e22d-4424-bc48-51d47d19753d.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n你还记得我们 dockingtech crm 后台的数据库么? 我之前有给你? 可以给我一个每天, 上周, 上月的销售数据? 就像 gtarb 给我发封邮件? 每天晚上 10pm",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "444786320fb46b98",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1df6a-9ce6-74c0-9d5d-c2ca11311f4e",
+        "sessionTitle": "我可以把我加的湿度; 温度; 空气清新程度放到我的手机首页么?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "5cff21d53b6484b3",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a1e268-02b8-7e13-a4b5-3b1d644fbce0",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "2b0f0caa0e5d0991",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a1e267-cb44-7602-bf16-bdd9946d5bb9",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "e1592081c96ffbb0",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
+        "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5173318247274223,
+        "memoryBytes": 759840768,
+        "confidence": "high"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000025709584533113943,
+        "memoryBytes": 8011776,
         "confidence": "low"
       }
     ]
