@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-16T11:11:18.982Z",
+  "syncedAt": "2026-11-16T11:16:46.077Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 32,
-    "todayTokens": 665687185,
-    "weekTokens": 2135696289,
-    "totalTokens": 3809761351,
-    "estimatedCostUsd": 1899.32266656,
-    "cpu": 6.74763741005673,
-    "memoryBytes": 5411274752
+    "activeAgents": 30,
+    "todayTokens": 668507629,
+    "weekTokens": 2138516733,
+    "totalTokens": 3812581795,
+    "estimatedCostUsd": 1899.9409489600002,
+    "cpu": 6.755279955188631,
+    "memoryBytes": 5565530112
   },
   "agents": [
-    {
-      "agentId": "adacf045a4305ce8",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1e389-c21c-7bc0-b0c2-2d58a016c3eb",
-      "sessionTitle": "查一下这个可以干嘛? [https://thisisyz.com/health/](https://thisisyz.com/health/)",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9276928867143396,
-      "memoryBytes": 928268288,
-      "confidence": "high"
-    },
     {
       "agentId": "ad03f9db984a6a78",
       "processName": "codex",
@@ -35,19 +24,8 @@
       "sessionId": "01a1e3bf-48dc-7521-9d8b-ca4afe1cfccd",
       "sessionTitle": "查一下我的 thisisyz 服务器里面有哪些数据库? 特别是炼刀的有么?",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.9276928867143396,
-      "memoryBytes": 928268288,
-      "confidence": "high"
-    },
-    {
-      "agentId": "ec10b2560f3c7c36",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1e2e3-5b91-7bc3-82d9-0a82d3f90b08",
-      "sessionTitle": "我的所有服务器的作用和清理, 你先列出来, 然后给我方案, 查询她们现在都在干嘛? 我有什么好的方式去 monitor 她们",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9276928867143396,
-      "memoryBytes": 928268288,
+      "cpu": 0.9277635462076611,
+      "memoryBytes": 944963584,
       "confidence": "high"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006502269660164397,
+      "cpu": 0.006368675551362189,
       "memoryBytes": 170278912,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001505275992353198,
+      "cpu": 0.000014978804990937823,
       "memoryBytes": 7995392,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001505275992353198,
+      "cpu": 0.000014978804990937823,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3835049373795761,
-      "memoryBytes": 137445376,
+      "cpu": 0.3873576992210905,
+      "memoryBytes": 137560064,
       "confidence": "low"
     },
     {
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10926962909441233,
-      "memoryBytes": 86163456,
+      "cpu": 0.10916716596764531,
+      "memoryBytes": 86114304,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.006156381066506891,
+      "memoryBytes": 45531136,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e18744e9c7b04fa8",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2.0884943820224717,
+      "memoryBytes": 1316814848,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 2084211306,
-      "inputTokens": 35064036,
-      "outputTokens": 5781254,
-      "costUSD": 469.4951970000001
+      "totalTokens": 2087031750,
+      "inputTokens": 35070045,
+      "outputTokens": 5799017,
+      "costUSD": 470.11347940000013
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-16T11:11:22.970Z"
+  "receivedAt": "2026-11-16T11:16:49.119Z"
 }
