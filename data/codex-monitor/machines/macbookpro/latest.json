@@ -1,53 +1,42 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-16T10:17:20.103Z",
+  "syncedAt": "2026-11-16T10:22:43.632Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 33,
-    "todayTokens": 624283680,
-    "weekTokens": 2094292784,
-    "totalTokens": 3768357846,
-    "estimatedCostUsd": 1889.30382056,
-    "cpu": 6.700473402722127,
-    "memoryBytes": 5444616192
+    "activeAgents": 32,
+    "todayTokens": 625814075,
+    "weekTokens": 2095823179,
+    "totalTokens": 3769888241,
+    "estimatedCostUsd": 1889.5557321600002,
+    "cpu": 6.733222315604678,
+    "memoryBytes": 5444255744
   },
   "agents": [
     {
-      "agentId": "2fda21fd5b12f24e",
+      "agentId": "80c492aea6438698",
       "processName": "codex",
       "status": "running",
+      "sessionId": "01a1e3e0-0497-7c41-ad78-e2b2d02188e4",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.9387025665249568,
+      "memoryBytes": 1040678912,
+      "confidence": "high"
+    },
+    {
+      "agentId": "2fda21fd5b12f24e",
+      "processName": "codex",
+      "status": "idle",
       "sessionId": "01a1e39d-0876-7500-a986-11f3e0cf6a66",
       "sessionTitle": "帮我把最近的账号密码放到我的 1password. 特别是飞书里面跟吴涛的记录",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.9414594774241537,
-      "memoryBytes": 1014235136,
-      "confidence": "high"
-    },
-    {
-      "agentId": "7dca9cf15dd8d0b7",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1e3da-fbeb-78f1-a168-9bae09e7d70f",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.9414594774241537,
-      "memoryBytes": 1014235136,
-      "confidence": "high"
-    },
-    {
-      "agentId": "ad03f9db984a6a78",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1e3bf-48dc-7521-9d8b-ca4afe1cfccd",
-      "sessionTitle": "查一下我的 thisisyz 服务器里面有哪些数据库? 特别是炼刀的有么?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.9414594774241537,
-      "memoryBytes": 1014235136,
+      "cpu": 0.9387025665249568,
+      "memoryBytes": 1040678912,
       "confidence": "high"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01017708121310808,
+      "cpu": 0.009549274255156608,
       "memoryBytes": 185139200,
       "confidence": "low"
     },
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000015824036711765172,
+      "cpu": 0.00001574356875216474,
       "memoryBytes": 7995392,
       "confidence": "low"
     },
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000015824036711765172,
+      "cpu": 0.00001574356875216474,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.38152356236351553,
-      "memoryBytes": 143474688,
+      "cpu": 0.3797408567785003,
+      "memoryBytes": 143540224,
       "confidence": "low"
     },
     {
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11127638699876571,
-      "memoryBytes": 84787200,
+      "cpu": 0.11100965095958562,
+      "memoryBytes": 84901888,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.006234551379945527,
+      "memoryBytes": 45481984,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 2042807801,
-      "inputTokens": 34704012,
-      "outputTokens": 5638637,
-      "costUSD": 459.4763510000002
+      "totalTokens": 2044338196,
+      "inputTokens": 34705784,
+      "outputTokens": 5648284,
+      "costUSD": 459.72826260000016
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-16T10:17:23.014Z"
+  "receivedAt": "2026-11-16T10:22:46.595Z"
 }
