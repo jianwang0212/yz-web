@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-17T02:48:01.074Z",
+  "syncedAt": "2026-11-17T02:53:25.699Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,25 +9,14 @@
   },
   "summary": {
     "activeAgents": 28,
-    "todayTokens": 84076302,
-    "weekTokens": 2403893265,
-    "totalTokens": 4078470347,
-    "estimatedCostUsd": 1967.6749363600002,
-    "cpu": 6.128762507313777,
-    "memoryBytes": 5431754752
+    "todayTokens": 92734912,
+    "weekTokens": 2412551875,
+    "totalTokens": 4087128957,
+    "estimatedCostUsd": 1968.9134395600001,
+    "cpu": 6.16903040711453,
+    "memoryBytes": 5369331712
   },
   "agents": [
-    {
-      "agentId": "e301be5d20d94bde",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1e476-1468-7eb2-81f3-7b547c4beb24",
-      "sessionTitle": "查询一下 x 和 linux do 里面关于 rea 的运用?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6812773695841862,
-      "memoryBytes": 1109491712,
-      "confidence": "high"
-    },
     {
       "agentId": "e1592081c96ffbb0",
       "processName": "codex",
@@ -35,8 +24,19 @@
       "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
       "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6812773695841862,
-      "memoryBytes": 1109491712,
+      "cpu": 0.682618561564175,
+      "memoryBytes": 920961024,
+      "confidence": "high"
+    },
+    {
+      "agentId": "e301be5d20d94bde",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1e476-1468-7eb2-81f3-7b547c4beb24",
+      "sessionTitle": "查询一下 x 和 linux do 里面关于 rea 的运用?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.682618561564175,
+      "memoryBytes": 920961024,
       "confidence": "high"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008154278957883149,
+      "cpu": 0.000008132659949089549,
       "memoryBytes": 8388608,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008154278957883149,
+      "cpu": 0.000008132659949089549,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.285997357992074,
-      "memoryBytes": 146128896,
+      "cpu": 0.28758132726089786,
+      "memoryBytes": 141639680,
       "confidence": "low"
     },
     {
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08677038994079946,
-      "memoryBytes": 84426752,
+      "cpu": 0.08671112556929084,
+      "memoryBytes": 84459520,
       "confidence": "low"
     },
     {
@@ -90,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005039385488526836,
+      "cpu": 0.005034157449577098,
       "memoryBytes": 44843008,
       "confidence": "low"
     },
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.6137623956158662,
-      "memoryBytes": 1543454720,
+      "cpu": 1.6159902399349328,
+      "memoryBytes": 1591197696,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 2352920302,
-      "inputTokens": 39735065,
-      "outputTokens": 6902613,
-      "costUSD": 537.8474668000002
+      "totalTokens": 2361578912,
+      "inputTokens": 39854233,
+      "outputTokens": 6917383,
+      "costUSD": 539.0859700000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-17T02:48:04.901Z"
+  "receivedAt": "2026-11-17T02:53:28.717Z"
 }
