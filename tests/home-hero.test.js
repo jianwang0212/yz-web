@@ -85,7 +85,6 @@ test('home entry section mirrors the four top-level paths and folds the curated 
     '/2026-h1-review',
     'year-review.html',
     '/projects/vipassana',
-    'engineering.html',
     'financial-dashboard.html',
     '/projects/dockingtech',
     'timeline.html',
@@ -95,6 +94,7 @@ test('home entry section mirrors the four top-level paths and folds the curated 
   ]) {
     expectIncludes(indexHtml, `href="${href}"`);
   }
+  assert.equal(indexHtml.includes('href="engineering.html"'), false);
 
   const summaryBlocks = indexHtml.match(/<summary class="entry-summary">[\s\S]*?<\/summary>/g) || [];
   assert.equal(summaryBlocks.length, 4);
