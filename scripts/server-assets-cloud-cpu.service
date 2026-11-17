@@ -1,0 +1,19 @@
+[Unit]
+Description=Read rolling CPU history from Alibaba CloudMonitor
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/usr/local/lib/server-assets-cloud-cpu
+ExecStart=/usr/bin/python3 /usr/local/lib/server-assets-cloud-cpu/cloud_cpu_collect.py
+Environment=PYTHONDONTWRITEBYTECODE=1
+TimeoutStartSec=240
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/zy-personal-web-clean/projects
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX

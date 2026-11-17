@@ -152,3 +152,8 @@
 - User approved three daily-use hubs: Health, Music, Work & Research; experiments/archive collapsed. Preserve legacy routes, recent server monitor, workout/yoga shortcuts, and bilingual behavior.
 - Health is served separately from `/opt/apple-health/site` behind existing Caddy protection. Public repo contains entry links only, never private exports, report data, or health databases.
 - Production Works contains a newer Beautiful Memories feature not yet in main. Deploy only the focused Engineering-link insertion, preserving that live feature and unrelated dirty files. No service restart or Caddy change is required.
+
+## 2026-11-17 — Rolling CloudMonitor CPU
+- CPU7d/30d now comes from DescribeMetricList(CPUUtilization,acs_ecs_dashboard),hourly aggregated data queried for30days with all pages;7d is derived from the same result. Cache updates every15min,UI polls protected cache every60s.
+- User explicitly authorized a dedicated ECS role with cms:QueryMetricList only. Use IMDSv2 temporary credentials andACS3-HMAC-SHA256; do not create/persist long-termAccessKeys or copy browser tokens.
+- Keep missing points distinct from0. Validate exact4-instance allowlist,duplicates,coverage andpagination; failed queries preserve last successful data/time and display failure,never relabel stale data as current. Query only completed hours allowing5min reporting delay.

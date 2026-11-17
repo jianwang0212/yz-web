@@ -12,7 +12,9 @@ test('tracked server template contains no asset payload and supports protected p
  assert.doesNotMatch(template,/\b(?:\d{1,3}\.){3}\d{1,3}\b|i-[a-z0-9]{16,}|orderId=\d+/);
  assert.match(template,/connect-src 'self'/);
  assert.match(template,/credentials:'same-origin'/);
- assert.match(template,/每60秒刷新；内存为只读采集估算，CPU周\/月为历史快照/);
+ assert.match(template,/每60秒刷新；内存为只读采集估算/);
+ assert.match(template,/server-assets-cpu.json/);
+ assert.match(template,/每15分钟同步/);
  assert.match(template,/if\(live&&!live.memory\)/);
  assert.match(template,/采集失败，不等于服务器宕机/);
  assert.match(template,/Math.round\(100\*\(1-available\/total\)\)/);
