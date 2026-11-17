@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-14T21:10:30.803Z",
-    "cpu": 3.415401586522219,
-    "memoryBytes": 4724457472,
-    "totalTokens": 2901495219,
-    "todayTokens": 50773997,
-    "activeAgents": 28,
-    "estimatedCostUsd": 2072.5362670199993,
-    "agents": [
-      {
-        "agentId": "1e4fdd1f04a7b029",
-        "processName": "ssh",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.25,
-        "memoryBytes": 4063232,
-        "confidence": "low"
-      },
-      {
-        "agentId": "4e930a2ba6a2d5de",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.013464482113498497,
-        "memoryBytes": 118161408,
-        "confidence": "low"
-      },
-      {
-        "agentId": "1e4466a939ffb364",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0020281098866811328,
-        "memoryBytes": 197050368,
-        "confidence": "low"
-      },
-      {
-        "agentId": "36875eb9da5f2228",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0021605011227987234,
-        "memoryBytes": 165724160,
-        "confidence": "low"
-      },
-      {
-        "agentId": "8e7ed1d112a202d4",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.021647007633443374,
-        "memoryBytes": 175423488,
-        "confidence": "low"
-      },
-      {
-        "agentId": "b7298e12183a7780",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000009229988231765004,
-        "memoryBytes": 8404992,
-        "confidence": "low"
-      },
-      {
-        "agentId": "38482c558dc59713",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000004614994115882502,
-        "memoryBytes": 7897088,
-        "confidence": "low"
-      },
-      {
-        "agentId": "d0ecab57e969f674",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.4885778368499751,
-        "memoryBytes": 126238720,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-14T21:15:51.574Z",
     "cpu": 3.4952368678288583,
     "memoryBytes": 4720295936,
@@ -56930,6 +56831,105 @@
         "workspaceLabel": "/",
         "cpu": 0.009182004258082547,
         "memoryBytes": 106938368,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-17T02:37:11.900Z",
+    "cpu": 6.543787969155096,
+    "memoryBytes": 5268996096,
+    "totalTokens": 4069233330,
+    "todayTokens": 74839285,
+    "activeAgents": 29,
+    "estimatedCostUsd": 1963.6055275600002,
+    "agents": [
+      {
+        "agentId": "e301be5d20d94bde",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1e476-1468-7eb2-81f3-7b547c4beb24",
+        "sessionTitle": "查询一下 x 和 linux do 里面关于 rea 的运用?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.6749440477459235,
+        "memoryBytes": 854933504,
+        "confidence": "high"
+      },
+      {
+        "agentId": "6ef72b3e09af3a29",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1e75d-01a4-74d0-8c98-19896e14ac0c",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.6749440477459235,
+        "memoryBytes": 854933504,
+        "confidence": "high"
+      },
+      {
+        "agentId": "897bb956bb38a022",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1e75d-18bf-7923-9904-4bd8245af531",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.6749440477459235,
+        "memoryBytes": 854933504,
+        "confidence": "high"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000008197594825678145,
+        "memoryBytes": 8388608,
+        "confidence": "low"
+      },
+      {
+        "agentId": "0b9246d6271da96d",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000008197594825678145,
+        "memoryBytes": 7864320,
+        "confidence": "low"
+      },
+      {
+        "agentId": "6dd42351a3a885b8",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.28195858541144064,
+        "memoryBytes": 150028288,
+        "confidence": "low"
+      },
+      {
+        "agentId": "2f03925bea465f80",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.08682143852573246,
+        "memoryBytes": 83836928,
+        "confidence": "low"
+      },
+      {
+        "agentId": "84346d6bc35373d0",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.005049759808502616,
+        "memoryBytes": 44990464,
         "confidence": "low"
       }
     ]
