@@ -12,62 +12,46 @@ function expectIncludes(source, value, message) {
   assert.ok(source.includes(value), message || `Expected source to include ${value}`);
 }
 
-test('projects index groups tools by domain and keeps reading pages in a folded archive', () => {
-  const systemsStart = projectsHtml.indexOf('data-project-group="systems"');
-  const musicStart = projectsHtml.indexOf('data-project-group="music"');
+test('projects index has three daily hubs and a collapsed archive', () => {
+  assert.equal((projectsHtml.match(/class="project-hub(?: project-hub-health)?"/g) || []).length, 3);
   const healthStart = projectsHtml.indexOf('data-project-group="health"');
+  const musicStart = projectsHtml.indexOf('data-project-group="music"');
+  const systemsStart = projectsHtml.indexOf('data-project-group="systems"');
   const archiveStart = projectsHtml.indexOf('data-project-group="archive"');
-
-  assert.ok(systemsStart > -1, 'Expected a systems and research group');
-  assert.ok(musicStart > systemsStart, 'Expected music after systems');
-  assert.ok(healthStart > musicStart, 'Expected health after music');
-  assert.ok(archiveStart > healthStart, 'Expected Archive at the end');
-
-  const systemsSection = projectsHtml.slice(systemsStart, musicStart);
-  const musicSection = projectsHtml.slice(musicStart, healthStart);
-  const healthSection = projectsHtml.slice(healthStart, archiveStart);
+  assert.ok(healthStart < musicStart && musicStart < systemsStart && systemsStart < archiveStart);
+  const health = projectsHtml.slice(healthStart, musicStart);
+  const music = projectsHtml.slice(musicStart, systemsStart);
+  const systems = projectsHtml.slice(systemsStart, archiveStart);
   const archiveSection = projectsHtml.slice(archiveStart);
-
-  for (const href of [
-    '/projects/stock-research-dashboard',
-    '/engineering',
-    '/projects/codex-monitor',
-    '/projects/socialpulse',
-  ]) {
-    expectIncludes(systemsSection, `href="${href}"`);
+  for (const href of ['/health/', '/health/history/', '/health/weight/', '/health/environment/', '/health/records/', '/projects/workout', '/projects/yoga-poses']) {
+    expectIncludes(health, `href="${href}"`);
   }
-  expectIncludes(healthSection, 'href="/projects/workout"');
-  for (const href of [
-    '/projects/interval-quiz',
-    '/projects/degree-quiz',
-    '/projects/chord-trainer',
-    '/projects/left-hand-voicing-trainer',
-    '/projects/stem-splitter',
-    '/projects/song-leadsheet-database',
-  ]) {
-    expectIncludes(musicSection, `href="${href}"`);
+  for (const href of ['/projects/interval-quiz','/projects/degree-quiz','/projects/chord-trainer','/projects/left-hand-voicing-trainer','/projects/stem-splitter','/projects/song-leadsheet-database']) {
+    expectIncludes(music, `href="${href}"`);
   }
-
-  assert.match(projectsHtml, /<details[^>]*class="project-archive"[^>]*data-project-group="archive"/);
-  expectIncludes(archiveSection, 'href="/projects/codex-monthly-2026-06"');
-  expectIncludes(archiveSection, 'href="/projects/vipassana"');
-  expectIncludes(archiveSection, 'href="/projects/apartment-sublet"');
-  assert.equal(projectsHtml.includes('href="/projects/mbti"'), false);
-
-  for (const href of projectsHtml.matchAll(/class="project-card"/g)) {
-    assert.ok(href.index >= systemsStart);
+  for (const href of ['/projects/dockingtech','/projects/socialpulse','/projects/codex-monitor','/projects/server-assets']) {
+    expectIncludes(systems, `href="${href}"`);
   }
-  assert.equal((projectsHtml.match(/href="\/projects\/vipassana"/g) || []).length, 1);
-  assert.equal((projectsHtml.match(/href="\/projects\/apartment-sublet"/g) || []).length, 1);
+  assert.match(projectsHtml, /<details id="archive" class="project-archive" data-project-group="archive">/);
+  assert.doesNotMatch(projectsHtml, /<details[^>]*\bopen(?:\s|[=>])/);
+  for (const href of ['/projects/stock-research-dashboard','/projects/codex-monthly-2026-06','/projects/apartment-sublet']) {
+    expectIncludes(archiveSection, `href="${href}"`);
+  }
+  assert.equal(systems.includes('href="/projects/stock-research-dashboard"'), false);
+  assert.equal(projectsHtml.includes('href="/engineering"'), false);
+  assert.equal(projectsHtml.includes('href="/projects/vipassana"'), false);
+  assert.doesNotMatch(projectsHtml, /bpm|4,644,325|2026-11-16|51\.4|14\.3/);
 });
 
-test('projects index offers direct category anchors', () => {
+test('projects keeps old section anchors and translated page-local copy', () => {
   for (const anchor of ['systems', 'health', 'music', 'archive']) {
-    expectIncludes(projectsHtml, `href="#${anchor}"`);
+    expectIncludes(projectsHtml, `id="${anchor}"`);
   }
-  expectIncludes(projectsHtml, 'data-open-project-archive');
   expectIncludes(projectsJs, "archive.open = true");
   expectIncludes(projectsJs, "window.location.hash === '#archive'");
+  expectIncludes(projectsJs, 'Object.assign(translations.zh');
+  expectIncludes(projectsJs, 'Object.assign(translations.en');
+  expectIncludes(projectsHtml, '/projects-hubs.css?v=20261117');
 });
 
 test('projects index copy describes its categories and current SocialPulse platforms', () => {
@@ -107,4 +91,11 @@ test('project cards keep whole-card links without visible text underlines', () =
   expectIncludes(stylesCss, 'text-decoration: none !important;');
   expectIncludes(stylesCss, 'box-shadow: var(--shadow-md);');
   expectIncludes(stylesCss, 'transform: translateY(-5px);');
+});
+
+test('showcase and reading entries move without changing their legacy URLs', () => {
+  const works = readFileSync(new URL('../works.html', import.meta.url), 'utf8');
+  const essays = readFileSync(new URL('../essays/index.html', import.meta.url), 'utf8');
+  expectIncludes(works, 'href="/engineering"');
+  expectIncludes(essays, 'href="/projects/vipassana"');
 });

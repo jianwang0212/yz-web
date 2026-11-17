@@ -1,0 +1,21 @@
+/* Projects: three daily-use hubs, without competing project cards. */
+.project-hubs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; }
+.project-hub { min-width:0; padding:1.8rem; background:#fff; border:1px solid #dce4e9; border-radius:12px; scroll-margin-top:100px; }
+.project-hub-health { background:#f3f8f5; border-color:#c9ddd1; }
+.project-hub h2 { margin:0 0 .65rem; font-size:1.65rem; line-height:1.3; }
+.project-hub h2 a { color:inherit; text-decoration:none; }
+.project-hub > p:not(.projects-eyebrow) { color:var(--text-secondary); min-height:3em; margin-bottom:1.4rem; }
+.project-hub h3 { margin:1.25rem 0 .45rem; font-size:.8rem; color:var(--text-light); font-weight:600; }
+.hub-primary { display:inline-block; margin:0 0 .9rem; font-weight:600; color:#235e43; }
+.hub-links { list-style:none; padding:0; margin:0; }
+.hub-links li + li { border-top:1px solid rgba(60,80,70,.08); }
+.hub-links a { display:block; padding:.7rem 0; color:var(--text-primary); line-height:1.45; text-decoration:none; }
+.hub-links a:hover { color:var(--primary-color); }
+.hub-links a:focus-visible, .hub-primary:focus-visible, .project-hub h2 a:focus-visible { outline:2px solid #35845b; outline-offset:4px; border-radius:2px; }
+.project-related { display:flex; flex-wrap:wrap; gap:1rem 2rem; margin-top:1.8rem; font-size:.9rem; }
+.project-related a { color:var(--text-secondary); }
+.projects-page .project-archive { margin-top:2.5rem; }
+.archive-links { padding:.5rem 1.4rem 1.2rem; }
+@media(max-width:1000px) { .project-hubs { grid-template-columns:1fr; } .project-hub > p:not(.projects-eyebrow) { min-height:0; } }
+@media(prefers-reduced-motion:reduce) { .project-hub * { transition:none!important; scroll-behavior:auto; } }
+@media print { .project-hubs { display:block; } .project-hub { break-inside:avoid; margin-bottom:1rem; } }
