@@ -34,3 +34,7 @@
 - Submit changes through a focused PR from a clean worktree.
 - Production is served from `/opt/zy-personal-web-clean`; update only the approved files from `origin/main` and verify their hashes against the public response.
 - Do not overwrite unrelated dirty production files or restart the service for static page-only changes. When `site-routes.mjs` changes, restart `zy-personal-web.service` and verify `/healthz`, canonical routes, and redirects.
+
+## Private server assets monitor
+- Projects links to /projects/server-assets. templates/server-assets.html is a sanitized UI; generated projects/server-assets.html contains private data and MUST NOT be committed. Render with scripts/render-server-assets.mjs using an explicitly supplied private local audit HTML.
+- Reuse existing protected /projects/server-monitor-data.json every60s; no new agents/API keys or relaxed auth. Live RAM is estimated from existing free-h total/available and rounded to integer; CPU7/30d remains clearly timestamped CloudMonitor history.
