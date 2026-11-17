@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-17T09:49:43.734Z",
+  "syncedAt": "2026-11-17T09:55:09.204Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 36,
-    "todayTokens": 503483595,
-    "weekTokens": 2823300558,
-    "totalTokens": 4497877640,
-    "estimatedCostUsd": 2072.44943036,
-    "cpu": 6.967187829256294,
-    "memoryBytes": 6253871104
+    "activeAgents": 35,
+    "todayTokens": 509042513,
+    "weekTokens": 2828859476,
+    "totalTokens": 4503436558,
+    "estimatedCostUsd": 2073.43798976,
+    "cpu": 6.984187378223001,
+    "memoryBytes": 6289211392
   },
   "agents": [
-    {
-      "agentId": "7577e148a7092a1d",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1e88e-b9b7-73f2-8b8e-ccc7bc0b1280",
-      "sessionTitle": "",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.7228756844453458,
-      "memoryBytes": 935165952,
-      "confidence": "high"
-    },
     {
       "agentId": "adacf045a4305ce8",
       "processName": "codex",
@@ -35,8 +24,8 @@
       "sessionId": "01a1e389-c21c-7bc0-b0c2-2d58a016c3eb",
       "sessionTitle": "查一下这个可以干嘛? [https://thisisyz.com/health/](https://thisisyz.com/health/)",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.7228756844453458,
-      "memoryBytes": 935165952,
+      "cpu": 0.7230987150517689,
+      "memoryBytes": 948977664,
       "confidence": "high"
     },
     {
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000006759588476253566,
+      "cpu": 0.000006744771116192172,
       "memoryBytes": 7995392,
       "confidence": "low"
     },
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000006759588476253566,
+      "cpu": 0.000006744771116192172,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.29976949647485074,
-      "memoryBytes": 160415744,
+      "cpu": 0.29981384306160713,
+      "memoryBytes": 156303360,
       "confidence": "low"
     },
     {
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08684102016398872,
-      "memoryBytes": 85147648,
+      "cpu": 0.08677881048414293,
+      "memoryBytes": 85196800,
       "confidence": "low"
     },
     {
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005062965992280498,
+      "cpu": 0.005058612456327312,
       "memoryBytes": 45727744,
       "confidence": "low"
     },
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.6985472564170163,
-      "memoryBytes": 1444659200,
+      "cpu": 1.7037341823381809,
+      "memoryBytes": 1452310528,
+      "confidence": "low"
+    },
+    {
+      "agentId": "44a9cf272f406426",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.009389608024337432,
+      "memoryBytes": 106037248,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 2772327595,
-      "inputTokens": 46389432,
-      "outputTokens": 8388979,
-      "costUSD": 642.6219608000004
+      "totalTokens": 2777886513,
+      "inputTokens": 46426728,
+      "outputTokens": 8400457,
+      "costUSD": 643.6105202000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-17T09:49:46.662Z"
+  "receivedAt": "2026-11-17T09:55:12.273Z"
 }
