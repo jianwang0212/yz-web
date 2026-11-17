@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zi Yin（银子）的项目：研究系统、音乐工具、健康记录与阶段档案。">
-    <meta property="og:title" content="项目 - Zi Yin (银子)">
-    <meta property="og:description" content="研究、训练和日常运行的系统与工具。">
+    <meta name="description" content="健康记录、音乐练习和工作工具。">
+    <meta property="og:title" content="项目">
+    <meta property="og:description" content="健康记录、音乐练习和工作工具。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thisisyz.com/projects">
     <meta property="og:image" content="https://thisisyz.com/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="项目 - Zi Yin (银子)">
-    <meta name="twitter:description" content="研究、训练和日常运行的系统与工具。">
+    <meta name="twitter:title" content="项目">
+    <meta name="twitter:description" content="健康记录、音乐练习和工作工具。">
     <meta name="twitter:image" content="https://thisisyz.com/images/hero-bg.jpg">
     <link rel="canonical" href="https://thisisyz.com/projects">
-    <title>项目 - Zi Yin (银子)</title>
+    <title>项目</title>
     <link rel="stylesheet" href="styles.css?v=20260721-project-categories1">
-    <link rel="stylesheet" href="/projects-hubs.css?v=20261117">
+    <link rel="stylesheet" href="/projects-hubs.css?v=20261117-selected-a">
+    
+
+    
+
+    <noscript><style>.projects-page .project-toolbar { display:none; }</style></noscript>
     <link rel="stylesheet" href="/site-nav.css?v=20260721-project-categories2">
     <script src="/site-nav.js?v=20260721-project-categories2" defer></script>
 </head>
-<body data-i18n-title="projects.meta.title" data-i18n-description="projects.meta.description">
+<body data-i18n-title="projects.page.title" data-i18n-description="projects.page.intro">
     <!-- Navigation -->
     <nav class="navbar site-global-nav" aria-label="主导航">
         <div class="container site-nav-inner">
@@ -56,55 +61,151 @@
 
     <section id="projects" class="projects projects-page">
         <div class="container">
-            <header class="projects-page-header">
-                <p class="projects-eyebrow" data-i18n="projects.kicker">项目索引</p>
-                <h1 class="section-title" data-i18n="projects.title">项目。</h1>
-                <p class="projects-intro" data-i18n="projects.intro">一些正在使用、持续迭代的系统与工具。</p>
+            <header class="project-hero">
+                <div class="project-heading">
+                    <p class="projects-eyebrow">PROJECTS</p>
+                    <h1 data-i18n="projects.page.title" class="project-page-title">项目</h1>
+                    <p data-i18n="projects.page.intro" class="projects-intro">健康记录、音乐练习和工作工具。</p>
+                </div>
+                <div class="project-overview">
+                    <a href="#health" class="project-overview-link project-tone-health"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h5l3-8 4 16 3-8h5"/></svg><strong data-i18n="projects.page.health">健康</strong><small>6 <span data-i18n="projects.page.countSuffix">个项目</span></small></a>
+                    <a href="#music" class="project-overview-link project-tone-music"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v9h3V4m4 0v9h3V4M9 13v7m6-7v7"/></svg><strong data-i18n="projects.page.music">音乐</strong><small>6 <span data-i18n="projects.page.countSuffix">个项目</span></small></a>
+                    <a href="#systems" class="project-overview-link project-tone-systems"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01m5-10h5m-5 10h5"/></svg><strong data-i18n="projects.page.systems">工作与研究</strong><small>2 <span data-i18n="projects.page.countSuffix">个项目</span></small></a>
+                </div>
             </header>
-
-            <div class="project-hubs" aria-label="Projects">
-                <section id="health" class="project-hub project-hub-health" data-project-group="health" aria-labelledby="health-title">
-                    <p class="projects-eyebrow">01 / Health</p>
-                    <h2 id="health-title"><a href="/health/" data-i18n="projects.hubs.health">健康</a></h2>
-                    <p data-i18n="projects.hubs.healthDesc">看最近变化，回顾长期记录。</p>
-                    <a class="hub-primary" href="/health/" data-i18n="projects.hubs.openHealth">打开健康中心 →</a>
-                    <ul class="hub-links">
-                        <li><a href="/health/history/"><span data-i18n="projects.hubs.history">睡眠、运动与心率</span></a></li>
-<li><a href="/health/weight/"><span data-i18n="projects.hubs.weight">体重记录</span></a></li>
-<li><a href="/projects/workout"><span data-i18n="projects.hubs.workout">健身记录与动作分析</span></a></li>
-<li><a href="/projects/yoga-poses"><span data-i18n="projects.hubs.yoga">瑜伽动作库</span></a></li>
-<li><a href="/health/environment/"><span data-i18n="projects.hubs.environment">居家环境</span></a></li>
-<li><a href="/health/records/"><span data-i18n="projects.hubs.records">体检与健康档案</span></a></li>
-                    </ul>
+            <div class="project-toolbar">
+                <div class="project-filters" role="group" aria-label="按项目类别筛选" data-i18n-aria-label="projects.page.filtersAria">
+                    <button type="button" data-project-filter="all" aria-pressed="true"><span data-i18n="projects.page.all">全部项目</span></button>
+                    <button type="button" data-project-filter="health" aria-pressed="false"><span data-i18n="projects.page.health">健康</span></button>
+                    <button type="button" data-project-filter="music" aria-pressed="false"><span data-i18n="projects.page.music">音乐</span></button>
+                    <button type="button" data-project-filter="systems" aria-pressed="false"><span data-i18n="projects.page.systems">工作与研究</span></button>
+                </div>
+                <output class="project-results-count" aria-live="polite" aria-atomic="true"><span data-project-count>14</span> <span data-i18n="projects.page.countSuffix">个项目</span></output>
+            </div>
+            <div class="project-groups">
+                <section id="health" class="project-group" data-project-group="health" aria-labelledby="health-title">
+                    <div class="project-group-heading"><h2 data-i18n="projects.page.health" id="health-title">健康</h2><a href="/health/" class="project-health-link"><span data-i18n="projects.page.openHealth">进入健康中心 →</span></a></div>
+                    <div class="purpose-grid">
+                        <a class="purpose-card" href="/health/history/" data-project="history" aria-labelledby="project-history-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.history.type" class="purpose-card-type">健康趋势</span><span class="purpose-card-index" aria-hidden="true">01</span></div>
+                            <h3 data-i18n="projects.item.history.name" id="project-history-title">睡眠、运动与心率</h3>
+                            <p data-i18n="projects.item.history.desc" class="purpose-card-description">汇总 Apple Health 记录，查看睡眠、运动和心率的长期变化。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.history.when">回顾近期作息与活动变化</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.history.outputs" class="purpose-card-outputs">历史趋势 · 同期对照</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/health/weight/" data-project="weight" aria-labelledby="project-weight-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.weight.type" class="purpose-card-type">测量记录</span><span class="purpose-card-index" aria-hidden="true">02</span></div>
+                            <h3 data-i18n="projects.item.weight.name" id="project-weight-title">体重记录</h3>
+                            <p data-i18n="projects.item.weight.desc" class="purpose-card-description">查看最新体重读数和历史测量记录。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.weight.when">查看称重结果与长期变化</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.weight.outputs" class="purpose-card-outputs">体重读数 · 测量记录</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/workout" data-project="workout" aria-labelledby="project-workout-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.workout.type" class="purpose-card-type">训练复盘</span><span class="purpose-card-index" aria-hidden="true">03</span></div>
+                            <h3 data-i18n="projects.item.workout.name" id="project-workout-title">训练记录与动作复盘</h3>
+                            <p data-i18n="projects.item.workout.desc" class="purpose-card-description">结合训练视频、动作关键帧和复盘笔记，检查动作与训练进展。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.workout.when">训练前查动作，训练后复盘</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.workout.outputs" class="purpose-card-outputs">训练视频 · 动作复盘</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/yoga-poses" data-project="yoga" aria-labelledby="project-yoga-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.yoga.type" class="purpose-card-type">动作参考</span><span class="purpose-card-index" aria-hidden="true">04</span></div>
+                            <h3 data-i18n="projects.item.yoga.name" id="project-yoga-title">瑜伽动作库</h3>
+                            <p data-i18n="projects.item.yoga.desc" class="purpose-card-description">查阅瑜伽动作和练习参考资料。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.yoga.when">练习前查阅动作参考</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.yoga.outputs" class="purpose-card-outputs">动作资料 · 练习参考</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/health/environment/" data-project="environment" aria-labelledby="project-environment-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.environment.type" class="purpose-card-type">环境记录</span><span class="purpose-card-index" aria-hidden="true">05</span></div>
+                            <h3 data-i18n="projects.item.environment.name" id="project-environment-title">居家环境</h3>
+                            <p data-i18n="projects.item.environment.desc" class="purpose-card-description">查看室内空气、温度和湿度记录。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.environment.when">了解居家环境变化</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.environment.outputs" class="purpose-card-outputs">空气 · 温度 · 湿度</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/health/records/" data-project="records" aria-labelledby="project-records-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.records.type" class="purpose-card-type">健康档案</span><span class="purpose-card-index" aria-hidden="true">06</span></div>
+                            <h3 data-i18n="projects.item.records.name" id="project-records-title">体检与健康档案</h3>
+                            <p data-i18n="projects.item.records.desc" class="purpose-card-description">查找体检报告、Apple Health 汇总和历史健康资料。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.records.when">复查、就诊前查阅报告</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.records.outputs" class="purpose-card-outputs">体检报告 · 健康资料</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                    </div>
                 </section>
-                <section id="music" class="project-hub" data-project-group="music" aria-labelledby="music-title">
-                    <p class="projects-eyebrow">02 / Music</p>
-                    <h2 id="music-title" data-i18n="projects.hubs.music">音乐</h2>
-                    <p data-i18n="projects.hubs.musicDesc">日常练习，制作与曲谱资料。</p>
-                    <h3 data-i18n="projects.hubs.practice">练习</h3>
-                    <ul class="hub-links"><li><a href="/projects/interval-quiz"><span data-i18n="projects.hubs.interval">音程测验</span></a></li>
-<li><a href="/projects/degree-quiz"><span data-i18n="projects.hubs.degree">调号级数</span></a></li>
-<li><a href="/projects/chord-trainer"><span data-i18n="projects.hubs.chord">和弦训练</span></a></li>
-<li><a href="/projects/left-hand-voicing-trainer"><span data-i18n="projects.hubs.voicing">左手 Voicing</span></a></li></ul>
-                    <h3 data-i18n="projects.hubs.production">制作与资料</h3>
-                    <ul class="hub-links"><li><a href="/projects/stem-splitter"><span data-i18n="projects.hubs.stems">Stem Splitter</span></a></li>
-<li><a href="/projects/song-leadsheet-database"><span data-i18n="projects.hubs.leadsheets">歌曲 Leadsheet 数据库</span></a></li></ul>
+                <section id="music" class="project-group" data-project-group="music" aria-labelledby="music-title">
+                    <div class="project-group-heading"><h2 data-i18n="projects.page.music" id="music-title">音乐</h2><small data-i18n="projects.page.musicNote">练习、制作与曲谱</small></div>
+                    <div class="purpose-grid">
+                        <a class="purpose-card" href="/projects/interval-quiz" data-project="interval" aria-labelledby="project-interval-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.interval.type" class="purpose-card-type">乐理练习</span><span class="purpose-card-index" aria-hidden="true">01</span></div>
+                            <h3 data-i18n="projects.item.interval.name" id="project-interval-title">音程测验</h3>
+                            <p data-i18n="projects.item.interval.desc" class="purpose-card-description">练习辨认音程，巩固音与音之间的关系。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.interval.when">乐理复习与音程识别训练</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.interval.outputs" class="purpose-card-outputs">音程练习 · 键盘作答</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/degree-quiz" data-project="degree" aria-labelledby="project-degree-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.degree.type" class="purpose-card-type">乐理练习</span><span class="purpose-card-index" aria-hidden="true">02</span></div>
+                            <h3 data-i18n="projects.item.degree.name" id="project-degree-title">调号与级数</h3>
+                            <p data-i18n="projects.item.degree.desc" class="purpose-card-description">练习 12 个大调中的音名与级数对应关系。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.degree.when">换调练习与乐理复习</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.degree.outputs" class="purpose-card-outputs">12 大调 · 级数测验</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/chord-trainer" data-project="chord" aria-labelledby="project-chord-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.chord.type" class="purpose-card-type">MIDI 练习</span><span class="purpose-card-index" aria-hidden="true">03</span></div>
+                            <h3 data-i18n="projects.item.chord.name" id="project-chord-title">和弦训练</h3>
+                            <p data-i18n="projects.item.chord.desc" class="purpose-card-description">连接 MIDI 键盘，按提示弹奏和弦，并复习错题。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.chord.when">和弦反应与弹奏准确度训练</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.chord.outputs" class="purpose-card-outputs">MIDI 识别 · 错题复习</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/left-hand-voicing-trainer" data-project="voicing" aria-labelledby="project-voicing-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.voicing.type" class="purpose-card-type">MIDI 练习</span><span class="purpose-card-index" aria-hidden="true">04</span></div>
+                            <h3 data-i18n="projects.item.voicing.name" id="project-voicing-title">爵士左手和弦</h3>
+                            <p data-i18n="projects.item.voicing.desc" class="purpose-card-description">练习爵士钢琴左手和弦排列，通过 MIDI 检查弹奏。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.voicing.when">爵士钢琴伴奏练习</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.voicing.outputs" class="purpose-card-outputs">和弦排列 · MIDI 判题</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/stem-splitter" data-project="stems" aria-labelledby="project-stems-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.stems.type" class="purpose-card-type">音频处理</span><span class="purpose-card-index" aria-hidden="true">05</span></div>
+                            <h3 data-i18n="projects.item.stems.name" id="project-stems-title">人声与伴奏分离</h3>
+                            <p data-i18n="projects.item.stems.desc" class="purpose-card-description">分离音频中的人声与伴奏，准备练习或制作素材。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.stems.when">单独听人声，或跟伴奏练习</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.stems.outputs" class="purpose-card-outputs">人声 · 伴奏</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/song-leadsheet-database" data-project="leadsheets" aria-labelledby="project-leadsheets-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.leadsheets.type" class="purpose-card-type">曲谱资料</span><span class="purpose-card-index" aria-hidden="true">06</span></div>
+                            <h3 data-i18n="projects.item.leadsheets.name" id="project-leadsheets-title">歌曲曲谱库</h3>
+                            <p data-i18n="projects.item.leadsheets.desc" class="purpose-card-description">查找歌曲的旋律与和弦谱，供练琴、排练和制作参考。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.leadsheets.when">学歌、排练前查找曲谱</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.leadsheets.outputs" class="purpose-card-outputs">旋律 · 和弦谱</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                    </div>
                 </section>
-                <section id="systems" class="project-hub" data-project-group="systems" aria-labelledby="systems-title">
-                    <p class="projects-eyebrow">03 / Work &amp; Research</p>
-                    <h2 id="systems-title" data-i18n="projects.hubs.work">工作与研究</h2>
-                    <p data-i18n="projects.hubs.workDesc">正在使用的运营与开发工具。</p>
-                    <ul class="hub-links"><li><a href="/projects/dockingtech"><span data-i18n="projects.hubs.docking">入坞科技</span></a></li>
-<li><a href="/projects/server-assets"><span data-i18n="projects.hubs.servers">服务器资产与监控</span></a></li></ul>
+                <section id="systems" class="project-group" data-project-group="systems" aria-labelledby="systems-title">
+                    <div class="project-group-heading"><h2 data-i18n="projects.page.systems" id="systems-title">工作与研究</h2><small data-i18n="projects.page.systemsNote">公司与服务器</small></div>
+                    <div class="purpose-grid">
+                        <a class="purpose-card" href="/projects/dockingtech" data-project="docking" aria-labelledby="project-docking-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.docking.type" class="purpose-card-type">公司与业务</span><span class="purpose-card-index" aria-hidden="true">01</span></div>
+                            <h3 data-i18n="projects.item.docking.name" id="project-docking-title">入坞科技</h3>
+                            <p data-i18n="projects.item.docking.desc" class="purpose-card-description">查看公司介绍、团队和照片，进入炼刀与经营后台。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.docking.when">查阅公司资料与业务记录</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.docking.outputs" class="purpose-card-outputs">公司资料 · 经营后台</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/server-assets" data-project="servers" aria-labelledby="project-servers-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.servers.type" class="purpose-card-type">运维监控</span><span class="purpose-card-index" aria-hidden="true">02</span></div>
+                            <h3 data-i18n="projects.item.servers.name" id="project-servers-title">服务器资产与监控</h3>
+                            <p data-i18n="projects.item.servers.desc" class="purpose-card-description">汇总服务器用途、配置和费用，查看 CPU、内存与磁盘状态。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.servers.when">核对资源成本与排查运行异常</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.servers.outputs" class="purpose-card-outputs">资产清单 · 资源状态</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                    </div>
                 </section>
             </div>
-            <p class="project-related"><a href="/works" data-i18n="projects.hubs.works">作品 →</a><a href="/essays/" data-i18n="projects.hubs.essays">文章与长文 →</a></p>
+            <p class="project-related"><a href="/works"><span data-i18n="projects.page.works">作品 →</span></a><a href="/essays/"><span data-i18n="projects.page.essays">文章 →</span></a></p>
             <details id="archive" class="project-archive" data-project-group="archive">
-                <summary><span class="archive-index">04</span><span class="archive-summary-copy"><strong data-i18n="projects.hubs.archive">实验与归档</strong><small data-i18n="projects.hubs.archiveDesc">原型和已结束的阶段记录</small></span><span class="archive-count" aria-label="4 items">4</span></summary>
-                <ul class="hub-links archive-links"><li><a href="/projects/socialpulse"><span data-i18n="projects.hubs.socialArchive">SocialPulse 发布检查 · 历史</span></a></li>
-<li><a href="/projects/stock-research-dashboard"><span data-i18n="projects.hubs.mock">金融研究工作台 · Mock 原型</span></a></li>
-<li><a href="/projects/codex-monthly-2026-06"><span data-i18n="projects.hubs.monthly">Codex 2026 年 6 月小结</span></a></li>
-<li><a href="/projects/apartment-sublet"><span data-i18n="projects.hubs.apartment">旧转租事项</span></a></li></ul>
+                <summary><span class="archive-caret" aria-hidden="true">›</span><span class="archive-summary-copy"><strong data-i18n="projects.page.archiveTitle">实验与归档</strong><small data-i18n="projects.page.archiveDesc">历史项目与演示原型</small></span><span data-i18n="projects.page.archiveCount" class="archive-count">4 项</span></summary>
+                <div class="project-archive-links">
+                    <a href="/projects/socialpulse"><span data-i18n="projects.archive.0.name">SocialPulse 发布检查</span><small data-i18n="projects.archive.0.desc">历史发布状态与内容库存。</small></a>
+                    <a href="/projects/stock-research-dashboard"><span data-i18n="projects.archive.1.name">金融研究工作台 · 演示</span><small data-i18n="projects.archive.1.desc">股票筛选与研究界面，使用示例数据。</small></a>
+                    <a href="/projects/codex-monthly-2026-06"><span data-i18n="projects.archive.2.name">Codex 2026 年 6 月小结</span><small data-i18n="projects.archive.2.desc">使用记录与阶段复盘。</small></a>
+                    <a href="/projects/apartment-sublet"><span data-i18n="projects.archive.3.name">转租事项记录</span><small data-i18n="projects.archive.3.desc">已结束的转租事项与相关资料。</small></a>
+                </div>
             </details>
         </div>
     </section>
@@ -121,7 +222,8 @@
     </footer>
 
     <script src="i18n.js?v=20260722-public-copy1"></script>
-    <script src="/projects-index.js?v=20261117-no-codex-entry"></script>
+    <script src="/projects-copy.js?v=20261117-selected-a"></script>
+    <script src="/projects-index.js?v=20261117-selected-a"></script>
     <script src="/script.js?v=20260720-language-availability1"></script>
 </body>
 </html>
