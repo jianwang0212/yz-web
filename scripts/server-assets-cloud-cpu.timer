@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh Alibaba Cloud rolling CPU every15minutes
+
+[Timer]
+OnActiveSec=5s
+OnUnitActiveSec=15min
+AccuracySec=1s
+Unit=server-assets-cloud-cpu.service
+
+[Install]
+WantedBy=timers.target
