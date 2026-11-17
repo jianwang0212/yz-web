@@ -157,3 +157,6 @@
 - CPU7d/30d now comes from DescribeMetricList(CPUUtilization,acs_ecs_dashboard),hourly aggregated data queried for30days with all pages;7d is derived from the same result. Cache updates every15min,UI polls protected cache every60s.
 - User explicitly authorized a dedicated ECS role with cms:QueryMetricList only. Use IMDSv2 temporary credentials andACS3-HMAC-SHA256; do not create/persist long-termAccessKeys or copy browser tokens.
 - Keep missing points distinct from0. Validate exact4-instance allowlist,duplicates,coverage andpagination; failed queries preserve last successful data/time and display failure,never relabel stale data as current. Query only completed hours allowing5min reporting delay.
+
+## 2026-11-17 — Resource color coding
+- User requested red for resource issues. Use labeled red/yellow/green/unknown thresholds on CPU mean, latest memory and root-disk usage, retaining all data/sorting/billing. Failed RAM fetch marks previous samples stale so old values are not shown as current green. Visual flags only, not notifications or confirmed outages.
