@@ -147,3 +147,8 @@
 - Added the assets/cost table to Projects using a sanitized public template plus private generated HTML. Repository is PUBLIC: never commit IPs, bills, instance IDs or owner information.
 - Existing website collector already refreshes5 hosts every minute. Reuse it rather than adding a parallel service or a CloudMonitor key. Mark rounded live RAM as approximate; never call stale data real time or replace missing values with0.
 - Production has unrelated dirty files. Apply only the approved card insertion and generated page; preserve its current other content and service PID. No static deploy requires a website restart.
+
+## 2026-11-17 — Projects hub consolidation
+- User approved three daily-use hubs: Health, Music, Work & Research; experiments/archive collapsed. Preserve legacy routes, recent server monitor, workout/yoga shortcuts, and bilingual behavior.
+- Health is served separately from `/opt/apple-health/site` behind existing Caddy protection. Public repo contains entry links only, never private exports, report data, or health databases.
+- Production Works contains a newer Beautiful Memories feature not yet in main. Deploy only the focused Engineering-link insertion, preserving that live feature and unrelated dirty files. No service restart or Caddy change is required.
