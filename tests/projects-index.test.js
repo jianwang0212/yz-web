@@ -17,13 +17,11 @@ test('projects index has three daily hubs and a collapsed archive', () => {
   const healthStart = projectsHtml.indexOf('data-project-group="health"');
   const musicStart = projectsHtml.indexOf('data-project-group="music"');
   const systemsStart = projectsHtml.indexOf('data-project-group="systems"');
-  const internalStart = projectsHtml.indexOf('data-project-group="internal"');
   const archiveStart = projectsHtml.indexOf('data-project-group="archive"');
   assert.ok(healthStart < musicStart && musicStart < systemsStart && systemsStart < archiveStart);
   const health = projectsHtml.slice(healthStart, musicStart);
   const music = projectsHtml.slice(musicStart, systemsStart);
-  const systems = projectsHtml.slice(systemsStart, internalStart);
-  const internal = projectsHtml.slice(internalStart, archiveStart);
+  const systems = projectsHtml.slice(systemsStart, archiveStart);
   const archiveSection = projectsHtml.slice(archiveStart);
   for (const href of ['/health/', '/health/history/', '/health/weight/', '/health/environment/', '/health/records/', '/projects/workout', '/projects/yoga-poses']) {
     expectIncludes(health, `href="${href}"`);
@@ -34,10 +32,10 @@ test('projects index has three daily hubs and a collapsed archive', () => {
   for (const href of ['/projects/dockingtech','/projects/server-assets']) {
     expectIncludes(systems, `href="${href}"`);
   }
-  expectIncludes(internal, 'href="/projects/codex-monitor"');
+  assert.equal(projectsHtml.includes('id="internal-tools"'), false);
+  assert.equal(projectsHtml.includes('href="/projects/codex-monitor"'), false);
   assert.equal(systems.includes('href="/projects/codex-monitor"'), false);
   assert.equal(systems.includes('href="/projects/socialpulse"'), false);
-  assert.equal(internal.includes('href="/projects/socialpulse"'), false);
   expectIncludes(projectsHtml, 'aria-label="4 items">4</span>');
   assert.match(projectsHtml, /<details id="archive" class="project-archive" data-project-group="archive">/);
   assert.doesNotMatch(projectsHtml, /<details[^>]*\bopen(?:\s|[=>])/);
@@ -51,13 +49,14 @@ test('projects index has three daily hubs and a collapsed archive', () => {
 });
 
 test('projects keeps old section anchors and translated page-local copy', () => {
-  for (const anchor of ['systems', 'health', 'music', 'internal-tools', 'archive']) {
+  for (const anchor of ['systems', 'health', 'music', 'archive']) {
     expectIncludes(projectsHtml, `id="${anchor}"`);
   }
   expectIncludes(projectsJs, "archive.open = true");
-  expectIncludes(projectsJs, "id === 'archive' || id === 'internal-tools'");
+  expectIncludes(projectsJs, "id === 'archive'");
+  assert.equal(projectsJs.includes('internal-tools'), false);
   expectIncludes(projectsJs, "window.addEventListener('hashchange', openLinkedDisclosure)");
-  for (const key of ['internal', 'internalDesc', 'socialArchive']) {
+  for (const key of ['socialArchive']) {
     assert.equal((projectsJs.match(new RegExp(`"projects.hubs.${key}"`, 'g')) || []).length, 2);
   }
   expectIncludes(projectsJs, 'Object.assign(translations.zh');

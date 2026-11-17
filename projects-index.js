@@ -10,8 +10,6 @@ Object.assign(translations.zh, {
   "projects.hubs.work": "工作与研究",
   "projects.hubs.workDesc": "正在使用的运营与开发工具。",
   "projects.hubs.works": "作品 →",
-  "projects.hubs.internal": "内部工具",
-  "projects.hubs.internalDesc": "运行排查时再打开，不属于日常项目",
   "projects.hubs.socialArchive": "SocialPulse 发布检查 · 历史",
   "projects.hubs.essays": "文章与长文 →",
   "projects.hubs.archive": "实验与归档",
@@ -30,7 +28,6 @@ Object.assign(translations.zh, {
   "projects.hubs.leadsheets": "歌曲 Leadsheet 数据库",
   "projects.hubs.docking": "入坞科技",
   "projects.hubs.social": "SocialPulse 发布检查",
-  "projects.hubs.codex": "Codex 运行监控",
   "projects.hubs.servers": "服务器资产与监控",
   "projects.hubs.mock": "金融研究工作台 · Mock 原型",
   "projects.hubs.monthly": "Codex 2026 年 6 月小结",
@@ -47,8 +44,6 @@ Object.assign(translations.en, {
   "projects.hubs.work": "Work & Research",
   "projects.hubs.workDesc": "Operations and development tools in daily use.",
   "projects.hubs.works": "Works →",
-  "projects.hubs.internal": "Internal tools",
-  "projects.hubs.internalDesc": "Open for troubleshooting, not daily project navigation",
   "projects.hubs.socialArchive": "SocialPulse publishing checks · Archive",
   "projects.hubs.essays": "Essays & long reads →",
   "projects.hubs.archive": "Experiments & archive",
@@ -67,7 +62,6 @@ Object.assign(translations.en, {
   "projects.hubs.leadsheets": "Song leadsheet library",
   "projects.hubs.docking": "Dockingtech",
   "projects.hubs.social": "SocialPulse publishing checks",
-  "projects.hubs.codex": "Codex activity monitor",
   "projects.hubs.servers": "Server assets & monitoring",
   "projects.hubs.mock": "Finance research · Mock prototype",
   "projects.hubs.monthly": "Codex recap · June 2026",
@@ -85,7 +79,7 @@ archiveTrigger?.addEventListener('click', openArchive);
 
 function openLinkedDisclosure() {
     const id = window.location.hash.slice(1);
-    if (id === 'archive' || id === 'internal-tools') {
+    if (id === 'archive') {
         const disclosure = document.getElementById(id);
         if (disclosure) disclosure.open = true;
     }
