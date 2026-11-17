@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const [input,output]=process.argv.slice(2);
+if(!input||!output)throw new Error('Usage: node scripts/render-server-assets.mjs PRIVATE_AUDIT_HTML OUTPUT_HTML');
+const pattern=/(<script type="application\/json" id="asset-data">)([\s\S]*?)(<\/script>)/;
+const match=fs.readFileSync(input,'utf8').match(pattern);if(!match)throw new Error('Missing private asset-data');
+const data=JSON.parse(match[2]);if(!Array.isArray(data.rows)||!data.rows.length)throw new Error('No assets');
+const template=fs.readFileSync(path.join(root,'templates/server-assets.html'),'utf8');
+const result=template.replace(pattern,(_,start,_data,end)=>start+JSON.stringify(data,null,2)+end);
+fs.mkdirSync(path.dirname(path.resolve(output)),{recursive:true});fs.writeFileSync(output,result,{mode:0o600});
+console.log(JSON.stringify({output:path.resolve(output),bytes:Buffer.byteLength(result),sha256:crypto.createHash('sha256').update(result).digest('hex')}));

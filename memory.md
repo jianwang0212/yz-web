@@ -142,3 +142,8 @@
 - Explicit quotations and external frameworks are visually marked as source excerpts. Two unattributed network graphics were not republished because their claims and reuse rights could not be verified.
 - Wide desktop uses a book-like paper, sticky reading path, and bounded two-page spreads; at `1100px` the side path becomes an in-page disclosure; at `520px` overview cards use a compact two-column grid. Long prose remains single-column at every width.
 - Page assets are `essays/career-and-long-termism.html`, `.css`, and `.js`; discovery is wired through Essays, clean routes, i18n, and the sitemap. Regression coverage is in `tests/career-longform.test.js`.
+
+## 2026-11-17 — Private server assets monitor
+- Added the assets/cost table to Projects using a sanitized public template plus private generated HTML. Repository is PUBLIC: never commit IPs, bills, instance IDs or owner information.
+- Existing website collector already refreshes5 hosts every minute. Reuse it rather than adding a parallel service or a CloudMonitor key. Mark rounded live RAM as approximate; never call stale data real time or replace missing values with0.
+- Production has unrelated dirty files. Apply only the approved card insertion and generated page; preserve its current other content and service PID. No static deploy requires a website restart.
