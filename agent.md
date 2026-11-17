@@ -38,3 +38,6 @@
 ## Private server assets monitor
 - Projects links to /projects/server-assets. templates/server-assets.html is a sanitized UI; generated projects/server-assets.html contains private data and MUST NOT be committed. Render with scripts/render-server-assets.mjs using an explicitly supplied private local audit HTML.
 - Reuse existing protected /projects/server-monitor-data.json every60s; no new agents/API keys or relaxed auth. Live RAM is estimated from existing free-h total/available and rounded to integer; CPU7/30d is fetched from CloudMonitor API every15min using an approved metric-read-only ECS RAM role. Temporary credentials remain in memory; never commit the private instance allowlist/config or the CPU cache.
+
+## Resource threshold colors
+- Visual thresholds: CPU7/30d mean warning60/critical80%; latest RAM75/85%; root-disk used80/90%. Pair color with text badges. Stale/missing data is unknown, never green/current; values do not imply business health or instantaneous peaks. Do not change data collection or account permissions for style changes.

@@ -20,6 +20,12 @@ table{min-width:1560px}th:nth-child(7){width:230px}th:nth-child(8){width:170px}t
 .live-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:18px 0;color:var(--muted);font-size:12px}.live-actions{display:flex;gap:8px;flex-wrap:wrap}.live-actions a{text-decoration:none}.live-toolbar .warning{color:var(--amber)}.status-dot.unreachable{background:var(--red)}.status-dot.stale{background:var(--amber)}@media(max-width:640px){.live-actions{width:100%}.live-actions .button{flex:1;text-align:center}.live-toolbar{gap:9px}}@media print{.live-toolbar{display:none}}
 
 .live-readings{flex:1;min-width:0}.cpu-sync-status{display:block;font-size:11px;margin-top:5px}.cpu-sync-status[hidden]{display:none}.cpu-sync-status.warning{color:var(--amber)}
+
+/* Color is paired with labels; stale/missing readings never look healthy. */
+:root{--red:#ff8a8a}.metric-badge{display:inline-block;font-size:10px;font-weight:500;padding:0 5px;border:1px solid currentColor;border-radius:4px;margin-left:5px;white-space:nowrap}.metric-critical .metric-badge,.metric-critical>strong{color:var(--red)}.metric-warning .metric-badge{color:var(--amber)}.metric-unknown .metric-badge{color:var(--muted)}
+.usage-period.metric-critical strong,.usage-latest.metric-critical strong,.disk-reading.metric-critical .subline{color:var(--red)}.usage-period.metric-warning strong,.usage-latest.metric-warning strong,.disk-reading.metric-warning .subline{color:var(--amber)}.usage-period.metric-unknown strong,.usage-latest.metric-unknown strong,.disk-reading.metric-unknown .subline{color:var(--muted)}
+.usage-period.metric-critical,.usage-latest.metric-critical{background:#ff8a8a12;border-left:3px solid var(--red);padding:3px 6px;border-radius:4px}.disk-reading.metric-critical .disk-track i{background:var(--red)}.disk-reading.metric-warning .disk-track i{background:var(--amber)}.disk-reading.metric-ok .disk-track i{background:var(--green)}.disk-reading.metric-unknown .disk-track i{background:var(--muted)}
+.usage-missing.metric-critical{color:var(--red)}.health-legend{color:var(--muted);font-size:11px;margin:10px 0 15px}.health-legend summary{cursor:pointer}.health-legend p{margin:5px 0}.health-legend .red{color:var(--red)}.health-legend .amber{color:var(--amber)}@media print{:root{--red:#b42318}.metric-badge{font-size:9px}}
 </style>
 </head>
 <body>
@@ -30,6 +36,7 @@ table{min-width:1560px}th:nth-child(7){width:230px}th:nth-child(8){width:170px}t
 <div class="byline" id="prepared-at"></div>
 </header>
 <section class="live-toolbar" aria-label="采集状态"><div class="live-readings"><span id="live-status" role="status">本地快照 · 当前内存按页面采样时间显示</span><span id="cpu-sync-status" class="cpu-sync-status" role="status" hidden></span></div><div class="live-actions"><button type="button" class="button" id="refresh-live" hidden>刷新监控</button><a class="button" href="https://thisisyz.com/projects">返回 Projects</a><a class="button" href="https://thisisyz.com/projects/server-monitor">运行详情</a></div></section>
+<details id="health-legend" class="health-legend"><summary>颜色：<span class="red">红色过高</span> · <span class="amber">黄色偏高</span> · 绿色阈值内 · 灰色无有效采样</summary><p>黄色 / 红色阈值：CPU 近7/30天均值 ≥60% / ≥80%；内存最新 ≥75% / ≥85%；根盘已用 ≥80% / ≥90%。CPU 是历史均值，不反映瞬时峰值；颜色仅表示资源阈值，不代表业务故障。过期数据不作当前正常判断。</p></details>
 <section class="overview" aria-label="全清单概览">
 <div class="stat cost"><div class="stat-label">已知年化费用 · 各币种分别合计</div><div class="stat-value" id="annual-total">¥ 5,117.67 + € 138</div><div class="stat-note" id="annual-note"></div></div>
 </section>
@@ -103,19 +110,35 @@ for(const button of document.querySelectorAll('[data-sort]'))button.addEventList
 function summary(){const rows=PRIMARY_ROWS.filter(r=>r.status==='confirmed'),withCost=rows.filter(r=>costOf(r));const totals={};for(const r of withCost){const c=costOf(r);totals[c.currency]=(totals[c.currency]||0)+c.annual;}$('annual-total').textContent=Object.entries(totals).map(([c,a])=>money(a,c)).join(' + ')||'待补账单';const manual=withCost.some(r=>state.manual[r.id]);$('annual-note').textContent=manual?'已知部分 · 含手工录入，按币种分别合计':'已知部分 · 按实付服务期年化；非今年现金支出';}
 function latestMemoryMarkup(row){
  const collection=row.usage?.memoryCollection,live=row.runtime,latest=live?.memory||collection?.latest;
- if(live&&!live.ok)return '<span class="usage-missing">本次采集不可用</span>';
+ if(live&&!live.ok)return '<span class="usage-missing metric-critical">本次采集不可用（不等于宕机）</span>';
  if(live&&!live.memory)return '<span class="usage-missing">内存采样缺失</span>';
  if(!latest)return '';
- const value=(latest.approx?'约':'')+number(latest.value)+'%',at=latest.at;
+ const value=(latest.approx?'约':'')+number(latest.value)+'%',at=latest.at,level=metricLevel(latest.value,'memory',!!live?.stale);
  const source=latest.approx?'只读采集 · free -h估算（四舍五入至整数）':'阿里云云监控 · '+latest.periodSeconds+'秒聚合Average';
  const link=collection?.url?`<a href="${esc(collection.url)}" target="_blank" rel="noopener noreferrer">阿里云 ↗</a>`:'';
- return `<div class="usage-latest ${latest.value>=85?'warning':''}" title="${esc(source+'；'+at.slice(0,19).replace('T',' ')+' 北京时间；非周/月均值')}"><span>内存最新 <strong>${value}</strong></span><small>${esc(at.slice(5,16).replace('T',' '))}</small>${link}</div>`;
+ return `<div class="usage-latest metric-${level}" title="${esc(source+'；'+at.slice(0,19).replace('T',' ')+' 北京时间；非周/月均值')}"><span>内存最新 <strong>${value}</strong>${metricBadge(level,live?.stale?'采样过期':'无有效采样')}</span><small>${esc(at.slice(5,16).replace('T',' '))}</small>${link}</div>`;
+}
+function metricLevel(value,kind,stale=false){
+ if(stale||!Number.isFinite(value)||value<0||value>100)return 'unknown';
+ const [warning,critical]={cpu:[60,80],memory:[75,85],disk:[80,90]}[kind];
+ return value>=critical?'critical':value>=warning?'warning':'ok';
+}
+function metricBadge(level,unknown='无有效采样'){
+ const label={critical:'过高',warning:'偏高',unknown}[level];
+ return label?'<span class="metric-badge">'+esc(label)+'</span>':'';
+}
+function diskMarkup(row){
+ const live=row.runtime,value=live?live.diskUsedPct:row.diskUsedPct;
+ if(live&&!live.ok)return '<span class="usage-missing metric-critical">本次根盘采集不可用</span>';
+ const level=metricLevel(value,'disk',!!live?.stale);
+ if(!Number.isFinite(value)||value<0||value>100)return '<span class="subline">根盘采样缺失</span>';
+ return `<div class="disk-reading metric-${level}"><div class="disk-track" aria-label="根盘已用 ${value}%"><i style="width:${value}%"></i></div><span class="subline">${live?(live.stale?'过期采样已用':'最近采样已用'):'快照已用'} ${value}%${metricBadge(level,live?.stale?'采样过期':'无有效采样')}</span></div>`;
 }
 function usageMarkup(row){
  const usage=row.cloudCpu||row.usage,latest=latestMemoryMarkup(row);
  if(!usage||usage.scope!=='aliyun_ecs')return '<span class="usage-missing">'+(row.id==='futu-risk'?'未纳入本次查询':'暂无周／月监控历史')+'</span>'+latest;
  const percent=value=>number(value)+'%';
- const period=(key,label)=>{const w=usage.windows[key];const cpu=w.cpu?percent(w.cpu.average)+(w.cpuStatus==='partial'?'（部分）':''):'无历史';const tip=w.start.slice(0,16).replace('T',' ')+' 至 '+w.end.slice(0,16).replace('T',' ')+' · 北京时间'+(w.cpu?'；CPU均值；聚合P95 '+percent(w.cpu.p95)+'；'+w.cpu.points+'个'+(w.cpu.periodSeconds/3600)+'小时点'+(w.cpu.expectedPoints?'；覆盖 '+w.cpu.points+'/'+w.cpu.expectedPoints:''):'');return `<div class="usage-period" title="${esc(tip)}"><b>${label}</b><span>CPU <strong>${cpu}</strong></span></div>`;};
+ const period=(key,label)=>{const w=usage.windows[key],level=metricLevel(w.cpu?.average,'cpu',!!row.cloudCpu?.stale);const cpu=w.cpu?percent(w.cpu.average)+(w.cpuStatus==='partial'?'（部分）':''):'无历史';const tip=w.start.slice(0,16).replace('T',' ')+' 至 '+w.end.slice(0,16).replace('T',' ')+' · 北京时间'+(w.cpu?'；CPU均值；聚合P95 '+percent(w.cpu.p95)+'；'+w.cpu.points+'个'+(w.cpu.periodSeconds/3600)+'小时点'+(w.cpu.expectedPoints?'；覆盖 '+w.cpu.points+'/'+w.cpu.expectedPoints:''):'');return `<div class="usage-period metric-${level}" title="${esc(tip)}"><b>${label}</b><span>CPU <strong>${cpu}</strong>${metricBadge(level,row.cloudCpu?.stale?'历史读数':'无有效采样')}</span></div>`;};
  return period('7d','近7天')+period('30d','近30天')+latest+'<span class="usage-asof">CPU 截至 '+esc(usage.asOf.slice(5,16).replace('T',' '))+' · '+(row.cloudCpu?(row.cloudCpu.stale?'上次成功 · 同步异常':'阿里云自动更新'):'云监控快照')+'</span>';
 }
 function rowMarkup(rows){return rows.map(r=>{const c=costOf(r),manual=!!state.manual[r.id];return `<tr data-id="${esc(r.id)}" class="${r.status==='pending'?'pending-row':''}">
@@ -124,7 +147,7 @@ function rowMarkup(rows){return rows.map(r=>{const c=costOf(r),manual=!!state.ma
 <td data-label="业务类型"><strong class="business">${esc(r.business)}</strong><span class="activity">${esc(r.activity)}</span></td>
 <td data-label="CPU"><b class="spec">${r.cpu?`${r.cpu}<small> vCPU</small>`:'—'}</b><span class="subline">${esc(r.cpuModel==='未采集'?'型号未采集':r.cpuModel?.replace('(R)','').replace('(R)','')||'待采集')}</span></td>
 <td data-label="内存"><b class="spec ram-value">${esc(r.ramLabel||'—')}</b><span class="subline">${r.ramLabel?'系统可见，非套餐标称':'待采集'}</span></td>
-<td data-label="根文件系统"><b class="spec">${r.diskGiB?number(r.diskGiB)+'<small> GiB</small>':'—'}</b>${(r.runtime?.diskUsedPct??r.diskUsedPct)!==null?`<div class="disk-track" aria-label="根盘已用 ${r.runtime?.diskUsedPct??r.diskUsedPct}%"><i style="width:${r.runtime?.diskUsedPct??r.diskUsedPct}%"></i></div><span class="subline">${Number.isFinite(r.runtime?.diskUsedPct)?'最近采样已用':'快照已用'} ${r.runtime?.diskUsedPct??r.diskUsedPct}%</span>`:'<span class="subline">待采集</span>'}</td>
+<td data-label="根文件系统"><b class="spec">${r.diskGiB?number(r.diskGiB)+'<small> GiB</small>':'—'}</b>${diskMarkup(r)}</td>
 <td data-label="CPU / 内存使用" class="usage-cell">${usageMarkup(r)}</td>
 <td data-label="每年多少钱" class="cost-cell">${c?`<strong class="annual-value">${money(c.annual,c.currency)}<small> / 年</small></strong><span class="cost-kind ${manual?'manual':''}">${manual?'手工录入 · 未核验':c.kind==='paid_order_annualized'?'实付订单年化':'票据费率年化'}</span><span class="subline">${money(c.amount,c.currency)} / ${c.months} 个月</span>`:'<strong class="missing-cost">'+(r.billingPendingReason&&!r.owner?'待确认归属':'待补账单')+'</strong><span class="subline">未知不等于免费</span>'}<button class="text-button cost-button" data-cost="${esc(r.id)}" aria-label="补录费用 ${esc(r.name)}">${c?'补录 / 修订':'录入费用'}</button></td>
 <td data-label="到期 / 周期结束"><span class="expiry">${esc(r.expiry||'待核验')}</span><span class="subline">${esc(r.expirySource||'需云控制台或订单确认')}</span></td></tr>`;}).join('');}
@@ -163,7 +186,7 @@ async function refreshLive(){
   let ok=0;for(const row of PRIMARY_ROWS){const host=snapshot.hosts.find(h=>h.id===LIVE_MAP[row.id]);row.runtime=normalizeRuntime(host,now);if(row.runtime.ok&&!row.runtime.stale)ok++;}
   render();const stamp=chinaStamp(snapshot.generated_at);$('live-status').className=fresh&&ok===PRIMARY_ROWS.length?'':'warning';
   $('live-status').textContent=(fresh?'最近采集 ':'采样已过期 ')+(stamp?stamp.slice(5,19).replace('T',' '):'时间未知')+' · '+ok+'/'+PRIMARY_ROWS.length+' 台采集成功 · 每60秒刷新；内存为只读采集估算';
- }catch(error){$('live-status').className='warning';$('live-status').textContent='刷新失败：'+error.message+'。当前保留先前采样，不能视为实时状态。';}
+ }catch(error){for(const row of PRIMARY_ROWS)if(row.runtime)row.runtime.stale=true;render();$('live-status').className='warning';$('live-status').textContent='刷新失败：'+error.message+'。当前保留先前采样，不能视为实时状态。';}
  finally{clearTimeout(timeout);liveInFlight=false;$('refresh-live').disabled=false;}
 }
 let cpuInFlight=false;
