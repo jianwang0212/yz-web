@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-17T03:47:23.733Z",
+  "syncedAt": "2026-11-17T03:52:46.558Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,25 @@
   },
   "summary": {
     "activeAgents": 28,
-    "todayTokens": 117942110,
-    "weekTokens": 2437759073,
-    "totalTokens": 4112336155,
-    "estimatedCostUsd": 1972.2391443600002,
-    "cpu": 7.199784939735508,
-    "memoryBytes": 5380407296
+    "todayTokens": 120404122,
+    "weekTokens": 2440221085,
+    "totalTokens": 4114798167,
+    "estimatedCostUsd": 1972.59300836,
+    "cpu": 6.203553412719096,
+    "memoryBytes": 5477646336
   },
   "agents": [
+    {
+      "agentId": "e1592081c96ffbb0",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
+      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.6784703669159144,
+      "memoryBytes": 932544512,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000007923993058582081,
+      "cpu": 0.000007903763772308374,
       "memoryBytes": 8388608,
       "confidence": "low"
     },
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000007923993058582081,
+      "cpu": 0.000007903763772308374,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.2958525491687665,
-      "memoryBytes": 148275200,
+      "cpu": 0.29659107974170296,
+      "memoryBytes": 154779648,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08626919602529358,
-      "memoryBytes": 84328448,
+      "cpu": 0.08623864812955952,
+      "memoryBytes": 84377600,
       "confidence": "low"
     },
     {
@@ -68,19 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005023851408104725,
+      "cpu": 0.00501892966385027,
       "memoryBytes": 44941312,
-      "confidence": "low"
-    },
-    {
-      "agentId": "183557375b2ed696",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.6765062484646289,
-      "memoryBytes": 848347136,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.6191317716423115,
-      "memoryBytes": 1616953344,
+      "cpu": 1.6280876761704515,
+      "memoryBytes": 1606090752,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009882315647660182,
-      "memoryBytes": 108806144,
+      "cpu": 0.009880798052297086,
+      "memoryBytes": 109199360,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 2386786110,
-      "inputTokens": 39946895,
-      "outputTokens": 6980911,
-      "costUSD": 542.4116748000002
+      "totalTokens": 2389248122,
+      "inputTokens": 39957905,
+      "outputTokens": 6989673,
+      "costUSD": 542.7655388000002
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-17T03:47:26.636Z"
+  "receivedAt": "2026-11-17T03:52:49.438Z"
 }
