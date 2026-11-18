@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-15T22:01:59.710Z",
-    "cpu": 2.4085874319853047,
-    "memoryBytes": 2532474880,
-    "totalTokens": 3160685563,
-    "todayTokens": 16611397,
-    "activeAgents": 17,
-    "estimatedCostUsd": 1732.3418261600002,
-    "agents": [
-      {
-        "agentId": "5132156aa78f46b6",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.00005241639584862145,
-        "memoryBytes": 8847360,
-        "confidence": "low"
-      },
-      {
-        "agentId": "0b9246d6271da96d",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.00005241639584862145,
-        "memoryBytes": 7946240,
-        "confidence": "low"
-      },
-      {
-        "agentId": "6dd42351a3a885b8",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.08449965927556743,
-        "memoryBytes": 101908480,
-        "confidence": "low"
-      },
-      {
-        "agentId": "2f03925bea465f80",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.10494312522933374,
-        "memoryBytes": 83755008,
-        "confidence": "low"
-      },
-      {
-        "agentId": "84346d6bc35373d0",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.006342716360014678,
-        "memoryBytes": 46432256,
-        "confidence": "low"
-      },
-      {
-        "agentId": "183557375b2ed696",
-        "processName": "codex",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.25710540115364444,
-        "memoryBytes": 489586688,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e18744e9c7b04fa8",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.5317564378245135,
-        "memoryBytes": 637370368,
-        "confidence": "low"
-      },
-      {
-        "agentId": "44a9cf272f406426",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.008602601762484263,
-        "memoryBytes": 110215168,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-15T22:07:17.946Z",
     "cpu": 2.3948905710788746,
     "memoryBytes": 2533736448,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 1.641209438818464,
         "memoryBytes": 1260535808,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-18T02:34:09.890Z",
+    "cpu": 5.9417554709714535,
+    "memoryBytes": 6039339008,
+    "totalTokens": 4869110213,
+    "todayTokens": 180595591,
+    "activeAgents": 38,
+    "estimatedCostUsd": 2171.62644536,
+    "agents": [
+      {
+        "agentId": "e1592081c96ffbb0",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
+        "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.6501789188020846,
+        "memoryBytes": 1013039104,
+        "confidence": "high"
+      },
+      {
+        "agentId": "adacf045a4305ce8",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1e389-c21c-7bc0-b0c2-2d58a016c3eb",
+        "sessionTitle": "查一下这个可以干嘛? [https://thisisyz.com/health/](https://thisisyz.com/health/)",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.6501789188020846,
+        "memoryBytes": 1013039104,
+        "confidence": "high"
+      },
+      {
+        "agentId": "52f54c31bad11028",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1ec65-7964-79f0-a574-327e5e0da0ce",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.6501789188020846,
+        "memoryBytes": 1013039104,
+        "confidence": "high"
+      },
+      {
+        "agentId": "f54978662f586e61",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a1ec7f-efb1-7970-a992-cc04c56e269c",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.6501789188020846,
+        "memoryBytes": 1013039104,
+        "confidence": "high"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000004803004759777717,
+        "memoryBytes": 8044544,
+        "confidence": "low"
+      },
+      {
+        "agentId": "0b9246d6271da96d",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000004803004759777717,
+        "memoryBytes": 7864320,
+        "confidence": "low"
+      },
+      {
+        "agentId": "6dd42351a3a885b8",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.41367518083399774,
+        "memoryBytes": 153714688,
+        "confidence": "low"
+      },
+      {
+        "agentId": "2f03925bea465f80",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.08866869674642895,
+        "memoryBytes": 85245952,
         "confidence": "low"
       }
     ]
