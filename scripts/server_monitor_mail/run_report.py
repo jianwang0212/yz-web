@@ -2,6 +2,7 @@
 """Website-host runner; native timer and Codex fallback share one daily receipt."""
 import argparse
 import fcntl
+import hashlib
 import json
 import os
 import subprocess
@@ -53,6 +54,8 @@ def main():
         wire = json.dumps(report, ensure_ascii=False, allow_nan=False)
         if len(wire.encode()) > 65536:
             raise ValueError('Report exceeds relay limit')
+        digest = hashlib.sha256(json.dumps(report, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()).hexdigest()
+        atomic(a.state_dir / (day + '-payload-' + digest + '.json'), report)
         r = subprocess.run(cmd, input=wire, capture_output=True, text=True, timeout=90)
         if r.returncode:
             raise RuntimeError('Mail relay failed (exit ' + str(r.returncode) + '); reconcile remote receipt before retrying')
