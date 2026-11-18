@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T02:05:31.519Z",
+  "syncedAt": "2026-11-18T02:10:55.267Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 38,
-    "todayTokens": 139718628,
-    "weekTokens": 2336539412,
-    "totalTokens": 4828233250,
-    "estimatedCostUsd": 2161.1866291600004,
-    "cpu": 5.956934960554396,
-    "memoryBytes": 6830342144
+    "activeAgents": 36,
+    "todayTokens": 146818757,
+    "weekTokens": 2343639541,
+    "totalTokens": 4835333379,
+    "estimatedCostUsd": 2163.18631116,
+    "cpu": 5.950946397490797,
+    "memoryBytes": 6738444288
   },
   "agents": [
-    {
-      "agentId": "e1592081c96ffbb0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6471633781807263,
-      "memoryBytes": 1234010112,
-      "confidence": "high"
-    },
     {
       "agentId": "4b421b41c85a37d7",
       "processName": "codex",
@@ -35,30 +24,19 @@
       "sessionId": "01a1ec61-d8fa-7a83-b4e3-b46e187685e7",
       "sessionTitle": "",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6471633781807263,
-      "memoryBytes": 1234010112,
+      "cpu": 0.647131072233344,
+      "memoryBytes": 1216544768,
       "confidence": "high"
     },
     {
-      "agentId": "47f7b7917dbf7348",
+      "agentId": "e1592081c96ffbb0",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1ec57-3e81-72d2-b14b-8813d476f247",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.6471633781807263,
-      "memoryBytes": 1234010112,
-      "confidence": "high"
-    },
-    {
-      "agentId": "52f54c31bad11028",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1ec65-7964-79f0-a574-327e5e0da0ce",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.6471633781807263,
-      "memoryBytes": 1234010112,
+      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
+      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.647131072233344,
+      "memoryBytes": 1216544768,
       "confidence": "high"
     },
     {
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004842943347248724,
+      "cpu": 0.000004835356123978531,
       "memoryBytes": 8388608,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004842943347248724,
+      "cpu": 0.000004835356123978531,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.41477589171126233,
-      "memoryBytes": 183369728,
+      "cpu": 0.4145854387381594,
+      "memoryBytes": 183500800,
       "confidence": "low"
     },
     {
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08870377993558855,
-      "memoryBytes": 87867392,
+      "cpu": 0.08871954315334439,
+      "memoryBytes": 87916544,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.004922416335846119,
+      "memoryBytes": 45858816,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e18744e9c7b04fa8",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.639664601859777,
+      "memoryBytes": 1425801216,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3102683205,
-      "inputTokens": 53157205,
-      "outputTokens": 9935216,
-      "costUSD": 731.3591596000005
+      "totalTokens": 3109783334,
+      "inputTokens": 53243964,
+      "outputTokens": 9952106,
+      "costUSD": 733.3588416000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T02:05:34.529Z"
+  "receivedAt": "2026-11-18T02:10:58.562Z"
 }
