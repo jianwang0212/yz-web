@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T08:19:08.364Z",
+  "syncedAt": "2026-11-18T08:24:37.308Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,25 +9,14 @@
   },
   "summary": {
     "activeAgents": 40,
-    "todayTokens": 308066732,
-    "weekTokens": 2504887516,
-    "totalTokens": 4996581354,
-    "estimatedCostUsd": 2230.7340147600003,
-    "cpu": 5.884566421792407,
-    "memoryBytes": 6437666816
+    "todayTokens": 311418158,
+    "weekTokens": 2508238942,
+    "totalTokens": 4999932780,
+    "estimatedCostUsd": 2233.59994816,
+    "cpu": 5.861361561915218,
+    "memoryBytes": 6404653056
   },
   "agents": [
-    {
-      "agentId": "dde5ca8200e60562",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ecf8-f766-7632-8338-a99fa20f93d4",
-      "sessionTitle": "为什么现在还是输入yz 登录我的网站 , 应该是只有 dockingtech 相关信息需要啊",
-      "workspaceLabel": "yz-x20",
-      "cpu": 0.6442093030367901,
-      "memoryBytes": 859422720,
-      "confidence": "high"
-    },
     {
       "agentId": "e1592081c96ffbb0",
       "processName": "codex",
@@ -35,8 +24,19 @@
       "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
       "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6442093030367901,
-      "memoryBytes": 859422720,
+      "cpu": 0.6440045021856541,
+      "memoryBytes": 831078400,
+      "confidence": "high"
+    },
+    {
+      "agentId": "dde5ca8200e60562",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ecf8-f766-7632-8338-a99fa20f93d4",
+      "sessionTitle": "为什么现在还是输入yz 登录我的网站 , 应该是只有 dockingtech 相关信息需要啊",
+      "workspaceLabel": "yz-x20",
+      "cpu": 0.6440045021856541,
+      "memoryBytes": 831078400,
       "confidence": "high"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004368700879419487,
+      "cpu": 0.0000043624307464119006,
       "memoryBytes": 8044544,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004368700879419487,
+      "cpu": 0.0000043624307464119006,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.39674093490607254,
-      "memoryBytes": 135315456,
+      "cpu": 0.3965030602585188,
+      "memoryBytes": 143278080,
       "confidence": "low"
     },
     {
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08691131498470948,
-      "memoryBytes": 84393984,
+      "cpu": 0.08686509996553665,
+      "memoryBytes": 84983808,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004836173001310616,
-      "memoryBytes": 44367872,
+      "cpu": 0.004833594353245009,
+      "memoryBytes": 44777472,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.6437895932544015,
-      "memoryBytes": 1318961152,
+      "cpu": 1.6429048202810412,
+      "memoryBytes": 1298989056,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3246658286,
-      "inputTokens": 55617388,
-      "outputTokens": 10409986,
-      "costUSD": 769.5716640000005
+      "totalTokens": 3248234592,
+      "inputTokens": 55629777,
+      "outputTokens": 10420111,
+      "costUSD": 770.0838534000005
     },
     {
       "model": "gpt-5.6-sol",
@@ -144,10 +144,10 @@
     },
     {
       "model": "gpt-6-astra",
-      "totalTokens": 24373023,
-      "inputTokens": 351332,
-      "outputTokens": 130107,
-      "costUSD": 31.3348812
+      "totalTokens": 26148143,
+      "inputTokens": 355702,
+      "outputTokens": 141113,
+      "costUSD": 33.6886252
     }
   ],
   "health": {
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T08:19:11.393Z"
+  "receivedAt": "2026-11-18T08:24:40.479Z"
 }
