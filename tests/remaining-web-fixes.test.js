@@ -28,3 +28,9 @@ test('three stale score links are replaced with reviewed song pages', () => {
   for (const stale of ['www.jitatang.cn/pu/100915.html','www.yiqijita.com/pu/26864.html','www.guitarworld.com.cn/search?keyword=']) assert.ok(!html.includes(stale));
   for (const url of ['https://www.guitarworld.com.cn/pu/q45107','https://www.qinhun.com/pu/26041.html','https://www.guitarworld.com.cn/pu/q184933']) assert.ok(html.includes(url));
 });
+
+test('affected essays invalidate the cached skip-link stylesheet', () => {
+  for (const slug of ['financial-freedom-and-work','personal-ai-evolution','trading-emotions-and-risk']) {
+    assert.ok(read('essays/' + slug + '.html').includes('/essays/field-notes.css?v=20261118-skip-link1'));
+  }
+});
