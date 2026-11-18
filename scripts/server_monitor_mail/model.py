@@ -33,8 +33,9 @@ def metric(value, kind, valid=True, at=None, partial=False, expected=True):
     if numeric(value) and valid:
         low, high = THRESHOLDS[kind]
         status = 'critical' if value >= high else 'warning' if value >= low else 'ok'
+    date = stamp(at)
     return {'value': value if numeric(value) else None, 'status': status if expected else 'not_monitored',
-            'at': at, 'partial': bool(partial)}
+            'at': date.astimezone(BJ).isoformat(timespec='seconds') if date else None, 'partial': bool(partial)}
 
 
 def memory_value(text):

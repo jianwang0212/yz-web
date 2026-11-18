@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 SOURCE = Path(__file__).resolve().parents[1] / 'scripts/server_monitor_mail'
@@ -76,6 +76,13 @@ class MonitorMail(unittest.TestCase):
         self.assertEqual(memory_value('Mem: 100Gi 1Gi 0B 0B 0B 100Gi'), 0)
         self.assertIsNone(memory_value('Mem: 1Gi 0B 0B 0B 0B 2Gi'))
         self.assertIsNone(memory_value('not a sample'))
+
+    def test_display_times_all_normalized_to_beijing(self):
+        a, c, r = fixture()
+        r['hosts'][-1]['data']['collected_at'] = NOW.astimezone(timezone(timedelta(hours=1))).isoformat()
+        report = build(a, c, r, NOW)
+        self.assertEqual(report['rows'][-1]['memory']['at'], NOW.isoformat(timespec='seconds'))
+        validate(report)
 
     def test_high_counts_hosts_not_metric_count(self):
         a, c, r = fixture()
