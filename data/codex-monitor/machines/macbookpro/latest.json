@@ -1,22 +1,77 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T07:51:56.737Z",
+  "syncedAt": "2026-11-18T07:57:23.235Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 38,
-    "todayTokens": 296467509,
-    "weekTokens": 2493288293,
-    "totalTokens": 4984982131,
-    "estimatedCostUsd": 2218.92341096,
-    "cpu": 6.296723909735238,
-    "memoryBytes": 6141493248
+    "activeAgents": 41,
+    "todayTokens": 297180373,
+    "weekTokens": 2494001157,
+    "totalTokens": 4985694995,
+    "estimatedCostUsd": 2220.0724829600003,
+    "cpu": 6.530093659104036,
+    "memoryBytes": 6387154944
   },
   "agents": [
+    {
+      "agentId": "ddea9179c896ce1b",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1eda8-e0c8-7380-9c11-d30f1b5f8d89",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.7325581395348837,
+      "memoryBytes": 145047552,
+      "confidence": "high"
+    },
+    {
+      "agentId": "dde5ca8200e60562",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ecf8-f766-7632-8338-a99fa20f93d4",
+      "sessionTitle": "为什么现在还是输入yz 登录我的网站 , 应该是只有 dockingtech 相关信息需要啊",
+      "workspaceLabel": "yz-x20",
+      "cpu": 0.6431857427204303,
+      "memoryBytes": 813989888,
+      "confidence": "high"
+    },
+    {
+      "agentId": "42a5309f635ea9b7",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1eda8-c5c6-74c0-8e18-3dd00daff681",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.7325581395348837,
+      "memoryBytes": 145047552,
+      "confidence": "high"
+    },
+    {
+      "agentId": "2132e1f304dee4fc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1eda7-94f8-7523-b705-fe31330dff12",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.7325581395348837,
+      "memoryBytes": 145047552,
+      "confidence": "high"
+    },
+    {
+      "agentId": "a386953ecb3e26c7",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1eda8-84be-7f70-9e82-adf1eab64bb9",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.7325581395348837,
+      "memoryBytes": 145047552,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004400052800633608,
+      "cpu": 0.000004393731024574137,
       "memoryBytes": 8044544,
       "confidence": "low"
     },
@@ -35,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004400052800633608,
+      "cpu": 0.000004393731024574137,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -46,63 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3974321178867334,
-      "memoryBytes": 135757824,
-      "confidence": "low"
-    },
-    {
-      "agentId": "2f03925bea465f80",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.08709942843062626,
-      "memoryBytes": 84017152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "84346d6bc35373d0",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.004848879521624154,
-      "memoryBytes": 44400640,
-      "confidence": "low"
-    },
-    {
-      "agentId": "183557375b2ed696",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.642342318557436,
-      "memoryBytes": 786563072,
-      "confidence": "low"
-    },
-    {
-      "agentId": "e18744e9c7b04fa8",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 1.6359308102209373,
-      "memoryBytes": 1236779008,
-      "confidence": "low"
-    },
-    {
-      "agentId": "44a9cf272f406426",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.008871052909494139,
-      "memoryBytes": 109674496,
+      "cpu": 0.3974938048120354,
+      "memoryBytes": 136560640,
       "confidence": "low"
     }
   ],
@@ -144,10 +144,10 @@
     },
     {
       "model": "gpt-6-astra",
-      "totalTokens": 16758478,
-      "inputTokens": 266881,
-      "outputTokens": 81997,
-      "costUSD": 20.6028872
+      "totalTokens": 17471342,
+      "inputTokens": 286591,
+      "outputTokens": 87279,
+      "costUSD": 21.7519592
     }
   ],
   "health": {
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T07:51:59.783Z"
+  "receivedAt": "2026-11-18T07:57:26.539Z"
 }
