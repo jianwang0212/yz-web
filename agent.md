@@ -41,3 +41,8 @@
 
 ## Resource threshold colors
 - Visual thresholds: CPU7/30d mean warning60/critical80%; latest RAM75/85%; root-disk used80/90%. Pair color with text badges. Stale/missing data is unknown, never green/current; values do not imply business health or instantaneous peaks. Do not change data collection or account permissions for style changes.
+
+## Daily server resource self-mail
+- Server timer07:10Asia/Shanghai generates current5-host resource snapshot; optional desktop07:15fallback triggers the same idempotent service. GT/LY-style compact HTML and self-recipient only. Reuse protected CPU7/30d cache and live RAM/root-disk cache; LJL excluded. Unknown/stale stays gray, not0/healthy. No cloud permission or business-service changes.
+- Source scripts/server_monitor_mail; server source host reads only monitor caches, uses existing restricted mail credential via systemd LoadCredential. SMTP stays on existing mail host; its forced dispatcher adds only exact server-monitor report route. GT/LY and health bodies/schedules unchanged.
+- Delivery key is Beijing date+daily, source/relay locks and fsynced receipts. Successful duplicate is already_sent. Uncertain SMTP outcomes require Message-ID reconciliation in Gmail; never delete receipts or change dates to force resend. A fresh setup send counts as today's daily mail.

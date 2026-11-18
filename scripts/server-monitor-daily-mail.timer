@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily server monitoring email at 07:10 Beijing time
+
+[Timer]
+OnCalendar=*-*-* 07:10:00 Asia/Shanghai
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=server-monitor-daily-mail.service
+
+[Install]
+WantedBy=timers.target
