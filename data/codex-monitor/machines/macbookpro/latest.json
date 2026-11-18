@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T12:24:12.707Z",
+  "syncedAt": "2026-11-18T12:29:41.692Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,35 +9,24 @@
   },
   "summary": {
     "activeAgents": 37,
-    "todayTokens": 393457004,
-    "weekTokens": 2590277788,
-    "totalTokens": 5081971626,
-    "estimatedCostUsd": 2265.64778716,
-    "cpu": 5.749304052149782,
-    "memoryBytes": 6266650624
+    "todayTokens": 397008661,
+    "weekTokens": 2593829445,
+    "totalTokens": 5085523283,
+    "estimatedCostUsd": 2266.10339396,
+    "cpu": 5.955869051390156,
+    "memoryBytes": 6136823808
   },
   "agents": [
     {
-      "agentId": "e1592081c96ffbb0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6410435353763418,
-      "memoryBytes": 952647680,
-      "confidence": "high"
-    },
-    {
-      "agentId": "d89dfa964d5dc309",
+      "agentId": "cf86ea6783e992f2",
       "processName": "codex",
       "status": "idle",
-      "sessionId": null,
+      "sessionId": "01a1eea0-456c-7542-a5ac-c3ae501e42e3",
       "sessionTitle": null,
-      "workspaceLabel": "weihui-own-text-server-8jco4c_b",
-      "cpu": 0.12275985663082437,
-      "memoryBytes": 148340736,
-      "confidence": "low"
+      "workspaceLabel": null,
+      "cpu": 0.6410726291795805,
+      "memoryBytes": 960528384,
+      "confidence": "high"
     },
     {
       "agentId": "5132156aa78f46b6",
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004105039757310049,
+      "cpu": 0.0000040995031402194055,
       "memoryBytes": 7979008,
       "confidence": "low"
     },
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004105039757310049,
+      "cpu": 0.0000040995031402194055,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.39564946100606724,
-      "memoryBytes": 143196160,
+      "cpu": 0.3953864002525304,
+      "memoryBytes": 139984896,
       "confidence": "low"
     },
     {
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08596809550003694,
-      "memoryBytes": 85491712,
+      "cpu": 0.08595053519232898,
+      "memoryBytes": 85508096,
       "confidence": "low"
     },
     {
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004798811175606111,
-      "memoryBytes": 43712512,
+      "cpu": 0.004796438337070729,
+      "memoryBytes": 43696128,
       "confidence": "low"
     },
     {
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.6665161417452132,
-      "memoryBytes": 1276411904,
+      "cpu": 1.6665436760262542,
+      "memoryBytes": 1286111232,
+      "confidence": "low"
+    },
+    {
+      "agentId": "44a9cf272f406426",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.008638148886101068,
+      "memoryBytes": 103694336,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3321034382,
-      "inputTokens": 57281612,
-      "outputTokens": 10667714,
-      "costUSD": 788.8176924000004
+      "totalTokens": 3324271408,
+      "inputTokens": 57297412,
+      "outputTokens": 10674092,
+      "costUSD": 789.2345572000005
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T12:24:16.361Z"
+  "receivedAt": "2026-11-18T12:29:45.160Z"
 }
