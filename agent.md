@@ -46,3 +46,6 @@
 - Server timer07:10Asia/Shanghai generates current5-host resource snapshot; optional desktop07:15fallback triggers the same idempotent service. GT/LY-style compact HTML and self-recipient only. Reuse protected CPU7/30d cache and live RAM/root-disk cache; LJL excluded. Unknown/stale stays gray, not0/healthy. No cloud permission or business-service changes.
 - Source scripts/server_monitor_mail; server source host reads only monitor caches, uses existing restricted mail credential via systemd LoadCredential. SMTP stays on existing mail host; its forced dispatcher adds only exact server-monitor report route. GT/LY and health bodies/schedules unchanged.
 - Delivery key is Beijing date+daily, source/relay locks and fsynced receipts. Successful duplicate is already_sent. Uncertain SMTP outcomes require Message-ID reconciliation in Gmail; never delete receipts or change dates to force resend. A fresh setup send counts as today's daily mail.
+
+## Server monitoring subject
+- Mail subject names actual resource/data issues using short server labels (e.g. Futu内存过高), not red/yellow/collection counters. Critical before missing-data before warnings; dedupe CPU7/30 alerts. All-valid/no-alert says资源指标正常, never claim normal on missing data. Preserve HTML body, schedules, recipients and daily dedupe; do not resend an already-delivered date for a subject-only change.

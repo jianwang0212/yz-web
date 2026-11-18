@@ -164,3 +164,6 @@
 ## 2026-11-18 — Daily server monitoring email
 - User requested one daily server email referencing prior GT/LY mails. Current reference mailbox/style verified live: self-recipient, compact dark-header/white-body inline HTML. New report shows issues first, five servers,CPU7/30d means and latest approximate RAM/root-disk percentages; not service-health or peak-usage claims.
 - Existing GT→website SSH key is forced rrsync-only; do not bypass it. Reuse website→mail-host restricted SMTP relay instead, adding one exact structured server-report command. No credentials copied/printed and no arbitrary recipients or HTML accepted by relay.
+
+## 2026-11-18 — Monitoring subject uses alert reason
+- User replaced numeric red/yellow summary in subject with direct alarm text, e.g.服务器 日监控 · Futu 内存过高. Apply dynamically, not a hard-coded Futu message. Update both source preview renderer and mail-relay renderer; body/receipt/date-level once-only policy remain unchanged.
