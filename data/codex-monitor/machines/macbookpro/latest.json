@@ -1,31 +1,31 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T13:03:41.449Z",
+  "syncedAt": "2026-11-18T13:09:11.513Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 39,
-    "todayTokens": 400658152,
-    "weekTokens": 2597478936,
-    "totalTokens": 5089172774,
-    "estimatedCostUsd": 2266.83396316,
-    "cpu": 7.531530089560662,
-    "memoryBytes": 6873473024
+    "activeAgents": 36,
+    "todayTokens": 404777337,
+    "weekTokens": 2601598121,
+    "totalTokens": 5093291959,
+    "estimatedCostUsd": 2267.4049955600003,
+    "cpu": 5.576858330246677,
+    "memoryBytes": 6140903424
   },
   "agents": [
     {
       "agentId": "e1592081c96ffbb0",
       "processName": "codex",
-      "status": "idle",
+      "status": "running",
       "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
       "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6385598009480986,
-      "memoryBytes": 974520320,
+      "cpu": 0.63834279357191,
+      "memoryBytes": 983236608,
       "confidence": "high"
     },
     {
@@ -35,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004065470334262971,
+      "cpu": 0.000004060056353582188,
       "memoryBytes": 7979008,
       "confidence": "low"
     },
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004065470334262971,
+      "cpu": 0.000004060056353582188,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -57,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3941326893602143,
-      "memoryBytes": 140558336,
+      "cpu": 0.39363624183417856,
+      "memoryBytes": 140525568,
       "confidence": "low"
     },
     {
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08585901704658642,
-      "memoryBytes": 85704704,
+      "cpu": 0.08583805993479524,
+      "memoryBytes": 85770240,
       "confidence": "low"
     },
     {
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004793209010745082,
+      "cpu": 0.004794946021331623,
       "memoryBytes": 43696128,
       "confidence": "low"
     },
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.662705366254274,
-      "memoryBytes": 1399980032,
+      "cpu": 1.6609051893897868,
+      "memoryBytes": 1338425344,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00860709058383477,
-      "memoryBytes": 104529920,
+      "cpu": 0.008599688169947379,
+      "memoryBytes": 104546304,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3327920899,
-      "inputTokens": 57425577,
-      "outputTokens": 10686426,
-      "costUSD": 789.9651264000004
+      "totalTokens": 3332421598,
+      "inputTokens": 57450241,
+      "outputTokens": 10699357,
+      "costUSD": 790.5900748000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T13:03:45.880Z"
+  "receivedAt": "2026-11-18T13:09:15.544Z"
 }
