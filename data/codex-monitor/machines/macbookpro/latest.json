@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T14:48:59.806Z",
+  "syncedAt": "2026-11-18T14:54:26.554Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 37,
+    "activeAgents": 38,
     "todayTokens": 415678135,
     "weekTokens": 2612498919,
     "totalTokens": 5104192757,
     "estimatedCostUsd": 2268.7846027600003,
-    "cpu": 8.511437440444844,
-    "memoryBytes": 5925650432
+    "cpu": 8.504320984336227,
+    "memoryBytes": 5939200000
   },
   "agents": [
+    {
+      "agentId": "bb427747bbc8e4f3",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1ee6c-1884-71c0-baeb-1f35942786e3",
+      "sessionTitle": "给我看下长桥证券, 税务填香港和大陆的差别是什么?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.6286122591167482,
+      "memoryBytes": 913539072,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003963645443987744,
+      "cpu": 0.000003958514765260075,
       "memoryBytes": 7979008,
       "confidence": "low"
     },
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003963645443987744,
+      "cpu": 0.000003958514765260075,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3866670366083744,
+      "cpu": 0.3861823536630261,
       "memoryBytes": 133955584,
       "confidence": "low"
     },
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0853812249298432,
-      "memoryBytes": 84885504,
+      "cpu": 0.08533404059077108,
+      "memoryBytes": 84901888,
       "confidence": "low"
     },
     {
@@ -68,19 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004780175352369477,
+      "cpu": 0.00477794623523963,
       "memoryBytes": 43466752,
-      "confidence": "low"
-    },
-    {
-      "agentId": "183557375b2ed696",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.62938343540044,
-      "memoryBytes": 905691136,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.6421345954130695,
-      "memoryBytes": 1225408512,
+      "cpu": 1.6403295211176165,
+      "memoryBytes": 1226702848,
       "confidence": "low"
     },
     {
@@ -101,7 +101,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008490599693196817,
+      "cpu": 0.008483567294521904,
       "memoryBytes": 103448576,
       "confidence": "low"
     }
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T14:49:03.530Z"
+  "receivedAt": "2026-11-18T14:54:30.115Z"
 }
