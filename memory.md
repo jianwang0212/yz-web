@@ -160,3 +160,7 @@
 
 ## 2026-11-17 — Resource color coding
 - User requested red for resource issues. Use labeled red/yellow/green/unknown thresholds on CPU mean, latest memory and root-disk usage, retaining all data/sorting/billing. Failed RAM fetch marks previous samples stale so old values are not shown as current green. Visual flags only, not notifications or confirmed outages.
+
+## 2026-11-18 — Daily server monitoring email
+- User requested one daily server email referencing prior GT/LY mails. Current reference mailbox/style verified live: self-recipient, compact dark-header/white-body inline HTML. New report shows issues first, five servers,CPU7/30d means and latest approximate RAM/root-disk percentages; not service-health or peak-usage claims.
+- Existing GT→website SSH key is forced rrsync-only; do not bypass it. Reuse website→mail-host restricted SMTP relay instead, adding one exact structured server-report command. No credentials copied/printed and no arbitrary recipients or HTML accepted by relay.

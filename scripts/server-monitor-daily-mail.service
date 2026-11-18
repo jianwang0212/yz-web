@@ -1,0 +1,24 @@
+[Unit]
+Description=Daily self-mail for five confirmed server resource metrics
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/server-monitor-daily-mail
+LoadCredential=mail-key:/opt/apple-health/daily-mail/mail-key
+ExecStart=/usr/bin/python3 /opt/server-monitor-daily-mail/run_report.py --send
+StateDirectory=server-monitor-daily-mail
+StateDirectoryMode=0700
+UMask=0077
+Environment=PYTHONDONTWRITEBYTECODE=1
+TimeoutStartSec=150
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadWritePaths=/var/lib/server-monitor-daily-mail
