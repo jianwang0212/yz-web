@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T02:23:16.638Z",
+  "syncedAt": "2026-11-18T02:28:42.699Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 37,
-    "todayTokens": 172502332,
-    "weekTokens": 2369323116,
-    "totalTokens": 4861016954,
-    "estimatedCostUsd": 2169.6405021600003,
-    "cpu": 5.941681487887907,
-    "memoryBytes": 6346981376
+    "activeAgents": 36,
+    "todayTokens": 177564484,
+    "weekTokens": 2374385268,
+    "totalTokens": 4866079106,
+    "estimatedCostUsd": 2170.99854976,
+    "cpu": 5.937996837854694,
+    "memoryBytes": 6297845760
   },
   "agents": [
-    {
-      "agentId": "e1592081c96ffbb0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6489657465271922,
-      "memoryBytes": 1144684544,
-      "confidence": "high"
-    },
     {
       "agentId": "adacf045a4305ce8",
       "processName": "codex",
@@ -35,19 +24,19 @@
       "sessionId": "01a1e389-c21c-7bc0-b0c2-2d58a016c3eb",
       "sessionTitle": "查一下这个可以干嘛? [https://thisisyz.com/health/](https://thisisyz.com/health/)",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6489657465271922,
-      "memoryBytes": 1144684544,
+      "cpu": 0.6491764004079512,
+      "memoryBytes": 1165131776,
       "confidence": "high"
     },
     {
-      "agentId": "4b421b41c85a37d7",
+      "agentId": "e1592081c96ffbb0",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1ec61-d8fa-7a83-b4e3-b46e187685e7",
-      "sessionTitle": "",
+      "status": "running",
+      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
+      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6489657465271922,
-      "memoryBytes": 1144684544,
+      "cpu": 0.6491764004079512,
+      "memoryBytes": 1165131776,
       "confidence": "high"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004818139330953172,
+      "cpu": 0.0000048105601416228905,
       "memoryBytes": 8388608,
       "confidence": "low"
     },
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004818139330953172,
+      "cpu": 0.0000048105601416228905,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.4137259814597105,
-      "memoryBytes": 203915264,
+      "cpu": 0.4135081178592904,
+      "memoryBytes": 169377792,
       "confidence": "low"
     },
     {
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08868309981305529,
-      "memoryBytes": 86196224,
+      "cpu": 0.08863499699338545,
+      "memoryBytes": 86147072,
       "confidence": "low"
     },
     {
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0049193439589878,
-      "memoryBytes": 45072384,
+      "cpu": 0.0049212266987372225,
+      "memoryBytes": 44548096,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e18744e9c7b04fa8",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.641209438818464,
+      "memoryBytes": 1260535808,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3135466909,
-      "inputTokens": 53494129,
-      "outputTokens": 10021292,
-      "costUSD": 739.8130326000004
+      "totalTokens": 3140529061,
+      "inputTokens": 53677185,
+      "outputTokens": 10043044,
+      "costUSD": 741.1710802000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T02:23:19.665Z"
+  "receivedAt": "2026-11-18T02:28:46.373Z"
 }
