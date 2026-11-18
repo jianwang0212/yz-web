@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T01:38:24.349Z",
+  "syncedAt": "2026-11-18T01:43:49.329Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 38,
-    "todayTokens": 110131445,
-    "weekTokens": 2306952229,
-    "totalTokens": 4798646067,
-    "estimatedCostUsd": 2152.0931227600004,
-    "cpu": 5.929398783777497,
-    "memoryBytes": 6776913920
+    "activeAgents": 37,
+    "todayTokens": 112756332,
+    "weekTokens": 2309577116,
+    "totalTokens": 4801270954,
+    "estimatedCostUsd": 2152.96688296,
+    "cpu": 5.941214019841564,
+    "memoryBytes": 6762659840
   },
   "agents": [
-    {
-      "agentId": "ec10b2560f3c7c36",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1e2e3-5b91-7bc3-82d9-0a82d3f90b08",
-      "sessionTitle": "我的所有服务器的作用和清理, 你先列出来, 然后给我方案, 查询她们现在都在干嘛? 我有什么好的方式去 monitor 她们",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6446424212838663,
-      "memoryBytes": 1154252800,
-      "confidence": "high"
-    },
     {
       "agentId": "adacf045a4305ce8",
       "processName": "codex",
@@ -35,30 +24,19 @@
       "sessionId": "01a1e389-c21c-7bc0-b0c2-2d58a016c3eb",
       "sessionTitle": "查一下这个可以干嘛? [https://thisisyz.com/health/](https://thisisyz.com/health/)",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6446424212838663,
-      "memoryBytes": 1154252800,
+      "cpu": 0.6444839770927256,
+      "memoryBytes": 1154482176,
       "confidence": "high"
     },
     {
-      "agentId": "e1592081c96ffbb0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.6446424212838663,
-      "memoryBytes": 1154252800,
-      "confidence": "high"
-    },
-    {
-      "agentId": "0e76c0d1d4166731",
+      "agentId": "ec10b2560f3c7c36",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a1ec2e-67a2-7032-aca8-4c6d87a359c5",
-      "sessionTitle": "监控按最近三天资金费年化估算为 −18,728/年，累计资金费为 −$10。 --- 实际亏了 2000 以上再来报警 , 如果是预估就不用了",
+      "sessionId": "01a1e2e3-5b91-7bc3-82d9-0a82d3f90b08",
+      "sessionTitle": "我的所有服务器的作用和清理, 你先列出来, 然后给我方案, 查询她们现在都在干嘛? 我有什么好的方式去 monitor 她们",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6446424212838663,
-      "memoryBytes": 1154252800,
+      "cpu": 0.6444839770927256,
+      "memoryBytes": 1154482176,
       "confidence": "high"
     },
     {
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000048814300637514765,
+      "cpu": 0.00000487369811339146,
       "memoryBytes": 8388608,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000048814300637514765,
+      "cpu": 0.00000487369811339146,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.4167687704105791,
+      "cpu": 0.4161524890097572,
       "memoryBytes": 185270272,
       "confidence": "low"
     },
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08881317211518278,
-      "memoryBytes": 87785472,
+      "cpu": 0.08879921240654638,
+      "memoryBytes": 87687168,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.004932206528837813,
+      "memoryBytes": 45858816,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e18744e9c7b04fa8",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.639288012009436,
+      "memoryBytes": 1523777536,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3073096022,
-      "inputTokens": 52694918,
-      "outputTokens": 9839312,
-      "costUSD": 722.2656532000005
+      "totalTokens": 3075720909,
+      "inputTokens": 52697642,
+      "outputTokens": 9862179,
+      "costUSD": 723.1394134000005
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T01:38:27.679Z"
+  "receivedAt": "2026-11-18T01:43:52.904Z"
 }
