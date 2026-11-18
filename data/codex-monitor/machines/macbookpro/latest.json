@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-18T04:57:24.158Z",
+  "syncedAt": "2026-11-18T05:02:50.399Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 41,
-    "todayTokens": 234973121,
-    "weekTokens": 2431793905,
-    "totalTokens": 4923487743,
-    "estimatedCostUsd": 2185.11839116,
-    "cpu": 5.924528900803843,
-    "memoryBytes": 6282428416
+    "activeAgents": 40,
+    "todayTokens": 242002225,
+    "weekTokens": 2438823009,
+    "totalTokens": 4930516847,
+    "estimatedCostUsd": 2186.88188496,
+    "cpu": 8.266812735048477,
+    "memoryBytes": 6404456448
   },
   "agents": [
     {
@@ -24,52 +24,30 @@
       "sessionId": "01a1ded8-a7d8-7a73-8f02-28cbb0139e9e",
       "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-e2f89b34-7575-455a-b5e4-851a778d999a.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;你查下这个, 我现在想做一个微信的推荐回复, 就是每次我把鼠标放到回复位置的时候, 给我 hoover 一个我可以说的话, 基于对我的了解和对我之前的会话记录的了解.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6455678101748705,
-      "memoryBytes": 970326016,
+      "cpu": 0.6457653972991396,
+      "memoryBytes": 1022410752,
+      "confidence": "high"
+    },
+    {
+      "agentId": "4b50eade9ecb8084",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1ed07-bfde-7f62-826c-ad190c638545",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.6457653972991396,
+      "memoryBytes": 1022410752,
       "confidence": "high"
     },
     {
       "agentId": "adacf045a4305ce8",
       "processName": "codex",
-      "status": "running",
+      "status": "idle",
       "sessionId": "01a1e389-c21c-7bc0-b0c2-2d58a016c3eb",
       "sessionTitle": "查一下这个可以干嘛? [https://thisisyz.com/health/](https://thisisyz.com/health/)",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.6455678101748705,
-      "memoryBytes": 970326016,
-      "confidence": "high"
-    },
-    {
-      "agentId": "779ecb44dfad6d10",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ecf9-987a-7d20-9924-3ba0c834224d",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.6455678101748705,
-      "memoryBytes": 970326016,
-      "confidence": "high"
-    },
-    {
-      "agentId": "ad88588dbed0b8c6",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1ecf8-bf05-78a2-ae6e-bb25cda701fa",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.6455678101748705,
-      "memoryBytes": 970326016,
-      "confidence": "high"
-    },
-    {
-      "agentId": "9c9cb77216011343",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1ecf8-9f5c-72e1-a0bf-e0d29d8bb7bb",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.6455678101748705,
-      "memoryBytes": 970326016,
+      "cpu": 0.6457653972991396,
+      "memoryBytes": 1022410752,
       "confidence": "high"
     },
     {
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004612609953089756,
+      "cpu": 0.0000046056631233765036,
       "memoryBytes": 8044544,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004612609953089756,
+      "cpu": 0.0000046056631233765036,
       "memoryBytes": 7864320,
       "confidence": "low"
     },
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.40653425339950927,
-      "memoryBytes": 151486464,
+      "cpu": 0.4072207919013647,
+      "memoryBytes": 148422656,
+      "confidence": "low"
+    },
+    {
+      "agentId": "2f03925bea465f80",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.08794554238841579,
+      "memoryBytes": 86294528,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0048866310800790335,
+      "memoryBytes": 44728320,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3197937698,
-      "inputTokens": 54785178,
-      "outputTokens": 10204552,
-      "costUSD": 755.2909216000004
+      "totalTokens": 3204966802,
+      "inputTokens": 54798623,
+      "outputTokens": 10225267,
+      "costUSD": 757.0544154000005
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-18T04:57:27.210Z"
+  "receivedAt": "2026-11-18T05:02:53.447Z"
 }
