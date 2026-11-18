@@ -20,7 +20,7 @@ test("three new essays keep one overview and a folded longform hierarchy", () =>
         assert.match(html, /id="overview"/);
         assert.doesNotMatch(html, /id="source-note"/);
         assert.match(html, /class="mobile-toc"/);
-        assert.match(html, /field-notes\.css\?v=20260719-1/);
+        assert.match(html, /field-notes\.css\?v=20261118-skip-link1/);
         assert.match(html, /field-notes\.js\?v=20260719-1/);
     }
 });
