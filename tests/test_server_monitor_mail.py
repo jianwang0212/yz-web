@@ -90,7 +90,7 @@ class MonitorMail(unittest.TestCase):
         c['hosts'][IDS[0]]['windows']['7d']['cpu']['average'] = 88
         report = build(a, c, r, NOW)
         self.assertEqual(report['summary']['critical'], 1)
-        self.assertIn('红 1', subject(report))
+        self.assertIn('ThisisYZ 内存过高', subject(report))
         self.assertIn('#d93025', render(report))
         self.assertIn('过高', render(report))
 

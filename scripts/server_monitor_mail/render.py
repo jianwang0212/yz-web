@@ -8,10 +8,36 @@ FONT = "-apple-system,'Segoe UI',Roboto,'PingFang SC','Microsoft YaHei',sans-ser
 
 
 def subject(report):
-    s = report['summary']
-    if not s['collected'] and s['unknown'] == 5:
+    summary = report['summary']
+    if not summary['collected'] and summary['unknown'] == 5:
         return '服务器 日监控 · 数据获取失败'
-    return f"服务器 日监控 · 红 {s['critical']} · 黄 {s['warning']} · 采集 {s['collected']}/5" + (f" · 数据缺失 {s['unknown']}" if s['unknown'] else '')
+    short = {'thisisyz': 'ThisisYZ', 'a47g': 'A47g', 'japan': 'GT',
+             'futu-algo': 'Futu', 'contabo-crypto': 'Contabo'}
+    alerts = []
+    for row in report['rows']:
+        name = short[row['id']]
+        for label, values in [('内存', [row['memory']]), ('CPU均值', list(row['cpu'].values())),
+                              ('根盘占用', [row['disk']])]:
+            states = {value['status'] for value in values}
+            if 'critical' in states:
+                alerts.append((0, name + ' ' + label + '过高'))
+            elif 'warning' in states:
+                alerts.append((2, name + ' ' + label + '偏高'))
+        if not row['collected']:
+            alerts.append((1, name + ' 采集异常'))
+        else:
+            for label, value in [('内存', row['memory']), ('根盘', row['disk'])]:
+                if value['status'] == 'unknown':
+                    alerts.append((1, name + ' ' + label + '采样缺失'))
+        cpu = list(row['cpu'].values())
+        if any(value['status'] == 'unknown' for value in cpu):
+            alerts.append((1, name + ' CPU历史数据异常'))
+        elif any(value['partial'] for value in cpu):
+            alerts.append((1, name + ' CPU数据不完整'))
+    messages = list(dict.fromkeys(text for _, text in sorted(alerts, key=lambda item: item[0])))
+    if not messages:
+        return '服务器 日监控 · 资源指标正常'
+    return '服务器 日监控 · ' + '；'.join(messages[:3]) + (' 等报警' if len(messages) > 3 else '')
 
 
 def percent(value):
