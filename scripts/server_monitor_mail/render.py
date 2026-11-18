@@ -61,6 +61,10 @@ def issues(report):
                 alerts.append((item['status'], f"{row['name']}：{label} {display(item, approx)}"))
         if not row['collected']:
             missing.append(row['name'] + '：当前采集不可用或过期，不代表宕机')
+        else:
+            for label, item in [('内存', row['memory']), ('根盘', row['disk'])]:
+                if item['status'] == 'unknown':
+                    missing.append(row['name'] + '：' + label + '采样缺失或无法解析')
         if row['id'] != 'contabo-crypto' and any(v['status'] == 'unknown' or v['partial'] for v in row['cpu'].values()):
             missing.append(row['name'] + '：CPU历史数据缺失、过期或部分采样')
     return sorted(alerts, key=lambda x: x[0] != 'critical'), missing
