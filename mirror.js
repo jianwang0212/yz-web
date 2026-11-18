@@ -217,3 +217,49 @@ if (mirrorAudio && mirrorCanvas) {
         }
     });
 }
+
+
+// Decorative clips must not compete with the audio master for startup bandwidth.
+function initMirrorMotion() {
+    const videos = [...document.querySelectorAll('video[data-mirror-motion]')];
+    if (!mirrorAudio || !videos.length || !('IntersectionObserver' in window)) return;
+    const visible = new Set();
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function syncMotion() {
+        const allowed = mirrorAudio.paused && !document.hidden
+            && !reducedMotion.matches && !navigator.connection?.saveData;
+        for (const video of videos) {
+            if (!allowed || !visible.has(video)) {
+                video.pause();
+                continue;
+            }
+            const sources = video.querySelectorAll('source[data-src]');
+            if (sources.length) {
+                for (const source of sources) {
+                    source.src = source.dataset.src;
+                    delete source.dataset.src;
+                }
+                video.preload = 'metadata';
+                video.load();
+            }
+            // A blocked decorative autoplay must never prevent audio playback.
+            if (video.paused) video.play().catch(() => {});
+        }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.25) visible.add(entry.target);
+            else visible.delete(entry.target);
+        }
+        syncMotion();
+    }, { threshold: 0.25 });
+    videos.forEach(video => observer.observe(video));
+    mirrorAudio.addEventListener('play', syncMotion);
+    mirrorAudio.addEventListener('pause', syncMotion);
+    mirrorAudio.addEventListener('ended', syncMotion);
+    document.addEventListener('visibilitychange', syncMotion);
+    reducedMotion.addEventListener('change', syncMotion);
+}
+initMirrorMotion();

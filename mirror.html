@@ -26,7 +26,7 @@
     <link rel="preload" as="image" href="/assets/mirror/visuals/mirror-ai-cover.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="/assets/mirror/visuals/jazz-bar-mirrors-singer.webp" type="image/webp">
     <link rel="stylesheet" href="/styles.css?v=20260507-consistent-nav">
-    <link rel="stylesheet" href="/snow-white.css?v=20260520-mobile-speed">
+    <link rel="stylesheet" href="/snow-white.css?v=20261007-mv">
     <link rel="stylesheet" href="/mirror.css?v=20260520-musician-swipe">
     <script type="application/ld+json">
     {
@@ -49,6 +49,20 @@
         "producer": {
             "@type": "Person",
             "name": "Kevin Yuen"
+        },
+        "video": {
+            "@type": "VideoObject",
+            "name": "Mirror 镜子 — Official studio MV",
+            "description": "Recorded live at Berklee Studio A: vocal, piano, bass, drums and sax.",
+            "thumbnailUrl": "https://thisisyz.com/assets/mirror/visuals/mirror-ai-cover.webp",
+            "uploadDate": "2026-10-29",
+            "duration": "PT3M11S",
+            "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1Rtso62EA3",
+            "url": "https://www.bilibili.com/video/BV1Rtso62EA3/",
+            "editor": {
+                "@type": "Person",
+                "name": "李卓航"
+            }
         },
         "description": "An original Chinese jazz ballad performed and composed by Zi Yin, produced by Kevin Yuen."
     }
@@ -103,6 +117,7 @@
                     </p>
 
                     <div class="snow-hero-cta" aria-label="Primary Mirror actions">
+                        <a class="snow-cta-primary" href="#mv">观看 MV / Watch MV</a>
                         <a href="#mirror-audio">试听 / Listen</a>
                         <a href="#visuals">动画视觉 / Motion world</a>
                         <a href="#story">创作动机 / Story</a>
@@ -144,11 +159,33 @@
                         <img src="/assets/mirror/visuals/mirror-ai-cover.webp" width="1800" height="1013" alt="Mirror cover visual with a cracked mirror and blue room" fetchpriority="high" decoding="async">
                     </figure>
                     <figure class="hero-cover-card hero-cover-side hero-cover-side-b mirror-video-card">
-                        <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror recording room loop">
-                            <source src="/assets/mirror/video/vocal-piano-loop.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror recording room loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                            <source data-src="/assets/mirror/video/vocal-piano-loop.mp4" type="video/mp4">
                         </video>
                     </figure>
                 </div>
+            </div>
+        </section>
+
+        <section id="mv" class="snow-section snow-mv mirror-mv" aria-labelledby="mv-title">
+            <div class="snow-section-header">
+                <p class="snow-kicker">官方 MV / Official studio MV</p>
+                <h2 id="mv-title">
+                    <span lang="zh-CN">我在你眼里，看见我自己。</span>
+                    <span lang="en">In your eyes, I see myself.</span>
+                </h2>
+                <p class="section-lede">
+                    <span lang="zh-CN">Berklee Studio A 录音实录：人声和钢琴先把亲密的记忆拉回身体，bass 与鼓把呼吸推成缓慢律动，sax 在尾奏留下余光。</span>
+                    <span lang="en">Recorded live at Berklee Studio A: voice and piano bring a private memory back into the body, bass and drums turn breath into a slow pulse, and sax leaves the afterglow.</span>
+                </p>
+            </div>
+            <div class="snow-mv-frame">
+                <iframe src="https://player.bilibili.com/player.html?isOutside=true&amp;aid=117521210414366&amp;bvid=BV1Rtso62EA3&amp;cid=43137565976&amp;p=1&amp;autoplay=0&amp;high_quality=1&amp;danmaku=0" title="Mirror 镜子 — Official studio MV (Bilibili)" allowfullscreen="true" scrolling="no" frameborder="no" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-presentation" referrerpolicy="no-referrer-when-downgrade" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="snow-mv-actions" aria-label="MV links">
+                <span class="snow-mv-meta">03:11 · 4K · 2026-10-29 · 剪辑 / Edited by 李卓航</span>
+                <a href="https://www.bilibili.com/video/BV1Rtso62EA3/" target="_blank" rel="noopener noreferrer">在 B 站观看 / Watch on Bilibili</a>
+                <a href="#mirror-audio">只听母带 / Audio only</a>
             </div>
         </section>
 
@@ -175,8 +212,8 @@
 
             <div class="visual-feature-grid mirror-motion-grid" aria-label="Mirror animated visual scenes">
                 <figure class="visual-feature-card visual-feature-large mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror studio room animated scene">
-                        <source src="/assets/mirror/video/studio-room-loop.mp4" type="video/mp4">
+                    <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror studio room animated scene" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                        <source data-src="/assets/mirror/video/studio-room-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption>
                         <span>01 / Recording room</span>
@@ -185,8 +222,8 @@
                     </figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror piano hands animated scene">
-                        <source src="/assets/mirror/video/piano-hands-loop.mp4" type="video/mp4">
+                    <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror piano hands animated scene" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                        <source data-src="/assets/mirror/video/piano-hands-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption>
                         <span>02 / Piano motion</span>
@@ -195,8 +232,8 @@
                     </figcaption>
                 </figure>
                 <figure class="visual-feature-card mirror-video-card">
-                    <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror sax animated scene">
-                        <source src="/assets/mirror/video/sax-loop.mp4" type="video/mp4">
+                    <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror sax animated scene" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                        <source data-src="/assets/mirror/video/sax-loop.mp4" type="video/mp4">
                     </video>
                     <figcaption>
                         <span>03 / Outro light</span>
@@ -302,8 +339,8 @@
             <div class="season-layout">
                 <article class="season-feature mirror-video-card">
                     <div class="season-feature-media">
-                        <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror recording room feature loop">
-                            <source src="/assets/mirror/video/studio-room-loop.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror recording room feature loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                            <source data-src="/assets/mirror/video/studio-room-loop.mp4" type="video/mp4">
                         </video>
                         <span class="play-mark" aria-hidden="true"></span>
                     </div>
@@ -317,8 +354,8 @@
                 <div class="episode-grid mirror-episode-grid">
                     <article class="episode-card mirror-video-card">
                         <figure>
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror vocal piano coaching loop">
-                                <source src="/assets/mirror/video/vocal-piano-loop.mp4" type="video/mp4">
+                            <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror vocal piano coaching loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                                <source data-src="/assets/mirror/video/vocal-piano-loop.mp4" type="video/mp4">
                             </video>
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>00:08</time>
@@ -330,8 +367,8 @@
 
                     <article class="episode-card mirror-video-card">
                         <figure>
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror piano hands loop">
-                                <source src="/assets/mirror/video/piano-hands-loop.mp4" type="video/mp4">
+                            <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror piano hands loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                                <source data-src="/assets/mirror/video/piano-hands-loop.mp4" type="video/mp4">
                             </video>
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>00:08</time>
@@ -343,8 +380,8 @@
 
                     <article class="episode-card mirror-video-card">
                         <figure>
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Mirror sax outro loop">
-                                <source src="/assets/mirror/video/sax-loop.mp4" type="video/mp4">
+                            <video data-mirror-motion muted loop playsinline preload="none" aria-label="Mirror sax outro loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                                <source data-src="/assets/mirror/video/sax-loop.mp4" type="video/mp4">
                             </video>
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>00:08</time>
@@ -356,8 +393,8 @@
 
                     <article class="episode-card mirror-video-card">
                         <figure>
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Kevin Yuen producer cast loop">
-                                <source src="/assets/mirror/video/cast-producer-loop.mp4" type="video/mp4">
+                            <video data-mirror-motion muted loop playsinline preload="none" aria-label="Kevin Yuen producer cast loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                                <source data-src="/assets/mirror/video/cast-producer-loop.mp4" type="video/mp4">
                             </video>
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>00:06</time>
@@ -369,8 +406,8 @@
 
                     <article class="episode-card mirror-video-card">
                         <figure>
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Tong Hu bass cast loop">
-                                <source src="/assets/mirror/video/cast-bass-loop.mp4" type="video/mp4">
+                            <video data-mirror-motion muted loop playsinline preload="none" aria-label="Tong Hu bass cast loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                                <source data-src="/assets/mirror/video/cast-bass-loop.mp4" type="video/mp4">
                             </video>
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>00:06</time>
@@ -382,8 +419,8 @@
 
                     <article class="episode-card mirror-video-card">
                         <figure>
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Sean Zhou engineer cast loop">
-                                <source src="/assets/mirror/video/cast-engineer-loop.mp4" type="video/mp4">
+                            <video data-mirror-motion muted loop playsinline preload="none" aria-label="Sean Zhou engineer cast loop" poster="/assets/mirror/visuals/mirror-ai-cover.webp">
+                                <source data-src="/assets/mirror/video/cast-engineer-loop.mp4" type="video/mp4">
                             </video>
                             <span class="play-mark" aria-hidden="true"></span>
                             <time>00:06</time>
@@ -405,8 +442,8 @@
             <div class="participant-grid" aria-label="Mirror musician showcase">
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/zi-yin-vocal.webp" aria-label="Zi Yin animated vocal portrait">
-                            <source src="/assets/mirror/people-motion/zi-yin-vocal.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/zi-yin-vocal.webp" aria-label="Zi Yin animated vocal portrait">
+                            <source data-src="/assets/mirror/people-motion/zi-yin-vocal.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Lead vocal / 主唱</span>
@@ -415,8 +452,8 @@
                 </article>
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/kevin-yuen-producer.webp" aria-label="Kevin Yuen animated producer portrait">
-                            <source src="/assets/mirror/people-motion/kevin-yuen-producer.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/kevin-yuen-producer.webp" aria-label="Kevin Yuen animated producer portrait">
+                            <source data-src="/assets/mirror/people-motion/kevin-yuen-producer.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Producer / 制作人</span>
@@ -425,8 +462,8 @@
                 </article>
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/yuheng-zhu-piano.webp" aria-label="Yuheng Zhu animated piano portrait">
-                            <source src="/assets/mirror/people-motion/yuheng-zhu-piano.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/yuheng-zhu-piano.webp" aria-label="Yuheng Zhu animated piano portrait">
+                            <source data-src="/assets/mirror/people-motion/yuheng-zhu-piano.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Piano / 钢琴</span>
@@ -435,8 +472,8 @@
                 </article>
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/tong-hu-bass.webp" aria-label="Tong Hu animated bass portrait">
-                            <source src="/assets/mirror/people-motion/tong-hu-bass.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/tong-hu-bass.webp" aria-label="Tong Hu animated bass portrait">
+                            <source data-src="/assets/mirror/people-motion/tong-hu-bass.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Bass / 贝斯</span>
@@ -445,8 +482,8 @@
                 </article>
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/keye-xin-sax.webp" aria-label="Keye Xin animated sax portrait">
-                            <source src="/assets/mirror/people-motion/keye-xin-sax.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/keye-xin-sax.webp" aria-label="Keye Xin animated sax portrait">
+                            <source data-src="/assets/mirror/people-motion/keye-xin-sax.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Sax / 萨克斯</span>
@@ -455,8 +492,8 @@
                 </article>
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/zhitang-zeng-drum.webp" aria-label="Zhitang Zeng animated drum portrait">
-                            <source src="/assets/mirror/people-motion/zhitang-zeng-drum.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/zhitang-zeng-drum.webp" aria-label="Zhitang Zeng animated drum portrait">
+                            <source data-src="/assets/mirror/people-motion/zhitang-zeng-drum.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Drum / 鼓</span>
@@ -465,8 +502,8 @@
                 </article>
                 <article class="participant-card">
                     <div class="participant-media">
-                        <video autoplay muted loop playsinline preload="metadata" poster="/assets/mirror/people/sean-zhou-engineer.webp" aria-label="Sean Zhou animated engineer portrait">
-                            <source src="/assets/mirror/people-motion/sean-zhou-engineer.mp4" type="video/mp4">
+                        <video data-mirror-motion muted loop playsinline preload="none" poster="/assets/mirror/people/sean-zhou-engineer.webp" aria-label="Sean Zhou animated engineer portrait">
+                            <source data-src="/assets/mirror/people-motion/sean-zhou-engineer.mp4" type="video/mp4">
                         </video>
                     </div>
                     <span>Engineer / 录音师</span>
@@ -522,6 +559,6 @@
         </div>
     </footer>
 <script src="/script.js?v=20260720-language-availability1" defer></script>
-    <script src="/mirror.js?v=20260720-language-availability1" defer></script>
+    <script src="/mirror.js?v=20261118-audio-priority1" defer></script>
 </body>
 </html>
