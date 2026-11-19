@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-19T09:14:29.832Z",
+  "syncedAt": "2026-11-19T09:19:56.304Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 40,
-    "todayTokens": 248103844,
-    "weekTokens": 2540630927,
-    "totalTokens": 5352296601,
-    "estimatedCostUsd": 2309.71069556,
-    "cpu": 4.849942710210621,
-    "memoryBytes": 6283853824
+    "activeAgents": 42,
+    "todayTokens": 250698266,
+    "weekTokens": 2543225349,
+    "totalTokens": 5354891023,
+    "estimatedCostUsd": 2310.05616356,
+    "cpu": 6.174658107166687,
+    "memoryBytes": 6158417920
   },
   "agents": [
-    {
-      "agentId": "63df828495cc81c1",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
-      "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5742573325173015,
-      "memoryBytes": 794574848,
-      "confidence": "high"
-    },
     {
       "agentId": "e7a62684853134a2",
       "processName": "codex",
@@ -35,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.011769651113913409,
-      "memoryBytes": 82444288,
+      "cpu": 0.01160275319567355,
+      "memoryBytes": 82755584,
       "confidence": "low"
     },
     {
@@ -46,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-iku_way9",
-      "cpu": 0.031223267750213855,
-      "memoryBytes": 128860160,
+      "cpu": 0.029782130721567057,
+      "memoryBytes": 128581632,
       "confidence": "low"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000031385053809674757,
+      "cpu": 0.0000031352876626430473,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000031385053809674757,
+      "cpu": 0.0000031352876626430473,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.33775759363760194,
-      "memoryBytes": 132431872,
+      "cpu": 0.3374395279496095,
+      "memoryBytes": 130973696,
       "confidence": "low"
     },
     {
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08280030882989875,
-      "memoryBytes": 84983808,
+      "cpu": 0.08277498910484121,
+      "memoryBytes": 84574208,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004776820181908343,
-      "memoryBytes": 43581440,
+      "cpu": 0.004775058081386052,
+      "memoryBytes": 43319296,
+      "confidence": "low"
+    },
+    {
+      "agentId": "183557375b2ed696",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5743144521574456,
+      "memoryBytes": 770179072,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 243836443,
-      "inputTokens": 4045411,
-      "outputTokens": 763192,
-      "costUSD": 39.625526
+      "totalTokens": 246430865,
+      "inputTokens": 4061415,
+      "outputTokens": 768810,
+      "costUSD": 39.970994
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-19T09:14:32.630Z"
+  "receivedAt": "2026-11-19T09:19:59.195Z"
 }
