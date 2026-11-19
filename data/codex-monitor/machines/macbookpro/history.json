@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-17T03:09:37.202Z",
-    "cpu": 8.565249780907653,
-    "memoryBytes": 5461295104,
-    "totalTokens": 4099971341,
-    "todayTokens": 105577296,
-    "activeAgents": 29,
-    "estimatedCostUsd": 1970.75250516,
-    "agents": [
-      {
-        "agentId": "5132156aa78f46b6",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000008068941032178938,
-        "memoryBytes": 8388608,
-        "confidence": "low"
-      },
-      {
-        "agentId": "0b9246d6271da96d",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000008068941032178938,
-        "memoryBytes": 7864320,
-        "confidence": "low"
-      },
-      {
-        "agentId": "6dd42351a3a885b8",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.29387320363750796,
-        "memoryBytes": 142180352,
-        "confidence": "low"
-      },
-      {
-        "agentId": "2f03925bea465f80",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.08665305694297633,
-        "memoryBytes": 84459520,
-        "confidence": "low"
-      },
-      {
-        "agentId": "84346d6bc35373d0",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.005026990825540018,
-        "memoryBytes": 44957696,
-        "confidence": "low"
-      },
-      {
-        "agentId": "183557375b2ed696",
-        "processName": "codex",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.6829024240663633,
-        "memoryBytes": 855277568,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e18744e9c7b04fa8",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 1.6266976541506284,
-        "memoryBytes": 1671102464,
-        "confidence": "low"
-      },
-      {
-        "agentId": "44a9cf272f406426",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.009780661405122742,
-        "memoryBytes": 110706688,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-17T03:15:00.168Z",
     "cpu": 8.477222678317915,
     "memoryBytes": 5466030080,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.004789571362062258,
         "memoryBytes": 43909120,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-19T07:56:11.976Z",
+    "cpu": 4.972459870985506,
+    "memoryBytes": 6294618112,
+    "totalTokens": 5257101751,
+    "todayTokens": 152908994,
+    "activeAgents": 38,
+    "estimatedCostUsd": 2295.7762483600004,
+    "agents": [
+      {
+        "agentId": "63df828495cc81c1",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
+        "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5600270135099404,
+        "memoryBytes": 917929984,
+        "confidence": "high"
+      },
+      {
+        "agentId": "151c7b4509cb6847",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f2c7-0d82-7831-a1a5-db26ab410b78",
+        "sessionTitle": "我几个月前是不是做了一个项目, 用 claude, 叫做 ai big short? 那一次的持仓如果持有到现在是什么收益?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5600270135099404,
+        "memoryBytes": 917929984,
+        "confidence": "high"
+      },
+      {
+        "agentId": "e7a62684853134a2",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.25,
+        "memoryBytes": 95158272,
+        "confidence": "low"
+      },
+      {
+        "agentId": "200e70cf21003129",
+        "processName": "ssh",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0,
+        "memoryBytes": 4177920,
+        "confidence": "low"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0000031854742374771043,
+        "memoryBytes": 8372224,
+        "confidence": "low"
+      },
+      {
+        "agentId": "0b9246d6271da96d",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0000031854742374771043,
+        "memoryBytes": 7847936,
+        "confidence": "low"
+      },
+      {
+        "agentId": "6dd42351a3a885b8",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.33127126310826827,
+        "memoryBytes": 145604608,
+        "confidence": "low"
+      },
+      {
+        "agentId": "2f03925bea465f80",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.08278436819102714,
+        "memoryBytes": 87949312,
         "confidence": "low"
       }
     ]
