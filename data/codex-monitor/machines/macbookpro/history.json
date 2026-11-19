@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-17T03:41:59.791Z",
-    "cpu": 6.2148005672117375,
-    "memoryBytes": 5392138240,
-    "totalTokens": 4112336155,
-    "todayTokens": 117942110,
-    "activeAgents": 27,
-    "estimatedCostUsd": 1972.2391443600002,
-    "agents": [
-      {
-        "agentId": "5132156aa78f46b6",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000007944389275074478,
-        "memoryBytes": 8388608,
-        "confidence": "low"
-      },
-      {
-        "agentId": "0b9246d6271da96d",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000007944389275074478,
-        "memoryBytes": 7864320,
-        "confidence": "low"
-      },
-      {
-        "agentId": "6dd42351a3a885b8",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.2964869631536298,
-        "memoryBytes": 143605760,
-        "confidence": "low"
-      },
-      {
-        "agentId": "2f03925bea465f80",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.08633236411014189,
-        "memoryBytes": 84393984,
-        "confidence": "low"
-      },
-      {
-        "agentId": "84346d6bc35373d0",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.005020893909782799,
-        "memoryBytes": 44941312,
-        "confidence": "low"
-      },
-      {
-        "agentId": "183557375b2ed696",
-        "processName": "codex",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.6781682251900816,
-        "memoryBytes": 855293952,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e18744e9c7b04fa8",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 1.6226323650924808,
-        "memoryBytes": 1625079808,
-        "confidence": "low"
-      },
-      {
-        "agentId": "44a9cf272f406426",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.009899810107976258,
-        "memoryBytes": 108904448,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-17T03:47:23.733Z",
     "cpu": 7.199784939735508,
     "memoryBytes": 5380407296,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.004780217691557166,
         "memoryBytes": 43188224,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-19T08:30:48.367Z",
+    "cpu": 4.82713552121216,
+    "memoryBytes": 6221447168,
+    "totalTokens": 5309968630,
+    "todayTokens": 205775873,
+    "activeAgents": 41,
+    "estimatedCostUsd": 2303.2605871600003,
+    "agents": [
+      {
+        "agentId": "63df828495cc81c1",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
+        "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5667639258973272,
+        "memoryBytes": 821428224,
+        "confidence": "high"
+      },
+      {
+        "agentId": "eef6a035abd8cc23",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f2ed-9563-77e0-b9a4-e63b9ba7b544",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.5667639258973272,
+        "memoryBytes": 821428224,
+        "confidence": "high"
+      },
+      {
+        "agentId": "27c57259ae4b0caf",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f2ed-b1a9-7c81-9eb7-4ab8df229ab4",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.5667639258973272,
+        "memoryBytes": 821428224,
+        "confidence": "high"
+      },
+      {
+        "agentId": "151c7b4509cb6847",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f2c7-0d82-7831-a1a5-db26ab410b78",
+        "sessionTitle": "我几个月前是不是做了一个项目, 用 claude, 叫做 ai big short? 那一次的持仓如果持有到现在是什么收益?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.5667639258973272,
+        "memoryBytes": 821428224,
+        "confidence": "high"
+      },
+      {
+        "agentId": "e7a62684853134a2",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.014974262985493684,
+        "memoryBytes": 82231296,
+        "confidence": "low"
+      },
+      {
+        "agentId": "d9ade38db9a339eb",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "weihui-own-text-server-iku_way9",
+        "cpu": 0.028710462287104624,
+        "memoryBytes": 119537664,
+        "confidence": "low"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0000031645369333105485,
+        "memoryBytes": 8028160,
+        "confidence": "low"
+      },
+      {
+        "agentId": "0b9246d6271da96d",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0000031645369333105485,
+        "memoryBytes": 7847936,
         "confidence": "low"
       }
     ]
