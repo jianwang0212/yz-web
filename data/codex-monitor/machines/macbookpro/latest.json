@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-19T08:58:03.588Z",
+  "syncedAt": "2026-11-19T09:03:31.802Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 45,
-    "todayTokens": 239833387,
-    "weekTokens": 2532360470,
-    "totalTokens": 5344026144,
-    "estimatedCostUsd": 2308.3806247600005,
-    "cpu": 6.899564936447435,
-    "memoryBytes": 6477496320
+    "activeAgents": 43,
+    "todayTokens": 242242308,
+    "weekTokens": 2534769391,
+    "totalTokens": 5346435065,
+    "estimatedCostUsd": 2308.7971931600005,
+    "cpu": 6.81939318253672,
+    "memoryBytes": 6798757888
   },
   "agents": [
-    {
-      "agentId": "ce247b670d11912f",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f2fc-8c6f-7a11-a3d3-2f59812857d3",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.5738505421436397,
-      "memoryBytes": 846036992,
-      "confidence": "high"
-    },
-    {
-      "agentId": "c5ca964fb209a4b0",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f306-3c88-70a1-a042-2733ae3202e3",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.5738505421436397,
-      "memoryBytes": 846036992,
-      "confidence": "high"
-    },
     {
       "agentId": "63df828495cc81c1",
       "processName": "codex",
@@ -46,19 +24,8 @@
       "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
       "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.5738505421436397,
-      "memoryBytes": 846036992,
-      "confidence": "high"
-    },
-    {
-      "agentId": "75f9a94049db6710",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f153-9c4a-77f3-bf8f-c11c1c9034bc",
-      "sessionTitle": "查一下这个服务器?&#x20;\n\n| **Futu 算法与自动化** | 采集成功 | **3.61%**<br>**3.65%** | 截至11-19 06:00 | **约88% · 过高** | 11-19 07:09 | **39%** |\n| --------------- | ---- | ---------------------- | ------------- | ------------- | ----------- | ------- |",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5738505421436397,
-      "memoryBytes": 846036992,
+      "cpu": 0.5739158877328939,
+      "memoryBytes": 819544064,
       "confidence": "high"
     },
     {
@@ -68,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.012463537523203396,
-      "memoryBytes": 82362368,
+      "cpu": 0.012442059038789949,
+      "memoryBytes": 82395136,
       "confidence": "low"
     },
     {
@@ -79,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-iku_way9",
-      "cpu": 0.037137435619409055,
-      "memoryBytes": 134332416,
+      "cpu": 0.034602937515558874,
+      "memoryBytes": 128942080,
       "confidence": "low"
     },
     {
@@ -90,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000031482577541588486,
+      "cpu": 0.0000031450101269326087,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -101,8 +68,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000031482577541588486,
+      "cpu": 0.0000031450101269326087,
       "memoryBytes": 7847936,
+      "confidence": "low"
+    },
+    {
+      "agentId": "6dd42351a3a885b8",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.3383884288423496,
+      "memoryBytes": 134594560,
+      "confidence": "low"
+    },
+    {
+      "agentId": "2f03925bea465f80",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.08283668225548256,
+      "memoryBytes": 84770816,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.004777285407421618,
+      "memoryBytes": 43515904,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 235565986,
-      "inputTokens": 3967797,
-      "outputTokens": 727277,
-      "costUSD": 38.2954552
+      "totalTokens": 237974907,
+      "inputTokens": 3998378,
+      "outputTokens": 739153,
+      "costUSD": 38.7120236
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-19T08:58:06.402Z"
+  "receivedAt": "2026-11-19T09:03:36.433Z"
 }
