@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-19T12:09:28.897Z",
+  "syncedAt": "2026-11-19T12:14:56.946Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 42,
+    "activeAgents": 40,
     "todayTokens": 250698266,
     "weekTokens": 2543225349,
     "totalTokens": 5354891023,
     "estimatedCostUsd": 2310.05616356,
-    "cpu": 7.215669588977357,
-    "memoryBytes": 5992349696
+    "cpu": 5.709609284346655,
+    "memoryBytes": 5980307456
   },
   "agents": [
-    {
-      "agentId": "e482aa63d7a3cbec",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
-      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5577760424421238,
-      "memoryBytes": 781516800,
-      "confidence": "high"
-    },
-    {
-      "agentId": "151c7b4509cb6847",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f2c7-0d82-7831-a1a5-db26ab410b78",
-      "sessionTitle": "我几个月前是不是做了一个项目, 用 claude, 叫做 ai big short? 那一次的持仓如果持有到现在是什么收益?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5577760424421238,
-      "memoryBytes": 781516800,
-      "confidence": "high"
-    },
     {
       "agentId": "e7a62684853134a2",
       "processName": "codex",
@@ -46,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "Docking2611",
-      "cpu": 0.010229508196721311,
-      "memoryBytes": 83329024,
+      "cpu": 0.010202117420596728,
+      "memoryBytes": 83345408,
       "confidence": "low"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-iku_way9",
-      "cpu": 0.01654799578059072,
+      "cpu": 0.01638392569180159,
       "memoryBytes": 129761280,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000030384516050620603,
+      "cpu": 0.0000030353619669145543,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000030384516050620603,
+      "cpu": 0.0000030353619669145543,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3277375012913458,
-      "memoryBytes": 129892352,
+      "cpu": 0.32742852459713034,
+      "memoryBytes": 129941504,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08236963483777657,
-      "memoryBytes": 85131264,
+      "cpu": 0.08234354938093605,
+      "memoryBytes": 85098496,
+      "confidence": "low"
+    },
+    {
+      "agentId": "84346d6bc35373d0",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.004768568124353087,
+      "memoryBytes": 43597824,
+      "confidence": "low"
+    },
+    {
+      "agentId": "183557375b2ed696",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5572422459795654,
+      "memoryBytes": 773357568,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-19T12:09:33.274Z"
+  "receivedAt": "2026-11-19T12:15:00.362Z"
 }
