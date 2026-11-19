@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-19T14:17:29.360Z",
+  "syncedAt": "2026-11-19T14:22:56.785Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 41,
-    "todayTokens": 279722997,
-    "weekTokens": 2572250080,
-    "totalTokens": 5383915754,
-    "estimatedCostUsd": 2314.91934716,
-    "cpu": 5.191798134180697,
-    "memoryBytes": 6413713408
+    "activeAgents": 40,
+    "todayTokens": 284711721,
+    "weekTokens": 2577238804,
+    "totalTokens": 5388904478,
+    "estimatedCostUsd": 2315.5772255600004,
+    "cpu": 4.756989759215556,
+    "memoryBytes": 6296338432
   },
   "agents": [
     {
@@ -24,30 +24,8 @@
       "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
       "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.5536440672933604,
-      "memoryBytes": 858505216,
-      "confidence": "high"
-    },
-    {
-      "agentId": "26f09189bbaa46fa",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f42a-41d4-7421-b04e-45ac0426a2b5",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.5536440672933604,
-      "memoryBytes": 858505216,
-      "confidence": "high"
-    },
-    {
-      "agentId": "e482aa63d7a3cbec",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
-      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5536440672933604,
-      "memoryBytes": 858505216,
+      "cpu": 0.5538351101381696,
+      "memoryBytes": 847822848,
       "confidence": "high"
     },
     {
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002969103508886527,
-      "memoryBytes": 8028160,
+      "cpu": 0.0000029662148132767773,
+      "memoryBytes": 7979008,
       "confidence": "low"
     },
     {
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002969103508886527,
+      "cpu": 0.0000029662148132767773,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -79,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3266350159292876,
-      "memoryBytes": 136544256,
+      "cpu": 0.3263706177753916,
+      "memoryBytes": 136167424,
       "confidence": "low"
     },
     {
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.082176121804864,
-      "memoryBytes": 86884352,
+      "cpu": 0.08215252915056255,
+      "memoryBytes": 86409216,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0047624561684793095,
+      "cpu": 0.0047607888968317765,
       "memoryBytes": 43466752,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e18744e9c7b04fa8",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.4629403860357917,
+      "memoryBytes": 1342308352,
+      "confidence": "low"
+    },
+    {
+      "agentId": "44a9cf272f406426",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.007679849072722743,
+      "memoryBytes": 109625344,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 275053574,
-      "inputTokens": 4583568,
-      "outputTokens": 850934,
-      "costUSD": 44.6383832
+      "totalTokens": 280042298,
+      "inputTokens": 4607475,
+      "outputTokens": 862407,
+      "costUSD": 45.2962616
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-19T14:17:32.398Z"
+  "receivedAt": "2026-11-19T14:22:59.546Z"
 }
