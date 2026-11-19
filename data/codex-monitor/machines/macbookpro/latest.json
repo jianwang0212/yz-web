@@ -1,31 +1,42 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-19T14:22:56.785Z",
+  "syncedAt": "2026-11-19T14:28:23.059Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 40,
-    "todayTokens": 284711721,
-    "weekTokens": 2577238804,
-    "totalTokens": 5388904478,
-    "estimatedCostUsd": 2315.5772255600004,
-    "cpu": 4.756989759215556,
-    "memoryBytes": 6296338432
+    "activeAgents": 41,
+    "todayTokens": 289975081,
+    "weekTokens": 2582502164,
+    "totalTokens": 5394167838,
+    "estimatedCostUsd": 2316.2425791600003,
+    "cpu": 4.703458208181551,
+    "memoryBytes": 6305398784
   },
   "agents": [
     {
+      "agentId": "d8e2273e57dddbc8",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1f434-1d3a-70c1-8175-1c519c0f7943",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.5540557359948792,
+      "memoryBytes": 844906496,
+      "confidence": "high"
+    },
+    {
       "agentId": "63df828495cc81c1",
       "processName": "codex",
-      "status": "running",
+      "status": "idle",
       "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
       "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.5538351101381696,
-      "memoryBytes": 847822848,
+      "cpu": 0.5540557359948792,
+      "memoryBytes": 844906496,
       "confidence": "high"
     },
     {
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000029662148132767773,
+      "cpu": 0.000002963349295908207,
       "memoryBytes": 7979008,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000029662148132767773,
+      "cpu": 0.000002963349295908207,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3263706177753916,
-      "memoryBytes": 136167424,
+      "cpu": 0.3260938495503104,
+      "memoryBytes": 136118272,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08215252915056255,
-      "memoryBytes": 86409216,
+      "cpu": 0.0821561393370968,
+      "memoryBytes": 86523904,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0047607888968317765,
+      "cpu": 0.00476211643033886,
       "memoryBytes": 43466752,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.4629403860357917,
-      "memoryBytes": 1342308352,
-      "confidence": "low"
-    },
-    {
-      "agentId": "44a9cf272f406426",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.007679849072722743,
-      "memoryBytes": 109625344,
+      "cpu": 1.4620664108225043,
+      "memoryBytes": 1353695232,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 280042298,
-      "inputTokens": 4607475,
-      "outputTokens": 862407,
-      "costUSD": 45.2962616
+      "totalTokens": 285305658,
+      "inputTokens": 4627797,
+      "outputTokens": 872549,
+      "costUSD": 45.9616152
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-19T14:22:59.546Z"
+  "receivedAt": "2026-11-19T14:28:26.095Z"
 }
