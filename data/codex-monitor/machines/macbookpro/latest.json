@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-19T14:28:23.059Z",
+  "syncedAt": "2026-11-19T14:33:48.342Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 41,
+    "activeAgents": 40,
     "todayTokens": 289975081,
     "weekTokens": 2582502164,
     "totalTokens": 5394167838,
     "estimatedCostUsd": 2316.2425791600003,
-    "cpu": 4.703458208181551,
-    "memoryBytes": 6305398784
+    "cpu": 4.672847390098841,
+    "memoryBytes": 6297075712
   },
   "agents": [
-    {
-      "agentId": "d8e2273e57dddbc8",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1f434-1d3a-70c1-8175-1c519c0f7943",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.5540557359948792,
-      "memoryBytes": 844906496,
-      "confidence": "high"
-    },
-    {
-      "agentId": "63df828495cc81c1",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1f14e-946c-7680-bf9f-eff38a385833",
-      "sessionTitle": "/goal 读这个: [设计微信悬停推荐回复](codex://threads/01a1ded8-a7d8-7a73-8f02-28cbb0139e9e) ;  你的目标就是 1. 增加回复质量; 找到相关 input 和聊天记录; 最好有一个所有联系人 和我之间的关系, 和联系人之间的关系, 然后还有各种 context 和时间线 2. 增加回复速度. 不表示 3s. 这两者需要一个平衡.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.5540557359948792,
-      "memoryBytes": 844906496,
-      "confidence": "high"
-    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -46,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002963349295908207,
+      "cpu": 0.0000029604893096731027,
       "memoryBytes": 7979008,
       "confidence": "low"
     },
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002963349295908207,
+      "cpu": 0.0000029604893096731027,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -68,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3260938495503104,
-      "memoryBytes": 136118272,
+      "cpu": 0.3257939315710475,
+      "memoryBytes": 136019968,
       "confidence": "low"
     },
     {
@@ -79,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0821561393370968,
-      "memoryBytes": 86523904,
+      "cpu": 0.08215086106086487,
+      "memoryBytes": 86589440,
       "confidence": "low"
     },
     {
@@ -90,8 +68,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00476211643033886,
+      "cpu": 0.004760480903307172,
       "memoryBytes": 43466752,
+      "confidence": "low"
+    },
+    {
+      "agentId": "183557375b2ed696",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5535535594805995,
+      "memoryBytes": 844890112,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.4620664108225043,
-      "memoryBytes": 1353695232,
+      "cpu": 1.4612977431455039,
+      "memoryBytes": 1343586304,
+      "confidence": "low"
+    },
+    {
+      "agentId": "44a9cf272f406426",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.007673906349920655,
+      "memoryBytes": 109838336,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-19T14:28:26.095Z"
+  "receivedAt": "2026-11-19T14:33:54.804Z"
 }
