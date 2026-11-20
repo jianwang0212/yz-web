@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T00:18:02.945Z",
+  "syncedAt": "2026-11-20T00:23:30.207Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 40,
-    "todayTokens": 7547980,
-    "weekTokens": 2550994596,
-    "totalTokens": 5401715818,
-    "estimatedCostUsd": 2318.4153535600003,
-    "cpu": 4.45169684847289,
-    "memoryBytes": 6203883520
+    "activeAgents": 38,
+    "todayTokens": 8163443,
+    "weekTokens": 2551610059,
+    "totalTokens": 5402331281,
+    "estimatedCostUsd": 2318.5488251600004,
+    "cpu": 4.251101296818503,
+    "memoryBytes": 6211534848
   },
   "agents": [
-    {
-      "agentId": "6a33cc7478a0d643",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f116-4435-75e1-a033-3df2d11cf366",
-      "sessionTitle": "[https://mail.google.com/mail/u/0/#inbox/FMfcgzQjgznjvfGnhxbjvWkCnTJWmrpg](https://mail.google.com/mail/u/0/#inbox/FMfcgzQjgznjvfGnhxbjvWkCnTJWmrpg) 还是太丑了; 然后台多废话了; 图也太丑了; 重新来",
-      "workspaceLabel": "AppleHealth",
-      "cpu": 0.5089518250994424,
-      "memoryBytes": 856883200,
-      "confidence": "high"
-    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -35,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026821372342337268,
+      "cpu": 0.000002679786903345446,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026821372342337268,
+      "cpu": 0.000002679786903345446,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -57,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3002043794054222,
-      "memoryBytes": 136953856,
+      "cpu": 0.30086316167465693,
+      "memoryBytes": 136986624,
       "confidence": "low"
     },
     {
@@ -68,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08133334763810361,
-      "memoryBytes": 86573056,
+      "cpu": 0.08135586861505562,
+      "memoryBytes": 86491136,
       "confidence": "low"
     },
     {
@@ -79,8 +68,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004760806359900868,
-      "memoryBytes": 44154880,
+      "cpu": 0.004761994088374249,
+      "memoryBytes": 44204032,
+      "confidence": "low"
+    },
+    {
+      "agentId": "183557375b2ed696",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.5088274073041837,
+      "memoryBytes": 867762176,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.3638560615407724,
-      "memoryBytes": 1347256320,
+      "cpu": 1.3641267790959741,
+      "memoryBytes": 1350025216,
       "confidence": "low"
     },
     {
@@ -101,18 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007523677455521789,
-      "memoryBytes": 112295936,
+      "cpu": 0.007581401581133592,
+      "memoryBytes": 111165440,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3354435214,
-      "inputTokens": 58057361,
-      "outputTokens": 10789117,
-      "costUSD": 794.8335884000003
+      "totalTokens": 3355050677,
+      "inputTokens": 58059665,
+      "outputTokens": 10795940,
+      "costUSD": 794.9670600000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T00:18:06.013Z"
+  "receivedAt": "2026-11-20T00:23:33.174Z"
 }
