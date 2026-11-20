@@ -1,22 +1,66 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T00:28:58.646Z",
+  "syncedAt": "2026-11-20T00:34:24.590Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 38,
-    "todayTokens": 8163443,
-    "weekTokens": 2551610059,
-    "totalTokens": 5402331281,
-    "estimatedCostUsd": 2318.5488251600004,
-    "cpu": 4.249290593992459,
-    "memoryBytes": 6193102848
+    "activeAgents": 24,
+    "todayTokens": 9978590,
+    "weekTokens": 2553425206,
+    "totalTokens": 5404146428,
+    "estimatedCostUsd": 2319.1561575600003,
+    "cpu": 69.10281802334872,
+    "memoryBytes": 2998845440
   },
   "agents": [
+    {
+      "agentId": "ad6ad6d60866d5a4",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f65f-be6e-7c90-824c-d989d2118d3d",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 26.261904761904763,
+      "memoryBytes": 368492544,
+      "confidence": "high"
+    },
+    {
+      "agentId": "33bf1ba1c877a424",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f65f-d57e-75d2-a82c-ab50c513fa34",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 26.261904761904763,
+      "memoryBytes": 368492544,
+      "confidence": "high"
+    },
+    {
+      "agentId": "ff4b5d98a3dba9d6",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
+      "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
+      "workspaceLabel": "linux-do",
+      "cpu": 26.261904761904763,
+      "memoryBytes": 368492544,
+      "confidence": "high"
+    },
+    {
+      "agentId": "40d812200b7757c4",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ecf9-c6b2-7463-a416-13120fccf7f8",
+      "sessionTitle": "linux.do 上面是不是有闲鱼和淘宝便宜的东西 ? 给我做一个客制化的",
+      "workspaceLabel": "lin",
+      "cpu": 26.261904761904763,
+      "memoryBytes": 368492544,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002677440687995159,
+      "cpu": 0.0000026750914212493213,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -35,84 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002677440687995159,
+      "cpu": 0.0000026750914212493213,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
     {
-      "agentId": "6dd42351a3a885b8",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.30146724142547326,
-      "memoryBytes": 137019392,
-      "confidence": "low"
-    },
-    {
-      "agentId": "2f03925bea465f80",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.08135693057377708,
-      "memoryBytes": 86376448,
-      "confidence": "low"
-    },
-    {
-      "agentId": "84346d6bc35373d0",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.004760502289217918,
-      "memoryBytes": 44187648,
-      "confidence": "low"
-    },
-    {
-      "agentId": "183557375b2ed696",
+      "agentId": "c43b2cd8d270e1f4",
       "processName": "codex",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.5084167150847563,
-      "memoryBytes": 867696640,
+      "workspaceLabel": "weihui-own-text-server-baxw8l6u",
+      "cpu": 0.013121938643980409,
+      "memoryBytes": 134840320,
       "confidence": "low"
     },
     {
-      "agentId": "e18744e9c7b04fa8",
-      "processName": "Codex (Aperitif Renderer)",
+      "agentId": "1b22924a4182bbb9",
+      "processName": "browser_crashpad_handler",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.3638588411695405,
-      "memoryBytes": 1329659904,
-      "confidence": "low"
-    },
-    {
-      "agentId": "44a9cf272f406426",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0076309920021848734,
-      "memoryBytes": 111575040,
+      "cpu": 0.0425531914893617,
+      "memoryBytes": 10174464,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3355050677,
-      "inputTokens": 58059665,
-      "outputTokens": 10795940,
-      "costUSD": 794.9670600000003
+      "totalTokens": 3356865824,
+      "inputTokens": 58261911,
+      "outputTokens": 10800137,
+      "costUSD": 795.5743924000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T00:29:01.912Z"
+  "receivedAt": "2026-11-20T00:34:28.422Z"
 }
