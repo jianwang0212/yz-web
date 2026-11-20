@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-17T20:29:42.988Z",
-    "cpu": 6.608737167567119,
-    "memoryBytes": 6598311936,
-    "totalTokens": 4688514622,
-    "todayTokens": 694120577,
-    "activeAgents": 35,
-    "estimatedCostUsd": 2120.12241716,
-    "agents": [
-      {
-        "agentId": "5132156aa78f46b6",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000005366620692616066,
-        "memoryBytes": 8388608,
-        "confidence": "low"
-      },
-      {
-        "agentId": "0b9246d6271da96d",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000005366620692616066,
-        "memoryBytes": 7864320,
-        "confidence": "low"
-      },
-      {
-        "agentId": "6dd42351a3a885b8",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.37827365619096687,
-        "memoryBytes": 169967616,
-        "confidence": "low"
-      },
-      {
-        "agentId": "2f03925bea465f80",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.08810428473295552,
-        "memoryBytes": 88473600,
-        "confidence": "low"
-      },
-      {
-        "agentId": "84346d6bc35373d0",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.004974884080370943,
-        "memoryBytes": 46874624,
-        "confidence": "low"
-      },
-      {
-        "agentId": "183557375b2ed696",
-        "processName": "codex",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.6544606582979569,
-        "memoryBytes": 1136427008,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e18744e9c7b04fa8",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 1.6306741946910255,
-        "memoryBytes": 1416757248,
-        "confidence": "low"
-      },
-      {
-        "agentId": "44a9cf272f406426",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.008962929965704717,
-        "memoryBytes": 116998144,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-17T20:35:06.296Z",
     "cpu": 6.1026354986137825,
     "memoryBytes": 6595035136,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.0000026405010614814267,
         "memoryBytes": 8372224,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-20T02:01:22.948Z",
+    "cpu": 25.511817347668796,
+    "memoryBytes": 4964974592,
+    "totalTokens": 5481251401,
+    "todayTokens": 87083563,
+    "activeAgents": 28,
+    "estimatedCostUsd": 2332.7474747600004,
+    "agents": [
+      {
+        "agentId": "ff4b5d98a3dba9d6",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
+        "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
+        "workspaceLabel": "linux-do",
+        "cpu": 1.5156814293860483,
+        "memoryBytes": 671924224,
+        "confidence": "high"
+      },
+      {
+        "agentId": "7d4d3e99aff53a3e",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
+        "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
+        "workspaceLabel": "Docking2611",
+        "cpu": 1.5156814293860483,
+        "memoryBytes": 671924224,
+        "confidence": "high"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000002638257905539814,
+        "memoryBytes": 8372224,
+        "confidence": "low"
+      },
+      {
+        "agentId": "0b9246d6271da96d",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000002638257905539814,
+        "memoryBytes": 7847936,
+        "confidence": "low"
+      },
+      {
+        "agentId": "c7a8caecec1aa5b0",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.007478188616535106,
+        "memoryBytes": 103530496,
+        "confidence": "low"
+      },
+      {
+        "agentId": "73ba702885b9a727",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.020781379883624274,
+        "memoryBytes": 163397632,
+        "confidence": "low"
+      },
+      {
+        "agentId": "1637c56409e17b8e",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0033264033264033266,
+        "memoryBytes": 60571648,
+        "confidence": "low"
+      },
+      {
+        "agentId": "18990b533472fc5d",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "weihui-own-text-server-milc8hkr",
+        "cpu": 0.20256111757857975,
+        "memoryBytes": 154681344,
         "confidence": "low"
       }
     ]
