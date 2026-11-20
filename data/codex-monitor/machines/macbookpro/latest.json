@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T00:45:10.954Z",
+  "syncedAt": "2026-11-20T00:50:32.658Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,12 +9,12 @@
   },
   "summary": {
     "activeAgents": 24,
-    "todayTokens": 21088106,
-    "weekTokens": 2564534722,
-    "totalTokens": 5415255944,
-    "estimatedCostUsd": 2321.9613687600004,
-    "cpu": 15.082702550502201,
-    "memoryBytes": 3620552704
+    "todayTokens": 30663386,
+    "weekTokens": 2574110002,
+    "totalTokens": 5424831224,
+    "estimatedCostUsd": 2323.2624439600004,
+    "cpu": 11.67464997535438,
+    "memoryBytes": 3774201856
   },
   "agents": [
     {
@@ -24,30 +24,19 @@
       "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
       "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
       "workspaceLabel": "linux-do",
-      "cpu": 3.962373371924747,
-      "memoryBytes": 581599232,
+      "cpu": 3.114624505928854,
+      "memoryBytes": 593739776,
       "confidence": "high"
     },
     {
-      "agentId": "55aa75911747ffe8",
+      "agentId": "eab3012177692e24",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1f669-c684-7c12-a30a-11b0a03e7ba0",
+      "sessionId": "01a1f66e-99a4-7942-a93b-de67627caa7c",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 3.962373371924747,
-      "memoryBytes": 581599232,
-      "confidence": "high"
-    },
-    {
-      "agentId": "7d4d3e99aff53a3e",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
-      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
-      "workspaceLabel": "Docking2611",
-      "cpu": 3.962373371924747,
-      "memoryBytes": 581599232,
+      "cpu": 3.114624505928854,
+      "memoryBytes": 593739776,
       "confidence": "high"
     },
     {
@@ -57,19 +46,8 @@
       "sessionId": "01a1f153-9c4a-77f3-bf8f-c11c1c9034bc",
       "sessionTitle": "查一下这个服务器?&#x20;\n\n| **Futu 算法与自动化** | 采集成功 | **3.61%**<br>**3.65%** | 截至11-19 06:00 | **约88% · 过高** | 11-19 07:09 | **39%** |\n| --------------- | ---- | ---------------------- | ------------- | ------------- | ----------- | ------- |",
       "workspaceLabel": "Docking2611",
-      "cpu": 3.962373371924747,
-      "memoryBytes": 581599232,
-      "confidence": "high"
-    },
-    {
-      "agentId": "89ef2fd93c8aae1f",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f668-47b5-7a12-99c3-5a7cb4794c09",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 3.962373371924747,
-      "memoryBytes": 581599232,
+      "cpu": 3.114624505928854,
+      "memoryBytes": 593739776,
       "confidence": "high"
     },
     {
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002670455152376171,
+      "cpu": 0.000002668167955836484,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002670455152376171,
+      "cpu": 0.000002668167955836484,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-baxw8l6u",
-      "cpu": 0.013108851644311468,
+      "cpu": 0.013103621730382296,
       "memoryBytes": 134856704,
+      "confidence": "low"
+    },
+    {
+      "agentId": "1b22924a4182bbb9",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0019665683382497543,
+      "memoryBytes": 10240000,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4b8730bf63ebaa43",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0009832841691248771,
+      "memoryBytes": 10043392,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3362333113,
-      "inputTokens": 58439672,
-      "outputTokens": 10818625,
-      "costUSD": 796.6418984000004
+      "totalTokens": 3364880902,
+      "inputTokens": 58444435,
+      "outputTokens": 10830195,
+      "costUSD": 797.0202700000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 291670956,
-      "inputTokens": 5537649,
-      "outputTokens": 885051,
-      "costUSD": 48.4506336
+      "totalTokens": 298698447,
+      "inputTokens": 5590982,
+      "outputTokens": 897033,
+      "costUSD": 49.3733372
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T00:45:14.013Z"
+  "receivedAt": "2026-11-20T00:50:35.493Z"
 }
