@@ -1,31 +1,53 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T05:19:16.786Z",
+  "syncedAt": "2026-11-20T05:24:41.320Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 22,
-    "todayTokens": 202228385,
-    "weekTokens": 2745675001,
-    "totalTokens": 5596396223,
-    "estimatedCostUsd": 2350.1551491600003,
-    "cpu": 4.619301897904084,
-    "memoryBytes": 3662577664
+    "activeAgents": 24,
+    "todayTokens": 208053982,
+    "weekTokens": 2751500598,
+    "totalTokens": 5602221820,
+    "estimatedCostUsd": 2351.1421667600002,
+    "cpu": 4.73009686604588,
+    "memoryBytes": 3627368448
   },
   "agents": [
     {
-      "agentId": "9b65ccd99975f7cf",
+      "agentId": "7d4d3e99aff53a3e",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1f764-13d2-74e2-9ee3-109dffc082ba",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.04735354169938747,
-      "memoryBytes": 144130048,
+      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
+      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.0005728032993468,
+      "memoryBytes": 740409344,
+      "confidence": "high"
+    },
+    {
+      "agentId": "ff4b5d98a3dba9d6",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
+      "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
+      "workspaceLabel": "linux-do",
+      "cpu": 1.0005728032993468,
+      "memoryBytes": 740409344,
+      "confidence": "high"
+    },
+    {
+      "agentId": "b13d7b4f06ec5220",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f6a6-afbc-75f2-a437-0a742e684eb1",
+      "sessionTitle": "长沙去徐州有什么交通方式? 时间成本和花费是多少?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.0005728032993468,
+      "memoryBytes": 740409344,
       "confidence": "high"
     },
     {
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000025581139537441835,
+      "cpu": 0.0000025560085370685137,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -46,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000025581139537441835,
+      "cpu": 0.0000025560085370685137,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0022405825514633802,
-      "memoryBytes": 106151936,
+      "cpu": 0.0022596548890714873,
+      "memoryBytes": 106168320,
       "confidence": "low"
     },
     {
@@ -68,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004551501995658567,
+      "cpu": 0.0044511401766760255,
       "memoryBytes": 163348480,
       "confidence": "low"
     },
@@ -79,40 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0054621848739495795,
+      "cpu": 0.005341734009039858,
       "memoryBytes": 172261376,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1b22924a4182bbb9",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00011667930692491686,
-      "memoryBytes": 8585216,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4b8730bf63ebaa43",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00005833965346245843,
-      "memoryBytes": 7995392,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3383605221,
-      "inputTokens": 59525240,
-      "outputTokens": 10915437,
-      "costUSD": 801.7901272000004
+      "totalTokens": 3385565502,
+      "inputTokens": 59530093,
+      "outputTokens": 10924369,
+      "costUSD": 802.3328184000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 451539127,
-      "inputTokens": 7634508,
-      "outputTokens": 1195627,
-      "costUSD": 71.4961852
+      "totalTokens": 455404443,
+      "inputTokens": 7642297,
+      "outputTokens": 1199970,
+      "costUSD": 71.94051160000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T05:19:19.629Z"
+  "receivedAt": "2026-11-20T05:24:44.263Z"
 }
