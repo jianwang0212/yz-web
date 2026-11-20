@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T01:06:37.565Z",
+  "syncedAt": "2026-11-20T01:11:58.601Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
-    "todayTokens": 54377960,
-    "weekTokens": 2597824576,
-    "totalTokens": 5448545798,
-    "estimatedCostUsd": 2326.64713436,
-    "cpu": 9.673611926590738,
-    "memoryBytes": 3840966656
+    "activeAgents": 24,
+    "todayTokens": 65628893,
+    "weekTokens": 2609075509,
+    "totalTokens": 5459796731,
+    "estimatedCostUsd": 2328.0549011600006,
+    "cpu": 8.345734933080774,
+    "memoryBytes": 3838705664
   },
   "agents": [
     {
@@ -24,8 +24,19 @@
       "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
       "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
       "workspaceLabel": "Docking2611",
-      "cpu": 2.6236722306525038,
-      "memoryBytes": 649789440,
+      "cpu": 2.4347258485639687,
+      "memoryBytes": 646086656,
+      "confidence": "high"
+    },
+    {
+      "agentId": "1a023c32350790ce",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f680-c85e-7aa1-8f4b-c489ca71a788",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 2.4347258485639687,
+      "memoryBytes": 646086656,
       "confidence": "high"
     },
     {
@@ -35,41 +46,8 @@
       "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
       "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
       "workspaceLabel": "linux-do",
-      "cpu": 2.6236722306525038,
-      "memoryBytes": 649789440,
-      "confidence": "high"
-    },
-    {
-      "agentId": "260e24461c2997b9",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f67c-d23d-7d22-a82e-08193c01cce8",
-      "sessionTitle": "",
-      "workspaceLabel": "AppleHealth",
-      "cpu": 2.6236722306525038,
-      "memoryBytes": 649789440,
-      "confidence": "high"
-    },
-    {
-      "agentId": "29ada77e8bee9318",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f676-7f95-76e3-9b0c-60d44e633c71",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 2.6236722306525038,
-      "memoryBytes": 649789440,
-      "confidence": "high"
-    },
-    {
-      "agentId": "5cc159a490f920de",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f67c-5357-7cf0-8322-1c8dbf7b62a1",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 2.6236722306525038,
-      "memoryBytes": 649789440,
+      "cpu": 2.4347258485639687,
+      "memoryBytes": 646086656,
       "confidence": "high"
     },
     {
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002661315648003747,
+      "cpu": 0.000002659044073655521,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -90,29 +68,51 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002661315648003747,
+      "cpu": 0.000002659044073655521,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
     {
-      "agentId": "d8ee412f19bcdf85",
+      "agentId": "fa39baf95bf8a5ae",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.33333333333333337,
+      "cpu": 0,
       "memoryBytes": 4177920,
+      "confidence": "low"
+    },
+    {
+      "agentId": "c43b2cd8d270e1f4",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "weihui-own-text-server-baxw8l6u",
+      "cpu": 0.01320469716902987,
+      "memoryBytes": 134889472,
+      "confidence": "low"
+    },
+    {
+      "agentId": "1b22924a4182bbb9",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0008684324793747286,
+      "memoryBytes": 10223616,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3371285145,
-      "inputTokens": 58606376,
-      "outputTokens": 10854769,
-      "costUSD": 798.2116648000003
+      "totalTokens": 3373127793,
+      "inputTokens": 58611930,
+      "outputTokens": 10864023,
+      "costUSD": 798.4980968000003
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 316008778,
-      "inputTokens": 5720897,
-      "outputTokens": 918793,
-      "costUSD": 51.5666328
+      "totalTokens": 325417063,
+      "inputTokens": 5757136,
+      "outputTokens": 930071,
+      "costUSD": 52.6879676
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T01:06:40.423Z"
+  "receivedAt": "2026-11-20T01:12:02.281Z"
 }
