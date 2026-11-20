@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T00:34:24.590Z",
+  "syncedAt": "2026-11-20T00:39:49.512Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 9978590,
-    "weekTokens": 2553425206,
-    "totalTokens": 5404146428,
-    "estimatedCostUsd": 2319.1561575600003,
-    "cpu": 69.10281802334872,
-    "memoryBytes": 2998845440
+    "activeAgents": 22,
+    "todayTokens": 13008440,
+    "weekTokens": 2556455056,
+    "totalTokens": 5407176278,
+    "estimatedCostUsd": 2319.86547516,
+    "cpu": 17.691466437616544,
+    "memoryBytes": 3377889280
   },
   "agents": [
-    {
-      "agentId": "ad6ad6d60866d5a4",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f65f-be6e-7c90-824c-d989d2118d3d",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 26.261904761904763,
-      "memoryBytes": 368492544,
-      "confidence": "high"
-    },
-    {
-      "agentId": "33bf1ba1c877a424",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f65f-d57e-75d2-a82c-ab50c513fa34",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 26.261904761904763,
-      "memoryBytes": 368492544,
-      "confidence": "high"
-    },
     {
       "agentId": "ff4b5d98a3dba9d6",
       "processName": "codex",
@@ -46,19 +24,30 @@
       "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
       "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
       "workspaceLabel": "linux-do",
-      "cpu": 26.261904761904763,
-      "memoryBytes": 368492544,
+      "cpu": 4.7831978319783195,
+      "memoryBytes": 492208128,
       "confidence": "high"
     },
     {
-      "agentId": "40d812200b7757c4",
+      "agentId": "3091f52a79a2824d",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1ecf9-c6b2-7463-a416-13120fccf7f8",
-      "sessionTitle": "linux.do 上面是不是有闲鱼和淘宝便宜的东西 ? 给我做一个客制化的",
-      "workspaceLabel": "lin",
-      "cpu": 26.261904761904763,
-      "memoryBytes": 368492544,
+      "sessionId": "01a1f663-92f2-7c10-9f1d-4c66350dd5df",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 4.7831978319783195,
+      "memoryBytes": 492208128,
+      "confidence": "high"
+    },
+    {
+      "agentId": "79e368fcfc416633",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f116-4435-75e1-a033-3df2d11cf366",
+      "sessionTitle": "[https://mail.google.com/mail/u/0/#inbox/FMfcgzQjgznjvfGnhxbjvWkCnTJWmrpg](https://mail.google.com/mail/u/0/#inbox/FMfcgzQjgznjvfGnhxbjvWkCnTJWmrpg) 还是太丑了; 然后台多废话了; 图也太丑了; 重新来",
+      "workspaceLabel": "AppleHealth",
+      "cpu": 4.7831978319783195,
+      "memoryBytes": 492208128,
       "confidence": "high"
     },
     {
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026750914212493213,
+      "cpu": 0.000002672753417115244,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026750914212493213,
+      "cpu": 0.000002672753417115244,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-baxw8l6u",
-      "cpu": 0.013121938643980409,
+      "cpu": 0.01311450264590843,
       "memoryBytes": 134840320,
       "confidence": "low"
     },
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0425531914893617,
+      "cpu": 0.0053475935828877,
       "memoryBytes": 10174464,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4b8730bf63ebaa43",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.00267379679144385,
+      "memoryBytes": 10043392,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3356865824,
-      "inputTokens": 58261911,
-      "outputTokens": 10800137,
-      "costUSD": 795.5743924000003
+      "totalTokens": 3359895674,
+      "inputTokens": 58423962,
+      "outputTokens": 10810080,
+      "costUSD": 796.2837100000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T00:34:28.422Z"
+  "receivedAt": "2026-11-20T00:39:53.165Z"
 }
