@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T02:06:46.250Z",
+  "syncedAt": "2026-11-20T02:14:47.757Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 25,
-    "todayTokens": 93855151,
-    "weekTokens": 2637301767,
-    "totalTokens": 5488022989,
-    "estimatedCostUsd": 2333.5896155600003,
-    "cpu": 7.970585501802832,
-    "memoryBytes": 4474093568
+    "activeAgents": 24,
+    "todayTokens": 94283067,
+    "weekTokens": 2637729683,
+    "totalTokens": 5488450905,
+    "estimatedCostUsd": 2333.6418683600004,
+    "cpu": 7.068733958065481,
+    "memoryBytes": 4382785536
   },
   "agents": [
+    {
+      "agentId": "7d4d3e99aff53a3e",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
+      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.4631174899866488,
+      "memoryBytes": 678789120,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026360046604562397,
+      "cpu": 0.0000026331796434148128,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026360046604562397,
+      "cpu": 0.0000026331796434148128,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006957158549981691,
+      "cpu": 0.006373486297004461,
       "memoryBytes": 103809024,
       "confidence": "low"
     },
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01868131868131868,
+      "cpu": 0.01625757092763787,
       "memoryBytes": 163627008,
       "confidence": "low"
     },
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0029314767314034445,
-      "memoryBytes": 60571648,
+      "cpu": 0.016262755102040817,
+      "memoryBytes": 216186880,
       "confidence": "low"
     },
     {
@@ -79,30 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-milc8hkr",
-      "cpu": 0.17920540997464074,
-      "memoryBytes": 155320320,
+      "cpu": 0.13584905660377358,
+      "memoryBytes": 155287552,
       "confidence": "low"
     },
     {
-      "agentId": "46190da36f7ed0f9",
-      "processName": "node",
+      "agentId": "5c18d23e91a451e6",
+      "processName": "Codex (Aperitif Renderer)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "trading-infra",
-      "cpu": 0.22427440633245385,
-      "memoryBytes": 166424576,
-      "confidence": "low"
-    },
-    {
-      "agentId": "b6143d6e374da094",
-      "processName": "node",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "trading-infra",
-      "cpu": 0.7777777777777778,
-      "memoryBytes": 280530944,
+      "workspaceLabel": "/",
+      "cpu": 0.01935483870967742,
+      "memoryBytes": 70238208,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 352158469,
-      "inputTokens": 6606374,
-      "outputTokens": 979551,
-      "costUSD": 57.465512399999994
+      "totalTokens": 354340331,
+      "inputTokens": 6622855,
+      "outputTokens": 981732,
+      "costUSD": 57.7366044
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T02:06:49.077Z"
+  "receivedAt": "2026-11-20T02:14:50.799Z"
 }
