@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-17T19:30:17.083Z",
-    "cpu": 7.184567973687905,
-    "memoryBytes": 6596706304,
-    "totalTokens": 4688514622,
-    "todayTokens": 694120577,
-    "activeAgents": 35,
-    "estimatedCostUsd": 2120.12241716,
-    "agents": [
-      {
-        "agentId": "5132156aa78f46b6",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000005471297572932397,
-        "memoryBytes": 8388608,
-        "confidence": "low"
-      },
-      {
-        "agentId": "0b9246d6271da96d",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000005471297572932397,
-        "memoryBytes": 7864320,
-        "confidence": "low"
-      },
-      {
-        "agentId": "6dd42351a3a885b8",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.365730887285182,
-        "memoryBytes": 169738240,
-        "confidence": "low"
-      },
-      {
-        "agentId": "2f03925bea465f80",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.08796800367673208,
-        "memoryBytes": 88473600,
-        "confidence": "low"
-      },
-      {
-        "agentId": "84346d6bc35373d0",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.004984379359964109,
-        "memoryBytes": 46891008,
-        "confidence": "low"
-      },
-      {
-        "agentId": "183557375b2ed696",
-        "processName": "codex",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.6665207590116216,
-        "memoryBytes": 1136443392,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e18744e9c7b04fa8",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 1.6446068909668912,
-        "memoryBytes": 1418133504,
-        "confidence": "low"
-      },
-      {
-        "agentId": "44a9cf272f406426",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.008962671948697185,
-        "memoryBytes": 116490240,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-17T19:35:40.844Z",
     "cpu": 6.177855822983828,
     "memoryBytes": 6591299584,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.0009832841691248771,
         "memoryBytes": 10043392,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-20T00:55:53.827Z",
+    "cpu": 10.256115515516507,
+    "memoryBytes": 3783180288,
+    "totalTokens": 5430310628,
+    "todayTokens": 36142790,
+    "activeAgents": 23,
+    "estimatedCostUsd": 2323.9387975600002,
+    "agents": [
+      {
+        "agentId": "e5e6cd29208a3722",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1f153-9c4a-77f3-bf8f-c11c1c9034bc",
+        "sessionTitle": "查一下这个服务器?&#x20;\n\n| **Futu 算法与自动化** | 采集成功 | **3.61%**<br>**3.65%** | 截至11-19 06:00 | **约88% · 过高** | 11-19 07:09 | **39%** |\n| --------------- | ---- | ---------------------- | ------------- | ------------- | ----------- | ------- |",
+        "workspaceLabel": "Docking2611",
+        "cpu": 2.6181545386346587,
+        "memoryBytes": 591675392,
+        "confidence": "high"
+      },
+      {
+        "agentId": "ff4b5d98a3dba9d6",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
+        "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
+        "workspaceLabel": "linux-do",
+        "cpu": 2.6181545386346587,
+        "memoryBytes": 591675392,
+        "confidence": "high"
+      },
+      {
+        "agentId": "745014c8f1294f65",
+        "processName": "ssh",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.33333333333333337,
+        "memoryBytes": 4177920,
+        "confidence": "low"
+      },
+      {
+        "agentId": "5132156aa78f46b6",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.00000266588467382901,
+        "memoryBytes": 8372224,
+        "confidence": "low"
+      },
+      {
+        "agentId": "0b9246d6271da96d",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.00000266588467382901,
+        "memoryBytes": 7847936,
+        "confidence": "low"
+      },
+      {
+        "agentId": "c43b2cd8d270e1f4",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "weihui-own-text-server-baxw8l6u",
+        "cpu": 0.013123425064244906,
+        "memoryBytes": 134856704,
+        "confidence": "low"
+      },
+      {
+        "agentId": "1b22924a4182bbb9",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0014947683109118087,
+        "memoryBytes": 10223616,
+        "confidence": "low"
+      },
+      {
+        "agentId": "4b8730bf63ebaa43",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0007473841554559044,
+        "memoryBytes": 10027008,
         "confidence": "low"
       }
     ]
