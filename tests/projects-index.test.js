@@ -28,8 +28,8 @@ test('selected A has the literal Projects title and reviewed copy', () => {
   }
 });
 
-test('14 whole-card links describe purpose, use case and contents without JavaScript', () => {
-  assert.equal(cards.length, 14);
+test('15 whole-card links describe purpose, use case and contents without JavaScript', () => {
+  assert.equal(cards.length, 15);
   for (const card of cards) {
     assert.match(card, /href="\/(?:health|projects)\//);
     assert.match(card, /aria-labelledby="project-[^"]+-title"/);
@@ -41,11 +41,18 @@ test('14 whole-card links describe purpose, use case and contents without JavaSc
   assert.doesNotMatch(html, /bpm|4,644,325|2026-11-16|51\.4|14\.3/);
 });
 
+test('the brokerage project entry links to the private route without exposing balances or account IDs', () => {
+  const card = cards.find((value) => value.includes('data-project="brokers"'));
+  assert.ok(card);
+  assert.match(card, /href="\/projects\/broker-dashboard\/"/);
+  assert.doesNotMatch(card, /7670|8065|1692|HK\$/);
+});
+
 test('three topic groups preserve every existing active destination', () => {
   const routes = {
     health: ['/health/history/', '/health/weight/', '/projects/workout', '/projects/yoga-poses', '/health/environment/', '/health/records/'],
     music: ['/projects/interval-quiz', '/projects/degree-quiz', '/projects/chord-trainer', '/projects/left-hand-voicing-trainer', '/projects/stem-splitter', '/projects/song-leadsheet-database'],
-    systems: ['/projects/dockingtech', '/projects/server-assets'],
+    systems: ['/projects/dockingtech', '/projects/server-assets', '/projects/broker-dashboard/'],
   };
   for (const [id, paths] of Object.entries(routes)) {
     assert.equal((group(id).match(/class="purpose-card"/g) || []).length, paths.length);
@@ -82,7 +89,7 @@ test('archive remains folded, with SocialPulse and three historical records', ()
 });
 
 function mount(hash = '') {
-  const counts = [6, 6, 2];
+  const counts = [6, 6, 3];
   const groups = ['health', 'music', 'systems'].map((id, i) => ({
     dataset: { projectGroup: id }, hidden: false,
     querySelectorAll: () => Array(counts[i]).fill({}),
@@ -111,20 +118,20 @@ function mount(hash = '') {
 
 test('category filters update visibility, counts and pressed state', () => {
   const app = mount();
-  assert.equal(app.count.textContent, '14');
+  assert.equal(app.count.textContent, '15');
   app.filters[3].listeners.click();
-  assert.equal(app.count.textContent, '2');
+  assert.equal(app.count.textContent, '3');
   assert.deepEqual(app.groups.map((g) => g.hidden), [true, true, false]);
   assert.equal(app.filters[3].attributes['aria-pressed'], 'true');
   app.filters[0].listeners.click();
-  assert.equal(app.count.textContent, '14');
+  assert.equal(app.count.textContent, '15');
 });
 
 test('legacy hash links reveal the selected topic and open the archive', () => {
   assert.equal(mount('#music').count.textContent, '6');
   const app = mount('#archive');
   assert.equal(app.archive.open, true);
-  assert.equal(app.count.textContent, '14');
+  assert.equal(app.count.textContent, '15');
   app.window.location.hash = '#health';
   app.listeners.hashchange();
   assert.equal(app.count.textContent, '6');

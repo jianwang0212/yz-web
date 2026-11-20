@@ -80,7 +80,7 @@
                     <button type="button" data-project-filter="music" aria-pressed="false"><span data-i18n="projects.page.music">音乐</span></button>
                     <button type="button" data-project-filter="systems" aria-pressed="false"><span data-i18n="projects.page.systems">工作与研究</span></button>
                 </div>
-                <output class="project-results-count" aria-live="polite" aria-atomic="true"><span data-project-count>14</span> <span data-i18n="projects.page.countSuffix">个项目</span></output>
+                <output class="project-results-count" aria-live="polite" aria-atomic="true"><span data-project-count>15</span> <span data-i18n="projects.page.countSuffix">个项目</span></output>
             </div>
             <div class="project-groups">
                 <section id="health" class="project-group" data-project-group="health" aria-labelledby="health-title">
@@ -178,7 +178,7 @@
                     </div>
                 </section>
                 <section id="systems" class="project-group" data-project-group="systems" aria-labelledby="systems-title">
-                    <div class="project-group-heading"><h2 data-i18n="projects.page.systems" id="systems-title">工作与研究</h2><small data-i18n="projects.page.systemsNote">公司与服务器</small></div>
+                    <div class="project-group-heading"><h2 data-i18n="projects.page.systems" id="systems-title">工作与研究</h2><small data-i18n="projects.page.systemsNote">公司、服务器与投资</small></div>
                     <div class="purpose-grid">
                         <a class="purpose-card" href="/projects/dockingtech" data-project="docking" aria-labelledby="project-docking-title">
                             <div class="purpose-card-top"><span data-i18n="projects.item.docking.type" class="purpose-card-type">公司与业务</span><span class="purpose-card-index" aria-hidden="true">01</span></div>
@@ -193,6 +193,13 @@
                             <p data-i18n="projects.item.servers.desc" class="purpose-card-description">汇总服务器用途、配置和费用，查看 CPU、内存与磁盘状态。</p>
                             <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.servers.when">核对资源成本与排查运行异常</span></p>
                             <div class="purpose-card-footer"><span data-i18n="projects.item.servers.outputs" class="purpose-card-outputs">资产清单 · 资源状态</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
+                        </a>
+                        <a class="purpose-card" href="/projects/broker-dashboard/" data-project="brokers" aria-labelledby="project-brokers-title">
+                            <div class="purpose-card-top"><span data-i18n="projects.item.brokers.type" class="purpose-card-type">组合监控</span><span class="purpose-card-index" aria-hidden="true">03</span></div>
+                            <h3 data-i18n="projects.item.brokers.name" id="project-brokers-title">证券组合看板</h3>
+                            <p data-i18n="projects.item.brokers.desc" class="purpose-card-description">合并富途与 Tiger，查看净值、累计收益率和账户分布。</p>
+                            <p class="purpose-card-use"><span data-i18n="projects.page.useLabel" class="purpose-use-label">使用场景</span><span data-i18n="projects.item.brokers.when">核对证券资产与组合表现</span></p>
+                            <div class="purpose-card-footer"><span data-i18n="projects.item.brokers.outputs" class="purpose-card-outputs">净值曲线 · 账户分布</span><span class="purpose-card-open"><span data-i18n="projects.page.openLabel">打开</span><span aria-hidden="true">↗</span></span></div>
                         </a>
                     </div>
                 </section>
@@ -222,7 +229,7 @@
     </footer>
 
     <script src="i18n.js?v=20260722-public-copy1"></script>
-    <script src="/projects-copy.js?v=20261117-selected-a"></script>
+    <script src="/projects-copy.js?v=20261120-broker-dashboard"></script>
     <script src="/projects-index.js?v=20261117-selected-a"></script>
     <script src="/script.js?v=20260720-language-availability1"></script>
 </body>
