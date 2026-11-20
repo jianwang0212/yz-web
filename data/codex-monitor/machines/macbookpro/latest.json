@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T02:30:53.772Z",
+  "syncedAt": "2026-11-20T02:36:16.896Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 103756746,
-    "weekTokens": 2647203362,
-    "totalTokens": 5497924584,
-    "estimatedCostUsd": 2335.7980679600005,
-    "cpu": 6.873203324905295,
-    "memoryBytes": 3728474112
+    "activeAgents": 23,
+    "todayTokens": 109512612,
+    "weekTokens": 2652959228,
+    "totalTokens": 5503680450,
+    "estimatedCostUsd": 2336.6005375600002,
+    "cpu": 6.832718013601159,
+    "memoryBytes": 3671293952
   },
   "agents": [
     {
@@ -24,19 +24,8 @@
       "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
       "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.400540309967297,
-      "memoryBytes": 604225536,
-      "confidence": "high"
-    },
-    {
-      "agentId": "3e0c0d2a4e7c28f3",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f6ca-5fc2-7131-9fc4-abaecf2a4b1b",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 1.400540309967297,
-      "memoryBytes": 604225536,
+      "cpu": 1.3899388171312033,
+      "memoryBytes": 598343680,
       "confidence": "high"
     },
     {
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026259814605708884,
+      "cpu": 0.000002623762895794633,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026259814605708884,
+      "cpu": 0.000002623762895794633,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005025125628140704,
+      "cpu": 0.004665629860031105,
       "memoryBytes": 103809024,
       "confidence": "low"
     },
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.012685495452369555,
+      "cpu": 0.011777777777777778,
       "memoryBytes": 163397632,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.012927938711994253,
+      "cpu": 0.012002667259390976,
       "memoryBytes": 216268800,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-milc8hkr",
-      "cpu": 0.10148232611174458,
+      "cpu": 0.09210971892990179,
       "memoryBytes": 134676480,
+      "confidence": "low"
+    },
+    {
+      "agentId": "5c18d23e91a451e6",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.004781829049611476,
+      "memoryBytes": 70107136,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 361297058,
-      "inputTokens": 6816144,
-      "outputTokens": 1014802,
-      "costUSD": 59.1269192
+      "totalTokens": 367052924,
+      "inputTokens": 6883727,
+      "outputTokens": 1024749,
+      "costUSD": 59.9293888
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T02:30:56.677Z"
+  "receivedAt": "2026-11-20T02:36:19.658Z"
 }
