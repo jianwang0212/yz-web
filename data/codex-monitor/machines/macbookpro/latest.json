@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T02:41:39.191Z",
+  "syncedAt": "2026-11-20T02:47:01.264Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,12 +9,12 @@
   },
   "summary": {
     "activeAgents": 25,
-    "todayTokens": 115142963,
-    "weekTokens": 2658589579,
-    "totalTokens": 5509310801,
-    "estimatedCostUsd": 2337.52658516,
-    "cpu": 6.757338587810329,
-    "memoryBytes": 3723689984
+    "todayTokens": 119969688,
+    "weekTokens": 2663416304,
+    "totalTokens": 5514137526,
+    "estimatedCostUsd": 2338.30781276,
+    "cpu": 6.64348516984142,
+    "memoryBytes": 3660906496
   },
   "agents": [
     {
@@ -24,30 +24,19 @@
       "sessionId": "01a1f674-2835-74d2-b326-4993eb27573f",
       "sessionTitle": "**小米三腿合并计算。** HK1810、XIAOMI、XIAOMIHKD 三条腿 30 天的合计净额一直在 −$214 到 −$1,126 之间，远低于 ±$15,000 的阈值。把它们当成同一个标的来算，3 条偏仓报警和 2 条“对冲 0%”的杠杆报警就都没了。KSTR 和 KSTRB 也基本是 1:1 的镜像，合计净额约 −$157，建议写进 `coin_alias.json`。INTW/INTWB、XAU/XAUT、RON/RONIN、INTC/XINTC 如果还没写进去，也一起补上。 这个问题怎么还没解决, 在 dashboard 上也要解决啊 [http://127.0.0.1:8050/#investors-pnl](http://127.0.0.1:8050/#investors-pnl)",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.3943735347746808,
-      "memoryBytes": 608927744,
+      "cpu": 1.4013248343957005,
+      "memoryBytes": 619282432,
       "confidence": "high"
     },
     {
-      "agentId": "7d4d3e99aff53a3e",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
-      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
-      "workspaceLabel": "Docking2611",
-      "cpu": 1.3943735347746808,
-      "memoryBytes": 608927744,
-      "confidence": "high"
-    },
-    {
-      "agentId": "3e0c0d2a4e7c28f3",
+      "agentId": "b647374003bb8fcc",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a1f6ca-5fc2-7131-9fc4-abaecf2a4b1b",
+      "sessionId": "01a1f6d2-c19b-7473-87a9-246c02f04291",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.3943735347746808,
-      "memoryBytes": 608927744,
+      "cpu": 1.4013248343957005,
+      "memoryBytes": 619282432,
       "confidence": "high"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002621541204073875,
+      "cpu": 0.0000026193232716395394,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002621541204073875,
+      "cpu": 0.0000026193232716395394,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004560530679933665,
-      "memoryBytes": 103809024,
+      "cpu": 0.004274334563823587,
+      "memoryBytes": 103776256,
       "confidence": "low"
     },
     {
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01119635081899233,
-      "memoryBytes": 163397632,
+      "cpu": 0.010493587252234746,
+      "memoryBytes": 163201024,
       "confidence": "low"
     },
     {
@@ -101,18 +90,29 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011406055578598091,
-      "memoryBytes": 216252416,
+      "cpu": 0.010689990281827016,
+      "memoryBytes": 212058112,
+      "confidence": "low"
+    },
+    {
+      "agentId": "18990b533472fc5d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "weihui-own-text-server-milc8hkr",
+      "cpu": 0.08613503751041957,
+      "memoryBytes": 137887744,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3375752535,
-      "inputTokens": 59188941,
-      "outputTokens": 10881418,
-      "costUSD": 800.0291024000004
+      "totalTokens": 3377577928,
+      "inputTokens": 59249409,
+      "outputTokens": 10890951,
+      "costUSD": 800.4209076000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 372306391,
-      "inputTokens": 6911680,
-      "outputTokens": 1036951,
-      "costUSD": 60.628646
+      "totalTokens": 375307723,
+      "inputTokens": 6924264,
+      "outputTokens": 1043555,
+      "costUSD": 61.018068400000004
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T02:41:42.463Z"
+  "receivedAt": "2026-11-20T02:47:04.305Z"
 }
