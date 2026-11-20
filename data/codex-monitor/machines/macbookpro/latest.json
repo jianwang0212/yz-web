@@ -1,31 +1,31 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T23:16:13.623Z",
+  "syncedAt": "2026-11-20T23:21:39.839Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
-    "todayTokens": 4936873,
-    "weekTokens": 2725151980,
-    "totalTokens": 5626647199,
-    "estimatedCostUsd": 2356.1501379600004,
-    "cpu": 8.258532536447476,
-    "memoryBytes": 20224245760
+    "activeAgents": 24,
+    "todayTokens": 7869338,
+    "weekTokens": 2728084445,
+    "totalTokens": 5629579664,
+    "estimatedCostUsd": 2357.16717516,
+    "cpu": 8.782493534007212,
+    "memoryBytes": 20856135680
   },
   "agents": [
     {
-      "agentId": "71d46bbdf309d622",
+      "agentId": "a410074f2e9abfdc",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1fb3e-b26e-7783-920c-703968374924",
-      "sessionTitle": "",
-      "workspaceLabel": "yz-web",
-      "cpu": 0.2987731036929212,
-      "memoryBytes": 407027712,
+      "sessionId": "01a1f700-bea9-7553-a342-6934f7d450de",
+      "sessionTitle": "帮我分析一下我最近一年的交易决策 - 去我的服务器, 特别是 futu 和 tiger 的实际交易记录里面 ，有什么可以改进的？有什么可以在发生问题之前预警的？对我未来有什么警示作用",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.3033577816223592,
+      "memoryBytes": 382435328,
       "confidence": "high"
     },
     {
@@ -35,30 +35,8 @@
       "sessionId": "01a1f152-ce31-7ce0-9d9d-d3ca65256966",
       "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-16a5213d-94bb-40bc-b755-70e6904ec28d.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-16a5213d-94bb-40bc-b755-70e6904ec28d.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n微信这个邮件 你可以 formating 一下么? 然后给我一个晨间早报, 告诉我发生了什么?  你如果不知道背景可以查微信数据库得知",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.2987731036929212,
-      "memoryBytes": 407027712,
-      "confidence": "high"
-    },
-    {
-      "agentId": "06fbcfd9276793ba",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1fb3e-25b6-7d51-b0d3-d1d1f93e3709",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2987731036929212,
-      "memoryBytes": 407027712,
-      "confidence": "high"
-    },
-    {
-      "agentId": "d944da2640007a2b",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1fb3c-53b8-79e1-9e3b-8c6fa80ade71",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.019715833430296446,
-      "memoryBytes": 120373248,
+      "cpu": 0.3033577816223592,
+      "memoryBytes": 382435328,
       "confidence": "high"
     },
     {
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002195254737359723,
+      "cpu": 0.000002193680007897248,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002195254737359723,
+      "cpu": 0.000002193680007897248,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0013054995753957691,
-      "memoryBytes": 99614720,
+      "cpu": 0.0013001110774512774,
+      "memoryBytes": 99368960,
       "confidence": "low"
     },
     {
@@ -101,18 +79,40 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0017744879334820522,
-      "memoryBytes": 123355136,
+      "cpu": 0.0017797861732072756,
+      "memoryBytes": 123224064,
+      "confidence": "low"
+    },
+    {
+      "agentId": "1637c56409e17b8e",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0019439044709802834,
+      "memoryBytes": 125190144,
+      "confidence": "low"
+    },
+    {
+      "agentId": "18990b533472fc5d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "weihui-own-text-server-milc8hkr",
+      "cpu": 0.01968432978011226,
+      "memoryBytes": 94339072,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3388238962,
-      "inputTokens": 59686424,
-      "outputTokens": 10933722,
-      "costUSD": 803.1905340000004
+      "totalTokens": 3388371393,
+      "inputTokens": 59688037,
+      "outputTokens": 10934364,
+      "costUSD": 803.2131976000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 477156362,
-      "inputTokens": 8420241,
-      "outputTokens": 1250169,
-      "costUSD": 76.0907672
+      "totalTokens": 479956396,
+      "inputTokens": 8709246,
+      "outputTokens": 1266862,
+      "costUSD": 77.0851408
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T23:16:16.680Z"
+  "receivedAt": "2026-11-20T23:21:43.047Z"
 }
