@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T03:51:18.421Z",
+  "syncedAt": "2026-11-20T03:56:39.867Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
-    "todayTokens": 165606515,
-    "weekTokens": 2709053131,
-    "totalTokens": 5559774353,
-    "estimatedCostUsd": 2345.0155419600005,
-    "cpu": 5.646105507382827,
-    "memoryBytes": 3528212480
+    "activeAgents": 25,
+    "todayTokens": 173848762,
+    "weekTokens": 2717295378,
+    "totalTokens": 5568016600,
+    "estimatedCostUsd": 2346.0666823600004,
+    "cpu": 5.675419360986595,
+    "memoryBytes": 3498770432
   },
   "agents": [
-    {
-      "agentId": "ff4b5d98a3dba9d6",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
-      "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
-      "workspaceLabel": "linux-do",
-      "cpu": 1.2351155338168325,
-      "memoryBytes": 692912128,
-      "confidence": "high"
-    },
     {
       "agentId": "7d4d3e99aff53a3e",
       "processName": "codex",
@@ -35,19 +24,8 @@
       "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
       "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.2351155338168325,
-      "memoryBytes": 692912128,
-      "confidence": "high"
-    },
-    {
-      "agentId": "76fabbad7dd76a1e",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1f713-ebed-7931-aa15-17aaa6ee0322",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 1.2351155338168325,
-      "memoryBytes": 692912128,
+      "cpu": 1.2427128664093932,
+      "memoryBytes": 715063296,
       "confidence": "high"
     },
     {
@@ -57,19 +35,30 @@
       "sessionId": "01a1f700-bea9-7553-a342-6934f7d450de",
       "sessionTitle": "帮我分析一下我最近一年的交易决策 - 去我的服务器, 特别是 futu 和 tiger 的实际交易记录里面 ，有什么可以改进的？有什么可以在发生问题之前预警的？对我未来有什么警示作用",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.2351155338168325,
-      "memoryBytes": 692912128,
+      "cpu": 1.2427128664093932,
+      "memoryBytes": 715063296,
       "confidence": "high"
     },
     {
-      "agentId": "40d812200b7757c4",
+      "agentId": "7a9c6b9f37a15449",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f70e-a748-7743-b2e9-442ff3ebea6c",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 1.2427128664093932,
+      "memoryBytes": 715063296,
+      "confidence": "high"
+    },
+    {
+      "agentId": "c268f59a4ffc5434",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a1ecf9-c6b2-7463-a416-13120fccf7f8",
-      "sessionTitle": "linux.do 上面是不是有闲鱼和淘宝便宜的东西 ? 给我做一个客制化的",
-      "workspaceLabel": "lin",
-      "cpu": 1.2351155338168325,
-      "memoryBytes": 692912128,
+      "sessionId": "01a1f717-8d5a-7a91-991a-747d78ba5372",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 1.2427128664093932,
+      "memoryBytes": 715063296,
       "confidence": "high"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002593125623970853,
+      "cpu": 0.000002590968918736851,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002593125623970853,
+      "cpu": 0.000002590968918736851,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002887605508662817,
-      "memoryBytes": 103809024,
+      "cpu": 0.0028954423592493297,
+      "memoryBytes": 103841792,
+      "confidence": "low"
+    },
+    {
+      "agentId": "73ba702885b9a727",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.006327756327756328,
+      "memoryBytes": 163201024,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 416515396,
-      "inputTokens": 7232714,
-      "outputTokens": 1134202,
-      "costUSD": 66.62229599999999
+      "totalTokens": 424757643,
+      "inputTokens": 7270015,
+      "outputTokens": 1149964,
+      "costUSD": 67.67343640000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T03:51:21.561Z"
+  "receivedAt": "2026-11-20T03:56:42.892Z"
 }
