@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T03:45:57.029Z",
+  "syncedAt": "2026-11-20T03:51:18.421Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 157338119,
-    "weekTokens": 2700784735,
-    "totalTokens": 5551505957,
-    "estimatedCostUsd": 2343.5616923600005,
-    "cpu": 5.61419480555405,
-    "memoryBytes": 3573989376
+    "activeAgents": 26,
+    "todayTokens": 165606515,
+    "weekTokens": 2709053131,
+    "totalTokens": 5559774353,
+    "estimatedCostUsd": 2345.0155419600005,
+    "cpu": 5.646105507382827,
+    "memoryBytes": 3528212480
   },
   "agents": [
+    {
+      "agentId": "ff4b5d98a3dba9d6",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1ebf4-b68b-7a63-ad46-22e3690b4317",
+      "sessionTitle": "这个可以做个 python, 参考 GTarb 的邮件, 从我服务器发送么?",
+      "workspaceLabel": "linux-do",
+      "cpu": 1.2351155338168325,
+      "memoryBytes": 692912128,
+      "confidence": "high"
+    },
     {
       "agentId": "7d4d3e99aff53a3e",
       "processName": "codex",
@@ -24,30 +35,41 @@
       "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
       "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
       "workspaceLabel": "Docking2611",
-      "cpu": 1.2308425797503468,
-      "memoryBytes": 690274304,
+      "cpu": 1.2351155338168325,
+      "memoryBytes": 692912128,
       "confidence": "high"
     },
     {
-      "agentId": "7a9c6b9f37a15449",
+      "agentId": "76fabbad7dd76a1e",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1f70e-a748-7743-b2e9-442ff3ebea6c",
+      "sessionId": "01a1f713-ebed-7931-aa15-17aaa6ee0322",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.2308425797503468,
-      "memoryBytes": 690274304,
+      "cpu": 1.2351155338168325,
+      "memoryBytes": 692912128,
       "confidence": "high"
     },
     {
-      "agentId": "80a203fd1304a70a",
+      "agentId": "a410074f2e9abfdc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f700-bea9-7553-a342-6934f7d450de",
+      "sessionTitle": "帮我分析一下我最近一年的交易决策 - 去我的服务器, 特别是 futu 和 tiger 的实际交易记录里面 ，有什么可以改进的？有什么可以在发生问题之前预警的？对我未来有什么警示作用",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.2351155338168325,
+      "memoryBytes": 692912128,
+      "confidence": "high"
+    },
+    {
+      "agentId": "40d812200b7757c4",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a1f70d-a381-7420-be6b-511e2f3becbe",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 1.2308425797503468,
-      "memoryBytes": 690274304,
+      "sessionId": "01a1ecf9-c6b2-7463-a416-13120fccf7f8",
+      "sessionTitle": "linux.do 上面是不是有闲鱼和淘宝便宜的东西 ? 给我做一个客制化的",
+      "workspaceLabel": "lin",
+      "cpu": 1.2351155338168325,
+      "memoryBytes": 692912128,
       "confidence": "high"
     },
     {
@@ -57,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000025952926581765994,
+      "cpu": 0.000002593125623970853,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -68,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000025952926581765994,
+      "cpu": 0.000002593125623970853,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -79,40 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002994701681640175,
+      "cpu": 0.002887605508662817,
       "memoryBytes": 103809024,
-      "confidence": "low"
-    },
-    {
-      "agentId": "73ba702885b9a727",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.006681257919594516,
-      "memoryBytes": 163201024,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1637c56409e17b8e",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0067972350230414745,
-      "memoryBytes": 148930560,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3381226608,
-      "inputTokens": 59271748,
-      "outputTokens": 10902188,
-      "costUSD": 800.9394660000004
+      "totalTokens": 3382007082,
+      "inputTokens": 59523357,
+      "outputTokens": 10905101,
+      "costUSD": 801.5244092000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 409027474,
-      "inputTokens": 7207908,
-      "outputTokens": 1126830,
-      "costUSD": 65.75338959999999
+      "totalTokens": 416515396,
+      "inputTokens": 7232714,
+      "outputTokens": 1134202,
+      "costUSD": 66.62229599999999
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T03:46:00.097Z"
+  "receivedAt": "2026-11-20T03:51:21.561Z"
 }
