@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T23:48:46.316Z",
+  "syncedAt": "2026-11-20T23:54:08.211Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 22,
+    "activeAgents": 24,
     "todayTokens": 14054271,
     "weekTokens": 2734269378,
     "totalTokens": 5635764597,
     "estimatedCostUsd": 2357.9879099600003,
-    "cpu": 1.9008216116219174,
-    "memoryBytes": 2627076096
+    "cpu": 3.1143143865456895,
+    "memoryBytes": 2998157312
   },
   "agents": [
+    {
+      "agentId": "06fbcfd9276793ba",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1fb3e-25b6-7d51-b0d3-d1d1f93e3709",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.303438180584812,
+      "memoryBytes": 362725376,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002185873573444259,
+      "cpu": 0.000002184340896977746,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -35,8 +46,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002185873573444259,
+      "cpu": 0.000002184340896977746,
       "memoryBytes": 7847936,
+      "confidence": "low"
+    },
+    {
+      "agentId": "3da206776ab32c60",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.19135802469135804,
+      "memoryBytes": 144998400,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f547925c500ab474",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.02469135802469136,
+      "memoryBytes": 68485120,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e836e5edf53ead93",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1,
+      "memoryBytes": 4177920,
       "confidence": "low"
     },
     {
@@ -46,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0012986691733043092,
-      "memoryBytes": 101236736,
+      "cpu": 0.0013058529313934436,
+      "memoryBytes": 103251968,
       "confidence": "low"
     },
     {
@@ -57,52 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0017686856068570582,
-      "memoryBytes": 124354560,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1637c56409e17b8e",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.001929499072356215,
-      "memoryBytes": 126435328,
-      "confidence": "low"
-    },
-    {
-      "agentId": "18990b533472fc5d",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "weihui-own-text-server-milc8hkr",
-      "cpu": 0.01955765156864723,
-      "memoryBytes": 104071168,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1b22924a4182bbb9",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000023891722712666194,
-      "memoryBytes": 7356416,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4b8730bf63ebaa43",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000011945861356333097,
-      "memoryBytes": 7356416,
+      "cpu": 0.001774010742620608,
+      "memoryBytes": 127533056,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T23:48:49.299Z"
+  "receivedAt": "2026-11-20T23:54:10.987Z"
 }
