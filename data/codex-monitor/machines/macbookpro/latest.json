@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-20T02:47:01.264Z",
+  "syncedAt": "2026-11-20T02:52:23.835Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,34 +9,56 @@
   },
   "summary": {
     "activeAgents": 25,
-    "todayTokens": 119969688,
-    "weekTokens": 2663416304,
-    "totalTokens": 5514137526,
-    "estimatedCostUsd": 2338.30781276,
-    "cpu": 6.64348516984142,
-    "memoryBytes": 3660906496
+    "todayTokens": 128743699,
+    "weekTokens": 2672190315,
+    "totalTokens": 5522911537,
+    "estimatedCostUsd": 2339.4882811600005,
+    "cpu": 6.5502427967269625,
+    "memoryBytes": 3450863616
   },
   "agents": [
     {
-      "agentId": "dfd855c82a029068",
+      "agentId": "ee77b761138488d4",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a1f674-2835-74d2-b326-4993eb27573f",
-      "sessionTitle": "**小米三腿合并计算。** HK1810、XIAOMI、XIAOMIHKD 三条腿 30 天的合计净额一直在 −$214 到 −$1,126 之间，远低于 ±$15,000 的阈值。把它们当成同一个标的来算，3 条偏仓报警和 2 条“对冲 0%”的杠杆报警就都没了。KSTR 和 KSTRB 也基本是 1:1 的镜像，合计净额约 −$157，建议写进 `coin_alias.json`。INTW/INTWB、XAU/XAUT、RON/RONIN、INTC/XINTC 如果还没写进去，也一起补上。 这个问题怎么还没解决, 在 dashboard 上也要解决啊 [http://127.0.0.1:8050/#investors-pnl](http://127.0.0.1:8050/#investors-pnl)",
-      "workspaceLabel": "Docking2611",
-      "cpu": 1.4013248343957005,
-      "memoryBytes": 619282432,
+      "sessionId": "01a1f6de-05be-7041-9b1a-af5bfd509683",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 1.413913252433017,
+      "memoryBytes": 626704384,
       "confidence": "high"
     },
     {
-      "agentId": "b647374003bb8fcc",
+      "agentId": "7d4d3e99aff53a3e",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a1f6d2-c19b-7473-87a9-246c02f04291",
+      "status": "running",
+      "sessionId": "01a1f2fc-caca-7fc0-af26-5662c86bd310",
+      "sessionTitle": "查一下我今年 futu 亏损了多少? 亏损最多的是什么? 给我个 list",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.413913252433017,
+      "memoryBytes": 626704384,
+      "confidence": "high"
+    },
+    {
+      "agentId": "8ebb7318afe057b3",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a1f6dd-79fd-7390-baa2-4c4fc43dfc82",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 1.4013248343957005,
-      "memoryBytes": 619282432,
+      "cpu": 1.413913252433017,
+      "memoryBytes": 626704384,
+      "confidence": "high"
+    },
+    {
+      "agentId": "dfd855c82a029068",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a1f674-2835-74d2-b326-4993eb27573f",
+      "sessionTitle": "**小米三腿合并计算。** HK1810、XIAOMI、XIAOMIHKD 三条腿 30 天的合计净额一直在 −$214 到 −$1,126 之间，远低于 ±$15,000 的阈值。把它们当成同一个标的来算，3 条偏仓报警和 2 条“对冲 0%”的杠杆报警就都没了。KSTR 和 KSTRB 也基本是 1:1 的镜像，合计净额约 −$157，建议写进 `coin_alias.json`。INTW/INTWB、XAU/XAUT、RON/RONIN、INTC/XINTC 如果还没写进去，也一起补上。 这个问题怎么还没解决, 在 dashboard 上也要解决啊 [http://127.0.0.1:8050/#investors-pnl](http://127.0.0.1:8050/#investors-pnl)",
+      "workspaceLabel": "Docking2611",
+      "cpu": 1.413913252433017,
+      "memoryBytes": 626704384,
       "confidence": "high"
     },
     {
@@ -46,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026193232716395394,
+      "cpu": 0.0000026171159382360637,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -57,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000026193232716395394,
+      "cpu": 0.0000026171159382360637,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004274334563823587,
-      "memoryBytes": 103776256,
+      "cpu": 0.004022673249222892,
+      "memoryBytes": 103792640,
       "confidence": "low"
     },
     {
@@ -79,40 +101,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010493587252234746,
-      "memoryBytes": 163201024,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1637c56409e17b8e",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.010689990281827016,
-      "memoryBytes": 212058112,
-      "confidence": "low"
-    },
-    {
-      "agentId": "18990b533472fc5d",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "weihui-own-text-server-milc8hkr",
-      "cpu": 0.08613503751041957,
-      "memoryBytes": 137887744,
+      "cpu": 0.009875640087783468,
+      "memoryBytes": 163233792,
       "confidence": "low"
     }
   ],
   "models": [
     {
       "model": "gpt-6.1-sol",
-      "totalTokens": 3377577928,
-      "inputTokens": 59249409,
-      "outputTokens": 10890951,
-      "costUSD": 800.4209076000004
+      "totalTokens": 3381226608,
+      "inputTokens": 59271748,
+      "outputTokens": 10902188,
+      "costUSD": 800.9394660000004
     },
     {
       "model": "gpt-5.6-sol",
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 375307723,
-      "inputTokens": 6924264,
-      "outputTokens": 1043555,
-      "costUSD": 61.018068400000004
+      "totalTokens": 380433054,
+      "inputTokens": 6955749,
+      "outputTokens": 1052601,
+      "costUSD": 61.679978399999996
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-20T02:47:04.305Z"
+  "receivedAt": "2026-11-20T02:52:27.097Z"
 }
