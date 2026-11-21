@@ -1,55 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-21T02:40:16.861Z",
+  "syncedAt": "2026-11-21T02:45:38.883Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
+    "activeAgents": 24,
     "todayTokens": 20813411,
     "weekTokens": 2741028518,
     "totalTokens": 5642523737,
     "estimatedCostUsd": 2359.6782123600005,
-    "cpu": 2.015353509856036,
-    "memoryBytes": 3432497152
+    "cpu": 1.9595577452307409,
+    "memoryBytes": 3365044224
   },
   "agents": [
-    {
-      "agentId": "d13bb0a0601f4900",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1fbf9-18dc-7832-9587-0c040885925a",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2909835629554764,
-      "memoryBytes": 506167296,
-      "confidence": "high"
-    },
-    {
-      "agentId": "0c04acc9663aefe2",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1fbf9-483b-7291-93c3-233e1af40e2d",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2909835629554764,
-      "memoryBytes": 506167296,
-      "confidence": "high"
-    },
-    {
-      "agentId": "e87d8257a942d108",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a1fba6-2c36-7be0-b1f3-805a0391aaf4",
-      "sessionTitle": "这个现在是在 python 然后用我的服务器端发的么? mac 关机也可以了对吧? 以后这个早上 6 点发. 把 routine 暂停",
-      "workspaceLabel": "AppleHealth",
-      "cpu": 0.2909835629554764,
-      "memoryBytes": 506167296,
-      "confidence": "high"
-    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -57,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002137793625954525,
+      "cpu": 0.00000213631848235935,
       "memoryBytes": 8028160,
       "confidence": "low"
     },
@@ -68,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000002137793625954525,
+      "cpu": 0.00000213631848235935,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -79,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01372161895360316,
+      "cpu": 0.01377594948818521,
       "memoryBytes": 145014784,
       "confidence": "low"
     },
@@ -90,19 +57,52 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0014807502467917078,
+      "cpu": 0.0015306610542428012,
       "memoryBytes": 69926912,
       "confidence": "low"
     },
     {
-      "agentId": "df88d48af543590b",
-      "processName": "ssh",
+      "agentId": "c7a8caecec1aa5b0",
+      "processName": "Codex (Aperitif Renderer)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.045454545454545456,
-      "memoryBytes": 4112384,
+      "cpu": 0.0012791918131723956,
+      "memoryBytes": 100433920,
+      "confidence": "low"
+    },
+    {
+      "agentId": "73ba702885b9a727",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0017165411149863878,
+      "memoryBytes": 124862464,
+      "confidence": "low"
+    },
+    {
+      "agentId": "1637c56409e17b8e",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0018586954144890774,
+      "memoryBytes": 128303104,
+      "confidence": "low"
+    },
+    {
+      "agentId": "18990b533472fc5d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "weihui-own-text-server-milc8hkr",
+      "cpu": 0.018884292005872147,
+      "memoryBytes": 106151936,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-21T02:40:19.890Z"
+  "receivedAt": "2026-11-21T02:45:41.797Z"
 }
