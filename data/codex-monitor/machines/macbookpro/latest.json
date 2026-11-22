@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T03:00:34.439Z",
+  "syncedAt": "2026-11-22T03:05:58.954Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 29,
-    "todayTokens": 55898902,
-    "weekTokens": 2554380057,
-    "totalTokens": 5698454223,
-    "estimatedCostUsd": 2371.9717027600004,
-    "cpu": 19.09124556875362,
-    "memoryBytes": 4312104960
+    "activeAgents": 27,
+    "todayTokens": 58315780,
+    "weekTokens": 2556796935,
+    "totalTokens": 5700871101,
+    "estimatedCostUsd": 2372.5968523600004,
+    "cpu": 2.0149095797114907,
+    "memoryBytes": 4173643776
   },
   "agents": [
+    {
+      "agentId": "421332273d0e3f05",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20137-6cf3-72c0-8bd4-45566261d61c",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.22761859781696053,
+      "memoryBytes": 891125760,
+      "confidence": "high"
+    },
     {
       "agentId": "f77370ec5ae403a8",
       "processName": "codex",
@@ -24,63 +35,30 @@
       "sessionId": "01a20132-38ed-7c31-8f2a-e30572150b0d",
       "sessionTitle": "人民币的涨, 相对美元, 是为什么? 持续 2 年了",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22083294905071213,
-      "memoryBytes": 866648064,
+      "cpu": 0.22761859781696053,
+      "memoryBytes": 891125760,
       "confidence": "high"
     },
     {
-      "agentId": "2b53df9a6e052b9f",
+      "agentId": "3a5097e48332479d",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a20122-7e0c-79c0-a2b9-091ca18d737b",
-      "sessionTitle": "孙宇晨最近怎么样?",
+      "sessionId": "01a20136-d9dd-7750-9dbc-23fc4d261b18",
+      "sessionTitle": "美国和中国利率相差这么大是由于汇率变化么?",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22083294905071213,
-      "memoryBytes": 866648064,
+      "cpu": 0.22761859781696053,
+      "memoryBytes": 891125760,
       "confidence": "high"
     },
     {
-      "agentId": "be49bf5ebd765204",
+      "agentId": "9238b51a5200ae9d",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a20132-3a54-7762-a252-d312399279be",
+      "sessionId": "01a20136-db5b-7141-8515-df6f00514364",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.22083294905071213,
-      "memoryBytes": 866648064,
-      "confidence": "high"
-    },
-    {
-      "agentId": "f33fa7260c555e9c",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a20130-8c2b-7432-9bd4-cbfcf1d33863",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.22083294905071213,
-      "memoryBytes": 866648064,
-      "confidence": "high"
-    },
-    {
-      "agentId": "6667f2e050dbc3b6",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a20131-2ba4-7f62-a0ae-1091a72930b7",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.22083294905071213,
-      "memoryBytes": 866648064,
-      "confidence": "high"
-    },
-    {
-      "agentId": "c78b44cdffd8ebbe",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a20130-8abf-77a3-af9e-1ed3595367d4",
-      "sessionTitle": "看一看我跟张婉婷的群聊; 有什么可以提醒她的地方? 关于她的高考和补课, 微信里面.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.22083294905071213,
-      "memoryBytes": 866648064,
+      "cpu": 0.22761859781696053,
+      "memoryBytes": 891125760,
       "confidence": "high"
     },
     {
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000036010796036651787,
+      "cpu": 0.0000035989735727370555,
       "memoryBytes": 8306688,
       "confidence": "low"
     },
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000018005398018325894,
+      "cpu": 0.0000017994867863685277,
       "memoryBytes": 7782400,
+      "confidence": "low"
+    },
+    {
+      "agentId": "6a7eea3841271cca",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.025146689019279127,
+      "memoryBytes": 131465216,
+      "confidence": "low"
+    },
+    {
+      "agentId": "21f658994ef37931",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.24140821458507963,
+      "memoryBytes": 442286080,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 543310090,
-      "inputTokens": 11600968,
-      "outputTokens": 1438786,
-      "costUSD": 90.61682959999999
+      "totalTokens": 545726968,
+      "inputTokens": 11760517,
+      "outputTokens": 1446899,
+      "costUSD": 91.24197919999999
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T03:00:37.433Z"
+  "receivedAt": "2026-11-22T03:06:01.665Z"
 }
