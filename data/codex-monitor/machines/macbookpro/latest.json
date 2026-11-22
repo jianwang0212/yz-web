@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T08:05:57.972Z",
+  "syncedAt": "2026-11-22T08:11:19.616Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,47 @@
   },
   "summary": {
     "activeAgents": 24,
-    "todayTokens": 64946769,
-    "weekTokens": 2563427924,
-    "totalTokens": 5707502090,
-    "estimatedCostUsd": 2374.1579807600006,
-    "cpu": 1.9628287451049493,
-    "memoryBytes": 3627073536
+    "todayTokens": 67160962,
+    "weekTokens": 2565642117,
+    "totalTokens": 5709716283,
+    "estimatedCostUsd": 2374.91007716,
+    "cpu": 1.7286431599893828,
+    "memoryBytes": 3701112832
   },
   "agents": [
+    {
+      "agentId": "874e6944481f2a71",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a2024d-b827-75e0-8a0a-bcaf4b52055c",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21594779260888877,
+      "memoryBytes": 825458688,
+      "confidence": "high"
+    },
+    {
+      "agentId": "6d1a2cb084a30feb",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20142-1a16-7551-8188-e2ad78a30d13",
+      "sessionTitle": "王者的 娱乐模式 终极之战, 有什么厉害的英雄? 玩法",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.21594779260888877,
+      "memoryBytes": 825458688,
+      "confidence": "high"
+    },
+    {
+      "agentId": "8b0e45f7ad82d7bc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a2024e-29dd-7452-b239-2524b1a3e3d5",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21594779260888877,
+      "memoryBytes": 825458688,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003486051436688948,
+      "cpu": 0.0000034841020423806175,
       "memoryBytes": 7913472,
       "confidence": "low"
     },
@@ -35,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000001743025718344474,
+      "cpu": 0.0000017420510211903087,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -46,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0034906741690111497,
+      "cpu": 0.0034844991032539074,
       "memoryBytes": 116932608,
       "confidence": "low"
     },
@@ -57,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.027091799520683548,
-      "memoryBytes": 264421376,
+      "cpu": 0.02685114014860364,
+      "memoryBytes": 264945664,
       "confidence": "low"
     },
     {
@@ -68,41 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014485202167569822,
-      "memoryBytes": 63209472,
-      "confidence": "low"
-    },
-    {
-      "agentId": "c3a68f523b531a0a",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "weihui-own-text-server-zkm6ero7",
-      "cpu": 0.02238100241672796,
-      "memoryBytes": 127254528,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f5f4b781492d9ce0",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010612218908851652,
-      "memoryBytes": 8355840,
-      "confidence": "low"
-    },
-    {
-      "agentId": "11420ff0018307a8",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010612218908851652,
-      "memoryBytes": 7815168,
+      "cpu": 0.01450315174499052,
+      "memoryBytes": 63160320,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 552357957,
-      "inputTokens": 12160149,
-      "outputTokens": 1460912,
-      "costUSD": 92.80310759999999
+      "totalTokens": 554572150,
+      "inputTokens": 12429683,
+      "outputTokens": 1462787,
+      "costUSD": 93.55520399999999
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T08:06:00.775Z"
+  "receivedAt": "2026-11-22T08:11:22.384Z"
 }
