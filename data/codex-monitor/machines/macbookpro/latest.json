@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T01:27:20.070Z",
+  "syncedAt": "2026-11-22T01:39:18.262Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,34 +9,34 @@
   },
   "summary": {
     "activeAgents": 22,
-    "todayTokens": 4520572,
-    "weekTokens": 2503001727,
-    "totalTokens": 5647075893,
-    "estimatedCostUsd": 2360.81866836,
-    "cpu": 1.1855860205726338,
-    "memoryBytes": 2725806080
+    "todayTokens": 8485381,
+    "weekTokens": 2506966536,
+    "totalTokens": 5651040702,
+    "estimatedCostUsd": 2361.4811407600005,
+    "cpu": 1.1802148647222928,
+    "memoryBytes": 2691252224
   },
   "agents": [
     {
-      "agentId": "e20a85e3ee10b8d4",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a200d7-6aa4-7f62-943c-b63b847ce032",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-354b1a79-3e43-4bf8-bab7-ca7b04a18230.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-354b1a79-3e43-4bf8-bab7-ca7b04a18230.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n&#x20;这是如何实现的? 键盘记忆?",
-      "workspaceLabel": "x20",
-      "cpu": 0.08978923383651381,
-      "memoryBytes": 463142912,
-      "confidence": "high"
-    },
-    {
       "agentId": "a6885467dd1d2e1e",
       "processName": "codex",
-      "status": "idle",
+      "status": "running",
       "sessionId": "01a200d4-eb6a-7c51-964e-176932632cc1",
       "sessionTitle": "帮我设置好\\~&#x20;\n\n| <br>**X benefits:** A checkmark, creator tools, and an ad-free timeline. |\n| ------------------------------------------------------------------------ |\n\n&#x20;\n\n| <br>**Cursor:** Leading local and cloud coding agents, with at least twice the coding usage of a comparable Cursor plan. |\n| ------------------------------------------------------------------------------------------------------------------------ |\n\n&#x20;  我刚搞的会员.",
       "workspaceLabel": "ban",
-      "cpu": 0.08978923383651381,
-      "memoryBytes": 463142912,
+      "cpu": 0.09785700205570105,
+      "memoryBytes": 433324032,
+      "confidence": "high"
+    },
+    {
+      "agentId": "cea46939ee7ae715",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a200e7-7a04-7302-be85-fe5c17c2df8f",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.09785700205570105,
+      "memoryBytes": 433324032,
       "confidence": "high"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003638282003238071,
+      "cpu": 0.0000036329816607085767,
       "memoryBytes": 8372224,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000018191410016190354,
+      "cpu": 0.0000018164908303542883,
       "memoryBytes": 7847936,
       "confidence": "low"
     },
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000014239740267137528,
+      "cpu": 0.000014078954778397252,
       "memoryBytes": 8077312,
       "confidence": "low"
     },
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000014239740267137528,
+      "cpu": 0.000014078954778397252,
       "memoryBytes": 7929856,
       "confidence": "low"
     },
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08753292986828053,
-      "memoryBytes": 131153920,
+      "cpu": 0.09148633618201528,
+      "memoryBytes": 131629056,
       "confidence": "low"
     },
     {
@@ -101,8 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08798860804556782,
-      "memoryBytes": 81854464,
+      "cpu": 0.08829036845143397,
+      "memoryBytes": 80756736,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 495011419,
-      "inputTokens": 9296864,
-      "outputTokens": 1306363,
-      "costUSD": 80.09817720000001
+      "totalTokens": 498976228,
+      "inputTokens": 9349479,
+      "outputTokens": 1323133,
+      "costUSD": 80.76064960000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T01:27:22.971Z"
+  "receivedAt": "2026-11-22T01:39:21.381Z"
 }
