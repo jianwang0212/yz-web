@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T09:26:24.412Z",
+  "syncedAt": "2026-11-22T09:32:03.430Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,36 @@
   },
   "summary": {
     "activeAgents": 23,
-    "todayTokens": 76411569,
-    "weekTokens": 2574892724,
-    "totalTokens": 5718966890,
-    "estimatedCostUsd": 2376.1525007600003,
-    "cpu": 1.847042997283756,
-    "memoryBytes": 3651403776
+    "todayTokens": 80180917,
+    "weekTokens": 2578662072,
+    "totalTokens": 5722736238,
+    "estimatedCostUsd": 2376.6275519600003,
+    "cpu": 1.8642221046505956,
+    "memoryBytes": 3718348800
   },
   "agents": [
+    {
+      "agentId": "49be6b3bc30897fb",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a20297-b2d8-79f0-9fe1-aa4fd142a9c8",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2189678938313093,
+      "memoryBytes": 822214656,
+      "confidence": "high"
+    },
+    {
+      "agentId": "6d1a2cb084a30feb",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a20142-1a16-7551-8188-e2ad78a30d13",
+      "sessionTitle": "王者的 娱乐模式 终极之战, 有什么厉害的英雄? 玩法",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2189678938313093,
+      "memoryBytes": 822214656,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000034569779099111554,
+      "cpu": 0.0000034549534531396024,
       "memoryBytes": 7913472,
       "confidence": "low"
     },
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017284889549555777,
+      "cpu": 0.0000017274767265698012,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0032474291186144304,
-      "memoryBytes": 117030912,
+      "cpu": 0.0032432876262418918,
+      "memoryBytes": 117080064,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.024397352096257128,
-      "memoryBytes": 267993088,
+      "cpu": 0.024222021512439445,
+      "memoryBytes": 268386304,
       "confidence": "low"
     },
     {
@@ -68,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014781196652371239,
+      "cpu": 0.014821809820988668,
       "memoryBytes": 63176704,
       "confidence": "low"
     },
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-zkm6ero7",
-      "cpu": 0.0213336686365732,
-      "memoryBytes": 127320064,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f5f4b781492d9ce0",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010095299628492974,
-      "memoryBytes": 8355840,
-      "confidence": "low"
-    },
-    {
-      "agentId": "11420ff0018307a8",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010095299628492974,
-      "memoryBytes": 7815168,
+      "cpu": 0.021241424911149682,
+      "memoryBytes": 127385600,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 563822757,
-      "inputTokens": 12562410,
-      "outputTokens": 1469371,
-      "costUSD": 94.7976276
+      "totalTokens": 567592105,
+      "inputTokens": 12602264,
+      "outputTokens": 1471633,
+      "costUSD": 95.2726788
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T09:26:27.274Z"
+  "receivedAt": "2026-11-22T09:32:06.366Z"
 }
