@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T03:05:58.954Z",
+  "syncedAt": "2026-11-22T03:11:22.933Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
-    "todayTokens": 58315780,
-    "weekTokens": 2556796935,
-    "totalTokens": 5700871101,
-    "estimatedCostUsd": 2372.5968523600004,
-    "cpu": 2.0149095797114907,
-    "memoryBytes": 4173643776
+    "activeAgents": 28,
+    "todayTokens": 59004307,
+    "weekTokens": 2557485462,
+    "totalTokens": 5701559628,
+    "estimatedCostUsd": 2372.7869255600003,
+    "cpu": 4.9630750014951275,
+    "memoryBytes": 4236853248
   },
   "agents": [
-    {
-      "agentId": "421332273d0e3f05",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a20137-6cf3-72c0-8bd4-45566261d61c",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.22761859781696053,
-      "memoryBytes": 891125760,
-      "confidence": "high"
-    },
     {
       "agentId": "f77370ec5ae403a8",
       "processName": "codex",
@@ -35,8 +24,19 @@
       "sessionId": "01a20132-38ed-7c31-8f2a-e30572150b0d",
       "sessionTitle": "人民币的涨, 相对美元, 是为什么? 持续 2 年了",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22761859781696053,
-      "memoryBytes": 891125760,
+      "cpu": 0.23108376443538695,
+      "memoryBytes": 891191296,
+      "confidence": "high"
+    },
+    {
+      "agentId": "c479f9d89a375594",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a2013b-deef-73d1-bf85-116d4ad69992",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.23108376443538695,
+      "memoryBytes": 891191296,
       "confidence": "high"
     },
     {
@@ -46,19 +46,8 @@
       "sessionId": "01a20136-d9dd-7750-9dbc-23fc4d261b18",
       "sessionTitle": "美国和中国利率相差这么大是由于汇率变化么?",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22761859781696053,
-      "memoryBytes": 891125760,
-      "confidence": "high"
-    },
-    {
-      "agentId": "9238b51a5200ae9d",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a20136-db5b-7141-8515-df6f00514364",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.22761859781696053,
-      "memoryBytes": 891125760,
+      "cpu": 0.23108376443538695,
+      "memoryBytes": 891191296,
       "confidence": "high"
     },
     {
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000035989735727370555,
+      "cpu": 0.0000035968764724713057,
       "memoryBytes": 8306688,
       "confidence": "low"
     },
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017994867863685277,
+      "cpu": 0.0000017984382362356528,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.025146689019279127,
-      "memoryBytes": 131465216,
+      "cpu": 0.02043506921555702,
+      "memoryBytes": 131579904,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.24140821458507963,
-      "memoryBytes": 442286080,
+      "cpu": 0.1924851680949242,
+      "memoryBytes": 442613760,
+      "confidence": "low"
+    },
+    {
+      "agentId": "099dfbd6a084bdd6",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.024422442244224424,
+      "memoryBytes": 71090176,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 545726968,
-      "inputTokens": 11760517,
-      "outputTokens": 1446899,
-      "costUSD": 91.24197919999999
+      "totalTokens": 546415495,
+      "inputTokens": 11809535,
+      "outputTokens": 1449736,
+      "costUSD": 91.43205239999999
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T03:06:01.665Z"
+  "receivedAt": "2026-11-22T03:11:25.935Z"
 }
