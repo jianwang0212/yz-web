@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T05:54:17.540Z",
+  "syncedAt": "2026-11-22T05:59:41.535Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -13,20 +13,31 @@
     "weekTokens": 2563362342,
     "totalTokens": 5707436508,
     "estimatedCostUsd": 2374.1002695600005,
-    "cpu": 1.771788317165303,
-    "memoryBytes": 3575218176
+    "cpu": 1.775135531305748,
+    "memoryBytes": 3691757568
   },
   "agents": [
     {
-      "agentId": "2b1a0eff4e1bac21",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
+      "agentId": "a1fbacd4b4bf87ef",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20141-c6ce-7ee3-9890-1e459a2768ff",
       "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4128768,
-      "confidence": "low"
+      "workspaceLabel": null,
+      "cpu": 0.2238392558311309,
+      "memoryBytes": 844546048,
+      "confidence": "high"
+    },
+    {
+      "agentId": "f490d6be99d2f7d8",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a2011d-d15a-7741-a853-4a3101846cab",
+      "sessionTitle": "为什么中国的内需消费起不来? 你对比一下中国和美国, 和其他东南亚国家",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2238392558311309,
+      "memoryBytes": 844546048,
+      "confidence": "high"
     },
     {
       "agentId": "5132156aa78f46b6",
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000035347304944734487,
+      "cpu": 0.000003532713813087645,
       "memoryBytes": 7913472,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017673652472367244,
+      "cpu": 0.0000017663569065438226,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004161870185070398,
-      "memoryBytes": 116310016,
+      "cpu": 0.004132231404958678,
+      "memoryBytes": 116523008,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.036305676082529,
-      "memoryBytes": 261767168,
+      "cpu": 0.035640495867768594,
+      "memoryBytes": 262012928,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014701975024355681,
+      "cpu": 0.014293094541071121,
       "memoryBytes": 63143936,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-zkm6ero7",
-      "cpu": 0.021827000808407437,
-      "memoryBytes": 121094144,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f5f4b781492d9ce0",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000011583458820803891,
-      "memoryBytes": 7962624,
+      "cpu": 0.021822625698324022,
+      "memoryBytes": 121110528,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T05:54:20.776Z"
+  "receivedAt": "2026-11-22T05:59:45.065Z"
 }
