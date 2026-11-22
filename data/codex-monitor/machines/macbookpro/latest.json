@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T08:32:48.840Z",
+  "syncedAt": "2026-11-22T08:38:09.066Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,36 @@
   },
   "summary": {
     "activeAgents": 23,
-    "todayTokens": 69129938,
-    "weekTokens": 2567611093,
-    "totalTokens": 5711685259,
-    "estimatedCostUsd": 2375.1654051600003,
-    "cpu": 1.7596623032904317,
-    "memoryBytes": 3636674560
+    "todayTokens": 70340200,
+    "weekTokens": 2568821355,
+    "totalTokens": 5712895521,
+    "estimatedCostUsd": 2375.3321771600004,
+    "cpu": 1.7734123310670011,
+    "memoryBytes": 3677650944
   },
   "agents": [
+    {
+      "agentId": "b11bd51d6ebc4c7f",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20267-a28e-72c0-a449-e48582bc1b54",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21681434335870878,
+      "memoryBytes": 818282496,
+      "confidence": "high"
+    },
+    {
+      "agentId": "6d1a2cb084a30feb",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20142-1a16-7551-8188-e2ad78a30d13",
+      "sessionTitle": "王者的 娱乐模式 终极之战, 有什么厉害的英雄? 玩法",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.21681434335870878,
+      "memoryBytes": 818282496,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003476296006604962,
+      "cpu": 0.000003474357504438492,
       "memoryBytes": 7913472,
       "confidence": "low"
     },
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000001738148003302481,
+      "cpu": 0.000001737178752219246,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -46,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.003412805229763507,
-      "memoryBytes": 116948992,
+      "cpu": 0.0034082840236686392,
+      "memoryBytes": 116981760,
       "confidence": "low"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.02605268217650452,
-      "memoryBytes": 265879552,
+      "cpu": 0.025893491124260357,
+      "memoryBytes": 266092544,
       "confidence": "low"
     },
     {
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014758196327276223,
-      "memoryBytes": 63160320,
+      "cpu": 0.014628603891492686,
+      "memoryBytes": 63209472,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-zkm6ero7",
-      "cpu": 0.02189498159271459,
+      "cpu": 0.021941330789410924,
       "memoryBytes": 127270912,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f5f4b781492d9ce0",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010433947892864223,
-      "memoryBytes": 8355840,
-      "confidence": "low"
-    },
-    {
-      "agentId": "11420ff0018307a8",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010433947892864223,
-      "memoryBytes": 7815168,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 556541126,
-      "inputTokens": 12453683,
-      "outputTokens": 1464083,
-      "costUSD": 93.810532
+      "totalTokens": 557751388,
+      "inputTokens": 12472544,
+      "outputTokens": 1465084,
+      "costUSD": 93.97730399999999
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T08:32:51.542Z"
+  "receivedAt": "2026-11-22T08:38:11.861Z"
 }
