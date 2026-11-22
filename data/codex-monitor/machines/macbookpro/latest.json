@@ -1,53 +1,31 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T03:11:22.933Z",
+  "syncedAt": "2026-11-22T03:16:45.691Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 28,
-    "todayTokens": 59004307,
-    "weekTokens": 2557485462,
-    "totalTokens": 5701559628,
-    "estimatedCostUsd": 2372.7869255600003,
-    "cpu": 4.9630750014951275,
-    "memoryBytes": 4236853248
+    "activeAgents": 24,
+    "todayTokens": 60033939,
+    "weekTokens": 2558515094,
+    "totalTokens": 5702589260,
+    "estimatedCostUsd": 2372.98111916,
+    "cpu": 1.9300562206669338,
+    "memoryBytes": 4186226688
   },
   "agents": [
     {
-      "agentId": "f77370ec5ae403a8",
+      "agentId": "a07fcdda5b8d731a",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a20132-38ed-7c31-8f2a-e30572150b0d",
-      "sessionTitle": "人民币的涨, 相对美元, 是为什么? 持续 2 年了",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.23108376443538695,
-      "memoryBytes": 891191296,
-      "confidence": "high"
-    },
-    {
-      "agentId": "c479f9d89a375594",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a2013b-deef-73d1-bf85-116d4ad69992",
+      "sessionId": "01a20136-bc27-7231-a8bc-78fd8ebcdad3",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.23108376443538695,
-      "memoryBytes": 891191296,
-      "confidence": "high"
-    },
-    {
-      "agentId": "3a5097e48332479d",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a20136-d9dd-7750-9dbc-23fc4d261b18",
-      "sessionTitle": "美国和中国利率相差这么大是由于汇率变化么?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.23108376443538695,
-      "memoryBytes": 891191296,
+      "cpu": 0.23270153894186363,
+      "memoryBytes": 899153920,
       "confidence": "high"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000035968764724713057,
+      "cpu": 0.0000035947882759575168,
       "memoryBytes": 8306688,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017984382362356528,
+      "cpu": 0.0000017973941379787584,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -79,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.02043506921555702,
-      "memoryBytes": 131579904,
+      "cpu": 0.01684782608695652,
+      "memoryBytes": 131563520,
       "confidence": "low"
     },
     {
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1924851680949242,
-      "memoryBytes": 442613760,
+      "cpu": 0.16032608695652173,
+      "memoryBytes": 441827328,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.024422442244224424,
-      "memoryBytes": 71090176,
+      "cpu": 0.02013057671381937,
+      "memoryBytes": 71073792,
+      "confidence": "low"
+    },
+    {
+      "agentId": "c3a68f523b531a0a",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "weihui-own-text-server-zkm6ero7",
+      "cpu": 0.05416666666666666,
+      "memoryBytes": 140558336,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f5f4b781492d9ce0",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000013007791667208657,
+      "memoryBytes": 7962624,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 546415495,
-      "inputTokens": 11809535,
-      "outputTokens": 1449736,
-      "costUSD": 91.43205239999999
+      "totalTokens": 547445127,
+      "inputTokens": 11845176,
+      "outputTokens": 1452111,
+      "costUSD": 91.626246
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T03:11:25.935Z"
+  "receivedAt": "2026-11-22T03:16:48.629Z"
 }
