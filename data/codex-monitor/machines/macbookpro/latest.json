@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T09:04:58.120Z",
+  "syncedAt": "2026-11-22T09:10:20.471Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 22,
-    "todayTokens": 74476400,
-    "weekTokens": 2572957555,
-    "totalTokens": 5717031721,
-    "estimatedCostUsd": 2375.89914196,
-    "cpu": 1.8207713590041588,
-    "memoryBytes": 3634298880
+    "activeAgents": 23,
+    "todayTokens": 75619456,
+    "weekTokens": 2574100611,
+    "totalTokens": 5718174777,
+    "estimatedCostUsd": 2376.0461371600004,
+    "cpu": 1.8289113653897215,
+    "memoryBytes": 3676061696
   },
   "agents": [
+    {
+      "agentId": "6d1a2cb084a30feb",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20142-1a16-7551-8188-e2ad78a30d13",
+      "sessionTitle": "王者的 娱乐模式 终极之战, 有什么厉害的英雄? 玩法",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.21831639259025148,
+      "memoryBytes": 820903936,
+      "confidence": "high"
+    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000034646733246139056,
+      "cpu": 0.0000034627417643015566,
       "memoryBytes": 7913472,
       "confidence": "low"
     },
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017323366623069528,
+      "cpu": 0.0000017313708821507783,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0032990234890472423,
+      "cpu": 0.0032963219986120746,
       "memoryBytes": 117030912,
       "confidence": "low"
     },
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.025072578516759036,
-      "memoryBytes": 267010048,
+      "cpu": 0.024939278278972934,
+      "memoryBytes": 267124736,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015176843216610945,
-      "memoryBytes": 63225856,
+      "cpu": 0.015008241519909777,
+      "memoryBytes": 63176704,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "weihui-own-text-server-zkm6ero7",
-      "cpu": 0.02166208912908656,
-      "memoryBytes": 127336448,
+      "cpu": 0.02157582110412299,
+      "memoryBytes": 127303680,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000010227981712368697,
+      "cpu": 0.000010194407348128816,
       "memoryBytes": 8355840,
-      "confidence": "low"
-    },
-    {
-      "agentId": "11420ff0018307a8",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000010227981712368697,
-      "memoryBytes": 7815168,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 561887588,
-      "inputTokens": 12537021,
-      "outputTokens": 1468199,
-      "costUSD": 94.5442688
+      "totalTokens": 563030644,
+      "inputTokens": 12552121,
+      "outputTokens": 1468603,
+      "costUSD": 94.69126399999999
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T09:05:01.932Z"
+  "receivedAt": "2026-11-22T09:10:23.270Z"
 }
