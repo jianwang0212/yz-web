@@ -1,55 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-22T06:10:32.018Z",
+  "syncedAt": "2026-11-22T06:15:57.062Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
+    "activeAgents": 23,
     "todayTokens": 64946769,
     "weekTokens": 2563427924,
     "totalTokens": 5707502090,
     "estimatedCostUsd": 2374.1579807600006,
-    "cpu": 3.2830528884562296,
-    "memoryBytes": 3706781696
+    "cpu": 1.7786275833548189,
+    "memoryBytes": 3657433088
   },
   "agents": [
-    {
-      "agentId": "bddbfa4eb7c7209f",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a201df-8b75-7e52-bd8c-4d6013644382",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.023787891302552242,
-      "memoryBytes": 126124032,
-      "confidence": "high"
-    },
-    {
-      "agentId": "067bde46eb6ecb30",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a201d6-4bdb-7e42-886f-291d674cac41",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2252972576691333,
-      "memoryBytes": 842268672,
-      "confidence": "high"
-    },
-    {
-      "agentId": "a91e0b3b2e869064",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a201de-1e8c-7352-b042-0acf5d4b530b",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.023787891302552242,
-      "memoryBytes": 126124032,
-      "confidence": "high"
-    },
     {
       "agentId": "5132156aa78f46b6",
       "processName": "browser_crashpad_handler",
@@ -57,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003528656217139389,
+      "cpu": 0.0000035266464589824566,
       "memoryBytes": 7913472,
       "confidence": "low"
     },
@@ -68,19 +35,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000017643281085696946,
+      "cpu": 0.0000017633232294912283,
       "memoryBytes": 7782400,
       "confidence": "low"
     },
     {
-      "agentId": "829b96b8f7e529f9",
+      "agentId": "f8da4d5394a38ddd",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 1.5,
-      "memoryBytes": 4489216,
+      "cpu": 0,
+      "memoryBytes": 4145152,
       "confidence": "low"
     },
     {
@@ -90,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004075976196299014,
+      "cpu": 0.003971405877680699,
       "memoryBytes": 116572160,
       "confidence": "low"
     },
@@ -101,8 +68,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.03431971957283769,
-      "memoryBytes": 262291456,
+      "cpu": 0.03375694996028594,
+      "memoryBytes": 262078464,
+      "confidence": "low"
+    },
+    {
+      "agentId": "099dfbd6a084bdd6",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.013822688274547188,
+      "memoryBytes": 63143936,
+      "confidence": "low"
+    },
+    {
+      "agentId": "c3a68f523b531a0a",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "weihui-own-text-server-zkm6ero7",
+      "cpu": 0.023652453740949316,
+      "memoryBytes": 126091264,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f5f4b781492d9ce0",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000011412007714517215,
+      "memoryBytes": 8355840,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-22T06:10:35.740Z"
+  "receivedAt": "2026-11-22T06:16:00.322Z"
 }
