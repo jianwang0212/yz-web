@@ -448,7 +448,7 @@ const translations = {
         'timeline.2020.title': '对冲基金量化交易',
         'timeline.2020.desc': '就职于 Citadel Securities（城堡证券），担任量化股票分析师和期货交易员',
         'timeline.2023.title': '创业与音乐并行',
-        'timeline.2023.desc': '联合创始成都入坞科技；创建 A47G 私募基金；赴伯克利音乐学院攻读音乐制作与工程、当代写作与制作以及爵士作曲方向硕士，GPA 4.0',
+        'timeline.2023.desc': '联合创始成都入坞科技；创建 A47G 私募基金；在伯克利音乐学院攻读学士学位，GPA 4.0',
         
         // Theme
         'theme.academic.title': '学术',
@@ -464,7 +464,7 @@ const translations = {
         'theme.music.title': '音乐',
         'theme.music.1': '三岁起学习钢琴，通过最高等级考试',
         'theme.music.2': '多年坚持原创音乐创作',
-        'theme.music.3': '伯克利音乐学院音乐制作与工程硕士，GPA 4.0',
+        'theme.music.3': '在伯克利音乐学院攻读学士学位，GPA 4.0',
         
         // Financial
         'financial.title': '财务概览',
@@ -1485,7 +1485,7 @@ const translations = {
         'theme.music.title': 'Music',
         'theme.music.1': 'Started piano at age 3, passed highest level exams',
         'theme.music.2': 'Years of original music composition',
-        'theme.music.3': 'M.A. in Music Production and Engineering from Berklee, GPA 4.0',
+        'theme.music.3': 'Pursuing a bachelor’s degree at Berklee College of Music, GPA 4.0',
         
         // Financial
         'financial.title': 'Financial Overview',

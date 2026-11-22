@@ -70,11 +70,23 @@ test('safety notes stay concise and article-specific', () => {
   assert.match(trading, /不构成投资建议/);
 });
 
-test('shared translation changes use one cache-busting version', () => {
+test('translations use the expected cache-busting version for each page', () => {
   const i18nPages = pages.filter(({ html }) => /i18n\.js\?v=/.test(html));
   assert.ok(i18nPages.length > 0);
 
   for (const { destination, html } of i18nPages) {
-    assert.match(html, /i18n\.js\?v=20260722-public-copy1/, `${destination} needs the current i18n version`);
+    const expectedVersion = destination === 'index.html' ? '20261122-home-degree1' : '20260722-public-copy1';
+    assert.ok(html.includes(`i18n.js?v=${expectedVersion}"`), `${destination} needs the current i18n version`);
   }
+});
+
+test('homepage describes the Berklee degree as a bachelor’s in progress', () => {
+  const home = pages.find(({ destination }) => destination === 'index.html').html;
+  assert.match(home, /data-i18n="timeline\.2023\.desc"[^>]*>[^<]*在伯克利音乐学院攻读学士学位/);
+  assert.match(home, /data-i18n="theme\.music\.3"[^>]*>在伯克利音乐学院攻读学士学位/);
+  const zhTimeline = i18n.match(/'timeline\.2023\.desc': '[^']*在伯克利音乐学院攻读学士学位[^']*'/g);
+  assert.equal(zhTimeline?.length, 1);
+  assert.match(i18n, /'theme\.music\.3': '在伯克利音乐学院攻读学士学位，GPA 4\.0'/);
+  assert.match(i18n, /'theme\.music\.3': 'Pursuing a bachelor’s degree at Berklee College of Music, GPA 4\.0'/);
+  assert.doesNotMatch(i18n, /'(timeline\.2023\.desc|theme\.music\.3)': '[^'\n]*(?:硕士|M\.A\.|master’s)[^'\n]*'/i);
 });
