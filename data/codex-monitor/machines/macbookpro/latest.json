@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-23T11:42:38.322Z",
+  "syncedAt": "2026-11-23T11:48:00.947Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 21,
-    "todayTokens": 0,
-    "weekTokens": 0,
-    "totalTokens": 0,
-    "estimatedCostUsd": 0,
-    "cpu": 19.834084894007393,
-    "memoryBytes": 3198173184
+    "activeAgents": 20,
+    "todayTokens": 33130771,
+    "weekTokens": 1766382154,
+    "totalTokens": 5928092937,
+    "estimatedCostUsd": 2555.7540244400006,
+    "cpu": 1.8319297171586522,
+    "memoryBytes": 3037872128
   },
   "agents": [
     {
@@ -24,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0025886638447138975,
-      "memoryBytes": 112984064,
+      "cpu": 0.0025901071362497267,
+      "memoryBytes": 113016832,
       "confidence": "low"
     },
     {
@@ -35,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015633168625731487,
-      "memoryBytes": 241827840,
+      "cpu": 0.015616327766284879,
+      "memoryBytes": 242188288,
       "confidence": "low"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014967282784673503,
+      "cpu": 0.014969052744886975,
       "memoryBytes": 60096512,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000005164462302007426,
+      "cpu": 0.000005155941449128903,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000005164462302007426,
+      "cpu": 0.000005155941449128903,
       "memoryBytes": 7815168,
       "confidence": "low"
     },
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.25014718793575375,
-      "memoryBytes": 115064832,
+      "cpu": 0.2497654034544986,
+      "memoryBytes": 114999296,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10081598925786293,
-      "memoryBytes": 90030080,
+      "cpu": 0.10075277133281774,
+      "memoryBytes": 90046464,
       "confidence": "low"
     },
     {
@@ -101,16 +101,59 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004302019315188762,
+      "cpu": 0.004300077339520495,
       "memoryBytes": 43483136,
       "confidence": "low"
     }
   ],
-  "models": [],
+  "models": [
+    {
+      "model": "gpt-6.1-sol",
+      "totalTokens": 3394670877,
+      "inputTokens": 60170628,
+      "outputTokens": 10964505,
+      "costUSD": 808.2090942000005
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "totalTokens": 1586218328,
+      "inputTokens": 78382193,
+      "outputTokens": 5536487,
+      "costUSD": 1279.0945104000023
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "totalTokens": 604853447,
+      "inputTokens": 13832365,
+      "outputTokens": 1612442,
+      "costUSD": 146.0097938000001
+    },
+    {
+      "model": "gpt-5.5",
+      "totalTokens": 181358549,
+      "inputTokens": 18572047,
+      "outputTokens": 1215174,
+      "costUSD": 204.80671260000003
+    },
+    {
+      "model": "gpt-5.6-luna",
+      "totalTokens": 87471632,
+      "inputTokens": 4919004,
+      "outputTokens": 280756,
+      "costUSD": 53.936995680000024
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "totalTokens": 37306254,
+      "inputTokens": 3452750,
+      "outputTokens": 251456,
+      "costUSD": 16.6433816
+    }
+  ],
   "health": {
-    "parser": "error",
+    "parser": "ok",
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-23T11:42:41.057Z"
+  "receivedAt": "2026-11-23T11:48:04.282Z"
 }
