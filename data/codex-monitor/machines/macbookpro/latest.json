@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-23T13:00:01.462Z",
+  "syncedAt": "2026-11-23T13:05:29.678Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 21,
+    "activeAgents": 23,
     "todayTokens": 33130771,
     "weekTokens": 1766382154,
     "totalTokens": 5928092937,
     "estimatedCostUsd": 2555.7540244400006,
-    "cpu": 1.8080427456831079,
-    "memoryBytes": 3198615552
+    "cpu": 3.3379738004866657,
+    "memoryBytes": 3706658816
   },
   "agents": [
-    {
-      "agentId": "7ae3f590a012ccc7",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "33b249b7fd936a04",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4177920,
-      "confidence": "low"
-    },
     {
       "agentId": "6a7eea3841271cca",
       "processName": "Codex (Aperitif Renderer)",
@@ -46,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002547998117402665,
+      "cpu": 0.002549286199864038,
       "memoryBytes": 113704960,
       "confidence": "low"
     },
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01534479121021796,
-      "memoryBytes": 243548160,
+      "cpu": 0.01534427503156259,
+      "memoryBytes": 243073024,
       "confidence": "low"
     },
     {
@@ -68,8 +46,52 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014752661646325629,
+      "cpu": 0.014761819977015587,
       "memoryBytes": 60112896,
+      "confidence": "low"
+    },
+    {
+      "agentId": "57705ba7ddb7ebeb",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.30069930069930073,
+      "memoryBytes": 174383104,
+      "confidence": "low"
+    },
+    {
+      "agentId": "49848ea94408d11c",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 1.027972027972028,
+      "memoryBytes": 316604416,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8e1f181c271dd833",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2,
+      "memoryBytes": 4145152,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8f5b4575558ebdd1",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000005043601938760586,
+      "cpu": 0.000005035221373507686,
       "memoryBytes": 7962624,
-      "confidence": "low"
-    },
-    {
-      "agentId": "11420ff0018307a8",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000005043601938760586,
-      "memoryBytes": 7815168,
-      "confidence": "low"
-    },
-    {
-      "agentId": "92b08e3206a848da",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.24502950522015432,
-      "memoryBytes": 121585664,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-23T13:00:07.071Z"
+  "receivedAt": "2026-11-23T13:05:35.144Z"
 }
