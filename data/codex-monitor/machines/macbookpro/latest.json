@@ -1,108 +1,108 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T09:14:44.177Z",
+  "syncedAt": "2026-11-24T09:21:28.814Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 21,
-    "todayTokens": 13189853,
-    "weekTokens": 1085451430,
-    "totalTokens": 5941282790,
-    "estimatedCostUsd": 2559.6290552400005,
-    "cpu": 1.6704553092460979,
-    "memoryBytes": 3308421120
+    "activeAgents": 15,
+    "todayTokens": 14190945,
+    "weekTokens": 1086452522,
+    "totalTokens": 5942283882,
+    "estimatedCostUsd": 2559.9028840400006,
+    "cpu": 15.904220191716453,
+    "memoryBytes": 2380939264
   },
   "agents": [
     {
-      "agentId": "6a7eea3841271cca",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00249847032429125,
-      "memoryBytes": 113606656,
-      "confidence": "low"
+      "agentId": "130ed05b3dc00a0e",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20cd8-6f3e-7263-a8cb-674d82f28e9b",
+      "sessionTitle": "你可以看到 futu JK 的账户信息和最近的交易记录么?",
+      "workspaceLabel": "ArbLoop",
+      "cpu": 5.492711370262391,
+      "memoryBytes": 408469504,
+      "confidence": "high"
     },
     {
-      "agentId": "21f658994ef37931",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.014588007342443402,
-      "memoryBytes": 225312768,
-      "confidence": "low"
-    },
-    {
-      "agentId": "099dfbd6a084bdd6",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.015077657328751057,
-      "memoryBytes": 60194816,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f5f4b781492d9ce0",
+      "agentId": "00fc1cfc6c6d104b",
       "processName": "browser_crashpad_handler",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000007375800735367333,
-      "memoryBytes": 8355840,
+      "cpu": 0.005747126436781609,
+      "memoryBytes": 10256384,
       "confidence": "low"
     },
     {
-      "agentId": "11420ff0018307a8",
+      "agentId": "c0a71fc5f621b6b2",
       "processName": "browser_crashpad_handler",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000036879003676836666,
-      "memoryBytes": 7815168,
+      "cpu": 0.0028735632183908046,
+      "memoryBytes": 10059776,
       "confidence": "low"
     },
     {
-      "agentId": "92b08e3206a848da",
+      "agentId": "d7c3c552d0b5518c",
       "processName": "Codex (Aperitif)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.20573765655194795,
-      "memoryBytes": 124141568,
+      "cpu": 0.9109195402298851,
+      "memoryBytes": 153829376,
       "confidence": "low"
     },
     {
-      "agentId": "4349c7ff4d9a33b9",
+      "agentId": "afe451486ca19d61",
       "processName": "Codex (Aperitif)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1010451548186284,
-      "memoryBytes": 92749824,
+      "cpu": 0.7844827586206896,
+      "memoryBytes": 92520448,
       "confidence": "low"
     },
     {
-      "agentId": "bdbdda47fd47ac99",
+      "agentId": "defe156043e1fef7",
       "processName": "Codex (Aperitif)",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004303795601056219,
-      "memoryBytes": 43991040,
+      "cpu": 0.020114942528735632,
+      "memoryBytes": 52838400,
+      "confidence": "low"
+    },
+    {
+      "agentId": "33dff2a84524573f",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.9418604651162791,
+      "memoryBytes": 191479808,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e78215566ca07fff",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.05813953488372093,
+      "memoryBytes": 109854720,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 618043300,
-      "inputTokens": 14840208,
-      "outputTokens": 1677204,
-      "costUSD": 149.88482460000006
+      "totalTokens": 618628603,
+      "inputTokens": 14883814,
+      "outputTokens": 1681173,
+      "costUSD": 150.06549940000008
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T09:14:46.912Z"
+  "receivedAt": "2026-11-24T09:21:31.683Z"
 }
