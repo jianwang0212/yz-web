@@ -1,22 +1,44 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T12:42:55.786Z",
+  "syncedAt": "2026-11-24T12:48:23.733Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
-    "todayTokens": 39369380,
-    "weekTokens": 1111630957,
-    "totalTokens": 5967462317,
-    "estimatedCostUsd": 2564.260817040001,
-    "cpu": 2.6818590004954173,
-    "memoryBytes": 2398470144
+    "activeAgents": 18,
+    "todayTokens": 40169375,
+    "weekTokens": 1112430952,
+    "totalTokens": 5968262312,
+    "estimatedCostUsd": 2564.6238102400007,
+    "cpu": 2.8189365734693115,
+    "memoryBytes": 2605465600
   },
   "agents": [
+    {
+      "agentId": "66c4f9ed26ec0684",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20d09-8099-7890-a841-71a5d687c725",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.4579739689509174,
+      "memoryBytes": 528416768,
+      "confidence": "high"
+    },
+    {
+      "agentId": "ceaa36f0a8a09e55",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a20d98-713e-73b0-aedb-0b37d82fcb65",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.4579739689509174,
+      "memoryBytes": 528416768,
+      "confidence": "high"
+    },
     {
       "agentId": "007c4ce66c91bf32",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0037292349418013336,
-      "memoryBytes": 107511808,
+      "cpu": 0.0035943796972007407,
+      "memoryBytes": 107528192,
       "confidence": "low"
     },
     {
@@ -35,12 +57,12 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0018081139111764042,
+      "cpu": 0.001742729550157935,
       "memoryBytes": 61177856,
       "confidence": "low"
     },
     {
-      "agentId": "25fa9f7fc9705755",
+      "agentId": "dfdcc01b9f7f8315",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
@@ -57,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0001609398889514766,
+      "cpu": 0.00015675209655929148,
       "memoryBytes": 8601600,
       "confidence": "low"
     },
@@ -68,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000804699444757383,
+      "cpu": 0.00007837604827964574,
       "memoryBytes": 8011776,
       "confidence": "low"
     },
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.20889997585901665,
-      "memoryBytes": 134742016,
-      "confidence": "low"
-    },
-    {
-      "agentId": "afe451486ca19d61",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.10107025026152733,
-      "memoryBytes": 82018304,
-      "confidence": "low"
-    },
-    {
-      "agentId": "defe156043e1fef7",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.004989136557495775,
-      "memoryBytes": 45924352,
+      "cpu": 0.23042558194215848,
+      "memoryBytes": 130334720,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 644222827,
-      "inputTokens": 15272000,
-      "outputTokens": 1752491,
-      "costUSD": 154.51658640000008
+      "totalTokens": 645022822,
+      "inputTokens": 15399138,
+      "outputTokens": 1756676,
+      "costUSD": 154.87957960000008
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T12:42:59.874Z"
+  "receivedAt": "2026-11-24T12:48:27.351Z"
 }
