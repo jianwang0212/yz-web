@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T06:39:59.160Z",
+  "syncedAt": "2026-11-24T06:51:51.891Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,34 +9,45 @@
   },
   "summary": {
     "activeAgents": 22,
-    "todayTokens": 6029525,
-    "weekTokens": 1078291102,
-    "totalTokens": 5934122462,
-    "estimatedCostUsd": 2557.7394824400008,
-    "cpu": 3.829962362821826,
-    "memoryBytes": 3239084032
+    "todayTokens": 8065874,
+    "weekTokens": 1080327451,
+    "totalTokens": 5936158811,
+    "estimatedCostUsd": 2558.3813276400006,
+    "cpu": 1.7891252004341431,
+    "memoryBytes": 3232710656
   },
   "agents": [
     {
-      "agentId": "04d4017988834375",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 2,
-      "memoryBytes": 5193728,
-      "confidence": "low"
+      "agentId": "715807ec60ae617f",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20c4e-a646-74f0-9dee-b5f6e3bf9f95",
+      "sessionTitle": "对照了 11 月 18、21、24 日的邮件。问题找到了：**新合约待核对、真实偏仓恶化、校验数据不全，三种不同的事都用了「新增/恶化报警」这个标题。** 24 日这封只说数据没收齐，没说明漏了哪些，也没确认补验完成。它不是偏仓恶化，也不是邮件脚注说的「新合约待核验满 7 天」。\n\n**我发给你的 GT 汇总已改好**：这种情况会直接写「GT｜合约校验未完成，数据覆盖不足」，把已检查范围、缺失项和恢复状态分开写。没有证据的就写未知，真正的仓位告警单列。\n\n**GT 系统原邮件还没改。** 历史记录追到了发信中转，但没找到生成这封邮件的程序。线上改动还缺能登录 GT 主机的 Mac，或这段发信程序的仓库地址。没有动交易或风控规则。 处理一下",
+      "workspaceLabel": "ArbLoop",
+      "cpu": 0.17272962700607056,
+      "memoryBytes": 571392000,
+      "confidence": "high"
     },
     {
-      "agentId": "e4d5a8e1134b0609",
+      "agentId": "9d6abcb5bef24ce5",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
-      "memoryBytes": 4145152,
+      "memoryBytes": 4079616,
+      "confidence": "low"
+    },
+    {
+      "agentId": "5e5f203c2d0abf81",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4079616,
       "confidence": "low"
     },
     {
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0025048839885460435,
-      "memoryBytes": 113442816,
+      "cpu": 0.0025007064895732805,
+      "memoryBytes": 113344512,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014665346428667004,
-      "memoryBytes": 221102080,
+      "cpu": 0.014652327149994402,
+      "memoryBytes": 221020160,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014997350575112534,
-      "memoryBytes": 60260352,
+      "cpu": 0.0150150630515343,
+      "memoryBytes": 60162048,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000007637318995539805,
+      "cpu": 0.000007616610303750419,
       "memoryBytes": 8355840,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000038186594977699024,
+      "cpu": 0.0000038083051518752097,
       "memoryBytes": 7815168,
-      "confidence": "low"
-    },
-    {
-      "agentId": "92b08e3206a848da",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.19732998308327382,
-      "memoryBytes": 122322944,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 610882972,
-      "inputTokens": 14457201,
-      "outputTokens": 1632171,
-      "costUSD": 147.99525180000006
+      "totalTokens": 612919321,
+      "inputTokens": 14615469,
+      "outputTokens": 1646060,
+      "costUSD": 148.63709700000007
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T06:40:01.961Z"
+  "receivedAt": "2026-11-24T06:51:55.058Z"
 }
