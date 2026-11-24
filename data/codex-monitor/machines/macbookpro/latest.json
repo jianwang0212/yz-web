@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T06:57:12.229Z",
+  "syncedAt": "2026-11-24T07:02:32.577Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 21,
+    "activeAgents": 23,
     "todayTokens": 9238913,
     "weekTokens": 1081500490,
     "totalTokens": 5937331850,
     "estimatedCostUsd": 2558.6291448400007,
-    "cpu": 1.7727915216934798,
-    "memoryBytes": 3232858112
+    "cpu": 4.775394672197593,
+    "memoryBytes": 3692802048
   },
   "agents": [
-    {
-      "agentId": "47515440f1f76e55",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a20c4c-fa7d-76f0-8854-12dca409ffbf",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.17314634137064044,
-      "memoryBytes": 571768832,
-      "confidence": "high"
-    },
-    {
-      "agentId": "715807ec60ae617f",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a20c4e-a646-74f0-9dee-b5f6e3bf9f95",
-      "sessionTitle": "对照了 11 月 18、21、24 日的邮件。问题找到了：**新合约待核对、真实偏仓恶化、校验数据不全，三种不同的事都用了「新增/恶化报警」这个标题。** 24 日这封只说数据没收齐，没说明漏了哪些，也没确认补验完成。它不是偏仓恶化，也不是邮件脚注说的「新合约待核验满 7 天」。\n\n**我发给你的 GT 汇总已改好**：这种情况会直接写「GT｜合约校验未完成，数据覆盖不足」，把已检查范围、缺失项和恢复状态分开写。没有证据的就写未知，真正的仓位告警单列。\n\n**GT 系统原邮件还没改。** 历史记录追到了发信中转，但没找到生成这封邮件的程序。线上改动还缺能登录 GT 主机的 Mac，或这段发信程序的仓库地址。没有动交易或风控规则。 处理一下",
-      "workspaceLabel": "ArbLoop",
-      "cpu": 0.17314634137064044,
-      "memoryBytes": 571768832,
-      "confidence": "high"
-    },
     {
       "agentId": "6a7eea3841271cca",
       "processName": "Codex (Aperitif Renderer)",
@@ -46,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0024964336661911554,
-      "memoryBytes": 113344512,
+      "cpu": 0.0024975024975024975,
+      "memoryBytes": 113393664,
       "confidence": "low"
     },
     {
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014648583047671769,
-      "memoryBytes": 221413376,
+      "cpu": 0.014639615703445491,
+      "memoryBytes": 221659136,
       "confidence": "low"
     },
     {
@@ -68,8 +46,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01505328265891646,
-      "memoryBytes": 60211200,
+      "cpu": 0.01505425483298439,
+      "memoryBytes": 60162048,
+      "confidence": "low"
+    },
+    {
+      "agentId": "262f2f51c8bbc540",
+      "processName": "node",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.7948717948717949,
+      "memoryBytes": 166100992,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e27431b566ea865a",
+      "processName": "node",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2.2222222222222223,
+      "memoryBytes": 290844672,
+      "confidence": "low"
+    },
+    {
+      "agentId": "18e6995e1c7675d9",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000076073106255111165,
+      "cpu": 0.000007598062494064014,
       "memoryBytes": 8355840,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000038036553127555583,
+      "cpu": 0.000003799031247032007,
       "memoryBytes": 7815168,
-      "confidence": "low"
-    },
-    {
-      "agentId": "92b08e3206a848da",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.19770334418647112,
-      "memoryBytes": 122781696,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T06:57:15.005Z"
+  "receivedAt": "2026-11-24T07:02:35.419Z"
 }
