@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T08:46:53.999Z",
+  "syncedAt": "2026-11-24T08:52:13.307Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,23 +9,23 @@
   },
   "summary": {
     "activeAgents": 21,
-    "todayTokens": 12614030,
-    "weekTokens": 1084875607,
-    "totalTokens": 5940706967,
-    "estimatedCostUsd": 2559.5266332400006,
-    "cpu": 1.9989088517540197,
-    "memoryBytes": 3292610560
+    "todayTokens": 13189853,
+    "weekTokens": 1085451430,
+    "totalTokens": 5941282790,
+    "estimatedCostUsd": 2559.6290552400005,
+    "cpu": 1.6668094909952564,
+    "memoryBytes": 3292168192
   },
   "agents": [
     {
-      "agentId": "715807ec60ae617f",
+      "agentId": "b7f668e74c084583",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a20c4e-a646-74f0-9dee-b5f6e3bf9f95",
-      "sessionTitle": "对照了 11 月 18、21、24 日的邮件。问题找到了：**新合约待核对、真实偏仓恶化、校验数据不全，三种不同的事都用了「新增/恶化报警」这个标题。** 24 日这封只说数据没收齐，没说明漏了哪些，也没确认补验完成。它不是偏仓恶化，也不是邮件脚注说的「新合约待核验满 7 天」。\n\n**我发给你的 GT 汇总已改好**：这种情况会直接写「GT｜合约校验未完成，数据覆盖不足」，把已检查范围、缺失项和恢复状态分开写。没有证据的就写未知，真正的仓位告警单列。\n\n**GT 系统原邮件还没改。** 历史记录追到了发信中转，但没找到生成这封邮件的程序。线上改动还缺能登录 GT 主机的 Mac，或这段发信程序的仓库地址。没有动交易或风控规则。 处理一下",
-      "workspaceLabel": "ArbLoop",
-      "cpu": 0.17369684690200793,
-      "memoryBytes": 606240768,
+      "sessionId": "01a20cb7-0830-7d43-821d-45e2bc934f15",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.1737947598415128,
+      "memoryBytes": 606208000,
       "confidence": "high"
     },
     {
@@ -35,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002499357161223965,
+      "cpu": 0.0025003850695692353,
       "memoryBytes": 113573888,
       "confidence": "low"
     },
@@ -46,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014595011571097969,
-      "memoryBytes": 224477184,
+      "cpu": 0.014601838065410485,
+      "memoryBytes": 224935936,
       "confidence": "low"
     },
     {
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015037439315395374,
+      "cpu": 0.015053807606999096,
       "memoryBytes": 60178432,
       "confidence": "low"
     },
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000074215082731263475,
+      "cpu": 0.000007412706119559537,
       "memoryBytes": 8355840,
       "confidence": "low"
     },
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000037107541365631738,
+      "cpu": 0.0000037063530597797687,
       "memoryBytes": 7815168,
       "confidence": "low"
     },
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.19673007132095915,
-      "memoryBytes": 119930880,
+      "cpu": 0.19844999740554325,
+      "memoryBytes": 119914496,
       "confidence": "low"
     },
     {
@@ -101,8 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1008030101749256,
-      "memoryBytes": 92733440,
+      "cpu": 0.100853946910002,
+      "memoryBytes": 92749824,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 617467477,
-      "inputTokens": 14834944,
-      "outputTokens": 1673685,
-      "costUSD": 149.78240260000007
+      "totalTokens": 618043300,
+      "inputTokens": 14840208,
+      "outputTokens": 1677204,
+      "costUSD": 149.88482460000006
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T08:46:56.937Z"
+  "receivedAt": "2026-11-24T08:52:16.241Z"
 }
