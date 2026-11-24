@@ -1,22 +1,55 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T05:27:30.221Z",
+  "syncedAt": "2026-11-24T05:32:49.971Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 20,
-    "todayTokens": 3746769,
-    "weekTokens": 1076008346,
-    "totalTokens": 5931839706,
-    "estimatedCostUsd": 2557.0816952400005,
-    "cpu": 2.926744600219253,
-    "memoryBytes": 3098312704
+    "activeAgents": 22,
+    "todayTokens": 4193619,
+    "weekTokens": 1076455196,
+    "totalTokens": 5932286556,
+    "estimatedCostUsd": 2557.2733680400006,
+    "cpu": 1.5959308221938353,
+    "memoryBytes": 3247620096
   },
   "agents": [
+    {
+      "agentId": "4f0d63239db76752",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20c09-d32f-7fa0-acb6-b83d6b11d529",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.1700958357411853,
+      "memoryBytes": 536625152,
+      "confidence": "high"
+    },
+    {
+      "agentId": "f52d00daca64f260",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a20c08-c2b2-7e50-8e97-fd0225ba4132",
+      "sessionTitle": "为什么今天的港股没有跟随昨天晚上的美股大涨了",
+      "workspaceLabel": "AppleHealth",
+      "cpu": 0.1700958357411853,
+      "memoryBytes": 536625152,
+      "confidence": "high"
+    },
+    {
+      "agentId": "a286a3f14197100f",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a20c08-c401-7521-82ec-8b0095518e6e",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.1700958357411853,
+      "memoryBytes": 536625152,
+      "confidence": "high"
+    },
     {
       "agentId": "6a7eea3841271cca",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0025262211895707067,
+      "cpu": 0.00252726934564511,
       "memoryBytes": 114065408,
       "confidence": "low"
     },
@@ -35,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.01477373606742435,
-      "memoryBytes": 251641856,
+      "cpu": 0.014769755916107786,
+      "memoryBytes": 250888192,
       "confidence": "low"
     },
     {
@@ -46,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015091734069836259,
-      "memoryBytes": 60211200,
+      "cpu": 0.015081726876873591,
+      "memoryBytes": 60260352,
       "confidence": "low"
     },
     {
@@ -57,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003883148301316775,
+      "cpu": 0.000003878329060707485,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -68,41 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000003883148301316775,
+      "cpu": 0.000003878329060707485,
       "memoryBytes": 7815168,
-      "confidence": "low"
-    },
-    {
-      "agentId": "92b08e3206a848da",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.19832092015439456,
-      "memoryBytes": 111017984,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4349c7ff4d9a33b9",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.10095448155885711,
-      "memoryBytes": 90505216,
-      "confidence": "low"
-    },
-    {
-      "agentId": "bdbdda47fd47ac99",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00430642818865961,
-      "memoryBytes": 43581440,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 608600216,
-      "inputTokens": 14261405,
-      "outputTokens": 1626363,
-      "costUSD": 147.33746460000006
+      "totalTokens": 609047066,
+      "inputTokens": 14329362,
+      "outputTokens": 1628168,
+      "costUSD": 147.52913740000005
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T05:27:33.274Z"
+  "receivedAt": "2026-11-24T05:32:52.868Z"
 }
