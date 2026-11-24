@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T11:35:23.528Z",
+  "syncedAt": "2026-11-24T11:40:44.440Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 16,
+    "activeAgents": 17,
     "todayTokens": 33973191,
     "weekTokens": 1106234768,
     "totalTokens": 5962066128,
     "estimatedCostUsd": 2563.3748774400005,
-    "cpu": 3.126260963192756,
-    "memoryBytes": 2665349120
+    "cpu": 5.047501728585294,
+    "memoryBytes": 2673590272
   },
   "agents": [
     {
@@ -24,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004579517069109075,
+      "cpu": 0.004292682926829268,
       "memoryBytes": 119767040,
       "confidence": "low"
     },
@@ -35,8 +35,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0022897585345545376,
+      "cpu": 0.002146341463414634,
       "memoryBytes": 70107136,
+      "confidence": "low"
+    },
+    {
+      "agentId": "141bd50bd1bf3590",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2,
+      "memoryBytes": 4423680,
       "confidence": "low"
     },
     {
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00023860653781913624,
+      "cpu": 0.0002298058140870964,
       "memoryBytes": 8601600,
       "confidence": "low"
     },
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00011930326890956812,
+      "cpu": 0.0001149029070435482,
       "memoryBytes": 8011776,
       "confidence": "low"
     },
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.26795514197089,
-      "memoryBytes": 115163136,
+      "cpu": 0.25853154084798347,
+      "memoryBytes": 115146752,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11369601527081842,
+      "cpu": 0.11237504308859014,
       "memoryBytes": 81952768,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005010737294201861,
+      "cpu": 0.00505572790991612,
       "memoryBytes": 45957120,
-      "confidence": "low"
-    },
-    {
-      "agentId": "33dff2a84524573f",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.2877775125328241,
-      "memoryBytes": 153567232,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T11:35:26.271Z"
+  "receivedAt": "2026-11-24T11:40:47.905Z"
 }
