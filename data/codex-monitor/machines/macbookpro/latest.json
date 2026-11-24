@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-24T09:48:16.885Z",
+  "syncedAt": "2026-11-24T09:53:36.949Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
-    "todayTokens": 23536830,
-    "weekTokens": 1095798407,
-    "totalTokens": 5951629767,
-    "estimatedCostUsd": 2561.559076440001,
-    "cpu": 7.894438163248914,
-    "memoryBytes": 2726281216
+    "activeAgents": 16,
+    "todayTokens": 23741141,
+    "weekTokens": 1096002718,
+    "totalTokens": 5951834078,
+    "estimatedCostUsd": 2561.5879368400006,
+    "cpu": 7.380324335158135,
+    "memoryBytes": 2442133504
   },
   "agents": [
+    {
+      "agentId": "130ed05b3dc00a0e",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a20cd8-6f3e-7263-a8cb-674d82f28e9b",
+      "sessionTitle": "你可以看到 futu JK 的账户信息和最近的交易记录么?",
+      "workspaceLabel": "ArbLoop",
+      "cpu": 1.4693967415235578,
+      "memoryBytes": 352026624,
+      "confidence": "high"
+    },
     {
       "agentId": "00fc1cfc6c6d104b",
       "processName": "browser_crashpad_handler",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0010230179028132994,
+      "cpu": 0.0008787346221441125,
       "memoryBytes": 8601600,
       "confidence": "low"
     },
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0005115089514066497,
+      "cpu": 0.00043936731107205627,
       "memoryBytes": 8011776,
       "confidence": "low"
     },
@@ -46,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.7631713554987213,
-      "memoryBytes": 115228672,
+      "cpu": 0.6761862917398945,
+      "memoryBytes": 116277248,
       "confidence": "low"
     },
     {
@@ -57,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.2404092071611253,
-      "memoryBytes": 81117184,
+      "cpu": 0.2201230228471002,
+      "memoryBytes": 81674240,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007672634271099744,
-      "memoryBytes": 45350912,
+      "cpu": 0.0070298769771529,
+      "memoryBytes": 45858816,
       "confidence": "low"
     },
     {
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.4910302409021015,
-      "memoryBytes": 149422080,
+      "cpu": 0.4568661971830986,
+      "memoryBytes": 150339584,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.023577652485904665,
-      "memoryBytes": 93044736,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d65885c8649676cc",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "running",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 4.084059456688878,
-      "memoryBytes": 675414016,
+      "cpu": 0.025088028169014086,
+      "memoryBytes": 93847552,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 628390277,
-      "inputTokens": 15060419,
-      "outputTokens": 1725378,
-      "costUSD": 151.81484580000006
+      "totalTokens": 628594588,
+      "inputTokens": 15062245,
+      "outputTokens": 1725879,
+      "costUSD": 151.84370620000007
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-24T09:48:19.624Z"
+  "receivedAt": "2026-11-24T09:53:39.802Z"
 }
