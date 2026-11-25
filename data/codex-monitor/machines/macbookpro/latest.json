@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-25T09:33:46.118Z",
+  "syncedAt": "2026-11-25T09:39:06.546Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 16,
+    "activeAgents": 17,
     "todayTokens": 142231432,
     "weekTokens": 839090055,
     "totalTokens": 6110599550,
     "estimatedCostUsd": 3057.2307973,
-    "cpu": 3.100747414121938,
-    "memoryBytes": 3034415104
+    "cpu": 3.0099619400295614,
+    "memoryBytes": 3019423744
   },
   "agents": [
-    {
-      "agentId": "d9a31fc4fe6d0e9c",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a210bd-e14c-7941-b039-dbb7eeef9891",
-      "sessionTitle": "没看懂: “超越就是四面八方无边无际。你把激光束指向任意一个方向，它都将射向无穷远。只有当你建造起它无法穿透的人工边界，它才会暂时止步。边界在无限的空间里制造了有限的表象。事物似乎是有限的，因为你的感知会触及心理界限。而事实上，每一个事物都是无限的。是你借无限的事物谈论一英里[1]的距离。而一英里只是无穷远的一小段。不存在什么界限，只有无穷的宇宙。”\\\n\\\n摘录来自\\\n清醒地活 超越自我的生命之旅（我们每个人都有自救的力量，这个力量来自清醒的自我。生活可太难了，我们要好好地活，更要清醒地活）\\\n迈克尔·辛格(Michael A. Singer)\\\n此内容可能受版权保护。",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.27634887974394146,
-      "memoryBytes": 945061888,
-      "confidence": "high"
-    },
     {
       "agentId": "007c4ce66c91bf32",
       "processName": "Codex (Aperitif Renderer)",
@@ -35,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002073724480675033,
+      "cpu": 0.0020777185463093785,
       "memoryBytes": 102875136,
       "confidence": "low"
     },
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0016446780363974399,
+      "cpu": 0.0016503021596400204,
       "memoryBytes": 56655872,
       "confidence": "low"
     },
@@ -57,8 +46,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.36930232558139536,
+      "cpu": 0.2845878136200717,
       "memoryBytes": 45858816,
+      "confidence": "low"
+    },
+    {
+      "agentId": "950b9ce48024847a",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
       "confidence": "low"
     },
     {
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000022861061896325085,
+      "cpu": 0.000022777746142019246,
       "memoryBytes": 8470528,
       "confidence": "low"
     },
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000011430530948162542,
+      "cpu": 0.000011388873071009623,
       "memoryBytes": 7929856,
       "confidence": "low"
     },
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.19007829913699492,
-      "memoryBytes": 131186688,
+      "cpu": 0.18941973691703207,
+      "memoryBytes": 131137536,
       "confidence": "low"
     },
     {
@@ -101,7 +101,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10596102188946677,
+      "cpu": 0.1059051306873185,
       "memoryBytes": 81002496,
       "confidence": "low"
     }
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-25T09:33:48.982Z"
+  "receivedAt": "2026-11-25T09:39:09.239Z"
 }
