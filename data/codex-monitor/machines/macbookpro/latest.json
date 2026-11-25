@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-25T09:12:07.130Z",
+  "syncedAt": "2026-11-25T09:17:36.400Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 18,
-    "todayTokens": 135142107,
-    "weekTokens": 832000730,
-    "totalTokens": 6103510225,
-    "estimatedCostUsd": 3056.3408225,
-    "cpu": 2.7246592010578925,
-    "memoryBytes": 3123625984
+    "activeAgents": 19,
+    "todayTokens": 137704325,
+    "weekTokens": 834562948,
+    "totalTokens": 6106072443,
+    "estimatedCostUsd": 3056.7059721,
+    "cpu": 6.771720107013517,
+    "memoryBytes": 3184017408
   },
   "agents": [
-    {
-      "agentId": "6b71697b090f010c",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a211f6-c078-7890-812b-dc9d71dd696b",
-      "sessionTitle": "DockingTech 项目页的学历已在[网站源码](https://github.com/jianwang0212/yz-web/commit/40ab1d62f95bf8b97f3679bdd5e58ac8f245abfe)改为「澳大利亚昆士兰大学计量经济学学士」，只改了这一行，130 项测试全通过。还没上线：发布需要从你的 Mac mini 操作，它现在没连接。你把它连上后，我就能发布并核对线上版本。 给我看看先",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.27287917290354025,
-      "memoryBytes": 967720960,
-      "confidence": "high"
-    },
     {
       "agentId": "656dcbd65fd3664e",
       "processName": "codex",
@@ -35,19 +24,19 @@
       "sessionId": "01a211f4-4b5c-7600-aba3-7a3d5174fc9e",
       "sessionTitle": "查一下 github 上的咸鱼, 多平台搜索和 alerting 的功能",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.27287917290354025,
-      "memoryBytes": 967720960,
+      "cpu": 0.27651138596694025,
+      "memoryBytes": 968458240,
       "confidence": "high"
     },
     {
-      "agentId": "8e1227a2a4e283d7",
+      "agentId": "bc266ac4f511b4f0",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a211f9-251b-7671-ab90-3be5bda8cfb7",
+      "sessionId": "01a211fe-41d2-7c81-99f3-12d0d845900a",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.27287917290354025,
-      "memoryBytes": 967720960,
+      "cpu": 0.27651138596694025,
+      "memoryBytes": 968458240,
       "confidence": "high"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0020579120666279296,
+      "cpu": 0.0020618059490938906,
       "memoryBytes": 102875136,
       "confidence": "low"
     },
@@ -68,12 +57,34 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0016584350184001549,
+      "cpu": 0.001651856228221421,
       "memoryBytes": 56655872,
       "confidence": "low"
     },
     {
-      "agentId": "1c2543da20d0f525",
+      "agentId": "5a861fdcc32fbafa",
+      "processName": "Autoupdate",
+      "status": "running",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 3.780952380952381,
+      "memoryBytes": 46006272,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4854141daf0588e4",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.25,
+      "memoryBytes": 4145152,
+      "confidence": "low"
+    },
+    {
+      "agentId": "767205ce2b566964",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000023205625043510546,
+      "cpu": 0.000023117378489279315,
       "memoryBytes": 8077312,
-      "confidence": "low"
-    },
-    {
-      "agentId": "c0a71fc5f621b6b2",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000011602812521755273,
-      "memoryBytes": 7929856,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 755558240,
-      "inputTokens": 17202213,
-      "outputTokens": 1929403,
-      "costUSD": 175.75698580000014
+      "totalTokens": 758120458,
+      "inputTokens": 17216369,
+      "outputTokens": 1937689,
+      "costUSD": 176.12213540000013
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-25T09:12:10.416Z"
+  "receivedAt": "2026-11-25T09:17:39.266Z"
 }
