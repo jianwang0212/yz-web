@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-25T14:17:43.640Z",
+  "syncedAt": "2026-11-25T14:23:03.348Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
-    "todayTokens": 149528378,
-    "weekTokens": 846387001,
-    "totalTokens": 6117896496,
-    "estimatedCostUsd": 3058.9475165,
-    "cpu": 2.3311537532856668,
-    "memoryBytes": 2513616896
+    "activeAgents": 19,
+    "todayTokens": 149876388,
+    "weekTokens": 846735011,
+    "totalTokens": 6118244506,
+    "estimatedCostUsd": 3058.9917989,
+    "cpu": 4.3666190307749115,
+    "memoryBytes": 2477146112
   },
   "agents": [
-    {
-      "agentId": "4db0f82c249a86d8",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a212f8-c1d8-79e1-afb6-e3914c8dcc95",
-      "sessionTitle": "查一下我的 tiger 上的 qqq 的垂直价差. 给我一个 case by case",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.2648094780659622,
-      "memoryBytes": 423477248,
-      "confidence": "high"
-    },
     {
       "agentId": "5446f51576c7036a",
       "processName": "Codex (Aperitif Renderer)",
@@ -35,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010901162790697675,
-      "memoryBytes": 116883456,
+      "cpu": 0.00884433962264151,
+      "memoryBytes": 116899840,
       "confidence": "low"
     },
     {
@@ -46,19 +35,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005813953488372093,
+      "cpu": 0.005306603773584905,
       "memoryBytes": 70189056,
       "confidence": "low"
     },
     {
-      "agentId": "8c818c0a080d67fb",
+      "agentId": "ed8a94a19a3d7c24",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
-      "memoryBytes": 4079616,
+      "memoryBytes": 4145152,
+      "confidence": "low"
+    },
+    {
+      "agentId": "ffa7e01ae1ded201",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 2,
+      "memoryBytes": 5210112,
+      "confidence": "low"
+    },
+    {
+      "agentId": "3403eed72cc087b7",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
       "confidence": "low"
     },
     {
@@ -68,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0001600384092182124,
+      "cpu": 0.00015604275571506592,
       "memoryBytes": 10338304,
       "confidence": "low"
     },
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00008002560819462228,
+      "cpu": 0.00007802746566791511,
       "memoryBytes": 10076160,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.2668854033290653,
-      "memoryBytes": 130236416,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d060b99179f0ead1",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.10587387964148527,
-      "memoryBytes": 89702400,
+      "cpu": 0.30063982521847693,
+      "memoryBytes": 125353984,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 769944511,
-      "inputTokens": 17597575,
-      "outputTokens": 1971512,
-      "costUSD": 178.3636798000001
+      "totalTokens": 770292521,
+      "inputTokens": 17601273,
+      "outputTokens": 1971760,
+      "costUSD": 178.40796220000013
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-25T14:17:46.673Z"
+  "receivedAt": "2026-11-25T14:23:06.535Z"
 }
