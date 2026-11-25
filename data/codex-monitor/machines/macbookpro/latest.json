@@ -1,22 +1,44 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-25T07:30:15.876Z",
+  "syncedAt": "2026-11-25T07:35:37.148Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
-    "todayTokens": 131298522,
-    "weekTokens": 828157145,
-    "totalTokens": 6099666640,
-    "estimatedCostUsd": 3055.3983565,
-    "cpu": 2.754353204899205,
-    "memoryBytes": 2824159232
+    "activeAgents": 18,
+    "todayTokens": 131705850,
+    "weekTokens": 828564473,
+    "totalTokens": 6100073968,
+    "estimatedCostUsd": 3055.5286317,
+    "cpu": 2.7664196906735756,
+    "memoryBytes": 2884730880
   },
   "agents": [
+    {
+      "agentId": "e50e063ded1236c5",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21173-1564-7692-9dba-8408c7c99ff9",
+      "sessionTitle": "&#x20;I love Adding some effect to make the vocals stand out in certain sections would be nice.  我想在我的歌的 chrous 部分加, 你有什么建议?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2727453663390969,
+      "memoryBytes": 863764480,
+      "confidence": "high"
+    },
+    {
+      "agentId": "74815077a8414472",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21197-b742-7a31-b66a-819074fb8e11",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2727453663390969,
+      "memoryBytes": 863764480,
+      "confidence": "high"
+    },
     {
       "agentId": "007c4ce66c91bf32",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0021441552159190452,
+      "cpu": 0.002147962039652681,
       "memoryBytes": 102793216,
       "confidence": "low"
     },
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0017127093493011882,
+      "cpu": 0.0017053516799666742,
       "memoryBytes": 56459264,
       "confidence": "low"
     },
@@ -46,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000024979703990507713,
+      "cpu": 0.000024877168978170285,
       "memoryBytes": 8077312,
       "confidence": "low"
     },
@@ -57,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000012489851995253857,
+      "cpu": 0.000012438584489085143,
       "memoryBytes": 7929856,
       "confidence": "low"
     },
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.19361768563042528,
-      "memoryBytes": 137052160,
+      "cpu": 0.19466384725418248,
+      "memoryBytes": 137478144,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10877412102666584,
-      "memoryBytes": 80281600,
-      "confidence": "low"
-    },
-    {
-      "agentId": "defe156043e1fef7",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.005632923249859489,
-      "memoryBytes": 43106304,
-      "confidence": "low"
-    },
-    {
-      "agentId": "33dff2a84524573f",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.3017823909269182,
-      "memoryBytes": 198836224,
+      "cpu": 0.10865103551215873,
+      "memoryBytes": 80314368,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 751714655,
-      "inputTokens": 17001428,
-      "outputTokens": 1911563,
-      "costUSD": 174.8145198000001
+      "totalTokens": 752121983,
+      "inputTokens": 17039854,
+      "outputTokens": 1913233,
+      "costUSD": 174.9447950000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-25T07:30:18.680Z"
+  "receivedAt": "2026-11-25T07:35:40.063Z"
 }
