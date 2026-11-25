@@ -1,32 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-25T14:12:23.278Z",
+  "syncedAt": "2026-11-25T14:17:43.640Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 19,
-    "todayTokens": 147873931,
-    "weekTokens": 844732554,
-    "totalTokens": 6116242049,
-    "estimatedCostUsd": 3058.6279569,
-    "cpu": 2.4142246303595294,
-    "memoryBytes": 2666545152
+    "activeAgents": 17,
+    "todayTokens": 149528378,
+    "weekTokens": 846387001,
+    "totalTokens": 6117896496,
+    "estimatedCostUsd": 3058.9475165,
+    "cpu": 2.3311537532856668,
+    "memoryBytes": 2513616896
   },
   "agents": [
     {
-      "agentId": "3fc974b5de6950d3",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.22253787878787878,
-      "memoryBytes": 210288640,
-      "confidence": "low"
+      "agentId": "4db0f82c249a86d8",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a212f8-c1d8-79e1-afb6-e3914c8dcc95",
+      "sessionTitle": "查一下我的 tiger 上的 qqq 的垂直价差. 给我一个 case by case",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2648094780659622,
+      "memoryBytes": 423477248,
+      "confidence": "high"
     },
     {
       "agentId": "5446f51576c7036a",
@@ -35,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.013270142180094787,
-      "memoryBytes": 116965376,
+      "cpu": 0.010901162790697675,
+      "memoryBytes": 116883456,
       "confidence": "low"
     },
     {
@@ -46,30 +46,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007582938388625593,
-      "memoryBytes": 70270976,
+      "cpu": 0.005813953488372093,
+      "memoryBytes": 70189056,
       "confidence": "low"
     },
     {
-      "agentId": "791ca27600cd46e3",
+      "agentId": "8c818c0a080d67fb",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "6c52451561586560",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
+      "memoryBytes": 4079616,
       "confidence": "low"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000164257555847569,
+      "cpu": 0.0001600384092182124,
       "memoryBytes": 10338304,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00008213552361396305,
+      "cpu": 0.00008002560819462228,
       "memoryBytes": 10076160,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.22841889117043124,
-      "memoryBytes": 124813312,
+      "cpu": 0.2668854033290653,
+      "memoryBytes": 130236416,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d060b99179f0ead1",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.10587387964148527,
+      "memoryBytes": 89702400,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 768290064,
-      "inputTokens": 17555322,
-      "outputTokens": 1964054,
-      "costUSD": 178.04412020000012
+      "totalTokens": 769944511,
+      "inputTokens": 17597575,
+      "outputTokens": 1971512,
+      "costUSD": 178.3636798000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-25T14:12:26.508Z"
+  "receivedAt": "2026-11-25T14:17:46.673Z"
 }
