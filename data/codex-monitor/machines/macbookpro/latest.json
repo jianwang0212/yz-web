@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-26T14:05:10.212Z",
+  "syncedAt": "2026-11-26T14:10:37.177Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 89260356,
-    "weekTokens": 646020286,
-    "totalTokens": 6207504862,
-    "estimatedCostUsd": 3076.9683191,
-    "cpu": 3.755702313281091,
-    "memoryBytes": 3329785856
+    "activeAgents": 23,
+    "todayTokens": 96437391,
+    "weekTokens": 653197321,
+    "totalTokens": 6214681897,
+    "estimatedCostUsd": 3078.5799587,
+    "cpu": 2.495314899661547,
+    "memoryBytes": 3550035968
   },
   "agents": [
     {
@@ -24,8 +24,8 @@
       "sessionId": "01a21803-4daa-76a0-b135-f6149c6f9940",
       "sessionTitle": "查一下, 在段永平和巴菲特的仓位里面; 哪些比较适合做 wheel 策略? 列一个表格给我 html. 他们的持仓; 持仓时间; 期权的日期的有哪些; 一张期权在 5%, 10% 的 call, put 的价格一般是多少? 年 APY 是多少?",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22793877883753158,
-      "memoryBytes": 755548160,
+      "cpu": 0.23590587327219364,
+      "memoryBytes": 772816896,
       "confidence": "high"
     },
     {
@@ -35,41 +35,30 @@
       "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
       "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22793877883753158,
-      "memoryBytes": 755548160,
+      "cpu": 0.23590587327219364,
+      "memoryBytes": 772816896,
       "confidence": "high"
     },
     {
-      "agentId": "8ae265921b0f6f07",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a2182b-a3dd-7b63-a388-491898b330e4",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.22793877883753158,
-      "memoryBytes": 755548160,
-      "confidence": "high"
-    },
-    {
-      "agentId": "965b6b02ec24431f",
+      "agentId": "1237468890a93226",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a2182b-1d6b-7671-b1c3-706e9fa6c4e6",
+      "sessionId": "01a21829-7faa-7762-94b5-892639b9c34d",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.22793877883753158,
-      "memoryBytes": 755548160,
+      "cpu": 0.23590587327219364,
+      "memoryBytes": 772816896,
       "confidence": "high"
     },
     {
-      "agentId": "384b7f655670a24a",
+      "agentId": "ff02eb367f9203ca",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a21817-a843-7253-897a-25136d7e1e8f",
-      "sessionTitle": "你对腾讯明年年底的股价，有预估区间吗？ 投行是怎么评估的?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.22793877883753158,
-      "memoryBytes": 755548160,
+      "sessionId": "01a2182f-b0e5-7d33-929b-2f93002c3a90",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.23590587327219364,
+      "memoryBytes": 772816896,
       "confidence": "high"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0019535738910595266,
+      "cpu": 0.0019577089081479616,
       "memoryBytes": 102629376,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000020378842685523887,
+      "cpu": 0.000020311167079660395,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000010189525168127166,
+      "cpu": 0.000010155686676754649,
       "memoryBytes": 7962624,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4153ca12c43726eb",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.1673454050595631,
+      "memoryBytes": 133152768,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 855259530,
-      "inputTokens": 19706458,
-      "outputTokens": 2226608,
-      "costUSD": 195.1247788000001
+      "totalTokens": 862436565,
+      "inputTokens": 19803766,
+      "outputTokens": 2250207,
+      "costUSD": 196.7364184000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-26T14:05:14.104Z"
+  "receivedAt": "2026-11-26T14:10:40.911Z"
 }
