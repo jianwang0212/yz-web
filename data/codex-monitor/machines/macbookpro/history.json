@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-24T08:46:53.999Z",
-    "cpu": 1.9989088517540197,
-    "memoryBytes": 3292610560,
-    "totalTokens": 5940706967,
-    "todayTokens": 12614030,
-    "activeAgents": 21,
-    "estimatedCostUsd": 2559.5266332400006,
-    "agents": [
-      {
-        "agentId": "715807ec60ae617f",
-        "processName": "codex",
-        "status": "running",
-        "sessionId": "01a20c4e-a646-74f0-9dee-b5f6e3bf9f95",
-        "sessionTitle": "对照了 11 月 18、21、24 日的邮件。问题找到了：**新合约待核对、真实偏仓恶化、校验数据不全，三种不同的事都用了「新增/恶化报警」这个标题。** 24 日这封只说数据没收齐，没说明漏了哪些，也没确认补验完成。它不是偏仓恶化，也不是邮件脚注说的「新合约待核验满 7 天」。\n\n**我发给你的 GT 汇总已改好**：这种情况会直接写「GT｜合约校验未完成，数据覆盖不足」，把已检查范围、缺失项和恢复状态分开写。没有证据的就写未知，真正的仓位告警单列。\n\n**GT 系统原邮件还没改。** 历史记录追到了发信中转，但没找到生成这封邮件的程序。线上改动还缺能登录 GT 主机的 Mac，或这段发信程序的仓库地址。没有动交易或风控规则。 处理一下",
-        "workspaceLabel": "ArbLoop",
-        "cpu": 0.17369684690200793,
-        "memoryBytes": 606240768,
-        "confidence": "high"
-      },
-      {
-        "agentId": "6a7eea3841271cca",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.002499357161223965,
-        "memoryBytes": 113573888,
-        "confidence": "low"
-      },
-      {
-        "agentId": "21f658994ef37931",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.014595011571097969,
-        "memoryBytes": 224477184,
-        "confidence": "low"
-      },
-      {
-        "agentId": "099dfbd6a084bdd6",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.015037439315395374,
-        "memoryBytes": 60178432,
-        "confidence": "low"
-      },
-      {
-        "agentId": "f5f4b781492d9ce0",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0000074215082731263475,
-        "memoryBytes": 8355840,
-        "confidence": "low"
-      },
-      {
-        "agentId": "11420ff0018307a8",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0000037107541365631738,
-        "memoryBytes": 7815168,
-        "confidence": "low"
-      },
-      {
-        "agentId": "92b08e3206a848da",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.19673007132095915,
-        "memoryBytes": 119930880,
-        "confidence": "low"
-      },
-      {
-        "agentId": "4349c7ff4d9a33b9",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.1008030101749256,
-        "memoryBytes": 92733440,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-24T08:52:13.307Z",
     "cpu": 1.6668094909952564,
     "memoryBytes": 3292168192,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.31375314014624445,
         "memoryBytes": 205848576,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-26T16:41:00.624Z",
+    "cpu": 2.636292979353952,
+    "memoryBytes": 4016947200,
+    "totalTokens": 6221512699,
+    "todayTokens": 103268193,
+    "activeAgents": 24,
+    "estimatedCostUsd": 3079.7875007000002,
+    "agents": [
+      {
+        "agentId": "5446f51576c7036a",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0020026563732204374,
+        "memoryBytes": 106823680,
+        "confidence": "low"
+      },
+      {
+        "agentId": "6ae5d76fef713b89",
+        "processName": "ssh",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0,
+        "memoryBytes": 4145152,
+        "confidence": "low"
+      },
+      {
+        "agentId": "8813dc8e2c318be5",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000018605862707339085,
+        "memoryBytes": 8798208,
+        "confidence": "low"
+      },
+      {
+        "agentId": "d7f7d07ea9f04dcc",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000009303017899006437,
+        "memoryBytes": 7962624,
+        "confidence": "low"
+      },
+      {
+        "agentId": "4153ca12c43726eb",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.297668663714509,
+        "memoryBytes": 141279232,
+        "confidence": "low"
+      },
+      {
+        "agentId": "d060b99179f0ead1",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.11007330778104417,
+        "memoryBytes": 81821696,
+        "confidence": "low"
+      },
+      {
+        "agentId": "8c90c8a0da7a91b2",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.006167900867041268,
+        "memoryBytes": 45449216,
+        "confidence": "low"
+      },
+      {
+        "agentId": "e2c0f47ec26ca9d1",
+        "processName": "Codex (Aperitif)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.3137251253616649,
+        "memoryBytes": 205832192,
         "confidence": "low"
       }
     ]
