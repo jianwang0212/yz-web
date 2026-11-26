@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-26T17:26:28.964Z",
+  "syncedAt": "2026-11-26T17:31:48.722Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 23,
+    "activeAgents": 24,
     "todayTokens": 103268193,
     "weekTokens": 660028123,
     "totalTokens": 6221512699,
     "estimatedCostUsd": 3079.7875007000002,
-    "cpu": 2.7104316732533054,
-    "memoryBytes": 3899342848
+    "cpu": 4.719584518295013,
+    "memoryBytes": 3908698112
   },
   "agents": [
-    {
-      "agentId": "384b7f655670a24a",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21817-a843-7253-897a-25136d7e1e8f",
-      "sessionTitle": "你对腾讯明年年底的股价，有预估区间吗？ 投行是怎么评估的?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.22648048849088614,
-      "memoryBytes": 728236032,
-      "confidence": "high"
-    },
     {
       "agentId": "5446f51576c7036a",
       "processName": "Codex (Aperitif Renderer)",
@@ -35,8 +24,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0020080523909950456,
+      "cpu": 0.0020116474386698987,
       "memoryBytes": 106840064,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4f86020e25525be1",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2,
+      "memoryBytes": 5210112,
       "confidence": "low"
     },
     {
@@ -46,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001814519787338281,
+      "cpu": 0.000018092670659115993,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000009072681249489662,
+      "cpu": 0.000009046417166481214,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -68,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3317062991625915,
+      "cpu": 0.3356311232936196,
       "memoryBytes": 143835136,
       "confidence": "low"
     },
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11026936790629735,
-      "memoryBytes": 81657856,
+      "cpu": 0.11033915017957137,
+      "memoryBytes": 81674240,
       "confidence": "low"
     },
     {
@@ -90,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006205713974650929,
+      "cpu": 0.006214888593372594,
       "memoryBytes": 45481984,
       "confidence": "low"
     },
@@ -101,8 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.31327913770890414,
-      "memoryBytes": 200802304,
+      "cpu": 0.3132316488447412,
+      "memoryBytes": 201031680,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-26T17:26:31.661Z"
+  "receivedAt": "2026-11-26T17:31:51.362Z"
 }
