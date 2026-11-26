@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-26T13:35:25.245Z",
+  "syncedAt": "2026-11-26T13:47:33.337Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 18,
-    "todayTokens": 56521063,
-    "weekTokens": 613280993,
-    "totalTokens": 6174765569,
-    "estimatedCostUsd": 3070.3086081,
-    "cpu": 1.9927143349300025,
-    "memoryBytes": 2792161280
+    "activeAgents": 19,
+    "todayTokens": 72378044,
+    "weekTokens": 629137974,
+    "totalTokens": 6190622550,
+    "estimatedCostUsd": 3073.3366233,
+    "cpu": 2.0354969016366,
+    "memoryBytes": 2812952576
   },
   "agents": [
+    {
+      "agentId": "0fa820a0777b2eb9",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21819-aaea-73f0-a986-5c1291817af4",
+      "sessionTitle": "给我伯克希尔的现金百分比和指数的关系 graph",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.21129183448531608,
+      "memoryBytes": 750321664,
+      "confidence": "high"
+    },
     {
       "agentId": "f924f9eb37c54915",
       "processName": "codex",
@@ -24,8 +35,19 @@
       "sessionId": "01a21803-4daa-76a0-b135-f6149c6f9940",
       "sessionTitle": "查一下, 在段永平和巴菲特的仓位里面; 哪些比较适合做 wheel 策略? 列一个表格给我 html. 他们的持仓; 持仓时间; 期权的日期的有哪些; 一张期权在 5%, 10% 的 call, put 的价格一般是多少? 年 APY 是多少?",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.19852620653866113,
-      "memoryBytes": 729251840,
+      "cpu": 0.21129183448531608,
+      "memoryBytes": 750321664,
+      "confidence": "high"
+    },
+    {
+      "agentId": "586cbc9b7f3b7bfb",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21819-ac1d-78f3-8658-e6409fbf975a",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21129183448531608,
+      "memoryBytes": 750321664,
       "confidence": "high"
     },
     {
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001959312011638548,
+      "cpu": 0.0019659620999732444,
       "memoryBytes": 102612992,
       "confidence": "low"
     },
@@ -46,30 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001795058310064059,
+      "cpu": 0.0017914684224608261,
       "memoryBytes": 59949056,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f3d5870fc0b3656e",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "1cd910b57d35b86c",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4079616,
       "confidence": "low"
     },
     {
@@ -79,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000020756577240413054,
+      "cpu": 0.000020600716904948294,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -90,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000010378396330199058,
+      "cpu": 0.000010300464550951248,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -101,8 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1487016626190921,
-      "memoryBytes": 124518400,
+      "cpu": 0.15499109009816342,
+      "memoryBytes": 125779968,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 822520237,
-      "inputTokens": 19267967,
-      "outputTokens": 2140206,
-      "costUSD": 188.4650678000001
+      "totalTokens": 838377218,
+      "inputTokens": 19494937,
+      "outputTokens": 2186729,
+      "costUSD": 191.4930830000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-26T13:35:28.282Z"
+  "receivedAt": "2026-11-26T13:47:37.295Z"
 }
