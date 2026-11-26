@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-24T06:11:50.862Z",
-    "cpu": 2.254145751792321,
-    "memoryBytes": 3164733440,
-    "totalTokens": 5934081980,
-    "todayTokens": 5989043,
-    "activeAgents": 21,
-    "estimatedCostUsd": 2557.6739280400006,
-    "agents": [
-      {
-        "agentId": "5c5ed60c6988ecfc",
-        "processName": "ssh",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0,
-        "memoryBytes": 4161536,
-        "confidence": "low"
-      },
-      {
-        "agentId": "6a7eea3841271cca",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.002511531440052715,
-        "memoryBytes": 113459200,
-        "confidence": "low"
-      },
-      {
-        "agentId": "21f658994ef37931",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.014712713210115259,
-        "memoryBytes": 220069888,
-        "confidence": "low"
-      },
-      {
-        "agentId": "099dfbd6a084bdd6",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.01506395022252949,
-        "memoryBytes": 60260352,
-        "confidence": "low"
-      },
-      {
-        "agentId": "f5f4b781492d9ce0",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000007686897299208633,
-        "memoryBytes": 8355840,
-        "confidence": "low"
-      },
-      {
-        "agentId": "11420ff0018307a8",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.000003843448649604317,
-        "memoryBytes": 7815168,
-        "confidence": "low"
-      },
-      {
-        "agentId": "92b08e3206a848da",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.19740796826836599,
-        "memoryBytes": 120160256,
-        "confidence": "low"
-      },
-      {
-        "agentId": "4349c7ff4d9a33b9",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.10075255013798033,
-        "memoryBytes": 91193344,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-24T06:18:25.659Z",
     "cpu": 2.0869533254566095,
     "memoryBytes": 3430285312,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.002177669178313278,
         "memoryBytes": 98828288,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-26T14:05:10.212Z",
+    "cpu": 3.755702313281091,
+    "memoryBytes": 3329785856,
+    "totalTokens": 6207504862,
+    "todayTokens": 89260356,
+    "activeAgents": 24,
+    "estimatedCostUsd": 3076.9683191,
+    "agents": [
+      {
+        "agentId": "f924f9eb37c54915",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a21803-4daa-76a0-b135-f6149c6f9940",
+        "sessionTitle": "查一下, 在段永平和巴菲特的仓位里面; 哪些比较适合做 wheel 策略? 列一个表格给我 html. 他们的持仓; 持仓时间; 期权的日期的有哪些; 一张期权在 5%, 10% 的 call, put 的价格一般是多少? 年 APY 是多少?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.22793877883753158,
+        "memoryBytes": 755548160,
+        "confidence": "high"
+      },
+      {
+        "agentId": "777c1a99657e148c",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
+        "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.22793877883753158,
+        "memoryBytes": 755548160,
+        "confidence": "high"
+      },
+      {
+        "agentId": "8ae265921b0f6f07",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a2182b-a3dd-7b63-a388-491898b330e4",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.22793877883753158,
+        "memoryBytes": 755548160,
+        "confidence": "high"
+      },
+      {
+        "agentId": "965b6b02ec24431f",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a2182b-1d6b-7671-b1c3-706e9fa6c4e6",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.22793877883753158,
+        "memoryBytes": 755548160,
+        "confidence": "high"
+      },
+      {
+        "agentId": "384b7f655670a24a",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a21817-a843-7253-897a-25136d7e1e8f",
+        "sessionTitle": "你对腾讯明年年底的股价，有预估区间吗？ 投行是怎么评估的?",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.22793877883753158,
+        "memoryBytes": 755548160,
+        "confidence": "high"
+      },
+      {
+        "agentId": "5446f51576c7036a",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0019535738910595266,
+        "memoryBytes": 102629376,
+        "confidence": "low"
+      },
+      {
+        "agentId": "8813dc8e2c318be5",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000020378842685523887,
+        "memoryBytes": 8798208,
+        "confidence": "low"
+      },
+      {
+        "agentId": "d7f7d07ea9f04dcc",
+        "processName": "browser_crashpad_handler",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.000010189525168127166,
+        "memoryBytes": 7962624,
         "confidence": "low"
       }
     ]
