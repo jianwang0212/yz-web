@@ -1,24 +1,68 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-26T07:11:56.669Z",
+  "syncedAt": "2026-11-26T07:17:17.410Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 17,
-    "todayTokens": 42314461,
-    "weekTokens": 599074391,
-    "totalTokens": 6160558967,
-    "estimatedCostUsd": 3067.4831433,
-    "cpu": 1.9249888113965203,
-    "memoryBytes": 2924904448
+    "activeAgents": 20,
+    "todayTokens": 42675515,
+    "weekTokens": 599435445,
+    "totalTokens": 6160920021,
+    "estimatedCostUsd": 3067.6075345,
+    "cpu": 2.67596083373211,
+    "memoryBytes": 3120332800
   },
   "agents": [
     {
-      "agentId": "2f39eb493043edd1",
+      "agentId": "ddce38a3da947c72",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a216b6-73ac-7e32-b1d6-1db3041bcea4",
+      "sessionTitle": "用我的手机查一下我的 IBKR 账户, 我有 2400 USD, 为什么只能取 2000 ?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.20314939252019276,
+      "memoryBytes": 778813440,
+      "confidence": "high"
+    },
+    {
+      "agentId": "fe08f21039977123",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a216b6-7989-71c2-9924-036ab751761d",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.20314939252019276,
+      "memoryBytes": 778813440,
+      "confidence": "high"
+    },
+    {
+      "agentId": "422da9fba888792c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a216b6-74f4-7002-93ab-d7b80934ef88",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.20314939252019276,
+      "memoryBytes": 778813440,
+      "confidence": "high"
+    },
+    {
+      "agentId": "9aed18d5d3947614",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": ".codex",
+      "cpu": 0.7368421052631579,
+      "memoryBytes": 93257728,
+      "confidence": "low"
+    },
+    {
+      "agentId": "930c90765640e0b6",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
@@ -35,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002072955166318496,
+      "cpu": 0.0020783705574829335,
       "memoryBytes": 102252544,
       "confidence": "low"
     },
@@ -46,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0018640527076972523,
+      "cpu": 0.0018545460359078484,
       "memoryBytes": 59932672,
       "confidence": "low"
     },
@@ -57,52 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00002726615860724462,
+      "cpu": 0.000027148092846477538,
       "memoryBytes": 8880128,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000013633265167007499,
-      "memoryBytes": 9388032,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.14297205180640765,
-      "memoryBytes": 138657792,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d060b99179f0ead1",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.10936605316973415,
-      "memoryBytes": 89849856,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8c90c8a0da7a91b2",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.006203135650988412,
-      "memoryBytes": 52215808,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 808313635,
-      "inputTokens": 18751664,
-      "outputTokens": 2097395,
-      "costUSD": 185.63960300000014
+      "totalTokens": 808674689,
+      "inputTokens": 18791591,
+      "outputTokens": 2098650,
+      "costUSD": 185.76399420000013
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-26T07:11:59.581Z"
+  "receivedAt": "2026-11-26T07:17:20.303Z"
 }
