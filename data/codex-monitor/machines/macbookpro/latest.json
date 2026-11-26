@@ -1,53 +1,31 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-26T13:47:33.337Z",
+  "syncedAt": "2026-11-26T13:54:14.963Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 19,
-    "todayTokens": 72378044,
-    "weekTokens": 629137974,
-    "totalTokens": 6190622550,
-    "estimatedCostUsd": 3073.3366233,
-    "cpu": 2.0354969016366,
-    "memoryBytes": 2812952576
+    "activeAgents": 18,
+    "todayTokens": 77252454,
+    "weekTokens": 634012384,
+    "totalTokens": 6195496960,
+    "estimatedCostUsd": 3074.3613723,
+    "cpu": 4.058732964139695,
+    "memoryBytes": 2864267264
   },
   "agents": [
     {
-      "agentId": "0fa820a0777b2eb9",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21819-aaea-73f0-a986-5c1291817af4",
-      "sessionTitle": "给我伯克希尔的现金百分比和指数的关系 graph",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.21129183448531608,
-      "memoryBytes": 750321664,
-      "confidence": "high"
-    },
-    {
-      "agentId": "f924f9eb37c54915",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21803-4daa-76a0-b135-f6149c6f9940",
-      "sessionTitle": "查一下, 在段永平和巴菲特的仓位里面; 哪些比较适合做 wheel 策略? 列一个表格给我 html. 他们的持仓; 持仓时间; 期权的日期的有哪些; 一张期权在 5%, 10% 的 call, put 的价格一般是多少? 年 APY 是多少?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.21129183448531608,
-      "memoryBytes": 750321664,
-      "confidence": "high"
-    },
-    {
-      "agentId": "586cbc9b7f3b7bfb",
+      "agentId": "32c652fa8946cd66",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a21819-ac1d-78f3-8658-e6409fbf975a",
+      "sessionId": "01a21815-7c56-7c31-b910-d76202296cfe",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.21129183448531608,
-      "memoryBytes": 750321664,
+      "cpu": 0.21752253454612652,
+      "memoryBytes": 743538688,
       "confidence": "high"
     },
     {
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0019659620999732444,
+      "cpu": 0.0019585119944373623,
       "memoryBytes": 102612992,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0017914684224608261,
+      "cpu": 0.0017962683972650366,
       "memoryBytes": 59949056,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000020600716904948294,
+      "cpu": 0.00002053156214390572,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000010300464550951248,
+      "cpu": 0.00001026588645929576,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.15499109009816342,
-      "memoryBytes": 125779968,
+      "cpu": 0.15876193409300893,
+      "memoryBytes": 126730240,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d060b99179f0ead1",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.10960886972590084,
+      "memoryBytes": 83574784,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8c90c8a0da7a91b2",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.006087670670362385,
+      "memoryBytes": 44826624,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 838377218,
-      "inputTokens": 19494937,
-      "outputTokens": 2186729,
-      "costUSD": 191.4930830000001
+      "totalTokens": 843251628,
+      "inputTokens": 19551162,
+      "outputTokens": 2202994,
+      "costUSD": 192.5178320000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-26T13:47:37.295Z"
+  "receivedAt": "2026-11-26T13:54:20.634Z"
 }
