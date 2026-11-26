@@ -1,42 +1,75 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-26T06:12:59.541Z",
+  "syncedAt": "2026-11-26T06:18:19.197Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 18,
-    "todayTokens": 36566289,
-    "weekTokens": 593326219,
-    "totalTokens": 6154810795,
-    "estimatedCostUsd": 3066.4445641,
-    "cpu": 1.8833299076991568,
-    "memoryBytes": 3097198592
+    "activeAgents": 23,
+    "todayTokens": 38697832,
+    "weekTokens": 595457762,
+    "totalTokens": 6156942338,
+    "estimatedCostUsd": 3066.8545781000003,
+    "cpu": 1.9587697586117914,
+    "memoryBytes": 3126411264
   },
   "agents": [
     {
-      "agentId": "f993eaa3a906dfc1",
+      "agentId": "8413ec160f1b4d8d",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21561-cae8-7991-a13a-ab1f93a5ca83",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-fd8406eb-f2b5-4446-afb7-de3bc667ba41.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-fd8406eb-f2b5-4446-afb7-de3bc667ba41.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n查一下这个可以干嘛 ?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.18656887462754984,
-      "memoryBytes": 757825536,
+      "status": "idle",
+      "sessionId": "01a2167f-f02a-7243-b28b-a3357a8d52ff",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.19354608715491672,
+      "memoryBytes": 757612544,
       "confidence": "high"
     },
     {
-      "agentId": "006fedc8048dc32a",
+      "agentId": "42d0d8421de32961",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a21675-18b4-7f63-a18a-a494d1ae2125",
+      "sessionId": "01a2167e-dcab-7ef3-b4b6-73af7b5718c7",
+      "sessionTitle": "查一下 x 上有没有 template 专门做风控的?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.19354608715491672,
+      "memoryBytes": 757612544,
+      "confidence": "high"
+    },
+    {
+      "agentId": "9a02875faafbc9ca",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a2167f-aa55-70f0-9042-80b4a2108411",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.18656887462754984,
-      "memoryBytes": 757825536,
+      "cpu": 0.19354608715491672,
+      "memoryBytes": 757612544,
+      "confidence": "high"
+    },
+    {
+      "agentId": "ff8d64a7745d4f6d",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a2167e-de1e-7e20-b67a-1ce872958f42",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.19354608715491672,
+      "memoryBytes": 757612544,
+      "confidence": "high"
+    },
+    {
+      "agentId": "4291cffb9a4ce7b9",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21570-44a2-7b22-92c0-6533ffad1ef7",
+      "sessionTitle": "为什么没有 apple 运动? 解决啊",
+      "workspaceLabel": "AppleHealth",
+      "cpu": 0.19354608715491672,
+      "memoryBytes": 757612544,
       "confidence": "high"
     },
     {
@@ -46,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002112724050977987,
+      "cpu": 0.0021012675388056667,
       "memoryBytes": 102039552,
       "confidence": "low"
     },
@@ -57,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0018741906903836979,
+      "cpu": 0.001880973361350234,
       "memoryBytes": 59932672,
       "confidence": "low"
     },
@@ -68,41 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000028647959549081114,
+      "cpu": 0.000028517245804400212,
       "memoryBytes": 8880128,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000014324184953876125,
-      "memoryBytes": 9388032,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.12401879333065947,
-      "memoryBytes": 138166272,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d060b99179f0ead1",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.10906434423881281,
-      "memoryBytes": 89817088,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 802565463,
-      "inputTokens": 18584929,
-      "outputTokens": 2082550,
-      "costUSD": 184.60102380000015
+      "totalTokens": 804697006,
+      "inputTokens": 18670042,
+      "outputTokens": 2086100,
+      "costUSD": 185.01103780000017
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-26T06:13:02.409Z"
+  "receivedAt": "2026-11-26T06:18:22.169Z"
 }
