@@ -1,22 +1,66 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T12:54:52.011Z",
+  "syncedAt": "2026-11-27T13:00:23.296Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
-    "todayTokens": 69932754,
-    "weekTokens": 502418389,
-    "totalTokens": 6291445453,
-    "estimatedCostUsd": 3098.8256415,
-    "cpu": 4.193216010331042,
-    "memoryBytes": 4150624256
+    "activeAgents": 30,
+    "todayTokens": 77358913,
+    "weekTokens": 509844548,
+    "totalTokens": 6298871612,
+    "estimatedCostUsd": 3101.6854419,
+    "cpu": 4.203911104615119,
+    "memoryBytes": 4285087744
   },
   "agents": [
+    {
+      "agentId": "d98c2a7ea6f1a6cb",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21cfe-fd5d-7232-b25a-f46f9eef6a9b",
+      "sessionTitle": "帮我查下我的 bill; 特别是 plasma, 有没有 balckfriday 的折扣? 还有我的服务器等等. 给我列一个折扣和我现在的付款对比",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.22253468108898067,
+      "memoryBytes": 634585088,
+      "confidence": "high"
+    },
+    {
+      "agentId": "5bc9b54376fdeaef",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21d06-1314-7f50-a692-1f28b14b4472",
+      "sessionTitle": "帮我把我现在 tiger 模拟盘 8905 的也放到[https://thisisyz.com/projects/broker-dashboard/?view=1&tab=overview](https://thisisyz.com/projects/broker-dashboard/?view=1\\&tab=overview) 上了给一个 switch; 切换实盘和模拟盘.",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.22253468108898067,
+      "memoryBytes": 634585088,
+      "confidence": "high"
+    },
+    {
+      "agentId": "2620ef6c4a0a45b8",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21d16-8073-7a93-b933-c8b5ebbb35fe",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.22253468108898067,
+      "memoryBytes": 634585088,
+      "confidence": "high"
+    },
+    {
+      "agentId": "777c1a99657e148c",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
+      "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.22253468108898067,
+      "memoryBytes": 634585088,
+      "confidence": "high"
+    },
     {
       "agentId": "1e01128371dc4ef6",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006724436741767765,
-      "memoryBytes": 147226624,
+      "cpu": 0.0066732405347765264,
+      "memoryBytes": 147505152,
       "confidence": "low"
     },
     {
@@ -35,8 +79,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0019740186054208676,
+      "cpu": 0.0019701527753200024,
       "memoryBytes": 99008512,
+      "confidence": "low"
+    },
+    {
+      "agentId": "674ee6cbf94a169f",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4177920,
       "confidence": "low"
     },
     {
@@ -46,63 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00935299861246724,
-      "memoryBytes": 171819008,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00001109145458881205,
-      "memoryBytes": 8192000,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0000055457580496678085,
-      "memoryBytes": 7913472,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8207222795283887,
-      "memoryBytes": 131022848,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d060b99179f0ead1",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.11231269202187247,
-      "memoryBytes": 78462976,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8c90c8a0da7a91b2",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.006671546933750374,
-      "memoryBytes": 44040192,
+      "cpu": 0.009401273885350317,
+      "memoryBytes": 172212224,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 930672009,
-      "inputTokens": 21517608,
-      "outputTokens": 2454497,
-      "costUSD": 211.70966400000006
+      "totalTokens": 938098168,
+      "inputTokens": 21891739,
+      "outputTokens": 2466269,
+      "costUSD": 214.5694644000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T12:54:56.934Z"
+  "receivedAt": "2026-11-27T13:00:28.889Z"
 }
