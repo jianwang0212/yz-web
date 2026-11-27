@@ -1,22 +1,77 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T12:24:20.440Z",
+  "syncedAt": "2026-11-27T12:36:32.694Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
-    "todayTokens": 55002817,
-    "weekTokens": 487488452,
-    "totalTokens": 6276515516,
-    "estimatedCostUsd": 3095.9289867,
-    "cpu": 4.979497858891129,
-    "memoryBytes": 7758315520
+    "activeAgents": 30,
+    "todayTokens": 57136322,
+    "weekTokens": 489621957,
+    "totalTokens": 6278649021,
+    "estimatedCostUsd": 3096.5631055000003,
+    "cpu": 4.175496701118119,
+    "memoryBytes": 4743757824
   },
   "agents": [
+    {
+      "agentId": "a21c217f9ee40c4b",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21d01-a1b9-7ea0-a9ef-4db7021ab7d0",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21325543893715443,
+      "memoryBytes": 773079040,
+      "confidence": "high"
+    },
+    {
+      "agentId": "d98c2a7ea6f1a6cb",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21cfe-fd5d-7232-b25a-f46f9eef6a9b",
+      "sessionTitle": "帮我查下我的 bill; 特别是 plasma, 有没有 balckfriday 的折扣? 还有我的服务器等等. 给我列一个折扣和我现在的付款对比",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.21325543893715443,
+      "memoryBytes": 773079040,
+      "confidence": "high"
+    },
+    {
+      "agentId": "d203c61e1d2a2bcf",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21ada-7f7c-74e1-a30b-4a5ce8d87973",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21325543893715443,
+      "memoryBytes": 773079040,
+      "confidence": "high"
+    },
+    {
+      "agentId": "61a65f6e7c9c5bf7",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21cfe-fed6-7571-a488-1799429e2d92",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.21325543893715443,
+      "memoryBytes": 773079040,
+      "confidence": "high"
+    },
+    {
+      "agentId": "b009f109ab18538d",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
+      "confidence": "low"
+    },
     {
       "agentId": "1e01128371dc4ef6",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,19 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006949303863137322,
-      "memoryBytes": 198279168,
-      "confidence": "low"
-    },
-    {
-      "agentId": "3923a522eb4b47ff",
-      "processName": "node",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8156580132667268,
-      "memoryBytes": 2624339968,
+      "cpu": 0.006851913319740149,
+      "memoryBytes": 155369472,
       "confidence": "low"
     },
     {
@@ -46,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001977701564236464,
-      "memoryBytes": 107020288,
+      "cpu": 0.0019750031231224085,
+      "memoryBytes": 107102208,
       "confidence": "low"
     },
     {
@@ -57,52 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009410559240683817,
-      "memoryBytes": 215482368,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000011205297864830491,
-      "memoryBytes": 8454144,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000005602680322266173,
-      "memoryBytes": 7962624,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8194928453772284,
-      "memoryBytes": 148242432,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d060b99179f0ead1",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.11247941014981568,
-      "memoryBytes": 83525632,
+      "cpu": 0.009412760106818963,
+      "memoryBytes": 164626432,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 915742072,
-      "inputTokens": 21031091,
-      "outputTokens": 2406085,
-      "costUSD": 208.81300920000007
+      "totalTokens": 917875577,
+      "inputTokens": 21211661,
+      "outputTokens": 2413932,
+      "costUSD": 209.44712800000008
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T12:24:24.785Z"
+  "receivedAt": "2026-11-27T12:36:36.461Z"
 }
