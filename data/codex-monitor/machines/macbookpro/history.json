@@ -1,104 +1,5 @@
 [
   {
-    "timestamp": "2026-11-25T05:22:55.907Z",
-    "cpu": 2.4984114266978796,
-    "memoryBytes": 2735685632,
-    "totalTokens": 6043732645,
-    "todayTokens": 75364527,
-    "activeAgents": 16,
-    "estimatedCostUsd": 3040.9579045,
-    "agents": [
-      {
-        "agentId": "007c4ce66c91bf32",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.002207473459488505,
-        "memoryBytes": 105791488,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e706916da50e8f22",
-        "processName": "Codex (Aperitif Renderer)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.0017572650565665074,
-        "memoryBytes": 59555840,
-        "confidence": "low"
-      },
-      {
-        "agentId": "e0dbc93c6b57784a",
-        "processName": "ssh",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0,
-        "memoryBytes": 4145152,
-        "confidence": "low"
-      },
-      {
-        "agentId": "00fc1cfc6c6d104b",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.00002761096155173604,
-        "memoryBytes": 8142848,
-        "confidence": "low"
-      },
-      {
-        "agentId": "c0a71fc5f621b6b2",
-        "processName": "browser_crashpad_handler",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.00001380548077586802,
-        "memoryBytes": 7995392,
-        "confidence": "low"
-      },
-      {
-        "agentId": "d7c3c552d0b5518c",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.18872092220611583,
-        "memoryBytes": 134709248,
-        "confidence": "low"
-      },
-      {
-        "agentId": "afe451486ca19d61",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.11218333678470352,
-        "memoryBytes": 82411520,
-        "confidence": "low"
-      },
-      {
-        "agentId": "defe156043e1fef7",
-        "processName": "Codex (Aperitif)",
-        "status": "idle",
-        "sessionId": null,
-        "sessionTitle": null,
-        "workspaceLabel": "/",
-        "cpu": 0.005770690964312833,
-        "memoryBytes": 44744704,
-        "confidence": "low"
-      }
-    ]
-  },
-  {
     "timestamp": "2026-11-25T05:28:14.608Z",
     "cpu": 2.495511117410266,
     "memoryBytes": 2741944320,
@@ -57019,6 +56920,105 @@
         "workspaceLabel": "/",
         "cpu": 0.000010990641468789326,
         "memoryBytes": 8110080,
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-27T13:28:01.414Z",
+    "cpu": 6.304049581449896,
+    "memoryBytes": 5269307392,
+    "totalTokens": 6320324176,
+    "todayTokens": 98811477,
+    "activeAgents": 37,
+    "estimatedCostUsd": 3106.0919135000004,
+    "agents": [
+      {
+        "agentId": "ab107b98b7780357",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a21d2c-a8b4-76d0-b143-b61c8787ed84",
+        "sessionTitle": "为什么加载的巨慢? [http://127.0.0.1:8042/](http://127.0.0.1:8042/)",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "a91591ddedf29592",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a21d2f-e109-7e82-a9c6-6520f48e1084",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "fc4269ff35d9fa6b",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a21d29-dfcc-71a1-809a-3e54fe27d5b0",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "777c1a99657e148c",
+        "processName": "codex",
+        "status": "running",
+        "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
+        "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "6ee7c44e170f4af6",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a21d2f-799e-70e1-b5d1-9a76bd80415b",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "d98c2a7ea6f1a6cb",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a21cfe-fd5d-7232-b25a-f46f9eef6a9b",
+        "sessionTitle": "帮我查下我的 bill; 特别是 plasma, 有没有 balckfriday 的折扣? 还有我的服务器等等. 给我列一个折扣和我现在的付款对比",
+        "workspaceLabel": "Docking2611",
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "2b9ab2f5c7db468d",
+        "processName": "codex",
+        "status": "idle",
+        "sessionId": "01a21d2f-0661-7320-9daf-46374be6e4ae",
+        "sessionTitle": null,
+        "workspaceLabel": null,
+        "cpu": 0.2295564881099317,
+        "memoryBytes": 682803200,
+        "confidence": "high"
+      },
+      {
+        "agentId": "1e01128371dc4ef6",
+        "processName": "Codex (Aperitif Renderer)",
+        "status": "idle",
+        "sessionId": null,
+        "sessionTitle": null,
+        "workspaceLabel": "/",
+        "cpu": 0.0064963761711154325,
+        "memoryBytes": 147505152,
         "confidence": "low"
       }
     ]
