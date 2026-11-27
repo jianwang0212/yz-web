@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T01:12:07.455Z",
+  "syncedAt": "2026-11-27T01:17:29.203Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,14 +9,25 @@
   },
   "summary": {
     "activeAgents": 25,
-    "todayTokens": 10598098,
-    "weekTokens": 443083733,
-    "totalTokens": 6232110797,
-    "estimatedCostUsd": 3083.2880057,
-    "cpu": 3.727083774168439,
-    "memoryBytes": 4592189440
+    "todayTokens": 12034711,
+    "weekTokens": 444520346,
+    "totalTokens": 6233547410,
+    "estimatedCostUsd": 3083.6889693000003,
+    "cpu": 3.4882248549010897,
+    "memoryBytes": 4557242368
   },
   "agents": [
+    {
+      "agentId": "cffc3543a5e8146f",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21a8f-4fc0-7992-b0de-6573d73d4c00",
+      "sessionTitle": "tiger 持仓里的\n\n1. **`QDTE`、`WDTE`、`QQQY`、`TSLY`、`KLIP`**：都是靠不断卖看涨期权（包括 0DTE 末日期权）发高分红的策略。标的暴涨时，卖出的 Call 把涨幅截断了；标的暴跌时，那点期权费根本兜不住，净值一路往下掉、很难再涨回原位。\n2. **`SVOL`**：直接做空 VIX 波动率期货。市场平稳时慢慢赚一点，一旦真出恐慌、VIX 飙升，净值会瞬间大跌。  这些的税怎么算的? 给我看一看如果直接持有和相关标的和他们在过去一年的差别",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2120367428290823,
+      "memoryBytes": 760053760,
+      "confidence": "high"
+    },
     {
       "agentId": "1e01128371dc4ef6",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007174887892376682,
+      "cpu": 0.006263048016701462,
       "memoryBytes": 70402048,
       "confidence": "low"
     },
@@ -35,18 +46,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0020072734142540026,
+      "cpu": 0.0020021984924623116,
       "memoryBytes": 106856448,
       "confidence": "low"
     },
     {
-      "agentId": "10c99c9e3453b1cf",
+      "agentId": "16c53887782784c7",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.25,
+      "cpu": 0,
       "memoryBytes": 4145152,
       "confidence": "low"
     },
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000014476074667593135,
+      "cpu": 0.000014442414482853243,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -68,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00000723808972336021,
+      "cpu": 0.000007221259387637204,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -79,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.6011016372558954,
-      "memoryBytes": 149487616,
+      "cpu": 0.6015814558058926,
+      "memoryBytes": 146178048,
       "confidence": "low"
     },
     {
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11177058150812838,
-      "memoryBytes": 83755008,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8c90c8a0da7a91b2",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.006470852212684029,
-      "memoryBytes": 45760512,
+      "cpu": 0.11180675909878685,
+      "memoryBytes": 83771392,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 879865465,
-      "inputTokens": 20558537,
-      "outputTokens": 2306608,
-      "costUSD": 201.4444654000001
+      "totalTokens": 881302078,
+      "inputTokens": 20653338,
+      "outputTokens": 2314404,
+      "costUSD": 201.8454290000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T01:12:10.316Z"
+  "receivedAt": "2026-11-27T01:17:32.044Z"
 }
