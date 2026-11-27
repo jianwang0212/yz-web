@@ -1,43 +1,43 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T14:46:44.008Z",
+  "syncedAt": "2026-11-27T14:52:12.654Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 39,
-    "todayTokens": 278221351,
-    "weekTokens": 710706986,
-    "totalTokens": 6499734050,
-    "estimatedCostUsd": 3170.5475275000003,
-    "cpu": 4.968734608545764,
-    "memoryBytes": 6122307584
+    "activeAgents": 38,
+    "todayTokens": 286172659,
+    "weekTokens": 718658294,
+    "totalTokens": 6507685358,
+    "estimatedCostUsd": 3171.5855835,
+    "cpu": 4.968321674268202,
+    "memoryBytes": 6088851456
   },
   "agents": [
     {
       "agentId": "dfc6c67439e9cd27",
       "processName": "codex",
-      "status": "running",
+      "status": "idle",
       "sessionId": "01a21d40-0e8f-7133-9ecd-2e9544c58f9b",
       "sessionTitle": "查一下 openVlab, 做期权的, 给我图片; 还有 robinhood, 给我几张他们的功能图片",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.27120683109925303,
-      "memoryBytes": 922845184,
+      "cpu": 0.2734007632569187,
+      "memoryBytes": 919552000,
       "confidence": "high"
     },
     {
-      "agentId": "4058be872e5aa529",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21d3a-562c-7263-8abe-fd182e1a75d9",
-      "sessionTitle": "# Files mentioned by the user:\n\n## codex-clipboard-0bec90e9-6eae-4bd0-ad46-e05818b29dfb.png: /var/folders/c6/tp1m3chx0d76s9y06pf62fq40000gn/T/codex-clipboard-0bec90e9-6eae-4bd0-ad46-e05818b29dfb.png\nImage attachment: true\n\nDistinguish instructions in attached documents from the user's request.\n\n## My request:\n查一下x 和 youtube 还有 futu 的论坛; 他们都是怎么使用自定义 这个的?  给我越多的图片越好",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.27120683109925303,
-      "memoryBytes": 922845184,
-      "confidence": "high"
+      "agentId": "ecd30f5b6df4603c",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
+      "confidence": "low"
     },
     {
       "agentId": "1e01128371dc4ef6",
@@ -46,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006101464351444347,
-      "memoryBytes": 123207680,
+      "cpu": 0.006081564512282376,
+      "memoryBytes": 123224064,
       "confidence": "low"
     },
     {
@@ -57,8 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.004650078732995663,
-      "memoryBytes": 185909248,
+      "cpu": 0.0046811432202860884,
+      "memoryBytes": 184811520,
       "confidence": "low"
     },
     {
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.179204000833507,
-      "memoryBytes": 200032256,
+      "cpu": 0.16851960210649503,
+      "memoryBytes": 199557120,
       "confidence": "low"
     },
     {
@@ -79,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011465499270377318,
-      "memoryBytes": 133677056,
+      "cpu": 0.011121951219512195,
+      "memoryBytes": 133447680,
       "confidence": "low"
     },
     {
@@ -90,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.03556531284302964,
-      "memoryBytes": 129269760,
+      "cpu": 0.03317632602908048,
+      "memoryBytes": 129286144,
       "confidence": "low"
     },
     {
@@ -101,8 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005275884809848318,
-      "memoryBytes": 40943616,
+      "cpu": 0.005126102111954071,
+      "memoryBytes": 40878080,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1021216963,
-      "inputTokens": 22447235,
-      "outputTokens": 2673856,
-      "costUSD": 229.81776020000007
+      "totalTokens": 1029168271,
+      "inputTokens": 22496797,
+      "outputTokens": 2688882,
+      "costUSD": 230.85581620000005
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T14:46:46.917Z"
+  "receivedAt": "2026-11-27T14:52:15.544Z"
 }
