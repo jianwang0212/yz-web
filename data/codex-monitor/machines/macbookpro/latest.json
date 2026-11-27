@@ -1,54 +1,32 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T00:40:00.098Z",
+  "syncedAt": "2026-11-27T00:45:21.333Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 25,
+    "activeAgents": 23,
     "todayTokens": 754444,
     "weekTokens": 433240079,
     "totalTokens": 6222267143,
     "estimatedCostUsd": 3081.3821521000004,
-    "cpu": 3.6226616622360894,
-    "memoryBytes": 4011556864
+    "cpu": 3.381174368705572,
+    "memoryBytes": 4285497344
   },
   "agents": [
     {
-      "agentId": "f924f9eb37c54915",
+      "agentId": "f15f3ea9209e1902",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21803-4daa-76a0-b135-f6149c6f9940",
-      "sessionTitle": "查一下, 在段永平和巴菲特的仓位里面; 哪些比较适合做 wheel 策略? 列一个表格给我 html. 他们的持仓; 持仓时间; 期权的日期的有哪些; 一张期权在 5%, 10% 的 call, put 的价格一般是多少? 年 APY 是多少?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.19689929309167786,
-      "memoryBytes": 742883328,
+      "status": "running",
+      "sessionId": "01a21a75-f9c1-71c3-bb5c-d3abec13d6ed",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.1983683512878161,
+      "memoryBytes": 749387776,
       "confidence": "high"
-    },
-    {
-      "agentId": "9c478ebb55ff645e",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4079616,
-      "confidence": "low"
-    },
-    {
-      "agentId": "3fc4a4b2733b1d36",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.25,
-      "memoryBytes": 4145152,
-      "confidence": "low"
     },
     {
       "agentId": "5446f51576c7036a",
@@ -57,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0020142113802942983,
+      "cpu": 0.0020090406830738324,
       "memoryBytes": 106905600,
       "confidence": "low"
     },
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00001468083856949909,
+      "cpu": 0.000014646220542788935,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000007340473166900338,
+      "cpu": 0.000007323163899731239,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -90,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.5861661442696596,
-      "memoryBytes": 137412608,
+      "cpu": 0.5876692566256325,
+      "memoryBytes": 145408000,
       "confidence": "low"
     },
     {
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11167795876122173,
+      "cpu": 0.11166360314310195,
       "memoryBytes": 82345984,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8c90c8a0da7a91b2",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0064736768873624164,
+      "memoryBytes": 45776896,
+      "confidence": "low"
+    },
+    {
+      "agentId": "e2c0f47ec26ca9d1",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.3113658000732333,
+      "memoryBytes": 203194368,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T00:40:03.042Z"
+  "receivedAt": "2026-11-27T00:45:24.209Z"
 }
