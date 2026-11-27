@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T16:26:28.313Z",
+  "syncedAt": "2026-11-27T16:32:01.386Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 46,
-    "todayTokens": 17665559,
-    "weekTokens": 749163433,
-    "totalTokens": 6559035492,
-    "estimatedCostUsd": 3183.5218783000005,
-    "cpu": 7.919643604039516,
-    "memoryBytes": 6761594880
+    "activeAgents": 42,
+    "todayTokens": 18606664,
+    "weekTokens": 750104538,
+    "totalTokens": 6559976597,
+    "estimatedCostUsd": 3183.6356707000004,
+    "cpu": 6.751621884170375,
+    "memoryBytes": 6188105728
   },
   "agents": [
-    {
-      "agentId": "777c1a99657e148c",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
-      "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.29042536656131807,
-      "memoryBytes": 896860160,
-      "confidence": "high"
-    },
     {
       "agentId": "5446f51576c7036a",
       "processName": "Codex (Aperitif Renderer)",
@@ -35,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007619822534003321,
+      "cpu": 0.007611344030555129,
       "memoryBytes": 156450816,
       "confidence": "low"
     },
@@ -46,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.019509476031215164,
-      "memoryBytes": 85114880,
+      "cpu": 0.018103008669046405,
+      "memoryBytes": 85065728,
       "confidence": "low"
     },
     {
@@ -57,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008969996906897619,
+      "cpu": 0.008130081300813007,
       "memoryBytes": 83853312,
       "confidence": "low"
     },
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008351376430559852,
+      "cpu": 0.00784973366975049,
       "memoryBytes": 83968000,
       "confidence": "low"
     },
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009897927621404269,
+      "cpu": 0.00897112419400056,
       "memoryBytes": 83853312,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009322560596643879,
+      "cpu": 0.008445945945945946,
       "memoryBytes": 83443712,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009944064636420136,
+      "cpu": 0.009009009009009009,
       "memoryBytes": 83705856,
+      "confidence": "low"
+    },
+    {
+      "agentId": "6dc2c4eb093ef702",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.007882882882882882,
+      "memoryBytes": 83804160,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1073718544,
-      "inputTokens": 23275976,
-      "outputTokens": 2856264,
-      "costUSD": 238.44836540000006
+      "totalTokens": 1074659649,
+      "inputTokens": 23278962,
+      "outputTokens": 2857679,
+      "costUSD": 238.56215780000005
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T16:26:32.861Z"
+  "receivedAt": "2026-11-27T16:32:05.860Z"
 }
