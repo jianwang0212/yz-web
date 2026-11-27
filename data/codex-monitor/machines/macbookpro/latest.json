@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T13:05:52.143Z",
+  "syncedAt": "2026-11-27T13:11:27.241Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 27,
-    "todayTokens": 81085884,
-    "weekTokens": 513571519,
-    "totalTokens": 6302598583,
-    "estimatedCostUsd": 3102.4871455,
-    "cpu": 4.204949273705696,
-    "memoryBytes": 4225187840
+    "activeAgents": 28,
+    "todayTokens": 88470163,
+    "weekTokens": 520955798,
+    "totalTokens": 6309982862,
+    "estimatedCostUsd": 3103.4874747000003,
+    "cpu": 4.60515103942996,
+    "memoryBytes": 4229120000
   },
   "agents": [
+    {
+      "agentId": "4070ee0d8a858b4a",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21d21-1fc3-7d32-a5e7-fadab45cc769",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.22505294974187,
+      "memoryBytes": 639975424,
+      "confidence": "high"
+    },
     {
       "agentId": "5bc9b54376fdeaef",
       "processName": "codex",
@@ -24,8 +35,8 @@
       "sessionId": "01a21d06-1314-7f50-a692-1f28b14b4472",
       "sessionTitle": "帮我把我现在 tiger 模拟盘 8905 的也放到[https://thisisyz.com/projects/broker-dashboard/?view=1&tab=overview](https://thisisyz.com/projects/broker-dashboard/?view=1\\&tab=overview) 上了给一个 switch; 切换实盘和模拟盘.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22352564137984385,
-      "memoryBytes": 636174336,
+      "cpu": 0.22505294974187,
+      "memoryBytes": 639975424,
       "confidence": "high"
     },
     {
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006645728071373298,
+      "cpu": 0.00659663390940924,
       "memoryBytes": 147505152,
       "confidence": "low"
     },
@@ -46,19 +57,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001966313632911616,
+      "cpu": 0.0019684114038592613,
       "memoryBytes": 99008512,
       "confidence": "low"
     },
     {
-      "agentId": "a9b64b1c09e63e9f",
+      "agentId": "7952f9497b87c4dc",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
+      "cpu": 0.4,
+      "memoryBytes": 4505600,
       "confidence": "low"
     },
     {
@@ -68,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00932265480912559,
-      "memoryBytes": 167215104,
+      "cpu": 0.009271324045304199,
+      "memoryBytes": 166625280,
       "confidence": "low"
     },
     {
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000011050822733752527,
+      "cpu": 0.000011030892013082639,
       "memoryBytes": 8192000,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0000055254418972157295,
+      "cpu": 0.000005515476426853752,
       "memoryBytes": 7913472,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8228432818914692,
-      "memoryBytes": 130793472,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 941825139,
-      "inputTokens": 21959887,
-      "outputTokens": 2475428,
-      "costUSD": 215.3711680000001
+      "totalTokens": 949209418,
+      "inputTokens": 22002497,
+      "outputTokens": 2493705,
+      "costUSD": 216.37149720000008
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T13:05:55.977Z"
+  "receivedAt": "2026-11-27T13:11:30.702Z"
 }
