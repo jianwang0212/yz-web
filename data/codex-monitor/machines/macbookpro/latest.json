@@ -1,66 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T12:47:52.153Z",
+  "syncedAt": "2026-11-27T12:54:52.011Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 29,
-    "todayTokens": 63770595,
-    "weekTokens": 496256230,
-    "totalTokens": 6285283294,
-    "estimatedCostUsd": 3097.9696435,
-    "cpu": 4.186397306273908,
-    "memoryBytes": 4490264576
+    "activeAgents": 26,
+    "todayTokens": 69932754,
+    "weekTokens": 502418389,
+    "totalTokens": 6291445453,
+    "estimatedCostUsd": 3098.8256415,
+    "cpu": 4.193216010331042,
+    "memoryBytes": 4150624256
   },
   "agents": [
-    {
-      "agentId": "5bc9b54376fdeaef",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21d06-1314-7f50-a692-1f28b14b4472",
-      "sessionTitle": "帮我把我现在 tiger 模拟盘 8905 的也放到[https://thisisyz.com/projects/broker-dashboard/?view=1&tab=overview](https://thisisyz.com/projects/broker-dashboard/?view=1\\&tab=overview) 上了给一个 switch; 切换实盘和模拟盘.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.21784809000755992,
-      "memoryBytes": 716800000,
-      "confidence": "high"
-    },
-    {
-      "agentId": "9ca440877b2c0a7d",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21d0b-0338-7dc0-9da1-0aa2ad2bc83d",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.21784809000755992,
-      "memoryBytes": 716800000,
-      "confidence": "high"
-    },
-    {
-      "agentId": "9baa6614a07380e3",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21d09-1d63-7a63-9fd1-d0dfd2df99d9",
-      "sessionTitle": "- 查询投资大师回撤数据：查询段永平、巴菲特的最大回撤情况，核对相关数据与认知是否存在偏差",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.21784809000755992,
-      "memoryBytes": 716800000,
-      "confidence": "high"
-    },
-    {
-      "agentId": "e7683f8ddbf35e68",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4177920,
-      "confidence": "low"
-    },
     {
       "agentId": "1e01128371dc4ef6",
       "processName": "Codex (Aperitif Renderer)",
@@ -68,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006766689222297407,
-      "memoryBytes": 147193856,
+      "cpu": 0.006724436741767765,
+      "memoryBytes": 147226624,
       "confidence": "low"
     },
     {
@@ -79,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001972982580874511,
-      "memoryBytes": 99123200,
+      "cpu": 0.0019740186054208676,
+      "memoryBytes": 99008512,
       "confidence": "low"
     },
     {
@@ -90,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009272727272727273,
-      "memoryBytes": 163299328,
+      "cpu": 0.00935299861246724,
+      "memoryBytes": 171819008,
       "confidence": "low"
     },
     {
@@ -101,8 +57,52 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000011117225585182962,
+      "cpu": 0.00001109145458881205,
       "memoryBytes": 8192000,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d7f7d07ea9f04dcc",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0000055457580496678085,
+      "memoryBytes": 7913472,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4153ca12c43726eb",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.8207222795283887,
+      "memoryBytes": 131022848,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d060b99179f0ead1",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.11231269202187247,
+      "memoryBytes": 78462976,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8c90c8a0da7a91b2",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.006671546933750374,
+      "memoryBytes": 44040192,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 924509850,
-      "inputTokens": 21455413,
-      "outputTokens": 2442213,
-      "costUSD": 210.8536660000001
+      "totalTokens": 930672009,
+      "inputTokens": 21517608,
+      "outputTokens": 2454497,
+      "costUSD": 211.70966400000006
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T12:47:59.147Z"
+  "receivedAt": "2026-11-27T12:54:56.934Z"
 }
