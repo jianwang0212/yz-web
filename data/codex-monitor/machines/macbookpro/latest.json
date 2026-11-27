@@ -1,68 +1,57 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T12:36:32.694Z",
+  "syncedAt": "2026-11-27T12:42:06.325Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 30,
-    "todayTokens": 57136322,
-    "weekTokens": 489621957,
-    "totalTokens": 6278649021,
-    "estimatedCostUsd": 3096.5631055000003,
-    "cpu": 4.175496701118119,
-    "memoryBytes": 4743757824
+    "activeAgents": 29,
+    "todayTokens": 59889399,
+    "weekTokens": 492375034,
+    "totalTokens": 6281402098,
+    "estimatedCostUsd": 3097.1187571,
+    "cpu": 4.183523467372539,
+    "memoryBytes": 4480991232
   },
   "agents": [
     {
-      "agentId": "a21c217f9ee40c4b",
+      "agentId": "5bc9b54376fdeaef",
       "processName": "codex",
       "status": "running",
-      "sessionId": "01a21d01-a1b9-7ea0-a9ef-4db7021ab7d0",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.21325543893715443,
-      "memoryBytes": 773079040,
-      "confidence": "high"
-    },
-    {
-      "agentId": "d98c2a7ea6f1a6cb",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21cfe-fd5d-7232-b25a-f46f9eef6a9b",
-      "sessionTitle": "帮我查下我的 bill; 特别是 plasma, 有没有 balckfriday 的折扣? 还有我的服务器等等. 给我列一个折扣和我现在的付款对比",
+      "sessionId": "01a21d06-1314-7f50-a692-1f28b14b4472",
+      "sessionTitle": "帮我把我现在 tiger 模拟盘 8905 的也放到[https://thisisyz.com/projects/broker-dashboard/?view=1&tab=overview](https://thisisyz.com/projects/broker-dashboard/?view=1\\&tab=overview) 上了给一个 switch; 切换实盘和模拟盘.",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.21325543893715443,
-      "memoryBytes": 773079040,
+      "cpu": 0.21537416178403546,
+      "memoryBytes": 755154944,
       "confidence": "high"
     },
     {
-      "agentId": "d203c61e1d2a2bcf",
+      "agentId": "5d92b1c5a97f255d",
       "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21ada-7f7c-74e1-a30b-4a5ce8d87973",
+      "status": "running",
+      "sessionId": "01a21d06-146f-7542-9593-d189bb5c5360",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.21325543893715443,
-      "memoryBytes": 773079040,
+      "cpu": 0.21537416178403546,
+      "memoryBytes": 755154944,
       "confidence": "high"
     },
     {
-      "agentId": "61a65f6e7c9c5bf7",
+      "agentId": "eee603b64e07d5a5",
       "processName": "codex",
       "status": "idle",
-      "sessionId": "01a21cfe-fed6-7571-a488-1799429e2d92",
+      "sessionId": "01a21d04-dc17-7651-b1fc-e1e84e4703ea",
       "sessionTitle": null,
       "workspaceLabel": null,
-      "cpu": 0.21325543893715443,
-      "memoryBytes": 773079040,
+      "cpu": 0.21537416178403546,
+      "memoryBytes": 755154944,
       "confidence": "high"
     },
     {
-      "agentId": "b009f109ab18538d",
+      "agentId": "f3516c36f4f50e49",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
@@ -79,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006851913319740149,
-      "memoryBytes": 155369472,
+      "cpu": 0.006822084734997295,
+      "memoryBytes": 147177472,
       "confidence": "low"
     },
     {
@@ -90,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0019750031231224085,
-      "memoryBytes": 107102208,
+      "cpu": 0.0019770589911655744,
+      "memoryBytes": 104579072,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009412760106818963,
-      "memoryBytes": 164626432,
+      "cpu": 0.009357307611658629,
+      "memoryBytes": 164167680,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8813dc8e2c318be5",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000011138772395894249,
+      "memoryBytes": 8192000,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 917875577,
-      "inputTokens": 21211661,
-      "outputTokens": 2413932,
-      "costUSD": 209.44712800000008
+      "totalTokens": 920628654,
+      "inputTokens": 21327322,
+      "outputTokens": 2420052,
+      "costUSD": 210.00277960000008
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T12:36:36.461Z"
+  "receivedAt": "2026-11-27T12:42:16.851Z"
 }
