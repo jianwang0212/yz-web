@@ -1,33 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T16:04:13.482Z",
+  "syncedAt": "2026-11-27T16:09:45.871Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 51,
-    "todayTokens": 4216447,
-    "weekTokens": 735714321,
-    "totalTokens": 6545586380,
-    "estimatedCostUsd": 3181.7414383000005,
-    "cpu": 10.125908286859103,
-    "memoryBytes": 7420792832
+    "activeAgents": 49,
+    "todayTokens": 10805530,
+    "weekTokens": 742303404,
+    "totalTokens": 6552175463,
+    "estimatedCostUsd": 3182.6261883,
+    "cpu": 7.901895525806359,
+    "memoryBytes": 7568297984
   },
   "agents": [
-    {
-      "agentId": "777c1a99657e148c",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
-      "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.28894743706795356,
-      "memoryBytes": 854310912,
-      "confidence": "high"
-    },
     {
       "agentId": "8a321e25f7d8c899",
       "processName": "codex",
@@ -35,8 +24,8 @@
       "sessionId": "01a21da8-30d8-7dd0-886a-9753b8e76c86",
       "sessionTitle": "你可以在微信记录里面查王友坚银键键相关的聊天, 应该有一个 excel, 记录了净值变化? 也可以在我的 confluence 里面查一下",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.28894743706795356,
-      "memoryBytes": 854310912,
+      "cpu": 0.2904529522361164,
+      "memoryBytes": 883277824,
       "confidence": "high"
     },
     {
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.007659546187118891,
+      "cpu": 0.0076510163579171986,
       "memoryBytes": 156368896,
       "confidence": "low"
     },
@@ -57,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0230803373280071,
-      "memoryBytes": 85082112,
+      "cpu": 0.022050290135396517,
+      "memoryBytes": 85049344,
       "confidence": "low"
     },
     {
@@ -68,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0136986301369863,
+      "cpu": 0.01210762331838565,
       "memoryBytes": 83836928,
       "confidence": "low"
     },
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.013171759747102212,
+      "cpu": 0.011210762331838564,
       "memoryBytes": 83951616,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.015279241306638566,
+      "cpu": 0.013452914798206279,
       "memoryBytes": 83853312,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014338821030270845,
+      "cpu": 0.012641083521444696,
       "memoryBytes": 83427328,
+      "confidence": "low"
+    },
+    {
+      "agentId": "0d70996bd928ad8f",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.01309255079006772,
+      "memoryBytes": 83689472,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1060269432,
-      "inputTokens": 23197965,
-      "outputTokens": 2827243,
-      "costUSD": 236.6679254000001
+      "totalTokens": 1066858515,
+      "inputTokens": 23232653,
+      "outputTokens": 2843398,
+      "costUSD": 237.55267540000006
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T16:04:17.368Z"
+  "receivedAt": "2026-11-27T16:09:51.213Z"
 }
