@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T02:07:22.644Z",
+  "syncedAt": "2026-11-27T02:12:44.226Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 28,
-    "todayTokens": 21151082,
-    "weekTokens": 453636717,
-    "totalTokens": 6242663781,
-    "estimatedCostUsd": 3088.4500141000003,
-    "cpu": 3.597371017275408,
-    "memoryBytes": 4815536128
+    "activeAgents": 30,
+    "todayTokens": 25763943,
+    "weekTokens": 458249578,
+    "totalTokens": 6247276642,
+    "estimatedCostUsd": 3089.8389185,
+    "cpu": 3.59278820739256,
+    "memoryBytes": 4858036224
   },
   "agents": [
     {
@@ -24,8 +24,30 @@
       "sessionId": "01a21a8f-4fc0-7992-b0de-6573d73d4c00",
       "sessionTitle": "tiger 持仓里的\n\n1. **`QDTE`、`WDTE`、`QQQY`、`TSLY`、`KLIP`**：都是靠不断卖看涨期权（包括 0DTE 末日期权）发高分红的策略。标的暴涨时，卖出的 Call 把涨幅截断了；标的暴跌时，那点期权费根本兜不住，净值一路往下掉、很难再涨回原位。\n2. **`SVOL`**：直接做空 VIX 波动率期货。市场平稳时慢慢赚一点，一旦真出恐慌、VIX 飙升，净值会瞬间大跌。  这些的税怎么算的? 给我看一看如果直接持有和相关标的和他们在过去一年的差别",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22024457482151694,
-      "memoryBytes": 767770624,
+      "cpu": 0.2254797554146596,
+      "memoryBytes": 788873216,
+      "confidence": "high"
+    },
+    {
+      "agentId": "777c1a99657e148c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
+      "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2254797554146596,
+      "memoryBytes": 788873216,
+      "confidence": "high"
+    },
+    {
+      "agentId": "85fd24b7cdd03b2c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21abe-ee4f-7b61-8491-a1997563be38",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2254797554146596,
+      "memoryBytes": 788873216,
       "confidence": "high"
     },
     {
@@ -35,19 +57,19 @@
       "sessionId": "01a21a8a-30e3-7113-950d-15c5fdd2cf8f",
       "sessionTitle": "Linux.do 精选（11-26）：已收到，但 RSS 有 85 处缺口没补齐，这期可能不全。 - 查一下这个邮件",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.22024457482151694,
-      "memoryBytes": 767770624,
+      "cpu": 0.2254797554146596,
+      "memoryBytes": 788873216,
       "confidence": "high"
     },
     {
-      "agentId": "aa98a11278108657",
+      "agentId": "1db8f6270bea060b",
       "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21a87-d3d1-7571-abe9-76722f93669b",
-      "sessionTitle": "OldCard”硬件钱包 8,600 多用户被盗 1.07 亿美元，实际是 Coldcard；金额属实，但原因是固件随机数缺陷导致助记词偏弱，不是被远程黑入，“8,600 用户”应为 8,600 多个地址。 查一下他们是如何做到的?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.22024457482151694,
-      "memoryBytes": 767770624,
+      "status": "idle",
+      "sessionId": "01a21ac5-8b0b-7973-9962-50f4f496e590",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2254797554146596,
+      "memoryBytes": 788873216,
       "confidence": "high"
     },
     {
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014443692168810652,
-      "memoryBytes": 189825024,
+      "cpu": 0.04061447811447811,
+      "memoryBytes": 198410240,
       "confidence": "low"
     },
     {
@@ -68,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001994568636175338,
+      "cpu": 0.001997321599387794,
       "memoryBytes": 106856448,
       "confidence": "low"
     },
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.08108108108108107,
+      "cpu": 0.017721518987341773,
       "memoryBytes": 68796416,
-      "confidence": "low"
-    },
-    {
-      "agentId": "c620bd1c141c9a55",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000014136773281498499,
-      "memoryBytes": 8798208,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 884342725,
-      "inputTokens": 20801970,
-      "outputTokens": 2328339,
-      "costUSD": 202.56985100000009
+      "totalTokens": 887076890,
+      "inputTokens": 20837672,
+      "outputTokens": 2342514,
+      "costUSD": 203.0514338000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T02:07:25.549Z"
+  "receivedAt": "2026-11-27T02:12:47.074Z"
 }
