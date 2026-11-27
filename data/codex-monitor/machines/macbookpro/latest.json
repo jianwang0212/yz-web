@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T15:19:23.046Z",
+  "syncedAt": "2026-11-27T15:24:56.244Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 38,
-    "todayTokens": 296688975,
-    "weekTokens": 729174610,
-    "totalTokens": 6518201674,
-    "estimatedCostUsd": 3176.7074199000003,
-    "cpu": 5.139299942025267,
-    "memoryBytes": 6279266304
+    "activeAgents": 26,
+    "todayTokens": 299468531,
+    "weekTokens": 731954166,
+    "totalTokens": 6520981230,
+    "estimatedCostUsd": 3177.1228535,
+    "cpu": 5.162510426113252,
+    "memoryBytes": 5215928320
   },
   "agents": [
     {
@@ -24,20 +24,9 @@
       "sessionId": "01a2182b-a255-7c11-9cf0-99b6b452b763",
       "sessionTitle": "给我 nvda, 如果做 wheel 策略, 一周三次, 5%的虚值, 最近 3 个月的回测",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.2788710334573278,
-      "memoryBytes": 978026496,
+      "cpu": 0.27926938130879625,
+      "memoryBytes": 977895424,
       "confidence": "high"
-    },
-    {
-      "agentId": "1e01128371dc4ef6",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.005929005929005929,
-      "memoryBytes": 123224064,
-      "confidence": "low"
     },
     {
       "agentId": "5446f51576c7036a",
@@ -46,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.006054949935627506,
+      "cpu": 0.006778785991257161,
       "memoryBytes": 164741120,
       "confidence": "low"
     },
@@ -57,8 +46,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": ".codex",
-      "cpu": 0.15671641791044777,
-      "memoryBytes": 97288192,
+      "cpu": 0.16,
+      "memoryBytes": 100679680,
+      "confidence": "low"
+    },
+    {
+      "agentId": "08560b1b51049aea",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
       "confidence": "low"
     },
     {
@@ -68,8 +68,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1294570202692706,
-      "memoryBytes": 201162752,
+      "cpu": 0.1253701875616979,
+      "memoryBytes": 200540160,
       "confidence": "low"
     },
     {
@@ -79,19 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.009027675003699867,
-      "memoryBytes": 134168576,
-      "confidence": "low"
-    },
-    {
-      "agentId": "88aff66caf63aa24",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.025326170376055255,
-      "memoryBytes": 129302528,
+      "cpu": 0.010156580617858655,
+      "memoryBytes": 134299648,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0050699032109387,
-      "memoryBytes": 40943616,
+      "cpu": 0.004823856161379915,
+      "memoryBytes": 40992768,
+      "confidence": "low"
+    },
+    {
+      "agentId": "dc7a9bcefa47919c",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0087706475661453,
+      "memoryBytes": 58818560,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1032884726,
-      "inputTokens": 22662810,
-      "outputTokens": 2698076,
-      "costUSD": 231.63390700000005
+      "totalTokens": 1035664282,
+      "inputTokens": 22684161,
+      "outputTokens": 2707865,
+      "costUSD": 232.04934060000005
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T15:19:27.726Z"
+  "receivedAt": "2026-11-27T15:25:00.627Z"
 }
