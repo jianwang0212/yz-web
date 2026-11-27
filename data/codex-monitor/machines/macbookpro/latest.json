@@ -1,30 +1,52 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T00:34:37.566Z",
+  "syncedAt": "2026-11-27T00:40:00.098Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 103268193,
-    "weekTokens": 660028123,
-    "totalTokens": 6221512699,
-    "estimatedCostUsd": 3079.7875007000002,
-    "cpu": 3.3641632913419057,
-    "memoryBytes": 3926360064
+    "activeAgents": 25,
+    "todayTokens": 754444,
+    "weekTokens": 433240079,
+    "totalTokens": 6222267143,
+    "estimatedCostUsd": 3081.3821521000004,
+    "cpu": 3.6226616622360894,
+    "memoryBytes": 4011556864
   },
   "agents": [
     {
-      "agentId": "ba1008c03ce5abe1",
+      "agentId": "f924f9eb37c54915",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21803-4daa-76a0-b135-f6149c6f9940",
+      "sessionTitle": "查一下, 在段永平和巴菲特的仓位里面; 哪些比较适合做 wheel 策略? 列一个表格给我 html. 他们的持仓; 持仓时间; 期权的日期的有哪些; 一张期权在 5%, 10% 的 call, put 的价格一般是多少? 年 APY 是多少?",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.19689929309167786,
+      "memoryBytes": 742883328,
+      "confidence": "high"
+    },
+    {
+      "agentId": "9c478ebb55ff645e",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
+      "memoryBytes": 4079616,
+      "confidence": "low"
+    },
+    {
+      "agentId": "3fc4a4b2733b1d36",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.25,
       "memoryBytes": 4145152,
       "confidence": "low"
     },
@@ -35,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.002011395235156945,
+      "cpu": 0.0020142113802942983,
       "memoryBytes": 106905600,
       "confidence": "low"
     },
@@ -46,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000014715620631300125,
+      "cpu": 0.00001468083856949909,
       "memoryBytes": 8798208,
       "confidence": "low"
     },
@@ -57,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000007357864453421038,
+      "cpu": 0.000007340473166900338,
       "memoryBytes": 7962624,
       "confidence": "low"
     },
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.5851562442516685,
-      "memoryBytes": 136249344,
+      "cpu": 0.5861661442696596,
+      "memoryBytes": 137412608,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11169238240293136,
-      "memoryBytes": 82083840,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8c90c8a0da7a91b2",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.006460204990103673,
-      "memoryBytes": 45498368,
-      "confidence": "low"
-    },
-    {
-      "agentId": "e2c0f47ec26ca9d1",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.3109207834827013,
-      "memoryBytes": 188301312,
+      "cpu": 0.11167795876122173,
+      "memoryBytes": 82345984,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 869267367,
-      "inputTokens": 19865513,
-      "outputTokens": 2273022,
-      "costUSD": 197.9439604000001
+      "totalTokens": 870021811,
+      "inputTokens": 20236294,
+      "outputTokens": 2275373,
+      "costUSD": 199.5386118000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T00:34:41.417Z"
+  "receivedAt": "2026-11-27T00:40:03.042Z"
 }
