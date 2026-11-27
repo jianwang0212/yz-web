@@ -1,77 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-27T01:06:46.077Z",
+  "syncedAt": "2026-11-27T01:12:07.455Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 29,
-    "todayTokens": 10086922,
-    "weekTokens": 442572557,
-    "totalTokens": 6231599621,
-    "estimatedCostUsd": 3083.1283097,
-    "cpu": 3.475285496281904,
-    "memoryBytes": 4648058880
+    "activeAgents": 25,
+    "todayTokens": 10598098,
+    "weekTokens": 443083733,
+    "totalTokens": 6232110797,
+    "estimatedCostUsd": 3083.2880057,
+    "cpu": 3.727083774168439,
+    "memoryBytes": 4592189440
   },
   "agents": [
-    {
-      "agentId": "64b6b912540053ff",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21a8a-3237-78d1-83d8-ca9ce73c2c41",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.20823750480654124,
-      "memoryBytes": 755531776,
-      "confidence": "high"
-    },
-    {
-      "agentId": "f3666e0a952975f6",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21a8a-30e3-7113-950d-15c5fdd2cf8f",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.20823750480654124,
-      "memoryBytes": 755531776,
-      "confidence": "high"
-    },
-    {
-      "agentId": "f983f780f88a3fa6",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21a87-d503-7f31-be61-044339e6f06f",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.20823750480654124,
-      "memoryBytes": 755531776,
-      "confidence": "high"
-    },
-    {
-      "agentId": "22db62ce7a6529fa",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21a88-a999-78b1-bc89-7a80fae942d7",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.20823750480654124,
-      "memoryBytes": 755531776,
-      "confidence": "high"
-    },
-    {
-      "agentId": "aa98a11278108657",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21a87-d3d1-7571-abe9-76722f93669b",
-      "sessionTitle": "OldCard”硬件钱包 8,600 多用户被盗 1.07 亿美元，实际是 Coldcard；金额属实，但原因是固件随机数缺陷导致助记词偏弱，不是被远程黑入，“8,600 用户”应为 8,600 多个地址。 查一下他们是如何做到的?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.20823750480654124,
-      "memoryBytes": 755531776,
-      "confidence": "high"
-    },
     {
       "agentId": "1e01128371dc4ef6",
       "processName": "Codex (Aperitif Renderer)",
@@ -79,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.008816120906801008,
-      "memoryBytes": 68681728,
+      "cpu": 0.007174887892376682,
+      "memoryBytes": 70402048,
       "confidence": "low"
     },
     {
@@ -90,19 +35,74 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0020044666461485044,
+      "cpu": 0.0020072734142540026,
       "memoryBytes": 106856448,
       "confidence": "low"
     },
     {
-      "agentId": "7e2d822cfdd20a39",
+      "agentId": "10c99c9e3453b1cf",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0,
+      "cpu": 0.25,
       "memoryBytes": 4145152,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8813dc8e2c318be5",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000014476074667593135,
+      "memoryBytes": 8798208,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d7f7d07ea9f04dcc",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.00000723808972336021,
+      "memoryBytes": 7962624,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4153ca12c43726eb",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.6011016372558954,
+      "memoryBytes": 149487616,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d060b99179f0ead1",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.11177058150812838,
+      "memoryBytes": 83755008,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8c90c8a0da7a91b2",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.006470852212684029,
+      "memoryBytes": 45760512,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 879354289,
-      "inputTokens": 20517689,
-      "outputTokens": 2303480,
-      "costUSD": 201.2847694000001
+      "totalTokens": 879865465,
+      "inputTokens": 20558537,
+      "outputTokens": 2306608,
+      "costUSD": 201.4444654000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-27T01:06:48.894Z"
+  "receivedAt": "2026-11-27T01:12:10.316Z"
 }
