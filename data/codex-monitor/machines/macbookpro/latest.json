@@ -1,55 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T07:52:35.753Z",
+  "syncedAt": "2026-11-28T07:57:59.290Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
-    "todayTokens": 283118377,
-    "weekTokens": 1014616251,
-    "totalTokens": 6824488310,
-    "estimatedCostUsd": 2830.061441840001,
-    "cpu": 5.14294874641162,
-    "memoryBytes": 4237803520
+    "activeAgents": 24,
+    "todayTokens": 283348387,
+    "weekTokens": 1014846261,
+    "totalTokens": 6824718320,
+    "estimatedCostUsd": 2830.2672242400013,
+    "cpu": 5.1400858295077105,
+    "memoryBytes": 4163256320
   },
   "agents": [
-    {
-      "agentId": "7466c939c4a29028",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a22123-cbe0-7130-8928-ca787ed4b9df",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.30019068154572737,
-      "memoryBytes": 1132888064,
-      "confidence": "high"
-    },
-    {
-      "agentId": "9367ed0ea2d5460c",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a22123-2ee3-7861-a908-926e5849be4a",
-      "sessionTitle": "手写个保证给我呗？ 在明年年底之前保证自己安全； 家庭和睦； 跟jj还有jj的家人都保持透明的财务公开. 签个字和日期：）  给我写个 pdf, 名字就写刘俊灵; 我需要刘俊灵和剪辑两个人的签字.",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.30019068154572737,
-      "memoryBytes": 1132888064,
-      "confidence": "high"
-    },
-    {
-      "agentId": "7bc4030d4e6ae7f0",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a22123-3055-76a0-bfd7-355f463b8cab",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.30019068154572737,
-      "memoryBytes": 1132888064,
-      "confidence": "high"
-    },
     {
       "agentId": "afd86e46503c72c1",
       "processName": "Codex (Aperitif Renderer)",
@@ -57,23 +24,23 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0011802659532614682,
+      "cpu": 0.0011509245760761145,
       "memoryBytes": 60260352,
       "confidence": "low"
     },
     {
-      "agentId": "43820e5dcad5edf5",
+      "agentId": "ea1e198abef2917e",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
-      "memoryBytes": 4112384,
+      "memoryBytes": 4177920,
       "confidence": "low"
     },
     {
-      "agentId": "8ccc853cfb00507d",
+      "agentId": "d2b90af494d23ed2",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
@@ -90,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.07790015685739617,
+      "cpu": 0.07747219207813348,
       "memoryBytes": 184156160,
       "confidence": "low"
     },
@@ -101,8 +68,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033885997821614423,
+      "cpu": 0.0033871259107605225,
       "memoryBytes": 38682624,
+      "confidence": "low"
+    },
+    {
+      "agentId": "dc7a9bcefa47919c",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.005554886493647257,
+      "memoryBytes": 56213504,
+      "confidence": "low"
+    },
+    {
+      "agentId": "81a0849505553d0d",
+      "processName": "Codex (Aperitif Renderer)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.0012699720262918533,
+      "memoryBytes": 98877440,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8813dc8e2c318be5",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000008035000462012527,
+      "memoryBytes": 8044544,
       "confidence": "low"
     }
   ],
@@ -130,10 +130,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 248196431,
-      "inputTokens": 3710427,
-      "outputTokens": 516212,
-      "costUSD": 136.16879980000002
+      "totalTokens": 248426441,
+      "inputTokens": 3717952,
+      "outputTokens": 517641,
+      "costUSD": 136.37458220000002
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T07:52:38.803Z"
+  "receivedAt": "2026-11-28T07:58:02.327Z"
 }
