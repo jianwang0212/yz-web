@@ -1,32 +1,43 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T02:28:30.523Z",
+  "syncedAt": "2026-11-28T02:33:55.449Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 23,
-    "todayTokens": 157158956,
-    "weekTokens": 888656830,
-    "totalTokens": 6698528889,
-    "estimatedCostUsd": 2772.569411840001,
-    "cpu": 5.335520378718459,
-    "memoryBytes": 4320624640
+    "activeAgents": 24,
+    "todayTokens": 157586925,
+    "weekTokens": 889084799,
+    "totalTokens": 6698956858,
+    "estimatedCostUsd": 2772.961400640001,
+    "cpu": 6.051510758386584,
+    "memoryBytes": 4579622912
   },
   "agents": [
     {
-      "agentId": "64644ed05f413aa7",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
+      "agentId": "32384f554e636860",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fff-8745-7392-bf5a-779f735b90b4",
+      "sessionTitle": "我有 chase app, 你用手机帮我开通我的 online banking, 我现在登不上我的 chase [https://secure.chase.com/web/auth/#/logon/logon/chaseOnline](https://secure.chase.com/web/auth/#/logon/logon/chaseOnline)",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2863742144668834,
+      "memoryBytes": 1064288256,
+      "confidence": "high"
+    },
+    {
+      "agentId": "3aa110d201b161fc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fff-88c4-7041-9957-68d4e7a9f596",
       "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
+      "workspaceLabel": null,
+      "cpu": 0.2863742144668834,
+      "memoryBytes": 1064288256,
+      "confidence": "high"
     },
     {
       "agentId": "e0062b3eedbafba3",
@@ -35,8 +46,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11115078555396858,
-      "memoryBytes": 322453504,
+      "cpu": 0.11046746939188505,
+      "memoryBytes": 319225856,
+      "confidence": "low"
+    },
+    {
+      "agentId": "98abc916e459a260",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": ".codex",
+      "cpu": 0.7142857142857143,
+      "memoryBytes": 92569600,
       "confidence": "low"
     },
     {
@@ -46,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010628019323671498,
+      "cpu": 0.01030519223147047,
       "memoryBytes": 64045056,
       "confidence": "low"
     },
@@ -57,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033433347621088724,
-      "memoryBytes": 39780352,
+      "cpu": 0.0033415630853056363,
+      "memoryBytes": 39583744,
       "confidence": "low"
     },
     {
@@ -68,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00546506643806258,
-      "memoryBytes": 57393152,
+      "cpu": 0.005491231057381236,
+      "memoryBytes": 57278464,
       "confidence": "low"
     },
     {
@@ -79,30 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.001480481026466845,
-      "memoryBytes": 110608384,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000008728174109617139,
-      "memoryBytes": 8044544,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0000043641061001475065,
-      "memoryBytes": 7897088,
+      "cpu": 0.001468126207340631,
+      "memoryBytes": 106823680,
       "confidence": "low"
     }
   ],
@@ -137,10 +137,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 172324000,
-      "inputTokens": 2643587,
-      "outputTokens": 350749,
-      "costUSD": 91.15950859999997
+      "totalTokens": 172751969,
+      "inputTokens": 2665121,
+      "outputTokens": 352192,
+      "costUSD": 91.55149739999997
     },
     {
       "model": "gpt-5.6-luna",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T02:28:33.651Z"
+  "receivedAt": "2026-11-28T02:33:58.667Z"
 }
