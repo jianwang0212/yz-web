@@ -1,22 +1,55 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T11:01:46.947Z",
+  "syncedAt": "2026-11-28T11:07:11.605Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 22,
-    "todayTokens": 283348387,
-    "weekTokens": 1014846261,
-    "totalTokens": 6824718320,
-    "estimatedCostUsd": 2830.2672242400013,
-    "cpu": 4.942887208986815,
-    "memoryBytes": 4134338560
+    "activeAgents": 24,
+    "todayTokens": 283727639,
+    "weekTokens": 1015225513,
+    "totalTokens": 6825097572,
+    "estimatedCostUsd": 2830.412736240001,
+    "cpu": 6.938878891151782,
+    "memoryBytes": 4150198272
   },
   "agents": [
+    {
+      "agentId": "408617bca0171892",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fb9-13ee-7833-89cf-319b2ff1ad26",
+      "sessionTitle": "读我跟 max 的记录; 和我 confluence 里面跟 max 的基金合作的记录; 创建一个类似的 [https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund&view=1&tab=dashboard](https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund\\&view=1\\&tab=dashboard) 写在王友坚基金 tab 的旁边. max 基金",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2895154442305549,
+      "memoryBytes": 1134395392,
+      "confidence": "high"
+    },
+    {
+      "agentId": "087ad858be093f9c",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4145152,
+      "confidence": "low"
+    },
+    {
+      "agentId": "3667d57cc8d29980",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 2,
+      "memoryBytes": 5193728,
+      "confidence": "low"
+    },
     {
       "agentId": "afd86e46503c72c1",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0009974647770250613,
+      "cpu": 0.0009841712457967686,
       "memoryBytes": 60260352,
       "confidence": "low"
     },
@@ -35,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.06689617736129365,
+      "cpu": 0.06665813533535242,
       "memoryBytes": 184303616,
       "confidence": "low"
     },
@@ -46,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.003356744474282173,
+      "cpu": 0.0033555752690245686,
       "memoryBytes": 38682624,
       "confidence": "low"
     },
@@ -57,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005409522825862425,
+      "cpu": 0.005412632905208213,
       "memoryBytes": 56213504,
       "confidence": "low"
     },
@@ -68,41 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0011977430480395977,
+      "cpu": 0.0011921519060067221,
       "memoryBytes": 98877440,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000007694112849553164,
-      "memoryBytes": 8437760,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000003847071224676654,
-      "memoryBytes": 7897088,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.819703159984304,
-      "memoryBytes": 144670720,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1224046547,
-      "inputTokens": 25490976,
-      "outputTokens": 3222963,
-      "costUSD": 272.2470674000001
+      "totalTokens": 1224425799,
+      "inputTokens": 25541348,
+      "outputTokens": 3224163,
+      "costUSD": 272.3925794000001
     },
     {
       "model": "gpt-6.2-astra",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T11:01:50.798Z"
+  "receivedAt": "2026-11-28T11:07:14.700Z"
 }
