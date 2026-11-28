@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T01:50:26.655Z",
+  "syncedAt": "2026-11-28T01:55:50.652Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,34 +9,67 @@
   },
   "summary": {
     "activeAgents": 26,
-    "todayTokens": 126476478,
-    "weekTokens": 857974352,
-    "totalTokens": 6667846411,
-    "estimatedCostUsd": 2756.238896240001,
-    "cpu": 8.600715631321368,
-    "memoryBytes": 5068304384
+    "todayTokens": 135532700,
+    "weekTokens": 867030574,
+    "totalTokens": 6676902633,
+    "estimatedCostUsd": 2759.327241040001,
+    "cpu": 5.863017620556101,
+    "memoryBytes": 4714250240
   },
   "agents": [
     {
-      "agentId": "92c4523a872998f7",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
+      "agentId": "fadf5c09ebae7558",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fd2-742a-7241-8f25-3b5e1f8e5c1d",
+      "sessionTitle": "&#x20;你可以接到这个 [https://www.yuque.com/liujunling/grsayu/hy7m3hrwkn738ydp#f3fw](https://www.yuque.com/liujunling/grsayu/hy7m3hrwkn738ydp#f3fw) 么? 我想你读这个里面的所有信息, MCP API 都行",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2839447481710377,
+      "memoryBytes": 1035878400,
+      "confidence": "high"
     },
     {
-      "agentId": "f5e1cbf1e2528263",
-      "processName": "ssh",
+      "agentId": "b5f72c567e25667d",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fdc-a5cf-7553-8ac9-e1c8d0637b67",
+      "sessionTitle": "",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2839447481710377,
+      "memoryBytes": 1035878400,
+      "confidence": "high"
+    },
+    {
+      "agentId": "48a8365916e39a3c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fdc-9562-7ea3-b20d-ed6472564cd6",
+      "sessionTitle": "",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2839447481710377,
+      "memoryBytes": 1035878400,
+      "confidence": "high"
+    },
+    {
+      "agentId": "408617bca0171892",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fb9-13ee-7833-89cf-319b2ff1ad26",
+      "sessionTitle": "读我跟 max 的记录; 和我 confluence 里面跟 max 的基金合作的记录; 创建一个类似的 [https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund&view=1&tab=dashboard](https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund\\&view=1\\&tab=dashboard) 写在王友坚基金 tab 的旁边. max 基金",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2839447481710377,
+      "memoryBytes": 1035878400,
+      "confidence": "high"
+    },
+    {
+      "agentId": "92fb63bd80134948",
+      "processName": "codex",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
+      "workspaceLabel": ".codex",
+      "cpu": 0.5,
+      "memoryBytes": 95961088,
       "confidence": "low"
     },
     {
@@ -46,8 +79,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.11751482815589198,
-      "memoryBytes": 328155136,
+      "cpu": 0.11651632302405499,
+      "memoryBytes": 324730880,
       "confidence": "low"
     },
     {
@@ -57,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.011088709677419355,
+      "cpu": 0.010406811731315042,
       "memoryBytes": 63979520,
       "confidence": "low"
     },
@@ -68,41 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.003335211267605634,
-      "memoryBytes": 39665664,
-      "confidence": "low"
-    },
-    {
-      "agentId": "dc7a9bcefa47919c",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.005430985915492958,
-      "memoryBytes": 56901632,
-      "confidence": "low"
-    },
-    {
-      "agentId": "81a0849505553d0d",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.001518665783079302,
-      "memoryBytes": 110608384,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00000881608759664636,
-      "memoryBytes": 8044544,
+      "cpu": 0.0033333333333333335,
+      "memoryBytes": 39714816,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1166658204,
-      "inputTokens": 24894873,
-      "outputTokens": 3141763,
-      "costUSD": 258.6373282000001
+      "totalTokens": 1171770698,
+      "inputTokens": 24938217,
+      "outputTokens": 3155425,
+      "costUSD": 259.36618500000014
     },
     {
       "model": "gpt-5.5",
@@ -137,10 +137,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 148942875,
-      "inputTokens": 2245257,
-      "outputTokens": 279442,
-      "costUSD": 75.95599339999998
+      "totalTokens": 152886603,
+      "inputTokens": 2296119,
+      "outputTokens": 289428,
+      "costUSD": 78.31548139999998
     },
     {
       "model": "gpt-5.6-luna",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T01:50:29.693Z"
+  "receivedAt": "2026-11-28T01:56:02.833Z"
 }
