@@ -1,20 +1,20 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T12:12:25.082Z",
+  "syncedAt": "2026-11-28T12:17:53.805Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 25,
+    "activeAgents": 24,
     "todayTokens": 283727639,
     "weekTokens": 1015225513,
     "totalTokens": 6825097572,
     "estimatedCostUsd": 2830.412736240001,
-    "cpu": 7.227048471032038,
-    "memoryBytes": 6012190720
+    "cpu": 6.4709649558816285,
+    "memoryBytes": 6007128064
   },
   "agents": [
     {
@@ -24,7 +24,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0009541984732824428,
+      "cpu": 0.0009782001117942985,
       "memoryBytes": 60260352,
       "confidence": "low"
     },
@@ -35,18 +35,18 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0636996726787807,
-      "memoryBytes": 184385536,
+      "cpu": 0.06341947510292757,
+      "memoryBytes": 184352768,
       "confidence": "low"
     },
     {
       "agentId": "fe08c719f8143bb7",
       "processName": "node",
-      "status": "running",
+      "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 2.352857142857143,
+      "cpu": 1.6021400778210115,
       "memoryBytes": 1867464704,
       "confidence": "low"
     },
@@ -57,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033541026551272475,
+      "cpu": 0.003352881649373925,
       "memoryBytes": 38682624,
       "confidence": "low"
     },
@@ -68,30 +68,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005373908998543291,
+      "cpu": 0.005364610638998281,
       "memoryBytes": 56213504,
       "confidence": "low"
     },
     {
-      "agentId": "38a435bce705d230",
+      "agentId": "6fe0b9517337623b",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
       "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "606e68b1f78bf636",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
+      "memoryBytes": 4177920,
       "confidence": "low"
     },
     {
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00116955883152913,
+      "cpu": 0.001164365014893041,
       "memoryBytes": 98877440,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8813dc8e2c318be5",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000007561379498075628,
+      "memoryBytes": 8437760,
       "confidence": "low"
     }
   ],
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T12:12:28.923Z"
+  "receivedAt": "2026-11-28T12:17:57.120Z"
 }
