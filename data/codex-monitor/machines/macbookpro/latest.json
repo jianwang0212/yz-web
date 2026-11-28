@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T03:22:37.114Z",
+  "syncedAt": "2026-11-28T03:27:59.810Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 24,
-    "todayTokens": 199410230,
-    "weekTokens": 930908104,
-    "totalTokens": 6740780163,
-    "estimatedCostUsd": 2796.604908040001,
-    "cpu": 5.342578822711708,
-    "memoryBytes": 4087758848
+    "activeAgents": 23,
+    "todayTokens": 200811357,
+    "weekTokens": 932309231,
+    "totalTokens": 6742181290,
+    "estimatedCostUsd": 2797.539652040001,
+    "cpu": 5.437234579808438,
+    "memoryBytes": 4459102208
   },
   "agents": [
-    {
-      "agentId": "2a420640e85e059a",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a2201d-53a7-72f0-8e0c-d237c344ef74",
-      "sessionTitle": "京东方的股票； 最近的消息有没有3d屏幕， 还有国际上有其他公司有么？",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.2973784770035803,
-      "memoryBytes": 999817216,
-      "confidence": "high"
-    },
-    {
-      "agentId": "b2671d1bd2de50af",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21da4-ed36-7212-aa44-b6fbf597d085",
-      "sessionTitle": "查一下本机的微信的空间占用情况? 为什么我看到很多不同版本的? 有啥可以删除么?",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.2973784770035803,
-      "memoryBytes": 999817216,
-      "confidence": "high"
-    },
     {
       "agentId": "e0062b3eedbafba3",
       "processName": "Codex (Aperitif Renderer)",
@@ -46,19 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.10361803363640647,
-      "memoryBytes": 176308224,
-      "confidence": "low"
-    },
-    {
-      "agentId": "942667b844588e81",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.00962729959012487,
-      "memoryBytes": 61145088,
+      "cpu": 0.10288239006942983,
+      "memoryBytes": 176324608,
       "confidence": "low"
     },
     {
@@ -68,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033863663687732936,
-      "memoryBytes": 38305792,
+      "cpu": 0.0033844989946047103,
+      "memoryBytes": 38289408,
       "confidence": "low"
     },
     {
@@ -79,8 +46,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00561054782992025,
-      "memoryBytes": 56098816,
+      "cpu": 0.005614286567520755,
+      "memoryBytes": 56082432,
       "confidence": "low"
     },
     {
@@ -90,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0014372290224447266,
+      "cpu": 0.0014499643451390538,
       "memoryBytes": 95010816,
       "confidence": "low"
     },
@@ -101,8 +68,41 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008606259332412463,
+      "cpu": 0.000008594314001856371,
       "memoryBytes": 8044544,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d7f7d07ea9f04dcc",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000004297175466565826,
+      "memoryBytes": 7897088,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4153ca12c43726eb",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.875609661769319,
+      "memoryBytes": 145768448,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d060b99179f0ead1",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.20753208915779658,
+      "memoryBytes": 94027776,
       "confidence": "low"
     }
   ],
@@ -130,10 +130,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 204113446,
-      "inputTokens": 3388218,
-      "outputTokens": 436204,
-      "costUSD": 112.91850059999997
+      "totalTokens": 205514573,
+      "inputTokens": 3421872,
+      "outputTokens": 439197,
+      "costUSD": 113.85324459999997
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T03:22:40.056Z"
+  "receivedAt": "2026-11-28T03:28:02.809Z"
 }
