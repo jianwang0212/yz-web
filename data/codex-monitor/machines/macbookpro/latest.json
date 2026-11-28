@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T01:34:13.478Z",
+  "syncedAt": "2026-11-28T01:39:37.770Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 22,
-    "todayTokens": 105845621,
-    "weekTokens": 837343495,
-    "totalTokens": 6647215554,
-    "estimatedCostUsd": 2745.558766240001,
-    "cpu": 5.347952703598824,
-    "memoryBytes": 4555685888
+    "activeAgents": 23,
+    "todayTokens": 106000407,
+    "weekTokens": 837498281,
+    "totalTokens": 6647370340,
+    "estimatedCostUsd": 2745.617354240001,
+    "cpu": 5.345307818904878,
+    "memoryBytes": 4720132096
   },
   "agents": [
+    {
+      "agentId": "408617bca0171892",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fb9-13ee-7833-89cf-319b2ff1ad26",
+      "sessionTitle": "读我跟 max 的记录; 和我 confluence 里面跟 max 的基金合作的记录; 创建一个类似的 [https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund&view=1&tab=dashboard](https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund\\&view=1\\&tab=dashboard) 写在王友坚基金 tab 的旁边. max 基金",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2774783934926284,
+      "memoryBytes": 1035730944,
+      "confidence": "high"
+    },
     {
       "agentId": "e0062b3eedbafba3",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.12035826541681734,
-      "memoryBytes": 329842688,
+      "cpu": 0.11942108890420398,
+      "memoryBytes": 329891840,
       "confidence": "low"
     },
     {
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.012537612838515547,
+      "cpu": 0.011827458256029684,
       "memoryBytes": 74579968,
       "confidence": "low"
     },
@@ -46,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.003317743013155773,
+      "cpu": 0.0033160289981018594,
       "memoryBytes": 39714816,
       "confidence": "low"
     },
@@ -57,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00539133239637813,
+      "cpu": 0.005397123058979578,
       "memoryBytes": 56901632,
       "confidence": "low"
     },
@@ -68,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0015321756894790602,
+      "cpu": 0.0015463337831758885,
       "memoryBytes": 110608384,
       "confidence": "low"
     },
@@ -79,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008854023711075497,
+      "cpu": 0.000008841342115733169,
       "memoryBytes": 8044544,
       "confidence": "low"
     },
@@ -90,19 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000004427031454058481,
+      "cpu": 0.000004420690600285577,
       "memoryBytes": 7897088,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8858711291143724,
-      "memoryBytes": 160284672,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1158651907,
-      "inputTokens": 24807846,
-      "outputTokens": 3124061,
-      "costUSD": 257.4960974000001
+      "totalTokens": 1158806693,
+      "inputTokens": 24829269,
+      "outputTokens": 3124304,
+      "costUSD": 257.5546854000001
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T01:34:16.570Z"
+  "receivedAt": "2026-11-28T01:39:40.793Z"
 }
