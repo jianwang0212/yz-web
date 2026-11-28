@@ -1,44 +1,22 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T01:28:50.578Z",
+  "syncedAt": "2026-11-28T01:34:13.478Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 25,
-    "todayTokens": 105724569,
-    "weekTokens": 837222443,
-    "totalTokens": 6647094502,
-    "estimatedCostUsd": 2745.4325390400013,
-    "cpu": 7.330676910896461,
-    "memoryBytes": 4914868224
+    "activeAgents": 22,
+    "todayTokens": 105845621,
+    "weekTokens": 837343495,
+    "totalTokens": 6647215554,
+    "estimatedCostUsd": 2745.558766240001,
+    "cpu": 5.347952703598824,
+    "memoryBytes": 4555685888
   },
   "agents": [
-    {
-      "agentId": "961c19cac74cadcf",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21fbf-a850-75b0-83f9-4168b1b3b95e",
-      "sessionTitle": "解释一下: **Anthropic 用 Claude agent 把 Messages API 从 Python 重写成 Rust。** 用真实客户流量回放、对比两个版本，发现常规测试漏掉的差异，还发现 100 多处被削弱的断言。这是“agent 做大型生产迁移”的标杆案例，对你做 Agent 和自动化很有参考价值。",
-      "workspaceLabel": "Docking2611",
-      "cpu": 0.27755733583972125,
-      "memoryBytes": 1001340928,
-      "confidence": "high"
-    },
-    {
-      "agentId": "742ecc78b7b91787",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21fb9-530a-7092-bef2-3004804f499b",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.27755733583972125,
-      "memoryBytes": 1001340928,
-      "confidence": "high"
-    },
     {
       "agentId": "e0062b3eedbafba3",
       "processName": "Codex (Aperitif Renderer)",
@@ -46,8 +24,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.1214247621186179,
-      "memoryBytes": 329891840,
+      "cpu": 0.12035826541681734,
+      "memoryBytes": 329842688,
       "confidence": "low"
     },
     {
@@ -57,8 +35,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.010917030567685589,
-      "memoryBytes": 74563584,
+      "cpu": 0.012537612838515547,
+      "memoryBytes": 74579968,
       "confidence": "low"
     },
     {
@@ -68,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033194828106502005,
+      "cpu": 0.003317743013155773,
       "memoryBytes": 39714816,
       "confidence": "low"
     },
@@ -79,7 +57,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.00538545462986606,
+      "cpu": 0.00539133239637813,
       "memoryBytes": 56901632,
       "confidence": "low"
     },
@@ -90,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0015463917525773197,
+      "cpu": 0.0015321756894790602,
       "memoryBytes": 110608384,
       "confidence": "low"
     },
@@ -101,8 +79,30 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.000008866741738413386,
+      "cpu": 0.000008854023711075497,
       "memoryBytes": 8044544,
+      "confidence": "low"
+    },
+    {
+      "agentId": "d7f7d07ea9f04dcc",
+      "processName": "browser_crashpad_handler",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.000004427031454058481,
+      "memoryBytes": 7897088,
+      "confidence": "low"
+    },
+    {
+      "agentId": "4153ca12c43726eb",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.8858711291143724,
+      "memoryBytes": 160284672,
       "confidence": "low"
     }
   ],
@@ -137,10 +137,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 136197263,
-      "inputTokens": 1913866,
-      "outputTokens": 227717,
-      "costUSD": 66.29086699999999
+      "totalTokens": 136318315,
+      "inputTokens": 1914558,
+      "outputTokens": 229549,
+      "costUSD": 66.4170942
     },
     {
       "model": "gpt-5.6-luna",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T01:28:53.417Z"
+  "receivedAt": "2026-11-28T01:34:16.570Z"
 }
