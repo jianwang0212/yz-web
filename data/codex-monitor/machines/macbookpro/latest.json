@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T01:18:02.800Z",
+  "syncedAt": "2026-11-28T01:23:26.807Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
@@ -9,12 +9,12 @@
   },
   "summary": {
     "activeAgents": 27,
-    "todayTokens": 98705941,
-    "weekTokens": 830203815,
-    "totalTokens": 6640075874,
-    "estimatedCostUsd": 3202.9134375000003,
-    "cpu": 7.353139009262312,
-    "memoryBytes": 4626104320
+    "todayTokens": 103914061,
+    "weekTokens": 835411935,
+    "totalTokens": 6645283994,
+    "estimatedCostUsd": 3204.0023647000003,
+    "cpu": 5.353604935838275,
+    "memoryBytes": 4674617344
   },
   "agents": [
     {
@@ -24,8 +24,30 @@
       "sessionId": "01a21da8-30d8-7dd0-886a-9753b8e76c86",
       "sessionTitle": "你可以在微信记录里面查王友坚银键键相关的聊天, 应该有一个 excel, 记录了净值变化? 也可以在我的 confluence 里面查一下",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.2744253256858299,
-      "memoryBytes": 999833600,
+      "cpu": 0.2765390660379871,
+      "memoryBytes": 1024442368,
+      "confidence": "high"
+    },
+    {
+      "agentId": "961c19cac74cadcf",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fbf-a850-75b0-83f9-4168b1b3b95e",
+      "sessionTitle": "解释一下: **Anthropic 用 Claude agent 把 Messages API 从 Python 重写成 Rust。** 用真实客户流量回放、对比两个版本，发现常规测试漏掉的差异，还发现 100 多处被削弱的断言。这是“agent 做大型生产迁移”的标杆案例，对你做 Agent 和自动化很有参考价值。",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2765390660379871,
+      "memoryBytes": 1024442368,
+      "confidence": "high"
+    },
+    {
+      "agentId": "e4bfbcd87842e93a",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fbf-aa05-7ef3-b35f-2fa0288f00b7",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2765390660379871,
+      "memoryBytes": 1024442368,
       "confidence": "high"
     },
     {
@@ -35,41 +57,8 @@
       "sessionId": "01a21fb9-13ee-7833-89cf-319b2ff1ad26",
       "sessionTitle": "读我跟 max 的记录; 和我 confluence 里面跟 max 的基金合作的记录; 创建一个类似的 [https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund&view=1&tab=dashboard](https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund\\&view=1\\&tab=dashboard) 写在王友坚基金 tab 的旁边. max 基金",
       "workspaceLabel": "Docking2611",
-      "cpu": 0.2744253256858299,
-      "memoryBytes": 999833600,
-      "confidence": "high"
-    },
-    {
-      "agentId": "4f5e59c505cfc0bc",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21fa7-9945-7b51-8754-3cebd53015c5",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2744253256858299,
-      "memoryBytes": 999833600,
-      "confidence": "high"
-    },
-    {
-      "agentId": "64b6e28854d68593",
-      "processName": "codex",
-      "status": "running",
-      "sessionId": "01a21fb9-1555-7ff2-81a3-c08cbd0c3abd",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2744253256858299,
-      "memoryBytes": 999833600,
-      "confidence": "high"
-    },
-    {
-      "agentId": "742ecc78b7b91787",
-      "processName": "codex",
-      "status": "idle",
-      "sessionId": "01a21fb9-530a-7092-bef2-3004804f499b",
-      "sessionTitle": null,
-      "workspaceLabel": null,
-      "cpu": 0.2744253256858299,
-      "memoryBytes": 999833600,
+      "cpu": 0.2765390660379871,
+      "memoryBytes": 1024442368,
       "confidence": "high"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.12329902801600916,
+      "cpu": 0.12222411058237026,
       "memoryBytes": 329842688,
       "confidence": "low"
     },
@@ -90,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.012926748425588332,
+      "cpu": 0.011673151750972763,
       "memoryBytes": 74547200,
       "confidence": "low"
     },
@@ -101,8 +90,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.003299396681749623,
-      "memoryBytes": 39682048,
+      "cpu": 0.003321171297595659,
+      "memoryBytes": 39714816,
+      "confidence": "low"
+    },
+    {
+      "agentId": "dc7a9bcefa47919c",
+      "processName": "Codex (Aperitif)",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0.005379361960894377,
+      "memoryBytes": 56950784,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1152728911,
-      "inputTokens": 24724680,
-      "outputTokens": 3095815,
-      "costUSD": 256.46614700000015
+      "totalTokens": 1157909649,
+      "inputTokens": 24800735,
+      "outputTokens": 3122098,
+      "costUSD": 257.38892700000014
     },
     {
       "model": "gpt-5.5",
@@ -137,10 +137,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 135101631,
-      "inputTokens": 1807858,
-      "outputTokens": 216525,
-      "costUSD": 64.6037502
+      "totalTokens": 135129013,
+      "inputTokens": 1828023,
+      "outputTokens": 216574,
+      "costUSD": 64.76989739999999
     },
     {
       "model": "gpt-5.6-luna",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T01:18:05.790Z"
+  "receivedAt": "2026-11-28T01:23:29.790Z"
 }
