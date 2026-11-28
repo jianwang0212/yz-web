@@ -1,22 +1,55 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T07:47:11.216Z",
+  "syncedAt": "2026-11-28T07:52:35.753Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 23,
-    "todayTokens": 282964070,
-    "weekTokens": 1014461944,
-    "totalTokens": 6824334003,
-    "estimatedCostUsd": 2829.784131440001,
-    "cpu": 5.143791521953587,
-    "memoryBytes": 4166402048
+    "activeAgents": 26,
+    "todayTokens": 283118377,
+    "weekTokens": 1014616251,
+    "totalTokens": 6824488310,
+    "estimatedCostUsd": 2830.061441840001,
+    "cpu": 5.14294874641162,
+    "memoryBytes": 4237803520
   },
   "agents": [
+    {
+      "agentId": "7466c939c4a29028",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a22123-cbe0-7130-8928-ca787ed4b9df",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.30019068154572737,
+      "memoryBytes": 1132888064,
+      "confidence": "high"
+    },
+    {
+      "agentId": "9367ed0ea2d5460c",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a22123-2ee3-7861-a908-926e5849be4a",
+      "sessionTitle": "手写个保证给我呗？ 在明年年底之前保证自己安全； 家庭和睦； 跟jj还有jj的家人都保持透明的财务公开. 签个字和日期：）  给我写个 pdf, 名字就写刘俊灵; 我需要刘俊灵和剪辑两个人的签字.",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.30019068154572737,
+      "memoryBytes": 1132888064,
+      "confidence": "high"
+    },
+    {
+      "agentId": "7bc4030d4e6ae7f0",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a22123-3055-76a0-bfd7-355f463b8cab",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.30019068154572737,
+      "memoryBytes": 1132888064,
+      "confidence": "high"
+    },
     {
       "agentId": "afd86e46503c72c1",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,12 +57,23 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0012111425111021397,
+      "cpu": 0.0011802659532614682,
       "memoryBytes": 60260352,
       "confidence": "low"
     },
     {
-      "agentId": "73aa92f0dc68c38d",
+      "agentId": "43820e5dcad5edf5",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4112384,
+      "confidence": "low"
+    },
+    {
+      "agentId": "8ccc853cfb00507d",
       "processName": "ssh",
       "status": "idle",
       "sessionId": null,
@@ -46,8 +90,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.07831573172404334,
-      "memoryBytes": 185237504,
+      "cpu": 0.07790015685739617,
+      "memoryBytes": 184156160,
       "confidence": "low"
     },
     {
@@ -57,52 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033900881726968684,
-      "memoryBytes": 38584320,
-      "confidence": "low"
-    },
-    {
-      "agentId": "dc7a9bcefa47919c",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.005548799027059897,
-      "memoryBytes": 56295424,
-      "confidence": "low"
-    },
-    {
-      "agentId": "81a0849505553d0d",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0012842540046163725,
-      "memoryBytes": 99237888,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000008055972899707165,
-      "memoryBytes": 8044544,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.0000040280026745937764,
-      "memoryBytes": 7897088,
+      "cpu": 0.0033885997821614423,
+      "memoryBytes": 38682624,
       "confidence": "low"
     }
   ],
@@ -130,10 +130,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 248042124,
-      "inputTokens": 3688094,
-      "outputTokens": 515054,
-      "costUSD": 135.8914894
+      "totalTokens": 248196431,
+      "inputTokens": 3710427,
+      "outputTokens": 516212,
+      "costUSD": 136.16879980000002
     },
     {
       "model": "gpt-5.5",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T07:47:14.263Z"
+  "receivedAt": "2026-11-28T07:52:38.803Z"
 }
