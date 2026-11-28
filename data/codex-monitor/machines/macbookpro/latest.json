@@ -1,22 +1,33 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T04:49:05.030Z",
+  "syncedAt": "2026-11-28T04:54:29.212Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 26,
+    "activeAgents": 25,
     "todayTokens": 280533054,
     "weekTokens": 1012030928,
     "totalTokens": 6821902987,
     "estimatedCostUsd": 2829.233932040001,
-    "cpu": 5.71839162717433,
-    "memoryBytes": 4503781376
+    "cpu": 5.65707221331336,
+    "memoryBytes": 4532027392
   },
   "agents": [
+    {
+      "agentId": "8a321e25f7d8c899",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21da8-30d8-7dd0-886a-9753b8e76c86",
+      "sessionTitle": "你可以在微信记录里面查王友坚银键键相关的聊天, 应该有一个 excel, 记录了净值变化? 也可以在我的 confluence 里面查一下",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.30902579278340114,
+      "memoryBytes": 1101512704,
+      "confidence": "high"
+    },
     {
       "agentId": "2d611f8a78568c4b",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +35,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.3619776339022955,
+      "cpu": 0.3044982698961938,
       "memoryBytes": 146407424,
       "confidence": "low"
     },
@@ -35,7 +46,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0035314891112419072,
+      "cpu": 0.002965892239248641,
       "memoryBytes": 68714496,
       "confidence": "low"
     },
@@ -46,30 +57,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.09353091809747702,
-      "memoryBytes": 189923328,
-      "confidence": "low"
-    },
-    {
-      "agentId": "f159badfeb4b98fd",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4145152,
-      "confidence": "low"
-    },
-    {
-      "agentId": "bb55f888e7913d9f",
-      "processName": "ssh",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0,
-      "memoryBytes": 4177920,
+      "cpu": 0.09294083309010549,
+      "memoryBytes": 189874176,
       "confidence": "low"
     },
     {
@@ -79,7 +68,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0034123498021563147,
+      "cpu": 0.0033923995813634564,
       "memoryBytes": 38387712,
       "confidence": "low"
     },
@@ -90,8 +79,19 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.005699350201473845,
+      "cpu": 0.00570211844527049,
       "memoryBytes": 55492608,
+      "confidence": "low"
+    },
+    {
+      "agentId": "f92719f0c0ba8d51",
+      "processName": "ssh",
+      "status": "idle",
+      "sessionId": null,
+      "sessionTitle": null,
+      "workspaceLabel": "/",
+      "cpu": 0,
+      "memoryBytes": 4177920,
       "confidence": "low"
     },
     {
@@ -101,7 +101,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0014062000639181846,
+      "cpu": 0.0013965593855138703,
       "memoryBytes": 99467264,
       "confidence": "low"
     }
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T04:49:08.175Z"
+  "receivedAt": "2026-11-28T04:54:33.517Z"
 }
