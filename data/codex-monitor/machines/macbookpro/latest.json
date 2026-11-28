@@ -1,22 +1,77 @@
 {
   "version": 1,
   "source": "local-html-dashboard",
-  "syncedAt": "2026-11-28T01:12:39.637Z",
+  "syncedAt": "2026-11-28T01:18:02.800Z",
   "machine": {
     "id": "macbookpro",
     "name": "MacBookPro",
     "label": "本地 MacBookPro"
   },
   "summary": {
-    "activeAgents": 22,
-    "todayTokens": 92009161,
-    "weekTokens": 823507035,
-    "totalTokens": 6633379094,
-    "estimatedCostUsd": 3201.0861699,
-    "cpu": 5.348149780415537,
-    "memoryBytes": 4576411648
+    "activeAgents": 27,
+    "todayTokens": 98705941,
+    "weekTokens": 830203815,
+    "totalTokens": 6640075874,
+    "estimatedCostUsd": 3202.9134375000003,
+    "cpu": 7.353139009262312,
+    "memoryBytes": 4626104320
   },
   "agents": [
+    {
+      "agentId": "8a321e25f7d8c899",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21da8-30d8-7dd0-886a-9753b8e76c86",
+      "sessionTitle": "你可以在微信记录里面查王友坚银键键相关的聊天, 应该有一个 excel, 记录了净值变化? 也可以在我的 confluence 里面查一下",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2744253256858299,
+      "memoryBytes": 999833600,
+      "confidence": "high"
+    },
+    {
+      "agentId": "408617bca0171892",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fb9-13ee-7833-89cf-319b2ff1ad26",
+      "sessionTitle": "读我跟 max 的记录; 和我 confluence 里面跟 max 的基金合作的记录; 创建一个类似的 [https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund&view=1&tab=dashboard](https://thisisyz.com/projects/broker-dashboard/?account=wyj-fund\\&view=1\\&tab=dashboard) 写在王友坚基金 tab 的旁边. max 基金",
+      "workspaceLabel": "Docking2611",
+      "cpu": 0.2744253256858299,
+      "memoryBytes": 999833600,
+      "confidence": "high"
+    },
+    {
+      "agentId": "4f5e59c505cfc0bc",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fa7-9945-7b51-8754-3cebd53015c5",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2744253256858299,
+      "memoryBytes": 999833600,
+      "confidence": "high"
+    },
+    {
+      "agentId": "64b6e28854d68593",
+      "processName": "codex",
+      "status": "running",
+      "sessionId": "01a21fb9-1555-7ff2-81a3-c08cbd0c3abd",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2744253256858299,
+      "memoryBytes": 999833600,
+      "confidence": "high"
+    },
+    {
+      "agentId": "742ecc78b7b91787",
+      "processName": "codex",
+      "status": "idle",
+      "sessionId": "01a21fb9-530a-7092-bef2-3004804f499b",
+      "sessionTitle": null,
+      "workspaceLabel": null,
+      "cpu": 0.2744253256858299,
+      "memoryBytes": 999833600,
+      "confidence": "high"
+    },
     {
       "agentId": "e0062b3eedbafba3",
       "processName": "Codex (Aperitif Renderer)",
@@ -24,7 +79,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.12439045503072972,
+      "cpu": 0.12329902801600916,
       "memoryBytes": 329842688,
       "confidence": "low"
     },
@@ -35,7 +90,7 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.014476614699331848,
+      "cpu": 0.012926748425588332,
       "memoryBytes": 74547200,
       "confidence": "low"
     },
@@ -46,63 +101,8 @@
       "sessionId": null,
       "sessionTitle": null,
       "workspaceLabel": "/",
-      "cpu": 0.0033009570400626947,
-      "memoryBytes": 39665664,
-      "confidence": "low"
-    },
-    {
-      "agentId": "dc7a9bcefa47919c",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.005343275784274145,
-      "memoryBytes": 56852480,
-      "confidence": "low"
-    },
-    {
-      "agentId": "81a0849505553d0d",
-      "processName": "Codex (Aperitif Renderer)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.001561119293078056,
-      "memoryBytes": 110608384,
-      "confidence": "low"
-    },
-    {
-      "agentId": "8813dc8e2c318be5",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000008905036688751159,
-      "memoryBytes": 8044544,
-      "confidence": "low"
-    },
-    {
-      "agentId": "d7f7d07ea9f04dcc",
-      "processName": "browser_crashpad_handler",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.000004452538169383457,
-      "memoryBytes": 7897088,
-      "confidence": "low"
-    },
-    {
-      "agentId": "4153ca12c43726eb",
-      "processName": "Codex (Aperitif)",
-      "status": "idle",
-      "sessionId": null,
-      "sessionTitle": null,
-      "workspaceLabel": "/",
-      "cpu": 0.8881032632652244,
-      "memoryBytes": 159498240,
+      "cpu": 0.003299396681749623,
+      "memoryBytes": 39682048,
       "confidence": "low"
     }
   ],
@@ -123,10 +123,10 @@
     },
     {
       "model": "gpt-6.2-sol",
-      "totalTokens": 1146139900,
-      "inputTokens": 24548991,
-      "outputTokens": 3076349,
-      "costUSD": 254.73968100000008
+      "totalTokens": 1152728911,
+      "inputTokens": 24724680,
+      "outputTokens": 3095815,
+      "costUSD": 256.46614700000015
     },
     {
       "model": "gpt-5.5",
@@ -137,10 +137,10 @@
     },
     {
       "model": "gpt-6.2-astra",
-      "totalTokens": 134993862,
-      "inputTokens": 1802700,
-      "outputTokens": 216058,
-      "costUSD": 64.5029486
+      "totalTokens": 135101631,
+      "inputTokens": 1807858,
+      "outputTokens": 216525,
+      "costUSD": 64.6037502
     },
     {
       "model": "gpt-5.6-luna",
@@ -155,5 +155,5 @@
     "processWatcher": "ok",
     "logWatcher": "ok"
   },
-  "receivedAt": "2026-11-28T01:12:42.674Z"
+  "receivedAt": "2026-11-28T01:18:05.790Z"
 }
